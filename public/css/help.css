@@ -1,0 +1,27 @@
+body {
+    min-width: 1200px;
+}
+/* ------------------------------------------------- */
+.help-text {
+    border-bottom: 3px solid mediumslateblue;
+}
+/* ------------------------------------------------- */
+.banner {
+    height: 170px;
+    width: 100%;
+    object-fit: cover;
+    filter: blur(7px);
+}
+/* ------------------------------------------------- */
+.main {
+    background-color: green;
+    height: 100vh;
+    width: 100%;
+}
+
+h1 {
+    font-family: "けいふぉんと";
+    font-size: 520%;
+    text-align: center;
+    padding-top: 50px;
+}

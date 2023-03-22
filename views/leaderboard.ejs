@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang = "ja">
+<head>
+    <meta charset = "utf-8">
+    <title>Leaderboard</title>
+    <%- include("link") %>
+    <link rel = "stylesheet" href = "/css/leaderboard.css">
+    <link rel = "stylesheet" href = "/css/Lmode/<%= mode %>.css">
+</head>
+<body>
+<%- include("header") %>
+<img src = "/image/banner.gif" class = "banner">
+<div class = "main">
+    <div class = "selection">
+        <ul class = "mode">
+            <li class = "std">
+                <a href = "/leaderboard/mode=std/special=<%= sp %>">
+                    <img src = "/image/mode/osu.png">
+                </a>
+            </li>
+            <li class = "taiko">
+                <a href = "/leaderboard/mode=taiko/special=<%= sp %>">
+                    <img src = "/image/mode/taiko.png">
+                </a>
+            </li>
+            <li class = "catch">
+                <a href = "/leaderboard/mode=ctb/special=<%= sp %>">
+                    <img src = "/image/mode/fruits.png">
+                </a>
+            </li>
+            <li class = "mania">
+                <a href = "/leaderboard/mode=mania/special=<%= sp %>">
+                    <img src = "/image/mode/mania.png">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class = "ranking-table">
+        <div class = table-title>
+            <span class = "ranking-null"></span>
+            <span class = "country-null"></span>
+            <span class = "name-null"></span>
+            <span class = "acc-title">Accuracy</span>
+            <span class = "playcount-title">Play Count</span>
+            <span class = "pp-title">Performance</span>
+            <span class = "ss-title">SS</span>
+            <span class = "s-title">S</span>
+            <span class = "a-title">A</span>
+        </div>
+        <% rankings.forEach((ranking) => { %>
+            <div class = "ranking-data">
+                <span class = "ranking">#<%= ranking.ranking.toLocaleString() %></span>
+                <span class = "flag-icon flag-icon-<%= ranking.country %>"></span>
+                <span class = "name">
+                    <a href = "/profile/id=<%= ranking.id %>/mode=<%= mode %>/special=<%= sp %>">
+                        <span class = "text"><%= ranking.name %></span>
+                    </a></span>
+                <span class = "acc"><%= ranking.acc.toFixed(2) %>%</span>
+                <span class = "playcount"><%= ranking.plays.toLocaleString() %></span>
+                <span class = "pp"><%= ranking.pp.toLocaleString() %></span>
+                <span class = "ss"><%= ranking.SS.toLocaleString() %></span>
+                <span class = "s"><%= ranking.S.toLocaleString() %></span>
+                <span class = "a"><%= ranking.A.toLocaleString() %></span>
+            </div>
+        <% }); %>
+    </div>
+</div>
+</body>
+</html>

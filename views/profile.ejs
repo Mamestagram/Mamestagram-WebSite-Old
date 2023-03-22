@@ -1,0 +1,203 @@
+<% const getPlayTime = (time) => {
+    let res = "";
+    res += Math.floor(time / 86400).toLocaleString() + "d ";
+    time %= 86400;
+    res += Math.floor(time / 3600).toLocaleString() + "h ";
+    time %= 3600;
+    res += Math.floor(time / 60).toLocaleString() + "m";
+    return res;
+} %>
+
+<% const getMods = (modNum) => {
+    const mod = new Array(0);
+    const mods = ["nf", "ez", "", "hd", "hr", "sd", "dt", "", "ht", "nc", "fl", "", "so", "", "pf"];
+    if (modNum >= 536870912) {
+        mod.push("v2");
+        modNum -= 536870912;
+    }
+    for (let i = 14; i >= 0; i--) {
+        if (i !== 2 && i !== 11 && modNum >= Math.pow(2, i)) {
+            switch (i) {
+                case 14:
+                    modNum -= Math.pow(2, 5);
+                    break;
+                case 9:
+                    modNum -= Math.pow(2, 6);
+                    break;
+                case 13:
+                case 7:
+                    modNum -= Math.pow(2, i);
+                    continue;
+            }
+            mod.push(mods[i]);
+            modNum -= Math.pow(2, i);
+        }
+    }
+    return mod;
+} %>
+
+<% const getMode = (modeNum) => {
+    let mode = "#"
+    switch (modeNum) {
+        case 0:
+            mode += "osu";
+            break;
+        case 1:
+            mode += "taiko";
+            break;
+        case 2:
+            mode += "fruits";
+            break;
+        case 3:
+            mode += "mania";
+            break;
+    }
+    return mode;
+} %>
+
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset = "utf-8">
+        <title><%= info.name %>'s Profile</title>
+        <%- include("link") %>
+        <link rel = "stylesheet" href = "/css/profile.css">
+        <link rel = "stylesheet" href = "/css/Pmode/<%= mode %>.css">
+    </head>
+    <body>
+        <%- include("header") %>
+        <div class = "info-title">
+            <h1>Player Information</h1>
+        </div>
+        <div class = "main">
+            <div class = "player-banner">
+                <span class = "flag-icon flag-icon-<%= info.country %>"></span>
+                <span class = "name"><%= info.name %></span>
+                <span class = "mania-icon">
+                    <a href = "/profile/id=<%= id %>/mode=mania/special=<%= sp %>">
+                        <img src = "/image/mode/mania.png">
+                    </a>
+                </span>
+                <span class = "catch-icon">
+                    <a href = "/profile/id=<%= id %>/mode=ctb/special=<%= sp %>">
+                        <img src = "/image/mode/fruits.png">
+                    </a>
+                </span>
+                <span class = "taiko-icon">
+                    <a href = "/profile/id=<%= id %>/mode=taiko/special=<%= sp %>">
+                        <img src = "/image/mode/taiko.png">
+                    </a>
+                </span>
+                <span class = "std-icon">
+                    <a href = "/profile/id=<%= id %>/mode=std/special=<%= sp %>">
+                        <img src = "/image/mode/osu.png">
+                    </a>
+                </span>
+            </div>
+            <div class = "player-info">
+                <div class = "stats">
+                    <div class = "global-ranking">
+                        <span class = "title">Global Ranking</span><br>
+                        <span class = "value">#<%= info.GRanking.toLocaleString() %></span>
+                    </div>
+                    <div class = "country-ranking">
+                        <span class = "title">Country Ranking</span><br>
+                        <span class = "value">#<%= info.CRanking.toLocaleString() %></span>
+                    </div>
+                    <div class = "medals">
+                        <span class = "title">Medals</span><br>
+                        <span class = "value"><%= info.medals.toLocaleString() %></span>
+                    </div>
+                    <div class = "pp">
+                        <span class = "title">pp</span><br>
+                        <span class = "value"><%= info.pp.toLocaleString() %></span>
+                    </div>
+                    <div class = "playtime">
+                        <span class = "title">Total Play TIme</span><br>
+                        <span class = "value"><%= getPlayTime(info.playtime) %></span>
+                    </div>
+                    <div class = "grade-amounts">
+                        <div class = "xh">
+                            <img src = "/image/grade/XH.png"><br>
+                            <span class = "value"><%= info.xh_count.toLocaleString() %></span>
+                        </div>
+                        <div class = "x">
+                            <img src = "/image/grade/X.png"><br>
+                            <span class = "value"><%= info.x_count.toLocaleString() %></span>
+                        </div>
+                        <div class = "sh">
+                            <img src = "/image/grade/SH.png"><br>
+                            <span class = "value"><%= info.sh_count.toLocaleString() %></span>
+                        </div>
+                        <div class = "s">
+                            <img src = "/image/grade/S.png"><br>
+                            <span class = "value"><%= info.s_count.toLocaleString() %></span>
+                        </div>
+                        <div class = "a">
+                            <img src = "/image/grade/A.png"><br>
+                            <span class = "value"><%= info.a_count.toLocaleString() %></span>
+                        </div>
+                    </div>
+                </div>
+                <div class = "scores">
+                    <div class = "title">
+                        <span class = "acc">Hit Accuracy</span>
+                        <span class = "playcount">Plau Count</span>
+                        <span class = "hits">Total Hits</span>
+                        <span class = "ranked-score">Ranked Score</span>
+                        <span class = "total-score">Total Score</span>
+                        <span class = "maxcombo">Maximum Combo</span>
+                        <span class = "replayed">Peplays Watched</span>
+                    </div>
+                    <div class = "value">
+                        <span class = "acc"><%= info.acc.toFixed(2) %>%</span>
+                        <span class = "playcount"><%= info.plays.toLocaleString() %></span>
+                        <span class = "hits"><%= info.total_hits.toLocaleString() %></span>
+                        <span class = "ranked-score"><%= info.rscore.toLocaleString() %></span>
+                        <span class = "total-score"><%= info.tscore.toLocaleString() %></span>
+                        <span class = "maxcombo"><%= info.max_combo.toLocaleString() %></span>
+                        <span class = "replayed"><%= info.replay_views.toLocaleString() %></span>
+                    </div>
+                </div>
+            </div>
+            <div class = "bestpp-list">
+                <h1>Best Performance</h1>
+                <% let i = 0; %>
+                <% let num = 0; %>
+                <% bestpp.forEach((map) => { %>
+                <% let flag = true; %>
+                    <% for(let j = 0; j < i; j++) {
+                        if (bestpp[j].md5 === map.md5) {
+                            flag = false;
+                            break;
+                        }
+                    } %>
+                    <% if (flag) { %>
+                        <div class = "list">
+                            <img src = "/image/grade/<%= map.grade %>.png" class = "grade">
+                            <div class = "map-info">
+                                <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
+                                    <span class = "title"><%= map.title %> by <%= map.artist %></span>
+                                    <span class = "diff"><%= map.version %></span>
+                                </a>
+                            </div>
+                            <div class = "scores">
+                                <span class = "pp-weighted">(<%= Math.round(map.pp * Math.pow(0.95, num)).toLocaleString() %>pp)</span>
+                                <span class = "pp-recorded"><%= Math.round(map.pp).toLocaleString() %>pp</span>
+                                <span class = "acc"><%= map.acc.toFixed(2) %>%</span>
+                                <span class = "mods">
+                                    <% const mods = getMods(map.mods) %>
+                                    <% for (let k = mods.length - 1; k >= 0; k--) { %>
+                                        <img src = "/image/mods/<%= mods[k] %>.png">
+                                    <% } %>
+                                </span>
+                            </div>
+                        </div>
+                    <% num++; %>
+                    <% } %>
+                <% i++; %>
+                <% }); %>
+            </div>
+        </div>
+    </body>
+</html>
