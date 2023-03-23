@@ -55,6 +55,18 @@
     return mode;
 } %>
 
+<% const getTitle = (name, diff) => {
+    let title = name + " by " + diff;
+    let rst = "";
+    for (let i = 0; i < 60 && i < title.length; i++) {
+        rst += title[i];
+    }
+    if (rst.length < title.length) {
+        rst += "...";
+    }
+    return rst;
+} %>
+
 <!DOCTYPE html>
 <html lang = "ja">
     <head>
@@ -164,7 +176,10 @@
                 <h1>Best Performance</h1>
                 <% let i = 0; %>
                 <% let num = 0; %>
-                <% bestpp.forEach((map) => { %>
+                <% for (let map of bestpp) { %>
+                <% if (num > 100) {
+                    break;
+                } %>
                 <% let flag = true; %>
                     <% for(let j = 0; j < i; j++) {
                         if (bestpp[j].md5 === map.md5) {
@@ -177,7 +192,7 @@
                             <img src = "/image/grade/<%= map.grade %>.png" class = "grade">
                             <div class = "map-info">
                                 <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
-                                    <span class = "title"><%= map.title %> by <%= map.artist %></span>
+                                    <span class = "title"><%= getTitle(map.title, map.artist) %></span>
                                     <span class = "diff"><%= map.version %></span>
                                 </a>
                             </div>
@@ -187,16 +202,16 @@
                                 <span class = "acc"><%= map.acc.toFixed(2) %>%</span>
                                 <span class = "mods">
                                     <% const mods = getMods(map.mods) %>
-                                    <% for (let k = mods.length - 1; k >= 0; k--) { %>
-                                        <img src = "/image/mods/<%= mods[k] %>.png">
-                                    <% } %>
+                                    <% mods.forEach((mod) => { %>
+                                        <img src = "/image/mods/<%= mod %>.png">
+                                    <% }); %>
                                 </span>
                             </div>
                         </div>
                     <% num++; %>
                     <% } %>
                 <% i++; %>
-                <% }); %>
+                <% } %>
             </div>
         </div>
     </body>

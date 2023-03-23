@@ -191,9 +191,6 @@ body {
     bottom: 43px;
     display: flex;
     font-size: 18px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
 }
 
 .bestpp-list .list .map-info .diff {
@@ -219,6 +216,7 @@ body {
     height: 40px;
     width: 40px;
     bottom: 5px;
+    float: right;
 }
 
 .bestpp-list .list .acc {

@@ -55,4 +55,14 @@ const getMode = (modeNum) => {
     return mode;
 }
 
-console.log(getMods(128));
+const getTitle = (name, diff) => {
+    let title = name + " by " + diff;
+    let rst = "";
+    for (let i = 0; i < 60 && i < title.length; i++) {
+        rst += title[i];
+    }
+    if (rst.length < title.length) {
+        rst += "...";
+    }
+    return rst;
+}
