@@ -199,7 +199,6 @@ body {
     transform: scale(-1, 1);
     height: 24px;
     width: 24px;
-
 }
 
 .bestpp-list .pagearrow .next img {
@@ -212,7 +211,7 @@ body {
     width: 65%;
     font-size: 55px;
     text-align: center;
-    line-height: 700px;
+    line-height: 650px;
 }
 
 .bestpp-list .list {
@@ -302,55 +301,123 @@ body {
 .bestplays-list {
     position: absolute;
     background-color: white;
-    top: 700px;
+    top: 1300px;
     margin-left: 12.8%;
+    height: 700px;
     width: 73%;
     min-width: 1030px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    scroll-margin-top: 100px;
 }
 
 .bestplays-list h1 {
     font-size: 24px;
     padding-left: 5px;
+    float: left;
 }
 
-.bestpp-list .list {
+.bestplays-list h2 {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 7%;
+}
+
+.bestplays-list .pagearrow {
+    position: relative;
+    float: right;
+    bottom: 21px;
+}
+
+.bestplays-list .pagearrow img {
+    margin: 0 5px;
+    filter: invert(50%);
+    opacity: 95%;
+}
+
+.bestplays-list .pagearrow img:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+
+.bestplays-list .pagearrow .back img {
+    transform: scale(-1, 1);
+    height: 24px;
+    width: 24px;
+}
+
+.bestplays-list .pagearrow .next img {
+    height: 24px;
+    width: 24px;
+}
+
+.bestplays-list .nothing {
+    font-family: "MochiyPopOne";
+    width: 75%;
+    font-size: 55px;
+    text-align: center;
+    line-height: 650px;
+}
+
+.bestplays-list .list {
     height: 60px;
     line-height: 30px;
     margin: 5px;
     background-color: pink;
     border-radius: 10px;
 }
-.bestpp-list .list:hover {
+.bestplays-list .list:hover {
     background-color: rgba(255, 192, 203, 0.8);
 }
 
-.bestpp-list .list .grade {
-    position: relative;
-    height: 45px;
-    width: 45px;
-    top: 7px;
-    margin-left: 7px;
-    background-color: rgba(199, 21, 133, 0.4);
+.bestplays-list .mapbg {
+    height: 60px;
+    width: 87px;
+    float: left;
     border-radius: 10px;
 }
 
-.bestplays-list .list .map-info {
-    padding-left: 10px;
-}
-
-.bestplays-list .list .map-info .title {
+.bestplays-list .list .mapinfo .title {
     position: relative;
-    left: 50px;
-    bottom: 43px;
+    left: 10px;
     display: flex;
     font-size: 18px;
 }
 
-.bestplays-list .list .map-info .mapper {
+.bestplays-list .list .mapinfo .mapper {
     position: relative;
-    left: 50px;
-    bottom: 45px;
+    left: 10px;
     font-size: 14px;
+}
+
+.bestplays-list .list .mapinfo .mapper .bold {
+    font-weight: bolder;
+}
+
+.bestplays-list .list .maininfo .mode {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    float: right;
+    right: 20px;
+    bottom: 52px;
+}
+
+.bestplays-list .list .maininfo .playico {
+    position: relative;
+    height: 18px;
+    width: 18px;
+    float: right;
+    bottom: 40px;
+}
+
+.bestplays-list .list .maininfo .value {
+    position: relative;
+    font-family: "Ubuntu";
+    font-size: 26px;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+    float: right;
+    bottom: 47px;
 }

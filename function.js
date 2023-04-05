@@ -37,7 +37,7 @@ const getMods = (modNum) => {
 }
 
 const getMode = (modeNum) => {
-    let mode = "#"
+    let mode = ""
     switch (modeNum) {
         case 0:
             mode += "osu";
@@ -55,8 +55,8 @@ const getMode = (modeNum) => {
     return mode;
 }
 
-const getTitle = (name, diff) => {
-    let title = name + " by " + diff;
+const getTitle = (name, artist) => {
+    let title = name + " by " + artist;
     let rst = "";
     for (let i = 0; i < 60 && i < title.length; i++) {
         rst += title[i];
@@ -67,13 +67,25 @@ const getTitle = (name, diff) => {
     return rst;
 }
 
-const recCount = (page, data) => {
+const getFullname = (name, diff, artist) => {
+    let title = name + " [" + diff + "] by " + artist;
+    let rst = "";
+    for (let i = 0; i < 100 && i < title.length; i++) {
+        rst += title[i];
+    }
+    if (rst.length < title.length) {
+        rst += "...";
+    }
+    return rst;
+}
+
+const bestppRecCount = (page, data) => {
     let i = 0, num = 0, display = false, flag, cnt = 0;
     for (let map of data) {
         if (num >= page * 10 - 10) {
             display = true;
         }
-        if (num >= bppage * 10 || num >= 100) {
+        if (num >= page * 10 || num >= 100) {
             break;
         }
         flag = true;
@@ -91,6 +103,23 @@ const recCount = (page, data) => {
             num++;
         }
         i++;
+    }
+    return cnt;
+}
+
+const playsRecCount = (page, data) => {
+    let num = 0, display = false, cnt = 0;
+    for (let map of data) {
+        if (num >= page * 10 - 10) {
+            display = true;
+        }
+        if (num >= page * 10) {
+            break;
+        }
+        if (display) {
+            cnt++;
+        }
+        num++;
     }
     return cnt;
 }
