@@ -186,6 +186,13 @@ body {
 
 .bestpp-list .pagearrow img {
     margin: 0 5px;
+    filter: invert(50%);
+    opacity: 95%;
+}
+
+.bestpp-list .pagearrow img:hover {
+    filter: invert(0%);
+    opacity: 100%;
 }
 
 .bestpp-list .pagearrow .back img {
