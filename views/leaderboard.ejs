@@ -52,9 +52,10 @@
                 <span class = "ranking">#<%= ranking.ranking.toLocaleString() %></span>
                 <span class = "flag-icon flag-icon-<%= ranking.country %>"></span>
                 <span class = "name">
-                    <a href = "/profile/id=<%= ranking.id %>/mode=<%= mode %>/special=<%= sp %>">
+                    <a href = "/profile/id=<%= ranking.id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=1">
                         <span class = "text"><%= ranking.name %></span>
-                    </a></span>
+                    </a>
+                </span>
                 <span class = "acc"><%= ranking.acc.toFixed(2) %>%</span>
                 <span class = "playcount"><%= ranking.plays.toLocaleString() %></span>
                 <span class = "pp"><%= ranking.pp.toLocaleString() %></span>

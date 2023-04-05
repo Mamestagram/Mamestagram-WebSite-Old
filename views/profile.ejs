@@ -37,7 +37,7 @@
 } %>
 
 <% const getMode = (modeNum) => {
-    let mode = "#"
+    let mode = ""
     switch (modeNum) {
         case 0:
             mode += "osu";
@@ -67,6 +67,34 @@
     return rst;
 } %>
 
+<% const recCount = (page, data) => {
+    let i = 0, num = 0, display = false, flag, cnt = 0;
+    for (let map of data) {
+        if (num >= page * 10 - 10) {
+            display = true;
+        }
+        if (num >= bppage * 10 || num >= 100) {
+            break;
+        }
+        flag = true;
+        for(let j = 0; j < i; j++) {
+            if (data[j].md5 === map.md5) {
+                flag = false;
+                break;
+            }
+        }
+        if (display && flag) {
+            cnt++;
+            num++;
+        }
+        else if (flag) {
+            num++;
+        }
+        i++;
+    }
+    return cnt;
+} %>
+
 <!DOCTYPE html>
 <html lang = "ja">
     <head>
@@ -86,22 +114,22 @@
                 <span class = "flag-icon flag-icon-<%= info.country %>"></span>
                 <span class = "name"><%= info.name %></span>
                 <span class = "mania-icon">
-                    <a href = "/profile/id=<%= id %>/mode=mania/special=<%= sp %>">
+                    <a href = "/profile/id=<%= id %>/mode=mania/special=<%= sp %>/bestpp=1">
                         <img src = "/image/mode/mania.png">
                     </a>
                 </span>
                 <span class = "catch-icon">
-                    <a href = "/profile/id=<%= id %>/mode=ctb/special=<%= sp %>">
+                    <a href = "/profile/id=<%= id %>/mode=ctb/special=<%= sp %>/bestpp=1">
                         <img src = "/image/mode/fruits.png">
                     </a>
                 </span>
                 <span class = "taiko-icon">
-                    <a href = "/profile/id=<%= id %>/mode=taiko/special=<%= sp %>">
+                    <a href = "/profile/id=<%= id %>/mode=taiko/special=<%= sp %>/bestpp=1">
                         <img src = "/image/mode/taiko.png">
                     </a>
                 </span>
                 <span class = "std-icon">
-                    <a href = "/profile/id=<%= id %>/mode=std/special=<%= sp %>">
+                    <a href = "/profile/id=<%= id %>/mode=std/special=<%= sp %>/bestpp=1">
                         <img src = "/image/mode/osu.png">
                     </a>
                 </span>
@@ -172,47 +200,99 @@
                     </div>
                 </div>
             </div>
-            <div class = "bestpp-list">
+            <div class = "bestpp-list" id = "bestpp">
                 <h1>Best Performance</h1>
-                <% let i = 0; %>
-                <% let num = 0; %>
-                <% for (let map of bestpp) { %>
-                <% if (num > 100) {
-                    break;
-                } %>
-                <% let flag = true; %>
-                    <% for(let j = 0; j < i; j++) {
-                        if (bestpp[j].md5 === map.md5) {
-                            flag = false;
-                            break;
-                        }
-                    } %>
-                    <% if (flag) { %>
-                        <div class = "list">
-                            <img src = "/image/grade/<%= map.grade %>.png" class = "grade">
-                            <div class = "map-info">
-                                <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
-                                    <span class = "title"><%= getTitle(map.title, map.artist) %></span>
-                                    <span class = "diff"><%= map.version %></span>
-                                </a>
-                            </div>
-                            <div class = "scores">
-                                <span class = "pp-weighted">(<%= Math.round(map.pp * Math.pow(0.95, num)).toLocaleString() %>pp)</span>
-                                <span class = "pp-recorded"><%= Math.round(map.pp).toLocaleString() %>pp</span>
-                                <span class = "acc"><%= map.acc.toFixed(2) %>%</span>
-                                <span class = "mods">
-                                    <% const mods = getMods(map.mods) %>
-                                    <% mods.forEach((mod) => { %>
-                                        <img src = "/image/mods/<%= mod %>.png">
-                                    <% }); %>
-                                </span>
-                            </div>
-                        </div>
-                    <% num++; %>
+                <h2>page : <%= bppage %></h2>
+                <div class = "pagearrow">
+                    <% if (bppage === "1") { %>
+                        <a class = "back" href = "/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= Number(bppage) - 1 %>#bestpp">
+                            <img hidden src = "/image/arrow.png">
+                        </a>
+                    <% } else { %>
+                        <a class = "back" href = "/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= Number(bppage) - 1 %>#bestpp">
+                            <img src = "/image/arrow.png">
+                        </a>
                     <% } %>
-                <% i++; %>
+                    <% if (bppage === "10" || recCount(bppage, bestpp) === 0) { %>
+                        <a class = "next" href = "/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= Number(bppage) + 1 %>#bestpp">
+                            <img hidden src = "/image/arrow.png">
+                        </a>
+                    <% } else { %>
+                        <a class = "next" href = "/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= Number(bppage) + 1 %>#bestpp">
+                            <img src = "/image/arrow.png">
+                        </a>
+                    <% } %>
+                </div>
+                <% if (recCount(bppage, bestpp) === 0) { %>
+                    <h1 class = "nothing">プレイ記録がありません</h1>
+                <% } else { %>
+                    <% let i = 0; %>
+                    <% let num = 0; %>
+                    <% let display = false %>
+                    <% for (let map of bestpp) { %>
+                        <% if (num >= bppage * 10 - 10) {
+                            display = true;
+                        } %>
+                        <% if (num >= bppage * 10 || num >= 100) {
+                            break;
+                        } %>
+                        <% let flag = true; %>
+                        <% for(let j = 0; j < i; j++) {
+                            if (bestpp[j].md5 === map.md5) {
+                                flag = false;
+                                break;
+                            }
+                        } %>
+                        <% if (display && flag) { %>
+                            <div class = "list">
+                                <img src = "/image/grade/<%= map.grade %>.png" class = "grade">
+                                <div class = "map-info">
+                                    <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/#<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
+                                        <span class = "title"><%= getTitle(map.title, map.artist) %></span>
+                                        <span class = "diff"><%= map.version %></span>
+                                    </a>
+                                </div>
+                                <div class = "scores">
+                                    <span class = "pp-weighted">(<%= Math.round(map.pp * Math.pow(0.95, num)).toLocaleString() %>pp)</span>
+                                    <span class = "pp-recorded"><%= Math.round(map.pp).toLocaleString() %>pp</span>
+                                    <span class = "acc"><%= map.acc.toFixed(2) %>%</span>
+                                    <span class = "mods">
+                                        <% const mods = getMods(map.mods) %>
+                                        <% mods.forEach((mod) => { %>
+                                            <img src = "/image/mods/<%= mod %>.png">
+                                        <% }); %>
+                                    </span>
+                                </div>
+                            </div>
+                            <% num++; %>
+                        <% } else if (flag) {
+                            num++;
+                        } %>
+                        <% i++; %>
+                    <% } %>
                 <% } %>
             </div>
+
+            <!-- 保留
+            <div class = "bestplays-list">
+                <h1>Most Played</h1>
+                <% bestplays.forEach((map) => { %>
+                <div class = "list">
+                    <div class = "mapinfo">
+                        <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/#<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
+                            <span class = "title"><%= map.title + " [" + map.version + "] by " + map.artist %></span>
+                            <span class = "mapper">mapped by <span class = "bold"><%= map.artist %></span></span>
+                        </a>
+                    </div>
+                    <div class = "maininfo">
+                        <img src = "/image/mode/<%= getMode(map.mode) %>.png">
+                        <img src = "/image/play.png"><%= map.playtimes %>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            -->
+
         </div>
     </body>
 </html>

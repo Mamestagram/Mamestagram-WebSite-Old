@@ -32,3 +32,8 @@
     font-family: "Ubuntu";
     src: url("../font/Ubuntu-Regular.ttf");
 }
+
+@font-face {
+    font-family: "MochiyPopOne";
+    src: url("../font/MochiyPopOne-Regular.ttf");
+}

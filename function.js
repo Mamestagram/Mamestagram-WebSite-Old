@@ -66,3 +66,31 @@ const getTitle = (name, diff) => {
     }
     return rst;
 }
+
+const recCount = (page, data) => {
+    let i = 0, num = 0, display = false, flag, cnt = 0;
+    for (let map of data) {
+        if (num >= page * 10 - 10) {
+            display = true;
+        }
+        if (num >= bppage * 10 || num >= 100) {
+            break;
+        }
+        flag = true;
+        for(let j = 0; j < i; j++) {
+            if (data[j].md5 === map.md5) {
+                flag = false;
+                break;
+            }
+        }
+        if (display && flag) {
+            cnt++;
+            num++;
+        }
+        else if (flag) {
+            num++;
+        }
+        i++;
+    }
+    return cnt;
+}
