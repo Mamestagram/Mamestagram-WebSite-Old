@@ -311,7 +311,7 @@
                             <img src = "/image/arrow.png">
                         </a>
                     <% } %>
-                    <% if (page === 10 || playsRecCount(page + 1, bestplays) === 0) { %>
+                    <% if (playsRecCount(page + 1, bestplays) === 0) { %>
                         <a class = "next" href = "/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>/mostplays=<%= page + 1 %>#mostplays">
                             <img hidden src = "/image/arrow.png">
                         </a>
