@@ -377,24 +377,24 @@ body {
     border-radius: 10px;
 }
 
-.bestplays-list .list .mapinfo .title {
+.bestplays-list .list .map-info .title {
     position: relative;
     left: 10px;
     display: flex;
     font-size: 18px;
 }
 
-.bestplays-list .list .mapinfo .mapper {
+.bestplays-list .list .map-info .mapper {
     position: relative;
     left: 10px;
     font-size: 14px;
 }
 
-.bestplays-list .list .mapinfo .mapper .bold {
+.bestplays-list .list .map-info .mapper .bold {
     font-weight: bolder;
 }
 
-.bestplays-list .list .maininfo .mode {
+.bestplays-list .list .main-info .mode {
     position: relative;
     height: 40px;
     width: 40px;
@@ -403,7 +403,7 @@ body {
     bottom: 52px;
 }
 
-.bestplays-list .list .maininfo .playico {
+.bestplays-list .list .main-info .playico {
     position: relative;
     height: 18px;
     width: 18px;
@@ -411,7 +411,7 @@ body {
     bottom: 40px;
 }
 
-.bestplays-list .list .maininfo .value {
+.bestplays-list .list .main-info .value {
     position: relative;
     font-family: "Ubuntu";
     font-size: 26px;

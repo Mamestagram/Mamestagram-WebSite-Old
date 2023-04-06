@@ -107,13 +107,13 @@ const bestppRecCount = (page, data) => {
     return cnt;
 }
 
-const playsRecCount = (page, data) => {
+const playsRecCount = (page, data, amount) => {
     let num = 0, display = false, cnt = 0;
     for (let map of data) {
-        if (num >= page * 10 - 10) {
+        if (num >= page * amount - amount) {
             display = true;
         }
-        if (num >= page * 10) {
+        if (num >= page * amount) {
             break;
         }
         if (display) {
