@@ -125,7 +125,7 @@ body {
     padding: 0 7px;
 }
 .text:hover {
-    border-bottom: 0.7mm solid dimgray;
+    border-bottom: 1px solid dimgray;
 }
 
 .acc {
