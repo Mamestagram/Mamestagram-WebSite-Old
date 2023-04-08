@@ -79,6 +79,17 @@ const getFullname = (name, diff, artist) => {
     return rst;
 }
 
+const shortening = (str, limit) => {
+    let rst = "";
+    for (let i = 0; i < limit && i < str.length; i++) {
+        rst += str[i];
+    }
+    if (rst.length < str.length) {
+        rst += "...";
+    }
+    return rst;
+}
+
 const bestppRecCount = (page, data) => {
     let i = 0, num = 0, display = false, flag, cnt = 0;
     for (let map of data) {
