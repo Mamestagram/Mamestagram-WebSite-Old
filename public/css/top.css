@@ -3,26 +3,19 @@ body {
 }
 /* ------------------------------------------------- */
 .home-text {
-    border-bottom: 3px solid mediumslateblue;
-}
-/* ------------------------------------------------- */
-.banner {
-    height: 170px;
-    width: 100%;
-    object-fit: cover;
-    filter: blur(7px);
+    border-bottom: 3px solid #8c66ff;
 }
 /* ------------------------------------------------- */
 .main {
-    background-color: midnightblue;
+    background-color: #221f2e;
     height: 100vh;
     width: 100%;
 }
 
 .welcome-title {
     font-family: "Gloria Hallelujah";
-    font-size: 520%;
-    color: white;
+    font-size: 84px;
+    color: #fdfdfd;
     text-align: center;
 }
 

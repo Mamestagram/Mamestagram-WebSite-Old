@@ -2,29 +2,22 @@ body {
     min-width: 1280px;
 }
 /* ------------------------------------------------- */
-.info-title {
-    font-family: "Caveat";
-    font-size: 40px;
-    font-weight: bold;
-    margin-left: 12.8%;
-}
-
 .main {
     font-family: "Righteous";
-    background-color: aqua;
-    height: 9000px;
+    background-color: #1c1719;
+    height: 2700px;
 }
 /* ------------------------------------------------- */
 .player-banner {
+    color: #fdfdfd;
     position: absolute;
-    background-color: white;
+    background-color: #45393f;
     top: 150px;
     padding-top: 10px;
     margin-left: 12.8%;
     height: 100px;
     width: 73%;
     min-width: 1030px;
-    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
@@ -33,7 +26,6 @@ body {
     width: 32px;
     bottom: 12px;
     margin-left: 10px;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 .name {
@@ -51,13 +43,13 @@ body {
 }
 
 .player-banner span img:hover {
-    filter: invert(100%);
+    filter: invert(0%);
     opacity: 100%;
 }
 /* ------------------------------------------------- */
 .player-info {
     position: absolute;
-    background-color: white;
+    background-color: #45393f;
     top: 270px;
     padding-top: 15px;
     padding-left: 20px;
@@ -68,7 +60,7 @@ body {
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
-/* ------------------------------------------------- */
+
 .stats {
     padding-left: 5px;
 }
@@ -78,12 +70,13 @@ body {
 }
 
 .stats div .title {
+    color: #fdfdfd;
     font-size: 16px;
 }
 
 .stats div .value {
     font-size: 32px;
-    color: orangered;
+    color: #eed9d6;
 }
 
 .country-ranking {
@@ -115,22 +108,24 @@ body {
 .grade-amounts div img {
     height: 45px;
     width: 45px;
-    background-color: rgba(165, 42, 42, 0.8);
+    background-color: #816a75;
     border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
 .grade-amounts div .value {
     font-size: 20px;
-    color: midnightblue;
+    color: #fdfdfd;
 }
 /* ------------------------------------------------- */
 .player-scores {
+    color: #fdfdfd;
     position: relative;
     bottom: 338px;
     right: 200px;
     padding-left: 30px;
     float: right;
-    border-left: 1px solid black;
+    border-left: 1px solid #1c1719;
 }
 
 .player-scores .title {
@@ -156,7 +151,7 @@ body {
 /* ------------------------------------------------- */
 .bestpp-list {
     position: absolute;
-    background-color: white;
+    background-color: #45393f;
     top: 580px;
     margin-left: 12.8%;
     height: 690px;
@@ -168,12 +163,15 @@ body {
 }
 
 .bestpp-list h1 {
+    position: relative;
+    color: #fdfdfd;
     font-size: 24px;
-    padding-left: 5px;
+    left: 5px;
     float: left;
 }
 
 .bestpp-list h2 {
+    color: #fdfdfd;
     font-size: 20px;
     text-align: right;
     padding-right: 7%;
@@ -192,7 +190,7 @@ body {
 }
 
 .bestpp-list .pagearrow img:hover {
-    filter: invert(0%);
+    filter: invert(100%);
     opacity: 100%;
 }
 
@@ -208,21 +206,24 @@ body {
 }
 
 .bestpp-list .nothing {
+    color: #fdfdfd;
     font-family: "MochiyPopOne";
-    width: 65%;
-    font-size: 55px;
+    width: 73%;
+    margin-left: 12.8%;
+    font-size: 35px;
     text-align: center;
-    line-height: 650px;
+    line-height: 630px;
 }
 
 .bestpp-list .list {
     height: 60px;
     margin: 5px;
-    background-color: pink;
+    background-color: #6f5b64;
     border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .bestpp-list .list:hover {
-    background-color: rgba(255, 192, 203, 0.8);
+    background-color: #816a75;
 }
 
 .bestpp-list .list .grade {
@@ -241,12 +242,14 @@ body {
 }
 
 .bestpp-list .list .map-info .title {
+    color: #fdfdfd;
     position: relative;
     display: flex;
     font-size: 18px;
 }
 
 .bestpp-list .list .map-info .diff {
+    color: #eca900;
     font-size: 14px;
 }
 
@@ -270,6 +273,7 @@ body {
 }
 
 .bestpp-list .list .acc {
+    color: #ffcc22;
     position: relative;
     float: right;
     width: 80px;
@@ -279,19 +283,32 @@ body {
 
 .bestpp-list .list .pp {
     position: relative;
+    background-color: #54454c;
     float: right;
+    height: 60px;
+    line-height: 55px;
     width: 160px;
     text-align: center;
-    top: 65px;
+    top: 51px;
+    border-radius: 10px;
 }
 
 .bestpp-list .list .recorded {
+    color: #ff66ab;
     font-size: 26px;
+}
+
+.bestpp-list .list .recorded span {
+    color: #d194af;
+}
+
+.bestpp-list .list .weighted {
+    color: #fdfdfd;
 }
 /* ------------------------------------------------- */
 .mostplays-list {
     position: absolute;
-    background-color: white;
+    background-color: #45393f;
     top: 1290px;
     margin-left: 12.8%;
     height: 690px;
@@ -303,12 +320,15 @@ body {
 }
 
 .mostplays-list h1 {
+    position: relative;
+    color: #fdfdfd;
     font-size: 24px;
-    padding-left: 5px;
+    left: 5px;
     float: left;
 }
 
 .mostplays-list h2 {
+    color: #fdfdfd;
     font-size: 20px;
     text-align: right;
     padding-right: 7%;
@@ -327,7 +347,7 @@ body {
 }
 
 .mostplays-list .pagearrow img:hover {
-    filter: invert(0%);
+    filter: invert(100%);
     opacity: 100%;
 }
 
@@ -343,21 +363,24 @@ body {
 }
 
 .mostplays-list .nothing {
+    color: #fdfdfd;
     font-family: "MochiyPopOne";
-    width: 75%;
-    font-size: 55px;
+    width: 73%;
+    margin-left: 3%;
+    font-size: 35px;
     text-align: center;
-    line-height: 650px;
+    line-height: 630px;
 }
 
 .mostplays-list .list {
     height: 60px;
     margin: 5px;
-    background-color: pink;
+    background-color: #6f5b64;
     border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .mostplays-list .list:hover {
-    background-color: rgba(255, 192, 203, 0.8);
+    background-color: #816a75;
 }
 
 .mostplays-list .mapbg {
@@ -373,6 +396,7 @@ body {
 }
 
 .mostplays-list .list .map-info .title {
+    color: #fdfdfd;
     position: relative;
     left: 10px;
     display: flex;
@@ -380,6 +404,7 @@ body {
 }
 
 .mostplays-list .list .map-info .mapper {
+    color: #a08d96;
     position: relative;
     left: 10px;
     font-size: 14px;
@@ -399,24 +424,23 @@ body {
     height: 35px;
     width: 35px;
     float: right;
-    right: 20px;
     bottom: 49px;
 }
 
-.mostplays-list .list .main-info .playico {
+.mostplays-list .list .main-info .value span {
     position: relative;
-    height: 18px;
-    width: 18px;
-    float: right;
-    bottom: 41px;
+    bottom: 1px;
+    right: 5px;
+    font-size: 18px;
 }
 
 .mostplays-list .list .main-info .value {
+    color: #ffcc22;
     position: relative;
     font-family: "Ubuntu";
     font-size: 26px;
     font-weight: bold;
-    width: 70px;
+    width: 100px;
     text-align: center;
     float: right;
     bottom: 47px;
@@ -424,7 +448,7 @@ body {
 /* ------------------------------------------------- */
 .recentplays-list {
     position: absolute;
-    background-color: white;
+    background-color: #45393f;
     top: 2000px;
     margin-left: 12.8%;
     height: 495px;
@@ -436,12 +460,14 @@ body {
 }
 
 .recentplays-list h1 {
+    color: #fdfdfd;
     font-size: 24px;
     padding-left: 5px;
     float: left;
 }
 
 .recentplays-list h2 {
+    color: #fdfdfd;
     font-size: 20px;
     text-align: right;
     padding-right: 7%;
@@ -460,7 +486,7 @@ body {
 }
 
 .recentplays-list .pagearrow img:hover {
-    filter: invert(0%);
+    filter: invert(100%);
     opacity: 100%;
 }
 
@@ -476,21 +502,24 @@ body {
 }
 
 .recentplays-list .nothing {
+    color: #fdfdfd;
     font-family: "MochiyPopOne";
-    width: 65.5%;
-    font-size: 55px;
+    width: 73%;
+    margin-left: 12.8%;
+    font-size: 35px;
     text-align: center;
-    line-height: 450px;
+    line-height: 430px;
 }
 
 .recentplays-list .list {
     height: 60px;
     margin: 5px;
-    background-color: pink;
+    background-color: #6f5b64;
     border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .recentplays-list .list:hover {
-    background-color: rgba(255, 192, 203, 0.8);
+    background-color: #816a75;
 }
 
 .recentplays-list .list .grade {
@@ -509,11 +538,13 @@ body {
 }
 
 .recentplays-list .list .map-info .title {
+    color: #fdfdfd;
     display: flex;
     font-size: 18px;
 }
 
 .recentplays-list .list .map-info .diff {
+    color: #eca900;
     font-size: 14px;
 }
 
@@ -546,6 +577,7 @@ body {
 }
 
 .recentplays-list .list .acc {
+    color: #ffcc22;
     position: relative;
     float: right;
     width: 80px;
@@ -554,11 +586,26 @@ body {
 }
 
 .recentplays-list .list .pp {
+    position: relative;
+    background-color: #54454c;
     float: right;
+    height: 60px;
+    line-height: 55px;
     width: 170px;
     text-align: center;
+    bottom: 14px;
+    border-radius: 10px;
 }
 
 .recentplays-list .list .recorded {
+    color: #ff66ab;
     font-size: 26px;
+}
+
+.recentplays-list .list .recorded span {
+    color: #d194af;
+}
+
+.recentplays-list .list .status {
+    color: #fdfdfd;
 }

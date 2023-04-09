@@ -3,12 +3,12 @@ body {
 }
 /* ------------------------------------------------- */
 .leaderboard-text {
-    border-bottom: 3px solid mediumslateblue;
+    border-bottom: 3px solid #72fd65;
 }
 /* ------------------------------------------------- */
 .main {
     font-family: "SecularOne";
-    background-color: hotpink;
+    background-color: #202e1f;
     height: 100vh;
     width: 100%;
 }
@@ -64,38 +64,56 @@ body {
 }
 
 .acc-title {
+    position: relative;
+    left: 6%;
+    color: #889885;
     width: 10%;
 }
 
 .playcount-title {
+    position: relative;
+    left: 6%;
+    color: #889885;
     width: 10%;
 }
 
 .pp-title {
+    position: relative;
+    left: 6%;
+    color: #fdfdfd;
     width: 10.2%;
 }
 
 .ss-title {
-    width: 10%;
+    position: relative;
+    left: 6%;
+    color: #889885;
+    width: 8%;
 }
 
 .s-title {
-    width: 10%;
+    position: relative;
+    left: 6%;
+    color: #889885;
+    width: 8%;
 }
 
 .a-title {
-    width: 10%;
+    position: relative;
+    left: 6%;
+    color: #889885;
+    width: 8%;
 }
 
 .ranking-data {
     display: flex;
-    background-color: rgba(255, 192, 203, 0.8);
+    background-color: #354d33;
     border-radius: 25px;
     padding: 7px 0;
     margin: 5px 0;
 }
 .ranking-data:hover {
-    background-color: pink;
+    background-color: #3f603f;
 }
 
 .ranking-data span {
@@ -107,6 +125,7 @@ body {
 }
 
 .ranking {
+    color: #fdfdfd;
     width: 5%;
     text-align: center;
     margin-left: 5px;
@@ -117,6 +136,7 @@ body {
 }
 
 .name {
+    color: #a3cf9f;
     width: 30%;
     margin-left: 5px;
 }
@@ -125,36 +145,54 @@ body {
     padding: 0 7px;
 }
 .text:hover {
-    border-bottom: 1px solid dimgray;
+    border-bottom: 1px solid #a3cf9f;
 }
 
 .acc {
+    position: relative;
+    left: 6%;
+    color: #889885;
     width: 10%;
     text-align: center;
 }
 
 .playcount {
+    position: relative;
+    left: 6%;
+    color: #889885;
     width: 10%;
     text-align: center;
 }
 
 .pp {
+    position: relative;
+    left: 6%;
+    color: #fdfdfd;
     width: 10%;
     text-align: center;
 }
 
 .ss {
-    width: 10%;
+    position: relative;
+    left: 6%;
+    color: #889885;
+    width: 8%;
     text-align: center;
 }
 
 .s {
-    width: 10%;
+    position: relative;
+    left: 6%;
+    color: #889885;
+    width: 8%;
     text-align: center;
 }
 
 .a {
-    width: 10%;
+    position: relative;
+    left: 6%;
+    color: #889885;
+    width: 8%;
     text-align: center;
     margin-right: 10px;
 }

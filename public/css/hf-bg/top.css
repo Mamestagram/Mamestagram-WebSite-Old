@@ -1,0 +1,11 @@
+.header {
+    background-color: #5639ac;
+}
+
+.menu div:hover {
+    background-color: #8c66ff;
+}
+
+.footer {
+    background-color: #24222a;
+}

@@ -3,25 +3,20 @@ body {
 }
 /* ------------------------------------------------- */
 .help-text {
-    border-bottom: 3px solid mediumslateblue;
-}
-/* ------------------------------------------------- */
-.banner {
-    height: 170px;
-    width: 100%;
-    object-fit: cover;
-    filter: blur(7px);
+    border-bottom: 3px solid #fdfdfd;
 }
 /* ------------------------------------------------- */
 .main {
-    background-color: green;
+    background-color: #2e2a1f;
     height: 100vh;
     width: 100%;
 }
 
-h1 {
+.main h1 {
+    color: #fdfdfd;
     font-family: "けいふぉんと";
-    font-size: 520%;
+    font-size: 84px;
+    width: 100%;
     text-align: center;
     padding-top: 50px;
 }
