@@ -127,8 +127,8 @@ body {
 .player-scores {
     position: relative;
     bottom: 338px;
-    right: 250px;
-    padding-left: 40px;
+    right: 200px;
+    padding-left: 30px;
     float: right;
     border-left: 1px solid black;
 }
@@ -146,7 +146,7 @@ body {
 .player-scores .value {
     position: relative;
     font-size: 20px;
-    left: 100px;
+    left: 50px;
 }
 
 .player-scores .value span {

@@ -60,10 +60,6 @@
                         case 9:
                             modNum -= Math.pow(2, 6);
                             break;
-                        case 13:
-                        case 7:
-                            modNum -= Math.pow(2, i);
-                            continue;
                     }
                     mod.push(mods[i]);
                     modNum -= Math.pow(2, i);
@@ -308,7 +304,12 @@
                             break;
                         } %>
                         <% let flag = true; %>
-                        <% for(let j = 0; j < i; j++) {
+                        <% for (let mod of getMods(map.mods)) {
+                            if (mod === "so" || mod === "v2") {
+                                flag = false;
+                            }
+                        }
+                        for(let j = 0; j < i; j++) {
                             if (bestpp[j].md5 === map.md5) {
                                 flag = false;
                                 break;
