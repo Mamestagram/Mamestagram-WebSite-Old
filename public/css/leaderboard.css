@@ -9,7 +9,8 @@ body {
 .main {
     font-family: "SecularOne";
     background-color: #202e1f;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
 }
 /* ------------------------------------------------- */
@@ -36,7 +37,7 @@ body {
 /* ------------------------------------------------- */
 .ranking-table {
     font-size: 16px;
-    padding: 90px 12.8% 0 12.8%;
+    padding: 90px 12.8% 90px 12.8%;
 }
 
 .table-title {

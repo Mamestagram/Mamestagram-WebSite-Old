@@ -3,12 +3,13 @@ body {
 }
 /* ------------------------------------------------- */
 .help-text {
-    border-bottom: 3px solid #fdfdfd;
+    border-bottom: 3px solid #ffd966;
 }
 /* ------------------------------------------------- */
 .main {
     background-color: #2e2a1f;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
