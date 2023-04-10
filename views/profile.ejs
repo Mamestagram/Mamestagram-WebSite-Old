@@ -7,6 +7,7 @@
         <link rel = "stylesheet" href = "/css/profile.css">
         <link rel = "stylesheet" href = "/css/hf-bg/profile.css">
         <link rel = "stylesheet" href = "/css/Pmode/<%= mode %>.css">
+        <link rel = "stylesheet" href = "/css/Pspecial/<%= sp %>.css">
         <%
         const getPlayTime = (time) => {
             let res = "";
@@ -169,26 +170,49 @@
         <div class = "player-banner">
             <span class = "flag-icon flag-icon-<%= info.country %>"></span>
             <span class = "name"><%= info.name %></span>
-            <span class = "mania-icon">
-                <a href = "/profile/id=<%= id %>/mode=mania/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
-                    <img src = "/image/mode/mania.png">
-                </a>
-            </span>
-            <span class = "catch-icon">
-                <a href = "/profile/id=<%= id %>/mode=ctb/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
-                    <img src = "/image/mode/fruits.png">
-                </a>
-            </span>
-            <span class = "taiko-icon">
-                <a href = "/profile/id=<%= id %>/mode=taiko/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
-                    <img src = "/image/mode/taiko.png">
-                </a>
-            </span>
-            <span class = "std-icon">
-                <a href = "/profile/id=<%= id %>/mode=std/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
-                    <img src = "/image/mode/osu.png">
-                </a>
-            </span>
+            <ul class = "mode">
+                <% if (sp === "none") { %>
+                    <li class = "mania-icon">
+                        <a href = "/profile/id=<%= id %>/mode=mania/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                            <img src = "/image/mode/mania.png">
+                        </a>
+                    </li>
+                <% } %>
+                <% if (sp !== "ap") { %>
+                    <li class = "catch-icon">
+                        <a href = "/profile/id=<%= id %>/mode=ctb/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                            <img src = "/image/mode/fruits.png">
+                        </a>
+                    </li>
+                    <li class = "taiko-icon">
+                        <a href = "/profile/id=<%= id %>/mode=taiko/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                            <img src = "/image/mode/taiko.png">
+                        </a>
+                    </li>
+                <% } %>
+                <li class = "std-icon">
+                    <a href = "/profile/id=<%= id %>/mode=std/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                        <img src = "/image/mode/osu.png">
+                    </a>
+                </li>
+            </ul>
+            <ul class = "special">
+                <li class = "auto-pilot">
+                    <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=ap/bestpp=1&mostplays=1&recentplays=1">
+                        Auto Pilot
+                    </a>
+                </li>
+                <li class = "relax">
+                    <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=rx/bestpp=1&mostplays=1&recentplays=1">
+                        Relax
+                    </a>
+                </li>
+                <li class = "classic">
+                    <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=none/bestpp=1&mostplays=1&recentplays=1">
+                        Classic
+                    </a>
+                </li>
+            </ul>
         </div>
         <div class = "player-info">
             <div class = "stats">

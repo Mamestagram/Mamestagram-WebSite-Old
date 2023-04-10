@@ -15,9 +15,32 @@ body {
 }
 /* ------------------------------------------------- */
 .selection {
-    display: flex;
+    width: 100%;
+}
+
+.special {
+    color: #fdfdfd;
+    font-size: 16px;
+    padding: 20px 0 0 12.8%;
+}
+
+.special li {
+    position: relative;
+    top: 20px;
+    float: left;
+    padding: 7px 10px;
+    margin: 0 10px;
+    filter: invert(30%);
+    opacity: 95%;
+}
+.special li:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+
+.mode {
     float: right;
-    padding: 20px 12.8% 0 0;
+    padding: 10px 12.8% 0 0;
 }
 
 .mode li {
@@ -104,6 +127,14 @@ body {
     left: 6%;
     color: #889885;
     width: 8%;
+}
+
+.ranking-table .nothing {
+    color: #fdfdfd;
+    font-family: "MochiyPopOne";
+    font-size: 35px;
+    padding-top: 25%;
+    text-align: center;
 }
 
 .ranking-data {

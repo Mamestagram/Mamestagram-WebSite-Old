@@ -34,15 +34,36 @@ body {
     margin-left: 5px;
 }
 
-.player-banner span img {
+.player-banner .special {
+    position: relative;
+    right: 10px;
+}
+
+.player-banner .special li {
+    float: right;
+    filter: invert(30%);
+    padding: 7px 10px;
+    margin: 0 10px;
+    opacity: 95%;
+}
+.player-banner .special li:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+
+.player-banner .mode {
+    position: relative;
+    bottom: 45px;
+}
+
+.player-banner .mode li img {
     width: 50px;
     float: right;
-    filter: invert(50%);
+    filter: invert(30%);
     margin: 35px 1% 0 1%;
     opacity: 95%;
 }
-
-.player-banner span img:hover {
+.player-banner .mode li img:hover {
     filter: invert(0%);
     opacity: 100%;
 }

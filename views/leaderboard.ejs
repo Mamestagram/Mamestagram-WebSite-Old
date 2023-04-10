@@ -7,28 +7,54 @@
         <link rel = "stylesheet" href = "/css/leaderboard.css">
         <link rel = "stylesheet" href = "/css/hf-bg/leaderboard.css">
         <link rel = "stylesheet" href = "/css/Lmode/<%= mode %>.css">
+        <link rel = "stylesheet" href = "/css/Lspecial/<%= sp %>.css">
     </head>
     <body>
     <%- include("header") %>
     <img src = "/image/banner.jpg" class = "banner">
     <div class = "main">
         <div class = "selection">
+            <ul class = "special">
+                <li class = "classic">
+                    <a href = "/leaderboard/mode=<%= mode %>/special=none">
+                        Classic
+                    </a>
+                </li>
+                <% if (mode !== "mania") { %>
+                    <li class = "relax">
+                        <a href = "/leaderboard/mode=<%= mode %>/special=rx">
+                            Relax
+                        </a>
+                    </li>
+                <% } %>
+                <% if (mode === "std") { %>
+                    <li class = "auto-pilot">
+                        <a href = "/leaderboard/mode=<%= mode %>/special=ap">
+                            Auto Pilot
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
             <ul class = "mode">
-                <li class = "mania">
-                    <a href = "/leaderboard/mode=mania/special=<%= sp %>">
-                        <img src = "/image/mode/mania.png">
-                    </a>
-                </li>
-                <li class = "catch">
-                    <a href = "/leaderboard/mode=ctb/special=<%= sp %>">
-                        <img src = "/image/mode/fruits.png">
-                    </a>
-                </li>
-                <li class = "taiko">
-                    <a href = "/leaderboard/mode=taiko/special=<%= sp %>">
-                        <img src = "/image/mode/taiko.png">
-                    </a>
-                </li>
+                <% if (sp === "none") { %>
+                    <li class = "mania">
+                        <a href = "/leaderboard/mode=mania/special=<%= sp %>">
+                            <img src = "/image/mode/mania.png">
+                        </a>
+                    </li>
+                <% } %>
+                <% if (sp !== "ap") { %>
+                    <li class = "catch">
+                        <a href = "/leaderboard/mode=ctb/special=<%= sp %>">
+                            <img src = "/image/mode/fruits.png">
+                        </a>
+                    </li>
+                    <li class = "taiko">
+                        <a href = "/leaderboard/mode=taiko/special=<%= sp %>">
+                            <img src = "/image/mode/taiko.png">
+                        </a>
+                    </li>
+                <% } %>
                 <li class = "std">
                     <a href = "/leaderboard/mode=std/special=<%= sp %>">
                         <img src = "/image/mode/osu.png">
@@ -48,23 +74,27 @@
                 <span class = "s-title">S</span>
                 <span class = "a-title">A</span>
             </div>
-            <% rankings.forEach((ranking) => { %>
-                <div class = "ranking-data">
-                    <span class = "ranking">#<%= ranking.ranking.toLocaleString() %></span>
-                    <span class = "flag-icon flag-icon-<%= ranking.country %>"></span>
-                    <span class = "name">
+            <% if (rankings.length === 0) { %>
+                <h1 class = "nothing">No players available</h1>
+            <% } else { %>
+                <% rankings.forEach((ranking) => { %>
+                    <div class = "ranking-data">
+                        <span class = "ranking">#<%= ranking.ranking.toLocaleString() %></span>
+                        <span class = "flag-icon flag-icon-<%= ranking.country %>"></span>
+                        <span class = "name">
                         <a href = "/profile/id=<%= ranking.id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
                             <span class = "text"><%= ranking.name %></span>
                         </a>
                     </span>
-                    <span class = "acc"><%= ranking.acc.toFixed(2) %>%</span>
-                    <span class = "playcount"><%= ranking.plays.toLocaleString() %></span>
-                    <span class = "pp"><%= ranking.pp.toLocaleString() %></span>
-                    <span class = "ss"><%= ranking.SS.toLocaleString() %></span>
-                    <span class = "s"><%= ranking.S.toLocaleString() %></span>
-                    <span class = "a"><%= ranking.A.toLocaleString() %></span>
-                </div>
-            <% }); %>
+                        <span class = "acc"><%= ranking.acc.toFixed(2) %>%</span>
+                        <span class = "playcount"><%= ranking.plays.toLocaleString() %></span>
+                        <span class = "pp"><%= ranking.pp.toLocaleString() %></span>
+                        <span class = "ss"><%= ranking.SS.toLocaleString() %></span>
+                        <span class = "s"><%= ranking.S.toLocaleString() %></span>
+                        <span class = "a"><%= ranking.A.toLocaleString() %></span>
+                    </div>
+                <% }); %>
+            <% } %>
         </div>
     </div>
     <%- include("footer") %>
