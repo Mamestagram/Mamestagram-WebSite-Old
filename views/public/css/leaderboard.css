@@ -1,0 +1,160 @@
+body {
+    min-width: 1200px;
+}
+/* ------------------------------------------------- */
+.leaderboard-text {
+    border-bottom: 3px solid mediumslateblue;
+}
+/* ------------------------------------------------- */
+.main {
+    font-family: "SecularOne";
+    background-color: hotpink;
+    height: 100vh;
+    width: 100%;
+}
+/* ------------------------------------------------- */
+.selection {
+    display: flex;
+    float: right;
+    padding: 10px 20px 0 0;
+}
+
+.mode li {
+    float: right;
+}
+
+.mode img {
+    width: 45px;
+    filter: invert(30%);
+    opacity: 95%;
+}
+.mode img:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+/* ------------------------------------------------- */
+.ranking-table {
+    font-size: 16px;
+    padding: 60px 12.8% 10px 12.8%;
+}
+
+.table-title {
+    display: flex;
+}
+
+.table-title span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.ranking-null {
+    width: 5%;
+    margin-left: 7px;
+}
+
+.country-null {
+    width: 25px;
+}
+
+.name-null {
+    width: 30%;
+}
+
+.acc-title {
+    width: 10%;
+}
+
+.playcount-title {
+    width: 10%;
+}
+
+.pp-title {
+    width: 10.2%;
+}
+
+.ss-title {
+    width: 10%;
+}
+
+.s-title {
+    width: 10%;
+}
+
+.a-title {
+    width: 10%;
+}
+
+.ranking-data {
+    display: flex;
+    background-color: rgba(255, 192, 203, 0.8);
+    border-radius: 25px;
+    padding: 7px 0;
+    margin: 5px 0;
+}
+.ranking-data:hover {
+    background-color: pink;
+}
+
+.ranking-data span {
+    height: 30px;
+    line-height: 200%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ranking {
+    width: 5%;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.flag-icon {
+    width: 25px;
+}
+
+.name {
+    width: 30%;
+    margin-left: 5px;
+}
+
+.text {
+    padding: 0 7px;
+}
+.text:hover {
+    border-bottom: 0.7mm solid dimgray;
+}
+
+.acc {
+    width: 10%;
+    text-align: center;
+}
+
+.playcount {
+    width: 10%;
+    text-align: center;
+}
+
+.pp {
+    width: 10%;
+    text-align: center;
+}
+
+.ss {
+    width: 10%;
+    text-align: center;
+}
+
+.s {
+    width: 10%;
+    text-align: center;
+}
+
+.a {
+    width: 10%;
+    text-align: center;
+    margin-right: 10px;
+}
+/* ------------------------------------------------- */

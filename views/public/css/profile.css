@@ -1,0 +1,551 @@
+body {
+    min-width: 1280px;
+}
+/* ------------------------------------------------- */
+.info-title {
+    font-family: "Caveat";
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 12.8%;
+}
+
+.main {
+    font-family: "Righteous";
+    background-color: aqua;
+    height: 9000px;
+}
+/* ------------------------------------------------- */
+.player-banner {
+    position: absolute;
+    background-color: white;
+    top: 150px;
+    padding-top: 10px;
+    margin-left: 12.8%;
+    height: 100px;
+    width: 73%;
+    min-width: 1030px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.flag-icon {
+    height: 24px;
+    width: 32px;
+    bottom: 12px;
+    margin-left: 10px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+    font-size: 40px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.player-banner span img {
+    width: 50px;
+    float: right;
+    filter: invert(50%);
+    margin: 35px 1% 0 1%;
+    opacity: 95%;
+}
+
+.player-banner span img:hover {
+    filter: invert(100%);
+    opacity: 100%;
+}
+/* ------------------------------------------------- */
+.player-info {
+    position: absolute;
+    background-color: white;
+    top: 270px;
+    padding-top: 15px;
+    padding-left: 20px;
+    margin-left: 12.8%;
+    height: 290px;
+    width: 73%;
+    min-width: 1030px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+/* ------------------------------------------------- */
+.stats {
+    padding-left: 5px;
+}
+
+.stats div {
+    position: relative;
+}
+
+.stats div .title {
+    font-size: 16px;
+}
+
+.stats div .value {
+    font-size: 32px;
+    color: orangered;
+}
+
+.country-ranking {
+    bottom: 56px;
+    padding-left: 150px;
+}
+
+.player-pp {
+    bottom: 55px;
+    padding-left: 12%;
+}
+
+.playtime {
+    bottom: 110px;
+    padding-left: 24%;
+}
+
+.grade-amounts {
+    display: flex;
+    bottom: 80px;
+    padding-bottom: -1000px;
+}
+
+.grade-amounts div {
+    text-align: center;
+    margin: 0 2%;
+}
+
+.grade-amounts div img {
+    height: 45px;
+    width: 45px;
+    background-color: rgba(199, 21, 133, 0.5);
+    border-radius: 10px;
+}
+
+.grade-amounts div .value {
+    font-size: 20px;
+    color: midnightblue;
+}
+/* ------------------------------------------------- */
+.player-scores {
+    position: relative;
+    bottom: 338px;
+    right: 220px;
+    padding-left: 50px;
+    float: right;
+    border-left: 0.6mm solid dimgray;
+}
+
+.player-scores .title {
+    float: left;
+    font-size: 20px;
+}
+
+.player-scores .title span {
+    display: flex;
+    padding: 6px 0;
+}
+
+.player-scores .value {
+    position: relative;
+    font-size: 20px;
+    left: 70px;
+}
+
+.player-scores .value span {
+    display: flex;
+    padding: 6px 0;
+}
+/* ------------------------------------------------- */
+.bestpp-list {
+    position: absolute;
+    background-color: white;
+    top: 580px;
+    margin-left: 12.8%;
+    height: 690px;
+    width: 73%;
+    min-width: 1030px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    scroll-margin-top: 100px;
+}
+
+.bestpp-list h1 {
+    font-size: 24px;
+    padding-left: 5px;
+    float: left;
+}
+
+.bestpp-list h2 {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 7%;
+}
+
+.bestpp-list .pagearrow {
+    position: relative;
+    float: right;
+    bottom: 21px;
+}
+
+.bestpp-list .pagearrow img {
+    margin: 0 5px;
+    filter: invert(50%);
+    opacity: 95%;
+}
+
+.bestpp-list .pagearrow img:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+
+.bestpp-list .pagearrow .back img {
+    transform: scale(-1, 1);
+    height: 24px;
+    width: 24px;
+}
+
+.bestpp-list .pagearrow .next img {
+    height: 24px;
+    width: 24px;
+}
+
+.bestpp-list .nothing {
+    font-family: "MochiyPopOne";
+    width: 65%;
+    font-size: 55px;
+    text-align: center;
+    line-height: 650px;
+}
+
+.bestpp-list .list {
+    height: 60px;
+    line-height: 30px;
+    margin: 5px;
+    background-color: pink;
+    border-radius: 10px;
+}
+.bestpp-list .list:hover {
+    background-color: rgba(255, 192, 203, 0.8);
+}
+
+.bestpp-list .list .grade {
+    position: relative;
+    height: 45px;
+    width: 45px;
+    top: 7px;
+    margin-left: 7px;
+    background-color: rgba(199, 21, 133, 0.4);
+    border-radius: 10px;
+}
+
+.bestpp-list .list .map-info {
+    padding-left: 10px;
+}
+
+.bestpp-list .list .map-info .title {
+    position: relative;
+    left: 50px;
+    bottom: 43px;
+    display: flex;
+    font-size: 18px;
+}
+
+.bestpp-list .list .map-info .diff {
+    position: relative;
+    left: 50px;
+    bottom: 45px;
+    font-size: 14px;
+}
+
+.bestpp-list .list .scores {
+    font-family: "Ubuntu";
+    font-weight: bold;
+    position: relative;
+    bottom: 90px;
+}
+
+.bestpp-list .list .mods {
+    position: relative;
+    right: 7px;
+    bottom: 7px;
+}
+
+.bestpp-list .list .mods img {
+    height: 40px;
+    width: 40px;
+    float: right;
+}
+
+.bestpp-list .list .acc {
+    float: right;
+    width: 80px;
+    text-align: center;
+}
+
+.bestpp-list .list .pp {
+    float: right;
+    width: 160px;
+    text-align: center;
+}
+
+.bestpp-list .list .recorded {
+    font-size: 26px;
+}
+/* ------------------------------------------------- */
+.mostplays-list {
+    position: absolute;
+    background-color: white;
+    top: 1290px;
+    margin-left: 12.8%;
+    height: 690px;
+    width: 73%;
+    min-width: 1030px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    scroll-margin-top: 100px;
+}
+
+.mostplays-list h1 {
+    font-size: 24px;
+    padding-left: 5px;
+    float: left;
+}
+
+.mostplays-list h2 {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 7%;
+}
+
+.mostplays-list .pagearrow {
+    position: relative;
+    float: right;
+    bottom: 21px;
+}
+
+.mostplays-list .pagearrow img {
+    margin: 0 5px;
+    filter: invert(50%);
+    opacity: 95%;
+}
+
+.mostplays-list .pagearrow img:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+
+.mostplays-list .pagearrow .back img {
+    transform: scale(-1, 1);
+    height: 24px;
+    width: 24px;
+}
+
+.mostplays-list .pagearrow .next img {
+    height: 24px;
+    width: 24px;
+}
+
+.mostplays-list .nothing {
+    font-family: "MochiyPopOne";
+    width: 75%;
+    font-size: 55px;
+    text-align: center;
+    line-height: 650px;
+}
+
+.mostplays-list .list {
+    height: 60px;
+    line-height: 30px;
+    margin: 5px;
+    background-color: pink;
+    border-radius: 10px;
+}
+.mostplays-list .list:hover {
+    background-color: rgba(255, 192, 203, 0.8);
+}
+
+.mostplays-list .mapbg {
+    height: 60px;
+    width: 87px;
+    float: left;
+    border-radius: 10px;
+}
+
+.mostplays-list .list .map-info .title {
+    position: relative;
+    left: 10px;
+    display: flex;
+    font-size: 18px;
+}
+
+.mostplays-list .list .map-info .mapper {
+    position: relative;
+    left: 10px;
+    font-size: 14px;
+}
+
+.mostplays-list .list .map-info .mapper .bold {
+    font-weight: bolder;
+}
+
+.mostplays-list .list .main-info .mode {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    float: right;
+    right: 20px;
+    bottom: 49px;
+}
+
+.mostplays-list .list .main-info .playico {
+    position: relative;
+    height: 18px;
+    width: 18px;
+    float: right;
+    bottom: 40px;
+}
+
+.mostplays-list .list .main-info .value {
+    position: relative;
+    font-family: "Ubuntu";
+    font-size: 26px;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+    float: right;
+    bottom: 47px;
+}
+/* ------------------------------------------------- */
+.recentplays-list {
+    position: absolute;
+    background-color: white;
+    top: 2000px;
+    margin-left: 12.8%;
+    height: 495px;
+    width: 73%;
+    min-width: 1030px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    scroll-margin-top: 180px;
+}
+
+.recentplays-list h1 {
+    font-size: 24px;
+    padding-left: 5px;
+    float: left;
+}
+
+.recentplays-list h2 {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 7%;
+}
+
+.recentplays-list .pagearrow {
+    position: relative;
+    float: right;
+    bottom: 21px;
+}
+
+.recentplays-list .pagearrow img {
+    margin: 0 5px;
+    filter: invert(50%);
+    opacity: 95%;
+}
+
+.recentplays-list .pagearrow img:hover {
+    filter: invert(0%);
+    opacity: 100%;
+}
+
+.recentplays-list .pagearrow .back img {
+    transform: scale(-1, 1);
+    height: 24px;
+    width: 24px;
+}
+
+.recentplays-list .pagearrow .next img {
+    height: 24px;
+    width: 24px;
+}
+
+.recentplays-list .nothing {
+    font-family: "MochiyPopOne";
+    width: 65.5%;
+    font-size: 55px;
+    text-align: center;
+    line-height: 450px;
+}
+
+.recentplays-list .list {
+    height: 60px;
+    line-height: 30px;
+    margin: 5px;
+    background-color: pink;
+    border-radius: 10px;
+}
+.recentplays-list .list:hover {
+    background-color: rgba(255, 192, 203, 0.8);
+}
+
+.recentplays-list .list .grade {
+    height: 45px;
+    width: 45px;
+    margin: 7px 0 0 7px;
+    background-color: rgba(199, 21, 133, 0.4);
+    border-radius: 10px;
+    float: left;
+}
+
+.recentplays-list .list .map-info .title {
+    padding-left: 10px;
+    display: flex;
+    font-size: 18px;
+}
+
+.recentplays-list .list .map-info .diff {
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.recentplays-list .list .scores {
+    font-family: "Ubuntu";
+    font-weight: bold;
+    position: relative;
+    bottom: 45px;
+}
+
+.recentplays-list .list .mods {
+    position: relative;
+    right: 7px;
+}
+
+.recentplays-list .list .mods img {
+    float: right;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    bottom: 7px;
+}
+
+.recentplays-list .list .mode img {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    float: right;
+    bottom: 3px;
+}
+
+.recentplays-list .list .acc {
+    float: right;
+    width: 80px;
+    text-align: center;
+}
+
+.recentplays-list .list .pp {
+    float: right;
+    width: 170px;
+    text-align: center;
+}
+
+.recentplays-list .list .recorded {
+    font-size: 26px;
+}

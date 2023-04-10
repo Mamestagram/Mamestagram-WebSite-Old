@@ -1,0 +1,4 @@
+.player-banner .taiko-icon img {
+    filter:invert(100%);
+    opacity: 100%;
+}
