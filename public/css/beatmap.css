@@ -1,0 +1,12 @@
+body {
+    min-width: 1280px;
+}
+/* ------------------------------------------------- */
+.main {
+    font-family: "Righteous";
+    background-color: #171a1c;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+}
+/* ------------------------------------------------- */

@@ -19,7 +19,7 @@
             return res;
         }
         const getMods = (modNum) => {
-            const mod = new Array(0);
+            let mod = new Array(0);
             const mods = [
                 "nf", // 0 : NoFail
                 "ez", // 1 : Eazy
@@ -67,7 +67,21 @@
                     modNum -= Math.pow(2, i);
                 }
             }
+            mod = sortMods(mod);
             return mod;
+        }
+        const sortMods = (mods) => {
+            const order = ["v2", "so", "mr", "fi", "fl", "pf", "sd", "nc", "dt", "hr", "hd", "ht", "ez", "nf", "ap", "rx"];
+            let rst = new Array(0);
+            for (let i = 0; i < 16; i++) {
+                for (let mod of mods) {
+                    if (mod === order[i]) {
+                        rst.push(mod);
+                        break;
+                    }
+                }
+            }
+            return rst;
         }
         const getMode = (modeNum) => {
             let mode = ""
@@ -197,16 +211,20 @@
                 </li>
             </ul>
             <ul class = "special">
-                <li class = "auto-pilot">
-                    <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=ap/bestpp=1&mostplays=1&recentplays=1">
-                        Auto Pilot
-                    </a>
-                </li>
-                <li class = "relax">
-                    <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=rx/bestpp=1&mostplays=1&recentplays=1">
-                        Relax
-                    </a>
-                </li>
+                <% if (mode === "std") { %>
+                    <li class = "auto-pilot">
+                        <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=ap/bestpp=1&mostplays=1&recentplays=1">
+                            Auto Pilot
+                        </a>
+                    </li>
+                <% } %>
+                <% if (mode !== "mania") { %>
+                    <li class = "relax">
+                        <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=rx/bestpp=1&mostplays=1&recentplays=1">
+                            Relax
+                        </a>
+                    </li>
+                <% } %>
                 <li class = "classic">
                     <a href = "/profile/id=<%= id %>/mode=<%= mode %>/special=none/bestpp=1&mostplays=1&recentplays=1">
                         Classic
@@ -341,7 +359,7 @@
                         <div class = "list">
                             <img src = "/image/grade/<%= map.grade %>.png" class = "grade">
                             <div class = "map-info">
-                                <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/#<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
+                                <a href = "/beatmap/set=<%= map.set_id %>/id=<%= map.id %>/diff=<%= map.version %>">
                                     <span class = "title"><%= getTitle(map.title, map.artist, 60) %></span>
                                     <span class = "diff"><%= shortening(map.version, 60) %></span>
                                 </a>
@@ -407,7 +425,7 @@
                         <div class = "list">
                             <img class = "mapbg" src = "https://b.ppy.sh/thumb/<%= map.set_id %>l.jpg?">
                             <div class = "map-info">
-                                <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/#<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
+                                <a href = "/beatmap/set=<%= map.set_id %>/id=<%= map.id %>/diff=<%= map.version %>">
                                     <span class = "title"><%= getFullname(map.title, map.version, map.artist, 90) %></span>
                                     <span class = "mapper">mapped by <span class = "bold"><%= map.creator %></span></span>
                                 </a>
@@ -465,7 +483,7 @@
                                 <img src = "/image/grade/<%= map.grade %>.png" class = "grade">
                             <% } %>
                             <div class = "map-info">
-                                <a href = "https://osu.ppy.sh/beatmapsets/<%= map.set_id %>/#<%= getMode(map.mode) %>/<%= map.id %>" target = "_blank" rel = "noopener noreferrer">
+                                <a href = "/beatmap/set=<%= map.set_id %>/id=<%= map.id %>/diff=<%= map.version %>">
                                     <span class = "title"><%= getTitle(map.title, map.artist, 60) %></span>
                                     <span class = "diff"><%= shortening(map.version, 60) %></span>
                                 </a>

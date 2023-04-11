@@ -8,7 +8,7 @@ body {
 /* ------------------------------------------------- */
 .main {
     font-family: "SecularOne";
-    background-color: #202e1f;
+    background-color: #171c17;
     min-height: 100vh;
     height: 100%;
     width: 100%;
@@ -139,13 +139,13 @@ body {
 
 .ranking-data {
     display: flex;
-    background-color: #354d33;
+    background-color: #2f382e;
     border-radius: 25px;
     padding: 7px 0;
     margin: 5px 0;
 }
 .ranking-data:hover {
-    background-color: #3f603f;
+    background-color: #3a4639;
 }
 
 .ranking-data span {
