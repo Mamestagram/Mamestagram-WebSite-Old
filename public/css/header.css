@@ -1,7 +1,7 @@
-/* ------------------------------------------------- */
 .header {
     position: sticky;
     top: 0;
+    font-family: "Tilt Warp";
     height: 67px;
     width: 100%;
     z-index: 100;
@@ -16,12 +16,14 @@
     transition: 150ms all;
 }
 .logo:hover {
-    margin: 2px 2px 0 228px;
-    width: 60px;
+    transform: scale(1.1, 1.1);
+}
+
+.title {
+    display: none;
 }
 
 .menu div {
-    font-family: "Tilt Warp";
     font-size: 15px;
     color: #fdfdfd;
     height: 50px;
@@ -61,4 +63,28 @@
     width: 100%;
     object-fit: cover;
     filter: blur(3px);
+}
+
+@media (max-width: 768px) {
+    .logo {
+        float: left;
+        width: 47px;
+        margin: 10px;
+    }
+
+    .header .title {
+        display: block;
+        color: #fdfdfd;
+        font-size: 15px;
+        line-height: 67px;
+        padding-left: 50px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .banner {
+        height: 130px;
+    }
 }

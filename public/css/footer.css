@@ -10,3 +10,14 @@
     width: 100%;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .footer {
+        height: 30px;
+    }
+
+    .footer h1 {
+        font-size: 6px;
+        line-height: 30px;
+    }
+}
