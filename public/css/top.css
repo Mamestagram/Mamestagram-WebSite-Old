@@ -20,7 +20,7 @@
     font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1148px) {
     .welcome-title {
         font-size: 46px;
     }

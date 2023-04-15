@@ -1,7 +1,3 @@
-body {
-    min-width: 1200px;
-}
-/* ------------------------------------------------- */
 .leaderboard-text {
     border-bottom: 3px solid #72fd65;
 }
@@ -60,7 +56,7 @@ body {
 /* ------------------------------------------------- */
 .ranking-table {
     font-size: 16px;
-    padding: 90px 12.8% 90px 12.8%;
+    padding: 90px 12.8%;
 }
 
 .table-title {
@@ -94,6 +90,10 @@ body {
     width: 10%;
 }
 
+.acc-moble {
+    display: none;
+}
+
 .playcount-title {
     position: relative;
     left: 6%;
@@ -106,6 +106,10 @@ body {
     left: 6%;
     color: #fdfdfd;
     width: 10.2%;
+}
+
+.pp-moble {
+    display: none;
 }
 
 .ss-title {
@@ -228,4 +232,127 @@ body {
     text-align: center;
     margin-right: 10px;
 }
-/* ------------------------------------------------- */
+
+@media (max-width: 1148px) {
+    .special {
+        color: #fdfdfd;
+        font-size: 12px;
+        padding: 0 1%;
+    }
+
+    .special li {
+        padding: 5px;
+        margin: 0 3px;
+    }
+
+    .mode {
+        float: right;
+        padding: 15px 1% 0 0;
+    }
+
+    .mode li {
+        float: right;
+        padding: 0 3px;
+    }
+
+    .mode img {
+        width: 35px;
+        filter: invert(30%);
+        opacity: 95%;
+    }
+    .mode img:hover {
+        filter: invert(0%);
+        opacity: 100%;
+    }
+
+    .ranking-table {
+        font-size: 12px;
+        padding: 70px 3%;
+    }
+
+    .table-title {
+        font-size: 10px;
+    }
+
+    .ranking-null {
+        width: 8%;
+        margin-left: 1px;
+    }
+
+    .country-null {
+        width: 17px;
+    }
+
+    .name-null {
+        margin-left: 0;
+    }
+
+    .acc-title, .pp-title {
+        display: none;
+    }
+
+    .playcount-title {
+        width: 15.5%;
+    }
+
+    .acc-moble {
+        display: block;
+        color: #889885;
+        position: relative;
+        left: 6%;
+        width: 15%;
+        text-align: center;
+    }
+
+    .pp-moble {
+        display: block;
+        color: #fdfdfd;
+        position: relative;
+        left: 6%;
+        width: 15.5%;
+        text-align: center;
+    }
+
+    .ss-title, .s-title, .a-title {
+        display: none;
+    }
+
+    .ranking-table .nothing {
+        font-size: 24px;
+        padding-top: 35%;
+        text-align: center;
+    }
+
+    .ranking-data {
+        display: flex;
+        padding: 2px 0;
+        margin: 3px 0;
+    }
+
+    .ranking-data span {
+        height: 30px;
+        line-height: 31px;
+    }
+
+    .ranking {
+        width: 8%;
+        margin-left: 3px;
+    }
+
+    .flag-icon {
+        width: 17px;
+    }
+
+    .name {
+        color: #a3cf9f;
+        margin-left: 0;
+    }
+
+    .acc, .playcount, .pp {
+        width: 15%;
+    }
+
+    .ss, .s, .a {
+        display: none;
+    }
+}

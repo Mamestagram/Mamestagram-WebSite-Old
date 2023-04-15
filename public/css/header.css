@@ -65,18 +65,22 @@
     filter: blur(2px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1148px) {
+    .header {
+        height: 60px;
+    }
+
     .logo {
         float: left;
         width: 47px;
-        margin: 10px;
+        margin: 7px;
     }
 
     .header .title {
         display: block;
         color: #fdfdfd;
         font-size: 15px;
-        line-height: 67px;
+        line-height: 60px;
         padding-left: 50px;
     }
 
