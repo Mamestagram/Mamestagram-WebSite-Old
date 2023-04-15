@@ -47,15 +47,21 @@
 
 .help {
     float: left;
+    filter: invert(30%);
+    opacity: 95%;
 }
 
 .register {
     margin-right: 250px;
     float: right;
+    filter: invert(30%);
+    opacity: 95%;
 }
 
 .login {
     float: right;
+    filter: invert(30%);
+    opacity: 95%;
 }
 /* ------------------------------------------------- */
 .banner {

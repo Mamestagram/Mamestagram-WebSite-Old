@@ -101,6 +101,10 @@
     width: 10%;
 }
 
+.playcount-moble {
+    display: none;
+}
+
 .pp-title {
     position: relative;
     left: 6%;
@@ -234,6 +238,62 @@
 }
 
 @media (max-width: 1148px) {
+    .ranking-table {
+        padding: 90px 1%;
+    }
+
+    .special {
+        color: #fdfdfd;
+        font-size: 14px;
+        padding: 0 1%;
+    }
+
+    .mode {
+        float: right;
+        padding: 15px 1% 0 0;
+    }
+
+    .mode img {
+        width: 40px;
+    }
+
+    .acc-title, .playcount-title, .pp-title {
+        display: none;
+    }
+
+    .acc-moble {
+        display: block;
+        color: #889885;
+        position: relative;
+        left: 6%;
+        width: 10%;
+        text-align: center;
+    }
+
+    .playcount-moble {
+        display: block;
+        color: #889885;
+        position: relative;
+        left: 6%;
+        width: 10.3%;
+        text-align: center;
+    }
+
+    .pp-moble {
+        display: block;
+        color: #fdfdfd;
+        position: relative;
+        left: 6%;
+        width: 10%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
+
     .special {
         color: #fdfdfd;
         font-size: 12px;
@@ -246,28 +306,20 @@
     }
 
     .mode {
-        float: right;
         padding: 15px 1% 0 0;
     }
 
     .mode li {
-        float: right;
         padding: 0 3px;
     }
 
     .mode img {
         width: 35px;
-        filter: invert(30%);
-        opacity: 95%;
-    }
-    .mode img:hover {
-        filter: invert(0%);
-        opacity: 100%;
     }
 
     .ranking-table {
         font-size: 12px;
-        padding: 70px 3%;
+        padding: 70px 1%;
     }
 
     .table-title {
@@ -287,12 +339,8 @@
         margin-left: 0;
     }
 
-    .acc-title, .pp-title {
+    .acc-title, .playcount-title, .pp-title {
         display: none;
-    }
-
-    .playcount-title {
-        width: 15.5%;
     }
 
     .acc-moble {
@@ -304,12 +352,21 @@
         text-align: center;
     }
 
+    .playcount-moble {
+        display: block;
+        color: #889885;
+        position: relative;
+        left: 6%;
+        width: 15.3%;
+        text-align: center;
+    }
+
     .pp-moble {
         display: block;
         color: #fdfdfd;
         position: relative;
         left: 6%;
-        width: 15.5%;
+        width: 15%;
         text-align: center;
     }
 
@@ -330,8 +387,8 @@
     }
 
     .ranking-data span {
-        height: 30px;
-        line-height: 31px;
+        height: 35px;
+        line-height: 35px;
     }
 
     .ranking {
