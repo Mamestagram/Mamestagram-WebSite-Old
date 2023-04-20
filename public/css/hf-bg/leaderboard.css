@@ -2,10 +2,17 @@
     background-color: #43ac39;
 }
 
-.menu div:hover {
+.menu div:hover, .menu button:hover {
     background-color: #72fd65;
 }
 
 .footer {
     background-color: #232a22;
+}
+
+.button {
+    background-color: #43ac39;
+}
+.button:hover {
+    background-color: #72fd65;
 }

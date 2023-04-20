@@ -23,7 +23,7 @@
     display: none;
 }
 
-.menu div {
+.menu div, .menu button {
     font-size: 15px;
     color: #fdfdfd;
     height: 50px;
@@ -51,17 +51,68 @@
     opacity: 95%;
 }
 
-.register {
+.login {
     margin-right: 250px;
     float: right;
-    filter: invert(30%);
-    opacity: 95%;
+}
+/* ------------------------------------------------- */
+.login-form {
+    display: none;
+    position: fixed;
+    top: 75px;
+    right: 140px;
+    background-color: #333333;
+    font-family: "Tilt Warp";
+    font-size: 16px;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+    z-index: 90;
 }
 
-.login {
-    float: right;
-    filter: invert(30%);
-    opacity: 95%;
+.login-form h1 {
+    color: #fdfdfd;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+}
+
+.username, .password {
+    padding: 7px 40px;
+}
+
+.username span, .password span {
+    display: flex;
+    color: #fdfdfd;
+    padding: 10px 0;
+}
+
+.login-form .errmsg {
+    color: red;
+    font-size: 14px;
+}
+
+.username input, .password input {
+    background-color: #222222;
+    caret-color: #fdfdfd;
+    color: #8b8b8b;
+    font-size: 14px;
+    width: 220px;
+    padding: 8px 5px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.button {
+    color: #fdfdfd;
+    width: 80px;
+    padding: 8px 0;
+    margin: 10px 110px;
+    transition: 100ms;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 /* ------------------------------------------------- */
 .banner {

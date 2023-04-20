@@ -35,6 +35,23 @@
                 <% } %>
             </ul>
             <ul class = "mode">
+                <li class = "std">
+                    <a href = "/leaderboard/mode=std/special=<%= sp %>">
+                        <img src = "/image/mode/osu.png">
+                    </a>
+                </li>
+                <% if (sp !== "ap") { %>
+                    <li class = "taiko">
+                        <a href = "/leaderboard/mode=taiko/special=<%= sp %>">
+                            <img src = "/image/mode/taiko.png">
+                        </a>
+                    </li>
+                    <li class = "catch">
+                        <a href = "/leaderboard/mode=ctb/special=<%= sp %>">
+                            <img src = "/image/mode/fruits.png">
+                        </a>
+                    </li>
+                <% } %>
                 <% if (sp === "none") { %>
                     <li class = "mania">
                         <a href = "/leaderboard/mode=mania/special=<%= sp %>">
@@ -42,36 +59,13 @@
                         </a>
                     </li>
                 <% } %>
-                <% if (sp !== "ap") { %>
-                    <li class = "catch">
-                        <a href = "/leaderboard/mode=ctb/special=<%= sp %>">
-                            <img src = "/image/mode/fruits.png">
-                        </a>
-                    </li>
-                    <li class = "taiko">
-                        <a href = "/leaderboard/mode=taiko/special=<%= sp %>">
-                            <img src = "/image/mode/taiko.png">
-                        </a>
-                    </li>
-                <% } %>
-                <li class = "std">
-                    <a href = "/leaderboard/mode=std/special=<%= sp %>">
-                        <img src = "/image/mode/osu.png">
-                    </a>
-                </li>
             </ul>
         </div>
         <div class = "ranking-table">
             <div class = table-title>
-                <span class = "ranking-null"></span>
-                <span class = "country-null"></span>
-                <span class = "name-null"></span>
                 <span class = "acc-title">Accuracy</span>
-                <span class = "acc-moble">Acc</span>
                 <span class = "playcount-title">Play Count</span>
-                <span class = "playcount-moble">Plays</span>
                 <span class = "pp-title">Performance</span>
-                <span class = "pp-moble">PP</span>
                 <span class = "ss-title">SS</span>
                 <span class = "s-title">S</span>
                 <span class = "a-title">A</span>

@@ -1,45 +1,62 @@
 .main {
     font-family: "Righteous";
     background-color: #1c1719;
-    height: 2700px;
+    min-height: 100vh;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 300px;
+}
+
+.main .box {
+    margin: 20px 12.8%;
 }
 /* ------------------------------------------------- */
 .player-banner {
+    display: flex;
     color: #fdfdfd;
-    position: absolute;
     background-color: #45393f;
-    top: 150px;
-    padding-top: 10px;
-    margin-left: 12.8%;
     height: 100px;
     width: 73%;
-    min-width: 1030px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.player-banner .self {
+    padding: 5px 10px;
+    margin: 0 auto auto 0;
 }
 
 .flag-icon {
     height: 24px;
+    line-height: 40px;
     width: 32px;
-    bottom: 12px;
-    margin-left: 10px;
 }
 
 .name {
     font-size: 40px;
-    margin-top: 10px;
-    margin-left: 5px;
+    padding: 0 5px;
+}
+
+.player-banner .selection {
+    display: flex;
+    padding: 5px 0;
+    margin: auto 0 0 auto
 }
 
 .player-banner .special {
-    position: relative;
-    right: 10px;
+    display: flex;
 }
 
 .player-banner .special li {
-    float: right;
     filter: invert(30%);
-    padding: 7px 10px;
-    margin: 0 10px;
+    height: 25px;
+    padding: 0 10px;
+    margin: 55px 10px 0 10px;
     opacity: 95%;
 }
 .player-banner .special li:hover {
@@ -48,15 +65,14 @@
 }
 
 .player-banner .mode {
-    position: relative;
-    bottom: 45px;
+    display: flex;
+    padding: 37px 10px 0 10px;
 }
 
 .player-banner .mode li img {
     width: 50px;
-    float: right;
+    margin: 0 10px;
     filter: invert(30%);
-    margin: 35px 1% 0 1%;
     opacity: 95%;
 }
 .player-banner .mode li img:hover {
@@ -65,64 +81,66 @@
 }
 /* ------------------------------------------------- */
 .player-info {
-    position: absolute;
+    display: flex;
     background-color: #45393f;
-    top: 270px;
-    padding-top: 15px;
-    padding-left: 20px;
-    margin-left: 12.8%;
     height: 290px;
     width: 73%;
-    min-width: 1030px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
-.stats {
-    padding-left: 5px;
+.player-info .ranking {
+    display: flex;
 }
 
-.stats div {
-    position: relative;
+.player-info .ranking div {
+    padding: 15px 30px;
 }
 
-.stats div .title {
+.player-info .ranking .title {
     color: #fdfdfd;
     font-size: 16px;
 }
 
-.stats div .value {
-    font-size: 32px;
+.player-info .ranking .value {
     color: #eed9d6;
+    font-size: 32px;
 }
 
-.country-ranking {
-    bottom: 56px;
-    padding-left: 150px;
-}
-
-.player-pp {
-    bottom: 55px;
-    padding-left: 12%;
-}
-
-.playtime {
-    bottom: 110px;
-    padding-left: 24%;
-}
-
-.grade-amounts {
+.player-info .other-info {
     display: flex;
-    bottom: 80px;
-    padding-bottom: -1000px;
+}
+
+.player-info .other-info div {
+    padding: 25px 30px;
+}
+
+.player-info .other-info .title {
+    color: #fdfdfd;
+    font-size: 16px;
+}
+
+.player-info .other-info .value {
+    color: #eed9d6;
+    font-size: 32px;
+}
+
+.player-info .grade-amounts {
+    display: flex;
+    padding: 0 40px;
 }
 
 .grade-amounts div {
+    margin: 15px 20px;
     text-align: center;
-    margin: 0 2%;
 }
 
-.grade-amounts div img {
+.player-info .grade-amounts div img {
     height: 45px;
     width: 45px;
     background-color: #816a75;
@@ -130,78 +148,68 @@
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
-.grade-amounts div .value {
+.player-info .grade-amounts div .value {
     font-size: 20px;
     color: #fdfdfd;
 }
 /* ------------------------------------------------- */
 .player-scores {
     color: #fdfdfd;
-    position: relative;
-    bottom: 338px;
-    right: 200px;
-    padding-left: 30px;
-    float: right;
+    font-size: 20px;
+    padding: 10px 30px;
     border-left: 1px solid #1c1719;
+    margin: 10px 20px 10px auto;
 }
 
-.player-scores .title {
-    float: left;
-    font-size: 20px;
-}
-
-.player-scores .title span {
+.player-scores div {
     display: flex;
     padding: 6px 0;
 }
 
-.player-scores .value {
-    position: relative;
-    font-size: 20px;
-    left: 50px;
-}
-
-.player-scores .value span {
-    display: flex;
-    padding: 6px 0;
+.player-scores div .title {
+    width: 250px;
 }
 /* ------------------------------------------------- */
 .bestpp-list {
-    position: absolute;
     background-color: #45393f;
-    top: 580px;
-    margin-left: 12.8%;
-    height: 690px;
+    height: 687px;
     width: 73%;
-    min-width: 1030px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     scroll-margin-top: 100px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.bestpp-header {
+    display: flex;
+    padding: 0 5px;
+}
+
+.bestpp-header .page {
+    display: flex;
+    margin-right: 0;
+    margin-left: auto;
 }
 
 .bestpp-list h1 {
-    position: relative;
     color: #fdfdfd;
     font-size: 24px;
-    left: 5px;
     float: left;
 }
 
 .bestpp-list h2 {
     color: #fdfdfd;
     font-size: 20px;
-    text-align: right;
-    padding-right: 7%;
+    padding: 3px 0;
 }
 
 .bestpp-list .pagearrow {
-    position: relative;
-    float: right;
-    bottom: 21px;
+    padding-left: 10px;
 }
 
 .bestpp-list .pagearrow img {
-    margin: 0 5px;
+    margin: 3px 5px;
     filter: invert(50%);
     opacity: 95%;
 }
@@ -226,13 +234,14 @@
     color: #fdfdfd;
     font-family: "MochiyPopOne";
     width: 73%;
-    margin-left: 12.8%;
+    margin: 0 12.8%;
     font-size: 35px;
     text-align: center;
     line-height: 630px;
 }
 
 .bestpp-list .list {
+    display: flex;
     height: 60px;
     margin: 5px;
     background-color: #6f5b64;
@@ -244,24 +253,22 @@
 }
 
 .bestpp-list .list .grade {
-    position: relative;
-    height: 65px;
-    width: 35px;
-    bottom: 3px;
-    margin-left: 10px;
-    float: left;
+    height: 58px;
+    width: 30px;
+    transform: scale(1.15);
+    margin: 0 10px;
 }
 
 .bestpp-list .list .map-info {
-    position: relative;
-    left: 8px;
-    top: 10px;
+    color: #fdfdfd;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .bestpp-list .list .map-info .title {
+    line-height: 34px;
     color: #fdfdfd;
-    position: relative;
-    display: flex;
     font-size: 18px;
 }
 
@@ -271,42 +278,37 @@
 }
 
 .bestpp-list .list .scores {
+    display: flex;
     font-family: "Ubuntu";
     font-weight: bold;
-    position: relative;
-    bottom: 90px;
+    margin-right: 0;
+    margin-left: auto;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .bestpp-list .list .mods {
-    position: relative;
-    right: 7px;
-    top: 61px
+    margin: 10px 0;
 }
 
 .bestpp-list .list .mods img {
     height: 40px;
     width: 40px;
-    float: right;
+    float: left;
 }
 
 .bestpp-list .list .acc {
     color: #ffcc22;
-    position: relative;
-    float: right;
     width: 80px;
-    top: 72px;
+    padding: 20px 0;
     text-align: center;
 }
 
 .bestpp-list .list .pp {
-    position: relative;
     background-color: #54454c;
-    float: right;
-    height: 60px;
-    line-height: 55px;
     width: 160px;
+    padding: 13px 0;
     text-align: center;
-    top: 51px;
     border-radius: 10px;
 }
 
@@ -324,41 +326,44 @@
 }
 /* ------------------------------------------------- */
 .mostplays-list {
-    position: absolute;
     background-color: #45393f;
-    top: 1290px;
-    margin-left: 12.8%;
-    height: 690px;
+    height: 687px;
     width: 73%;
-    min-width: 1030px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     scroll-margin-top: 100px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.mostplays-header {
+    display: flex;
+    padding: 0 5px;
+}
+
+.mostplays-header .page {
+    display: flex;
+    margin-right: 0;
+    margin-left: auto;
 }
 
 .mostplays-list h1 {
-    position: relative;
     color: #fdfdfd;
     font-size: 24px;
-    left: 5px;
-    float: left;
 }
 
 .mostplays-list h2 {
     color: #fdfdfd;
     font-size: 20px;
-    text-align: right;
-    padding-right: 7%;
+    padding: 3px 0;
 }
 
 .mostplays-list .pagearrow {
-    position: relative;
-    float: right;
-    bottom: 21px;
+    padding-left: 10px;
 }
 
 .mostplays-list .pagearrow img {
-    margin: 0 5px;
+    margin: 3px 5px;
     filter: invert(50%);
     opacity: 95%;
 }
@@ -383,13 +388,14 @@
     color: #fdfdfd;
     font-family: "MochiyPopOne";
     width: 73%;
-    margin-left: 3%;
+    margin: 0 12.8%;
     font-size: 35px;
     text-align: center;
     line-height: 630px;
 }
 
 .mostplays-list .list {
+    display: flex;
     height: 60px;
     margin: 5px;
     background-color: #6f5b64;
@@ -403,27 +409,25 @@
 .mostplays-list .mapbg {
     height: 60px;
     width: 87px;
-    float: left;
     border-radius: 10px;
 }
 
 .mostplays-list .list .map-info {
-    position: relative;
-    top: 10px;
+    color: #fdfdfd;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 5px;
 }
 
 .mostplays-list .list .map-info .title {
     color: #fdfdfd;
-    position: relative;
-    left: 10px;
-    display: flex;
     font-size: 18px;
+    line-height: 34px;
 }
 
 .mostplays-list .list .map-info .mapper {
     color: #a08d96;
-    position: relative;
-    left: 10px;
     font-size: 14px;
 }
 
@@ -432,72 +436,80 @@
 }
 
 .mostplays-list .list .main-info {
-    position: relative;
-    top: 22px;
+    display: flex;
+    font-family: "Ubuntu";
+    font-weight: bold;
+    margin-right: 0;
+    margin-left: auto;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .mostplays-list .list .main-info .mode {
-    position: relative;
     height: 35px;
     width: 35px;
-    float: right;
-    bottom: 49px;
+    margin: 12px 0;
 }
 
-.mostplays-list .list .main-info .value span {
-    position: relative;
-    bottom: 1px;
-    right: 5px;
-    font-size: 18px;
-}
-
-.mostplays-list .list .main-info .value {
+.mostplays-list .list .main-info div {
     color: #ffcc22;
-    position: relative;
     font-family: "Ubuntu";
     font-size: 26px;
     font-weight: bold;
     width: 100px;
+    line-height: 60px;
     text-align: center;
-    float: right;
-    bottom: 47px;
+}
+
+.mostplays-list .list .main-info .play-icon {
+    height: 15px;
+    width: 15px;
+    margin: 22px 0;
+}
+
+.mostplays-list .list .main-info .value {
+    padding: 0 5px;
 }
 /* ------------------------------------------------- */
 .recentplays-list {
-    position: absolute;
     background-color: #45393f;
-    top: 2000px;
-    margin-left: 12.8%;
-    height: 495px;
+    height: 492px;
     width: 73%;
-    min-width: 1030px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     scroll-margin-top: 180px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.recentplays-header {
+    display: flex;
+    padding: 0 5px;
+}
+
+.recentplays-header .page {
+    display: flex;
+    margin-right: 0;
+    margin-left: auto;
 }
 
 .recentplays-list h1 {
     color: #fdfdfd;
     font-size: 24px;
-    padding-left: 5px;
-    float: left;
 }
 
 .recentplays-list h2 {
     color: #fdfdfd;
     font-size: 20px;
-    text-align: right;
-    padding-right: 7%;
+    padding: 3px 0;
 }
 
 .recentplays-list .pagearrow {
-    position: relative;
-    float: right;
-    bottom: 21px;
+    padding-left: 10px;
 }
 
 .recentplays-list .pagearrow img {
-    margin: 0 5px;
+    margin: 3px 5px;
     filter: invert(50%);
     opacity: 95%;
 }
@@ -522,13 +534,14 @@
     color: #fdfdfd;
     font-family: "MochiyPopOne";
     width: 73%;
-    margin-left: 12.8%;
+    margin: 0 12.8%;
     font-size: 35px;
     text-align: center;
     line-height: 430px;
 }
 
 .recentplays-list .list {
+    display: flex;
     height: 60px;
     margin: 5px;
     background-color: #6f5b64;
@@ -540,23 +553,23 @@
 }
 
 .recentplays-list .list .grade {
-    position: relative;
-    height: 65px;
-    width: 35px;
-    bottom: 3px;
+    height: 58px;
+    width: 30px;
+    transform: scale(1.15);
     margin-left: 10px;
-    float: left;
 }
 
 .recentplays-list .list .map-info {
-    position: relative;
-    top: 10px;
-    left: 8px;
+    color: #fdfdfd;
+    padding-left: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .recentplays-list .list .map-info .title {
+    line-height: 34px;
     color: #fdfdfd;
-    display: flex;
     font-size: 18px;
 }
 
@@ -566,52 +579,38 @@
 }
 
 .recentplays-list .list .scores {
+    display: flex;
     font-family: "Ubuntu";
     font-weight: bold;
-    position: relative;
-    bottom: 25px;
+    margin-right: 0;
+    margin-left: auto;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .recentplays-list .list .mods {
-    position: relative;
-    right: 7px;
+    margin: 10px 0;
 }
 
 .recentplays-list .list .mods img {
-    float: right;
-    position: relative;
     height: 40px;
     width: 40px;
-    bottom: 5px;
-}
-
-.recentplays-list .list .mode img {
-    position: relative;
-    height: 35px;
-    width: 35px;
-    float: right;
-    bottom: 3px;
 }
 
 .recentplays-list .list .acc {
     color: #ffcc22;
-    position: relative;
-    float: right;
     width: 80px;
-    top: 7px;
     text-align: center;
+    padding: 20px 0;
 }
 
 .recentplays-list .list .pp {
-    position: relative;
     background-color: #54454c;
-    float: right;
     height: 60px;
-    line-height: 55px;
     width: 170px;
     text-align: center;
-    bottom: 14px;
     border-radius: 10px;
+    padding: 13px 0;
 }
 
 .recentplays-list .list .recorded {
@@ -629,4 +628,55 @@
 
 @media (max-width: 1148px) {
 
+}
+
+@media (max-width: 767px) {
+    .main .box {
+        width: 98%;
+        margin: 10px 1%;
+        overflow-x: scroll;
+    }
+    /* ------------------------------------------------- */
+    .player-banner {
+        display: block;
+        height: 80px;
+    }
+
+    .player-banner .self {
+        padding: 0 5px;
+        margin: 0 auto auto 0;
+    }
+
+    .flag-icon {
+        line-height: 36px;
+        width: 24px;
+    }
+
+    .name {
+        font-size: 32px;
+        padding: 0 5px;
+    }
+
+    .player-banner .selection {
+        font-size: 12px;
+    }
+
+    .player-banner .special {
+        margin: 15px auto auto 0;
+    }
+
+    .player-banner .special li {
+        height: 20px;
+        padding: 0 5px;
+        margin: 0 5px;
+    }
+
+    .player-banner .mode {
+        padding: 3px 5px;
+    }
+
+    .player-banner .mode li img {
+        width: 35px;
+        margin: 0 5px;
+    }
 }
