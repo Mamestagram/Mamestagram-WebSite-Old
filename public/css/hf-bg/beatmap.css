@@ -10,6 +10,13 @@
     background-color: #22282a;
 }
 
+.link-form a {
+    background-color: #3986ac;
+}
+.link-form a:hover {
+    background-color: #4497c0;
+}
+
 .button {
     background-color: #3986ac;
 }

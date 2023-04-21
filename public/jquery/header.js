@@ -1,7 +1,7 @@
 $(function() {
     $("body").click(function(e) {
-        var $form = $(".login-form");
-        if (!$(e.target).closest(".login").length && !$(e.target).closest(".login-form").length) {
+        var $form = $(".login-form, .link-form");
+        if (!$(e.target).closest(".login, .playername").length && !$(e.target).closest(".login-form").length) {
             $form.removeClass("show");
             $form.slideUp(100);
         }

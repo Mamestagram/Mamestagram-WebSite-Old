@@ -13,10 +13,15 @@
         <% } %>
     </ul>
 </div>
-<div class = "login-form">
-    <% if (locals.loginf === true) { %>
-
-    <% } else { %>
+<% if (locals.loginf === true) { %>
+    <div class = "link-form">
+        <a href = "/profile/id=<%= locals.userid %>/mode=std/special=none/bestpp=1&mostplays=1&recentplays=1">
+            My Profile
+        </a>
+        <a href = "/logout">Sign out</a>
+    </div>
+<% } else { %>
+    <div class = "login-form">
         <form action = "/login" method = "post">
             <h1 class = "login-title">Sign in To Proceed</h1>
             <div class = "username">
@@ -41,5 +46,5 @@
                 <input type = "submit" value = "Sign in">
             </div>
         </form>
-    <% } %>
-</div>
+    </div>
+<% } %>
