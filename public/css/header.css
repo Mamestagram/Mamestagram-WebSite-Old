@@ -56,11 +56,11 @@
     float: right;
 }
 /* ------------------------------------------------- */
-.login-form, .link-form {
+.login-form {
     display: none;
     position: fixed;
     top: 75px;
-    right: 140px;
+    right: 135px;
     background-color: #333333;
     font-family: "Tilt Warp";
     font-size: 16px;
@@ -68,13 +68,6 @@
     border-radius: 5px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
     z-index: 90;
-}
-
-.login-form h1 {
-    color: #fdfdfd;
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
 }
 
 .username, .password {
@@ -115,11 +108,25 @@
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 
+.link-form {
+    display: none;
+    position: fixed;
+    top: 75px;
+    right: 215px;
+    background-color: #333333;
+    font-family: "Tilt Warp";
+    font-size: 16px;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+    z-index: 90;
+}
+
 .link-form a {
     display: flex;
     color: #fdfdfd;
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 10px 17px;
+    margin: 7px;
     justify-content: center;
     border-radius: 5px;
     transition: 500ms;

@@ -23,7 +23,6 @@
 <% } else { %>
     <div class = "login-form">
         <form action = "/login" method = "post">
-            <h1 class = "login-title">Sign in To Proceed</h1>
             <div class = "username">
                 <span class = "username-title">Username</span>
                 <% if (err.includes("empname")) { %>
@@ -47,4 +46,9 @@
             </div>
         </form>
     </div>
+<% } %>
+<% if (locals.failed === true) { %>
+    <script>
+        $(".login-form, .link-form").addClass("show").show();
+    </script>
 <% } %>

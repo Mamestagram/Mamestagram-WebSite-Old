@@ -17,7 +17,7 @@
             res += Math.floor(time / 60).toLocaleString() + "m";
             return res;
         }
-        const getMods = (modNum) => {
+         const getMods = (modNum) => {
             let mod = new Array(0);
             const mods = [
                 "nf", // 0 : NoFail
@@ -294,7 +294,7 @@
                     <span class = "value"><%= info.max_combo.toLocaleString() %></span>
                 </div>
                 <div class = "replayed">
-                    <span class = "title">Peplays Watched</span>
+                    <span class = "title">Replays Watched</span>
                     <span class = "value"><%= info.replay_views.toLocaleString() %></span>
                 </div>
             </div>

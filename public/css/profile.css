@@ -136,7 +136,7 @@
 }
 
 .grade-amounts div {
-    margin: 15px 20px;
+    padding: 15px 20px;
     text-align: center;
 }
 
@@ -209,6 +209,8 @@
 }
 
 .bestpp-list .pagearrow img {
+    height: 24px;
+    width: 24px;
     margin: 3px 5px;
     filter: invert(50%);
     opacity: 95%;
@@ -221,13 +223,6 @@
 
 .bestpp-list .pagearrow .back img {
     transform: scale(-1, 1);
-    height: 24px;
-    width: 24px;
-}
-
-.bestpp-list .pagearrow .next img {
-    height: 24px;
-    width: 24px;
 }
 
 .bestpp-list .nothing {
@@ -632,9 +627,8 @@
 
 @media (max-width: 767px) {
     .main .box {
-        width: 98%;
-        margin: 10px 1%;
-        overflow-x: scroll;
+        width: 97%;
+        margin: 10px 1.5%;
     }
     /* ------------------------------------------------- */
     .player-banner {
@@ -662,7 +656,7 @@
     }
 
     .player-banner .special {
-        margin: 15px auto auto 0;
+        margin: 15px auto auto 5px;
     }
 
     .player-banner .special li {
@@ -677,6 +671,78 @@
 
     .player-banner .mode li img {
         width: 35px;
-        margin: 0 5px;
+        margin: 0 3px;
+    }
+    /* ------------------------------------------------- */
+    .player-info {
+        display: block;
+        height: 332px;
+    }
+
+    .player-info .ranking , .player-info .other-info {
+        padding: 0 15px;
+    }
+
+    .player-info .ranking div, .player-info .other-info .medals {
+        padding: 7px 15px;
+    }
+
+    .player-info .other-info .player-pp, .player-info .other-info .playtime {
+        padding: 7px 25px;
+    }
+
+    .player-info .stats .title {
+        font-size: 12px;
+    }
+
+    .player-info .stats .value {
+        font-size: 22px;
+    }
+
+    .player-info .grade-amounts div {
+        padding: 5px 10px;
+    }
+
+    .player-info .grade-amounts div img {
+        height: 35px;
+        width: 35px;
+    }
+
+    .player-info .grade-amounts div .value {
+        font-size: 14px;
+    }
+    /* ------------------------------------------------- */
+    .player-scores {
+        color: #fdfdfd;
+        font-size: 14px;
+        padding: 10px;
+        margin: 10px;
+        border-left: none;
+        border-top: 1px solid #1c1719;
+    }
+
+    .player-scores div {
+        display: flex;
+        padding: 1px;
+    }
+
+    .player-scores div .title {
+        width: 230px;
+    }
+    /* ------------------------------------------------- */
+    .bestpp-list h1 {
+        font-size: 18px;
+    }
+
+    .bestpp-list h2 {
+        font-size: 14px;
+    }
+
+    .bestpp-list .pagearrow img {
+        margin: 1px;
+    }
+
+    .bestpp-list .nothing {
+        font-size: 24px;
     }
 }

@@ -187,7 +187,13 @@
 }
 
 @media (max-width: 1148px) {
+    .ss-title, .s-title, .a-title {
+        display: none;
+    }
 
+    .ss, .s, .a {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
@@ -196,48 +202,45 @@
     }
 
     .special {
-        color: #fdfdfd;
         font-size: 12px;
-        padding: 0 1%;
+        text-align: center;
+        padding-left: 0;
     }
 
     .special li {
-        padding: 5px;
-        margin: 0 3px;
+        height: 35px;
+        padding: 10px 5px;
+        margin: 0 5px;
     }
 
     .mode {
-        padding: 15px 1% 0 0;
+        margin-right: 5px;
     }
 
     .mode li {
-        padding: 0 3px;
+        padding: 10px 5px;
     }
 
     .mode img {
+        height: 35px;
         width: 35px;
     }
 
     .ranking-table {
         font-size: 12px;
-        padding: 70px 1%;
+        padding: 30px 1% 150px 1%;
     }
 
     .table-title {
         font-size: 10px;
     }
 
-    .ranking-null {
-        width: 8%;
-        margin-left: 1px;
+    .ss-title, .s-title, .a-title {
+        display: none;
     }
 
-    .country-null {
-        width: 17px;
-    }
-
-    .name-null {
-        margin-left: 0;
+    .acc-title, .playcount-title, .pp-title {
+        width: 71px;
     }
 
     .ranking-table .nothing {
@@ -272,6 +275,10 @@
     }
 
     .acc, .playcount, .pp {
-        width: 15%;
+        width: 70px;
+    }
+
+    .ss, .s, .a {
+        display: none;
     }
 }
