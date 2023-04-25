@@ -247,6 +247,10 @@
     background-color: #816a75;
 }
 
+.bestpp-list .list-mobile {
+    display: none;
+}
+
 .bestpp-list .list .grade {
     height: 58px;
     width: 30px;
@@ -401,10 +405,16 @@
     background-color: #816a75;
 }
 
+.mostplays-list .list-mobile {
+    display: none;
+}
+
 .mostplays-list .mapbg {
     height: 60px;
     width: 87px;
     border-radius: 10px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .mostplays-list .list .map-info {
@@ -547,6 +557,10 @@
     background-color: #816a75;
 }
 
+.recentplays-list .list-mobile {
+    display: none;
+}
+
 .recentplays-list .list .grade {
     height: 58px;
     width: 30px;
@@ -590,6 +604,7 @@
 .recentplays-list .list .mods img {
     height: 40px;
     width: 40px;
+    float: left;
 }
 
 .recentplays-list .list .acc {
@@ -621,8 +636,438 @@
     color: #fdfdfd;
 }
 
-@media (max-width: 1148px) {
+@media (max-width: 1180px) {
+    .player-banner {
+        display: block;
+        height: 80px;
+    }
 
+    .player-banner .self {
+        padding: 0 5px;
+        margin: 0 auto auto 0;
+    }
+
+    .flag-icon {
+        line-height: 36px;
+        width: 24px;
+    }
+
+    .name {
+        font-size: 32px;
+        padding: 0 5px;
+    }
+
+    .player-banner .selection {
+        font-size: 12px;
+    }
+
+    .player-banner .special {
+        margin: 15px auto auto 5px;
+    }
+
+    .player-banner .special li {
+        height: 20px;
+        padding: 0 5px;
+        margin: 0 5px;
+    }
+
+    .player-banner .mode {
+        padding: 3px 5px;
+    }
+
+    .player-banner .mode li img {
+        width: 35px;
+        margin: 0 3px;
+    }
+    /* ------------------------------------------------- */
+    .player-info {
+        display: flex;
+        height: 180px;
+        overflow: scroll;
+    }
+
+    .player-info .ranking , .player-info .other-info {
+        padding: 0;
+    }
+
+    .player-info .ranking div, .player-info .other-info .medals {
+        padding: 7px 15px;
+    }
+
+    .player-info .other-info .player-pp, .player-info .other-info .playtime {
+        padding: 7px 25px;
+    }
+
+    .player-info .stats .title {
+        font-size: 12px;
+    }
+
+    .player-info .stats .value {
+        font-size: 22px;
+    }
+
+    .player-info .grade-amounts div {
+        padding: 5px 10px;
+    }
+
+    .player-info .grade-amounts div img {
+        height: 35px;
+        width: 35px;
+    }
+
+    .player-info .grade-amounts div .value {
+        font-size: 14px;
+    }
+    /* ------------------------------------------------- */
+    .player-scores {
+        color: #fdfdfd;
+        font-size: 14px;
+        padding: 3px 20px;
+        margin: 15px 0 15px auto;
+    }
+
+    .player-scores div {
+        display: flex;
+        padding: 2px;
+    }
+
+    .player-scores div .title {
+        width: 160px;
+    }
+    /* ------------------------------------------------- */
+    .bestpp-list {
+        height: 1182px;
+    }
+
+    .bestpp-list h1 {
+        font-size: 18px;
+    }
+
+    .bestpp-list h2 {
+        font-size: 14px;
+    }
+
+    .bestpp-list .pagearrow img {
+        margin: 1px;
+    }
+
+    .bestpp-list .nothing {
+        font-size: 24px;
+        width: 97%;
+        margin: 0 1.5%;
+    }
+
+    .bestpp-list .list {
+        display: none;
+    }
+
+    .bestpp-list .list-mobile {
+        display: block;
+        height: 110px;
+        margin: 5px;
+        background-color: #6f5b64;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .bestpp-list .list-mobile:hover {
+        background-color: #816a75;
+    }
+
+    .bestpp-list .list-mobile .grade {
+        height: 48px;
+        width: 25px;
+        margin: 0 7px;
+        float: left;
+    }
+
+    .bestpp-list .list-moble .map-info {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+    }
+
+    .bestpp-list .list-mobile .map-info .title {
+        color: #fdfdfd;
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .bestpp-list .list-mobile .map-info .diff {
+        color: #eca900;
+        font-size: 10px;
+    }
+
+    .bestpp-list .list-mobile .mods {
+        display: flex;
+        height: 25px;
+        margin: 0 5px;
+    }
+
+    .bestpp-list .list-mobile .mods img {
+        height: 25px;
+        width: 25px;
+        float: left;
+    }
+
+    .bestpp-list .list-mobile .scores {
+        display: flex;
+        background-color: #54454c;
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+    .bestpp-list .list-mobile .acc {
+        color: #ffcc22;
+        width: 80px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .bestpp-list .list-mobile .pp {
+        width: 160px;
+        padding: 8px;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .bestpp-list .list-mobile .recorded {
+        color: #ff66ab;
+        font-size: 18px;
+    }
+
+    .bestpp-list .list-mobile .recorded span {
+        color: #d194af;
+    }
+
+    .bestpp-list .list-mobile .weighted {
+        color: #fdfdfd;
+    }
+    /* ------------------------------------------------- */
+    .mostplays-list {
+        height: 682px;
+    }
+
+    .mostplays-list h1 {
+        font-size: 18px;
+    }
+
+    .mostplays-list h2 {
+        font-size: 14px;
+    }
+
+    .mostplays-list .pagearrow img {
+        margin: 1px;
+    }
+
+    .mostplays-list .nothing {
+        font-size: 24px;
+        width: 97%;
+        margin: 0 1.5%;
+    }
+
+    .mostplays-list .list {
+        display: none;
+    }
+
+    .mostplays-list .list-mobile {
+        display: flex;
+        height: 60px;
+        margin: 5px;
+        background-color: #6f5b64;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+    }
+    .mostplays-list .list-mobile:hover {
+        background-color: #816a75;
+    }
+
+    .mostplays-list .list-mobile .main-info {
+        display: flex;
+    }
+
+    .mostplays-list .list-mobile .mapbg {
+        position: absolute;
+        background-color: black;
+        border-radius: 10px;
+    }
+
+    .mostplays-list .list-mobile .mapbg img {
+        height: 60px;
+        width: 87px;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        border-radius: 10px;
+        opacity: 30%;
+    }
+
+    .mostplays-list .list-mobile .main-info {
+        z-index: 50;
+    }
+
+    .mostplays-list .list-mobile .main-info .mode {
+        height: 25px;
+        width: 25px;
+        margin: 18px 3px;
+    }
+
+    .mostplays-list .list-mobile .main-info div {
+        color: #ffcc22;
+        font-size: 20px;
+        width: 55px;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    .mostplays-list .list-mobile .main-info .play-icon {
+        height: 12px;
+        width: 12px;
+        margin: 24px 0;
+    }
+
+    .mostplays-list .list-mobile .main-info .value {
+        padding: 0 2px;
+    }
+
+    .mostplays-list .list-mobile .map-info {
+        color: #fdfdfd;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-left: 5px;
+    }
+
+    .mostplays-list .list-mobile .map-info .title {
+        color: #fdfdfd;
+        font-size: 14px;
+        line-height: 32px;
+    }
+
+    .mostplays-list .list-mobile .map-info .mapper {
+        color: #a08d96;
+        font-size: 10px;
+    }
+
+    .mostplays-list .list-mobile .map-info .mapper .bold {
+        font-weight: bolder;
+    }
+    /* ------------------------------------------------- */
+    .recentplays-list {
+        height: 837px;
+    }
+
+    .recentplays-list h1 {
+        font-size: 18px;
+    }
+
+    .recentplays-list h2 {
+        font-size: 14px;
+    }
+
+    .recentplays-list .pagearrow img {
+        margin: 1px;
+    }
+
+    .recentplays-list .nothing {
+        font-size: 24px;
+        width: 97%;
+        margin: 0 1.5%;
+    }
+
+    .recentplays-list .list {
+        display: none;
+    }
+
+    .recentplays-list .list-mobile {
+        display: block;
+        height: 110px;
+        margin: 5px;
+        background-color: #6f5b64;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .recentplays-list .list-mobile:hover {
+        background-color: #816a75;
+    }
+
+    .recentplays-list .list-mobile .grade {
+        height: 48px;
+        width: 25px;
+        margin-left: 7px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    .recentplays-list .list-moble .map-info {
+        display: flex;
+    }
+
+    .recentplays-list .list-mobile .map-info .title {
+        color: #fdfdfd;
+        font-size: 14px;
+        line-height: 25px;
+        margin-left: 3px;
+    }
+
+    .recentplays-list .list-mobile .map-info .diff {
+        color: #eca900;
+        font-size: 10px;
+        margin-left: 3px;
+    }
+
+    .recentplays-list .list-mobile .mods {
+        display: flex;
+        height: 25px;
+        margin: 0 5px;
+    }
+
+    .recentplays-list .list-mobile .mods img {
+        height: 25px;
+        width: 25px;
+        float: left;
+    }
+
+    .recentplays-list .list-mobile .scores {
+        display: flex;
+        background-color: #54454c;
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+    .recentplays-list .list-mobile .acc {
+        color: #ffcc22;
+        width: 80px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .recentplays-list .list-mobile .pp {
+        width: 160px;
+        padding: 8px;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .recentplays-list .list-mobile .recorded {
+        color: #ff66ab;
+        font-size: 18px;
+    }
+
+    .recentplays-list .list-mobile .recorded span {
+        color: #d194af;
+    }
+
+    .recentplays-list .list-mobile .weighted {
+        color: #fdfdfd;
+    }
+
+    .recentplays-list .list-mobile .status {
+        color: #fdfdfd;
+    }
 }
 
 @media (max-width: 767px) {
@@ -675,12 +1120,13 @@
     }
     /* ------------------------------------------------- */
     .player-info {
-        display: block;
-        height: 332px;
+        display: flex;
+        height: 180px;
+        overflow: scroll;
     }
 
     .player-info .ranking , .player-info .other-info {
-        padding: 0 15px;
+        padding: 0;
     }
 
     .player-info .ranking div, .player-info .other-info .medals {
@@ -715,21 +1161,23 @@
     .player-scores {
         color: #fdfdfd;
         font-size: 14px;
-        padding: 10px;
-        margin: 10px;
-        border-left: none;
-        border-top: 1px solid #1c1719;
+        padding: 3px 20px;
+        margin: 15px 0 15px auto;
     }
 
     .player-scores div {
         display: flex;
-        padding: 1px;
+        padding: 2px;
     }
 
     .player-scores div .title {
-        width: 230px;
+        width: 160px;
     }
     /* ------------------------------------------------- */
+    .bestpp-list {
+        height: 1182px;
+    }
+
     .bestpp-list h1 {
         font-size: 18px;
     }
@@ -744,5 +1192,319 @@
 
     .bestpp-list .nothing {
         font-size: 24px;
+        width: 97%;
+        margin: 0 1.5%;
+    }
+
+    .bestpp-list .list {
+        display: none;
+    }
+
+    .bestpp-list .list-mobile {
+        display: block;
+        height: 110px;
+        margin: 5px;
+        background-color: #6f5b64;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .bestpp-list .list-mobile:hover {
+        background-color: #816a75;
+    }
+
+    .bestpp-list .list-mobile .grade {
+        height: 48px;
+        width: 25px;
+        margin: 0 7px;
+        float: left;
+    }
+
+    .bestpp-list .list-moble .map-info {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+    }
+
+    .bestpp-list .list-mobile .map-info .title {
+        color: #fdfdfd;
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .bestpp-list .list-mobile .map-info .diff {
+        color: #eca900;
+        font-size: 10px;
+    }
+
+    .bestpp-list .list-mobile .mods {
+        display: flex;
+        height: 25px;
+        margin: 0 5px;
+    }
+
+    .bestpp-list .list-mobile .mods img {
+        height: 25px;
+        width: 25px;
+        float: left;
+    }
+
+    .bestpp-list .list-mobile .scores {
+        display: flex;
+        background-color: #54454c;
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+    .bestpp-list .list-mobile .acc {
+        color: #ffcc22;
+        width: 80px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .bestpp-list .list-mobile .pp {
+        width: 160px;
+        padding: 8px;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .bestpp-list .list-mobile .recorded {
+        color: #ff66ab;
+        font-size: 18px;
+    }
+
+    .bestpp-list .list-mobile .recorded span {
+        color: #d194af;
+    }
+
+    .bestpp-list .list-mobile .weighted {
+        color: #fdfdfd;
+    }
+    /* ------------------------------------------------- */
+    .mostplays-list {
+        height: 682px;
+    }
+
+    .mostplays-list h1 {
+        font-size: 18px;
+    }
+
+    .mostplays-list h2 {
+        font-size: 14px;
+    }
+
+    .mostplays-list .pagearrow img {
+        margin: 1px;
+    }
+
+    .mostplays-list .nothing {
+        font-size: 24px;
+        width: 97%;
+        margin: 0 1.5%;
+    }
+
+    .mostplays-list .list {
+        display: none;
+    }
+
+    .mostplays-list .list-mobile {
+        display: flex;
+        height: 60px;
+        margin: 5px;
+        background-color: #6f5b64;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+    }
+    .mostplays-list .list-mobile:hover {
+        background-color: #816a75;
+    }
+
+    .mostplays-list .list-mobile .main-info {
+        display: flex;
+    }
+
+    .mostplays-list .list-mobile .mapbg {
+        position: absolute;
+        background-color: black;
+        border-radius: 10px;
+    }
+
+    .mostplays-list .list-mobile .mapbg img {
+        height: 60px;
+        width: 87px;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        border-radius: 10px;
+        opacity: 30%;
+    }
+
+    .mostplays-list .list-mobile .main-info {
+        z-index: 50;
+    }
+
+    .mostplays-list .list-mobile .main-info .mode {
+        height: 25px;
+        width: 25px;
+        margin: 18px 3px;
+    }
+
+    .mostplays-list .list-mobile .main-info div {
+        color: #ffcc22;
+        font-size: 20px;
+        width: 55px;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    .mostplays-list .list-mobile .main-info .play-icon {
+        height: 12px;
+        width: 12px;
+        margin: 24px 0;
+    }
+
+    .mostplays-list .list-mobile .main-info .value {
+        padding: 0 2px;
+    }
+
+    .mostplays-list .list-mobile .map-info {
+        color: #fdfdfd;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-left: 5px;
+    }
+
+    .mostplays-list .list-mobile .map-info .title {
+        color: #fdfdfd;
+        font-size: 14px;
+        line-height: 32px;
+    }
+
+    .mostplays-list .list-mobile .map-info .mapper {
+        color: #a08d96;
+        font-size: 10px;
+    }
+
+    .mostplays-list .list-mobile .map-info .mapper .bold {
+        font-weight: bolder;
+    }
+    /* ------------------------------------------------- */
+    .recentplays-list {
+        height: 837px;
+    }
+
+    .recentplays-list h1 {
+        font-size: 18px;
+    }
+
+    .recentplays-list h2 {
+        font-size: 14px;
+    }
+
+    .recentplays-list .pagearrow img {
+        margin: 1px;
+    }
+
+    .recentplays-list .nothing {
+        font-size: 24px;
+        width: 97%;
+        margin: 0 1.5%;
+    }
+
+    .recentplays-list .list {
+        display: none;
+    }
+
+    .recentplays-list .list-mobile {
+        display: block;
+        height: 110px;
+        margin: 5px;
+        background-color: #6f5b64;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .recentplays-list .list-mobile:hover {
+        background-color: #816a75;
+    }
+
+    .recentplays-list .list-mobile .grade {
+        height: 48px;
+        width: 25px;
+        margin-left: 7px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    .recentplays-list .list-moble .map-info {
+        display: flex;
+    }
+
+    .recentplays-list .list-mobile .map-info .title {
+        color: #fdfdfd;
+        font-size: 14px;
+        line-height: 25px;
+        margin-left: 3px;
+    }
+
+    .recentplays-list .list-mobile .map-info .diff {
+        color: #eca900;
+        font-size: 10px;
+        margin-left: 3px;
+    }
+
+    .recentplays-list .list-mobile .mods {
+        display: flex;
+        height: 25px;
+        margin: 0 5px;
+    }
+
+    .recentplays-list .list-mobile .mods img {
+        height: 25px;
+        width: 25px;
+        float: left;
+    }
+
+    .recentplays-list .list-mobile .scores {
+        display: flex;
+        background-color: #54454c;
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+    .recentplays-list .list-mobile .acc {
+        color: #ffcc22;
+        width: 80px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .recentplays-list .list-mobile .pp {
+        width: 160px;
+        padding: 8px;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .recentplays-list .list-mobile .recorded {
+        color: #ff66ab;
+        font-size: 18px;
+    }
+
+    .recentplays-list .list-mobile .recorded span {
+        color: #d194af;
+    }
+
+    .recentplays-list .list-mobile .weighted {
+        color: #fdfdfd;
+    }
+
+    .recentplays-list .list-mobile .status {
+        color: #fdfdfd;
     }
 }
