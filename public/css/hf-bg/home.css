@@ -2,7 +2,7 @@
     background-color: #5639ac;
 }
 
-.menu div:hover, .menu button:hover {
+.header .menu div:hover, .header .menu button:hover {
     background-color: #8c66ff;
 }
 

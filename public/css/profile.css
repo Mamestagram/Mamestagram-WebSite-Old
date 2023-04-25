@@ -723,7 +723,7 @@
         color: #fdfdfd;
         font-size: 14px;
         padding: 3px 20px;
-        margin: 15px 0 15px auto;
+        margin: 16px 0 16px auto;
     }
 
     .player-scores div {
@@ -1162,7 +1162,7 @@
         color: #fdfdfd;
         font-size: 14px;
         padding: 3px 20px;
-        margin: 15px 0 15px auto;
+        margin: 16px 0 16px auto;
     }
 
     .player-scores div {
@@ -1207,9 +1207,6 @@
         background-color: #6f5b64;
         border-radius: 10px;
         box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
     }
     .bestpp-list .list-mobile:hover {
         background-color: #816a75;

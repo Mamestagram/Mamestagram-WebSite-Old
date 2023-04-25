@@ -8,6 +8,14 @@
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
+.header-mobile {
+    display: none;
+    position: fixed;
+    font-family: "Tilt Warp";
+    width: 100%;
+    z-index: 90;
+}
+
 .logo {
     background-position: center;
     float: left;
@@ -23,7 +31,7 @@
     display: none;
 }
 
-.menu div, .menu button {
+.header .menu div, .header .menu button {
     font-size: 15px;
     color: #fdfdfd;
     height: 50px;
@@ -32,28 +40,45 @@
     transition: 500ms all;
 }
 
-.home {
+.header .home {
     margin-left: 10px;
     float: left;
 }
 
-.leaderboard {
+.header .leaderboard {
     float: left;
 }
 
-.community {
+.header .community {
     float: left;
 }
 
-.help {
+.header .help {
     float: left;
     filter: invert(30%);
     opacity: 95%;
 }
 
-.login, .playername {
+.header .login, .header .playername {
     margin-right: 250px;
     float: right;
+}
+
+.header .arrow {
+    display: block;
+}
+.header .arrow::before {
+    content: "";
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 5px;
+    right: 25px;
+    width: 13px;
+    height: 13px;
+    border-top: 2px solid #fdfdfd;
+    border-right: 2px solid #fdfdfd;
+    transform: rotate(135deg);
 }
 /* ------------------------------------------------- */
 .login-form {
@@ -144,7 +169,7 @@
         height: 60px;
     }
 
-    .logo {
+    .header .logo {
         float: left;
         width: 47px;
         margin: 7px;
@@ -158,11 +183,11 @@
         padding-left: 50px;
     }
 
-    .menu {
+    .header .menu {
         display: none;
     }
 
-    .banner {
+    .header .banner {
         height: 130px;
     }
 }
