@@ -2,7 +2,7 @@ $(function() {
     $("body").click(function(e) {
         var $form = $(".login-form, .link-form");
         var $mobile = $(".header-mobile");
-        var $arrow = $(".header .arrow");
+        var $arrow = $(".header .arrow button");
         if (!$(e.target).closest(".login, .playername").length && !$(e.target).closest(".login-form").length) {
             $form.removeClass("show");
             $form.slideUp(100);
@@ -31,10 +31,24 @@ $(function() {
             if ($mobile.hasClass("show")) {
                 $mobile.removeClass("show");
                 $mobile.slideUp(100);
+                $arrow.css({
+                    "top": "0",
+                    "bottom": "5px",
+                    "border-top": "3px solid #fdfdfd",
+                    "border-right": "3px solid #fdfdfd",
+                    "transform": "rotate(135deg)"
+                });
             }
             else {
                 $mobile.addClass("show");
                 $mobile.slideDown(100);
+                $(".header .arrow button").css({
+                    "top": "5px",
+                    "bottom": "0",
+                    "border-top": "3px solid #c1b7df",
+                    "border-right": "3px solid #c1b7df",
+                    "transform": "rotate(315deg)"
+                });
             }
         }
     });

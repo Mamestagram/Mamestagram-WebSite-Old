@@ -65,10 +65,12 @@
 }
 
 .header .arrow {
-    display: block;
+    height: 50px;
+    width: 50px;
 }
-.header .arrow::before {
-    content: "";
+
+.header .arrow button {
+    display: block;
     margin: auto;
     position: absolute;
     top: 0;
@@ -76,10 +78,12 @@
     right: 25px;
     width: 13px;
     height: 13px;
-    border-top: 2px solid #fdfdfd;
-    border-right: 2px solid #fdfdfd;
+    border-top: 3px solid #fdfdfd;
+    border-right: 3px solid #fdfdfd;
     transform: rotate(135deg);
 }
+
+
 /* ------------------------------------------------- */
 .login-form {
     display: none;
