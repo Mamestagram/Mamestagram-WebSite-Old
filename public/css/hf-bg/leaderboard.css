@@ -6,6 +6,27 @@
     background-color: #72fd65;
 }
 
+.header .leaderboard-text {
+    border-bottom: 3px solid #72fd65;
+}
+
+.header-mobile {
+    background-color: #232a22;
+}
+
+.header-mobile .menu .leaderboard {
+    background-color: rgba(114, 253, 101, 0.3);
+    color: #fdfdfd;
+}
+
+.header-mobile .menu .leaderboard .border {
+    border-left: 3px solid #72fd65;
+}
+
+.header-mobile .menu li:hover {
+    background-color: rgba(114, 253, 101, 0.3);
+}
+
 .footer {
     background-color: #232a22;
 }

@@ -11,9 +11,33 @@
 .header-mobile {
     display: none;
     position: fixed;
+    top: 60px;
     font-family: "Tilt Warp";
     width: 100%;
     z-index: 90;
+}
+
+.header-mobile {
+    color: #919495;
+}
+
+.header-mobile .menu li {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: 300ms;
+}
+
+.header-mobile .menu .border {
+    width: 0;
+    padding: 10px 0;
+    margin: 7px 15px;
+    border-radius: 10px;
+}
+
+.header-mobile .menu li div, .header-mobile .menu li button {
+    width: 100%;
+    padding: 10px 0;
 }
 
 .logo {
@@ -82,8 +106,6 @@
     border-right: 3px solid #fdfdfd;
     transform: rotate(135deg);
 }
-
-
 /* ------------------------------------------------- */
 .login-form {
     display: none;

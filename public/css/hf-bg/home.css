@@ -6,8 +6,25 @@
     background-color: #8c66ff;
 }
 
-.header-mobile {
+.header .home-text {
+    border-bottom: 3px solid #8c66ff;
+}
 
+.header-mobile {
+    background-color: #24222a;
+}
+
+.header-mobile .menu .home {
+    background-color: rgba(140, 102, 255, 0.3);
+    color: #fdfdfd;
+}
+
+.header-mobile .menu .home .border {
+    border-left: 3px solid #8c66ff;
+}
+
+.header-mobile .menu li:hover {
+    background-color: rgba(140, 102, 255, 0.3);
 }
 
 .footer {
