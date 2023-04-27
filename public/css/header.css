@@ -13,31 +13,10 @@
     position: fixed;
     top: 60px;
     font-family: "Tilt Warp";
+    font-size: 14px;
     width: 100%;
     z-index: 90;
-}
-
-.header-mobile {
-    color: #919495;
-}
-
-.header-mobile .menu li {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    transition: 300ms;
-}
-
-.header-mobile .menu .border {
-    width: 0;
-    padding: 10px 0;
-    margin: 7px 15px;
-    border-radius: 10px;
-}
-
-.header-mobile .menu li div, .header-mobile .menu li button {
-    width: 100%;
-    padding: 10px 0;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -88,20 +67,16 @@
     float: right;
 }
 
-.header .arrow {
-    height: 50px;
-    width: 50px;
-}
-
 .header .arrow button {
-    display: block;
-    margin: auto;
+    display: none;
     position: absolute;
     top: 0;
     bottom: 5px;
-    right: 25px;
-    width: 13px;
-    height: 13px;
+    right: 5px;
+    height: 0;
+    width: 0;
+    padding: 5px;
+    margin: 20px;
     border-top: 3px solid #fdfdfd;
     border-right: 3px solid #fdfdfd;
     transform: rotate(135deg);
@@ -213,7 +188,64 @@
         display: none;
     }
 
-    .header .banner {
-        height: 130px;
+    .header .arrow button {
+        display: block;
+    }
+
+    .header-mobile {
+        color: #919495;
+    }
+
+    .header-mobile .menu li {
+        display: flex;
+        transition: 100ms;
+    }
+    .header-mobile .menu li:hover {
+        color: #fdfdfd;
+    }
+
+    .header-mobile .menu .login button, .header-mobile .menu .playername button {
+        margin: 0 15px;
+    }
+
+    .header-mobile .menu li a {
+        width: 100%;
+    }
+
+    .header-mobile .menu .border {
+        width: 0;
+        padding: 10px 0;
+        margin: 10px 15px;
+        border-radius: 10px;
+    }
+
+    .header-mobile .menu li div, .header-mobile .menu li button {
+        width: 100%;
+        padding: 15px 0;
+    }
+    /* ------------------------------------------------- */
+    .login-form {
+        top: 75px;
+        right: 10px;
+        font-size: 14px;
+        width: 300px;
+    }
+
+    .login-form .errmsg {
+        font-size: 12px;
+    }
+
+    .username input, .password input {
+        font-size: 12px;
+    }
+
+    .link-form {
+        top: 75px;
+        right: 10px;
+        font-size: 14px;
+    }
+    /* ------------------------------------------------- */
+    .banner {
+        height: 160px;
     }
 }

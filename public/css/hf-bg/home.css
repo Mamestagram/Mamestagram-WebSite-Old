@@ -27,6 +27,14 @@
     background-color: rgba(140, 102, 255, 0.3);
 }
 
+.header-mobile .menu .login, .header-mobile .menu .playername {
+    background-color: #2e293d;
+    color: #a394be;
+}
+.header-mobile .menu .login:hover, .header-mobile .menu .playername:hover {
+    background-color: #2e293d;
+}
+
 .footer {
     background-color: #24222a;
 }
