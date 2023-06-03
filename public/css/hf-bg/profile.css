@@ -1,28 +1,28 @@
-.header {
+.standard {
     background-color: #ac396d;
 }
 
-.header .menu div:hover, .header .menu button:hover {
+.standard .menu div:hover, .standard .menu button:hover {
     background-color: #ff66ab;
 }
 
-.header-mobile {
+.mobile {
     background-color: #2a2226;
 }
 
-.header-mobile .menu li:hover {
+.mobile .menu li:hover {
     background-color: rgba(255, 102, 171, 0.3);
 }
 
-.header-mobile .menu .login, .header-mobile .menu .playername {
+.mobile .menu .login, .mobile .menu .playername {
     background-color: #3d2932;
     color: #d194af;
 }
-.header-mobile .menu .login:hover, .header-mobile .menu .playername:hover {
+.mobile .menu .login:hover, .mobile .menu .playername:hover {
     background-color: #3d2932;
 }
 
-.footer {
+footer {
     background-color: #2a2226;
 }
 

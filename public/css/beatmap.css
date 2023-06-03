@@ -2,7 +2,7 @@ body {
     min-width: 1280px;
 }
 /* ------------------------------------------------- */
-.main {
+main {
     font-family: "Righteous";
     background-color: #171a1c;
     min-height: 100vh;

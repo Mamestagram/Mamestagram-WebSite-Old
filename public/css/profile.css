@@ -1,4 +1,4 @@
-.main {
+main {
     font-family: "Righteous";
     background-color: #1c1719;
     min-height: 100vh;
@@ -7,7 +7,7 @@
     padding-bottom: 300px;
 }
 
-.main .box {
+main .box {
     margin: 20px 12.8%;
 }
 /* ------------------------------------------------- */
@@ -469,7 +469,6 @@
 .mostplays-list .list .main-info .play-icon {
     height: 15px;
     width: 15px;
-    margin: 22px 0;
 }
 
 .mostplays-list .list .main-info .value {
@@ -922,9 +921,8 @@
     }
 
     .mostplays-list .list-mobile .main-info .play-icon {
-        height: 12px;
-        width: 12px;
-        margin: 24px 0;
+        height: 10px;
+        width: 10px;
     }
 
     .mostplays-list .list-mobile .main-info .value {
@@ -1071,7 +1069,7 @@
 }
 
 @media (max-width: 767px) {
-    .main .box {
+    main .box {
         width: 97%;
         margin: 10px 1.5%;
     }
@@ -1358,9 +1356,8 @@
     }
 
     .mostplays-list .list-mobile .main-info .play-icon {
-        height: 12px;
-        width: 12px;
-        margin: 24px 0;
+        height: 10px;
+        width: 10px;
     }
 
     .mostplays-list .list-mobile .main-info .value {

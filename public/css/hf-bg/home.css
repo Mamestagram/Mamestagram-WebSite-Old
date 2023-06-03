@@ -1,41 +1,41 @@
-.header {
+.standard {
     background-color: #5639ac;
 }
 
-.header .menu div:hover, .header .menu button:hover {
+.standard .menu div:hover, .standard .menu button:hover {
     background-color: #8c66ff;
 }
 
-.header .home-text {
+.standard .home-text {
     border-bottom: 3px solid #8c66ff;
 }
 
-.header-mobile {
+.mobile {
     background-color: #24222a;
 }
 
-.header-mobile .menu .home {
+.mobile .menu .home {
     background-color: rgba(140, 102, 255, 0.3);
     color: #fdfdfd;
 }
 
-.header-mobile .menu .home .border {
+.mobile .menu .home .border {
     border-left: 3px solid #8c66ff;
 }
 
-.header-mobile .menu li:hover {
+.mobile .menu li:hover {
     background-color: rgba(140, 102, 255, 0.3);
 }
 
-.header-mobile .menu .login, .header-mobile .menu .playername {
+.mobile .menu .login, .mobile .menu .playername {
     background-color: #2e293d;
     color: #a394be;
 }
-.header-mobile .menu .login:hover, .header-mobile .menu .playername:hover {
+.mobile .menu .login:hover, .mobile .menu .playername:hover {
     background-color: #2e293d;
 }
 
-.footer {
+footer {
     background-color: #24222a;
 }
 

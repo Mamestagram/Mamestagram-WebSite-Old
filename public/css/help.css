@@ -1,11 +1,11 @@
-.main {
+main {
     background-color: #1c1b17;
     min-height: 100vh;
     height: 100%;
     width: 100%;
 }
 
-.main h1 {
+main h1 {
     color: #fdfdfd;
     font-family: "けいふぉんと";
     font-size: 84px;

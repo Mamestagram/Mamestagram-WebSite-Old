@@ -1,4 +1,4 @@
-.main {
+main {
     background-color: #18171c;
     min-height: 100vh;
     height: 100%;
@@ -10,10 +10,6 @@
     font-size: 84px;
     color: #fdfdfd;
     text-align: center;
-}
-
-.welcome-title h1 .bold {
-    font-weight: bold;
 }
 
 @media (max-width: 1148px) {

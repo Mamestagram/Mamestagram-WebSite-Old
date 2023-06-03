@@ -1,14 +1,14 @@
-.header {
+.standard {
     position: sticky;
     top: 0;
     font-family: "Tilt Warp";
     height: 67px;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
 }
 
-.header-mobile {
+.mobile {
     display: none;
     position: fixed;
     top: 60px;
@@ -16,7 +16,7 @@
     font-size: 14px;
     width: 100%;
     z-index: 90;
-    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
 }
 
 .logo {
@@ -30,11 +30,11 @@
     transform: scale(1.1, 1.1);
 }
 
-.header .title {
+.standard .title {
     display: none;
 }
 
-.header .menu div, .header .menu button {
+.standard .menu div, .standard .menu button {
     font-size: 15px;
     color: #fdfdfd;
     height: 50px;
@@ -43,43 +43,42 @@
     transition: 500ms all;
 }
 
-.header .home {
+.standard .home {
     margin-left: 10px;
     float: left;
 }
 
-.header .leaderboard {
+.standard .leaderboard {
     float: left;
 }
 
-.header .community {
+.standard .community {
     float: left;
 }
 
-.header .help {
+.standard .help {
     float: left;
     filter: invert(30%);
     opacity: 95%;
 }
 
-.header .login, .header .playername {
+.standard .login, .standard .playername {
     margin-right: 250px;
     float: right;
 }
 
-.header .arrow button {
+.standard .down, .standard .up {
     display: none;
+    color: #fdfdfd;
+    font-size: 20px;
     position: absolute;
     top: 0;
-    bottom: 5px;
-    right: 5px;
-    height: 0;
-    width: 0;
-    padding: 5px;
-    margin: 20px;
-    border-top: 3px solid #fdfdfd;
-    border-right: 3px solid #fdfdfd;
-    transform: rotate(135deg);
+    right: 0;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+    line-height: 50px ;
 }
 /* ------------------------------------------------- */
 .login-form {
@@ -166,17 +165,17 @@
 }
 
 @media (max-width: 1148px) {
-    .header {
+    .standard {
         height: 60px;
     }
 
-    .header .logo {
+    .standard .logo {
         float: left;
         width: 47px;
         margin: 7px;
     }
 
-    .header .title {
+    .standard .title {
         display: block;
         color: #fdfdfd;
         font-size: 15px;
@@ -184,42 +183,42 @@
         padding-left: 50px;
     }
 
-    .header .menu {
+    .standard .menu {
         display: none;
     }
 
-    .header .arrow button {
+    .standard .down {
         display: block;
     }
 
-    .header-mobile {
+    .mobile {
         color: #919495;
     }
 
-    .header-mobile .menu li {
+    .mobile .menu li {
         display: flex;
         transition: 100ms;
     }
-    .header-mobile .menu li:hover {
+    .mobile .menu li:hover {
         color: #fdfdfd;
     }
 
-    .header-mobile .menu .login button, .header-mobile .menu .playername button {
+    .mobile .menu .login button, .mobile .menu .playername button {
         margin: 0 15px;
     }
 
-    .header-mobile .menu li a {
+    .mobile .menu li a {
         width: 100%;
     }
 
-    .header-mobile .menu .border {
+    .mobile .menu .border {
         width: 0;
         padding: 10px 0;
         margin: 10px 15px;
         border-radius: 10px;
     }
 
-    .header-mobile .menu li div, .header-mobile .menu li button {
+    .mobile .menu li div, .mobile .menu li button {
         width: 100%;
         padding: 15px 0;
     }
