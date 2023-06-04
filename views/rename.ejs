@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Rename</title>
+        <%- include("link") %>
+        <link rel="stylesheet" href="/css/rename.css">
+        <link rel="stylesheet" href="/css/hf-bg/rename.css">
+    </head>
+    <body>
+    <%- include("header") %>
+    <main>
+        <div class="rename-form">
+            <form action="/rename" method="post">
+                <h1 class="title">Rename</h1>
+                <div class="username">
+                    <span class="username-title">
+                        Enter a new username below<br>
+                        (within 20 characters)
+                    </span>
+                    <% if (err) { %>
+                        <span class="errmsg"><%= err %></span>
+                    <% } %>
+                    <input type="text" name="username" value="<%= text %>">
+                </div>
+                <button><input type="submit" value="Confirm"></button>
+            </form>
+        </div>
+    </main>
+    <%- include("footer") %>
+    </body>
+</html>

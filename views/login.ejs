@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Sign in</title>
+        <%- include("link") %>
+        <link rel="stylesheet" href="/css/login.css">
+        <link rel="stylesheet" href="/css/hf-bg/login.css">
+    </head>
+    <body>
+    <%- include("header") %>
+    <main>
+        <div class="login-form">
+            <form action="/login" method="post">
+                <h1 class="title">Sign in</h1>
+                <div class="username">
+                    <span class="username-title">Username</span>
+                    <% if (err.includes("empname")) { %>
+                        <span class="errmsg">Enter your Username</span>
+                    <% } else if (err === "notfound") { %>
+                        <span class="errmsg">User not found</span>
+                    <% } %>
+                    <input type="text" name="username">
+                </div>
+                <div class="password">
+                    <span class="password-title">Password</span>
+                    <% if (err.includes("emppass")) { %>
+                        <span class="errmsg">Enter your Password</span>
+                    <% } else if (err === "wrongpass") { %>
+                        <span class="errmsg">Password is incorrect</span>
+                    <% } %>
+                    <input type="password" name="password">
+                </div>
+                <p>Don't you have an account? <span><strike>Register</strike></span></p>
+                <button><input type="submit" value="Sign in"></button>
+            </form>
+        </div>
+    </main>
+    <%- include("footer") %>
+    </body>
+</html>

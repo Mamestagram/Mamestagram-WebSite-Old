@@ -17,7 +17,7 @@
             res += Math.floor(time / 60).toLocaleString() + "m";
             return res;
         }
-         const getMods = (modNum) => {
+        const getMods = (modNum) => {
             let mod = new Array(0);
             const mods = [
                 "nf", // 0 : NoFail
@@ -158,8 +158,13 @@
     <main>
         <div class="box player-banner">
             <div class="self">
-                <span class="flag-icon flag-icon-<%= info.country %>"></span>
+                <i class="flag-icon flag-icon-<%= info.country %>"></i>
                 <span class="name"><%= info.name %></span>
+                <% if (parseInt(id) === locals.userid) { %>
+                    <a href="/rename">
+                        <i class="fa-solid fa-pen-to-square rename-icon"></i>
+                    </a>
+                <% } %>
             </div>
             <div class="selection">
                 <ul class="special">

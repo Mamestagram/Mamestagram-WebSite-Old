@@ -35,11 +35,34 @@ main .box {
     height: 24px;
     line-height: 40px;
     width: 32px;
+    border-radius: 3px;
 }
 
 .name {
     font-size: 40px;
     padding: 0 5px;
+}
+
+.rename-icon {
+    position: relative;
+    bottom: 2px;
+    opacity: 0.7;
+}
+.rename-icon:hover {
+    opacity: 1;
+}
+
+.rename-form {
+    background-color: #333333;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    text-align: center;
+}
+
+.rename-form h1 {
+    font-size: 20px
 }
 
 .player-banner .selection {
@@ -649,6 +672,7 @@ main .box {
     .flag-icon {
         line-height: 36px;
         width: 24px;
+        border-radius: 3px;
     }
 
     .name {
@@ -1087,6 +1111,7 @@ main .box {
     .flag-icon {
         line-height: 36px;
         width: 24px;
+        border-radius: 3px;
     }
 
     .name {
