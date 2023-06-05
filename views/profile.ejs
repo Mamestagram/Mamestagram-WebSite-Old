@@ -537,7 +537,7 @@
                                 <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <% } %>
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= mode %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a>
@@ -556,10 +556,12 @@
                                         <% if (map.grade === "F") { %>
                                             (Failed)
                                         <% } else { %>
-                                            <% if (map.status === 5) { %>
-                                                (Loved)
-                                            <% } else if (map.status !== 2) { %>
+                                            <% if (map.status === 0) { %>
                                                 (Pending)
+                                            <% } else if (map.status === 4) { %>
+                                                (Qualified)
+                                            <% } else if (map.status === 5) { %>
+                                                (Loved)
                                             <% } %>
                                         <% } %>
                                     </span>
@@ -571,7 +573,7 @@
                                 <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <% } %>
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= mode %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a><br>
@@ -589,10 +591,12 @@
                                         <% if (map.grade === "F") { %>
                                             (Failed)
                                         <% } else { %>
-                                            <% if (map.status === 5) { %>
-                                                (Loved)
-                                            <% } else if (map.status !== 2) { %>
+                                            <% if (map.status === 0) { %>
                                                 (Pending)
+                                            <% } else if (map.status === 4) { %>
+                                                (Qualified)
+                                            <% } else if (map.status === 5) { %>
+                                                (Loved)
                                             <% } %>
                                         <% } %>
                                     </span>
