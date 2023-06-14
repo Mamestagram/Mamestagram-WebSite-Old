@@ -361,7 +361,7 @@
                         <div class="list">
                             <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <div class="map-info">
-                                <a href="/beatmap/set=<%= map.set_id %>/id=<%= map.id %>/diff=<%= map.version %>">
+                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a>
@@ -492,7 +492,7 @@
         </div>
         <div class="box recentplays-list" id="recentplays">
             <div class="recentplays-header">
-                <h1>Recent Plays (24h)</h1>
+                <h1>Recent Plays</h1>
                 <div class="page">
                     <h2>page : <%= rspage %></h2>
                     <div class="pagearrow">
