@@ -1,3 +1,14 @@
+.pagename {
+    position: absolute;
+    top: 170px;
+    left: 230px;
+    color: #fdfdfd;
+    font-family: "Caveat";
+    font-size: 68px;
+    font-weight: bold;
+    text-shadow: 5px 5px 5px black;
+}
+
 main {
     font-family: "SecularOne";
     background-color: #171c17;
@@ -183,6 +194,10 @@ main {
 }
 
 @media (max-width: 1148px) {
+    .pagename {
+        display: none;
+    }
+
     .ss-title, .s-title, .a-title {
         display: none;
     }

@@ -56,10 +56,8 @@
     float: left;
 }
 
-.standard .help {
+.standard .documents {
     float: left;
-    filter: invert(30%);
-    opacity: 95%;
 }
 
 .standard .login, .standard .playername {

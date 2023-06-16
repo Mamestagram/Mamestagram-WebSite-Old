@@ -6,7 +6,7 @@
     background-color: #ffd966;
 }
 
-.standard .help-text {
+.standard .documents-text {
     border-bottom: 3px solid #ffd966;
 }
 
@@ -14,12 +14,12 @@
     background-color: #2a2822;
 }
 
-.mobile .menu .help {
+.mobile .menu .documents {
     background-color: rgba(255, 217, 102, 0.3);
     color: #fdfdfd;
 }
 
-.mobile .menu .help .border {
+.mobile .menu .documents .border {
     border-left: 3px solid #ffd966;
 }
 

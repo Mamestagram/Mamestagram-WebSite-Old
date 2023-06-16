@@ -10,35 +10,23 @@
 }
 
 main {
-    background-color: #18171c;
+    background-color: #1c1b17;
     min-height: 100vh;
     height: 100%;
     width: 100%;
 }
 
-.welcome-title {
-    font-family: "Gloria Hallelujah";
-    font-size: 84px;
+main h1 {
     color: #fdfdfd;
+    font-family: "けいふぉんと";
+    font-size: 84px;
+    width: 100%;
     text-align: center;
+    padding-top: 50px;
 }
 
-@media (max-width: 1148px) {
+@media(max-width: 1148px) {
     .pagename {
         display: none;
-    }
-
-    .welcome-title {
-        font-size: 62px;
-    }
-}
-
-@media (max-width: 767px) {
-    body {
-        min-width: 348px;
-    }
-
-    .welcome-title {
-        font-size: 46px;
     }
 }
