@@ -16,15 +16,6 @@ main {
     width: 100%;
 }
 
-main h1 {
-    color: #fdfdfd;
-    font-family: "けいふぉんと";
-    font-size: 84px;
-    width: 100%;
-    text-align: center;
-    padding-top: 50px;
-}
-
 @media(max-width: 1148px) {
     .pagename {
         display: none;
