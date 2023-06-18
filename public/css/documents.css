@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .pagename {
     position: absolute;
     top: 170px;
@@ -11,11 +15,147 @@
 
 main {
     background-color: #1c1b17;
+    color: #fdfdfd;
+    font-family: "MochiyPopOne";
     min-height: 100vh;
     height: 100%;
     width: 100%;
+    padding: 10px 0 200px 0;
+    text-align: center;
 }
 
+main .logoimage {
+    background-color: rgba(253, 253, 253, 0.05);
+    height: 310px;
+    padding: 10px;
+    border-radius: 90px 90px 130px 130px;
+}
+
+main .welcome-title {
+    font-family: "Gloria Hallelujah";
+    font-size: 60px;
+}
+
+main ul {
+    display: flex;
+    justify-content: center;
+}
+
+main li {
+    padding: 60px 20px;
+}
+
+article {
+    background-color: #2a2822;
+    width: 970px;
+    padding: 12px 0;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: left;
+}
+
+article h1 {
+    font-family: "けいふぉんと";
+    font-size: 32px;
+}
+
+section {
+    background-color: #38362e;
+    width: 950px;
+    padding: 10px 0;
+    margin: 30px auto;
+    border-radius: 5px;
+    scroll-margin-top: 150px;
+}
+/* ------------------------------------------------- */
+#about {
+    margin: 0 auto 10px auto;
+}
+/* ------------------------------------------------- */
+#registration {
+    margin: 10px auto 0 auto;
+}
+/* ------------------------------------------------- */
+#connection .youtube {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+#connection ol {
+    list-style: -moz-ethiopic-numeric;
+    margin: 0 30px;
+}
+
+#connection p {
+    font-size: 18px;
+}
+
+#connection .img1 {
+    width: 850px;
+    margin-top: 20px;
+}
+
+#connection .img2 {
+    width: 500px;
+    margin-top: 20px;
+}
+
+#connection .img3 {
+    width: 300px;
+    margin-left: 40px;
+    margin-bottom: 140px;
+}
+
+#connection .img4 {
+    width: 850px;
+    margin-top: 20px;
+}
+
+#connection .img5 {
+    width: 850px;
+    margin-top: 20px;
+}
+
+#connection li span {
+    color: #c77eca;
+    font-family: "Ubuntu";
+}
+
+#connection .img6 {
+    width: 400px;
+    margin-bottom: 70px;
+}
+
+#connection .img7 {
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+#connection .img8 {
+    width: 850px;
+    margin-top: 20px;
+}
+
+#connection .conclusion {
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+}
+
+#connection .reference {
+    font-size: 14px;
+    text-align: center;
+}
+
+#connection .reference a {
+    color: #d881a2;
+}
+#connection .reference a:hover {
+    color: #f598bb;
+}
+/* ------------------------------------------------- */
 @media(max-width: 1148px) {
     .pagename {
         display: none;

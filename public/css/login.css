@@ -61,10 +61,10 @@ main {
     padding: 0 40px;
 }
 
-.login-form p span {
+.login-form p a {
     color: #d881a2;
 }
-.login-form p span:hover {
+.login-form p a:hover {
     color: #f598bb;
 }
 
