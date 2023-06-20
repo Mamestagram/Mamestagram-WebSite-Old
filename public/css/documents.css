@@ -120,6 +120,7 @@ section {
 }
 
 #connection li {
+    font-size: 18px;
     padding: 70px 20px;
 }
 
@@ -190,11 +191,8 @@ section {
 }
 
 #registration li {
-    padding: 70px 20px;
-}
-
-#registration p {
     font-size: 18px;
+    padding: 70px 20px;
 }
 
 #registration .reference {
