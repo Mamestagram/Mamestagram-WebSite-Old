@@ -5,6 +5,21 @@
         <%- include("link") %>
         <link rel="stylesheet" href="/css/documents.css">
         <link rel="stylesheet" href="/css/hf-bg/documents.css">
+        <% if (lang === "en" ) { %>
+        <style>
+            main .language .en {
+                color: #e0d6b8;
+                text-decoration: underline;
+            }
+        </style>
+        <% } else if (lang === "jp") { %>
+        <style>
+            main .language .jp {
+                color: #e0d6b8;
+                text-decoration: underline;
+            }
+        </style>
+        <% } %>
     </head>
     <body>
     <%- include("header") %>
@@ -13,118 +28,357 @@
     <main>
         <img src="/image/logo.png" class="logoimage">
         <h1 class="welcome-title">Welcome to <strong>Mamestagram!</strong></h1>
-        <ul class="menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#rules">Rules</a></li>
-            <li><a href="#connection">How to connect</a></li>
-            <li><a href="#registration">How to register</a></li>
-        </ul>
-        <article>
-            <section id="about">
-                <h1>About</h1>
-            </section>
-            <section id="rules">
-                <h1>Rules</h1>
-                <ul>
-                    <li>
-                        <h2>Welcome to Mamestagram!</h2>
-                        <p>Welcome to Mamestagram! The following rules are rules that you must follow when using Mamestagram. We hope you will enjoy your time on the server by following these rules!</p>
-                        <p>Both of the following actions will result in <u>an immediate ban</u>.</p>
-                    </li>
-                    <li>
-                        <h2>Prohibited behaviors on the Discord server</h2>
-                        <p>・Behavior that causes inconvenience to members (spamming, bot abuse, etc.)</p>
-                        <p>・Sending messages that overload members' terminals</p>
-                        <p>・Any behavior that is hateful or discriminatory in terms of race, gender, religion, creed, family origin, or homosexuality</p>
-                        <p>・Any behavior that is offensive or abusive</p>
-                        <p>・Impersonating another user</p>
-                        <p>・Distributing cheat engines, etc.</p>
-                    </li>
-                    <li>
-                        <h2>Prohibited acts on osu! Private Server</h2>
-                        <p>・Using cheat engines</p>
-                        <p>・Spamming in the chat box</p>
-                        <p>・Registering with an inappropriate name</p>
-                        <p>・Impersonating another user</p>
-                        <p>・Actions that cause the server to perform unnecessary calculations</p>
-                    </li>
-                    <li>
-                        <h2>Others</h2>
-                        <h3>Reporting, etc.</h3>
-                        <p>Please contact us at <a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a> if you witness any illegal activity.</p>
-                        <p>*<u>False reports may result in appropriate penalties.</u></p>
-                    </li>
-                    <li>
-                        <h3>Complaints</h3>
-                        <p>Please contact <a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a> with evidential images/videos.</p>
-                    </li>
-                </ul>
-            </section>
-            <section id="connection">
-                <h1>How to connect</h1>
-                <div class="youtube">
-                    <iframe width="800" height="450" src="https://www.youtube.com/embed/CAfovJYSEvw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <ol>
-                    <li>
-                        <p>Go to osu! local file</p>
-                        <img src="/image/documents/connection/1.png" class="img1">
-                    </li>
-                    <li>
-                        <p>Right-click on "osu!.exe" then click on "Create shortcut"</p>
-                        <img src="/image/documents/connection/2.png" class="img2">
-                        <img src="/image/documents/connection/3.png" class="img3">
-                    </li>
-                    <li>
-                        <p>Move it to any location (desktop is recommended)</p>
-                        <img src="/image/documents/connection/4.png" class="img4">
-                    </li>
-                    <li>
-                        <p>Change to any name (no need to do it)</p>
-                        <img src="/image/documents/connection/5.png" class="img5">
-                    </li>
-                    <li>
-                        <p>Right-click on it and click on "Properties"</p>
-                        <img src="/image/documents/connection/6.png" class="img6">
-                        <img src="/image/documents/connection/7.png" class="img7">
-                    </li>
-                    <li>
-                        <p>Add one space and <span>-devserver mamesosu.net</span> after "...\osu!.exe" in the "Target" field</p>
-                        <img src="/image/documents/connection/8.png" class="img8">
-                    </li>
-                    <li>
-                        <p>Click on "Apply" and then "OK" to finish setting</p>
-                    </li>
-                </ol>
-                <p class="conclusion">Now you are connected to mamesosu.net!</p>
-            </section>
-            <section id="registration">
-                <h1>How to register</h1>
-                <ol>
-                    <li>
-                        <p>Open osu! which is connected to mamesosu.net and click on "Create an account"</p>
-                        <p class="reference">Not connected to mamesosu.net yet? <a href="#connection">How to connect</a></p>
-                        <img src="/image/documents/registration/1en.png" class="img1">
-                        <img src="/image/documents/registration/2en.png" class="img2">
-                        <p class="if">*If "Options" is closed, click on the one in the upper left corner to open it</p>
-                        <img src="/image/documents/registration/3en.png" class="img3">
-                    </li>
-                    <li>
-                        <p>Click on "1. I am not (username)"</p>
-                        <img src="/image/documents/registration/4.png" class="img4">
-                    </li>
-                    <li>
-                        <p>Enter your Username, Email Address and Password in each fields then click on "1. Create my account!"</p>
-                        <img src="/image/documents/registration/5.png" class="img5">
-                    </li>
-                    <li>
-                        <p>If you receive a message from the bot, you've succeeded!</p>
-                        <img src="/image/documents/registration/6.png" class="img6">
-                    </li>
-                </ol>
-                <p class="conclusion">Now you have your own account! Have fun!</p>
-            </section>
-        </article>
+        <% if (lang === "en") { %>
+            <h2 class="subtitle">This is an osu private server operated by Mamestagram</h2>
+            <ul class="menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#connection">How to connect</a></li>
+                <li><a href="#registration">How to register</a></li>
+            </ul>
+            <a href="#" class="top">Return to top</a>
+            <div class="language">
+                <a href="/documents/en#" class="en">EN</a>
+                <a href="/documents/jp#" class="jp">JP</a>
+            </div>
+            <article>
+                <section id="about">
+                    <h1>About</h1>
+                    <div class="overview">
+                        <h2>Overview</h2>
+                        <p>This private server shows scores by mode, which are not ranked in the official servers such as Relax and AutoPilot.</p>
+                        <p>You can also rank and score within the server. Let's try to get server #1!</p>
+                    </div>
+                    <ul class="features">
+                        <li>
+                            <h2>Introduction of features (mainly Discord) <a href="https://osu.mamestagram.net/discord.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-link link"></i>Our discord server</a></h2>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1081737936401350717" target="_blank" rel="noopener noreferrer">
+                                    # status
+                                </a>
+                            </h3>
+                            <p>In this channel, when someone passes a map or takes first place on a map in MamesOsu, their score and status are automatically sent.</p>
+                            <img src="/image/documents/about/1.png">
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1104675564763222016" target="_blank" rel="noopener noreferrer">
+                                    # pp-record
+                                </a>
+                            </h3>
+                            <p>This channel shows pp records in 6 different modes: osu!std, osu!taiko, osu!catch, osu!mania, osu!rx (std) and osu!ap, respectively.</p>
+                            <p>We encourage you to try the pp record!</p>
+                            <img src="/image/documents/about/2.png">
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
+                                    # map-request
+                                </a>
+                            </h3>
+                            <p>This channel allows you to apply for maps that are not Ranked or Loved in bancho to be Ranked or Loved.</p>
+                            <p>
+                                The submitted maps will be reviewed by testers and those that pass the review will be notified to
+                                <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
+                                    # ranked-notice
+                                </a>
+                                .
+                            </p>
+                            <p>Your favorite map could be Ranked or Loved!</p>
+                            <img src="/image/documents/about/3.png">
+                            <h4>
+                                <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
+                                    # map-request
+                                </a>
+                            </h4>
+                            <img src="/image/documents/about/4.png">
+                            <h4>
+                                <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
+                                    # ranked-notice
+                                </a>
+                            </h4>
+                        </li>
+                    </ul>
+                    <p class="others">Mamestagram has many more features, <br>so please join us and experience them for yourself!</p>
+                </section>
+                <section id="rules">
+                    <h1>Rules</h1>
+                    <ul>
+                        <li>
+                            <h2>Welcome to Mamestagram!</h2>
+                            <p>Welcome to Mamestagram! The following rules are rules that you must follow when using Mamestagram. We hope you will enjoy your time on the server by following these rules!</p>
+                            <p>Both of the following actions will result in <u>an immediate ban</u>.</p>
+                        </li>
+                        <li>
+                            <h2>Prohibited behaviors on the Discord server</h2>
+                            <p>・Behavior that causes inconvenience to members (spamming, bot abuse, etc.)</p>
+                            <p>・Sending messages that overload members' terminals</p>
+                            <p>・Any behavior that is hateful or discriminatory in terms of race, gender, religion, creed, family origin, or homosexuality</p>
+                            <p>・Any behavior that is offensive or abusive</p>
+                            <p>・Impersonating another user</p>
+                            <p>・Distributing cheat engines, etc.</p>
+                        </li>
+                        <li>
+                            <h2>Prohibited acts on osu! Private Server</h2>
+                            <p>・Using cheat engines</p>
+                            <p>・Spamming in the chat box</p>
+                            <p>・Registering with an inappropriate name</p>
+                            <p>・Impersonating another user</p>
+                            <p>・Actions that cause the server to perform unnecessary calculations</p>
+                        </li>
+                        <li>
+                            <h2>Others</h2>
+                            <h3>Reporting, etc.</h3>
+                            <p>Please contact us at <a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a> if you witness any illegal activity.</p>
+                            <p>*<u>False reports may result in appropriate penalties.</u></p>
+                        </li>
+                        <li>
+                            <h3>Complaints</h3>
+                            <p>Please contact <a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a> with evidential images / videos.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section id="connection">
+                    <h1>How to connect</h1>
+                    <div class="youtube">
+                        <iframe width="800" height="450" src="https://www.youtube.com/embed/CAfovJYSEvw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <ol>
+                        <li>
+                            <p>Go to osu! local file</p>
+                            <img src="/image/documents/connection/1.png" class="img1">
+                        </li>
+                        <li>
+                            <p>Right-click on "osu!.exe" then click on "Create shortcut"</p>
+                            <img src="/image/documents/connection/2.png" class="img2">
+                            <img src="/image/documents/connection/3.png" class="img3">
+                        </li>
+                        <li>
+                            <p>Move it to any location (desktop is recommended)</p>
+                            <img src="/image/documents/connection/4.png" class="img4">
+                        </li>
+                        <li>
+                            <p>Change to any name (no need to do it)</p>
+                            <img src="/image/documents/connection/5.png" class="img5">
+                        </li>
+                        <li>
+                            <p>Right-click on it and click on "Properties"</p>
+                            <img src="/image/documents/connection/6.png" class="img6">
+                            <img src="/image/documents/connection/7.png" class="img7">
+                        </li>
+                        <li>
+                            <p>Add one space and <span>-devserver mamesosu.net</span> after "...\osu!.exe" in the "Target" field</p>
+                            <img src="/image/documents/connection/8.png" class="img8">
+                        </li>
+                        <li>
+                            <p>Click on "Apply" and then "OK" to finish setting</p>
+                        </li>
+                    </ol>
+                    <p class="conclusion">Now you are connected to mamesosu.net!</p>
+                </section>
+                <section id="registration">
+                    <h1>How to register</h1>
+                    <ol>
+                        <li>
+                            <p>Open osu! which is connected to mamesosu.net and click on "Create an account"</p>
+                            <p class="reference">Not connected to mamesosu.net yet? <a href="#connection">How to connect</a></p>
+                            <img src="/image/documents/registration/1en.png" class="img1">
+                            <img src="/image/documents/registration/2en.png" class="img2">
+                            <p class="if">*If "Options" is closed, click on the one in the upper left corner to open it</p>
+                            <img src="/image/documents/registration/3en.png" class="img3">
+                        </li>
+                        <li>
+                            <p>Click on "1. I am not (username)"</p>
+                            <img src="/image/documents/registration/4.png" class="img4">
+                        </li>
+                        <li>
+                            <p>Enter your Username, Email Address and Password in each fields then click on "1. Create my account!"</p>
+                            <img src="/image/documents/registration/5.png" class="img5">
+                        </li>
+                        <li>
+                            <p>If you receive a message from the bot, you've succeeded!</p>
+                            <img src="/image/documents/registration/6.png" class="img6">
+                        </li>
+                    </ol>
+                    <p class="conclusion">Now you have your own account! Have fun!</p>
+                </section>
+            </article>
+        <% } else if (lang === "jp") { %>
+            <h2 class="subtitle">Mamestagramが運営するosuプライベートサーバーです</h2>
+            <ul class="menu">
+                <li><a href="#about">本サーバーについて</a></li>
+                <li><a href="#rules">ルール</a></li>
+                <li><a href="#connection">接続方法</a></li>
+                <li><a href="#registration">アカウント作成方法</a></li>
+            </ul>
+            <a href="#" class="top">Topに戻る</a>
+            <div class="language">
+                <a href="/documents/en#" class="en">EN</a>
+                <a href="/documents/jp#" class="jp">JP</a>
+            </div>
+            <article>
+                <section id="about">
+                    <h1>本サーバーについて</h1>
+                    <div class="overview">
+                        <h2>概要</h2>
+                        <p>このサーバーではRelaxやAutoPilotなどの公式サーバーではランク付けされないスコアもモード別で表示されます。</p>
+                        <p>ランクやスコアもそのサーバー内で付けられます。 是非、このサーバーで1位を目指してみましょう！</p>
+                    </div>
+                    <ul class="features">
+                        <li>
+                            <h2>機能紹介 (主にDiscord) <a href="https://osu.mamestagram.net/discord.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-link link"></i>Discordサーバー</a></h2>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1081737936401350717" target="_blank" rel="noopener noreferrer">
+                                    # status
+                                </a>
+                            </h3>
+                            <p>このチャンネルでは、誰かがマップをパスしたときあるいはマップで1位を取ったときのスコアやステータスが自動送信されます。</p>
+                            <img src="/image/documents/about/1.png">
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1104675564763222016" target="_blank" rel="noopener noreferrer">
+                                    # pp-record
+                                </a>
+                            </h3>
+                            <p>このチャンネルでは、osu!std, osu!taiko, osu!catch, osu!mania, osu!rx (std), osu!apのそれぞれ6つのモードのppレコードが表示されています。</p>
+                            <p>是非、ppレコードに挑戦してみましょう！</p>
+                            <img src="/image/documents/about/2.png">
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
+                                    # map-request
+                                </a>
+                            </h3>
+                            <p>このチャンネルでは、banchoでRankedやLovedにされていないマップをRankedやLovedに申請することができます。</p>
+                            <p>
+                                申請されたマップはテスターによって審査され、審査が通り次第、
+                                <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
+                                    # ranked-notice
+                                </a>
+                                に通知されます。
+                            </p>
+                            <p>あなたの好きなマップがRankedやLovedになるかもしれません！</p>
+                            <img src="/image/documents/about/3.png">
+                            <h4>
+                                <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
+                                    # map-request
+                                </a>
+                            </h4>
+                            <img src="/image/documents/about/4.png">
+                            <h4>
+                                <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
+                                    # ranked-notice
+                                </a>
+                            </h4>
+                        </li>
+                    </ul>
+                    <p class="others">Mamestagramには他にもたくさんの機能があるので是非ご参加いただき、<br>それらを体験していってください！</p>
+                </section>
+                <section id="rules">
+                    <h1>ルール</h1>
+                    <ul>
+                        <li>
+                            <h2>Welcome to Mamestagram!</h2>
+                            <p>Mamestagramへようこそ！以下のルールはMamestagramを利用するにあたって必ず守っていただきたいルールになります。以下のルールを守り、楽しいサーバーライフを送っていただけると幸いです！</p>
+                            <p>以下の行為はいずれも<u>即BAN</u>の処分となります。</p>
+                        </li>
+                        <li>
+                            <h2>Discordサーバーでの禁止行為</h2>
+                            <p>・メンバーへの迷惑をかける行為(スパム等やBotの悪用等)</p>
+                            <p>・メンバーの端末へ負荷をかけるようなメッセージを送信する行為</p>
+                            <p>・差別用語の使用、人種、性別、宗教、信条、門地、同性愛の嫌悪や差別に値するあらゆる行為</p>
+                            <p>・節度を超えた暴言を発言する行為</p>
+                            <p>・他ユーザーになりすます行為</p>
+                            <p>・チートエンジンなどを配布する行為</p>
+                        </li>
+                        <li>
+                            <h2>osu! Private Serverでの禁止行為</h2>
+                            <p>・チートエンジンを使用したプレイ</p>
+                            <p>・チャット欄でのスパム行為</p>
+                            <p>・不適切な名前で登録する行為</p>
+                            <p>・他ユーザーになりすますなどの行為</p>
+                            <p>・サーバーに対して、不必要な計算を行わせるような行為</p>
+                        </li>
+                        <li>
+                            <h2>その他</h2>
+                            <h3>申告等について</h3>
+                            <p>不正行為を目撃した場合は、<a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a>までご連絡ください。</p>
+                            <p><u>※虚偽の報告の場合は相応の処罰が課せられる場合があります。</u></p>
+                        </li>
+                        <li>
+                            <h3>Complaints</h3>
+                            <p>証拠画像 / 映像と共に<a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a>のDMまでご連絡ください。</p>
+                        </li>
+                    </ul>
+                </section>
+                <section id="connection">
+                    <h1>接続方法</h1>
+                    <div class="youtube">
+                        <iframe width="800" height="450" src="https://www.youtube.com/embed/CAfovJYSEvw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <ol>
+                        <li>
+                            <p>osu!のローカルファイルを開きます</p>
+                            <img src="/image/documents/connection/1.png" class="img1">
+                        </li>
+                        <li>
+                            <p>右クリックをして「ショートカットの作成」をクリックします</p>
+                            <img src="/image/documents/connection/2.png" class="img2">
+                            <img src="/image/documents/connection/3.png" class="img3">
+                        </li>
+                        <li>
+                            <p>好きな場所に移動させます(デスクトップ推奨)</p>
+                            <img src="/image/documents/connection/4.png" class="img4">
+                        </li>
+                        <li>
+                            <p>好きな名前に変更します(変更の必要はありません)</p>
+                            <img src="/image/documents/connection/5.png" class="img5">
+                        </li>
+                        <li>
+                            <p>右クリックをして「プロパティ」をクリックします</p>
+                            <img src="/image/documents/connection/6.png" class="img6">
+                            <img src="/image/documents/connection/7.png" class="img7">
+                        </li>
+                        <li>
+                            <p>「リンク先」の欄に「...\osu.exe」の後に1つスペースを入れ、<span>-devserver mamesosu.net</span>を付け加えます</p>
+                            <img src="/image/documents/connection/8.png" class="img8">
+                        </li>
+                        <li>
+                            <p>「適用」をクリックし「OK」を押して設定を終えます</p>
+                        </li>
+                    </ol>
+                    <p class="conclusion">これでmamesosu.netに接続完了です！</p>
+                </section>
+                <section id="registration">
+                    <h1>アカウントの作成方法</h1>
+                    <ol>
+                        <li>
+                            <p>mamesosu.netに接続したosu!を開き、「アカウントを作成する」をクリックします</p>
+                            <p class="reference">まだmamesosu.netに接続していませんか？<a href="#connection">接続方法</a>をご覧ください</p>
+                            <img src="/image/documents/registration/1jp.png" class="img1">
+                            <img src="/image/documents/registration/2jp.png" class="img2">
+                            <p class="if">*If "Options" is closed, click on the one in the upper left corner to open it</p>
+                            <img src="/image/documents/registration/3jp.png" class="img3">
+                        </li>
+                        <li>
+                            <p>「1. I am not (ユーザーネーム)」をクリックします</p>
+                            <img src="/image/documents/registration/4.png" class="img4">
+                        </li>
+                        <li>
+                            <p>それぞれの欄にユーザーネーム、Eメールアドレス、パスワードを入力したら「1. Create my account!」をクリックします</p>
+                            <img src="/image/documents/registration/5.png" class="img5">
+                        </li>
+                        <li>
+                            <p>ボットからメッセージが届いていたら成功です！</p>
+                            <img src="/image/documents/registration/6.png" class="img6">
+                        </li>
+                    </ol>
+                    <p class="conclusion">これでアカウントを作成できました！楽しんでください！</p>
+                </section>
+            </article>
+        <% } %>
     </main>
     <%- include("footer") %>
     </body>
