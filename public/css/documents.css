@@ -57,6 +57,7 @@ article {
 article h1 {
     font-family: "けいふぉんと";
     font-size: 32px;
+    padding: 0 10px;
 }
 
 section {
@@ -143,17 +144,31 @@ section {
     padding: 20px;
     text-align: center;
 }
-
-#connection .reference {
-    font-size: 14px;
-    text-align: center;
+/* ------------------------------------------------- */
+#registration ol {
+    list-style: -moz-ethiopic-numeric;
+    margin: 0 30px;
 }
 
-#connection .reference a {
+#registration p {
+    font-size: 18px;
+}
+
+#registration .reference {
+    font-size: 14px;
+}
+
+#registration .reference a {
     color: #d881a2;
 }
-#connection .reference a:hover {
+#registration .reference a:hover {
     color: #f598bb;
+}
+
+#registration .conclusion {
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
 }
 /* ------------------------------------------------- */
 @media(max-width: 1148px) {
