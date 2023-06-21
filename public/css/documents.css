@@ -363,7 +363,7 @@ section {
     text-align: center;
 }
 /* ------------------------------------------------- */
-@media(max-width: 1280px) {
+@media(max-width: 1290px) {
     main .top {
         right: 5px;
     }
@@ -381,6 +381,116 @@ section {
     .pagename {
         display: none;
     }
+
+    main .top {
+        position: relative;
+        top: 40px;
+    }
+
+    main .language a {
+        position: unset;
+        padding: 15px;
+    }
+
+    article {
+        width: 760px;
+    }
+
+    section {
+        background-color: #38362e;
+        width: 740px;
+        scroll-margin-top: 150px;
+    }
+    /* ------------------------------------------------- */
+    #about img {
+        width: 720px;
+    }
+    /* ------------------------------------------------- */
+    #connection iframe {
+        width: 720px;
+        height: 405px;
+    }
+
+    #connection .img1 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+
+    #connection .img2 {
+        width: 370px;
+    }
+
+    #connection .img3 {
+        width: 220px;
+        margin-left: 40px;
+        margin-bottom: 100px;
+    }
+
+    #connection .img4 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+
+    #connection .img5 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+
+    #connection .img6 {
+        width: 295px;
+        margin-bottom: 60px;
+    }
+
+    #connection .img7 {
+        width: 295px;
+    }
+
+    #connection .img8 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+    /* ------------------------------------------------- */
+    #registration .img1 {
+        width: 330px;
+        margin: 50px 0;
+    }
+
+    #registration .img2 {
+        width: 300px;
+        margin-top: 20px;
+    }
+
+    #registration .if {
+        padding-top: 20px;
+    }
+
+    #registration .img3 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+
+    #registration .img4 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+
+    #registration .img5 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
+
+    #registration .img6 {
+        position: relative;
+        right: 30px;
+        width: 700px;
+    }
 }
 
 @media(max-width: 767px) {
@@ -394,11 +504,6 @@ section {
 
     main .welcome-title {
         font-size: 40px;
-    }
-
-    main .top {
-        position: relative;
-        top: 30px;
     }
 
     main .subtitle {
