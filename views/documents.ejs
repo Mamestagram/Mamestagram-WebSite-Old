@@ -30,17 +30,16 @@
         <h1 class="welcome-title">Welcome to <strong>Mamestagram!</strong></h1>
         <% if (lang === "en") { %>
             <h2 class="subtitle">This is an osu private server operated by Mamestagram</h2>
+            <div class="language">
+                <a href="/documents/en#" class="en">EN</a>
+                <a href="/documents/jp#" class="jp">JP</a>
+            </div>
             <ul class="menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#rules">Rules</a></li>
                 <li><a href="#connection">How to connect</a></li>
                 <li><a href="#registration">How to register</a></li>
             </ul>
-            <a href="#" class="top">Return to top</a>
-            <div class="language">
-                <a href="/documents/en#" class="en">EN</a>
-                <a href="/documents/jp#" class="jp">JP</a>
-            </div>
             <article>
                 <section id="about">
                     <h1>About</h1>
@@ -141,7 +140,7 @@
                 <section id="connection">
                     <h1>How to connect</h1>
                     <div class="youtube">
-                        <iframe width="800" height="450" src="https://www.youtube.com/embed/CAfovJYSEvw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/CAfovJYSEvw" title="How to connect" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <ol>
                         <li>
@@ -203,19 +202,19 @@
                     <p class="conclusion">Now you have your own account! Have fun!</p>
                 </section>
             </article>
+            <a href="#" class="top">Return to top</a>
         <% } else if (lang === "jp") { %>
             <h2 class="subtitle">Mamestagramが運営するosuプライベートサーバーです</h2>
+            <div class="language">
+                <a href="/documents/en#" class="en">EN</a>
+                <a href="/documents/jp#" class="jp">JP</a>
+            </div>
             <ul class="menu">
                 <li><a href="#about">本サーバーについて</a></li>
                 <li><a href="#rules">ルール</a></li>
                 <li><a href="#connection">接続方法</a></li>
                 <li><a href="#registration">アカウント作成方法</a></li>
             </ul>
-            <a href="#" class="top">Topに戻る</a>
-            <div class="language">
-                <a href="/documents/en#" class="en">EN</a>
-                <a href="/documents/jp#" class="jp">JP</a>
-            </div>
             <article>
                 <section id="about">
                     <h1>本サーバーについて</h1>
@@ -308,7 +307,7 @@
                             <p><u>※虚偽の報告の場合は相応の処罰が課せられる場合があります。</u></p>
                         </li>
                         <li>
-                            <h3>Complaints</h3>
+                            <h3>異議申し立て</h3>
                             <p>証拠画像 / 映像と共に<a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a>のDMまでご連絡ください。</p>
                         </li>
                     </ul>
@@ -316,7 +315,7 @@
                 <section id="connection">
                     <h1>接続方法</h1>
                     <div class="youtube">
-                        <iframe width="800" height="450" src="https://www.youtube.com/embed/CAfovJYSEvw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/CAfovJYSEvw" title="How to connect" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <ol>
                         <li>
@@ -378,6 +377,7 @@
                     <p class="conclusion">これでアカウントを作成できました！楽しんでください！</p>
                 </section>
             </article>
+            <a href="#" class="top">Topに戻る</a>
         <% } %>
     </main>
     <%- include("footer") %>

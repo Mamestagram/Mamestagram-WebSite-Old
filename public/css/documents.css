@@ -77,7 +77,7 @@ main .top:hover {
 main .language a {
     position: fixed;
     color: #d9cc8b;
-    bottom: 70px;
+    bottom: 60px;
 }
 main .language a:hover {
     color: #e0d6b8;
@@ -230,6 +230,11 @@ section {
     padding: 10px 0;
 }
 
+#connection iframe {
+    width: 800px;
+    height: 450px;
+}
+
 #connection ol {
     list-style: -moz-ethiopic-numeric;
     padding: 0 30px;
@@ -238,10 +243,6 @@ section {
 #connection li {
     font-size: 18px;
     padding: 70px 20px;
-}
-
-#connection p {
-    font-size: 18px;
 }
 
 #connection .img1 {
@@ -303,7 +304,7 @@ section {
 
 #registration ol {
     list-style: -moz-ethiopic-numeric;
-    margin: 0 30px;
+    padding: 0 30px;
 }
 
 #registration li {
@@ -362,8 +363,273 @@ section {
     text-align: center;
 }
 /* ------------------------------------------------- */
+@media(max-width: 1280px) {
+    main .top {
+        right: 5px;
+    }
+
+    main .language .en {
+        left: 5px;
+    }
+
+    main .language .jp {
+        left: 65px;
+    }
+}
+
 @media(max-width: 1148px) {
     .pagename {
         display: none;
+    }
+}
+
+@media(max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
+
+    main .logoimage {
+        height: 180px;
+    }
+
+    main .welcome-title {
+        font-size: 40px;
+    }
+
+    main .top {
+        position: relative;
+        top: 30px;
+    }
+
+    main .subtitle {
+        font-size: 18px;
+        padding-top: 20px;
+        margin: 10px;
+    }
+
+    main .language a {
+        position: unset;
+        padding: 10px;
+    }
+
+    main .menu {
+        display: block;
+        width: 180px;
+        padding: 1px 5px;
+        margin: 80px auto;
+    }
+
+    main .menu li {
+        font-size: 14px;
+        padding: 10px 15px;
+        margin: 15px 5px;
+    }
+
+    article {
+        width: 370px;
+        padding: 10px 0;
+    }
+
+    article h1 {
+        font-size: 26px;
+        padding: 0 5px;
+    }
+
+    section {
+        width: 360px;
+        margin: 20px auto;
+        scroll-margin-top: 100px;
+    }
+    /* ------------------------------------------------- */
+    #about .overview {
+        padding: 10px 5px;
+    }
+
+    #about .features {
+        padding: 5px;
+    }
+
+    #about .features h2 a {
+        font-size: 12px;
+    }
+
+    #about li {
+        padding: 10px 0;
+    }
+
+    #about h2 {
+        font-size: 18px;
+    }
+
+    #about h3 {
+        font-size: 14px;
+        padding-bottom: 5px;
+    }
+
+    #about p {
+        font-size: 12px;
+    }
+
+    #about img {
+        width: 350px;
+        margin-top: 5px;
+    }
+
+    #about h4 {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    #about .others {
+        font-size: 14px;
+        padding: 0;
+    }
+    /* ------------------------------------------------- */
+    #rules ul {
+        padding: 5px;
+    }
+
+    #rules li {
+        padding: 10px 0;
+    }
+
+    #rules li h2 {
+        font-size: 18px;
+    }
+
+    #rules li h3 {
+        font-size: 14px;
+        padding-bottom: 5px;
+    }
+
+    #rules li p {
+        font-size: 12px;
+    }
+    /* ------------------------------------------------- */
+    #connection iframe {
+        width: 350px;
+        height: 197px;
+    }
+
+    #connection ol {
+        list-style: -moz-ethiopic-numeric;
+        padding: 0 0 0 25px;
+    }
+
+    #connection li {
+        font-size: 16px;
+        padding: 30px 0;
+    }
+
+    #connection img {
+        position: relative;
+        right: 15px;
+    }
+
+    #connection .img1 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #connection .img2 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #connection .img3 {
+        width: 340px;
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+
+    #connection .img4 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #connection .img5 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #connection .img6 {
+        width: 340px;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+
+    #connection .img7 {
+        width: 340px;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    #connection .img8 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #connection .conclusion {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+    /* ------------------------------------------------- */
+    #registration ol {
+        padding: 0 0 0 25px;
+    }
+
+    #registration li {
+        font-size: 16px;
+        padding: 40px 0;
+    }
+
+    #registration .reference {
+        font-size: 12px;
+    }
+    #registration img {
+        position: relative;
+        right: 15px;
+    }
+
+    #registration .img1 {
+        width: 340px;
+        margin: 10px 0 0 0;
+    }
+
+    #registration .img2 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #registration .if {
+        position: relative;
+        right: 20px;
+        padding-top: 10px;
+    }
+
+    #registration .img3 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #registration .img4 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #registration .img5 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #registration .img6 {
+        width: 340px;
+        margin-top: 10px;
+    }
+
+    #registration .conclusion {
+        font-size: 18px;
+        padding: 0;
     }
 }
