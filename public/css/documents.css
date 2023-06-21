@@ -151,16 +151,24 @@ section {
     padding-bottom: 10px;
 }
 
-#about h3 a, #about p a, #about h4 a {
+#about h3 a, #about h4 a {
     background-color: #3c4270;
     color: #c0cde9;
     padding: 0 3px;
     border-radius: 5px;
 }
-#about h3 a:hover, #about p a:hover, #about h4 a:hover {
+#about h3 a:hover, #about h4 a:hover {
     background-color: #5865f2;
     color: #f4fffe;
     text-decoration: underline;
+}
+
+#about p a {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+#about p a:hover {
+    opacity: 1;
 }
 
 #about p {
@@ -411,8 +419,11 @@ section {
         height: 405px;
     }
 
-    #connection .img1 {
+    #connection img {
         position: relative;
+    }
+
+    #connection .img1 {
         right: 30px;
         width: 700px;
     }
@@ -428,13 +439,11 @@ section {
     }
 
     #connection .img4 {
-        position: relative;
         right: 30px;
         width: 700px;
     }
 
     #connection .img5 {
-        position: relative;
         right: 30px;
         width: 700px;
     }
@@ -449,11 +458,14 @@ section {
     }
 
     #connection .img8 {
-        position: relative;
         right: 30px;
         width: 700px;
     }
     /* ------------------------------------------------- */
+    #registration img {
+        position: relative;
+    }
+
     #registration .img1 {
         width: 330px;
         margin: 50px 0;
@@ -627,11 +639,11 @@ section {
     }
 
     #connection img {
-        position: relative;
         right: 15px;
     }
 
     #connection .img1 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
@@ -649,11 +661,13 @@ section {
     }
 
     #connection .img4 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
 
     #connection .img5 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
@@ -671,6 +685,7 @@ section {
     }
 
     #connection .img8 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
@@ -693,7 +708,6 @@ section {
         font-size: 12px;
     }
     #registration img {
-        position: relative;
         right: 15px;
     }
 
@@ -714,21 +728,25 @@ section {
     }
 
     #registration .img3 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
 
     #registration .img4 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
 
     #registration .img5 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
 
     #registration .img6 {
+        right: 15px;
         width: 340px;
         margin-top: 10px;
     }
