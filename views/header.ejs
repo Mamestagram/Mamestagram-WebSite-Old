@@ -2,7 +2,7 @@
     <a href="/home"><img src="/image/logo.png" class="logo"></a>
     <h1 class="title"><%= pageTitle %></h1>
     <ul class="menu">
-        <li class="home"><a href="/home"><div class="home-text">Home</div></a></li>
+        <li class="beatmaps"><a href="/beatmaps/custom/mode=any/filter=none"><div class="beatmaps-text">Beatmaps</div></a></li>
         <li class="leaderboard"><a href="/leaderboard/mode=std/special=none"><div class = "leaderboard-text">Leaderboard</div></a></li>
         <li class="community"><a href="/community" target="_blank" rel="noopener noreferrer"><div class = "community-text">Community</div></a></li>
         <li class="documents"><a href="/documents/en#"><div class="documents-text">Documents</div></a></li>
@@ -11,6 +11,9 @@
         <% } else { %>
             <li class="login">
                 <button class="login-text"><a href="/login">Sign in</a></button>
+            </li>
+            <li class="register">
+                <button class="register-text"><a href="/register">Register</a></button>
             </li>
         <% } %>
     </ul>
@@ -26,7 +29,7 @@
                 <a href="/login"><button class="login-text">Sign in</button></a>
             </li>
         <% } %>
-        <li class="home"><span class="border"></span><a href="/home"><div class="home-text">Home</div></a></li>
+        <li class="beatmaps"><span class="border"></span><a href="/beatmaps/custom/mode=any/filter=none"><div class="beatmaps-text">Beatmaps</div></a></li>
         <li class="leaderboard"><span class="border"></span><a href="/leaderboard/mode=std/special=none"><div class="leaderboard-text">Leaderboard</div></a></li>
         <li class="community"><span class="border"></span><a href="/community" target="_blank" rel="noopener noreferrer"><div class="community-text">Community</div></a></li>
         <li class="documents"><span class="border"></span><a href="/documents/en#"><div class="documents-text">Documents</div></a></li>

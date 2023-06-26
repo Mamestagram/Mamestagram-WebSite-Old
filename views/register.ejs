@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Sign in</title>
+    <%- include("link") %>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/hf-bg/login.css">
+</head>
+<body>
+<%- include("header") %>
+<main>
+    <div class="register-form">
+        <form action="/register" method="post">
+            <h1 class="title">Sign in</h1>
+            <div class="username">
+                <span class="username-title">Username</span>
+                <input type="text" name="username">
+            </div>
+            <div class="email">
+                <span class="email-title">Email Address</span>
+                <input type="text" name="email">
+            </div>
+            <div class="password">
+                <span class="password-title">Password</span>
+                <input type="password" name="password">
+            </div>
+            <button><input type="submit" value="Sign in"></button>
+        </form>
+    </div>
+</main>
+<%- include("footer") %>
+</body>
+</html>
