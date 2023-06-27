@@ -19,7 +19,7 @@
                     <% } else if (err === "notfound") { %>
                         <span class="errmsg">User not found</span>
                     <% } %>
-                    <input type="text" name="username">
+                    <input type="text" name="username" value="<%= untxt %>">
                 </div>
                 <div class="password">
                     <span class="password-title">Password</span>
@@ -28,7 +28,7 @@
                     <% } else if (err === "wrongpass") { %>
                         <span class="errmsg">Password is incorrect</span>
                     <% } %>
-                    <input type="password" name="password">
+                    <input type="password" name="password" value="<%= pstxt %>">
                 </div>
                 <p>Don't you have an account? <a href="/register">Register</a></p>
                 <button><input type="submit" value="Sign in"></button>

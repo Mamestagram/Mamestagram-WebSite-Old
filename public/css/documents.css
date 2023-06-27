@@ -34,7 +34,7 @@ main .subtitle {
 main .menu {
     display: flex;
     background-color: #2a2822;
-    width: 650px;
+    width: 440px;
     margin: 100px auto;
     justify-content: center;
     border-radius: 10px;
@@ -287,71 +287,6 @@ section {
     text-align: center;
 }
 /* ------------------------------------------------- */
-#registration {
-    margin: 10px auto 0 auto;
-}
-
-#registration ol {
-    list-style: decimal;
-    padding: 0 30px;
-}
-
-#registration li {
-    font-size: 18px;
-    padding: 70px 20px;
-}
-
-#registration .reference {
-    font-size: 14px;
-}
-
-#registration .reference a {
-    color: #d881a2;
-}
-#registration .reference a:hover {
-    color: #f598bb;
-}
-
-#registration .img1 {
-    width: 440px;
-    margin: 75px 0;
-}
-
-#registration .img2 {
-    width: 400px;
-    margin-top: 20px;
-}
-
-#registration .if {
-    padding-top: 20px;
-}
-
-#registration .img3 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .img4 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .img5 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .img6 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .conclusion {
-    font-size: 24px;
-    padding: 20px;
-    text-align: center;
-}
-/* ------------------------------------------------- */
 @media(max-width: 1290px) {
     main .top {
         right: 5px;
@@ -435,44 +370,6 @@ section {
     }
 
     #connection .img8 {
-        right: 30px;
-        width: 700px;
-    }
-    /* ------------------------------------------------- */
-    #registration img {
-        position: relative;
-    }
-
-    #registration .img1 {
-        width: 330px;
-        margin: 50px 0;
-    }
-
-    #registration .img2 {
-        width: 300px;
-        margin-top: 20px;
-    }
-
-    #registration .if {
-        padding-top: 20px;
-    }
-
-    #registration .img3 {
-        right: 30px;
-        width: 700px;
-    }
-
-    #registration .img4 {
-        right: 30px;
-        width: 700px;
-    }
-
-    #registration .img5 {
-        right: 30px;
-        width: 700px;
-    }
-
-    #registration .img6 {
         right: 30px;
         width: 700px;
     }
@@ -661,62 +558,5 @@ section {
     #connection .conclusion {
         font-size: 18px;
         padding: 10px 0;
-    }
-    /* ------------------------------------------------- */
-    #registration li {
-        font-size: 16px;
-        padding: 40px 0;
-    }
-
-    #registration .reference {
-        font-size: 12px;
-    }
-    #registration img {
-        right: 20px;
-    }
-
-    #registration .img1 {
-        width: 340px;
-        margin: 10px 0 0 0;
-    }
-
-    #registration .img2 {
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .if {
-        position: relative;
-        right: 20px;
-        padding-top: 10px;
-    }
-
-    #registration .img3 {
-        right: 20px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .img4 {
-        right: 20px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .img5 {
-        right: 20px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .img6 {
-        right: 20px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .conclusion {
-        font-size: 18px;
-        padding: 5px;
     }
 }
