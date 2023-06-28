@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>Sign in</title>
+    <title>Register</title>
     <%- include("link") %>
     <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="/css/hf-bg/register.css">
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfbaNQmAAAAAO6k4_DN_Be9PWKXvnvbYrjOnpV7"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcsItomAAAAABWqvEVs5hnMIcT3eWSjMfbgrsAo"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <%- include("header") %>
 <main>
     <div class="register-form">
-        <form action="/register" method="post">
+        <form action="/register" id="register" method="post">
             <h1 class="title">Register</h1>
             <div class="username">
                 <span class="username-title">Username</span>
@@ -58,18 +59,23 @@
                 <input type="password" name="confirmpass">
             </div>
             <p class="reference">Already have an account? <a href="/login">Sign in</a></p>
-            <button><input type="submit" value="Register"></button>
+            <input type="hidden" id="post" name="recaptcha" value="default">
+            <% if (err === "nothuman") { %>
+                <span class="errmsg verify">A problem has occurred</span>
+            <% } %>
+            <button class="g-recaptcha"
+            data-sitekey="6LcsItomAAAAABWqvEVs5hnMIcT3eWSjMfbgrsAo"
+            data-callback="onSubmit"
+            data-action="submit">Register</button>
         </form>
+        <script>
+            function onSubmit(token) {
+                document.getElementById("post").value = token;
+                document.getElementById("register").submit();
+            }
+        </script>
     </div>
 </main>
 <%- include("footer") %>
-<script>
-    function onClick(e) {
-        e.preventDefault();
-        grecaptcha.enterprise.ready(async () => {
-            const token = await grecaptcha.enterprise.execute('6LfbaNQmAAAAAO6k4_DN_Be9PWKXvnvbYrjOnpV7', {action: 'LOGIN'});
-        });
-    }
-</script>
 </body>
 </html>

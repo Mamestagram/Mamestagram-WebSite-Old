@@ -28,7 +28,7 @@ main {
 
 .username, .email, .password, .confirm {
     font-family: "Tilt Warp";
-    padding: 20px 40px;
+    padding: 10px 40px;
 }
 
 .username span, .email span, .password span, .confirm span {
@@ -40,6 +40,14 @@ main {
 .register-form .errmsg {
     color: red;
     font-size: 14px;
+}
+
+.register-form .verify {
+    display: flex;
+    font-family: "Righteous";
+    font-size: 16px;
+    padding-top: 20px;
+    justify-content: center;
 }
 
 .username input, .email input, .password input, .confirm input {
