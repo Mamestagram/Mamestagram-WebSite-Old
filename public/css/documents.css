@@ -34,7 +34,7 @@ main .subtitle {
 main .menu {
     display: flex;
     background-color: #2a2822;
-    width: 440px;
+    width: 640px;
     margin: 100px auto;
     justify-content: center;
     border-radius: 10px;
@@ -287,6 +287,42 @@ section {
     text-align: center;
 }
 /* ------------------------------------------------- */
+#registration {
+    margin: 10px auto 0 auto;
+}
+
+#registration ol {
+    list-style-type: decimal;
+    padding: 0 30px;
+}
+
+#registration li {
+    font-size: 18px;
+    padding: 70px 20px;
+}
+
+#registration .img1 {
+    width: 680px;
+    margin-top: 20px;
+}
+
+#registration .img2 {
+    width: 150px;
+    margin-left: 15px;
+    margin-bottom: 150px;
+}
+
+#registration .img3 {
+    width: 850px;
+    margin-top: 20px;
+}
+
+#registration .conclusion {
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+}
+/* ------------------------------------------------- */
 @media(max-width: 1290px) {
     main .top {
         right: 5px;
@@ -370,6 +406,26 @@ section {
     }
 
     #connection .img8 {
+        right: 30px;
+        width: 700px;
+    }
+    /* ------------------------------------------------- */
+    #registration img {
+        position: relative;
+    }
+
+    #registration .img1 {
+        right: 10px;
+        width: 500px;
+    }
+
+    #registration .img2 {
+        width: 120px;
+        margin-left: 0;
+        margin-bottom: 110px;
+    }
+
+    #registration .img3 {
         right: 30px;
         width: 700px;
     }
@@ -504,58 +560,88 @@ section {
     }
 
     #connection img {
-        right: 20px;
+        right: 15px;
     }
 
     #connection .img1 {
-        right: 20px;
-        width: 340px;
+        right: 15px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img2 {
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img3 {
-        width: 340px;
+        width: 330px;
         margin-left: 0;
         margin-bottom: 0;
         margin-top: 10px;
     }
 
     #connection .img4 {
-        right: 20px;
-        width: 340px;
+        right: 15px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img5 {
-        right: 20px;
-        width: 340px;
+        right: 15px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img6 {
-        width: 340px;
+        width: 330px;
         margin-bottom: 0;
         margin-top: 10px;
     }
 
     #connection .img7 {
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
         margin-left: 0;
     }
 
     #connection .img8 {
-        right: 20px;
-        width: 340px;
+        right: 15px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .conclusion {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+    /* ------------------------------------------------- */
+    #registration li {
+        font-size: 16px;
+        padding: 30px 0;
+    }
+
+    #registration .img1 {
+        right: 15px;
+        width: 330px;
+        margin-top: 10px;
+    }
+
+    #registration .img2 {
+        right: 15px;
+        width: 100px;
+        margin-top: 10px;
+        margin-left: 115px;
+        margin-bottom: 0;
+    }
+
+    #registration .img3 {
+        right: 15px;
+        width: 330px;
+        margin-top: 10px;
+    }
+
+    #registration .conclusion {
         font-size: 18px;
         padding: 10px 0;
     }
