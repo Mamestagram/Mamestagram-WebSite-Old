@@ -314,20 +314,20 @@
                     <div class="pagearrow">
                         <% let page = Number(bppage); %>
                         <% if (page === 1) { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= page - 1 %>&mostplays=<%= mppage %>&recentplays=<%= rspage %>#bestpp">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page - 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= page - 1 %>&mostplays=<%= mppage %>&recentplays=<%= rspage %>#bestpp">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page - 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
                         <% if (page === 10 || bestppRecCount(page + 1, bestpp) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= page + 1 %>&mostplays=<%= mppage %>&recentplays=<%= rspage %>#bestpp">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page + 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= page + 1 %>&mostplays=<%= mppage %>&recentplays=<%= rspage %>#bestpp">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page + 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
@@ -420,20 +420,20 @@
                         <% page = Number(mppage); %>
                         <% let amount = 10; %>
                         <% if (page === 1) { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= page - 1 %>&recentplays=<%= rspage %>#mostplays">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page - 1 %>&<%= rspage %>#mostplays">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= page - 1 %>&recentplays=<%= rspage %>#mostplays">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page - 1 %>&%= rspage %>#mostplays">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
                         <% if (playsRecCount(page + 1, mostplays, amount) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= page + 1 %>&recentplays=<%= rspage %>#mostplays">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page + 1 %>&<%= rspage %>#mostplays">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= page + 1 %>&recentplays=<%= rspage %>#mostplays">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page + 1 %>&<%= rspage %>#mostplays">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
@@ -501,20 +501,20 @@
                         <% page = Number(rspage); %>
                         <% amount = 7; %>
                         <% if (page === 1) { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= mppage %>&recentplays=<%= page - 1 %>#recentplays">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page - 1 %>#recentplays">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= mppage %>&recentplays=<%= page - 1 %>#recentplays">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/%= bppage %>&<%= mppage %>&<%= page - 1 %>#recentplays">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
                         <% if (playsRecCount(page + 1, recentplays, amount) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= mppage %>&recentplays=<%= page + 1 %>#recentplays">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/%= bppage %>&<%= mppage %>&<%= page + 1 %>#recentplays">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/bestpp=<%= bppage %>&mostplays=<%= mppage %>&recentplays=<%= page + 1 %>#recentplays">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page + 1 %>#recentplays">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
