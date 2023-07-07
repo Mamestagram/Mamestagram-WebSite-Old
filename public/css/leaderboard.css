@@ -10,7 +10,7 @@
 }
 
 main {
-    font-family: "SecularOne";
+    font-family: "SecularOne", "MochiyPopOne";
     background-color: #171c17;
     min-height: 100vh;
     height: 100%;
