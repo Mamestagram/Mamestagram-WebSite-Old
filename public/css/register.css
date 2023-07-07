@@ -1,0 +1,150 @@
+main {
+    background-color: #1c1917;
+    min-height: 100vh;
+    height: 100%;
+    padding-top: 70px;
+    padding-bottom: 150px;
+}
+
+.register-form {
+    background-color: #333333;
+    font-size: 18px;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+    z-index: 90;
+}
+
+.register-form .title {
+    background-color: #ac6039;
+    font-family: "Righteous";
+    color: #fdfdfd;
+    font-size: 28px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    padding: 20px 200px;
+}
+
+.username, .email, .password, .confirm {
+    font-family: "Tilt Warp";
+    padding: 10px 40px;
+}
+
+.username span, .email span, .password span, .confirm span {
+    display: flex;
+    color: #fdfdfd;
+    padding: 10px 0;
+}
+
+.register-form .errmsg {
+    color: red;
+    font-size: 14px;
+}
+
+.register-form .verify {
+    display: flex;
+    font-family: "Righteous";
+    font-size: 16px;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+.username input, .email input, .password input, .confirm input {
+    background-color: #222222;
+    caret-color: #fdfdfd;
+    color: #8b8b8b;
+    font-size: 16px;
+    width: 410px;
+    padding: 12px 30px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.register-form .caution {
+    font-family: "Righteous";
+    color: #fdfdfd;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+.register-form .reference {
+    font-family: "Righteous";
+    color: #fdfdfd;
+    font-size: 16px;
+    padding: 0 40px;
+}
+
+.register-form p a {
+    color: #d881a2;
+}
+.register-form p a:hover {
+    color: #f598bb;
+}
+
+.register-form button {
+    background-color: #ac6039;
+    font-family: "Tilt Warp";
+    color: #fdfdfd;
+    width: 90px;
+    padding: 8px 0;
+    margin: 30px 210px;
+    transition: 100ms;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+.register-form button:hover {
+    background-color: #ff9966;
+}
+
+@media(max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
+
+    main {
+        padding-top: 40px;
+    }
+
+    .register-form {
+        font-size: 16px;
+        width: 340px;
+    }
+
+    .register-form .title {
+        font-size: 26px;
+        padding: 20px 125px;
+    }
+
+    .username, .email, .password, .confirm {
+        padding: 10px 20px;
+    }
+
+    .register-form .errmsg {
+        font-size: 14px;
+    }
+
+    .username input, .email input, .password input, .confirm input {
+        font-size: 14px;
+        width: 295px;
+        padding: 10px 20px;
+    }
+
+    .register-form .caution {
+        font-size: 12px;
+    }
+
+    .register-form p {
+        font-family: "Righteous";
+        color: #fdfdfd;
+        font-size: 14px;
+        padding: 0 20px;
+    }
+
+    .register-form button {
+        margin: 30px 125px;
+    }
+}

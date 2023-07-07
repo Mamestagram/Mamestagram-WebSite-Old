@@ -2,17 +2,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.pagename {
-    position: absolute;
-    top: 170px;
-    left: 230px;
-    color: #fdfdfd;
-    font-family: "Caveat";
-    font-size: 68px;
-    font-weight: bold;
-    text-shadow: 5px 5px 5px black;
-}
-
 main {
     background-color: #1c1b17;
     color: #fdfdfd;
@@ -45,7 +34,7 @@ main .subtitle {
 main .menu {
     display: flex;
     background-color: #2a2822;
-    width: 650px;
+    width: 640px;
     margin: 100px auto;
     justify-content: center;
     border-radius: 10px;
@@ -151,24 +140,16 @@ section {
     padding-bottom: 10px;
 }
 
-#about h3 a, #about h4 a {
+#about h3 a, #about p a, #about h4 a {
     background-color: #3c4270;
     color: #c0cde9;
     padding: 0 3px;
     border-radius: 5px;
 }
-#about h3 a:hover, #about h4 a:hover {
+#about h3 a:hover, #about p a:hover, #about h4 a:hover {
     background-color: #5865f2;
     color: #f4fffe;
     text-decoration: underline;
-}
-
-#about p a {
-    text-decoration: underline;
-    opacity: 0.85;
-}
-#about p a:hover {
-    opacity: 1;
 }
 
 #about p {
@@ -244,7 +225,7 @@ section {
 }
 
 #connection ol {
-    list-style: -moz-ethiopic-numeric;
+    list-style-type: decimal;
     padding: 0 30px;
 }
 
@@ -311,7 +292,7 @@ section {
 }
 
 #registration ol {
-    list-style: -moz-ethiopic-numeric;
+    list-style-type: decimal;
     padding: 0 30px;
 }
 
@@ -320,47 +301,18 @@ section {
     padding: 70px 20px;
 }
 
-#registration .reference {
-    font-size: 14px;
-}
-
-#registration .reference a {
-    color: #d881a2;
-}
-#registration .reference a:hover {
-    color: #f598bb;
-}
-
 #registration .img1 {
-    width: 440px;
-    margin: 75px 0;
+    width: 680px;
+    margin-top: 20px;
 }
 
 #registration .img2 {
-    width: 400px;
-    margin-top: 20px;
-}
-
-#registration .if {
-    padding-top: 20px;
+    width: 150px;
+    margin-left: 15px;
+    margin-bottom: 150px;
 }
 
 #registration .img3 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .img4 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .img5 {
-    width: 850px;
-    margin-top: 20px;
-}
-
-#registration .img6 {
     width: 850px;
     margin-top: 20px;
 }
@@ -385,11 +337,7 @@ section {
     }
 }
 
-@media(max-width: 1148px) {
-    .pagename {
-        display: none;
-    }
-
+@media(max-width: 1224px) {
     main .top {
         position: relative;
         top: 40px;
@@ -467,35 +415,17 @@ section {
     }
 
     #registration .img1 {
-        width: 330px;
-        margin: 50px 0;
+        right: 10px;
+        width: 500px;
     }
 
     #registration .img2 {
-        width: 300px;
-        margin-top: 20px;
-    }
-
-    #registration .if {
-        padding-top: 20px;
+        width: 120px;
+        margin-left: 0;
+        margin-bottom: 110px;
     }
 
     #registration .img3 {
-        right: 30px;
-        width: 700px;
-    }
-
-    #registration .img4 {
-        right: 30px;
-        width: 700px;
-    }
-
-    #registration .img5 {
-        right: 30px;
-        width: 700px;
-    }
-
-    #registration .img6 {
         right: 30px;
         width: 700px;
     }
@@ -579,7 +509,7 @@ section {
         padding-bottom: 5px;
     }
 
-    #about p {
+    #about p a {
         font-size: 12px;
     }
 
@@ -624,10 +554,6 @@ section {
         height: 197px;
     }
 
-    #connection ol {
-        padding: 0 0 0 25px;
-    }
-
     #connection li {
         font-size: 16px;
         padding: 30px 0;
@@ -639,17 +565,17 @@ section {
 
     #connection .img1 {
         right: 15px;
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img2 {
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img3 {
-        width: 340px;
+        width: 330px;
         margin-left: 0;
         margin-bottom: 0;
         margin-top: 10px;
@@ -657,31 +583,31 @@ section {
 
     #connection .img4 {
         right: 15px;
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img5 {
         right: 15px;
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #connection .img6 {
-        width: 340px;
+        width: 330px;
         margin-bottom: 0;
         margin-top: 10px;
     }
 
     #connection .img7 {
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
         margin-left: 0;
     }
 
     #connection .img8 {
         right: 15px;
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
@@ -690,64 +616,33 @@ section {
         padding: 10px 0;
     }
     /* ------------------------------------------------- */
-    #registration ol {
-        padding: 0 0 0 25px;
-    }
-
     #registration li {
         font-size: 16px;
-        padding: 40px 0;
-    }
-
-    #registration .reference {
-        font-size: 12px;
-    }
-    #registration img {
-        right: 15px;
+        padding: 30px 0;
     }
 
     #registration .img1 {
-        width: 340px;
-        margin: 10px 0 0 0;
-    }
-
-    #registration .img2 {
-        width: 340px;
+        right: 15px;
+        width: 330px;
         margin-top: 10px;
     }
 
-    #registration .if {
-        position: relative;
-        right: 20px;
-        padding-top: 10px;
+    #registration .img2 {
+        right: 15px;
+        width: 100px;
+        margin-top: 10px;
+        margin-left: 115px;
+        margin-bottom: 0;
     }
 
     #registration .img3 {
         right: 15px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .img4 {
-        right: 15px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .img5 {
-        right: 15px;
-        width: 340px;
-        margin-top: 10px;
-    }
-
-    #registration .img6 {
-        right: 15px;
-        width: 340px;
+        width: 330px;
         margin-top: 10px;
     }
 
     #registration .conclusion {
         font-size: 18px;
-        padding: 5px;
+        padding: 10px 0;
     }
 }

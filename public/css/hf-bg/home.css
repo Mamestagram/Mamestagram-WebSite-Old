@@ -1,13 +1,16 @@
+body::-webkit-scrollbar-track {
+    background-color: #fdfdfd;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #2e293d;
+}
+
 .standard {
     background-color: #5639ac;
 }
 
 .standard .menu div:hover, .standard .menu button:hover {
     background-color: #8c66ff;
-}
-
-.standard .home-text {
-    border-bottom: 3px solid #8c66ff;
 }
 
 .mobile {

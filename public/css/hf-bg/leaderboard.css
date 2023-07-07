@@ -1,3 +1,10 @@
+body::-webkit-scrollbar-track {
+    background-color: #fdfdfd;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #2b3d29;
+}
+
 .standard {
     background-color: #43ac39;
 }

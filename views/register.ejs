@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Register</title>
+    <%- include("link") %>
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/hf-bg/register.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcsItomAAAAABWqvEVs5hnMIcT3eWSjMfbgrsAo"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+<%- include("header") %>
+<main>
+    <div class="register-form">
+        <form action="/register" id="register" method="post">
+            <h1 class="title">Register</h1>
+            <div class="username">
+                <span class="username-title">Username</span>
+                <p class="caution">(within 20 Characters)</p>
+                <% if (err.includes("empname")) { %>
+                    <span class="errmsg">Enter your username</span>
+                <% } else if (err.includes("overname")) { %>
+                    <span class="errmsg">Keep it within 20 characters</span>
+                <% } else if (err.includes("dupname")) { %>
+                    <span class="errmsg">This name is already in use</span>
+                <% } %>
+                <input type="text" name="username" value="<%= untxt %>">
+            </div>
+            <div class="email">
+                <span class="email-title">Email Address</span>
+                <% if (err.includes("empemail")) { %>
+                    <span class="errmsg">Enter your email</span>
+                <% } else if (err.includes("notemail")) { %>
+                    <span class="errmsg">This is not an email format</span>
+                <% } else if (err.includes("dupemail")) { %>
+                    <span class="errmsg">This email is already in use</span>
+                <% } %>
+                <input type="text" name="email" value="<%= emtxt %>">
+            </div>
+            <div class="password">
+                <span class="password-title">Password</span>
+                <p class="caution">(at least 8 characters, including alphabets and numbers)</p>
+                <% if (err.includes("emppass")) { %>
+                    <span class="errmsg">Enter your password</span>
+                <% } else if (err.includes("shortpass")) { %>
+                    <span class="errmsg">Must be at least 8 characters</span>
+                <% } else if (err.includes("weakpass")) { %>
+                    <span class="errmsg">Include alphabets and numbers</span>
+                <% } %>
+                <input type="password" name="password" value="<%= pstxt %>">
+            </div>
+            <div class="confirm">
+                <span class="confirm-title">Confirm password</span>
+                <% if (err.includes("empconf")) { %>
+                    <span class="errmsg">Enter your password</span>
+                <% } else if (err.includes("wrongconf")) { %>
+                    <span class="errmsg">Failure to confirm</span>
+                <% } %>
+                <input type="password" name="confirmpass">
+            </div>
+            <p class="reference">Already have an account? <a href="/login">Sign in</a></p>
+            <input type="hidden" id="post" name="recaptcha" value="default">
+            <% if (err === "nothuman") { %>
+                <span class="errmsg verify">A problem has occurred</span>
+            <% } %>
+            <button class="g-recaptcha"
+            data-sitekey="6LcsItomAAAAABWqvEVs5hnMIcT3eWSjMfbgrsAo"
+            data-callback="onSubmit"
+            data-action="submit">Register</button>
+        </form>
+        <script>
+            function onSubmit(token) {
+                document.getElementById("post").value = token;
+                document.getElementById("register").submit();
+            }
+        </script>
+    </div>
+</main>
+<%- include("footer") %>
+</body>
+</html>

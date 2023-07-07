@@ -38,7 +38,10 @@ body {
     -ms-overflow-style: none;
 }
 body::-webkit-scrollbar {
-    display: none;
+    width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 4px;
 }
 
 /**

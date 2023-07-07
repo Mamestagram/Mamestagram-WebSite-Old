@@ -43,7 +43,7 @@
     transition: 500ms all;
 }
 
-.standard .home {
+.standard .beatmaps {
     margin-left: 10px;
     float: left;
 }
@@ -58,6 +58,10 @@
 
 .standard .documents {
     float: left;
+}
+
+.standard .register {
+    float: right;
 }
 
 .standard .login, .standard .playername {
@@ -76,7 +80,7 @@
     width: 50px;
     margin: 5px;
     text-align: center;
-    line-height: 50px ;
+    line-height: 50px;
 }
 /* ------------------------------------------------- */
 .link-form {
@@ -110,7 +114,22 @@
     filter: blur(2px);
 }
 
-@media (max-width: 1148px) {
+.pagename {
+    position: absolute;
+    top: 170px;
+    left: 230px;
+    color: #fdfdfd;
+    font-family: "Caveat";
+    font-size: 68px;
+    font-weight: bold;
+    text-shadow: 5px 5px 5px black;
+}
+
+@media (max-width: 1224px) {
+    .pagename {
+        display: none;
+    }
+
     .standard {
         height: 60px;
     }

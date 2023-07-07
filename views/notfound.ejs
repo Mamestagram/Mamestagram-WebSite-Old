@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>User not found</title>
+        <%- include("link") %>
+        <link rel="stylesheet" href="/css/hf-bg/profile.css">
+        <style>
+            main {
+                background-color: #1c1719;
+                color: #fdfdfd;
+                font-family: "Righteous";
+                height: 100%;
+                min-height: 100vh;
+                text-align: center;
+            }
+
+            main h1 {
+                font-size: 40px;
+                padding-top: 150px;
+            }
+
+            main h2 {
+                font-size: 20px;
+                padding: 20px;
+            }
+
+            main h2 a {
+                opacity: 0.5;
+            }
+            main h2 a:hover {
+                opacity: 1;
+                text-decoration: underline;
+            }
+
+            @media (max-width: 1224px) {
+                main h1 {
+                    font-size: 20px;
+                }
+
+                main h2 {
+                    font-size: 14px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <%- include("header") %>
+        <main>
+            <h1>Error : User not found :(</h1>
+            <h2>Back to <a href="/leaderboard/mode=std/special=none">Leaderboard</a></h2>
+        </main>
+        <%- include("footer") %>
+    </body>
+</html>
