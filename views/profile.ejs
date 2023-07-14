@@ -223,7 +223,7 @@
                 <div class="ranking">
                     <div class="global-ranking">
                         <span class="title">Global Ranking</span><br>
-                        <% if (info.acc === 0) { %>
+                        <% if (info.acc === 0 || info.priv === 2) { %>
                             <span class="value">-</span>
                         <% } else { %>
                             <span class="value">#<%= info.GRanking.toLocaleString() %></span>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="country-ranking">
                         <span class="title">Country Ranking</span><br>
-                        <% if (info.acc === 0) { %>
+                        <% if (info.acc === 0 || info.priv === 2) { %>
                             <span class="value">-</span>
                         <% } else { %>
                             <span class="value">#<%= info.CRanking.toLocaleString() %></span>
