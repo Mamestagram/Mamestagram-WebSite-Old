@@ -171,20 +171,20 @@
             <div class="selection">
                 <ul class="special">
                     <li class="classic">
-                        <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=none/bestpp=1&mostplays=1&recentplays=1">
+                        <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=none/1&1&1">
                             Classic
                         </a>
                     </li>
                     <% if (mode !== "mania") { %>
                         <li class="relax">
-                            <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=rx/bestpp=1&mostplays=1&recentplays=1">
+                            <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=rx/1&1&1">
                                 Relax
                             </a>
                         </li>
                     <% } %>
                     <% if (mode === "std") { %>
                         <li class="auto-pilot">
-                            <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=ap/bestpp=1&mostplays=1&recentplays=1">
+                            <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=ap/1&1&1">
                                 Auto Pilot
                             </a>
                         </li>
@@ -192,25 +192,25 @@
                 </ul>
                 <ul class="mode">
                     <li class="std-icon">
-                        <a href="/profile/id=<%= id %>/mode=std/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                        <a href="/profile/id=<%= id %>/mode=std/special=<%= sp %>/1&1&1">
                             <img src="/image/mode/osu.png">
                         </a>
                     </li>
                     <% if (sp !== "ap") { %>
                         <li class="taiko-icon">
-                            <a href="/profile/id=<%= id %>/mode=taiko/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                            <a href="/profile/id=<%= id %>/mode=taiko/special=<%= sp %>/1&1&1">
                                 <img src="/image/mode/taiko.png">
                             </a>
                         </li>
                         <li class="catch-icon">
-                            <a href="/profile/id=<%= id %>/mode=ctb/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                            <a href="/profile/id=<%= id %>/mode=ctb/special=<%= sp %>/1&1&1">
                                 <img src="/image/mode/fruits.png">
                             </a>
                         </li>
                     <% } %>
                     <% if (sp === "none") { %>
                         <li class="mania-icon">
-                            <a href="/profile/id=<%= id %>/mode=mania/special=<%= sp %>/bestpp=1&mostplays=1&recentplays=1">
+                            <a href="/profile/id=<%= id %>/mode=mania/special=<%= sp %>/1&1&1">
                                 <img src="/image/mode/mania.png">
                             </a>
                         </li>
@@ -223,7 +223,7 @@
                 <div class="ranking">
                     <div class="global-ranking">
                         <span class="title">Global Ranking</span><br>
-                        <% if (info.acc === 0) { %>
+                        <% if (info.acc === 0 || info.priv === 2) { %>
                             <span class="value">-</span>
                         <% } else { %>
                             <span class="value">#<%= info.GRanking.toLocaleString() %></span>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="country-ranking">
                         <span class="title">Country Ranking</span><br>
-                        <% if (info.acc === 0) { %>
+                        <% if (info.acc === 0 || info.priv === 2) { %>
                             <span class="value">-</span>
                         <% } else { %>
                             <span class="value">#<%= info.CRanking.toLocaleString() %></span>
