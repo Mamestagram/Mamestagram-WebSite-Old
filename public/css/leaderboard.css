@@ -113,7 +113,7 @@ main {
 .ranking-data {
     display: flex;
     background-color: #2f382e;
-    border-radius: 25px;
+    border-radius: 12px;
     line-height: 34px;
     padding: 7px 0;
     margin: 5px 0;
