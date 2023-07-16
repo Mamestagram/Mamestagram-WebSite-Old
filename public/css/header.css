@@ -168,7 +168,8 @@
         color: #fdfdfd;
     }
 
-    .mobile .menu .login button, .mobile .menu .playername button {
+    .mobile .menu .login button, .mobile .menu .register button, .mobile .menu .playername button {
+        padding: 12px 0;
         margin: 0 15px;
     }
 
@@ -188,21 +189,6 @@
         padding: 15px 0;
     }
     /* ------------------------------------------------- */
-    .login-form {
-        top: 75px;
-        right: 10px;
-        font-size: 14px;
-        width: 300px;
-    }
-
-    .login-form .errmsg {
-        font-size: 12px;
-    }
-
-    .username input, .password input {
-        font-size: 12px;
-    }
-
     .link-form {
         top: 75px;
         right: 10px;

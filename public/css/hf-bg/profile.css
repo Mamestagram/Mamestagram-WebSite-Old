@@ -2,40 +2,40 @@ body::-webkit-scrollbar-track {
     background-color: #fdfdfd;
 }
 body::-webkit-scrollbar-thumb {
-    background-color: #3d2932;
+    background-color: #2e293d;
 }
 
 .standard {
-    background-color: #ac396d;
+    background-color: #5639ac;
 }
 
 .standard .menu div:hover, .standard .menu button:hover {
-    background-color: #ff66ab;
+    background-color: #8c66ff;
 }
 
 .mobile {
-    background-color: #2a2226;
+    background-color: #24222a;
 }
 
 .mobile .menu li:hover {
-    background-color: rgba(255, 102, 171, 0.3);
+    background-color: rgba(140, 102, 255, 0.3);
 }
 
-.mobile .menu .login, .mobile .menu .playername {
-    background-color: #3d2932;
-    color: #d194af;
+.mobile .menu .login, .mobile .menu .register, .mobile .menu .playername {
+    background-color: #2e293d;
+    color: #a394be;
 }
-.mobile .menu .login:hover, .mobile .menu .playername:hover {
-    background-color: #3d2932;
+.mobile .menu .login:hover, .mobile .menu .register:hover, .mobile .menu .playername:hover {
+    background-color: #2e293d;
 }
 
 footer {
-    background-color: #2a2226;
+    background-color: #24222a;
 }
 
 .link-form a {
-    background-color: #ac396d;
+    background-color: #5639ac;
 }
 .link-form a:hover {
-    background-color: #dc5391;
+    background-color: #6f55bc;
 }

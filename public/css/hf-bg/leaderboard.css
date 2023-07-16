@@ -34,11 +34,11 @@ body::-webkit-scrollbar-thumb {
     background-color: rgba(114, 253, 101, 0.3);
 }
 
-.mobile .menu .login, .mobile .menu .playername {
+.mobile .menu .login, .mobile .menu .register, .mobile .menu .playername {
     background-color: #2b3d29;
     color: #8bd194;
 }
-.mobile .menu .login:hover, .mobile .menu .playername:hover {
+.mobile .menu .login:hover, .mobile .menu .register:hover, .mobile .menu .playername:hover {
     background-color: #2b3d29;
 }
 

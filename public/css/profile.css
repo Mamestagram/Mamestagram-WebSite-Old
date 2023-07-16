@@ -1,6 +1,6 @@
 main {
     font-family: "Righteous", "MochiyPopOne";
-    background-color: #1c1719;
+    background-color: #17171c;
     min-height: 100vh;
     height: 100%;
     padding-top: 30px;
@@ -14,7 +14,7 @@ main .box {
 .player-banner {
     display: flex;
     color: #fdfdfd;
-    background-color: #45393f;
+    background-color: #2e2e38;
     height: 100px;
     width: 73%;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
@@ -105,7 +105,7 @@ main .box {
 /* ------------------------------------------------- */
 .player-info {
     display: flex;
-    background-color: #45393f;
+    background-color: #2e2e38;
     height: 290px;
     width: 73%;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
@@ -131,7 +131,7 @@ main .box {
 }
 
 .player-info .ranking .value {
-    color: #eed9d6;
+    color: #d9d9ee;
     font-size: 32px;
 }
 
@@ -149,7 +149,7 @@ main .box {
 }
 
 .player-info .other-info .value {
-    color: #eed9d6;
+    color: #d9d9ee;
     font-size: 32px;
 }
 
@@ -166,7 +166,7 @@ main .box {
 .player-info .grade-amounts div img {
     height: 45px;
     width: 45px;
-    background-color: #816a75;
+    background-color: #212129;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
@@ -194,7 +194,7 @@ main .box {
 }
 /* ------------------------------------------------- */
 .bestpp-list {
-    background-color: #45393f;
+    background-color: #22222a;
     height: 687px;
     width: 73%;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
@@ -262,12 +262,12 @@ main .box {
     display: flex;
     height: 60px;
     margin: 5px;
-    background-color: #6f5b64;
+    background-color: #444453;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .bestpp-list .list:hover {
-    background-color: #816a75;
+    background-color: #5b5b6f;
 }
 
 .bestpp-list .list-mobile {
@@ -327,7 +327,7 @@ main .box {
 }
 
 .bestpp-list .list .pp {
-    background-color: #54454c;
+    background-color: #393945;
     width: 170px;
     padding: 13px 0;
     text-align: center;
@@ -335,12 +335,12 @@ main .box {
 }
 
 .bestpp-list .list .recorded {
-    color: #ff66ab;
+    color: #5656c1;
     font-size: 26px;
 }
 
 .bestpp-list .list .recorded span {
-    color: #d194af;
+    color: #8681a5;
 }
 
 .bestpp-list .list .weighted {
@@ -348,7 +348,7 @@ main .box {
 }
 /* ------------------------------------------------- */
 .mostplays-list {
-    background-color: #45393f;
+    background-color: #22222a;
     height: 687px;
     width: 73%;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
@@ -420,12 +420,12 @@ main .box {
     display: flex;
     height: 60px;
     margin: 5px;
-    background-color: #6f5b64;
+    background-color: #444453;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .mostplays-list .list:hover {
-    background-color: #816a75;
+    background-color: #5b5b6f;
 }
 
 .mostplays-list .list-mobile {
@@ -455,7 +455,7 @@ main .box {
 }
 
 .mostplays-list .list .map-info .mapper {
-    color: #a08d96;
+    color: #737386;
     font-size: 14px;
 }
 
@@ -499,7 +499,7 @@ main .box {
 }
 /* ------------------------------------------------- */
 .recentplays-list {
-    background-color: #45393f;
+    background-color: #22222a;
     height: 492px;
     width: 73%;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
@@ -571,12 +571,12 @@ main .box {
     display: flex;
     height: 60px;
     margin: 5px;
-    background-color: #6f5b64;
+    background-color: #444453;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
 }
 .recentplays-list .list:hover {
-    background-color: #816a75;
+    background-color: #5b5b6f;
 }
 
 .recentplays-list .list-mobile {
@@ -637,7 +637,7 @@ main .box {
 }
 
 .recentplays-list .list .pp {
-    background-color: #54454c;
+    background-color: #393945;
     height: 60px;
     width: 170px;
     text-align: center;
@@ -646,12 +646,12 @@ main .box {
 }
 
 .recentplays-list .list .recorded {
-    color: #ff66ab;
+    color: #5656c1;
     font-size: 26px;
 }
 
 .recentplays-list .list .recorded span {
-    color: #d194af;
+    color: #8681a5;
 }
 
 .recentplays-list .list .status {
@@ -788,7 +788,7 @@ main .box {
         display: block;
         height: 110px;
         margin: 5px;
-        background-color: #6f5b64;
+        background-color: #434352;
         border-radius: 10px;
         box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
         text-overflow: ellipsis;
@@ -796,7 +796,7 @@ main .box {
         white-space: nowrap;
     }
     .bestpp-list .list-mobile:hover {
-        background-color: #816a75;
+        background-color: #5b5b6f;
     }
 
     .bestpp-list .list-mobile .grade {
@@ -837,7 +837,7 @@ main .box {
 
     .bestpp-list .list-mobile .scores {
         display: flex;
-        background-color: #54454c;
+        background-color: #393945;
         margin-top: 5px;
         border-radius: 10px;
     }
@@ -857,12 +857,12 @@ main .box {
     }
 
     .bestpp-list .list-mobile .recorded {
-        color: #ff66ab;
+        color: #5555bf;
         font-size: 18px;
     }
 
     .bestpp-list .list-mobile .recorded span {
-        color: #d194af;
+        color: #8580a4;
     }
 
     .bestpp-list .list-mobile .weighted {
@@ -899,12 +899,12 @@ main .box {
         display: flex;
         height: 60px;
         margin: 5px;
-        background-color: #6f5b64;
+        background-color: #434352;
         border-radius: 10px;
         box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
     }
     .mostplays-list .list-mobile:hover {
-        background-color: #816a75;
+        background-color: #5b5b6f;
     }
 
     .mostplays-list .list-mobile .main-info {
@@ -967,7 +967,7 @@ main .box {
     }
 
     .mostplays-list .list-mobile .map-info .mapper {
-        color: #a08d96;
+        color: #727281;
         font-size: 10px;
     }
 
@@ -1005,7 +1005,7 @@ main .box {
         display: block;
         height: 110px;
         margin: 5px;
-        background-color: #6f5b64;
+        background-color: #434352;
         border-radius: 10px;
         box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
         text-overflow: ellipsis;
@@ -1013,7 +1013,7 @@ main .box {
         white-space: nowrap;
     }
     .recentplays-list .list-mobile:hover {
-        background-color: #816a75;
+        background-color: #5b5b6f;
     }
 
     .recentplays-list .list-mobile .grade {
@@ -1055,7 +1055,7 @@ main .box {
 
     .recentplays-list .list-mobile .scores {
         display: flex;
-        background-color: #54454c;
+        background-color: #393945;
         margin-top: 5px;
         border-radius: 10px;
     }
@@ -1075,16 +1075,12 @@ main .box {
     }
 
     .recentplays-list .list-mobile .recorded {
-        color: #ff66ab;
+        color: #5555bf;
         font-size: 18px;
     }
 
     .recentplays-list .list-mobile .recorded span {
-        color: #d194af;
-    }
-
-    .recentplays-list .list-mobile .weighted {
-        color: #fdfdfd;
+        color: #8580a4;
     }
 
     .recentplays-list .list-mobile .status {

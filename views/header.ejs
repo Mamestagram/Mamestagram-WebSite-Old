@@ -25,6 +25,9 @@
         <% if (locals.loginf === true) { %>
             <li class="playername"><button class="login-text"><%= locals.username %></button></li>
         <% } else { %>
+            <li class="register">
+                <a href="/register"><button class="register-text">Register</button></a>
+            </li>
             <li class="login">
                 <a href="/login"><button class="login-text">Sign in</button></a>
             </li>
@@ -37,9 +40,10 @@
 </header>
 <% if (locals.loginf === true) { %>
     <div class="link-form">
-        <a href="/profile/id=<%= locals.userid %>/mode=std/special=none/bestpp=1&mostplays=1&recentplays=1">
+        <a href="/profile/id=<%= locals.userid %>/mode=std/special=none/1&1&1">
             My Profile
         </a>
+        <a href="/rename">Change name</a>
         <a href="/logout">Sign out</a>
     </div>
 <% } %>
