@@ -49,6 +49,35 @@ main {
     filter: invert(0%);
     opacity: 100%;
 }
+
+.page {
+    display: flex;
+    height: 40px;
+    padding-bottom: 40px;
+    justify-content: center;
+}
+
+.page p {
+    color: #fdfdfd;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.page .pagearrow img {
+    height: 30px;
+    width: 30px;
+    margin: 3px 10px;
+    filter: invert(50%);
+    opacity: 95%;
+}
+.page .pagearrow img:hover {
+    filter: invert(100%);
+    opacity: 100%;
+}
+
+.page .pagearrow .back {
+    transform: scale(-1, 1);
+}
 /* ------------------------------------------------- */
 .ranking-table {
     font-size: 16px;
@@ -115,8 +144,8 @@ main {
     background-color: #2f382e;
     border-radius: 12px;
     line-height: 34px;
-    padding: 7px 0;
-    margin: 5px 0;
+    padding: 3px 0;
+    margin: 3px 0;
 }
 .ranking-data:hover {
     background-color: #3a4639;
@@ -220,6 +249,19 @@ main {
     .mode img {
         height: 35px;
         width: 35px;
+    }
+
+    .page {
+        padding-bottom: 20px;
+    }
+
+    .page p {
+        font-size: 16px;
+    }
+
+    .page .pagearrow img {
+        height: 28px;
+        width: 28px;
     }
 
     .ranking-table {

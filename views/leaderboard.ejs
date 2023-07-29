@@ -16,20 +16,20 @@
         <div class="selection">
             <ul class="special">
                 <li class="classic">
-                    <a href="/leaderboard/mode=<%= mode %>/special=none">
+                    <a href="/leaderboard/mode=<%= mode %>/special=none/1">
                         Classic
                     </a>
                 </li>
                 <% if (mode !== "mania") { %>
                     <li class="relax">
-                        <a href="/leaderboard/mode=<%= mode %>/special=rx">
+                        <a href="/leaderboard/mode=<%= mode %>/special=rx/1">
                             Relax
                         </a>
                     </li>
                 <% } %>
                 <% if (mode === "std") { %>
                     <li class="auto-pilot">
-                        <a href="/leaderboard/mode=<%= mode %>/special=ap">
+                        <a href="/leaderboard/mode=<%= mode %>/special=ap/1">
                             Auto Pilot
                         </a>
                     </li>
@@ -37,30 +37,43 @@
             </ul>
             <ul class="mode">
                 <li class="std">
-                    <a href="/leaderboard/mode=std/special=<%= sp %>">
+                    <a href="/leaderboard/mode=std/special=<%= sp %>/1">
                         <img src="/image/mode/osu.png">
                     </a>
                 </li>
                 <% if (sp !== "ap") { %>
                     <li class="taiko">
-                        <a href="/leaderboard/mode=taiko/special=<%= sp %>">
+                        <a href="/leaderboard/mode=taiko/special=<%= sp %>/1">
                             <img src="/image/mode/taiko.png">
                         </a>
                     </li>
                     <li class="catch">
-                        <a href="/leaderboard/mode=ctb/special=<%= sp %>">
+                        <a href="/leaderboard/mode=ctb/special=<%= sp %>/1">
                             <img src="/image/mode/fruits.png">
                         </a>
                     </li>
                 <% } %>
                 <% if (sp === "none") { %>
                     <li class="mania">
-                        <a href="/leaderboard/mode=mania/special=<%= sp %>">
+                        <a href="/leaderboard/mode=mania/special=<%= sp %>/1">
                             <img src="/image/mode/mania.png">
                         </a>
                     </li>
                 <% } %>
             </ul>
+        </div>
+        <div class="page">
+            <% if (Number(page) > 1) { %>
+                <a href="/leaderboard/mode=<%= mode %>/special=<%= sp %>/<%= Number(page) - 1 %>" class="pagearrow">
+                    <img src="/image/arrow.png" class="back">
+                </a>
+            <% } %>
+            <p>page : <%= page %></p>
+            <% if (nextpage.length > 0) { %>
+                <a href="/leaderboard/mode=<%= mode %>/special=<%= sp %>/<%= Number(page) + 1 %>" class="pagearrow">
+                    <img src="/image/arrow.png" class="next">
+                </a>
+            <% } %>
         </div>
         <div class="ranking-table">
             <div class=table-title>

@@ -27,7 +27,7 @@ main {
 }
 
 .username, .email, .password, .confirm {
-    font-family: "Tilt Warp";
+    font-family: "Tilt Warp", "MochiyPopOne";
     padding: 10px 40px;
 }
 
