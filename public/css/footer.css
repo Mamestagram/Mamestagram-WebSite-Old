@@ -1,12 +1,13 @@
 footer {
-    height: 50px;
+    height: 70px;
 }
 
 footer h1 {
     color: #fdfdfd;
     font-family: "RobotoMono";
-    font-size: 11px;
-    line-height: 50px;
+    font-size: 14px;
+    line-height: 70px;
+
     width: 100%;
     text-align: center;
 }
