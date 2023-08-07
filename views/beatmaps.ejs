@@ -5,209 +5,207 @@
         <%- include("link") %>
         <link rel="stylesheet" href="/css/beatmaps.css">
         <link rel="stylesheet" href="/css/hf-bg/beatmap.css">
-        <script type="text/javascript">
-            <%
-            const getMode = (modeNum) => {
-                let mode = ""
-                switch (modeNum) {
-                    case 0:
-                        mode += "osu";
-                        break;
-                    case 1:
-                        mode += "taiko";
-                        break;
+        <%
+        const getMode = (modeNum) => {
+            let mode = ""
+            switch (modeNum) {
+                case 0:
+                    mode += "osu";
+                    break;
+                case 1:
+                    mode += "taiko";
+                    break;
+                case 2:
+                    mode += "fruits";
+                    break;
+                case 3:
+                    mode += "mania";
+                    break;
+            }
+            return mode;
+        }
+        const getColor = (diff) => {
+            const color = {
+                r: [65, 78, 78, 153, 251, 227, 24, 122, 0],
+                g: [144, 190, 251, 249, 148, 73, 21, 91, 0],
+                b: [253, 253, 211, 81, 101, 142, 140, 211, 0]
+            }, diffRange = [1.3, 0.7, 0.7, 1.3, 1.3, 1.2, 1.1, 1.4];
+            let rst = {r: 0, g: 0, b: 0}, index, r, g, b;
+            if (diff === 0) {
+                rst.r = color.r[0];
+                rst.g = color.g[0];
+                rst.b = color.b[0];
+            }
+            else if (diff > 0 && diff < 1.3) {
+                index = 0;
+            }
+            else if (diff < 2) {
+                index = 1;
+                diff -= 1.3;
+            }
+            else if (diff < 2.7) {
+                index = 2;
+                diff -= 2;
+            }
+            else if (diff < 4) {
+                index = 3;
+                diff -= 2.7;
+            }
+            else if (diff < 5.3) {
+                index = 4;
+                diff -= 4;
+            }
+            else if (diff < 6.5) {
+                index = 5;
+                diff -= 5.3;
+            }
+            else if (diff < 7.6) {
+                index = 6;
+                diff -= 6.5;
+            }
+            else if (diff < 9) {
+                index = 7;
+                diff -= 7.6;
+            }
+            else {
+                rst.r = color.r[8];
+                rst.g = color.g[8];
+                rst.b = color.b[8];
+            }
+            if (index) {
+                r = color.r[index];
+                g = color.g[index];
+                b = color.b[index];
+                r += (color.r[index] - color.r[index + 1]) / diffRange[index] * diff;
+                r += (color.g[index] - color.g[index + 1]) / diffRange[index] * diff;
+                r += (color.b[index] - color.b[index + 1]) / diffRange[index] * diff;
+                rst.r = r;
+                rst.g = g;
+                rst.b = b;
+            }
+            return rst;
+        }
+        const groupBySort = (id, mode, diffs, versions) => {
+            let idByMode = new Array(0), diffByMode = new Array(0), versionByMode = new Array(0), rst = new Array(0);
+            for (let i = 0; i < 4; i++) {
+                idByMode.push([]);
+                diffByMode.push([]);
+                versionByMode.push([]);
+            }
+            for (let i = 0; i < diffs.length; i++) {
+                idByMode[mode[i]].push(id[i]);
+                diffByMode[mode[i]].push(diffs[i]);
+                versionByMode[mode[i]].push(versions[i]);
+            }
+            for (let i = 0; i < diffs.length; i++) {
+                if (diffByMode[i] && idByMode[i]) {
+                    idByMode[i] = idSort(idByMode[i], diffByMode[i]);
+                    mode.sort();
+                    versionByMode[i] = versionSort(versionByMode[i], diffByMode[i]);
+                    diffByMode[i].sort();
+                }
+            }
+            rst.push({
+                id: new Array(0),
+                mode: new Array(0),
+                diff: new Array(0),
+                version: new Array(0)
+            });
+            for (let i = 0; i < mode.length; i++) {
+                rst[0].mode.push(mode[i]);
+            }
+            for (let i = 0; i < diffByMode.length; i++) {
+                if (idByMode[i] && diffByMode[i]) {
+                    for (let j = 0; j < diffByMode[i].length; j++) {
+                        rst[0].id.push(idByMode[i][j]);
+                        rst[0].diff.push(diffByMode[i][j]);
+                        rst[0].version.push(versionByMode[i][j]);
+                    }
+                }
+            }
+            return rst[0];
+        }
+        const idSort = (id, diff) => {
+            for (let i = diff.length - 2; i >= 0; i--) {
+                for (let j = 0; j <= i; j++) {
+                    if (diff[j] > diff[j + 1]) {
+                        let hold = [id[j + 1], diff[j + 1]];
+                        id[j + 1] = id[j];
+                        diff[j + 1] = diff[j];
+                        id[j] = hold[0];
+                        diff[j] = hold[1];
+                    }
+                }
+            }
+            return id;
+        }
+        const versionSort = (version, diff) => {
+            for (let i = diff.length - 2; i >= 0; i--) {
+                for (let j = 0; j <= i; j++) {
+                    if (diff[j] > diff[j + 1]) {
+                        let hold = [version[j + 1], diff[j + 1]];
+                        version[j + 1] = version[j];
+                        diff[j + 1] = diff[j];
+                        version[j] = hold[0];
+                        diff[j] = hold[1];
+                    }
+                }
+            }
+            return version;
+        }
+
+        let status;
+        let infos = new Array(0), diffs = new Array(0);
+        for (let i = 0; i < mapsets.length; i++) {
+            if (i === 0 || mapsets[i].set_id !== mapsets[i - 1].set_id) {
+                switch (mapsets[i].status) {
                     case 2:
-                        mode += "fruits";
+                        status = "RANKED";
+                        break;
+                    case 5:
+                        status = "LOVED";
+                        break;
+                    case 0:
+                        status = "GRAVEYARD"
                         break;
                     case 3:
-                        mode += "mania";
+                        status = "APPROVED";
+                        break;
+                    case 4:
+                        status = "QUALIFIED";
                         break;
                 }
-                return mode;
+                infos.push({setid: mapsets[i].set_id, title: mapsets[i].title, artist: mapsets[i].artist, mapper: mapsets[i].creator, stats: status});
             }
-            const getColor = (diff) => {
-                const color = {
-                    r: [65, 78, 78, 153, 251, 227, 24, 122, 0],
-                    g: [144, 190, 251, 249, 148, 73, 21, 91, 0],
-                    b: [253, 253, 211, 81, 101, 142, 140, 211, 0]
-                }, diffRange = [1.3, 0.7, 0.7, 1.3, 1.3, 1.2, 1.1, 1.4];
-                let rst = {r: 0, g: 0, b: 0}, index, r, g, b;
-                if (diff === 0) {
-                    rst.r = color.r[0];
-                    rst.g = color.g[0];
-                    rst.b = color.b[0];
+        }
+        for (let i = 0; i < mapsets.length; i++) {
+            if (i === 0 || mapsets[i].set_id !== mapsets[i - 1].set_id) {
+                if (i !== 0) {
+                    diffs[diffs.length - 1].details =
+                            groupBySort(diffs[diffs.length - 1].details.id, diffs[diffs.length - 1].details.mode,
+                                    diffs[diffs.length - 1].details.diff, diffs[diffs.length - 1].details.version);
                 }
-                else if (diff > 0 && diff < 1.3) {
-                    index = 0;
-                }
-                else if (diff < 2) {
-                    index = 1;
-                    diff -= 1.3;
-                }
-                else if (diff < 2.7) {
-                    index = 2;
-                    diff -= 2;
-                }
-                else if (diff < 4) {
-                    index = 3;
-                    diff -= 2.7;
-                }
-                else if (diff < 5.3) {
-                    index = 4;
-                    diff -= 4;
-                }
-                else if (diff < 6.5) {
-                    index = 5;
-                    diff -= 5.3;
-                }
-                else if (diff < 7.6) {
-                    index = 6;
-                    diff -= 6.5;
-                }
-                else if (diff < 9) {
-                    index = 7;
-                    diff -= 7.6;
-                }
-                else {
-                    rst.r = color.r[8];
-                    rst.g = color.g[8];
-                    rst.b = color.b[8];
-                }
-                if (index) {
-                    r = color.r[index];
-                    g = color.g[index];
-                    b = color.b[index];
-                    r += (color.r[index] - color.r[index + 1]) / diffRange[index] * diff;
-                    r += (color.g[index] - color.g[index + 1]) / diffRange[index] * diff;
-                    r += (color.b[index] - color.b[index + 1]) / diffRange[index] * diff;
-                    rst.r = r;
-                    rst.g = g;
-                    rst.b = b;
-                }
-                return rst;
-            }
-            const groupBySort = (id, mode, diffs, versions) => {
-                let idByMode = new Array(0), diffByMode = new Array(0), versionByMode = new Array(0), rst = new Array(0);
-                for (let i = 0; i < 4; i++) {
-                    idByMode.push([]);
-                    diffByMode.push([]);
-                    versionByMode.push([]);
-                }
-                for (let i = 0; i < diffs.length; i++) {
-                    idByMode[mode[i]].push(id[i]);
-                    diffByMode[mode[i]].push(diffs[i]);
-                    versionByMode[mode[i]].push(versions[i]);
-                }
-                for (let i = 0; i < diffs.length; i++) {
-                    if (diffByMode[i] && idByMode[i]) {
-                        idByMode[i] = idSort(idByMode[i], diffByMode[i]);
-                        mode.sort();
-                        versionByMode[i] = versionSort(versionByMode[i], diffByMode[i]);
-                        diffByMode[i].sort();
+                diffs.push({
+                    details: {
+                        id: new Array(0),
+                        mode: new Array(0),
+                        diff: new Array(0),
+                        version: new Array(0)
                     }
-                }
-                rst.push({
-                    id: new Array(0),
-                    mode: new Array(0),
-                    diff: new Array(0),
-                    version: new Array(0)
                 });
-                for (let i = 0; i < mode.length; i++) {
-                    rst[0].mode.push(mode[i]);
-                }
-                for (let i = 0; i < diffByMode.length; i++) {
-                    if (idByMode[i] && diffByMode[i]) {
-                        for (let j = 0; j < diffByMode[i].length; j++) {
-                            rst[0].id.push(idByMode[i][j]);
-                            rst[0].diff.push(diffByMode[i][j]);
-                            rst[0].version.push(versionByMode[i][j]);
-                        }
-                    }
-                }
-                return rst[0];
+                diffs[diffs.length - 1].details.id.push(mapsets[i].id);
+                diffs[diffs.length - 1].details.mode.push(mapsets[i].mode);
+                diffs[diffs.length - 1].details.diff.push(mapsets[i].diff);
+                diffs[diffs.length - 1].details.version.push(mapsets[i].version);
             }
-            const idSort = (id, diff) => {
-                for (let i = diff.length - 2; i >= 0; i--) {
-                    for (let j = 0; j <= i; j++) {
-                        if (diff[j] > diff[j + 1]) {
-                            let hold = [id[j + 1], diff[j + 1]];
-                            id[j + 1] = id[j];
-                            diff[j + 1] = diff[j];
-                            id[j] = hold[0];
-                            diff[j] = hold[1];
-                        }
-                    }
-                }
-                return id;
+            else {
+                diffs[diffs.length - 1].details.id.push(mapsets[i].id);
+                diffs[diffs.length - 1].details.mode.push(mapsets[i].mode);
+                diffs[diffs.length - 1].details.diff.push(mapsets[i].diff);
+                diffs[diffs.length - 1].details.version.push(mapsets[i].version);
             }
-            const versionSort = (version, diff) => {
-                for (let i = diff.length - 2; i >= 0; i--) {
-                    for (let j = 0; j <= i; j++) {
-                        if (diff[j] > diff[j + 1]) {
-                            let hold = [version[j + 1], diff[j + 1]];
-                            version[j + 1] = version[j];
-                            diff[j + 1] = diff[j];
-                            version[j] = hold[0];
-                            diff[j] = hold[1];
-                        }
-                    }
-                }
-                return version;
-            }
-
-            let status;
-            let infos = new Array(0), diffs = new Array(0);
-            for (let i = 0; i < mapsets.length; i++) {
-                if (i === 0 || mapsets[i].set_id !== mapsets[i - 1].set_id) {
-                    switch (mapsets[i].status) {
-                        case 2:
-                            status = "RANKED";
-                            break;
-                        case 5:
-                            status = "LOVED";
-                            break;
-                        case 0:
-                            status = "GRAVEYARD"
-                            break;
-                        case 3:
-                            status = "APPROVED";
-                            break;
-                        case 4:
-                            status = "QUALIFIED";
-                            break;
-                    }
-                    infos.push({setid: mapsets[i].set_id, title: mapsets[i].title, artist: mapsets[i].artist, mapper: mapsets[i].creator, stats: status});
-                }
-            }
-            for (let i = 0; i < mapsets.length; i++) {
-                if (i === 0 || mapsets[i].set_id !== mapsets[i - 1].set_id) {
-                    if (i !== 0) {
-                        diffs[diffs.length - 1].details =
-                                groupBySort(diffs[diffs.length - 1].details.id, diffs[diffs.length - 1].details.mode,
-                                        diffs[diffs.length - 1].details.diff, diffs[diffs.length - 1].details.version);
-                    }
-                    diffs.push({
-                        details: {
-                            id: new Array(0),
-                            mode: new Array(0),
-                            diff: new Array(0),
-                            version: new Array(0)
-                        }
-                    });
-                    diffs[diffs.length - 1].details.id.push(mapsets[i].id);
-                    diffs[diffs.length - 1].details.mode.push(mapsets[i].mode);
-                    diffs[diffs.length - 1].details.diff.push(mapsets[i].diff);
-                    diffs[diffs.length - 1].details.version.push(mapsets[i].version);
-                }
-                else {
-                    diffs[diffs.length - 1].details.id.push(mapsets[i].id);
-                    diffs[diffs.length - 1].details.mode.push(mapsets[i].mode);
-                    diffs[diffs.length - 1].details.diff.push(mapsets[i].diff);
-                    diffs[diffs.length - 1].details.version.push(mapsets[i].version);
-                }
-            }
-            %>
-        </script>
+        }
+        %>
     </head>
     <body>
     <%- include("header") %>

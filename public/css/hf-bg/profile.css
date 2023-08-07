@@ -6,11 +6,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .standard {
-    background-color: #5639ac;
+    background-color: #345c84;
 }
 
 .standard .menu div:hover, .standard .menu button:hover {
-    background-color: #8c66ff;
+    background-color: #6495ED;
 }
 
 .mobile {
@@ -18,24 +18,27 @@ body::-webkit-scrollbar-thumb {
 }
 
 .mobile .menu li:hover {
-    background-color: rgba(140, 102, 255, 0.3);
+    background-color: #4169E1
 }
+
 
 .mobile .menu .login, .mobile .menu .register, .mobile .menu .playername {
-    background-color: #2e293d;
-    color: #a394be;
-}
-.mobile .menu .login:hover, .mobile .menu .register:hover, .mobile .menu .playername:hover {
-    background-color: #2e293d;
+    background-color: #35364d;
+    color: #6495ED;
 }
 
+.mobile .menu .login:hover, .mobile .menu .register:hover, .mobile .menu .playername:hover {
+    background-color: #35364d;
+}
+
+
 footer {
-    background-color: #24222a;
+    background-color: #000000;
 }
 
 .link-form a {
-    background-color: #5639ac;
+    background-color: #345c84;
 }
 .link-form a:hover {
-    background-color: #6f55bc;
+    background-color: #6495ED;
 }

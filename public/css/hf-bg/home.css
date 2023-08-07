@@ -6,11 +6,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .standard {
-    background-color: #5639ac;
+    background-color: #345c84;
 }
 
 .standard .menu div:hover, .standard .menu button:hover {
-    background-color: #8c66ff;
+    background-color: #6495ED;
 }
 
 .mobile {
@@ -39,7 +39,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 footer {
-    background-color: #24222a;
+    background-color: #000000;
 }
 
 .link-form a {
