@@ -7,21 +7,313 @@ main {
     background-color: #171a1c;
     min-height: 100vh;
     height: 100%;
+    padding: 50px 0;
 }
 /* ------------------------------------------------- */
 .map-info {
     background-color: #2e3538;
-    width: 73%;
-    margin-left: 12.8%;
+    width: 1000px;
+    margin: 0 auto;
     border-radius: 10px;
 }
 
-.map-info .title {
+.map-info h1 {
     color: #fdfdfd;
     font-size: 24px;
+}
+
+.map-info h1 i {
+    font-size: 28px;
+    padding: 10px;
 }
 
 .map-info .mapbg {
     width: 100%;
     filter: blur(3px);
+}
+
+.map-info .background {
+    position: relative;
+    min-height: 350px;
+    max-height: 700px;
+    padding-top: 15px;
+    padding-bottom: 0;
+    background-color: #1f292e;
+}
+
+.map-info .background img {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    object-fit: cover;
+    filter: blur(1px);
+}
+
+.map-info .contents {
+    position: relative;
+    z-index: 100;
+}
+
+.map-info .contents .diff {
+    display: flex;
+    position: relative;
+    background-color: rgba(46, 53, 56, 0.8);
+    max-width: 616px;
+    margin-left: 25px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px black;
+    flex-wrap: wrap;
+}
+
+.map-info .contents .diff a {
+    height: 42px;
+    width: 42px;
+    padding: 2px 4px;
+    margin: 1px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: 100ms;
+}
+.map-info .contents .diff a:hover {
+    background-color: rgba(31, 41, 46, 0.5);
+    border: 2px solid #b7d1de;
+    .mode-icon {
+        opacity: 1;
+    }
+}
+
+.mode-icon {
+    font-size: 30px;
+    opacity: 0.4;
+}
+
+.map-info .contents .map-status {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 8px 22px;
+    margin: auto 30px auto auto;
+    border-radius: 50px;
+    box-shadow: 2px 2px 3px black;
+}
+
+.map-info .contents .wrap {
+    display: flex;
+}
+
+.map-info .contents .box {
+    margin-left: 30px;
+}
+
+.map-info .contents .box .diff-details {
+    clear: both;
+    color: #fdfdfd;
+    font-size: 18px;
+    padding-top: 10px;
+    text-shadow: 2px 2px 3px black;
+}
+
+.map-info .contents .box .diff-details .diffname {
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.map-info .contents .box .diff-details .mapper {
+    font-size: 14px;
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+    text-shadow: 1px 1px 2px black;
+}
+
+.map-info .contents .box .diff-details .mapper a {
+    color: #95c6d9;
+    font-size: 12px;
+}
+.map-info .contents .box .diff-details .mapper a:hover {
+    color: #b8d3e0;
+    text-decoration: underline;
+}
+
+.map-info .contents .box .map-name {
+    color: #fdfdfd;
+    margin-top: 60px;
+    text-shadow: 2px 2px 3px black;
+}
+
+.map-info .contents .box .map-name .title {
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+
+.map-info .contents .box .map-name a i {
+    font-size: 20px;
+    text-shadow: 2px 2px 3px black;
+    margin-top: 10px;
+    margin-left: 10px;
+    filter: invert(30%);
+}
+.map-info .contents .box .map-name a i:hover {
+    filter: invert(0%);
+}
+
+.map-info .contents .box .map-name .artist {
+    clear: both;
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+
+.map-info .contents .box .link {
+    clear: both;
+    display: flex;
+    color: #fdfdfd;
+    margin-top: 80px;
+}
+
+.map-info .contents .box .link button, .map-info .contents .box .link a {
+    background-color: #3986ac;
+    margin-right: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px black;
+    transition: 200ms;
+}
+.map-info .contents .box .link button:hover, .map-info .contents .box .link a:hover {
+    background-color: #66ccff;
+}
+
+.map-info .contents .box .link #play-audio {
+    padding: 10px 15px;
+}
+
+.map-info .contents .box .link #play-audio i {
+    font-size: 26px;
+    height: 30px;
+    width: 30px;
+    padding: 2px 6px;
+}
+
+.map-info .contents .box .link a {
+    font-size: 18px;
+    padding: 16px 10px;
+}
+
+.map-info .contents .box .link a i {
+    padding-left: 5px;
+}
+
+.map-info .contents .map-details {
+    color: #fdfdfd;
+    width: 310px;
+    margin: 10px 15px 0 auto;
+}
+
+.map-info .contents .map-details div div {
+    display: flex;
+}
+
+.map-info .contents .map-details .main {
+    display: flex;
+    background-color: rgba(31, 41, 46, 0.9);
+    justify-content: center;
+    margin-bottom: 2px;
+    border-radius: 5px;
+}
+
+.map-info .contents .map-details .main span {
+    font-size: 16px;
+    padding: 10px 18px;
+}
+
+.map-info .contents .map-details .main span i {
+    padding: 0 5px;
+}
+
+.map-info .contents .map-details .sub {
+    background-color: rgba(31, 41, 46, 0.9);
+    display: block;
+    height: 241px;
+    border-radius: 5px;
+}
+
+.map-info .contents .map-details .sub div {
+    font-size: 14px;
+    padding-top: 12px;
+}
+
+.map-info .contents .map-details .sub div .title {
+    width: 120px;
+    margin-left: 10px;
+}
+
+.map-info .contents .map-details .sub div .bar {
+    position: relative;
+    background-color: #171a1c;
+    height: 7px;
+    padding-top: 0;
+    margin-top: 4px;
+    width: 130px;
+    border-radius: 10px;
+}
+
+.map-info .contents .map-details .sub div .bar .color {
+    position: absolute;
+    background-color: #ffffff;
+    height: 7px;
+    border-radius: 10px;
+}
+
+.map-info .contents .map-details .sub .sr .bar .color {
+    background-color: #ffcc22;
+}
+
+.map-info .contents .map-details .sub div .value {
+    width: 50px;
+    text-align: center;
+}
+
+.map-info .contents .map-details .sub .ps {
+    display: block;
+}
+
+.map-info .contents .map-details .sub .ps .title {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-left: 0;
+    text-align: center;
+}
+
+.map-info .contents .map-details .sub .ps .bar {
+    height: 8px;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.map-info .contents .map-details .sub .ps .bar .color {
+    background-color: #88b300;
+    height: 8px;
+}
+
+.map-info .contents .map-details .sub .ps .frame {
+    position: relative;
+    right: 23px;
+    width: 250px;
+    padding-top: 5px;
+    margin: 0 auto;
+}
+
+.map-info .contents .map-details .sub .ps .value {
+    width: 46px;
 }

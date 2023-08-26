@@ -363,7 +363,7 @@
                         <div class="list">
                             <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a>
@@ -385,7 +385,7 @@
                         <div class="list-mobile">
                             <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a><br>
@@ -424,7 +424,7 @@
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page - 1 %>&%= rspage %>#mostplays">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page - 1 %>&<%= rspage %>#mostplays">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
@@ -456,7 +456,7 @@
                         <div class="list">
                             <img class="mapbg" src="https://b.ppy.sh/thumb/<%= map.set_id %>l.jpg?">
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "full") %></span><br>
                                     <span class="mapper">mapped by <span class="bold"><%= map.creator %></span></span>
                                 </a>
@@ -481,7 +481,7 @@
                                 </div>
                             </div>
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= getMode(map.mode) %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "full") %></span><br>
                                     <span class="mapper">mapped by <span class="bold"><%= map.creator %></span></span>
                                 </a>
@@ -505,12 +505,12 @@
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/%= bppage %>&<%= mppage %>&<%= page - 1 %>#recentplays">
+                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page - 1 %>#recentplays">
                                 <img src="/image/arrow.png">
                             </a>
                         <% } %>
                         <% if (playsRecCount(page + 1, recentplays, amount) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/%= bppage %>&<%= mppage %>&<%= page + 1 %>#recentplays">
+                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page + 1 %>#recentplays">
                                 <img hidden src="/image/arrow.png">
                             </a>
                         <% } else { %>
@@ -539,7 +539,7 @@
                                 <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <% } %>
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= mode %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a>
@@ -575,7 +575,7 @@
                                 <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <% } %>
                             <div class="map-info">
-                                <a href="https://osu.ppy.sh/beatmapsets/<%= map.set_id %>#<%= mode %>/<%= map.id %>" target="_blank" rel="noopener noreferrer">
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
                                     <span class="diff"><%= map.version %></span>
                                 </a><br>

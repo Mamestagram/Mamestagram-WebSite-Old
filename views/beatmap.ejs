@@ -1,18 +1,220 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title><%= artist %> - <%= title %></title>
+        <title><%= mapdetails.artist %> - <%= mapdetails.title %></title>
         <%- include("link") %>
         <link rel="stylesheet" href="/css/beatmap.css">
+        <link rel="stylesheet" href="/css/mode-icon/icon.css">
         <link rel="stylesheet" href="/css/hf-bg/beatmap.css">
+        <script type="text/javascript">
+            <%
+            const getMode = (modeNum) => {
+                let mode = ""
+                switch (modeNum) {
+                    case 0:
+                        mode += "osu";
+                        break;
+                    case 1:
+                        mode += "taiko";
+                        break;
+                    case 2:
+                        mode += "fruits";
+                        break;
+                    case 3:
+                        mode += "mania";
+                        break;
+                }
+                return mode;
+            }
+            const getColor = (diff) => {
+                const color = [
+                    "#4291fd", "#4396fd", "#449bfd", "#46a0fd", // 0.0 ~ 0.5
+                    "#47a4fd", "#48a9fd", "#4aaffd", "#4bb3fd", // 0.5 ~ 1.0
+                    "#4cb8fd", "#4dbcfd", "#4ec3f9", "#4ecdf2", // 1.0 ~ 1.5
+                    "#4ed8eb", "#4ee3e4", "#4eeedc", "#4ef8d6", // 1.5 ~ 2.0
+                    "#53fdc0", "#5efda2", "#69fd82", "#74fd5f", // 2.0 ~ 2.5
+                    "#82fc4f", "#97f951", "#abf753", "#bef455", // 2.5 ~ 3.0
+                    "#d0f257", "#e2f059", "#f4ec5b", "#f5dd5d", // 3.0 ~ 3.5
+                    "#f6cf5e", "#f8be60", "#f9af62", "#faa063", // 3.5 ~ 4.0
+                    "#fc8f65", "#fd8167", "#fd7868", "#fd6f69", // 4.0 ~ 4.5
+                    "#fd676a", "#fd5d6c", "#fd536d", "#fa4d70", // 4.5 ~ 5.0
+                    "#f24b7b", "#eb4a85", "#e2498f", "#da4799", // 5.0 ~ 5.5
+                    "#d346a3", "#cc45ac", "#c444b6", "#b548bd", // 5.5 ~ 6.0
+                    "#a84cc0", "#9b50c6", "#8f54cb", "#8059d0", // 6.0 ~ 6.5
+                    "#735dd6", "#6561db", "#5a58d2", "#524fc9", // 6.5 ~ 7.0
+                    "#4745be", "#3f3db6", "#3532ab", "#2a28a0", // 7.0 ~ 7.5
+                    "#221f97", "#19168e", "#16137f", "#131172", // 7.5 ~ 8.0
+                    "#110f64", "#0f0d55", "#0c0b46", "#0a0839", // 8.0 ~ 8.5
+                    "#07062b", "#05051f", "#030211", "#010104", // 8.5 ~ 9.0
+                    "#000000" // 9.0 ~
+                ]
+                let index = Math.floor(diff / 0.125);
+                if (index > 72) {
+                    index = 72;
+                }
+                return color[index];
+            }
+            const getTime = (time) => {
+                let res = Math.floor(time / 60).toLocaleString() + ":";
+                if (time % 60 >= 10) {
+                    res += time % 60;
+                }
+                else {
+                    res += "0" + time % 60;
+                }
+                return res;
+            }
+            const getRate = (value) => {
+                return value / 10 * 100;
+            }
+            %>
+        </script>
     </head>
     <body>
     <%- include("header") %>
     <main>
         <div class="map-info">
-            <h1 class="title">Mapinfo</h1>
+            <h1 class="title"><i class="fa-brands fa-itunes-note"></i>Beatmap info</h1>
+            <div class="background">
+                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?">
+                <div class="contents">
+                    <div class="wrap">
+                        <div class="diff">
+                            <% mapinfo.forEach((map) => { %>
+                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>" title="★<%= map.diff.toFixed(2) %> <%= map.version %>"
+                                    <% if (map.id === Number(mapid)) { %>
+                                        style="
+                                        background-color: rgba(31, 41, 46, 0.5);
+                                        border: 2px solid #b7d1de;"
+                                    <% } %>>
+                                    <i class="mode-icon <%= getMode(map.mode) %>" style="
+                                            color: <%= getColor(map.diff) %>;
+                                    <% if (map.id === Number(mapid)) { %>
+                                        opacity: 1;
+                                    <% } %>">
+                                    </i>
+                                </a>
+                            <% }); %>
+                        </div>
+                        <div class="map-status" style="
+                            <% if (mapdetails.status === 2) { %>
+                                background-color: #b3ff66;
+                                color: #3d4847;
+                            <% } else { %>
+                                background-color: #fd65aa;
+                                color: #394246;
+                            <% } %>">
+                            <% if (mapdetails.status === 2) { %>
+                                RANKED
+                            <% } else { %>
+                                LOVED
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="wrap">
+                        <div class="box">
+                            <div class="diff-details">
+                                <span class="diffname">
+                                    <%= mapdetails.title %> <span style="color: #fdca2c">★<%= mapdetails.diff.toFixed(2) %></span>
+                                </span>
+                                    <span class="playcount" style="font-size: 14px;">
+                                    <i class="fa-solid fa-circle-play" style="padding: 0 5px;"></i><%= mapdetails.plays.toLocaleString() %>
+                                </span><br>
+                                <span class="mapper">
+                                    mapped by
+                                    <a href="https://osu.ppy.sh/users/<%= mapdetails.creator %>" target="_blank" rel="noopener noreferrer">
+                                        <%= mapdetails.creator %>
+                                    </a>
+                                </span>
+                                <div class="map-name">
+                                    <span class="title" style="font-size: 28px;"><%= mapdetails.title %></span>
+                                        <a href="https://osu.ppy.sh/beatmapsets/<%= setid %>#<%= getMode(mapdetails.mode) %>/<%= mapid %>" title="Bancho link" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        </a><br>
+                                    <span class="artist" style="font-size: 22px;"><%= mapdetails.artist %></span>
+                                </div>
+                                <div class="link">
+                                    <audio id="preview">
+                                        <source src="https://b.ppy.sh/preview/<%= setid %>.mp3" type="audio/mp3">
+                                    </audio>
+                                    <button id="play-audio" class="pause">
+                                        <i class="fa-solid fa-play"></i>
+                                    </button>
+                                    <a href="https://api.chimu.moe/v1/download/<%= setid %>" class="download">
+                                        Download<i class="fa-solid fa-download"></i>
+                                    </a>
+                                    <a href="/direct/<%= setid %>">
+                                        Direct<i class="fa-solid fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-details">
+                            <div class="main">
+                                <span class="length" title="Total Length"><i class="fa-solid fa-clock-rotate-left"></i><%= getTime(mapdetails.total_length) %></span>
+                                <span class="bpm" title="BPM"><i class="fa-solid fa-truck-fast"></i><%= mapdetails.bpm %></span>
+                                <span class="circles" title="Max Combo"><i class="fa-regular fa-circle-dot"></i><%= mapdetails.max_combo %></span>
+                            </div>
+                            <div class="sub">
+                                <div class="cs">
+                                    <p class="title">Circle Size</p>
+                                    <div class="bar">
+                                        <span class="color" style="width: <%= getRate(mapdetails.cs) %>%;"></span>
+                                    </div>
+                                    <p class="value"><%= mapdetails.cs.toFixed(1) %></p>
+                                </div>
+                                <div class="hp">
+                                    <p class="title">HP Drain</p>
+                                    <div class="bar">
+                                        <span class="color" style="width: <%= getRate(mapdetails.hp) %>%;"></span>
+                                    </div>
+                                    <p class="value"><%= mapdetails.hp.toFixed(1) %></p>
+                                </div>
+                                <div class="od">
+                                    <p class="title">Accuracy</p>
+                                    <div class="bar">
+                                        <span class="color" style="width: <%= getRate(mapdetails.od) %>%;"></span>
+                                    </div>
+                                    <p class="value"><%= mapdetails.od.toFixed(1) %></p>
+                                </div>
+                                <div class="ar">
+                                    <p class="title">Approach Rate</p>
+                                    <div class="bar">
+                                        <span class="color" style="width: <%= getRate(mapdetails.ar) %>%;"></span>
+                                    </div>
+                                    <p class="value"><%= mapdetails.ar.toFixed(1) %></p>
+                                </div>
+                                <div class="sr">
+                                    <p class="title">Star Rating</p>
+                                    <div class="bar">
+                                        <span class="color" style="width: <%= getRate(mapdetails.diff) %>%;"></span>
+                                    </div>
+                                    <p class="value"><%= mapdetails.diff.toFixed(2) %></p>
+                                </div>
+                                <div class="ps" title="<%= mapdetails.passes %> / <%= mapdetails.plays %>">
+                                    <p class="title">Success Rate</p>
+                                    <div class="bar">
+                                        <span class="color" style="width: <%= mapdetails.rate %>%;"></span>
+                                    </div>
+                                    <div class="frame">
+                                        <span class="space" style="padding-left: <%= mapdetails.rate %>%"></span>
+                                        <p class="value">
+                                            <% if (mapdetails.rate === null) { %>
+                                                0.0%
+                                            <% } else { %>
+                                                <%= mapdetails.rate.toFixed(1) %>%
+                                            <% } %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <%- include("footer") %>
+    <script src="/jquery/beatmap.js"></script>
     </body>
 </html>
