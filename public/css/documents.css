@@ -55,7 +55,7 @@ main .menu li:hover {
 main .top {
     position: fixed;
     color: #d9cc8b;
-    bottom: 70px;
+    bottom: 75px;
     right: 70px;
 }
 main .top:hover {
@@ -63,12 +63,12 @@ main .top:hover {
     text-decoration: underline;
 }
 
-main .language a {
+main .language button {
     position: fixed;
     color: #d9cc8b;
-    bottom: 60px;
+    bottom: 75px;
 }
-main .language a:hover {
+main .language button:hover {
     color: #e0d6b8;
     text-decoration: underline;
 }
@@ -343,7 +343,7 @@ section {
         top: 40px;
     }
 
-    main .language a {
+    main .language button {
         position: unset;
         padding: 15px;
     }

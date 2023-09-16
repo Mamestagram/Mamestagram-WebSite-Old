@@ -62,6 +62,8 @@
             <input type="hidden" id="post" name="recaptcha" value="default">
             <% if (err === "nothuman") { %>
                 <span class="errmsg verify">A problem has occurred</span>
+            <% } else if (err === "wait") { %>
+                <span class="errmsg verify">Give it a little time</span>
             <% } %>
             <button class="g-recaptcha"
             data-sitekey="6LcsItomAAAAABWqvEVs5hnMIcT3eWSjMfbgrsAo"

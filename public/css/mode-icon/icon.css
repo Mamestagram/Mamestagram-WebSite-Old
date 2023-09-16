@@ -1,6 +1,6 @@
 @font-face {
     font-family: "osu-mode";
-    src: url(../../font/extra.ttf) format("truetype")
+    src: url("../../font/extra.ttf") format("truetype")
 }
 
 .mode-icon {

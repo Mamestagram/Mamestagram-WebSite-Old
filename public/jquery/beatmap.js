@@ -8,11 +8,11 @@ $(function() {
 
     audioElement.volume = 0.5;
 
-    const timer = setInterval(function() {
+    setInterval(function() {
         if (stop) {
             return;
         }
-        else if (++time >= 1000) {
+        if (++time >= 1000) {
             stop = true;
             time = 0;
             $btn.removeClass("play");
@@ -20,6 +20,7 @@ $(function() {
             $icon.removeClass("fa-solid fa-pause");
             $icon.addClass("fa-solid fa-play");
         }
+        console.log(time);
     }, 10);
 
     $play.addEventListener("click", function() {

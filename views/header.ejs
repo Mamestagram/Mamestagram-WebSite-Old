@@ -3,10 +3,10 @@
     <h1 class="title"><%= pageTitle %></h1>
     <ul class="menu">
         <li class="beatmaps"><a href="/beatmaps/custom/any/none"><div class="beatmaps-text">Beatmaps</div></a></li>
-        <li class="leaderboard"><a href="/leaderboard/mode=std/special=none/1"><div class = "leaderboard-text">Leaderboard</div></a></li>
-            <li class="documents"><a href="/documents/en#"><div class="documents-text">Documents</div></a></li>   
-           <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer"><div class = "community-text">Discord</div></a></li>
-           <% if (locals.loginf === true) { %>
+        <li class="leaderboard"><a href="/leaderboard"><div class = "leaderboard-text">Leaderboard</div></a></li>
+        <li class="documents"><a href="/documents#"><div class="documents-text">Documents</div></a></li>
+        <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer"><div class = "community-text">Discord</div></a></li>
+        <% if (locals.loginf === true) { %>
             <li class="playername"><button class="login-text"><%= locals.username %></button></li>
         <% } else { %>
             <li class="login">
@@ -33,10 +33,9 @@
             </li>
         <% } %>
         <li class="beatmaps"><span class="border"></span><a href="/beatmaps/custom/any/none"><div class="beatmaps-text">Beatmaps</div></a></li>
-        <li class="leaderboard"><span class="border"></span><a href="/leaderboard/mode=std/special=none/1"><div class="leaderboard-text">Leaderboard</div></a></li>
-        <li class="documents"><span class="border"></span><a href="/documents/en#"><div class="documents-text">Documents</div></a></li>
+        <li class="leaderboard"><span class="border"></span><a href="/leaderboard"><div class="leaderboard-text">Leaderboard</div></a></li>
+        <li class="documents"><span class="border"></span><a href="/documents#"><div class="documents-text">Documents</div></a></li>
     	<li class="discord"><span class="border"></span><a href="/discord" target="_blank" rel="noopener noreferrer"><div class="community-text">Discord</div></a></li>
-
     </ul>
 </header>
 <% if (locals.loginf === true) { %>

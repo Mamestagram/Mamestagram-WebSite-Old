@@ -5,21 +5,6 @@
         <%- include("link") %>
         <link rel="stylesheet" href="/css/documents.css">
         <link rel="stylesheet" href="/css/hf-bg/documents.css">
-        <% if (lang === "en") { %>
-        <style>
-            main .language .en {
-                color: #e0d6b8;
-                text-decoration: underline;
-            }
-        </style>
-        <% } else if (lang === "jp") { %>
-        <style>
-            main .language .jp {
-                color: #e0d6b8;
-                text-decoration: underline;
-            }
-        </style>
-        <% } %>
     </head>
     <body>
     <%- include("header") %>
@@ -28,11 +13,11 @@
     <main>
         <img src="/image/logo.png" class="logoimage">
         <h1 class="welcome-title">Welcome to <strong>Mamestagram!</strong></h1>
-        <% if (lang === "en") { %>
+        <div class="eng">
             <h2 class="subtitle">This is an osu private server operated by Mamestagram</h2>
             <div class="language">
-                <a href="/documents/en#" class="en">EN</a>
-                <a href="/documents/jp#" class="jp">JP</a>
+                <button class="en">EN</button>
+                <button class="jp">JP</button>
             </div>
             <ul class="menu">
                 <li><a href="#about">About</a></li>
@@ -195,11 +180,12 @@
                 </section>
             </article>
             <a href="#" class="top">Return to<br>top</a>
-        <% } else if (lang === "jp") { %>
+        </div>
+        <div class="jpn">
             <h2 class="subtitle">Mamestagramが運営するosuプライベートサーバーです</h2>
             <div class="language">
-                <a href="/documents/en#" class="en">EN</a>
-                <a href="/documents/jp#" class="jp">JP</a>
+                <button class="en">EN</button>
+                <button class="jp">JP</button>
             </div>
             <ul class="menu">
                 <li><a href="#about">本サーバーについて</a></li>
@@ -362,8 +348,9 @@
                 </section>
             </article>
             <a href="#" class="top">トップに戻る</a>
-        <% } %>
+        </div>
     </main>
     <%- include("footer") %>
+    <script src="/jquery/documents.js"></script>
     </body>
 </html>

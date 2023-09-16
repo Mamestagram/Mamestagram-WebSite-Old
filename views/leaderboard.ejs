@@ -5,8 +5,6 @@
         <%- include("link") %>
         <link rel="stylesheet" href="/css/leaderboard.css">
         <link rel="stylesheet" href="/css/hf-bg/leaderboard.css">
-        <link rel="stylesheet" href="/css/Lmode/<%= mode %>.css">
-        <link rel="stylesheet" href="/css/Lspecial/<%= sp %>.css">
     </head>
     <body>
     <%- include("header") %>
@@ -16,64 +14,38 @@
         <div class="selection">
             <ul class="special">
                 <li class="classic">
-                    <a href="/leaderboard/mode=<%= mode %>/special=none/1">
-                        Classic
-                    </a>
+                    <button>Classic</button>
                 </li>
-                <% if (mode !== "mania") { %>
-                    <li class="relax">
-                        <a href="/leaderboard/mode=<%= mode %>/special=rx/1">
-                            Relax
-                        </a>
-                    </li>
-                <% } %>
-                <% if (mode === "std") { %>
-                    <li class="auto-pilot">
-                        <a href="/leaderboard/mode=<%= mode %>/special=ap/1">
-                            Auto Pilot
-                        </a>
-                    </li>
-                <% } %>
+                <li class="relax">
+                    <button>Relax</button>
+                </li>
+                <li class="auto-pilot">
+                    <button>Auto Pilot</button>
+                </li>
             </ul>
             <ul class="mode">
                 <li class="std">
-                    <a href="/leaderboard/mode=std/special=<%= sp %>/1">
-                        <img src="/image/mode/osu.png">
-                    </a>
+                    <button><img src="/image/mode/osu.png"></button>
                 </li>
-                <% if (sp !== "ap") { %>
-                    <li class="taiko">
-                        <a href="/leaderboard/mode=taiko/special=<%= sp %>/1">
-                            <img src="/image/mode/taiko.png">
-                        </a>
-                    </li>
-                    <li class="catch">
-                        <a href="/leaderboard/mode=ctb/special=<%= sp %>/1">
-                            <img src="/image/mode/fruits.png">
-                        </a>
-                    </li>
-                <% } %>
-                <% if (sp === "none") { %>
-                    <li class="mania">
-                        <a href="/leaderboard/mode=mania/special=<%= sp %>/1">
-                            <img src="/image/mode/mania.png">
-                        </a>
-                    </li>
-                <% } %>
+                <li class="taiko">
+                    <button><img src="/image/mode/taiko.png"></button>
+                </li>
+                <li class="catch">
+                    <button><img src="/image/mode/fruits.png"></button>
+                </li>
+                <li class="mania">
+                    <button><img src="/image/mode/mania.png"></button>
+                </li>
             </ul>
         </div>
         <div class="page">
-            <% if (Number(page) > 1) { %>
-                <a href="/leaderboard/mode=<%= mode %>/special=<%= sp %>/<%= Number(page) - 1 %>" class="pagearrow">
-                    <img src="/image/arrow.png" class="back">
-                </a>
-            <% } %>
-            <p>page : <%= page %></p>
-            <% if (nextpage.length > 0) { %>
-                <a href="/leaderboard/mode=<%= mode %>/special=<%= sp %>/<%= Number(page) + 1 %>" class="pagearrow">
-                    <img src="/image/arrow.png" class="next">
-                </a>
-            <% } %>
+            <a href="/leaderboard" class="pagearrow">
+                <img src="/image/arrow.png" class="back">
+            </a>
+            <p>page : 1</p>
+            <a href="/leaderboard" class="pagearrow">
+                <img src="/image/arrow.png" class="next">
+            </a>
         </div>
         <div class="ranking-table">
             <div class=table-title>
@@ -84,29 +56,37 @@
                 <span class="s-title">S</span>
                 <span class="a-title">A</span>
             </div>
-            <% if (rankings.length === 0) { %>
-                <h1 class="nothing">No players available</h1>
-            <% } else { %>
-                <% rankings.forEach((ranking) => { %>
-                    <div class="ranking-data">
-                        <span class="ranking">#<%= ranking.ranking.toLocaleString() %></span>
-                        <i class="flag-icon flag-icon-<%= ranking.country %>"></i>
-                        <span class="name">
-                            <a href="/profile/id=<%= ranking.id %>/mode=<%= mode %>/special=<%= sp %>/1&1&1">
-                                <span class="text"><%= ranking.name %></span>
-                            </a>
-                        </span>
-                        <span class="acc"><%= ranking.acc.toFixed(2) %>%</span>
-                        <span class="playcount"><%= ranking.plays.toLocaleString() %></span>
-                        <span class="pp"><%= ranking.pp.toLocaleString() %></span>
-                        <span class="ss"><%= ranking.SS.toLocaleString() %></span>
-                        <span class="s"><%= ranking.S.toLocaleString() %></span>
-                        <span class="a"><%= ranking.A.toLocaleString() %></span>
+            <% let i = 0 %>
+            <% rankingByMode.forEach((rankings) => { %>
+                <% if (rankings.length === 0) { %>
+                    <div class="mode-<%= i++ %>">
+                        <h1 class="nothing">No players available</h1>
                     </div>
-                <% }); %>
-            <% } %>
+                <% } else { %>
+                    <div class="mode-<%= i++ %>">
+                        <% rankings.forEach((ranking) => { %>
+                            <div class="ranking-data <%= ranking.row %>">
+                                <span class="ranking">#<%= ranking.ranking.toLocaleString() %></span>
+                                <i class="flag-icon flag-icon-<%= ranking.country %>"></i>
+                                <span class="name">
+                                <a href="/profile/id=<%= ranking.id %>/mode=std/special=none/1&1&1">
+                                    <span class="text"><%= ranking.name %></span>
+                                </a>
+                            </span>
+                                <span class="acc"><%= ranking.acc.toFixed(2) %>%</span>
+                                <span class="playcount"><%= ranking.plays.toLocaleString() %></span>
+                                <span class="pp"><%= ranking.pp.toLocaleString() %></span>
+                                <span class="ss"><%= ranking.SS.toLocaleString() %></span>
+                                <span class="s"><%= ranking.S.toLocaleString() %></span>
+                                <span class="a"><%= ranking.A.toLocaleString() %></span>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } %>
+            <% }); %>
         </div>
     </main>
     <%- include("footer") %>
+    <script src="/jquery/leaderboard.js"></script>
     </body>
 </html>

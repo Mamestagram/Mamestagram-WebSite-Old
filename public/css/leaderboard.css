@@ -38,16 +38,16 @@ main {
 
 .mode li {
     padding: 10px;
+    filter: invert(30%);
+    opacity: 95%;
+}
+.mode li:hover {
+    filter: invert(0%);
+    opacity: 100%;
 }
 
 .mode img {
     width: 45px;
-    filter: invert(30%);
-    opacity: 95%;
-}
-.mode img:hover {
-    filter: invert(0%);
-    opacity: 100%;
 }
 
 .page {
