@@ -1,43 +1,48 @@
-<header class="standard">
-    <a href="/leaderboard/mode=std/special=none/1"><img src="/image/logo.png" class="logo"></a>
-    <h1 class="title"><%= pageTitle %></h1>
-    <ul class="menu">
-        <li class="beatmaps"><a href="/beatmaps/custom/any/none"><div class="beatmaps-text">Beatmaps</div></a></li>
-        <li class="leaderboard"><a href="/leaderboard"><div class = "leaderboard-text">Leaderboard</div></a></li>
-        <li class="documents"><a href="/documents#"><div class="documents-text">Documents</div></a></li>
-        <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer"><div class = "community-text">Discord</div></a></li>
-        <% if (locals.loginf === true) { %>
-            <li class="playername"><button class="login-text"><%= locals.username %></button></li>
+<header>
+    <a href="/leaderboard"><img src="/image/logo.png" alt=""></a>
+    <h1><%= pageTitle %></h1>
+    <ul class="pc">
+        <li class="beatmaps"><a href="/beatmaps/custom/any/none">Beatmaps</a></li>
+        <li class="leaderboard"><a href="/leaderboard">Leaderboard</a></li>
+        <li class="documents"><a href="/documents">Documents</a></li>
+        <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a></li>
+        <% if (locals.loginf) { %>
+            <li class="username">
+                <button title="<%= locals.username %>">
+                    <img src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
+                </button>
+            </li>
         <% } else { %>
-            <li class="login">
-                <button class="login-text"><a href="/login">Sign in</a></button>
-            </li>
-            <li class="register">
-                <button class="register-text"><a href="/register">Register</a></button>
-            </li>
+            <li class="register"><a href="/register">Register</a></li>
+            <li class="login"><a href="/login">Sign in</a></li>
         <% } %>
     </ul>
     <i class="fa-solid fa-chevron-down arrow down"></i>
-    <i class="fa-solid fa-chevron-up arrow up"></i>
 </header>
-<header class="mobile">
-    <ul class="menu">
-        <% if (locals.loginf === true) { %>
-            <li class="playername"><button class="login-text"><%= locals.username %></button></li>
-        <% } else { %>
-            <li class="register">
-                <a href="/register"><button class="register-text">Register</button></a>
-            </li>
-            <li class="login">
-                <a href="/login"><button class="login-text">Sign in</button></a>
-            </li>
-        <% } %>
-        <li class="beatmaps"><span class="border"></span><a href="/beatmaps/custom/any/none"><div class="beatmaps-text">Beatmaps</div></a></li>
-        <li class="leaderboard"><span class="border"></span><a href="/leaderboard"><div class="leaderboard-text">Leaderboard</div></a></li>
-        <li class="documents"><span class="border"></span><a href="/documents#"><div class="documents-text">Documents</div></a></li>
-    	<li class="discord"><span class="border"></span><a href="/discord" target="_blank" rel="noopener noreferrer"><div class="community-text">Discord</div></a></li>
-    </ul>
-</header>
+<ul class="mobile">
+    <% if (locals.loginf) { %>
+        <li class="username">
+            <img src="https://a.mamesosu.net/<%= locals.userid %>" alt="">
+            <button><%= locals.username %></button>
+        </li>
+    <% } else { %>
+        <li class="register"><a href="/register">Register</a></li>
+        <li class="login"><a href="/login">Sign in</a></li>
+    <% } %>
+    <li class="beatmaps">
+        <span></span><a href="/beatmaps/custom/any/none">Beatmaps</a>
+    </li>
+    <li class="leaderboard">
+        <span></span><a href="/leaderboard">Leaderboard</a>
+    </li>
+    <li class="documents">
+        <span></span>
+        <a href="/documents">Documents</a>
+    </li>
+    <li class="discord">
+        <span></span><a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a>
+    </li>
+</ul>
 <% if (locals.loginf === true) { %>
     <div class="link-form">
         <a href="/profile/id=<%= locals.userid %>/mode=std/special=none/1&1&1">
@@ -46,9 +51,4 @@
         <a href="/rename">Change name</a>
         <a href="/logout">Sign out</a>
     </div>
-<% } %>
-<% if (locals.failed === true) { %>
-    <script>
-        $(".login-form, .link-form").addClass("show").show();
-    </script>
 <% } %>

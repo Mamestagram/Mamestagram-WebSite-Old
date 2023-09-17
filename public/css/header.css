@@ -1,75 +1,127 @@
-.standard {
-    position: sticky;
+header {
+    display: flex;
+    position: fixed;
     top: 0;
     font-family: "Tilt Warp", "MochiyPopOne";
-    height: 67px;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+    transition: 300ms;
 }
 
-.mobile {
-    display: none;
-    position: fixed;
-    top: 60px;
-    font-family: "Tilt Warp";
-    font-size: 14px;
-    width: 100%;
-    z-index: 90;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+.animated {
+    box-shadow: 0 5px 5px black;
 }
 
-.logo {
-    background-position: center;
-    float: left;
-    width: 55px;
-    margin: 5px 5px 5px 230px;
-    transition: 150ms all;
+header a img {
+    height: 65px;
+    margin: 6px 0 6px 230px;
+    transition: 300ms;
 }
-.logo:hover {
+header a img:hover {
     transform: scale(1.1, 1.1);
 }
 
-.standard .title {
-    display: none;
-}
-
-.standard .menu div, .standard .menu button {
-    font-size: 15px;
-    color: #fdfdfd;
+.animated a img {
     height: 50px;
-    padding: 20px 10px;
-    margin: 7px 10px;
-    transition: 500ms all;
+    margin: 4px 0 4px 15px;
 }
 
-.standard .beatmaps {
-    margin-left: 10px;
-    float: left;
+header h1 {
+    display: none;
+    color: #fdfdfd;
+    font-size: 15px;
+    line-height: 60px;
+    padding-left: 5px;
 }
 
-.standard .leaderboard {
-    float: left;
+header .pc {
+    display: flex;
+    width: 100%;
 }
 
-.standard .discord {
-    float: left;
+header .pc li {
+    font-size: 15px;
+    color: #919495;
+    margin: 10px;
+    text-shadow: 2px 2px 2px black;
+    transition: 300ms;
+}
+header .pc li:hover {
+    color: #fdfdfd;
 }
 
-.standard .documents {
-    float: left;
+.animated .pc li {
+    color: #fdfdfd;
+    margin: 5px 15px;
+    text-shadow: none;
 }
 
-.standard .register {
-    float: right;
+header .pc li button {
+    text-shadow: 2px 2px 2px black;
 }
 
-.standard .login, .standard .playername {
+.animated .pc li button {
+    text-shadow: none;
+}
+
+header .pc li a, header .pc li button {
+    display: block;
+    height: 55px;
+    line-height: 60px;
+    padding: 0 15px;
+}
+
+.animated .pc li a, .animated .pc li button {
+    height: 40px;
+    line-height: 50px;
+    transition: 300ms;
+}
+
+header .pc .username {
+    margin: 0 230px 0 0;
+}
+
+.animated .pc .username:hover {
+    background-color: unset;
+}
+
+header .pc .username button {
+    padding: 0;
+}
+
+header .pc .username button img {
+    height: 65px;
+    margin: 6px 0;
+    border-radius: 65px;
+    transition: 300ms;
+}
+header .pc .username button img:hover {
+    outline: 2px solid #fdfdfd;
+    outline-offset: -2px;
+}
+
+.animated .pc .username button img {
+    height: 50px;
+    margin: 4px 0;
+}
+
+header .pc .register, header .pc .username {
+    margin-left: auto;
+}
+
+header .pc .login {
     margin-right: 250px;
-    float: right;
 }
 
-.standard .down, .standard .up {
+header .pc .username {
+    margin-right: 230px;
+}
+
+.animated .pc .login, .animated .pc .username {
+    margin-right: 15px;
+}
+
+header .arrow {
     display: none;
     color: #fdfdfd;
     font-size: 20px;
@@ -77,17 +129,66 @@
     top: 0;
     right: 0;
     height: 50px;
+    line-height: 50px;
     width: 50px;
     margin: 5px;
     text-align: center;
+}
+
+.mobile {
+    display: none;
+    position: fixed;
+    color: #919495;
+    font-family: "Tilt Warp", "MochiyPopOne";
+    font-size: 14px;
+    width: 100%;
+    z-index: 90;
+    box-shadow: 0 5px 5px black;
+}
+
+.mobile li {
+    display: flex;
+    transition: 100ms;
+}
+.mobile li:hover {
+    color: #fdfdfd;
+}
+
+.mobile li img {
+    height: 50px;
+    padding: 7px;
+    border-radius: 10px;
+    transition: 100ms;
+}
+
+.mobile li span {
+    padding: 10px 0;
+    margin: 10px 15px;
+    border-radius: 10px;
+}
+
+.mobile li a, .mobile li button {
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+}
+
+.mobile .username button {
+    height: 50px;
     line-height: 50px;
 }
-/* ------------------------------------------------- */
+
+.mobile .register a, .mobile .login a {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+}
+
 .link-form {
     display: none;
     position: fixed;
     top: 75px;
-    right: 215px;
+    right: 162px;
     background-color: #333333;
     font-family: "Tilt Warp";
     font-size: 16px;
@@ -95,6 +196,7 @@
     border-radius: 5px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
     z-index: 90;
+    transition: 50ms;
 }
 
 .link-form a {
@@ -104,11 +206,11 @@
     margin: 7px;
     justify-content: center;
     border-radius: 5px;
-    transition: 500ms;
+    transition: 300ms;
 }
-/* ------------------------------------------------- */
+
 .banner {
-    height: 200px;
+    height: 250px;
     width: 100%;
     object-fit: cover;
     filter: blur(2px);
@@ -124,69 +226,32 @@
     font-weight: bold;
     text-shadow: 5px 5px 5px black;
 }
-
-@media (max-width: 1224px) {
-    .pagename {
-        display: none;
+/* ------------------------------------------------- */
+@media (max-width: 1232px) {
+    header {
+        position: sticky;
+        box-shadow: 0 5px 5px black;
     }
 
-    .standard {
-        height: 60px;
+    header a img {
+        height: 50px;
+        margin: 5px;
     }
 
-    .standard .logo {
-        float: left;
-        width: 47px;
-        margin: 7px;
-    }
-
-    .standard .title {
+    header h1 {
         display: block;
-        color: #fdfdfd;
-        font-size: 15px;
-        line-height: 60px;
-        padding-left: 50px;
     }
 
-    .standard .menu {
+    header .pc {
         display: none;
     }
 
-    .standard .down {
+    header .arrow {
         display: block;
     }
 
     .mobile {
-        color: #919495;
-    }
-
-    .mobile .menu li {
-        display: flex;
-        transition: 100ms;
-    }
-    .mobile .menu li:hover {
-        color: #fdfdfd;
-    }
-
-    .mobile .menu .login button, .mobile .menu .register button, .mobile .menu .playername button {
-        padding: 12px 0;
-        margin: 0 15px;
-    }
-
-    .mobile .menu li a {
-        width: 100%;
-    }
-
-    .mobile .menu .border {
-        width: 0;
-        padding: 10px 0;
-        margin: 10px 15px;
-        border-radius: 10px;
-    }
-
-    .mobile .menu li div, .mobile .menu li button {
-        width: 100%;
-        padding: 15px 0;
+        display: block;
     }
     /* ------------------------------------------------- */
     .link-form {
@@ -197,5 +262,9 @@
     /* ------------------------------------------------- */
     .banner {
         height: 160px;
+    }
+
+    .pagename {
+        display: none;
     }
 }

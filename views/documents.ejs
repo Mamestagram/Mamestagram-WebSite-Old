@@ -4,7 +4,72 @@
         <title>Documents</title>
         <%- include("link") %>
         <link rel="stylesheet" href="/css/documents.css">
-        <link rel="stylesheet" href="/css/hf-bg/documents.css">
+        <style>
+            body::-webkit-scrollbar-track {
+                background-color: #fdfdfd;
+            }
+            body::-webkit-scrollbar-thumb {
+                background-color: #3d3829;
+            }
+
+            header {
+                background-color: transparent;
+            }
+
+            header .pc .documents {
+                color: #fdfdfd;
+            }
+
+            .animated {
+                background-color: #ac8f39;
+            }
+
+            .animated .pc li:hover {
+                background-color: #ffd966;
+            }
+
+            .animated .pc .documents {
+                border-bottom: 3px solid #ffd966;
+            }
+
+            @media (max-width: 1232px) {
+                header {
+                    background-color: #ac8f39;
+                }
+            }
+
+            .mobile {
+                background-color: #2a2822;
+            }
+
+            .mobile .documenats {
+                background-color: rgba(255, 217, 102, 0.3);
+                color: #fdfdfd;
+            }
+
+            .mobile .leaderboard span {
+                border-left: 3px solid #ffd966;
+            }
+
+            .mobile li:hover {
+                background-color: rgba(255, 217, 102, 0.3);
+            }
+
+            .mobile .register, .mobile .login, .mobile .username {
+                background-color: #3d3829;
+                color: #d1c27c;
+            }
+            .mobile .register:hover, .mobile .login:hover, .mobile .username:hover {
+                background-color: #3d3829;
+            }
+
+            .link-form a {
+                background-color: #ac8f39;
+            }
+            .link-form a:hover {
+                background-color: #debc54;
+            }
+        </style>
     </head>
     <body>
     <%- include("header") %>
