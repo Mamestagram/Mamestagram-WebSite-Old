@@ -3,7 +3,7 @@ main {
     background-color: #17171c;
     min-height: 100vh;
     height: 100%;
-    padding-top: 30px;
+    padding-top: 90px;
     padding-bottom: 300px;
 }
 
@@ -166,9 +166,8 @@ main .box {
 .player-info .grade-amounts div img {
     height: 45px;
     width: 45px;
-    background-color: #212129;
-    border-radius: 10px;
-    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    box-shadow: 3px 3px 3px black;
 }
 
 .player-info .grade-amounts div .value {
@@ -275,10 +274,11 @@ main .box {
 }
 
 .bestpp-list .list .grade {
-    height: 58px;
-    width: 30px;
+    height: 40px;
     transform: scale(1.15);
-    margin: 0 10px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 3px black;
 }
 
 .bestpp-list .list .map-info {
@@ -578,15 +578,15 @@ main .box {
 }
 
 .recentplays-list .list .grade {
-    height: 58px;
-    width: 30px;
+    height: 40px;
     transform: scale(1.15);
-    margin-left: 10px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 3px black;
 }
 
 .recentplays-list .list .map-info {
     color: #fdfdfd;
-    padding-left: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -653,129 +653,9 @@ main .box {
 }
 
 @media (max-width: 1224px) {
-    .player-banner {
-        display: block;
-        height: 80px;
-    }
-
-    .player-banner .self {
-        padding: 0 5px;
-        margin: 0 auto auto 0;
-    }
-
-    .flag-icon {
-        line-height: 36px;
-        width: 24px;
-        border-radius: 3px;
-    }
-
-    .name {
-        font-size: 32px;
-        padding: 0 5px;
-    }
-
-    .player-banner .selection {
-        font-size: 12px;
-    }
-
-    .player-banner .special {
-        margin: 15px auto auto 5px;
-    }
-
-    .player-banner .special li {
-        height: 20px;
-        padding: 0 5px;
-        margin: 0 5px;
-    }
-
-    .player-banner .mode {
-        padding: 3px 5px;
-    }
-
-    .player-banner .mode li img {
-        width: 35px;
-        margin: 0 3px;
-    }
-    /* ------------------------------------------------- */
-    .player-info {
-        display: flex;
-        height: 180px;
-        overflow: scroll;
-    }
-
-    .player-info .ranking , .player-info .other-info {
-        padding: 0;
-    }
-
-    .player-info .ranking div, .player-info .other-info .medals {
-        padding: 7px 15px;
-    }
-
-    .player-info .other-info .player-pp, .player-info .other-info .playtime {
-        padding: 7px 25px;
-    }
-
-    .player-info .stats .title {
-        font-size: 12px;
-    }
-
-    .player-info .stats .value {
-        font-size: 22px;
-    }
-
-    .player-info .grade-amounts div {
-        padding: 5px 10px;
-    }
-
-    .player-info .grade-amounts div img {
-        height: 35px;
-        width: 35px;
-    }
-
-    .player-info .grade-amounts div .value {
-        font-size: 14px;
-    }
-    /* ------------------------------------------------- */
-    .player-scores {
-        color: #fdfdfd;
-        font-size: 14px;
-        padding: 3px 20px;
-        margin: 16px 0 16px auto;
-    }
-
-    .player-scores div {
-        display: flex;
-        padding: 2px;
-    }
-
-    .player-scores div .title {
-        width: 160px;
-    }
-    /* ------------------------------------------------- */
-    .bestpp-list {
-        height: 1182px;
-    }
-
-    .bestpp-list h1 {
-        font-size: 18px;
-    }
-
-    .bestpp-list h2 {
-        font-size: 14px;
-    }
-
-    .bestpp-list .pagearrow img {
-        margin: 1px;
-    }
-
-    .bestpp-list .nothing {
-        font-size: 24px;
-        width: 97%;
-        margin: 0 1.5%;
-    }
-
-    .bestpp-list .list {
-        display: none;
+    main {
+        padding-top: 10px;
+        padding-bottom: 200px;
     }
 
     .bestpp-list .list-mobile {
@@ -794,9 +674,8 @@ main .box {
     }
 
     .bestpp-list .list-mobile .grade {
-        height: 48px;
-        width: 25px;
-        margin: 0 7px;
+        height: 40px;
+        margin: 3px;
         float: left;
     }
 
@@ -820,7 +699,6 @@ main .box {
     .bestpp-list .list-mobile .mods {
         display: flex;
         height: 25px;
-        margin: 0 5px;
     }
 
     .bestpp-list .list-mobile .mods img {
@@ -901,65 +779,6 @@ main .box {
         background-color: #5b5b6f;
     }
 
-    .mostplays-list .list-mobile .main-info {
-        display: flex;
-    }
-
-    .mostplays-list .list-mobile .mapbg {
-        position: absolute;
-        background-color: black;
-        border-radius: 10px;
-    }
-
-    .mostplays-list .list-mobile .mapbg img {
-        height: 60px;
-        width: 87px;
-        flex-wrap: nowrap;
-        flex-shrink: 0;
-        border-radius: 10px;
-        opacity: 30%;
-    }
-
-    .mostplays-list .list-mobile .main-info {
-        z-index: 50;
-    }
-
-    .mostplays-list .list-mobile .main-info .mode {
-        height: 25px;
-        width: 25px;
-        margin: 18px 3px;
-    }
-
-    .mostplays-list .list-mobile .main-info div {
-        color: #ffcc22;
-        font-size: 20px;
-        width: 55px;
-        line-height: 60px;
-        text-align: center;
-    }
-
-    .mostplays-list .list-mobile .main-info .play-icon {
-        height: 10px;
-        width: 10px;
-    }
-
-    .mostplays-list .list-mobile .main-info .value {
-        padding: 0 2px;
-    }
-
-    .mostplays-list .list-mobile .map-info {
-        color: #fdfdfd;
-        overflow: hidden;
-        white-space: nowrap;
-        margin-left: 5px;
-    }
-
-    .mostplays-list .list-mobile .map-info .title {
-        color: #fdfdfd;
-        font-size: 14px;
-        line-height: 32px;
-    }
-
     .mostplays-list .list-mobile .map-info .mapper {
         color: #727281;
         font-size: 10px;
@@ -1011,10 +830,8 @@ main .box {
     }
 
     .recentplays-list .list-mobile .grade {
-        height: 48px;
-        width: 25px;
-        margin-left: 7px;
-        margin-right: 5px;
+        height: 40px;
+        margin: 3px;
         float: left;
     }
 
@@ -1026,19 +843,16 @@ main .box {
         color: #fdfdfd;
         font-size: 14px;
         line-height: 25px;
-        margin-left: 3px;
     }
 
     .recentplays-list .list-mobile .map-info .diff {
         color: #eca900;
         font-size: 10px;
-        margin-left: 3px;
     }
 
     .recentplays-list .list-mobile .mods {
         display: flex;
         height: 25px;
-        margin: 0 5px;
     }
 
     .recentplays-list .list-mobile .mods img {
@@ -1222,9 +1036,8 @@ main .box {
     }
 
     .bestpp-list .list-mobile .grade {
-        height: 48px;
-        width: 25px;
-        margin: 0 7px;
+        height: 35px;
+        margin: 4px;
         float: left;
     }
 
@@ -1248,7 +1061,7 @@ main .box {
     .bestpp-list .list-mobile .mods {
         display: flex;
         height: 25px;
-        margin: 0 5px;
+        margin-left: 43px;
     }
 
     .bestpp-list .list-mobile .mods img {
@@ -1424,10 +1237,8 @@ main .box {
     }
 
     .recentplays-list .list-mobile .grade {
-        height: 48px;
-        width: 25px;
-        margin-left: 7px;
-        margin-right: 5px;
+        height: 35px;
+        margin: 4px;
         float: left;
     }
 
@@ -1439,19 +1250,17 @@ main .box {
         color: #fdfdfd;
         font-size: 14px;
         line-height: 25px;
-        margin-left: 3px;
     }
 
     .recentplays-list .list-mobile .map-info .diff {
         color: #eca900;
         font-size: 10px;
-        margin-left: 3px;
     }
 
     .recentplays-list .list-mobile .mods {
         display: flex;
         height: 25px;
-        margin: 0 5px;
+        margin-left: 43px;
     }
 
     .recentplays-list .list-mobile .mods img {

@@ -77,35 +77,35 @@ header .pc li a, header .pc li button {
     transition: 300ms;
 }
 
-header .pc .username {
+header .pc .avatar {
     margin: 0 230px 0 0;
 }
 
-.animated .pc .username:hover {
+.animated .pc .avatar:hover {
     background-color: unset;
 }
 
-header .pc .username button {
+header .pc .avatar button {
     padding: 0;
 }
 
-header .pc .username button img {
+header .pc .avatar button img {
     height: 65px;
     margin: 6px 0;
     border-radius: 65px;
     transition: 300ms;
 }
-header .pc .username button img:hover {
+header .pc .avatar button img:hover {
     outline: 2px solid #fdfdfd;
     outline-offset: -2px;
 }
 
-.animated .pc .username button img {
+.animated .pc .avatar button img {
     height: 50px;
     margin: 4px 0;
 }
 
-header .pc .register, header .pc .username {
+header .pc .register, header .pc .avatar {
     margin-left: auto;
 }
 
@@ -113,11 +113,11 @@ header .pc .login {
     margin-right: 250px;
 }
 
-header .pc .username {
+header .pc .avatar {
     margin-right: 230px;
 }
 
-.animated .pc .login, .animated .pc .username {
+.animated .pc .login, .animated .pc .avatar {
     margin-right: 15px;
 }
 
@@ -173,7 +173,7 @@ header .arrow {
     width: 100%;
 }
 
-.mobile .username button {
+.mobile .avatar button {
     height: 50px;
     line-height: 50px;
 }
@@ -210,7 +210,7 @@ header .arrow {
 }
 
 .banner {
-    height: 250px;
+    height: 230px;
     width: 100%;
     object-fit: cover;
     filter: blur(2px);
@@ -218,7 +218,7 @@ header .arrow {
 
 .pagename {
     position: absolute;
-    top: 170px;
+    top: 150px;
     left: 230px;
     color: #fdfdfd;
     font-family: "Caveat";

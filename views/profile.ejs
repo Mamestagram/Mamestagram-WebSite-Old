@@ -44,11 +44,11 @@
                 background-color: #4169e1;
             }
 
-            .mobile .register, .mobile .login, .mobile .username {
+            .mobile .register, .mobile .login, .mobile .avatar {
                 background-color: #35364d;
                 color: #6495ed;
             }
-            .mobile .register:hover, .mobile .login:hover, .mobile .username:hover {
+            .mobile .register:hover, .mobile .login:hover, .mobile .avatar:hover {
                 background-color: #35364d;
             }
 
@@ -306,23 +306,23 @@
                 </div>
                 <div class="grade-amounts">
                     <div class="xh">
-                        <img src="/image/grade/XH-amount.png"><br>
+                        <img src="/image/grade/XH.png"><br>
                         <span class="value"><%= info.xh_count.toLocaleString() %></span>
                     </div>
                     <div class="x">
-                        <img src="/image/grade/X-amount.png"><br>
+                        <img src="/image/grade/X.png"><br>
                         <span class="value"><%= info.x_count.toLocaleString() %></span>
                     </div>
                     <div class="sh">
-                        <img src="/image/grade/SH-amount.png"><br>
+                        <img src="/image/grade/SH.png"><br>
                         <span class="value"><%= info.sh_count.toLocaleString() %></span>
                     </div>
                     <div class="s">
-                        <img src="/image/grade/S-amount.png"><br>
+                        <img src="/image/grade/S.png"><br>
                         <span class="value"><%= info.s_count.toLocaleString() %></span>
                     </div>
                     <div class="a">
-                        <img src="/image/grade/A-amount.png"><br>
+                        <img src="/image/grade/A.png"><br>
                         <span class="value"><%= info.a_count.toLocaleString() %></span>
                     </div>
                 </div>
@@ -587,9 +587,7 @@
                     } %>
                     <% if (display) { %>
                         <div class="list">
-                            <% if (map.grade !== "F") { %>
-                                <img src="/image/grade/<%= map.grade %>.png" class="grade">
-                            <% } %>
+                            <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <div class="map-info">
                                 <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
@@ -607,25 +605,19 @@
                                 <div class="pp">
                                     <span class="recorded"><%= Math.round(map.pp).toLocaleString() %><span>pp</span></span>
                                     <span class="status">
-                                        <% if (map.grade === "F") { %>
-                                            (Failed)
-                                        <% } else { %>
-                                            <% if (map.status === 0) { %>
-                                                (Pending)
-                                            <% } else if (map.status === 4) { %>
-                                                (Qualified)
-                                            <% } else if (map.status === 5) { %>
-                                                (Loved)
-                                            <% } %>
+                                        <% if (map.status === 0) { %>
+                                            (Pending)
+                                        <% } else if (map.status === 4) { %>
+                                            (Qualified)
+                                        <% } else if (map.status === 5) { %>
+                                            (Loved)
                                         <% } %>
                                     </span>
                                 </div>
                             </div>
                         </div>
                         <div class="list-mobile">
-                            <% if (map.grade !== "F") { %>
-                                <img src="/image/grade/<%= map.grade %>.png" class="grade">
-                            <% } %>
+                            <img src="/image/grade/<%= map.grade %>.png" class="grade">
                             <div class="map-info">
                                 <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
                                     <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
@@ -642,16 +634,12 @@
                                 <div class="pp">
                                     <span class="recorded"><%= Math.round(map.pp).toLocaleString() %><span>pp</span></span>
                                     <span class="status">
-                                        <% if (map.grade === "F") { %>
-                                            (Failed)
-                                        <% } else { %>
-                                            <% if (map.status === 0) { %>
-                                                (Pending)
-                                            <% } else if (map.status === 4) { %>
-                                                (Qualified)
-                                            <% } else if (map.status === 5) { %>
-                                                (Loved)
-                                            <% } %>
+                                        <% if (map.status === 0) { %>
+                                            (Pending)
+                                        <% } else if (map.status === 4) { %>
+                                            (Qualified)
+                                        <% } else if (map.status === 5) { %>
+                                            (Loved)
                                         <% } %>
                                     </span>
                                 </div>

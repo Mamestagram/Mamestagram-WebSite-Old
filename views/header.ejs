@@ -7,7 +7,7 @@
         <li class="documents"><a href="/documents">Documents</a></li>
         <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a></li>
         <% if (locals.loginf) { %>
-            <li class="username">
+            <li class="avatar">
                 <button title="<%= locals.username %>">
                     <img src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
                 </button>
@@ -21,7 +21,7 @@
 </header>
 <ul class="mobile">
     <% if (locals.loginf) { %>
-        <li class="username">
+        <li class="avatar">
             <img src="https://a.mamesosu.net/<%= locals.userid %>" alt="">
             <button><%= locals.username %></button>
         </li>

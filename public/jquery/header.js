@@ -2,7 +2,7 @@ $(window).on("load scroll", function() {
     var $scroll = $(this).scrollTop();
     var $width = $("body").width();
 
-    if ($width > 1232 && $scroll > 100) {
+    if ($width > 1232 && $scroll > 50) {
         $("header").addClass("animated");
         $(".link-form").css({
             "top": 65 + "px",
@@ -26,7 +26,7 @@ $(function() {
         var $form = $(".link-form");
 
         //ユーザーボタンクリック時
-        if (!$(e.target).closest("header .username").length && !$(e.target).closest($form).length) {
+        if (!$(e.target).closest("header .avatar").length && !$(e.target).closest($form).length) {
             $form.removeClass("show").slideUp(100);
         }
         else if ($(e.target).closest($form).length) {
@@ -43,7 +43,7 @@ $(function() {
 
         if ($("body").width() <= 1232) {
             //ユーザーボタンクリック時（スマホ）
-            if (!$(e.target).closest(".mobile .username").length && !$(e.target).closest($form).length) {
+            if (!$(e.target).closest(".mobile .avatar").length && !$(e.target).closest($form).length) {
                 //処理なし
             }
             else if ($(e.target).closest($form).length) {
