@@ -52,4 +52,9 @@ const id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
     mode = [0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
     diff = [7.399, 5.436, 5.012, 1.296, 2.553, 5.58, 2.13, 5.757, 4.517, 1.402];
 
-console.log(groupBySort(id, mode, diff));
+const element = [
+    ["ap", "rx", "so"],
+    [123, 456, 789]
+];
+
+console.log(element[1].includes("so"));

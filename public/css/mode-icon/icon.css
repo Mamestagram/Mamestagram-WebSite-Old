@@ -11,22 +11,22 @@
     font-style: normal;
 }
 
-.osu::before {
-    content: "\E800";
+.mode-osu::before {
+    content: "\e800";
     position: relative;
 }
 
-.taiko::before {
-    content: "\E803";
+.mode-taiko::before {
+    content: "\e803";
     position: relative;
 }
 
-.fruits::before {
-    content: "\E801";
+.mode-fruits::before {
+    content: "\e801";
     position: relative;
 }
 
-.mania::before {
-    content: "\E802";
+.mode-mania::before {
+    content: "\e802";
     position: relative;
 }

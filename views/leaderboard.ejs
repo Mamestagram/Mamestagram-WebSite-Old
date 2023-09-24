@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <title>Leaderboard</title>
+        <meta name="description" content="osu! private server Mamestagram's Leaderboard">
         <%- include("link") %>
         <link rel="stylesheet" href="/css/leaderboard.css">
         <style>
@@ -73,9 +74,9 @@
     </head>
     <body>
     <%- include("header") %>
-    <img src="/image/banner/leaderboard.png" class="banner">
-    <h1 class="pagename">LEADERBOARD</h1>
     <main>
+        <img class="banner" src="/image/banner/leaderboard.png" alt="">
+        <h1 class="pagename">LEADERBOARD</h1>
         <div class="selection">
             <ul class="special">
                 <li class="classic">
@@ -90,16 +91,16 @@
             </ul>
             <ul class="mode">
                 <li class="std">
-                    <button><img src="/image/mode/osu.png"></button>
+                    <button><i class="mode-icon mode-osu"></i></button>
                 </li>
                 <li class="taiko">
-                    <button><img src="/image/mode/taiko.png"></button>
+                    <button><i class="mode-icon mode-taiko"></i></button>
                 </li>
                 <li class="catch">
-                    <button><img src="/image/mode/fruits.png"></button>
+                    <button><i class="mode-icon mode-fruits"></i></button>
                 </li>
                 <li class="mania">
-                    <button><img src="/image/mode/mania.png"></button>
+                    <button><i class="mode-icon mode-mania"></i></button>
                 </li>
             </ul>
         </div>
@@ -134,7 +135,7 @@
                                 <span class="ranking">#<%= ranking.ranking.toLocaleString() %></span>
                                 <i class="flag-icon flag-icon-<%= ranking.country %>"></i>
                                 <span class="name">
-                                <a href="/profile/id=<%= ranking.id %>/mode=std/special=none/1&1&1">
+                                <a href="/profile/<%= ranking.id %>">
                                     <span class="text"><%= ranking.name %></span>
                                 </a>
                             </span>

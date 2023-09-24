@@ -4,7 +4,6 @@
         <title><%= mapdetails.artist %> - <%= mapdetails.title %></title>
         <%- include("link") %>
         <link rel="stylesheet" href="/css/beatmap.css">
-        <link rel="stylesheet" href="/css/mode-icon/icon.css">
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -152,7 +151,7 @@
                                         background-color: rgba(31, 41, 46, 0.5);
                                         border: 2px solid #b7d1de;"
                                     <% } %>>
-                                    <i class="mode-icon <%= getMode(map.mode) %>" style="
+                                    <i class="mode-icon mode-<%= getMode(map.mode) %>" style="
                                             color: <%= getColor(map.diff) %>;
                                     <% if (map.id === Number(mapid)) { %>
                                         opacity: 1;

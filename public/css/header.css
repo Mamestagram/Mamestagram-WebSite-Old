@@ -209,14 +209,14 @@ header .arrow {
     transition: 300ms;
 }
 
-.banner {
+main .banner {
     height: 230px;
     width: 100%;
     object-fit: cover;
     filter: blur(2px);
 }
 
-.pagename {
+main .pagename {
     position: absolute;
     top: 150px;
     left: 230px;

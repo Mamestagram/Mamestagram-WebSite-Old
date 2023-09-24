@@ -46,8 +46,8 @@ main {
     opacity: 100%;
 }
 
-.mode img {
-    width: 45px;
+.mode i {
+    font-size: 45px;
 }
 
 .page {
@@ -243,9 +243,8 @@ main {
         padding: 10px 5px;
     }
 
-    .mode img {
-        height: 35px;
-        width: 35px;
+    .mode i {
+        font-size: 35px;
     }
 
     .page {

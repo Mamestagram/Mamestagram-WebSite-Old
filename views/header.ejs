@@ -22,7 +22,7 @@
 <ul class="mobile">
     <% if (locals.loginf) { %>
         <li class="avatar">
-            <img src="https://a.mamesosu.net/<%= locals.userid %>" alt="">
+            <img src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
             <button><%= locals.username %></button>
         </li>
     <% } else { %>
@@ -30,22 +30,25 @@
         <li class="login"><a href="/login">Sign in</a></li>
     <% } %>
     <li class="beatmaps">
-        <span></span><a href="/beatmaps/custom/any/none">Beatmaps</a>
+        <span></span>
+        <a href="/beatmaps/custom/any/none">Beatmaps</a>
     </li>
     <li class="leaderboard">
-        <span></span><a href="/leaderboard">Leaderboard</a>
+        <span></span>
+        <a href="/leaderboard">Leaderboard</a>
     </li>
     <li class="documents">
         <span></span>
         <a href="/documents">Documents</a>
     </li>
     <li class="discord">
-        <span></span><a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a>
+        <span></span>
+        <a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a>
     </li>
 </ul>
 <% if (locals.loginf === true) { %>
     <div class="link-form">
-        <a href="/profile/id=<%= locals.userid %>/mode=std/special=none/1&1&1">
+        <a href="/profile/<%= locals.userid %>">
             My Profile
         </a>
         <a href="/rename">Change name</a>

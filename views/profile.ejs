@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title><%= info.name %>'s Profile</title>
+        <title><%= info[0].name %>'s Profile</title>
+        <meta name="description" content="osu! private server Mamestagram's profile">
         <%- include("link") %>
         <link rel="stylesheet" href="/css/profile.css">
-        <link rel="stylesheet" href="/css/Pmode/<%= mode %>.css">
-        <link rel="stylesheet" href="/css/Pspecial/<%= sp %>.css">
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -62,13 +61,13 @@
         <script type="text/javascript">
             <%
             const getPlayTime = (time) => {
-                let res = "";
-                res += Math.floor(time / 86400).toLocaleString() + "d ";
+                let rst = "";
+                rst += Math.floor(time / 86400).toLocaleString() + "d ";
                 time %= 86400;
-                res += Math.floor(time / 3600).toLocaleString() + "h ";
+                rst += Math.floor(time / 3600).toLocaleString() + "h ";
                 time %= 3600;
-                res += Math.floor(time / 60).toLocaleString() + "m";
-                return res;
+                rst += Math.floor(time / 60).toLocaleString() + "m";
+                return rst;
             }
             const getMods = (modNum) => {
                 let mod = new Array(0);
@@ -106,17 +105,17 @@
                     "mr"  // 30 : Mirror
                 ];
                 for (let i = 30; i >= 0; i--) {
-                    if (i !== 2 && i !== 11 && !(i >= 15 && i <= 19) && i !== 22 && !(i >= 24 && i <= 28) && modNum >= Math.pow(2, i)) {
+                    if (i !== 2 && i !== 11 && !(i >= 15 && i <= 19) && i !== 22 && !(i >= 24 && i <= 28) && modNum >= 1 << i) {
                         switch (i) {
                             case 14:
-                                modNum -= Math.pow(2, 5);
+                                modNum -= 1 << 5;
                                 break;
                             case 9:
-                                modNum -= Math.pow(2, 6);
+                                modNum -= 1 << 6;
                                 break;
                         }
                         mod.push(mods[i]);
-                        modNum -= Math.pow(2, i);
+                        modNum -= 1 << i;
                     }
                 }
                 mod = sortMods(mod);
@@ -208,449 +207,166 @@
         </script>
     </head>
     <body>
-    <%- include("header") %>
-    <main>
-        <div class="box player-banner">
-            <div class="self">
-                <i class="flag-icon flag-icon-<%= info.country %>"></i>
-                <span class="name"><%= info.name %></span>
-                <% if (parseInt(id) === locals.userid) { %>
-                    <a href="/rename">
-                        <i class="fa-solid fa-pen-to-square rename-icon"></i>
-                    </a>
-                <% } %>
-            </div>
-            <div class="selection">
-                <ul class="special">
-                    <li class="classic">
-                        <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=none/1&1&1">
-                            Classic
-                        </a>
-                    </li>
-                    <% if (mode !== "mania") { %>
+        <%- include("header") %>
+        <main>
+            <div class="box">
+                <div class="username">
+                    <img src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
+                    <h1><%= info[0].name %></h1>
+                    <i class="flag-icon flag-icon-<%= info[0].country %>"></i>
+                </div>
+                <div class="selection">
+                    <ul class="special">
+                        <li class="classic">
+                            <button>Classic</button>
+                        </li>
                         <li class="relax">
-                            <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=rx/1&1&1">
-                                Relax
-                            </a>
+                            <button>Relax</button>
                         </li>
-                    <% } %>
-                    <% if (mode === "std") { %>
                         <li class="auto-pilot">
-                            <a href="/profile/id=<%= id %>/mode=<%= mode %>/special=ap/1&1&1">
-                                Auto Pilot
-                            </a>
+                            <button>Auto Pilot</button>
                         </li>
-                    <% } %>
-                </ul>
-                <ul class="mode">
-                    <li class="std-icon">
-                        <a href="/profile/id=<%= id %>/mode=std/special=<%= sp %>/1&1&1">
-                            <img src="/image/mode/osu.png">
-                        </a>
-                    </li>
-                    <% if (sp !== "ap") { %>
-                        <li class="taiko-icon">
-                            <a href="/profile/id=<%= id %>/mode=taiko/special=<%= sp %>/1&1&1">
-                                <img src="/image/mode/taiko.png">
-                            </a>
+                    </ul>
+                    <ul class="mode">
+                        <li class="std">
+                            <button><i class="mode-icon mode-osu"></i></button>
                         </li>
-                        <li class="catch-icon">
-                            <a href="/profile/id=<%= id %>/mode=ctb/special=<%= sp %>/1&1&1">
-                                <img src="/image/mode/fruits.png">
-                            </a>
+                        <li class="taiko">
+                            <button><i class="mode-icon mode-taiko"></i></button>
                         </li>
-                    <% } %>
-                    <% if (sp === "none") { %>
-                        <li class="mania-icon">
-                            <a href="/profile/id=<%= id %>/mode=mania/special=<%= sp %>/1&1&1">
-                                <img src="/image/mode/mania.png">
-                            </a>
+                        <li class="catch">
+                            <button><i class="mode-icon mode-fruits"></i></button>
                         </li>
-                    <% } %>
-                </ul>
-            </div>
-        </div>
-        <div class="box player-info">
-            <div class="stats">
-                <div class="ranking">
-                    <div class="global-ranking">
-                        <span class="title">Global Ranking</span><br>
-                        <% if (info.acc === 0 || info.priv === 2) { %>
-                            <span class="value">-</span>
-                        <% } else { %>
-                            <span class="value">#<%= info.GRanking.toLocaleString() %></span>
-                        <% } %>
-                    </div>
-                    <div class="country-ranking">
-                        <span class="title">Country Ranking</span><br>
-                        <% if (info.acc === 0 || info.priv === 2) { %>
-                            <span class="value">-</span>
-                        <% } else { %>
-                            <span class="value">#<%= info.CRanking.toLocaleString() %></span>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="other-info">
-                    <div class="medals">
-                        <span class="title">Medals</span><br>
-                        <span class="value"><%= info.medals.toLocaleString() %></span>
-                    </div>
-                    <div class="player-pp">
-                        <span class="title">pp</span><br>
-                        <span class="value"><%= info.pp.toLocaleString() %></span>
-                    </div>
-                    <div class="playtime">
-                        <span class="title">Total Play TIme</span><br>
-                        <span class="value"><%= getPlayTime(info.playtime) %></span>
-                    </div>
-                </div>
-                <div class="grade-amounts">
-                    <div class="xh">
-                        <img src="/image/grade/XH.png"><br>
-                        <span class="value"><%= info.xh_count.toLocaleString() %></span>
-                    </div>
-                    <div class="x">
-                        <img src="/image/grade/X.png"><br>
-                        <span class="value"><%= info.x_count.toLocaleString() %></span>
-                    </div>
-                    <div class="sh">
-                        <img src="/image/grade/SH.png"><br>
-                        <span class="value"><%= info.sh_count.toLocaleString() %></span>
-                    </div>
-                    <div class="s">
-                        <img src="/image/grade/S.png"><br>
-                        <span class="value"><%= info.s_count.toLocaleString() %></span>
-                    </div>
-                    <div class="a">
-                        <img src="/image/grade/A.png"><br>
-                        <span class="value"><%= info.a_count.toLocaleString() %></span>
-                    </div>
+                        <li class="mania">
+                            <button><i class="mode-icon mode-mania"></i></button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="player-scores">
-                <div class="acc">
-                    <span class="title">Hit Accuracy</span>
-                    <span class="value"><%= info.acc.toFixed(2) %>%</span>
+            <div class="box">
+                <div class="a"> <!-- TODO -->
+                    <div class="ranking">
+                        <div class="global">
+                            <h1>Global Ranking</h1>
+                            <% if (info[0].acc === 0 || info[0].priv === 2) { %>
+                                <h2>-</h2>
+                            <% } else { %>
+                                <h2>#<%= info[0].Granking %></h2>
+                            <% } %>
+                        </div>
+                        <div class="country">
+                            <h1>Country Ranking</h1>
+                            <% if (info[0].acc === 0 || info[0].priv === 2) { %>
+                                <h2>-</h2>
+                            <% } else { %>
+                                <h2>#<%= info[0].Cranking %></h2>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class=""> <!-- TODO -->
+                        <div class="medals">
+                            <h1>Medals</h1>
+                            <h2><%= info[0].medals %></h2>
+                        </div>
+                        <div class="pp">
+                            <h1>pp</h1>
+                            <h2><%= info[0].pp %></h2>
+                        </div>
+                        <div class="playtime">
+                            <h1>Total Play Time</h1>
+                            <h2><%= getPlayTime(info[0].playtime) %></h2>
+                        </div>
+                    </div>
+                    <div class="grade-amounts">
+                        <div class="xh">
+                            <img src="/image/grade/XH.png" alt=""><br>
+                            <%= info[0].xh_count %>
+                        </div>
+                        <div class="x">
+                            <img src="/image/grade/X.png" alt=""><br>
+                            <%= info[0].x_count %>
+                        </div>
+                        <div class="sh">
+                            <img src="/image/grade/SH.png" alt=""><br>
+                            <%= info[0].sh_count %>
+                        </div>
+                        <div class="s">
+                            <img src="/image/grade/S.png" alt=""><br>
+                            <%= info[0].s_count %>
+                        </div>
+                        <div class="a">
+                            <img src="/image/grade/A.png" alt=""><br>
+                            <%= info[0].a_count %>
+                        </div>
+                    </div>
                 </div>
-                <div class="playcount">
-                    <span class="title">Play Count</span>
-                    <span class="value"><%= info.plays.toLocaleString() %></span>
-                </div>
-                <div class="hits">
-                    <span class="title">Total Hits</span>
-                    <span class="value"><%= info.total_hits.toLocaleString() %></span>
-                </div>
-                <div class="ranked-score">
-                    <span class="title">Ranked Score</span>
-                    <span class="value"><%= info.rscore.toLocaleString() %></span>
-                </div>
-                <div class="total-score">
-                    <span class="title">Total Score</span>
-                    <span class="value"><%= info.tscore.toLocaleString() %></span>
-                </div>
-                <div class="maxcombo">
-                    <span class="title">Maximum Combo</span>
-                    <span class="value"><%= info.max_combo.toLocaleString() %></span>
-                </div>
-                <div class="replayed">
-                    <span class="title">Replays Watched</span>
-                    <span class="value"><%= info.replay_views.toLocaleString() %></span>
-                </div>
-            </div>
-        </div>
-        <div class="box bestpp-list" id="bestpp">
-            <div class="bestpp-header">
-                <h1>Best Performance</h1>
-                <div class="page">
-                    <h2>page : <%= bppage %></h2>
-                    <div class="pagearrow">
-                        <% let page = Number(bppage); %>
-                        <% if (page === 1) { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page - 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
-                                <img hidden src="/image/arrow.png">
-                            </a>
-                        <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page - 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
-                                <img src="/image/arrow.png">
-                            </a>
-                        <% } %>
-                        <% if (page === 10 || bestppRecCount(page + 1, bestpp) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page + 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
-                                <img hidden src="/image/arrow.png">
-                            </a>
-                        <% } else { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= page + 1 %>&<%= mppage %>&<%= rspage %>#bestpp">
-                                <img src="/image/arrow.png">
-                            </a>
-                        <% } %>
+                <span class="border"></span>
+                <div class="b"> <!-- TODO -->
+                    <div class="acc">
+                        <h1>Hit Accuracy</h1>
+                        <h2><%= info[0].acc.toFixed(2) %></h2>
+                    </div>
+                    <div class="plaucount">
+                        <h1>Play Count</h1>
+                        <h2><%= info[0].plays.toLocaleString() %></h2>
+                    </div>
+                    <div class="hits">
+                        <h1>Total hits</h1>
+                        <h2><%= info[0].total_hits.toLocaleString() %></h2>
+                    </div>
+                    <div class="rankedscore">
+                        <h1>Ranked Score</h1>
+                        <h2><%= info[0].rscore.toLocaleString() %></h2>
+                    </div>
+                    <div class="totalscore">
+                        <h1>Total Score</h1>
+                        <h2><%= info[0].tscore.toLocaleString() %></h2>
+                    </div>
+                    <div class="maxcombo">
+                        <h1>Maximum Combo</h1>
+                        <h2><%= info[0].max_combo.toLocaleString() %></h2>
+                    </div>
+                    <div class="watched">
+                        <h1>Replays Watched</h1>
+                        <h2><%= info[0].replay_views.toLocaleString() %></h2>
                     </div>
                 </div>
             </div>
-            <% if (bestppRecCount(page, bestpp) === 0) { %>
-                <h1 class="nothing">No scores available</h1>
-            <% } else { %>
-                <% let i = 0; %>
+            <div class="box">
+                <div class="label">
+                    <h1>Best Performance</h1>
+                    <h2>page : 1</h2>
+                    <button><i class="fa-solid fa-caret-left"></i></button>
+                    <button><i class="fa-solid fa-caret-right"></i></button>
+                </div>
                 <% let n = 0; %>
-                <% let display = false; %>
-                <% for (let map of bestpp) { %>
-                    <% if (n >= page * 10 - 10) {
-                        display = true;
-                    } %>
-                    <% if (n >= page * 10 || n >= 100) {
-                        break;
-                    } %>
-                    <% let flag = true; %>
-                    <% for (let mod of getMods(map.mods)) {
-                        if (mod === "so") {
-                            flag = false;
-                        }
-                    }
-                    for(let j = 0; j < i; j++) {
-                        if (bestpp[j].md5 === map.md5) {
-                            flag = false;
-                            break;
-                        }
-                    } %>
-                    <% if (display && flag) { %>
-                        <div class="list">
-                            <img src="/image/grade/<%= map.grade %>.png" class="grade">
-                            <div class="map-info">
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
-                                    <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
-                                    <span class="diff"><%= map.version %></span>
-                                </a>
-                            </div>
-                            <div class="scores">
-                                <span class="mods">
-                                    <% const mods=getMods(map.mods); %>
-                                    <% mods.forEach((mod) => { %>
-                                        <img src="/image/mods/<%= mod %>.png">
-                                    <% }); %>
-                                </span>
-                                <span class="acc"><%= map.acc.toFixed(2) %>%</span>
-                                <span class="pp">
-                                    <span class="recorded"><%= Math.round(map.pp).toLocaleString() %><span>pp</span></span>
-                                    <span class="weighted">(<%= Math.round(map.pp * Math.pow(0.95, n)).toLocaleString() %>pp)</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="list-mobile">
-                            <img src="/image/grade/<%= map.grade %>.png" class="grade">
-                            <div class="map-info">
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
-                                    <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
-                                    <span class="diff"><%= map.version %></span>
-                                </a><br>
-                                <span class="mods">
-                                    <% mods.forEach((mod) => { %>
-                                        <img src="/image/mods/<%= mod %>.png">
-                                    <% }); %>
-                                </span>
-                            </div>
-                            <div class="scores">
-                                <span class="acc"><%= map.acc.toFixed(2) %>%</span>
-                                <span class="pp">
-                                    <span class="recorded"><%= Math.round(map.pp).toLocaleString() %><span>pp</span></span>
-                                    <span class="weighted">(<%= Math.round(map.pp * Math.pow(0.95, n)).toLocaleString() %>pp)</span>
-                                </span>
-                            </div>
-                        </div>
-                        <% n++; %>
-                    <% } else if (flag) {
-                        n++;
-                    } %>
-                    <% i++; %>
-                <% } %>
-            <% } %>
-        </div>
-        <div class="box mostplays-list" id="mostplays">
-            <div class="mostplays-header">
-                <h1>Most Plays</h1>
-                <div class="page">
-                    <h2>page : <%= mppage %></h2>
-                    <div class="pagearrow">
-                        <% page = Number(mppage); %>
-                        <% let amount = 10; %>
-                        <% if (page === 1) { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page - 1 %>&<%= rspage %>#mostplays">
-                                <img hidden src="/image/arrow.png">
-                            </a>
+                <% bestpp.forEach((data) => { %>
+                    <div class="mode-<%= n++ %>">
+                        <% if (data.length <= 0) { %>
+                            <h1 class="nothing">No scores available</h1>
                         <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page - 1 %>&<%= rspage %>#mostplays">
-                                <img src="/image/arrow.png">
-                            </a>
-                        <% } %>
-                        <% if (playsRecCount(page + 1, mostplays, amount) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page + 1 %>&<%= rspage %>#mostplays">
-                                <img hidden src="/image/arrow.png">
-                            </a>
-                        <% } else { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= page + 1 %>&<%= rspage %>#mostplays">
-                                <img src="/image/arrow.png">
-                            </a>
+                            <% let flag; %>
+                            <% for (let i = 0; i < data.length; i++) { %>
+                                <%
+                                let arr = new Array(0);
+                                for (let j = 0; j < i; j++) { arr.push(data[j].id); }
+                                flag = !(getMods(data.mods).includes("so") || arr.includes(data[i].id));
+                                %>
+                                <% if (flag) { %>
+                                    <div class="data">
+                                        <img class="grade" src="/image/grade/<%= data[i].grade %>.png" alt="">
+                                        <a href="/beatmap/<%= data[i].set_id%>/<%= data[i].id %>/<%= data[i].version %>">
+                                            <p class="title"><%= data[i].title %> by <%= data[i].artist %></p>
+                                            <p class="diff"><%= data[i].version %></p>
+                                        </a>
+                                    </div>
+                                <% } %>
+                            <% } %>
                         <% } %>
                     </div>
-                </div>
+                <% }); %>
             </div>
-            <% if (playsRecCount(page, mostplays, amount) === 0) { %>
-                <h1 class="nothing">No scores available</h1>
-            <% } else { %>
-                <% let n = 0; %>
-                <% let display = false; %>
-                <% for (let map of mostplays) { %>
-                    <% if (n >= page * amount - amount) {
-                        display = true;
-                    } %>
-                    <% if (n >= page * amount) {
-                        break;
-                    } %>
-                    <% if (display) { %>
-                        <div class="list">
-                            <img class="mapbg" src="https://b.ppy.sh/thumb/<%= map.set_id %>l.jpg?">
-                            <div class="map-info">
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
-                                    <span class="title"><%= getSongName(map.title, map.version, map.artist, "full") %></span><br>
-                                    <span class="mapper">mapped by <span class="bold"><%= map.creator %></span></span>
-                                </a>
-                            </div>
-                            <div class="main-info">
-                                <img class="mode" src="/image/mode/<%= getMode(map.mode) %>.png">
-                                <div>
-                                    <i class="fa-solid fa-play fa-xs play-icon"></i>
-                                    <span class="value"><%= map.playtimes.toLocaleString() %></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-mobile">
-                            <div class="mapbg">
-                                <img src="https://b.ppy.sh/thumb/<%= map.set_id %>l.jpg?">
-                            </div>
-                            <div class="main-info">
-                                <img class="mode" src="/image/mode/<%= getMode(map.mode) %>.png">
-                                <div>
-                                    <i class="fa-solid fa-play fa-xs play-icon"></i>
-                                    <span class="value"><%= map.playtimes.toLocaleString() %></span>
-                                </div>
-                            </div>
-                            <div class="map-info">
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
-                                    <span class="title"><%= getSongName(map.title, map.version, map.artist, "full") %></span><br>
-                                    <span class="mapper">mapped by <span class="bold"><%= map.creator %></span></span>
-                                </a>
-                            </div>
-                        </div>
-                    <% } %>
-                    <% n++; %>
-                <% } %>
-            <% } %>
-        </div>
-        <div class="box recentplays-list" id="recentplays">
-            <div class="recentplays-header">
-                <h1>Recent Plays</h1>
-                <div class="page">
-                    <h2>page : <%= rspage %></h2>
-                    <div class="pagearrow">
-                        <% page = Number(rspage); %>
-                        <% amount = 7; %>
-                        <% if (page === 1) { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page - 1 %>#recentplays">
-                                <img hidden src="/image/arrow.png">
-                            </a>
-                        <% } else { %>
-                            <a class="back" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page - 1 %>#recentplays">
-                                <img src="/image/arrow.png">
-                            </a>
-                        <% } %>
-                        <% if (playsRecCount(page + 1, recentplays, amount) === 0) { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page + 1 %>#recentplays">
-                                <img hidden src="/image/arrow.png">
-                            </a>
-                        <% } else { %>
-                            <a class="next" href="/profile/id=<%= id %>/mode=<%= mode %>/special=<%= sp %>/<%= bppage %>&<%= mppage %>&<%= page + 1 %>#recentplays">
-                                <img src="/image/arrow.png">
-                            </a>
-                        <% } %>
-                    </div>
-                </div>
-            </div>
-            <% if (playsRecCount(page, recentplays, amount) === 0) { %>
-                <h1 class="nothing">No Plays available</h1>
-            <% } else { %>
-                <% let n = 0; %>
-                <% let display = false; %>
-                <% for (let map of recentplays) { %>
-                    <% if (n >= page * amount - amount) {
-                        display = true;
-                    } %>
-                    <% if (n >= page * amount) {
-                        break;
-                    } %>
-                    <% if (display) { %>
-                        <div class="list">
-                            <img src="/image/grade/<%= map.grade %>.png" class="grade">
-                            <div class="map-info">
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
-                                    <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
-                                    <span class="diff"><%= map.version %></span>
-                                </a>
-                            </div>
-                            <div class="scores">
-                                <span class="mods">
-                                    <% const mods = getMods(map.mods); %>
-                                    <% mods.forEach((mod) => { %>
-                                        <img src="/image/mods/<%= mod %>.png">
-                                    <% }); %>
-                                </span>
-                                <span class="acc"><%= map.acc.toFixed(2) %>%</span>
-                                <div class="pp">
-                                    <span class="recorded"><%= Math.round(map.pp).toLocaleString() %><span>pp</span></span>
-                                    <span class="status">
-                                        <% if (map.status === 0) { %>
-                                            (Pending)
-                                        <% } else if (map.status === 4) { %>
-                                            (Qualified)
-                                        <% } else if (map.status === 5) { %>
-                                            (Loved)
-                                        <% } %>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-mobile">
-                            <img src="/image/grade/<%= map.grade %>.png" class="grade">
-                            <div class="map-info">
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>/<%= map.version %>">
-                                    <span class="title"><%= getSongName(map.title, map.version, map.artist, "simple") %></span><br>
-                                    <span class="diff"><%= map.version %></span>
-                                </a><br>
-                                <span class="mods">
-                                    <% mods.forEach((mod) => { %>
-                                        <img src="/image/mods/<%= mod %>.png">
-                                    <% }); %>
-                                </span>
-                            </div>
-                            <div class="scores">
-                                <span class="acc"><%= map.acc.toFixed(2) %>%</span>
-                                <div class="pp">
-                                    <span class="recorded"><%= Math.round(map.pp).toLocaleString() %><span>pp</span></span>
-                                    <span class="status">
-                                        <% if (map.status === 0) { %>
-                                            (Pending)
-                                        <% } else if (map.status === 4) { %>
-                                            (Qualified)
-                                        <% } else if (map.status === 5) { %>
-                                            (Loved)
-                                        <% } %>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    <% } %>
-                    <% n++;%>
-                <% } %>
-            <% } %>
-        </div>
-    </main>
-    <%- include("footer") %>
+        </main>
+        <%- include("footer") %>
     </body>
 </html>

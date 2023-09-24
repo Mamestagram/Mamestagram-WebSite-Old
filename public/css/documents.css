@@ -9,7 +9,6 @@ main {
     min-height: 100vh;
     height: 100%;
     width: 100%;
-    padding: 10px 0 200px 0;
     text-align: center;
 }
 
@@ -17,6 +16,7 @@ main .logoimage {
     background-color: rgba(253, 253, 253, 0.05);
     height: 310px;
     padding: 10px;
+    margin-top: 50px;
     border-radius: 90px 90px 130px 130px;
 }
 
