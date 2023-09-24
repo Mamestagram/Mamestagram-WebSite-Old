@@ -345,12 +345,12 @@
                         <% if (data.length <= 0) { %>
                             <h1 class="nothing">No scores available</h1>
                         <% } else { %>
-                            <% let flag; %>
+                            <% let flag, amt = 0; %>
                             <% for (let i = 0; i < data.length; i++) { %>
                                 <%
                                 let arr = new Array(0);
                                 for (let j = 0; j < i; j++) { arr.push(data[j].id); }
-                                flag = !(getMods(data.mods).includes("so") || arr.includes(data[i].id));
+                                flag = !(getMods(data[i].mods).includes("so") || arr.includes(data[i].id));
                                 %>
                                 <% if (flag) { %>
                                     <div class="data">
@@ -359,8 +359,85 @@
                                             <p class="title"><%= data[i].title %> by <%= data[i].artist %></p>
                                             <p class="diff"><%= data[i].version %></p>
                                         </a>
+                                        <div class="mods">
+                                            <% getMods(data[i].mods).forEach((mod) => { %>
+                                                <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                            <% }); %>
+                                        </div>
+                                        <p class="acc"><%= data[i].acc.toFixed(2) %>%</p>
+                                        <div class="pp">
+                                            <p class="recorded"><%= Math.round(data[i].pp).toLocaleString() %><span>pp</span></p>
+                                            <p class="weighted">(<%= Math.round(data[i].pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
+                                        </div>
                                     </div>
                                 <% } %>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+            <div class="box">
+                <div class="label">
+                    <h1>Most Plays</h1>
+                    <h2>page : 1</h2>
+                    <button><i class="fa-solid fa-caret-left"></i></button>
+                    <button><i class="fa-solid fa-caret-right"></i></button>
+                </div>
+                <% n = 0; %>
+                <% mostplays.forEach((data) => { %>
+                    <div class="mode-<%= n++ %>">
+                        <% if (data.length <= 0) { %>
+                            <h1 class="nothing">No scores available</h1>
+                        <% } else { %>
+                            <% for (let i = 0; i < data.length; i++) { %>
+                                <div class="data">
+                                    <img src="https://b.ppy.sh/thumb/<%= data[i].set_id %>l.jpg?" alt="">
+                                    <a href="/beatmap/<%= data[i].set_id %>/<%= data[i].id %>/<%= data[i].version %>">
+                                        <p class="title"><%= data[i].title %> [<%= data[i].version%>] by <%= data[i].artist %></p>
+                                        <p class="mapper">mapped by <span><%= data[i].creator %></span></p>
+                                    </a>
+                                    <i class="mode-icon mode-<%= getMode(data[i].mode) %>"></i>
+                                    <i class="fa-solid fa-play fa-xs play-icon"></i>
+                                    <p class="value"><%= data[i].playtimes.toLocaleString() %></p>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+            <div class="box">
+                <div class="label">
+                    <h1>Recent Plays</h1>
+                    <h2>page : 1</h2>
+                    <button><i class="fa-solid fa-caret-left"></i></button>
+                    <button><i class="fa-solid fa-caret-right"></i></button>
+                </div>
+                <% n = 0; %>
+                <% recentplays.forEach((data) => { %>
+                    <div class="mode-<%= n++ %>">
+                        <% if (data.length <= 0) { %>
+                            <h1 class="nothing">No scores available</h1>
+                        <% } else { %>
+                            <% for (let i = 0; i < data.length; i++) { %>
+                                <div class="data">
+                                    <img class="grade" src="/image/grade/<%= data[i].grade %>.png" alt="">
+                                    <a href="/beatmap/<%= data[i].set_id %>/<%= data[i].id %>/<%= data[i].version %>">
+                                        <p class="title"><%= data[i].title %> by <%= data[i].artist %></p>
+                                        <p class="diff"><%= data[i].version %></p>
+                                    </a>
+                                    <div class="mods">
+                                        <% getMods(data[i].mods).forEach((mod) => { %>
+                                            <img class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                        <% }); %>
+                                    </div>
+                                    <p class="acc"><%= data[i].acc.toFixed(2) %></p>
+                                    <div class="pp">
+                                        <p class="recorded"><%= Math.round(data[i].pp).toLocaleString() %><span>pp</span></p>
+                                        <% if (data[i].status !== 2) { %>
+                                            <p class="loved">(Loved)</p>
+                                        <% } %>
+                                    </div>
+                                </div>
                             <% } %>
                         <% } %>
                     </div>

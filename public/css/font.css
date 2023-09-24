@@ -42,3 +42,13 @@
     font-family: "RobotoMono";
     src: url("../font/RobotoMono-Regular.ttf");
 }
+
+@font-face {
+    font-family: "Comfortaa Variable";
+    src: url("../font/Comfortaa-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Kanit";
+    src: url("../font/Kanit-ExtraLight.ttf");
+}
