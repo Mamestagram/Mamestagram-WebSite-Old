@@ -22,11 +22,11 @@ main {
     height: 40px;
     margin: 0 10px;
     filter: invert(30%);
-    opacity: 95%;
+    opacity: 0.95;
 }
 .special li:hover {
     filter: invert(0%);
-    opacity: 100%;
+    opacity: 1;
 }
 
 .mode {
@@ -39,11 +39,11 @@ main {
 .mode li {
     padding: 10px;
     filter: invert(30%);
-    opacity: 95%;
+    opacity: 0.95;
 }
 .mode li:hover {
     filter: invert(0%);
-    opacity: 100%;
+    opacity: 1;
 }
 
 .mode i {
@@ -60,23 +60,19 @@ main {
 .page p {
     color: #fdfdfd;
     font-size: 18px;
-    line-height: 35px;
+    line-height: 30px;
 }
 
-.page .pagearrow img {
-    height: 30px;
-    width: 30px;
-    margin: 3px 10px;
+.page .pagearrow i {
+    color: #fdfdfd;
+    font-size: 30px;
+    margin: 0 20px;
     filter: invert(50%);
-    opacity: 95%;
+    opacity: 0.95;
 }
-.page .pagearrow img:hover {
-    filter: invert(100%);
-    opacity: 100%;
-}
-
-.page .pagearrow .back {
-    transform: scale(-1, 1);
+.page .pagearrow i:hover {
+    filter: invert(0%);
+    opacity: 1;
 }
 /* ------------------------------------------------- */
 .ranking-table {

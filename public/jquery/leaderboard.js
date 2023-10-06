@@ -16,21 +16,10 @@ $(function() {
         $(".mode .catch"),
         $(".mode .mania")
     ]
-    var $imghov = [
-        $(".mode .std:hover"),
-        $(".mode .taiko:hover"),
-        $(".mode .catch:hover"),
-        $(".mode .mania:hover")
-    ]
     var $sp = [
         $(".special .classic"),
         $(".special .relax"),
         $(".special .auto-pilot")
-    ]
-    var $sphov = [
-        $(".special .classic:hover"),
-        $(".special .relax:hover"),
-        $(".special .auto-pilot:hover")
     ]
     var $select = $("main .selection ul li");
     const mode = ["std", "taiko", "catch", "mania"],

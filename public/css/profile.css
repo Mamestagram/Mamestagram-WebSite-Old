@@ -13,3 +13,27 @@ main .box {
     border-radius: 10px;
     box-shadow: 10px 10px 10px black;
 }
+
+main .player-banner div, main .player-banner ul {
+    display: flex;
+}
+
+main .player-info, main .player-info .wrap {
+    display: flex;
+}
+
+main .player-info div img {
+    height: 40px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px black;
+}
+
+main .bestpp div .wrap, main .bestpp div .pp {
+    display: flex;
+}
+
+main .bestpp div .grade {
+    height: 45px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px black;
+}

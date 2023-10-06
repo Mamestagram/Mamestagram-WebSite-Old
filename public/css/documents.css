@@ -105,59 +105,59 @@ section {
     scroll-margin-top: 150px;
 }
 /* ------------------------------------------------- */
-#about {
+.about {
     margin: 0 auto 10px auto;
 }
 
-#about .overview {
+.about .overview {
     padding: 20px 10px;
 }
 
-#about .features {
+.about .features {
     padding: 10px;
 }
 
-#about .features h2 a {
+.about .features h2 a {
     font-size: 16px;
     opacity: 0.6;
 }
-#about .features h2 a:hover {
+.about .features h2 a:hover {
     opacity: 0.9;
     text-decoration: underline;
 }
 
-#about li {
+.about li {
     padding: 20px 0;
 }
 
-#about h2 {
+.about h2 {
     font-size: 24px;
     padding-bottom: 10px;
 }
 
-#about h3 {
+.about h3 {
     font-size: 18px;
     padding-bottom: 10px;
 }
 
-#about h3 a, #about p a, #about h4 a {
+.about h3 a, .about p a, .about h4 a {
     background-color: #3c4270;
     color: #c0cde9;
     padding: 0 3px;
     border-radius: 5px;
 }
-#about h3 a:hover, #about p a:hover, #about h4 a:hover {
+.about h3 a:hover, .about p a:hover, .about h4 a:hover {
     background-color: #5865f2;
     color: #f4fffe;
     text-decoration: underline;
 }
 
-#about p {
+.about p {
     font-size: 14px;
     padding: 5px;
 }
 
-#about img {
+.about img {
     display: flex;
     width: 850px;
     margin-top: 10px;
@@ -165,159 +165,159 @@ section {
     margin-right: auto;
 }
 
-#about h4 {
+.about h4 {
     font-size: 14px;
     margin-top: 5px;
     margin-bottom: 30px;
     text-align: center;
 }
 
-#about .others {
+.about .others {
     font-size: 20px;
     padding: 20px;
     text-align: center;
 }
 /* ------------------------------------------------- */
-#rules ul {
+.rules ul {
     padding: 10px;
 }
 
-#rules li {
+.rules li {
     padding: 20px 0;
 }
 
-#rules li h2 {
+.rules li h2 {
     font-size: 24px;
     padding-bottom: 10px;
 }
 
-#rules li h3 {
+.rules li h3 {
     font-size: 18px;
     padding-bottom: 10px;
 }
 
-#rules li p {
+.rules li p {
     font-size: 14px;
     padding: 5px 0;
 }
 
-#rules li a {
+.rules li a {
     background-color: #3c4270;
     color: #c0cde9;
     padding: 0 3px;
     border-radius: 5px;
 }
-#rules li a:hover{
+.rules li a:hover{
     background-color: #5865f2;
     color: #f4fffe;
     text-decoration: underline;
 }
 /* ------------------------------------------------- */
-#connection .youtube {
+.connection .youtube {
     display: flex;
     justify-content: center;
     padding: 10px 0;
 }
 
-#connection iframe {
+.connection iframe {
     width: 800px;
     height: 450px;
 }
 
-#connection ol {
+.connection ol {
     list-style-type: decimal;
     padding: 0 30px;
 }
 
-#connection li {
+.connection li {
     font-size: 18px;
     padding: 70px 20px;
 }
 
-#connection .img1 {
+.connection .img1 {
     width: 850px;
     margin-top: 20px;
 }
 
-#connection .img2 {
+.connection .img2 {
     width: 500px;
     margin-top: 20px;
 }
 
-#connection .img3 {
+.connection .img3 {
     width: 300px;
     margin-left: 40px;
     margin-bottom: 140px;
 }
 
-#connection .img4 {
+.connection .img4 {
     width: 850px;
     margin-top: 20px;
 }
 
-#connection .img5 {
+.connection .img5 {
     width: 850px;
     margin-top: 20px;
 }
 
-#connection li span {
+.connection li span {
     color: #c77eca;
     font-family: "Ubuntu";
 }
 
-#connection .img6 {
+.connection .img6 {
     width: 400px;
     margin-bottom: 70px;
 }
 
-#connection .img7 {
+.connection .img7 {
     width: 400px;
     margin-top: 20px;
     margin-left: 40px;
 }
 
-#connection .img8 {
+.connection .img8 {
     width: 850px;
     margin-top: 20px;
 }
 
-#connection .conclusion {
+.connection .conclusion {
     font-size: 24px;
     padding: 20px;
     text-align: center;
 }
 /* ------------------------------------------------- */
-#registration {
+.registration {
     margin: 10px auto 0 auto;
 }
 
-#registration ol {
+.registration ol {
     list-style-type: decimal;
     padding: 0 30px;
 }
 
-#registration li {
+.registration li {
     font-size: 18px;
     padding: 70px 20px;
 }
 
-#registration .img1 {
+.registration .img1 {
     width: 680px;
     margin-top: 20px;
 }
 
-#registration .img2 {
+.registration .img2 {
     width: 150px;
     margin-left: 15px;
     margin-bottom: 150px;
 }
 
-#registration .img3 {
+.registration .img3 {
     width: 850px;
     margin-top: 20px;
 }
 
-#registration .conclusion {
+.registration .conclusion {
     font-size: 24px;
     padding: 20px;
     text-align: center;
@@ -358,74 +358,74 @@ section {
         scroll-margin-top: 150px;
     }
     /* ------------------------------------------------- */
-    #about img {
+    .about img {
         width: 720px;
     }
     /* ------------------------------------------------- */
-    #connection iframe {
+    .connection iframe {
         width: 720px;
         height: 405px;
     }
 
-    #connection img {
+    .connection img {
         position: relative;
     }
 
-    #connection .img1 {
+    .connection .img1 {
         right: 30px;
         width: 700px;
     }
 
-    #connection .img2 {
+    .connection .img2 {
         width: 370px;
     }
 
-    #connection .img3 {
+    .connection .img3 {
         width: 220px;
         margin-left: 40px;
         margin-bottom: 100px;
     }
 
-    #connection .img4 {
+    .connection .img4 {
         right: 30px;
         width: 700px;
     }
 
-    #connection .img5 {
+    .connection .img5 {
         right: 30px;
         width: 700px;
     }
 
-    #connection .img6 {
+    .connection .img6 {
         width: 295px;
         margin-bottom: 60px;
     }
 
-    #connection .img7 {
+    .connection .img7 {
         width: 295px;
     }
 
-    #connection .img8 {
+    .connection .img8 {
         right: 30px;
         width: 700px;
     }
     /* ------------------------------------------------- */
-    #registration img {
+    .registration img {
         position: relative;
     }
 
-    #registration .img1 {
+    .registration .img1 {
         right: 10px;
         width: 500px;
     }
 
-    #registration .img2 {
+    .registration .img2 {
         width: 120px;
         margin-left: 0;
         margin-bottom: 110px;
     }
 
-    #registration .img3 {
+    .registration .img3 {
         right: 30px;
         width: 700px;
     }
@@ -484,150 +484,150 @@ section {
         scroll-margin-top: 100px;
     }
     /* ------------------------------------------------- */
-    #about .overview {
+    .about .overview {
         padding: 10px 5px;
     }
 
-    #about .features {
+    .about .features {
         padding: 5px;
     }
 
-    #about .features h2 a {
+    .about .features h2 a {
         font-size: 12px;
     }
 
-    #about li {
+    .about li {
         padding: 10px 0;
     }
 
-    #about h2 {
+    .about h2 {
         font-size: 18px;
     }
 
-    #about h3 {
+    .about h3 {
         font-size: 14px;
         padding-bottom: 5px;
     }
 
-    #about p a {
+    .about p a {
         font-size: 12px;
     }
 
-    #about img {
+    .about img {
         width: 350px;
         margin-top: 5px;
     }
 
-    #about h4 {
+    .about h4 {
         font-size: 12px;
         margin-bottom: 15px;
     }
 
-    #about .others {
+    .about .others {
         font-size: 14px;
         padding: 0;
     }
     /* ------------------------------------------------- */
-    #rules ul {
+    .rules ul {
         padding: 5px;
     }
 
-    #rules li {
+    .rules li {
         padding: 10px 0;
     }
 
-    #rules li h2 {
+    .rules li h2 {
         font-size: 18px;
     }
 
-    #rules li h3 {
+    .rules li h3 {
         font-size: 14px;
         padding-bottom: 5px;
     }
 
-    #rules li p {
+    .rules li p {
         font-size: 12px;
     }
     /* ------------------------------------------------- */
-    #connection iframe {
+    .connection iframe {
         width: 350px;
         height: 197px;
     }
 
-    #connection li {
+    .connection li {
         font-size: 16px;
         padding: 30px 0;
     }
 
-    #connection img {
+    .connection img {
         right: 15px;
     }
 
-    #connection .img1 {
+    .connection .img1 {
         right: 15px;
         width: 330px;
         margin-top: 10px;
     }
 
-    #connection .img2 {
+    .connection .img2 {
         width: 330px;
         margin-top: 10px;
     }
 
-    #connection .img3 {
+    .connection .img3 {
         width: 330px;
         margin-left: 0;
         margin-bottom: 0;
         margin-top: 10px;
     }
 
-    #connection .img4 {
+    .connection .img4 {
         right: 15px;
         width: 330px;
         margin-top: 10px;
     }
 
-    #connection .img5 {
+    .connection .img5 {
         right: 15px;
         width: 330px;
         margin-top: 10px;
     }
 
-    #connection .img6 {
+    .connection .img6 {
         width: 330px;
         margin-bottom: 0;
         margin-top: 10px;
     }
 
-    #connection .img7 {
+    .connection .img7 {
         width: 330px;
         margin-top: 10px;
         margin-left: 0;
     }
 
-    #connection .img8 {
+    .connection .img8 {
         right: 15px;
         width: 330px;
         margin-top: 10px;
     }
 
-    #connection .conclusion {
+    .connection .conclusion {
         font-size: 18px;
         padding: 10px 0;
     }
     /* ------------------------------------------------- */
-    #registration li {
+    .registration li {
         font-size: 16px;
         padding: 30px 0;
     }
 
-    #registration .img1 {
+    .registration .img1 {
         right: 15px;
         width: 330px;
         margin-top: 10px;
     }
 
-    #registration .img2 {
+    .registration .img2 {
         right: 15px;
         width: 100px;
         margin-top: 10px;
@@ -635,13 +635,13 @@ section {
         margin-bottom: 0;
     }
 
-    #registration .img3 {
+    .registration .img3 {
         right: 15px;
         width: 330px;
         margin-top: 10px;
     }
 
-    #registration .conclusion {
+    .registration .conclusion {
         font-size: 18px;
         padding: 10px 0;
     }

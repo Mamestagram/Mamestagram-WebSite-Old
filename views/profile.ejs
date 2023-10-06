@@ -209,7 +209,7 @@
     <body>
         <%- include("header") %>
         <main>
-            <div class="box">
+            <div class="box player-banner">
                 <div class="username">
                     <img src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
                     <h1><%= info[0].name %></h1>
@@ -243,27 +243,31 @@
                     </ul>
                 </div>
             </div>
-            <div class="box">
-                <div class="a"> <!-- TODO -->
-                    <div class="ranking">
+            <div class="box player-info">
+                <div class="overview">
+                    <div class="wrap ranking">
                         <div class="global">
                             <h1>Global Ranking</h1>
-                            <% if (info[0].acc === 0 || info[0].priv === 2) { %>
-                                <h2>-</h2>
-                            <% } else { %>
-                                <h2>#<%= info[0].Granking %></h2>
-                            <% } %>
+                            <h2>
+                                <% if (info[0].acc === 0 || info[0].priv === 2) { %>
+                                    -
+                                <% } else { %>
+                                    #<%= info[0].Granking %>
+                                <% } %>
+                            </h2>
                         </div>
                         <div class="country">
                             <h1>Country Ranking</h1>
-                            <% if (info[0].acc === 0 || info[0].priv === 2) { %>
-                                <h2>-</h2>
-                            <% } else { %>
-                                <h2>#<%= info[0].Cranking %></h2>
-                            <% } %>
+                            <h2>
+                                <% if (info[0].acc === 0 || info[0].priv === 2) { %>
+                                    -
+                                <% } else { %>
+                                    #<%= info[0].Cranking %>
+                                <% } %>
+                            </h2>
                         </div>
                     </div>
-                    <div class=""> <!-- TODO -->
+                    <div class="wrap detail">
                         <div class="medals">
                             <h1>Medals</h1>
                             <h2><%= info[0].medals %></h2>
@@ -277,7 +281,7 @@
                             <h2><%= getPlayTime(info[0].playtime) %></h2>
                         </div>
                     </div>
-                    <div class="grade-amounts">
+                    <div class="wrap grade-amounts">
                         <div class="xh">
                             <img src="/image/grade/XH.png" alt=""><br>
                             <%= info[0].xh_count %>
@@ -301,7 +305,7 @@
                     </div>
                 </div>
                 <span class="border"></span>
-                <div class="b"> <!-- TODO -->
+                <div class="stats">
                     <div class="acc">
                         <h1>Hit Accuracy</h1>
                         <h2><%= info[0].acc.toFixed(2) %></h2>
@@ -332,13 +336,8 @@
                     </div>
                 </div>
             </div>
-            <div class="box">
-                <div class="label">
-                    <h1>Best Performance</h1>
-                    <h2>page : 1</h2>
-                    <button><i class="fa-solid fa-caret-left"></i></button>
-                    <button><i class="fa-solid fa-caret-right"></i></button>
-                </div>
+            <div class="box bestpp">
+                <h1>Best Performance</h1>
                 <% let n = 0; %>
                 <% bestpp.forEach((data) => { %>
                     <div class="mode-<%= n++ %>">
@@ -352,8 +351,8 @@
                                 for (let j = 0; j < i; j++) { arr.push(data[j].id); }
                                 flag = !(getMods(data[i].mods).includes("so") || arr.includes(data[i].id));
                                 %>
-                                <% if (flag) { %>
-                                    <div class="data">
+                                <% if (flag && amt < 100) { %>
+                                    <div class="wrap data">
                                         <img class="grade" src="/image/grade/<%= data[i].grade %>.png" alt="">
                                         <a href="/beatmap/<%= data[i].set_id%>/<%= data[i].id %>/<%= data[i].version %>">
                                             <p class="title"><%= data[i].title %> by <%= data[i].artist %></p>
@@ -376,13 +375,8 @@
                     </div>
                 <% }); %>
             </div>
-            <div class="box">
-                <div class="label">
-                    <h1>Most Plays</h1>
-                    <h2>page : 1</h2>
-                    <button><i class="fa-solid fa-caret-left"></i></button>
-                    <button><i class="fa-solid fa-caret-right"></i></button>
-                </div>
+            <div class="box mostplays">
+                <h1>Most Plays</h1>
                 <% n = 0; %>
                 <% mostplays.forEach((data) => { %>
                     <div class="mode-<%= n++ %>">
@@ -405,13 +399,8 @@
                     </div>
                 <% }); %>
             </div>
-            <div class="box">
-                <div class="label">
-                    <h1>Recent Plays</h1>
-                    <h2>page : 1</h2>
-                    <button><i class="fa-solid fa-caret-left"></i></button>
-                    <button><i class="fa-solid fa-caret-right"></i></button>
-                </div>
+            <div class="box recentplays">
+                <h1>Recent Plays</h1>
                 <% n = 0; %>
                 <% recentplays.forEach((data) => { %>
                     <div class="mode-<%= n++ %>">

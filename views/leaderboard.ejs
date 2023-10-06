@@ -5,6 +5,23 @@
         <meta name="description" content="osu! private server Mamestagram's Leaderboard">
         <%- include("link") %>
         <link rel="stylesheet" href="/css/leaderboard.css">
+        <script type="text/javascript">
+            <%
+            const getModeName = (modeNum) => {
+                switch (modeNum) {
+                    case 0: return "std";
+                    case 1: return "taiko";
+                    case 2: return "ctb";
+                    case 3: return "maina";
+                    case 4: return "stdrx";
+                    case 5: return "taikorx";
+                    case 6: return "ctbrx";
+                    case 8: return "stdap";
+                    default: return "std";
+                }
+            }
+            %>
+        </script>
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -79,39 +96,107 @@
         <h1 class="pagename">LEADERBOARD</h1>
         <div class="selection">
             <ul class="special">
-                <li class="classic">
-                    <button>Classic</button>
+                <li class="classic"
+                <% if (modeNum >= 0 && modeNum < 4) { %>
+                    style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
+                <% } %>>
+                    <a
+                    <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                        href="/leaderboard/std/performance"
+                    <% } else if (modeNum === 1 || modeNum === 5) { %>
+                        href="/leaderboard/taiko/performance"
+                    <% } else if (modeNum === 2 || modeNum === 6) { %>
+                        href="/leaderboard/ctb/performance"
+                    <% } else { %>
+                        href="/leaderboard/mania/performance"
+                    <% } %>>Classic</a>
                 </li>
-                <li class="relax">
-                    <button>Relax</button>
-                </li>
-                <li class="auto-pilot">
-                    <button>Auto Pilot</button>
-                </li>
+                <% if (modeNum !== 3) { %>
+                    <li class="relax"
+                    <% if (modeNum >= 4 && modeNum < 7) { %>
+                        style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
+                    <% } %>>
+                        <a
+                        <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                            href="/leaderboard/stdrx/performance"
+                        <% } else if (modeNum === 1 || modeNum === 5) { %>
+                            href="/leaderboard/taikorx/performance"
+                        <% } else if (modeNum === 2 || modeNum === 6) { %>
+                            href="/leaderboard/ctbrx/performance"
+                        <% } %>>Relax</a>
+                    </li>
+                <% } %>
+                <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                    <li class="auto-pilot"
+                    <% if (modeNum === 8) { %>
+                        style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
+                    <% } %>>
+                        <a href="/leaderboard/stdap/performance">Auto Pilot</a>
+                    </li>
+                <% } %>
             </ul>
             <ul class="mode">
-                <li class="std">
-                    <button><i class="mode-icon mode-osu"></i></button>
+                <li class="std"
+                <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                    style="filter: invert(0%); opacity: 1"
+                <% } %>>
+                    <a
+                    <% if (modeNum >= 0 && modeNum < 4) { %>
+                        href="/leaderboard/std/performance"
+                    <% } else if (modeNum < 7) { %>
+                        href="/leaderboard/stdrx/performance"
+                    <% } else { %>
+                        href="/leaderboard/stdap/performance"
+                    <% } %>><i class="mode-icon mode-osu"></i></a>
                 </li>
-                <li class="taiko">
-                    <button><i class="mode-icon mode-taiko"></i></button>
-                </li>
-                <li class="catch">
-                    <button><i class="mode-icon mode-fruits"></i></button>
-                </li>
-                <li class="mania">
-                    <button><i class="mode-icon mode-mania"></i></button>
-                </li>
+                <% if (modeNum !== 8) { %>
+                    <li class="taiko"
+                    <% if (modeNum === 1 || modeNum === 5) { %>
+                        style="filter: invert(0%); opacity: 1"
+                    <% } %>>
+                        <a
+                        <% if (modeNum >= 0 && modeNum < 4) { %>
+                            href="/leaderboard/taiko/performance"
+                        <% } else { %>
+                            href="/leaderboard/taikorx/performance"
+                        <% } %>><i class="mode-icon mode-taiko"></i></a>
+                    </li>
+                    <li class="catch"
+                    <% if (modeNum === 2 || modeNum === 6) { %>
+                        style="filter: invert(0%); opacity: 1"
+                    <% } %>>
+                        <a
+                        <% if (modeNum >= 0 && modeNum < 4) { %>
+                            href="/leaderboard/ctb/performance"
+                        <% } else { %>
+                            href="/leaderboard/ctbrx/performance"
+                        <% } %>><i class="mode-icon mode-fruits"></i></a>
+                    </li>
+                <% } %>
+                <% if (modeNum >= 0 && modeNum < 4) { %>
+                    <li class="mania"
+                    <% if (modeNum === 3) { %>
+                        style="filter: invert(0%); opacity: 1"
+                    <% } %>>
+                        <a href="/leaderboard/mania/performance">
+                            <i class="mode-icon mode-mania"></i>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </div>
         <div class="page">
-            <a href="/leaderboard" class="pagearrow">
-                <img src="/image/arrow.png" class="back">
-            </a>
-            <p>page : 1</p>
-            <a href="/leaderboard" class="pagearrow">
-                <img src="/image/arrow.png" class="next">
-            </a>
+            <% if (page !== 1) { %>
+                <a href="/leaderboard/<%= getModeName(modeNum) %>/performance&page=<%= page - 1 %>" class="pagearrow">
+                    <i class="fa-solid fa-backward"></i>
+                </a>
+            <% } %>
+            <p>page : <%= page %></p>
+            <% if (nextpage.length !== 0) { %>
+                <a href="/leaderboard/<%= getModeName(modeNum) %>/performance&page=<%= page + 1 %>" class="pagearrow">
+                    <i class="fa-solid fa-forward"></i>
+                </a>
+            <% } %>
         </div>
         <div class="ranking-table">
             <div class=table-title>
@@ -122,37 +207,31 @@
                 <span class="s-title">S</span>
                 <span class="a-title">A</span>
             </div>
-            <% let i = 0 %>
-            <% rankingByMode.forEach((rankings) => { %>
-                <% if (rankings.length === 0) { %>
-                    <div class="mode-<%= i++ %>">
-                        <h1 class="nothing">No players available</h1>
-                    </div>
+            <div class="mode-<%= modeNum %>">
+                <% if (ranking.length === 0) { %>
+                    <h1 class="nothing">No players available</h1>
                 <% } else { %>
-                    <div class="mode-<%= i++ %>">
-                        <% rankings.forEach((ranking) => { %>
-                            <div class="ranking-data <%= ranking.row %>">
-                                <span class="ranking">#<%= ranking.ranking.toLocaleString() %></span>
-                                <i class="flag-icon flag-icon-<%= ranking.country %>"></i>
-                                <span class="name">
-                                <a href="/profile/<%= ranking.id %>">
-                                    <span class="text"><%= ranking.name %></span>
+                    <% ranking.forEach((player) => { %>
+                        <div class="ranking-data">
+                            <span class="ranking">#<%= player.ranking.toLocaleString() %></span>
+                            <i class="flag-icon flag-icon-<%= player.country %>"></i>
+                            <span class="name">
+                                <a href="/profile/<%= player.id %>">
+                                    <span class="text"><%= player.name %></span>
                                 </a>
                             </span>
-                                <span class="acc"><%= ranking.acc.toFixed(2) %>%</span>
-                                <span class="playcount"><%= ranking.plays.toLocaleString() %></span>
-                                <span class="pp"><%= ranking.pp.toLocaleString() %></span>
-                                <span class="ss"><%= ranking.SS.toLocaleString() %></span>
-                                <span class="s"><%= ranking.S.toLocaleString() %></span>
-                                <span class="a"><%= ranking.A.toLocaleString() %></span>
-                            </div>
-                        <% }); %>
-                    </div>
+                            <span class="acc"><%= player.acc.toFixed(2) %>%</span>
+                            <span class="playcount"><%= player.plays.toLocaleString() %></span>
+                            <span class="pp"><%= player.pp.toLocaleString() %></span>
+                            <span class="ss"><%= player.SS.toLocaleString() %></span>
+                            <span class="s"><%= player.S.toLocaleString() %></span>
+                            <span class="a"><%= player.A.toLocaleString() %></span>
+                        </div>
+                    <% }); %>
                 <% } %>
-            <% }); %>
+            </div>
         </div>
     </main>
     <%- include("footer") %>
-    <script src="/jquery/leaderboard.js"></script>
     </body>
 </html>
