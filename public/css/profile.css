@@ -10,30 +10,426 @@ main {
 
 main .box {
     background-color: #2e2e38;
+    padding: 5px;
+    margin: 20px 12.8%;
     border-radius: 10px;
     box-shadow: 10px 10px 10px black;
 }
-
+/* ------------------------------------------------- */
 main .player-banner div, main .player-banner ul {
     display: flex;
 }
 
+main .player-banner .username img {
+    border-radius: 20px;
+    height: 100px;
+    margin: 10px;
+}
+
+main .player-banner .username h1 {
+    font-size: 40px;
+    padding: 0 5px;
+    margin: auto 0;
+}
+
+main .player-banner a {
+    font-size: 20px;
+    margin: auto 0;
+    opacity: 0.7;
+}
+main .player-banner a:hover {
+    opacity: 1;
+}
+
+main .player-banner .flag-icon {
+    font-size: 22px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+main .player-banner .selection ul li {
+    filter: invert(30%);
+    opacity: 0.95;
+}
+main .player-banner .selection ul li:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
+main .player-banner .selection .special li {
+    padding: 10px;
+    margin: 10px;
+}
+
+main .player-banner .selection .mode {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+main .player-banner .selection .mode li a i {
+    font-size: 45px;
+    padding: 0 5px;
+    margin: 0 10px;
+}
+/* ------------------------------------------------- */
 main .player-info, main .player-info .wrap {
     display: flex;
 }
 
+main .player-info .ranking div {
+    padding: 15px 30px;
+}
+
+main .player-info .ranking div h1 {
+    font-size: 16px;
+}
+
+main .player-info .ranking div h2 {
+    color: #d9d9ee;
+    font-size: 32px;
+}
+
+main .player-info .detail div {
+    padding: 25px 30px;
+}
+
+main .player-info .detail div h1 {
+    font-size: 16px;
+}
+
+main .player-info .detail div h2 {
+    color: #d9d9ee;
+    font-size: 32px;
+}
+
+main .player-info .grade-amounts {
+    font-size: 20px;
+    padding: 0 40px;
+}
+
+main .player-info .grade-amounts div {
+    padding: 15px 20px;
+    text-align: center;
+}
+
 main .player-info div img {
-    height: 40px;
-    border-radius: 12px;
+    height: 45px;
+    border-radius: 14px;
     box-shadow: 2px 2px 2px black;
+}
+
+main .player-info .stats {
+    border-left: 1px solid #1c1719;
+    padding-left: 30px;
+    margin: 10px 0 10px auto;
+}
+
+main .player-info .stats div {
+    display: flex;
+    font-size: 20px;
+    padding: 8px 0;
+}
+
+main .player-info .stats div h1 {
+    width: 165px;
+    margin-right: 100px;
+}
+
+main .player-info .stats div h2 {
+    min-width: 0;
+    max-width: 200px;
+    margin-right: 50px;
+}
+/* ------------------------------------------------- */
+main .show-more {
+    display: flex;
+    background-color: #444453;
+    padding: 5px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px black;
+}
+main .show-more:hover {
+    background-color: #5b5b6f;
+}
+
+main .show-more i {
+    font-size: 12px;
+    margin: auto 5px;
+}
+/* ------------------------------------------------- */
+main .bestpp {
+    min-height: 338px;
+    max-height: 338px;
+    overflow: hidden;
+}
+
+main .bestpp h1 {
+    height: 28px;
+    font-size: 24px;
 }
 
 main .bestpp div .wrap, main .bestpp div .pp {
     display: flex;
 }
 
+main .bestpp div .nothing {
+    font-size: 35px;
+    line-height: 300px;
+    text-align: center;
+}
+
+main .bestpp div .data {
+    margin-top: 5px;
+    background-color: #444453;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 black;
+}
+main .bestpp div .data:hover {
+    background-color: #5b5b6f;
+}
+
 main .bestpp div .grade {
     height: 45px;
-    border-radius: 12px;
+    margin: 5px;
+    border-radius: 16px;
     box-shadow: 2px 2px 2px black;
+}
+
+main .bestpp div .data a {
+    padding-left: 3px;
+    margin: auto 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+main .bestpp div .data a .title {
+    font-size: 18px;
+}
+
+main .bestpp div .data a .diff {
+    color: #eca900;
+    font-size: 14px;
+}
+
+main .bestpp div .data .mods {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .bestpp div .data .mods img {
+    height: 40px;
+    float: left;
+}
+
+main .bestpp div .data .acc {
+    color: #ffcc22;
+    width: 80px;
+    margin: auto 0;
+    text-align: center;
+}
+
+main .bestpp div .data .pp {
+    background-color: #393945;
+    min-width: 180px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+main .bestpp div .data .pp .recorded {
+    color: #5656c1;
+    font-size: 26px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .bestpp div .data .pp .recorded span {
+    color: #8681a5;
+}
+
+main .bestpp div .data .pp .weighted {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+/* ------------------------------------------------- */
+main .mostplays {
+    min-height: 338px;
+    max-height: 338px;
+    overflow: hidden;
+}
+
+main .mostplays h1 {
+    height: 28px;
+    font-size: 24px;
+}
+
+main .mostplays div .nothing {
+    font-size: 35px;
+    line-height: 300px;
+    text-align: center;
+}
+
+main .mostplays div .data {
+    display: flex;
+    margin-top: 5px;
+    background-color: #444453;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 black;
+}
+main .mostplays div .data:hover {
+    background-color: #5b5b6f;
+}
+
+main .mostplays div .data img {
+    height: 55px;
+    border-radius: 10px;
+}
+
+main .mostplays div .data a {
+    padding-left: 5px;
+    margin: auto 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+main .mostplays div .data a .title {
+    font-size: 18px;
+}
+
+main .mostplays div .data a .mapper {
+    color: #737386;
+    font-size: 14px;
+}
+
+main .mostplays div .data a .mapper span {
+    font-weight: bold;
+}
+
+main .mostplays div .data .mode-icon {
+    font-size: 35px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .mostplays div .data div {
+    display: flex;
+    color: #ffcc22;
+    width: 100px;
+}
+
+main .mostplays div .data .play-icon {
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .mostplays div .data .value {
+    font-size: 26px;
+    padding-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+/* ------------------------------------------------- */
+main .recentplays {
+    min-height: 338px;
+    max-height: 338px;
+    overflow: hidden;
+}
+
+main .recentplays h1 {
+    height: 28px;
+    font-size: 24px;
+}
+
+main .recentplays div .nothing {
+    font-size: 35px;
+    line-height: 300px;
+    text-align: center;
+}
+
+main .recentplays div .data {
+    display: flex;
+    margin-top: 5px;
+    background-color: #444453;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 black;
+}
+main .recentplays div .data:hover {
+    background-color: #5b5b6f;
+}
+
+main .recentplays div .grade {
+    height: 45px;
+    margin: 5px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px black;
+}
+
+main .recentplays div .data a {
+    padding-left: 3px;
+    margin: auto 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+main .recentplays div .data a .title {
+    font-size: 18px;
+}
+
+main .recentplays div .data a .diff {
+    color: #eca900;
+    font-size: 14px;
+}
+
+main .recentplays div .data .mods {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .recentplays div .data .mods img {
+    height: 40px;
+    float: left;
+}
+
+main .recentplays div .data .acc {
+    color: #ffcc22;
+    width: 80px;
+    margin: auto 0;
+    text-align: center;
+}
+
+main .recentplays div .data .pp {
+    display: flex;
+    background-color: #393945;
+    min-width: 180px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+main .recentplays div .data .pp .recorded {
+    color: #5656c1;
+    font-size: 26px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .recentplays div .data .pp .recorded span {
+    color: #8681a5;
+}
+
+main .recentplays div .data .pp .loved {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
 }

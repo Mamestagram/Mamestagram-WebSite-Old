@@ -216,7 +216,7 @@
                             <span class="ranking">#<%= player.ranking.toLocaleString() %></span>
                             <i class="flag-icon flag-icon-<%= player.country %>"></i>
                             <span class="name">
-                                <a href="/profile/<%= player.id %>">
+                                <a href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>">
                                     <span class="text"><%= player.name %></span>
                                 </a>
                             </span>
