@@ -167,7 +167,7 @@
                     <img src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
                     <h1><%= info.name %></h1>
                     <% if (id === locals.userid) { %>
-                        <a href="/rename">
+                        <a href="/rename" class="rename">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                     <% } %>
@@ -274,7 +274,7 @@
                                 <% if (info.acc === 0 || info.priv === 2) { %>
                                     -
                                 <% } else { %>
-                                    #<%= info.Granking %>
+                                    #<%= info.Granking.toLocaleString() %>
                                 <% } %>
                             </h2>
                         </div>
@@ -284,7 +284,7 @@
                                 <% if (info.acc === 0 || info.priv === 2) { %>
                                     -
                                 <% } else { %>
-                                    #<%= info.Cranking %>
+                                    #<%= info.Cranking.toLocaleString() %>
                                 <% } %>
                             </h2>
                         </div>
@@ -292,11 +292,11 @@
                     <div class="wrap detail">
                         <div class="medals">
                             <h1>Medals</h1>
-                            <h2><%= info.medals %></h2>
+                            <h2><%= info.medals.toLocaleString() %></h2>
                         </div>
                         <div class="pp">
                             <h1>pp</h1>
-                            <h2><%= info.pp %></h2>
+                            <h2><%= info.pp.toLocaleString() %></h2>
                         </div>
                         <div class="playtime">
                             <h1>Total Play Time</h1>
@@ -306,23 +306,23 @@
                     <div class="wrap grade-amounts">
                         <div class="xh">
                             <img src="/image/grade/XH.png" alt=""><br>
-                            <%= info.xh_count %>
+                            <%= info.xh_count.toLocaleString() %>
                         </div>
                         <div class="x">
                             <img src="/image/grade/X.png" alt=""><br>
-                            <%= info.x_count %>
+                            <%= info.x_count.toLocaleString() %>
                         </div>
                         <div class="sh">
                             <img src="/image/grade/SH.png" alt=""><br>
-                            <%= info.sh_count %>
+                            <%= info.sh_count.toLocaleString() %>
                         </div>
                         <div class="s">
                             <img src="/image/grade/S.png" alt=""><br>
-                            <%= info.s_count %>
+                            <%= info.s_count.toLocaleString() %>
                         </div>
                         <div class="a">
                             <img src="/image/grade/A.png" alt=""><br>
-                            <%= info.a_count %>
+                            <%= info.a_count.toLocaleString() %>
                         </div>
                     </div>
                 </div>

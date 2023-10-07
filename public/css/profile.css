@@ -32,12 +32,12 @@ main .player-banner .username h1 {
     margin: auto 0;
 }
 
-main .player-banner a {
+main .player-banner .rename {
     font-size: 20px;
     margin: auto 0;
     opacity: 0.7;
 }
-main .player-banner a:hover {
+main .player-banner .rename:hover {
     opacity: 1;
 }
 
@@ -162,6 +162,8 @@ main .bestpp {
     min-height: 338px;
     max-height: 338px;
     overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 main .bestpp h1 {
@@ -197,6 +199,8 @@ main .bestpp div .grade {
 }
 
 main .bestpp div .data a {
+    min-width: 0;
+    max-width: 53%;
     padding-left: 3px;
     margin: auto 0;
     text-overflow: ellipsis;
@@ -214,9 +218,10 @@ main .bestpp div .data a .diff {
 }
 
 main .bestpp div .data .mods {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
+    padding-left: 5px;
+    margin: auto 0;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 main .bestpp div .data .mods img {
@@ -227,7 +232,9 @@ main .bestpp div .data .mods img {
 main .bestpp div .data .acc {
     color: #ffcc22;
     width: 80px;
-    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
     text-align: center;
 }
 
@@ -260,6 +267,8 @@ main .mostplays {
     min-height: 338px;
     max-height: 338px;
     overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 main .mostplays h1 {
@@ -290,6 +299,7 @@ main .mostplays div .data img {
 }
 
 main .mostplays div .data a {
+    width: 80%;
     padding-left: 5px;
     margin: auto 0;
     text-overflow: ellipsis;
@@ -342,6 +352,8 @@ main .recentplays {
     min-height: 338px;
     max-height: 338px;
     overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 main .recentplays h1 {
@@ -374,6 +386,8 @@ main .recentplays div .grade {
 }
 
 main .recentplays div .data a {
+    min-width: 0;
+    max-width: 53%;
     padding-left: 3px;
     margin: auto 0;
     text-overflow: ellipsis;
@@ -391,9 +405,10 @@ main .recentplays div .data a .diff {
 }
 
 main .recentplays div .data .mods {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
+    padding-left: 5px;
+    margin: auto 0;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 main .recentplays div .data .mods img {
@@ -404,7 +419,9 @@ main .recentplays div .data .mods img {
 main .recentplays div .data .acc {
     color: #ffcc22;
     width: 80px;
-    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
     text-align: center;
 }
 
