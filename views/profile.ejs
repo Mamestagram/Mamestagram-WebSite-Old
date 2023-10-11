@@ -36,10 +36,6 @@
                 background-color: #24222a;
             }
 
-            .mobile .leaderboard span {
-                border-left: 3px solid #6495ed;
-            }
-
             .mobile li:hover {
                 background-color: #4169e1;
             }
@@ -164,7 +160,11 @@
         <main>
             <div class="box player-banner">
                 <div class="username">
-                    <img src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
+                    <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
+                    <% if (info.verified) { %>
+                        <img class="badge verified" src="/image/badge/verified.png" alt="" title="verified✓">
+                        <img class="badge verified-hover" src="/image/badge/verified-hover.png" alt="" title="verified✓">
+                    <% } %>
                     <h1><%= info.name %></h1>
                     <% if (id === locals.userid) { %>
                         <a href="/rename" class="rename">
@@ -271,7 +271,7 @@
                         <div class="global">
                             <h1>Global Ranking</h1>
                             <h2>
-                                <% if (info.acc === 0 || info.priv === 2) { %>
+                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 31879)) { %>
                                     -
                                 <% } else { %>
                                     #<%= info.Granking.toLocaleString() %>
@@ -281,7 +281,7 @@
                         <div class="country">
                             <h1>Country Ranking</h1>
                             <h2>
-                                <% if (info.acc === 0 || info.priv === 2) { %>
+                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 31879)) { %>
                                     -
                                 <% } else { %>
                                     #<%= info.Cranking.toLocaleString() %>
@@ -329,7 +329,7 @@
                 <div class="stats">
                     <div class="acc">
                         <h1>Hit Accuracy</h1>
-                        <h2><%= info.acc.toFixed(2) %></h2>
+                        <h2><%= info.acc.toFixed(2) %>%</h2>
                     </div>
                     <div class="plaucount">
                         <h1>Play Count</h1>
@@ -373,7 +373,7 @@
                             <% if (flag && amt < 100) { %>
                                 <div class="wrap data">
                                     <img class="grade" src="/image/grade/<%= bestpp[i].grade %>.png" alt="">
-                                    <a href="/beatmap/<%= bestpp[i].set_id%>/<%= bestpp[i].id %>/<%= bestpp[i].version %>">
+                                    <a href="/beatmap/<%= bestpp[i].set_id%>/<%= bestpp[i].id %>/<%= bestpp[i].version %>" style="width: calc(100% - 320px - <%= Math.min(40 * getMods(bestpp[i].mods).length, 325) %>px);">
                                         <p class="title"><%= bestpp[i].title %> by <%= bestpp[i].artist %></p>
                                         <p class="diff"><%= bestpp[i].version %></p>
                                     </a>
@@ -384,6 +384,27 @@
                                     </div>
                                     <p class="acc"><%= bestpp[i].acc.toFixed(2) %>%</p>
                                     <div class="pp">
+                                        <p class="recorded"><%= Math.round(bestpp[i].pp).toLocaleString() %><span>pp</span></p>
+                                        <p class="weighted">(<%= Math.round(bestpp[i].pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
+                                    </div>
+                                </div>
+                                <div class="data-mobile">
+                                    <div class="flex info">
+                                        <img class="grade" src="/image/grade/<%= bestpp[i].grade %>.png" alt="">
+                                        <a href="/beatmap/<%= bestpp[i].set_id%>/<%= bestpp[i].id %>/<%= bestpp[i].version %>">
+                                            <p class="title"><%= bestpp[i].title %> by <%= bestpp[i].artist %></p>
+                                            <p class="diff"><%= bestpp[i].version %></p>
+                                        </a>
+                                        <% if (bestpp[i].mods !== 0) { %>
+                                            <div class="mods">
+                                                <% getMods(bestpp[i].mods).forEach((mod) => { %>
+                                                    <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                                <% }); %>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <div class="flex results">
+                                        <p class="acc"><%= bestpp[i].acc.toFixed(2) %>%</p>
                                         <p class="recorded"><%= Math.round(bestpp[i].pp).toLocaleString() %><span>pp</span></p>
                                         <p class="weighted">(<%= Math.round(bestpp[i].pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
                                     </div>
@@ -429,6 +450,20 @@
                                     <p class="value"><%= data.playtimes.toLocaleString() %></p>
                                 </div>
                             </div>
+                            <div class="data-mobile">
+                                <div class="mapbg">
+                                    <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?" alt="">
+                                    <div>
+                                        <i class="fa-solid fa-play play-icon"></i>
+                                        <p class="value"><%= data.playtimes.toLocaleString() %></p>
+                                    </div>
+                                </div>
+                                <a href="/beatmap/<%= data.set_id %>/<%= data.id %>/<%= data.version %>">
+                                    <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
+                                    <p class="mapper">mapped by <span><%= data.creator %></span></p>
+                                </a>
+                                <i class="mode-icon mode-<%= getMode(data.mode) %>"></i>
+                            </div>
                         <% }); %>
                     <% } %>
                 </div>
@@ -459,7 +494,7 @@
                         <% for (let i = 0; i < recentplays.length; i++) { %>
                             <div class="data">
                                 <img class="grade" src="/image/grade/<%= recentplays[i].grade %>.png" alt="">
-                                <a href="/beatmap/<%= recentplays[i].set_id %>/<%= recentplays[i].id %>/<%= recentplays[i].version %>">
+                                <a href="/beatmap/<%= recentplays[i].set_id %>/<%= recentplays[i].id %>/<%= recentplays[i].version %>" style="width: calc(100% - 320px - <%= Math.min(40 * getMods(recentplays[i].mods).length, 325) %>px);">
                                     <p class="title"><%= recentplays[i].title %> by <%= recentplays[i].artist %></p>
                                     <p class="diff"><%= recentplays[i].version %></p>
                                 </a>
@@ -468,14 +503,35 @@
                                         <img class="mod" src="/image/mods/<%= mod %>.png" alt="">
                                     <% }); %>
                                 </div>
-                                <p class="acc"><%= recentplays[i].acc.toFixed(2) %></p>
+                                <p class="acc"><%= recentplays[i].acc.toFixed(2) %>%</p>
                                 <div class="pp">
                                     <p class="recorded"><%= Math.round(recentplays[i].pp).toLocaleString() %><span>pp</span></p>
                                     <p class="loved">
                                         <% if (recentplays[i].status !== 2) { %>
-                                                (Loved)
+                                            (Loved)
                                         <% } %>
                                     </p>
+                                </div>
+                            </div>
+                            <div class="data-mobile">
+                                <div class="flex info">
+                                    <img class="grade" src="/image/grade/<%= recentplays[i].grade %>.png" alt="">
+                                    <a href="/beatmap/<%= recentplays[i].set_id%>/<%= recentplays[i].id %>/<%= recentplays[i].version %>">
+                                        <p class="title"><%= recentplays[i].title %> by <%= recentplays[i].artist %></p>
+                                        <p class="diff"><%= recentplays[i].version %></p>
+                                    </a>
+                                    <% if (recentplays[i].mods !== 0) { %>
+                                        <div class="mods">
+                                            <% getMods(recentplays[i].mods).forEach((mod) => { %>
+                                                <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                            <% }); %>
+                                        </div>
+                                    <% } %>
+                                </div>
+                                <div class="flex results">
+                                    <p class="acc"><%= recentplays[i].acc.toFixed(2) %>%</p>
+                                    <p class="recorded"><%= Math.round(recentplays[i].pp).toLocaleString() %><span>pp</span></p>
+                                    <p class="weighted">(<%= Math.round(recentplays[i].pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
                                 </div>
                             </div>
                         <% } %>

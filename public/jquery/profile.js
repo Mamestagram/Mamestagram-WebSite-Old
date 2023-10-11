@@ -23,4 +23,9 @@ $(function() {
         $(this).hide();
         $nextbtn.show();
     });
+
+    $("main .verified").hover(function() {
+        $(this).hide();
+        $("main .verified-hover").show();
+    });
 });

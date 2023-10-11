@@ -204,7 +204,7 @@ main {
     text-align: center;
 }
 
-@media (max-width: 1224px) {
+@media (max-width: 1232px) {
     .ss-title, .s-title, .a-title {
         display: none;
     }

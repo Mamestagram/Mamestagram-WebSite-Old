@@ -14,11 +14,11 @@ footer h1 {
 
 @media (max-width: 767px) {
     footer {
-        height: 30px;
+        height: 50px;
     }
 
     footer h1 {
-        font-size: 6px;
-        line-height: 30px;
+        font-size: 10px;
+        line-height: 50px;
     }
 }

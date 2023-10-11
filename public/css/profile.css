@@ -15,15 +15,31 @@ main .box {
     border-radius: 10px;
     box-shadow: 10px 10px 10px black;
 }
+
+main .box div .data-mobile {
+    display: none;
+}
 /* ------------------------------------------------- */
 main .player-banner div, main .player-banner ul {
     display: flex;
 }
 
-main .player-banner .username img {
+main .player-banner .username .avatar {
     border-radius: 20px;
     height: 100px;
     margin: 10px;
+}
+
+main .player-banner .username .badge {
+    height: 26px;
+    margin: auto 0;
+    transition: 100ms;
+}
+
+main .player-banner .username .verified-hover {
+    display: none;
+    height: 18px;
+    transition: 100ms;
 }
 
 main .player-banner .username h1 {
@@ -72,6 +88,10 @@ main .player-banner .selection .mode li a i {
     margin: 0 10px;
 }
 /* ------------------------------------------------- */
+main .player-info {
+    overflow: hidden;
+}
+
 main .player-info, main .player-info .wrap {
     display: flex;
 }
@@ -121,7 +141,7 @@ main .player-info div img {
 main .player-info .stats {
     border-left: 1px solid #1c1719;
     padding-left: 30px;
-    margin: 10px 0 10px auto;
+    margin: auto 0 auto auto;
 }
 
 main .player-info .stats div {
@@ -199,27 +219,33 @@ main .bestpp div .grade {
 }
 
 main .bestpp div .data a {
-    min-width: 0;
-    max-width: 53%;
     padding-left: 3px;
     margin: auto 0;
-    text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
 }
 
 main .bestpp div .data a .title {
     font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .bestpp div .data a .diff {
     color: #eca900;
     font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .bestpp div .data .mods {
+    display: flex;
+    max-width: 320px;
     padding-left: 5px;
-    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
 }
@@ -232,9 +258,7 @@ main .bestpp div .data .mods img {
 main .bestpp div .data .acc {
     color: #ffcc22;
     width: 80px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
+    margin: auto 0;
     text-align: center;
 }
 
@@ -299,21 +323,24 @@ main .mostplays div .data img {
 }
 
 main .mostplays div .data a {
-    width: 80%;
+    width: calc(100% - 213px);
     padding-left: 5px;
     margin: auto 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
 }
 
 main .mostplays div .data a .title {
     font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .mostplays div .data a .mapper {
     color: #737386;
     font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .mostplays div .data a .mapper span {
@@ -333,14 +360,14 @@ main .mostplays div .data div {
     width: 100px;
 }
 
-main .mostplays div .data .play-icon {
+main .mostplays div .data div .play-icon {
     font-size: 20px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
 }
 
-main .mostplays div .data .value {
+main .mostplays div .data div .value {
     font-size: 26px;
     padding-left: 10px;
     margin-top: auto;
@@ -386,49 +413,53 @@ main .recentplays div .grade {
 }
 
 main .recentplays div .data a {
-    min-width: 0;
-    max-width: 53%;
     padding-left: 3px;
     margin: auto 0;
-    text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
 }
 
 main .recentplays div .data a .title {
     font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .recentplays div .data a .diff {
     color: #eca900;
     font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .recentplays div .data .mods {
+    display: flex;
+    max-width: 325px;
     padding-left: 5px;
-    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
+    overflow: scroll;
 }
 
 main .recentplays div .data .mods img {
     height: 40px;
-    float: left;
 }
 
 main .recentplays div .data .acc {
     color: #ffcc22;
     width: 80px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
+    margin: auto 0;
     text-align: center;
 }
 
 main .recentplays div .data .pp {
     display: flex;
     background-color: #393945;
-    min-width: 180px;
+    width: 180px;
     text-align: center;
     border-radius: 10px;
 }
@@ -449,4 +480,429 @@ main .recentplays div .data .pp .loved {
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
+}
+
+@media (max-width: 1232px) {
+    main {
+        padding-top: 30px;
+        padding-bottom: 200px;
+    }
+
+    main .box {
+        margin: 20px 30px;
+    }
+    /* ------------------------------------------------- */
+    main .player-info {
+        overflow: scroll;
+    }
+
+    main .player-info .ranking div {
+        padding: 15px 30px 15px 15px;
+    }
+
+    main .player-info .detail div {
+        padding: 25px 30px 25px 15px;
+    }
+
+    main .player-info .grade-amounts {
+        padding: 0 20px;
+    }
+
+    main .player-info .stats div h1 {
+        margin-right: 75px;
+    }
+
+    main .player-info .stats div h2 {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
+
+    main {
+        padding-top: 10px;
+        padding-bottom: 100px;
+    }
+
+    main .box {
+        margin: 30px 5px;
+        overflow: scroll;
+    }
+
+    main .box div .nothing {
+        font-size: 26px;
+    }
+
+    main .box div .data {
+        display: none;
+    }
+
+    main .box div .data-mobile {
+        display: block;
+    }
+
+    main .show-more {
+        display: none;
+    }
+    /* ------------------------------------------------- */
+    main .player-banner .username .avatar {
+        height: 60px;
+        margin: 5px;
+    }
+
+    main .player-banner .username .badge {
+        height: 18px;
+        margin: auto 0;
+    }
+
+    main .player-banner .username h1 {
+        font-size: 26px;
+        padding: 0 3px;
+    }
+
+    main .player-banner .rename {
+        font-size: 14px;
+    }
+
+    main .player-banner .flag-icon {
+        font-size: 16px;
+        margin: 3px;
+    }
+
+    main .player-banner .selection .special li {
+        font-size: 12px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    main .player-banner .selection .mode li a i {
+        font-size: 30px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    /* ------------------------------------------------- */
+    main .player-info .ranking div {
+        padding: 5px 30px 5px 5px;
+    }
+
+    main .player-info .ranking div h1 {
+        font-size: 12px;
+    }
+
+    main .player-info .ranking div h2 {
+        font-size: 26px;
+    }
+
+    main .player-info .detail div {
+        padding: 15px 30px 15px 5px;
+    }
+
+    main .player-info .detail div h1 {
+        font-size: 12px;
+    }
+
+    main .player-info .detail div h2 {
+        font-size: 26px;
+    }
+
+    main .player-info .grade-amounts {
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    main .player-info .grade-amounts div {
+        padding: 15px;
+    }
+
+    main .player-info div img {
+        height: 40px;
+    }
+
+    main .player-info .stats {
+        padding-left: 20px;
+    }
+
+    main .player-info .stats div {
+        font-size: 16px;
+        padding: 5px 0;
+    }
+
+    main .player-info .stats div h1 {
+        margin-right: 30px;
+    }
+
+    main .player-info .stats div h2 {
+        margin-right: 5px;
+    }
+    /* ------------------------------------------------- */
+    main .bestpp {
+        max-height: 450px;
+    }
+
+    main .bestpp h1 {
+        font-size: 20px;
+    }
+
+    main .bestpp div .data-mobile {
+        margin-bottom: 5px;
+        background-color: #393945;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px black;
+    }
+
+    main .bestpp div .data-mobile .flex {
+        display: flex;
+    }
+
+    main .bestpp div .data-mobile .info {
+        background-color: #444453;
+        flex-wrap: wrap;
+        flex-shrink: unset;
+        border-radius: 10px;
+    }
+    main .bestpp div .data-mobile .info:hover {
+        background-color: #5b5b6f;
+    }
+
+    main .bestpp div .data-mobile .info .grade {
+        height: 40px;
+    }
+
+    main .bestpp div .data-mobile .info a {
+        width: calc(100% - 50px);
+        margin: auto 0;
+    }
+
+    main .bestpp div .data-mobile .info a .title {
+        font-size: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .bestpp div .data-mobile .info a .diff {
+        color: #eca900;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .bestpp div .data-mobile .info .mods {
+        width: calc(100% - 10px);
+        display: flex;
+        padding-left: 10px;
+        padding-bottom: 3px;
+        overflow: scroll;
+    }
+
+    main .bestpp div .data-mobile .info .mods img {
+        height: 30px;
+    }
+
+    main .bestpp div .data-mobile .results {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    main .bestpp div .data-mobile .results .acc {
+        color: #ffcc22;
+    }
+
+    main .bestpp div .data-mobile .results .recorded {
+        color: #5656c1;
+        font-size: 16px;
+        margin-left: auto;
+    }
+
+    main .bestpp div .data-mobile .results .recorded span {
+        color: #8681a5;
+    }
+
+    main .bestpp div .data-mobile .results .weighted {
+        font-size: 12px;
+        margin: auto 0;
+    }
+    /* ------------------------------------------------- */
+    main .mostplays {
+        max-height: 450px;
+        overflow: scroll;
+    }
+
+    main .mostplays h1 {
+        font-size: 20px;
+    }
+
+    main .mostplays div .data-mobile {
+        display: flex;
+        margin-bottom: 5px;
+        background-color: #444453;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 0 black;
+    }
+    main .mostplays div .data-mobile:hover {
+        background-color: #5b5b6f;
+    }
+
+    main .mostplays div .data-mobile .mapbg {
+        position: relative;
+        background-color: #000000;
+        height: 54px;
+        width: 72px;
+        border-radius: 10px;
+    }
+
+    main .mostplays div .data-mobile .mapbg img {
+        position: absolute;
+        height: 54px;
+        border-radius: 10px;
+        opacity: 0.3;
+    }
+
+    main .mostplays div .data-mobile .mapbg div {
+        position: relative;
+        display: flex;
+        color: #ffcc22;
+        height: 54px;
+        width: 72px;
+        z-index: 10;
+    }
+
+    main .mostplays div .data-mobile .mapbg div .play-icon {
+        font-size: 16px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+
+    main .mostplays div .data-mobile .mapbg div .value {
+        font-size: 22px;
+        padding-left: 5px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: auto;
+    }
+
+    main .mostplays div .data-mobile a {
+        width: 100%;
+        padding-left: 3px;
+        margin: auto 0;
+        overflow: hidden;
+    }
+
+    main .mostplays div .data-mobile a .title {
+        font-size: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .mostplays div .data-mobile a .mapper {
+        color: #737386;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .mostplays div .data-mobile a .mapper span {
+        font-weight: bold;
+    }
+
+    main .mostplays div .data-mobile .mode-icon {
+        font-size: 30px;
+        margin: auto 3px;
+    }
+    /* ------------------------------------------------- */
+    main .recentplays {
+        max-height: 450px;
+    }
+
+    main .recentplays h1 {
+        font-size: 20px;
+    }
+
+    main .recentplays div .data-mobile {
+        margin-bottom: 5px;
+        background-color: #393945;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px black;
+    }
+
+    main .recentplays div .data-mobile .flex {
+        display: flex;
+    }
+
+    main .recentplays div .data-mobile .info {
+        background-color: #444453;
+        flex-wrap: wrap;
+        flex-shrink: unset;
+        border-radius: 10px;
+    }
+    main .recentplays div .data-mobile .info:hover {
+        background-color: #5b5b6f;
+    }
+
+    main .recentplays div .data-mobile .info .grade {
+        height: 40px;
+    }
+
+    main .recentplays div .data-mobile .info a {
+        width: calc(100% - 50px);
+        margin: auto 0;
+    }
+
+    main .recentplays div .data-mobile .info a .title {
+        font-size: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .recentplays div .data-mobile .info a .diff {
+        color: #eca900;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .recentplays div .data-mobile .info .mods {
+        width: calc(100% - 10px);
+        display: flex;
+        padding-left: 10px;
+        padding-bottom: 3px;
+        overflow: scroll;
+    }
+
+    main .recentplays div .data-mobile .info .mods img {
+        height: 30px;
+    }
+
+    main .recentplays div .data-mobile .results {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    main .recentplays div .data-mobile .results .acc {
+        color: #ffcc22;
+    }
+
+    main .recentplays div .data-mobile .results .recorded {
+        color: #5656c1;
+        font-size: 16px;
+        margin-left: auto;
+    }
+
+    main .recentplays div .data-mobile .results .recorded span {
+        color: #8681a5;
+    }
+
+    main .recentplays div .data-mobile .results .weighted {
+        font-size: 12px;
+        margin: auto 0;
+    }
 }
