@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title>Rename</title>
+        <title>Account settings</title>
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/rename.css">
+        <link rel="stylesheet" href="/css/edit.css">
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -61,7 +61,7 @@
     <body>
     <%- include("header") %>
     <main>
-        <div class="rename-form">
+        <div class="box rename">
             <form action="/rename" method="post">
                 <h1 class="title">Rename</h1>
                 <div class="username">
@@ -75,6 +75,33 @@
                     <input type="text" name="username" value="<%= text %>">
                 </div>
                 <button><input type="submit" value="Confirm"></button>
+            </form>
+        </div>
+        <div class="box avatar">
+            <form action="/avatar" method="post" enctype="multipart/form-data">
+                <h1 class="title">Change avatar</h1>
+                <div class="image">
+                    <input type="file" name="avatar" accept=".png, .jpg, .gif, .jpeg, .jfif" onchange="preview(this);" required>
+                    <canvas id="preview" width="0" height="0"></canvas>
+                </div>
+                <button><input type="submit" value="Upload"><i class="fa-solid fa-upload"></i></button>
+                <script>
+                    function preview(image) {
+                        const fileReader = new FileReader();
+                        fileReader.onload = (function() {
+                            const canvas = document.getElementById("preview");
+                            const ctx = canvas.getContext("2d");
+                            const image = new Image();
+                            image.src = fileReader.result;
+                            image.onload = (function() {
+                                canvas.width = image.width;
+                                canvas.height = image.height;
+                                ctx.drawImage(image, 0, 0);
+                            });
+                        });
+                        fileReader.readAsDataURL(image.files[0]);
+                    }
+                </script>
             </form>
         </div>
     </main>

@@ -3,20 +3,23 @@ main {
     min-height: 100vh;
     height: 100%;
     padding-top: 140px;
+    padding-bottom: 140px;
 }
 
-.rename-form {
+.box {
     background-color: #333333;
     font-size: 18px;
     width: 500px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
     z-index: 90;
     text-align: center;
 }
 
-.rename-form .title {
+.box .title {
     background-color: #ac6039;
     font-family: "Righteous";
     color: #fdfdfd;
@@ -26,24 +29,24 @@ main {
     padding: 30px 200px;
 }
 
-.username {
+.rename .username {
     font-family: "Tilt Warp", "MochiyPopOne";
     padding: 20px 40px;
 }
 
-.username span {
+.box .username span {
     display: flex;
     color: #fdfdfd;
     padding: 20px 0;
     justify-content: center;
 }
 
-.rename-form .errmsg {
+.box .errmsg {
     color: red;
     font-size: 14px;
 }
 
-.username input {
+.rename .username input {
     background-color: #222222;
     caret-color: #fdfdfd;
     color: #8b8b8b;
@@ -56,7 +59,7 @@ main {
     outline: none;
 }
 
-.rename-form button {
+.box button {
     background-color: #ac6039;
     font-family: "Tilt Warp";
     color: #fdfdfd;
@@ -68,8 +71,35 @@ main {
     border-radius: 5px;
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
-.rename-form button:hover {
+.box button:hover {
     background-color: #ff9966;
+}
+
+.avatar .title {
+    padding: 30px 100px;
+}
+
+.avatar .image {
+    font-family: "Tilt Warp", "MochiyPopOne";
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+.avatar .image input {
+    padding: 12px 0;
+}
+
+.avatar ,image canvas {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.avatar button {
+    width: 105px;
+}
+
+.avatar button i {
+    padding-left: 5px;
 }
 
 @media(max-width: 767px) {
@@ -81,31 +111,31 @@ main {
         padding-top: 40px;
     }
 
-    .rename-form {
+    .box {
         font-size: 16px;
         width: 340px;
     }
 
-    .rename-form .title {
+    .box .title {
         font-size: 26px;
         padding: 20px 125px;
     }
 
-    .username, .password {
+    .box .username, .password {
         padding: 10px 20px;
     }
 
-    .rename-form .errmsg {
+    .box .errmsg {
         font-size: 14px;
     }
 
-    .username input {
+    .rename .username input {
         font-size: 14px;
         width: 295px;
         padding: 10px 20px;
     }
 
-    .rename-form button {
+    .box button {
         margin: 30px 125px;
     }
 }
