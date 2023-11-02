@@ -89,7 +89,7 @@ main {
     padding: 12px 0;
 }
 
-.avatar ,image canvas {
+.avatar .image canvas {
     max-width: 400px;
     max-height: 400px;
 }
