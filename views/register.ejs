@@ -83,7 +83,9 @@
             <div class="username">
                 <span class="username-title">Username</span>
                 <p class="caution">(within 20 Characters)</p>
-                <% if (err.includes("overname")) { %>
+                <% if (err.includes("empname")) { %>
+                    <span class="errmsg">Enter your name</span>
+                <% } else if (err.includes("overname")) { %>
                     <span class="errmsg">Keep it within 20 characters</span>
                 <% } else if (err.includes("dupname")) { %>
                     <span class="errmsg">This name is already in use</span>
@@ -92,7 +94,9 @@
             </div>
             <div class="email">
                 <span class="email-title">Email Address</span>
-                <% if (err.includes("notemail")) { %>
+                <% if (err.includes("empemail")) { %>
+                    <span class="errmsg">Enter your email</span>
+                <% } else if (err.includes("notemail")) { %>
                     <span class="errmsg">This is not an email format</span>
                 <% } else if (err.includes("dupemail")) { %>
                     <span class="errmsg">This email is already in use</span>
@@ -102,7 +106,9 @@
             <div class="password">
                 <span class="password-title">Password</span>
                 <p class="caution">(at least 8 characters, including alphabets and numbers)</p>
-                <% if (err.includes("shortpass")) { %>
+                <% if (err.includes("emppass")) { %>
+                    <span class="errmsg">Enter your password</span>
+                <% } else if (err.includes("shortpass")) { %>
                     <span class="errmsg">Must be at least 8 characters</span>
                 <% } else if (err.includes("weakpass")) { %>
                     <span class="errmsg">Include alphabets and numbers</span>
@@ -111,7 +117,9 @@
             </div>
             <div class="confirm">
                 <span class="confirm-title">Confirm password</span>
-                <% if (err.includes("wrongconf")) { %>
+                <% if (err.includes("empconf")) { %>
+                    <span class="errmsg">Enter your password</span>
+                <% } else if (err.includes("wrongconf")) { %>
                     <span class="errmsg">Failure to confirm</span>
                 <% } %>
                 <input type="password" name="confirmpass" required>
