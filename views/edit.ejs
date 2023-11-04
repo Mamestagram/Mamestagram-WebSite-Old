@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <title>Account settings</title>
+        <meta name="robots" content="noindex">
         <%- include("link") %>
         <link rel="stylesheet" href="/css/edit.css">
         <style>
@@ -72,7 +73,7 @@
                     <% if (err) { %>
                         <span class="errmsg" style="color: red;"><%= err %></span>
                     <% } %>
-                    <input type="text" name="username" value="<%= text %>">
+                    <input type="text" name="username" value="<%= text %>" required>
                 </div>
                 <button><input type="submit" value="Confirm"></button>
             </form>

@@ -83,46 +83,38 @@
             <div class="username">
                 <span class="username-title">Username</span>
                 <p class="caution">(within 20 Characters)</p>
-                <% if (err.includes("empname")) { %>
-                    <span class="errmsg">Enter your username</span>
-                <% } else if (err.includes("overname")) { %>
+                <% if (err.includes("overname")) { %>
                     <span class="errmsg">Keep it within 20 characters</span>
                 <% } else if (err.includes("dupname")) { %>
                     <span class="errmsg">This name is already in use</span>
                 <% } %>
-                <input type="text" name="username" value="<%= untxt %>">
+                <input type="text" name="username" value="<%= untxt %>" required>
             </div>
             <div class="email">
                 <span class="email-title">Email Address</span>
-                <% if (err.includes("empemail")) { %>
-                    <span class="errmsg">Enter your email</span>
-                <% } else if (err.includes("notemail")) { %>
+                <% if (err.includes("notemail")) { %>
                     <span class="errmsg">This is not an email format</span>
                 <% } else if (err.includes("dupemail")) { %>
                     <span class="errmsg">This email is already in use</span>
                 <% } %>
-                <input type="text" name="email" value="<%= emtxt %>">
+                <input type="email" name="email" value="<%= emtxt %>" required>
             </div>
             <div class="password">
                 <span class="password-title">Password</span>
                 <p class="caution">(at least 8 characters, including alphabets and numbers)</p>
-                <% if (err.includes("emppass")) { %>
-                    <span class="errmsg">Enter your password</span>
-                <% } else if (err.includes("shortpass")) { %>
+                <% if (err.includes("shortpass")) { %>
                     <span class="errmsg">Must be at least 8 characters</span>
                 <% } else if (err.includes("weakpass")) { %>
                     <span class="errmsg">Include alphabets and numbers</span>
                 <% } %>
-                <input type="password" name="password" value="<%= pstxt %>">
+                <input type="password" name="password" value="<%= pstxt %>" required>
             </div>
             <div class="confirm">
                 <span class="confirm-title">Confirm password</span>
-                <% if (err.includes("empconf")) { %>
-                    <span class="errmsg">Enter your password</span>
-                <% } else if (err.includes("wrongconf")) { %>
+                <% if (err.includes("wrongconf")) { %>
                     <span class="errmsg">Failure to confirm</span>
                 <% } %>
-                <input type="password" name="confirmpass">
+                <input type="password" name="confirmpass" required>
             </div>
             <p class="reference">Already have an account? <a href="/login">Sign in</a></p>
             <input type="hidden" id="post" name="recaptcha" value="default">

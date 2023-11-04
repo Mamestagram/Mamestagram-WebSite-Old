@@ -79,21 +79,17 @@
                 <h1 class="title">Sign in</h1>
                 <div class="username">
                     <span class="username-title">Username</span>
-                    <% if (err.includes("empname")) { %>
-                        <span class="errmsg">Enter your Username</span>
-                    <% } else if (err === "notfound") { %>
+                    <% if (err === "notfound") { %>
                         <span class="errmsg">User not found</span>
                     <% } %>
-                    <input type="text" name="username" value="<%= untxt %>">
+                    <input type="text" name="username" value="<%= untxt %>" required>
                 </div>
                 <div class="password">
                     <span class="password-title">Password</span>
-                    <% if (err.includes("emppass")) { %>
-                        <span class="errmsg">Enter your Password</span>
-                    <% } else if (err === "wrongpass") { %>
+                    <% if (err === "wrongpass") { %>
                         <span class="errmsg">Password is incorrect</span>
                     <% } %>
-                    <input type="password" name="password" value="<%= pstxt %>">
+                    <input type="password" name="password" value="<%= pstxt %>" required>
                 </div>
                 <p>Don't you have an account? <a href="/register">Register</a></p>
                 <button><input type="submit" value="Sign in"></button>
