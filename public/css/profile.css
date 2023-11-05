@@ -442,7 +442,6 @@ main .recentplays div .data .mods {
     margin-left: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
-    overflow: scroll;
 }
 
 main .recentplays div .data .mods img {

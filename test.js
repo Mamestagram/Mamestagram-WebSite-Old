@@ -57,4 +57,70 @@ const element = [
     [123, 456, 789]
 ];
 
-console.log();
+const getMods = (modNum) => {
+    let mod = new Array(0);
+    const mods = [
+        "nf", // 0 : NoFail
+        "ez", // 1 : Eazy
+        "ts", // 2 : TouchScreen
+        "hd", // 3 : Hidden
+        "hr", // 4 : HardRock
+        "sd", // 5 : SaddenDeath
+        "dt", // 6 : DoubleTime
+        "rx", // 7 : Relax
+        "ht", // 8 : HalfTime
+        "nc", // 9 : NightCore
+        "fl", // 10 : FlashLight
+        "at", // 11 : AutoPlay
+        "so", // 12 : SpinOut
+        "ap", // 13 : Autopilot
+        "pf", // 14 : Perfect
+        "k4", // 15 : Key4
+        "k5", // 16 : Key5
+        "k6", // 17 : Key6
+        "k7", // 18 : Key7
+        "k8", // 19 : Key8
+        "fi", // 20 : FadeIn
+        "rd", // 21 : Random
+        "cm", // 22 : Cinema
+        "tp", // 23 : TargetPoint
+        "k9", // 24 : Key9
+        "kc", // 25 : KeyCoop
+        "k1", // 26 : Key1
+        "k3", // 27 : Key3
+        "k2", // 28 : Key2
+        "v2", // 29 : ScoreV2
+        "mr"  // 30 : Mirror
+    ];
+    for (let i = 30; i >= 0; i--) {
+        if (i !== 2 && i !== 11 && i !== 19 && i !== 22 && !(i >= 24 && i <= 28) && modNum >= 1 << i) {
+            switch (i) {
+                case 14:
+                    modNum -= 1 << 5;
+                    break;
+                case 9:
+                    modNum -= 1 << 6;
+                    break;
+            }
+            mod.push(mods[i]);
+            modNum -= 1 << i;
+        }
+    }
+    mod = sortMods(mod);
+    return mod;
+}
+const sortMods = (mods) => {
+    const order = ["rx", "ap", "k4", "k5", "k6", "k7", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "mr", "so", "v2"];
+    let rst = new Array(0);
+    for (let i = 0; i < order.length; i++) {
+        for (let mod of mods) {
+            if (mod === order[i]) {
+                rst.push(mod);
+                break;
+            }
+        }
+    }
+    return rst;
+}
+
+console.log(getMods(33344));

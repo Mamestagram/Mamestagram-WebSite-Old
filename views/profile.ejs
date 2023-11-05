@@ -88,7 +88,7 @@
                     "k5", // 16 : Key5
                     "k6", // 17 : Key6
                     "k7", // 18 : Key7
-                    "k8", // 19 : Key9
+                    "k8", // 19 : Key8
                     "fi", // 20 : FadeIn
                     "rd", // 21 : Random
                     "cm", // 22 : Cinema
@@ -102,7 +102,7 @@
                     "mr"  // 30 : Mirror
                 ];
                 for (let i = 30; i >= 0; i--) {
-                    if (i !== 2 && i !== 11 && !(i >= 15 && i <= 19) && i !== 22 && !(i >= 24 && i <= 28) && modNum >= 1 << i) {
+                    if (i !== 2 && i !== 11 && i !== 19 && i !== 22 && !(i >= 24 && i <= 28) && modNum >= 1 << i) {
                         switch (i) {
                             case 14:
                                 modNum -= 1 << 5;
@@ -119,9 +119,9 @@
                 return mod;
             }
             const sortMods = (mods) => {
-                const order = ["rx", "ap", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "mr", "so", "v2"];
+                const order = ["rx", "ap", "k4", "k5", "k6", "k7", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "mr", "so", "v2"];
                 let rst = new Array(0);
-                for (let i = 0; i < 16; i++) {
+                for (let i = 0; i < order.length; i++) {
                     for (let mod of mods) {
                         if (mod === order[i]) {
                             rst.push(mod);
@@ -306,23 +306,23 @@
                     <div class="wrap grade-amounts">
                         <div class="xh">
                             <img src="/image/grade/XH.png" alt=""><br>
-                            <%= info.xh_count.toLocaleString() %>
+                            <%= info.xh.toLocaleString() %>
                         </div>
                         <div class="x">
                             <img src="/image/grade/X.png" alt=""><br>
-                            <%= info.x_count.toLocaleString() %>
+                            <%= info.x.toLocaleString() %>
                         </div>
                         <div class="sh">
                             <img src="/image/grade/SH.png" alt=""><br>
-                            <%= info.sh_count.toLocaleString() %>
+                            <%= info.sh.toLocaleString() %>
                         </div>
                         <div class="s">
                             <img src="/image/grade/S.png" alt=""><br>
-                            <%= info.s_count.toLocaleString() %>
+                            <%= info.s.toLocaleString() %>
                         </div>
                         <div class="a">
                             <img src="/image/grade/A.png" alt=""><br>
-                            <%= info.a_count.toLocaleString() %>
+                            <%= info.a.toLocaleString() %>
                         </div>
                     </div>
                 </div>
@@ -360,57 +360,50 @@
             <div class="box bestpp">
                 <h1>Best Performance</h1>
                 <div class="mode-<%= modeNum %>">
-                    <% let flag, amt = 0; %>
+                    <% let amt = 0; %>
                     <% if (bestpp.length === 0) { %>
                         <h1 class="nothing">No scores available</h1>
                     <% } else { %>
-                        <% for (let i = 0; i < bestpp.length; i++) { %>
-                            <%
-                                let arr = new Array(0);
-                                for (let j = 0; j < i; j++) { arr.push(bestpp[j].id); }
-                                flag = !(getMods(bestpp[i].mods).includes("so") || arr.includes(bestpp[i].id));
-                            %>
-                            <% if (flag && amt < 100) { %>
-                                <div class="wrap data">
-                                    <img class="grade" src="/image/grade/<%= bestpp[i].grade %>.png" alt="">
-                                    <a href="/beatmap/<%= bestpp[i].set_id%>/<%= bestpp[i].id %>/<%= bestpp[i].version %>" style="width: calc(100% - 320px - <%= Math.min(40 * getMods(bestpp[i].mods).length, 325) %>px);">
-                                        <p class="title"><%= bestpp[i].title %> by <%= bestpp[i].artist %></p>
-                                        <p class="diff"><%= bestpp[i].version %></p>
+                        <% bestpp.forEach((data) => { %>
+                            <div class="wrap data">
+                                <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
+                                <a href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>" style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
+                                    <p class="title"><%= data.title %> by <%= data.artist %></p>
+                                    <p class="diff"><%= data.version %></p>
+                                </a>
+                                <div class="mods">
+                                    <% getMods(data.mods).forEach((mod) => { %>
+                                        <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                    <% }); %>
+                                </div>
+                                <p class="acc"><%= data.acc.toFixed(2) %>%</p>
+                                <div class="pp">
+                                    <p class="recorded"><%= Math.round(data.pp).toLocaleString() %><span>pp</span></p>
+                                    <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt)).toLocaleString() %>pp)</p>
+                                </div>
+                            </div>
+                            <div class="data-mobile">
+                                <div class="flex info">
+                                    <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
+                                    <a href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>">
+                                        <p class="title"><%= data.title %> by <%= data.artist %></p>
+                                        <p class="diff"><%= data.version %></p>
                                     </a>
-                                    <div class="mods">
-                                        <% getMods(bestpp[i].mods).forEach((mod) => { %>
-                                            <img class="img" src="/image/mods/<%= mod %>.png" alt="">
-                                        <% }); %>
-                                    </div>
-                                    <p class="acc"><%= bestpp[i].acc.toFixed(2) %>%</p>
-                                    <div class="pp">
-                                        <p class="recorded"><%= Math.round(bestpp[i].pp).toLocaleString() %><span>pp</span></p>
-                                        <p class="weighted">(<%= Math.round(bestpp[i].pp * Math.pow(0.95, amt)).toLocaleString() %>pp)</p>
-                                    </div>
+                                    <% if (data.mods !== 0) { %>
+                                        <div class="mods">
+                                            <% getMods(data.mods).forEach((mod) => { %>
+                                                <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                            <% }); %>
+                                        </div>
+                                    <% } %>
                                 </div>
-                                <div class="data-mobile">
-                                    <div class="flex info">
-                                        <img class="grade" src="/image/grade/<%= bestpp[i].grade %>.png" alt="">
-                                        <a href="/beatmap/<%= bestpp[i].set_id%>/<%= bestpp[i].id %>/<%= bestpp[i].version %>">
-                                            <p class="title"><%= bestpp[i].title %> by <%= bestpp[i].artist %></p>
-                                            <p class="diff"><%= bestpp[i].version %></p>
-                                        </a>
-                                        <% if (bestpp[i].mods !== 0) { %>
-                                            <div class="mods">
-                                                <% getMods(bestpp[i].mods).forEach((mod) => { %>
-                                                    <img class="img" src="/image/mods/<%= mod %>.png" alt="">
-                                                <% }); %>
-                                            </div>
-                                        <% } %>
-                                    </div>
-                                    <div class="flex results">
-                                        <p class="acc"><%= bestpp[i].acc.toFixed(2) %>%</p>
-                                        <p class="recorded"><%= Math.round(bestpp[i].pp).toLocaleString() %><span>pp</span></p>
-                                        <p class="weighted">(<%= Math.round(bestpp[i].pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
-                                    </div>
+                                <div class="flex results">
+                                    <p class="acc"><%= data.acc.toFixed(2) %>%</p>
+                                    <p class="recorded"><%= Math.round(data.pp).toLocaleString() %><span>pp</span></p>
+                                    <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
                                 </div>
-                            <% } %>
-                        <% } %>
+                            </div>
+                        <% }); %>
                     <% } %>
                 </div>
             </div>
