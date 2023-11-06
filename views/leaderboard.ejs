@@ -4,23 +4,21 @@
         <title>Leaderboard | Mamestagram</title>
         <%- include("link") %>
         <link rel="stylesheet" href="/css/leaderboard.css">
-        <script type="text/javascript">
-            <%
-            const getModeName = (modeNum) => {
-                switch (modeNum) {
-                    case 0: return "std";
-                    case 1: return "taiko";
-                    case 2: return "ctb";
-                    case 3: return "mania";
-                    case 4: return "stdrx";
-                    case 5: return "taikorx";
-                    case 6: return "ctbrx";
-                    case 8: return "stdap";
-                    default: return "std";
-                }
+        <%
+        const getModeName = (modeNum) => {
+            switch (modeNum) {
+                case 0: return "std";
+                case 1: return "taiko";
+                case 2: return "ctb";
+                case 3: return "mania";
+                case 4: return "stdrx";
+                case 5: return "taikorx";
+                case 6: return "ctbrx";
+                case 8: return "stdap";
+                default: return "std";
             }
-            %>
-        </script>
+        }
+        %>
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -222,9 +220,9 @@
                             <span class="acc"><%= player.acc.toFixed(2) %>%</span>
                             <span class="playcount"><%= player.plays.toLocaleString() %></span>
                             <span class="pp"><%= player.pp.toLocaleString() %></span>
-                            <span class="ss"><%= player.SS.toLocaleString() %></span>
-                            <span class="s"><%= player.S.toLocaleString() %></span>
-                            <span class="a"><%= player.A.toLocaleString() %></span>
+                            <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
+                            <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
+                            <span class="a"><%= player.a_count.toLocaleString() %></span>
                         </div>
                     <% }); %>
                 <% } %>

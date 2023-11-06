@@ -50,6 +50,15 @@ header .pc li:hover {
     color: #fdfdfd;
 }
 
+header .donate a {
+    font-size: 20px;
+    transition: 300ms;
+}
+header .donate a:hover {
+    transform: scale(1.3);
+    color: #ea609e;
+}
+
 .animated .pc li {
     color: #fdfdfd;
     margin: 5px 15px;

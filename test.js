@@ -123,4 +123,9 @@ const sortMods = (mods) => {
     return rst;
 }
 
-console.log(getMods(33344));
+const list = {
+    number: 1,
+    text: "hello"
+};
+
+console.log(list["number"]);
