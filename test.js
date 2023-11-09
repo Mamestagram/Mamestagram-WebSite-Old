@@ -128,4 +128,6 @@ const list = {
     text: "hello"
 };
 
-console.log(list["number"]);
+const emoji = require("node-emoji");
+
+console.log();

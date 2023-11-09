@@ -19,6 +19,7 @@
     "ip": "^1.1.8",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "node-emoji": "^2.1.0",
     "xmlhttprequest": "^1.8.0"
   }
 }
