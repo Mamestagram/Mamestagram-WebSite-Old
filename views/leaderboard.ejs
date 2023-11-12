@@ -257,7 +257,12 @@
                             <span class="ranking">#<%= player.ranking.toLocaleString() %></span>
                             <i class="flag-icon flag-icon-<%= player.country %>"></i>
                             <span class="name">
-                                <a href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>">
+                                <a 
+                                <% if (sortby !== "dans") { %>
+                                    href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>"
+                                <% } else { %>
+                                    href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>&dans"
+                                <% } %>>
                                     <span class="text"><%= player.name %></span>
                                 </a>
                             </span>

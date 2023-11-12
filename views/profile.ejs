@@ -576,12 +576,10 @@
                                 <p class="acc"><%= data.acc.toFixed(2) %>%</p>
                                 <div class="pp">
                                     <p class="recorded">
-                                        <% if (data.grade !== "F") { %>
-                                            <% if (!dans) { %>
-                                                <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
-                                            <% } else { %>
-                                                <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
-                                            <% } %>
+                                        <% if (!dans) { %>
+                                            <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                        <% } else if (data.grade !== "F") { %>
+                                            <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
                                         <% } else { %>
                                             -
                                         <% } %>
@@ -614,12 +612,10 @@
                                 <div class="flex results">
                                     <p class="acc"><%= data.acc.toFixed(2) %>%</p>
                                     <p class="recorded">
-                                        <% if (data.grade !== "F") { %>
-                                            <% if (!dans) { %>
-                                                <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
-                                            <% } else { %>
-                                                <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
-                                            <% } %>
+                                        <% if (!dans) { %>
+                                            <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                        <% } else if (data.grade !== "F") { %>
+                                            <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
                                         <% } else { %>
                                             -
                                         <% } %>
