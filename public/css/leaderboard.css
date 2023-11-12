@@ -95,12 +95,16 @@ main {
     color: #fdfdfd;
     width: 85px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .playcount-title {
     color: #fdfdfd;
     width: 95px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .pp-title {
@@ -113,17 +117,29 @@ main {
     color: #fdfdfd;
     width: 80px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .s-title {
     color: #fdfdfd;
     width: 80px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .a-title {
     color: #fdfdfd;
     width: 80px;
+    text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
+}
+
+.grade-title {
+    color: #fdfdfd;
+    width: 123px;
     text-align: center;
 }
 
@@ -172,12 +188,16 @@ main {
     text-align: center;
     margin-right: 0;
     margin-left: auto;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .playcount {
     color: #fdfdfd;
     width: 100px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .pp {
@@ -190,17 +210,31 @@ main {
     color: #fdfdfd;
     width: 80px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .s {
     color: #fdfdfd;
     width: 80px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .a {
     color: #fdfdfd;
     width: 80px;
+    text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
+}
+
+.grade {
+    color: #fdfdfd;
+    width: 120px;
+    margin-right: 0;
+    margin-left: auto;
     text-align: center;
 }
 
