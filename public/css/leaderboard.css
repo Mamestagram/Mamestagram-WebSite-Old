@@ -307,6 +307,10 @@ main {
         width: 71px;
     }
 
+    .grade-title {
+        width: 70px;
+    }
+
     .ranking-table .nothing {
         font-size: 24px;
         padding-top: 35%;
@@ -344,5 +348,9 @@ main {
 
     .ss, .s, .a {
         display: none;
+    }
+
+    .grade {
+        width: 70px;
     }
 }

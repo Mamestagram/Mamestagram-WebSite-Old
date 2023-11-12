@@ -85,6 +85,23 @@
                 background-color: #6495ed;
             }
         </style>
+        <% if (sortby === "dans") { %>
+            <style>
+                .acc-title, .playcount-title, .acc, .playcount {
+                    width: 120px;
+                }
+            
+                .acc {
+                    margin: 0;
+                }
+
+                @media (max-width: 767px) {
+                    .acc-title, .playcount-title, .acc, .playcount {
+                        width: 70px;
+                    }
+                }
+            </style>
+        <% } %>
     </head>
     <body>
     <%- include("header") %>
@@ -227,8 +244,8 @@
                     <span class="a-title">A</span>
                 <% } else { %>
                     <span class="grade-title">PP</span>
-                    <span class="acc-title" style="width: 120px;">Accuracy</span>
-                    <span class="playcount-title" style="width: 120px;">Play Count</span>
+                    <span class="acc-title">Accuracy</span>
+                    <span class="playcount-title">Play Count</span>
                 <% } %>
             </div>
             <div class="mode-<%= modeNum %>">
@@ -253,8 +270,8 @@
                                 <span class="a"><%= player.a_count.toLocaleString() %></span>
                             <% } else { %>
                                 <span class="grade"><%= player.reward_pp %></span>
-                                <span class="acc" style="width: 120px; margin: 0;"><%= player.acc.toFixed(2) %>%</span>
-                                <span class="playcount" style="width: 120px;"><%= player.plays.toLocaleString() %></span>
+                                <span class="acc"><%= player.acc.toFixed(2) %>%</span>
+                                <span class="playcount"><%= player.plays.toLocaleString() %></span>
                             <% } %>
                         </div>
                     <% }); %>

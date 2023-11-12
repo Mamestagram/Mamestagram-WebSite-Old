@@ -159,10 +159,12 @@
             <div class="box player-banner">
                 <div class="username">
                     <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
+                    <!--
                     <% if (info.verified) { %>
                         <img class="badge verified" src="/image/badge/verified.png" alt="" title="verified✓">
                         <img class="badge verified-hover" src="/image/badge/verified-hover.png" alt="" title="verified✓">
                     <% } %>
+                    -->
                     <h1><%= info.name %></h1>
                     <% if (id === locals.userid) { %>
                         <a href="/edit" class="edit">
@@ -174,15 +176,15 @@
                 <div class="selection">
                     <ul class="special">
                         <li class="classic"
-                        <% if (modeNum >= 0 && modeNum < 4) { %>
+                        <% if (modeNum >= 0 && modeNum < 4 && !dans) { %>
                             style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
                         <% } %>>
                             <a
-                            <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                            <% if (modeNum % 4 === 0) { %>
                                 href="/profile/<%= id %>/std"
-                            <% } else if (modeNum === 1 || modeNum === 5) { %>
+                            <% } else if (modeNum % 4 === 1) { %>
                                 href="/profile/<%= id %>/taiko"
-                            <% } else if (modeNum === 2 || modeNum === 6) { %>
+                            <% } else if (modeNum % 4 === 2) { %>
                                 href="/profile/<%= id %>/ctb"
                             <% } else { %>
                                 href="/profile/<%= id %>/mania"
@@ -190,72 +192,100 @@
                         </li>
                         <% if (modeNum !== 3) { %>
                             <li class="relax"
-                            <% if (modeNum >= 4 && modeNum < 7) { %>
+                            <% if (modeNum >= 4 && modeNum < 7 && !dans) { %>
                                 style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
                             <% } %>>
                                 <a
-                                <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                                <% if (modeNum % 4 === 0) { %>
                                     href="/profile/<%= id %>/stdrx"
-                                <% } else if (modeNum === 1 || modeNum === 5) { %>
+                                <% } else if (modeNum % 4 === 1) { %>
                                     href="/profile/<%= id %>/taikorx"
-                                <% } else if (modeNum === 2 || modeNum === 6) { %>
+                                <% } else if (modeNum % 4 === 2) { %>
                                     href="/profile/<%= id %>/ctbrx"
                                 <% } %>>Relax</a>
                             </li>
                         <% } %>
-                        <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
+                        <% if (modeNum % 4 === 0) { %>
                             <li class="auto-pilot"
-                            <% if (modeNum === 8) { %>
+                            <% if (modeNum === 8 && !dans) { %>
                                 style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
                             <% } %>>
                                 <a href="/profile/<%= id %>/stdap">Auto Pilot</a>
                             </li>
                         <% } %>
+                        <% if (modeNum % 4 === 1 || modeNum === 3) { %>
+                            <li class="dans"
+                            <% if (dans) { %>
+                                style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
+                            <% } %>>
+                            <a
+                            <% if (modeNum % 4 === 0) { %>
+                                href="/profile/<%= id %>/std&dans"
+                            <% } else if (modeNum % 4 === 1) { %>
+                                href="/profile/<%= id %>/taiko&dans"
+                            <% } else if (modeNum % 4 === 2) { %>
+                                href="/profile/<%= id %>/ctb&dans"
+                            <% } else if (modeNum === 3) { %>
+                                href="/profile/<%= id %>/mania&dans"
+                            <% } %>>Dans</a>
+                            </li>
+                        <% } %>
                     </ul>
                     <ul class="mode">
-                        <li class="std"
-                        <% if (modeNum === 0 || modeNum === 4 || modeNum === 8) { %>
-                            style="filter: invert(0%); opacity: 1"
-                        <% } %>>
-                            <a
-                            <% if (modeNum >= 0 && modeNum < 4) { %>
-                                href="/profile/<%= id %>/std"
-                            <% } else if (modeNum < 7) { %>
-                                href="/profile/<%= id %>/stdrx"
-                            <% } else { %>
-                                href="/profile/<%= id %>/stdap"
-                            <% } %>><i class="mode-icon mode-osu"></i></a>
-                        </li>
-                        <% if (modeNum !== 8) { %>
-                            <li class="taiko"
-                            <% if (modeNum === 1 || modeNum === 5) { %>
+                        <% if (!dans) { %>
+                            <li class="std"
+                            <% if (modeNum % 4 === 0) { %>
                                 style="filter: invert(0%); opacity: 1"
                             <% } %>>
                                 <a
                                 <% if (modeNum >= 0 && modeNum < 4) { %>
+                                    href="/profile/<%= id %>/std"
+                                <% } else if (modeNum < 7) { %>
+                                    href="/profile/<%= id %>/stdrx"
+                                <% } else { %>
+                                    href="/profile/<%= id %>/stdap"
+                                <% } %>><i class="mode-icon mode-osu"></i></a>
+                            </li>
+                        <% } %>
+                        <% if (modeNum !== 8) { %>
+                            <li class="taiko"
+                            <% if (modeNum % 4 === 1) { %>
+                                style="filter: invert(0%); opacity: 1"
+                            <% } %>>
+                                <a
+                                <% if (dans) { %>
+                                    href="/profile/<%= id %>/taiko&dans"
+                                <% } else if (modeNum >= 0 && modeNum < 4) { %>
                                     href="/profile/<%= id %>/taiko"
                                 <% } else { %>
                                     href="/profile/<%= id %>/taikorx"
                                 <% } %>><i class="mode-icon mode-taiko"></i></a>
                             </li>
-                            <li class="catch"
-                            <% if (modeNum === 2 || modeNum === 6) { %>
-                                style="filter: invert(0%); opacity: 1"
-                            <% } %>>
-                                <a
-                                <% if (modeNum >= 0 && modeNum < 4) { %>
-                                    href="/profile/<%= id %>/ctb"
-                                <% } else { %>
-                                    href="/profile/<%= id %>/ctbrx"
-                                <% } %>><i class="mode-icon mode-fruits"></i></a>
-                            </li>
+                            <% if (!dans) { %>
+                                <li class="catch"
+                                <% if (modeNum % 4 === 2) { %>
+                                    style="filter: invert(0%); opacity: 1"
+                                <% } %>>
+                                    <a
+                                    <% if (modeNum >= 0 && modeNum < 4) { %>
+                                        href="/profile/<%= id %>/ctb"
+                                    <% } else { %>
+                                        href="/profile/<%= id %>/ctbrx"
+                                    <% } %>><i class="mode-icon mode-fruits"></i></a>
+                                </li>
+                            <% } %>
                         <% } %>
                         <% if (modeNum >= 0 && modeNum < 4) { %>
                             <li class="mania"
                             <% if (modeNum === 3) { %>
                                 style="filter: invert(0%); opacity: 1"
                             <% } %>>
-                                <a href="/profile/<%= id %>/mania">
+                                <a
+                                <% if (dans) { %>
+                                    href="/profile/<%= id %>/mania&dans"
+                                <% } else { %>
+                                    href="/profile/<%= id %>/mania"
+                                <% } %>>
                                     <i class="mode-icon mode-mania"></i>
                                 </a>
                             </li>
@@ -365,7 +395,11 @@
                         <% bestpp.forEach((data) => { %>
                             <div class="wrap data">
                                 <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
-                                <a href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>" style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
+                                <a
+                                <% if (!dans) { %>
+                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                <% } %>
+                                style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
                                     <p class="title"><%= data.title %> by <%= data.artist %></p>
                                     <p class="diff"><%= data.version %></p>
                                 </a>
@@ -376,14 +410,28 @@
                                 </div>
                                 <p class="acc"><%= data.acc.toFixed(2) %>%</p>
                                 <div class="pp">
-                                    <p class="recorded"><%= Math.round(data.pp).toLocaleString() %><span>pp</span></p>
-                                    <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt)).toLocaleString() %>pp)</p>
+                                    <p class="recorded"
+                                        <% if (dans) { %>
+                                            style="margin: auto";
+                                        <% } %>>
+                                        <% if (!dans) { %>
+                                            <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                        <% } else { %>
+                                            <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
+                                        <% } %>
+                                    </p>
+                                    <% if (!dans) { %>
+                                        <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt)).toLocaleString() %>pp)</p>
+                                    <% } %>
                                 </div>
                             </div>
                             <div class="data-mobile">
                                 <div class="flex info">
                                     <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
-                                    <a href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>">
+                                    <a 
+                                    <% if (!dans) { %>
+                                        href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                    <% } %>>
                                         <p class="title"><%= data.title %> by <%= data.artist %></p>
                                         <p class="diff"><%= data.version %></p>
                                     </a>
@@ -397,8 +445,16 @@
                                 </div>
                                 <div class="flex results">
                                     <p class="acc"><%= data.acc.toFixed(2) %>%</p>
-                                    <p class="recorded"><%= Math.round(data.pp).toLocaleString() %><span>pp</span></p>
-                                    <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
+                                    <p class="recorded">
+                                        <% if (!dans) { %>
+                                            <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                        <% } else { %>
+                                            <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
+                                        <% } %>
+                                    </p>
+                                    <% if (!dans) { %>
+                                        <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
+                                    <% } %>
                                 </div>
                             </div>
                         <% }); %>
@@ -429,9 +485,17 @@
                         <h1 class="nothing">No scores available</h1>
                     <% } else { %>
                         <% mostplays.forEach((data) => { %>
-                            <div class="data">
-                                <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?" alt="">
-                                <a href="/beatmap/<%= data.set_id %>/<%= data.id %>/<%= data.version %>">
+                            <div class="data" 
+                            <% if (dans) { %>
+                                style="height: 55px;"
+                            <% } %>>
+                                <% if (!dans) { %>
+                                    <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?" alt="">
+                                <% } %>
+                                <a
+                                <% if (!dans) { %>
+                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                <% } %>>
                                     <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
                                     <p class="mapper">mapped by <span><%= data.creator %></span></p>
                                 </a>
@@ -441,15 +505,26 @@
                                     <p class="value"><%= data.playtimes.toLocaleString() %></p>
                                 </div>
                             </div>
-                            <div class="data-mobile">
-                                <div class="mapbg">
-                                    <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?" alt="">
+                            <div class="data-mobile"
+                            <% if (dans) {%>
+                                style="height: 54px;"
+                            <% } %>>
+                                <div class="mapbg"
+                                <% if (dans) {%>
+                                    style="background-color: unset; height: 54px;"
+                                <% } %>>
+                                    <% if (!dans) { %>
+                                        <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?" alt="">
+                                    <% } %>
                                     <div>
                                         <i class="fa-solid fa-play play-icon"></i>
                                         <p class="value"><%= data.playtimes.toLocaleString() %></p>
                                     </div>
                                 </div>
-                                <a href="/beatmap/<%= data.set_id %>/<%= data.id %>/<%= data.version %>">
+                                <a
+                                <% if (!dans) { %>
+                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                <% } %>>
                                     <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
                                     <p class="mapper">mapped by <span><%= data.creator %></span></p>
                                 </a>
@@ -482,23 +557,37 @@
                     <% if (recentplays.length <= 0) { %>
                         <h1 class="nothing">No scores available</h1>
                     <% } else { %>
-                        <% for (let i = 0; i < recentplays.length; i++) { %>
+                        <% recentplays.forEach((data) => { %>
                             <div class="data">
-                                <img class="grade" src="/image/grade/<%= recentplays[i].grade %>.png" alt="">
-                                <a href="/beatmap/<%= recentplays[i].set_id %>/<%= recentplays[i].id %>/<%= recentplays[i].version %>" style="width: calc(100% - 320px - <%= Math.min(40 * getMods(recentplays[i].mods).length, 325) %>px);">
-                                    <p class="title"><%= recentplays[i].title %> by <%= recentplays[i].artist %></p>
-                                    <p class="diff"><%= recentplays[i].version %></p>
+                                <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
+                                <a
+                                <% if (!dans) { %>
+                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                <% } %>
+                                style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
+                                    <p class="title"><%= data.title %> by <%= data.artist %></p>
+                                    <p class="diff"><%= data.version %></p>
                                 </a>
                                 <div class="mods">
-                                    <% getMods(recentplays[i].mods).forEach((mod) => { %>
+                                    <% getMods(data.mods).forEach((mod) => { %>
                                         <img class="mod" src="/image/mods/<%= mod %>.png" alt="">
                                     <% }); %>
                                 </div>
-                                <p class="acc"><%= recentplays[i].acc.toFixed(2) %>%</p>
+                                <p class="acc"><%= data.acc.toFixed(2) %>%</p>
                                 <div class="pp">
-                                    <p class="recorded"><%= Math.round(recentplays[i].pp).toLocaleString() %><span>pp</span></p>
+                                    <p class="recorded">
+                                        <% if (data.grade !== "F") { %>
+                                            <% if (!dans) { %>
+                                                <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                            <% } else { %>
+                                                <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
+                                            <% } %>
+                                        <% } else { %>
+                                            -
+                                        <% } %>
+                                    </p>
                                     <p class="loved">
-                                        <% if (recentplays[i].status !== 2) { %>
+                                        <% if (data.status !== 2 && !dans) { %>
                                             (Loved)
                                         <% } %>
                                     </p>
@@ -506,26 +595,43 @@
                             </div>
                             <div class="data-mobile">
                                 <div class="flex info">
-                                    <img class="grade" src="/image/grade/<%= recentplays[i].grade %>.png" alt="">
-                                    <a href="/beatmap/<%= recentplays[i].set_id%>/<%= recentplays[i].id %>/<%= recentplays[i].version %>">
-                                        <p class="title"><%= recentplays[i].title %> by <%= recentplays[i].artist %></p>
-                                        <p class="diff"><%= recentplays[i].version %></p>
+                                    <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
+                                    <a
+                                    <% if (!dans) { %>
+                                        href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                    <% } %>>
+                                        <p class="title"><%= data.title %> by <%= data.artist %></p>
+                                        <p class="diff"><%= data.version %></p>
                                     </a>
-                                    <% if (recentplays[i].mods !== 0) { %>
+                                    <% if (data.mods !== 0) { %>
                                         <div class="mods">
-                                            <% getMods(recentplays[i].mods).forEach((mod) => { %>
+                                            <% getMods(data.mods).forEach((mod) => { %>
                                                 <img class="img" src="/image/mods/<%= mod %>.png" alt="">
                                             <% }); %>
                                         </div>
                                     <% } %>
                                 </div>
                                 <div class="flex results">
-                                    <p class="acc"><%= recentplays[i].acc.toFixed(2) %>%</p>
-                                    <p class="recorded"><%= Math.round(recentplays[i].pp).toLocaleString() %><span>pp</span></p>
-                                    <p class="weighted">(<%= Math.round(recentplays[i].pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
+                                    <p class="acc"><%= data.acc.toFixed(2) %>%</p>
+                                    <p class="recorded">
+                                        <% if (data.grade !== "F") { %>
+                                            <% if (!dans) { %>
+                                                <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                            <% } else { %>
+                                                <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
+                                            <% } %>
+                                        <% } else { %>
+                                            -
+                                        <% } %>
+                                    </p>
+                                    <p class="loved">
+                                        <% if (data.status !== 2 && !dans) { %>
+                                            (Loved)
+                                        <% } %>
+                                    </p>
                                 </div>
                             </div>
-                        <% } %>
+                        <% }); %>
                     <% } %>
                 </div>
             </div>

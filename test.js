@@ -128,6 +128,6 @@ const list = {
     text: "hello"
 };
 
-const emoji = require("node-emoji");
+const emoji = require("node-emoji"), num = '-';
 
-console.log();
+console.log(/[0-9]/.test(num));
