@@ -129,5 +129,6 @@ const list = {
 };
 
 const emoji = require("node-emoji"), num = '-';
+const results = { id: [1, 2, 3], acc: [100, 99, 98] }
 
-console.log(/[0-9]/.test(num));
+console.log(results.indexOf(2));
