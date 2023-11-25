@@ -115,7 +115,7 @@
                     style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
                 <% } %>>
                     <a
-                    <% if (modeNum % 4 === 0) { %>
+                    <% if (modeNum % 4 === 0 && sortby !== "dans") { %>
                         href="/leaderboard/std/performance"
                     <% } else if (modeNum % 4 === 1) { %>
                         href="/leaderboard/taiko/performance"
@@ -148,11 +148,10 @@
                         <a href="/leaderboard/stdap/performance">Auto Pilot</a>
                     </li>
                 <% } %>
-                <% if (modeNum % 4 === 1 || modeNum === 3) { %>
-                    <li class="dans"
-                    <% if (sortby === "dans") { %>
-                        style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
-                    <% } %>>
+                <li class="dans"
+                <% if (sortby === "dans") { %>
+                    style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
+                <% } %>>
                     <a
                     <% if (modeNum % 4 === 0) { %>
                         href="/leaderboard/std/dans"
@@ -163,15 +162,22 @@
                     <% } else if (modeNum === 3) { %>
                         href="/leaderboard/mania/dans"
                     <% } %>>Dans</a>
-                    </li>
+                </li>
+                <% if (modeNum === 3) { %>
+                    <% for (let i = 4; i <= 10; i++) { %>
+                        <% if ((i !== 5 && i !== 8 && i !== 9) || sortby !== "dans") { %>
+                            <li class="<%= i %>k">
+                                <a href="/leaderboard/mania&<%= i %>k/<%= sortby %>"><%= i %>k</a>
+                            </li>
+                        <% } %>
+                    <% } %>
                 <% } %>
             </ul>
             <ul class="mode">
-                <% if (sortby !== "dans") { %>
-                    <li class="std"
-                    <% if (modeNum % 4 === 0 && sortby !== "dans") { %>
-                        style="filter: invert(0%); opacity: 1"
-                    <% } %>>
+                <li class="std"
+                <% if (modeNum % 4 === 0) { %>
+                    style="filter: invert(0%); opacity: 1"
+                <% } %>>
                     <a
                     <% if (modeNum >= 0 && modeNum < 4) { %>
                         href="/leaderboard/std/<%= sortby %>"
@@ -181,7 +187,6 @@
                         href="/leaderboard/stdap/<%= sortby %>"
                     <% } %>><i class="mode-icon mode-osu"></i></a>
                 </li>
-                <% } %>
                 <% if (modeNum !== 8) { %>
                     <li class="taiko"
                     <% if (modeNum % 4 === 1) { %>
@@ -194,11 +199,10 @@
                             href="/leaderboard/taikorx/<%= sortby %>"
                         <% } %>><i class="mode-icon mode-taiko"></i></a>
                     </li>
-                    <% if (sortby !== "dans") { %>
-                        <li class="catch"
-                        <% if (modeNum % 4 === 2) { %>
-                            style="filter: invert(0%); opacity: 1"
-                        <% } %>>
+                    <li class="catch"
+                    <% if (modeNum % 4 === 2) { %>
+                        style="filter: invert(0%); opacity: 1"
+                    <% } %>>
                         <a
                         <% if (modeNum >= 0 && modeNum < 4) { %>
                             href="/leaderboard/ctb/<%= sortby %>"
@@ -206,7 +210,6 @@
                             href="/leaderboard/ctbrx/<%= sortby %>"
                         <% } %>><i class="mode-icon mode-fruits"></i></a>
                     </li>
-                    <% } %>
                 <% } %>
                 <% if (modeNum >= 0 && modeNum < 4) { %>
                     <li class="mania"
@@ -236,14 +239,25 @@
         <div class="ranking-table">
             <div class=table-title>
                 <% if (sortby !== "dans") { %>
-                    <span class="acc-title">Accuracy</span>
-                    <span class="playcount-title">Play Count</span>
-                    <span class="pp-title">Performance</span>
+                    <span class="acc-title"
+                    <% if (sortby === "accuracy") { %>
+                        style="filter: invert(0%); opacity: 1;"
+                    <% } %>>
+                        <a href="/leaderboard/<%= getModeName(modeNum) %>/accuracy">Accuracy</a>
+                    </span>
+                    <span class="playcount-title"
+                    <% if (sortby === "playcount") { %>
+                        style="filter: invert(0%); opacity: 1;"
+                    <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/playcount">Play Count</a></span>
+                    <span class="pp-title"
+                    <% if (sortby === "performance") { %>
+                        style="filter: invert(0%); opacity: 1;"
+                    <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/performance">Performance</a></span>
                     <span class="ss-title">SS</span>
                     <span class="s-title">S</span>
                     <span class="a-title">A</span>
                 <% } else { %>
-                    <span class="grade-title">PP</span>
+                    <span class="grade-title" style="filter: invert(0%); opacity: 1;">PP</span>
                     <span class="acc-title">Accuracy</span>
                     <span class="playcount-title">Play Count</span>
                 <% } %>
@@ -267,9 +281,18 @@
                                 </a>
                             </span>
                             <% if (sortby !== "dans") { %>
-                                <span class="acc"><%= player.acc.toFixed(2) %>%</span>
-                                <span class="playcount"><%= player.plays.toLocaleString() %></span>
-                                <span class="pp"><%= player.pp.toLocaleString() %></span>
+                                <span class="acc"
+                                <% if (sortby === "accuracy") { %>
+                                    style="filter: invert(0%); opacity: 1;"
+                                <% } %>><%= player.acc.toFixed(2) %>%</span>
+                                <span class="playcount"
+                                <% if (sortby === "playcount") { %>
+                                    style="filter: invert(0%); opacity: 1;"
+                                <% } %>><%= player.plays.toLocaleString() %></span>
+                                <span class="pp"
+                                <% if (sortby === "performance") { %>
+                                    style="filter: invert(0%); opacity: 1;"
+                                <% } %>><%= player.pp.toLocaleString() %></span>
                                 <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
                                 <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
                                 <span class="a"><%= player.a_count.toLocaleString() %></span>

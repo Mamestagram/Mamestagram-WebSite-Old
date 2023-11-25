@@ -213,11 +213,10 @@
                                 <a href="/profile/<%= id %>/stdap">Auto Pilot</a>
                             </li>
                         <% } %>
-                        <% if (modeNum % 4 === 1 || modeNum === 3) { %>
-                            <li class="dans"
-                            <% if (dans) { %>
-                                style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
-                            <% } %>>
+                        <li class="dans"
+                        <% if (dans) { %>
+                            style="border-bottom: 2px solid #fdfdfd; filter: invert(0%); opacity: 1;"
+                        <% } %>>
                             <a
                             <% if (modeNum % 4 === 0) { %>
                                 href="/profile/<%= id %>/std&dans"
@@ -229,24 +228,23 @@
                                 href="/profile/<%= id %>/mania&dans"
                             <% } %>>Dans</a>
                             </li>
-                        <% } %>
                     </ul>
                     <ul class="mode">
-                        <% if (!dans) { %>
-                            <li class="std"
-                            <% if (modeNum % 4 === 0) { %>
-                                style="filter: invert(0%); opacity: 1"
-                            <% } %>>
-                                <a
-                                <% if (modeNum >= 0 && modeNum < 4) { %>
-                                    href="/profile/<%= id %>/std"
-                                <% } else if (modeNum < 7) { %>
-                                    href="/profile/<%= id %>/stdrx"
-                                <% } else { %>
-                                    href="/profile/<%= id %>/stdap"
-                                <% } %>><i class="mode-icon mode-osu"></i></a>
-                            </li>
-                        <% } %>
+                        <li class="std"
+                        <% if (modeNum % 4 === 0) { %>
+                            style="filter: invert(0%); opacity: 1"
+                        <% } %>>
+                            <a
+                            <% if (dans) { %>
+                                href="/profile/<%= id %>/std&dans"
+                            <% } else if (modeNum >= 0 && modeNum < 4) { %>
+                                href="/profile/<%= id %>/std"
+                            <% } else if (modeNum < 7) { %>
+                                href="/profile/<%= id %>/stdrx"
+                            <% } else { %>
+                                href="/profile/<%= id %>/stdap"
+                            <% } %>><i class="mode-icon mode-osu"></i></a>
+                        </li>
                         <% if (modeNum !== 8) { %>
                             <li class="taiko"
                             <% if (modeNum % 4 === 1) { %>
@@ -261,19 +259,19 @@
                                     href="/profile/<%= id %>/taikorx"
                                 <% } %>><i class="mode-icon mode-taiko"></i></a>
                             </li>
-                            <% if (!dans) { %>
-                                <li class="catch"
-                                <% if (modeNum % 4 === 2) { %>
-                                    style="filter: invert(0%); opacity: 1"
-                                <% } %>>
-                                    <a
-                                    <% if (modeNum >= 0 && modeNum < 4) { %>
-                                        href="/profile/<%= id %>/ctb"
-                                    <% } else { %>
-                                        href="/profile/<%= id %>/ctbrx"
-                                    <% } %>><i class="mode-icon mode-fruits"></i></a>
-                                </li>
-                            <% } %>
+                            <li class="catch"
+                            <% if (modeNum % 4 === 2) { %>
+                                style="filter: invert(0%); opacity: 1"
+                            <% } %>>
+                                <a
+                                <% if (dans) { %>
+                                    href="/profile/<%= id %>/ctb&dans"
+                                <% } else if (modeNum >= 0 && modeNum < 4) { %>
+                                    href="/profile/<%= id %>/ctb"
+                                <% } else { %>
+                                    href="/profile/<%= id %>/ctbrx"
+                                <% } %>><i class="mode-icon mode-fruits"></i></a>
+                            </li>
                         <% } %>
                         <% if (modeNum >= 0 && modeNum < 4) { %>
                             <li class="mania"
@@ -578,7 +576,7 @@
                 <div class="mode-<%= modeNum %>">
                     <!-- Show all -->
                     <% if (recentplays.length <= 0) { %>
-                        <h1 class="nothing">No scores available</h1>
+                        <h1 class="nothing" style="display: none;">No scores available</h1>
                     <% } else { %>
                         <% recentplays.forEach((data) => { %>
                             <div class="data" style="display: none;">

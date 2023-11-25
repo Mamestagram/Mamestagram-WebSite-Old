@@ -408,7 +408,7 @@ main .recentplays .flex .all {
     margin-right: 0;
 }
 
-main .recentplays div .nothing {
+main .recentplays div .nothing, main .recentplays div .nothing-passed {
     font-size: 35px;
     line-height: 300px;
     text-align: center;

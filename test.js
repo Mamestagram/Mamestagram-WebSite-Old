@@ -131,4 +131,10 @@ const list = {
 const emoji = require("node-emoji"), num = '-';
 const results = { id: [1, 2, 3], acc: [100, 99, 98] }
 
-console.log(results.indexOf(2));
+const grades = {
+    "XH": new Array(0),
+    "X": new Array(0),
+    "SH": new Array(0),
+    "S": new Array(0),
+    "A": new Array(0)
+};

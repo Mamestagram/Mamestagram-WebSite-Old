@@ -32,6 +32,8 @@ $(function() {
 
     // "Show all"をクリックしたとき
     $("main .recentplays .all").click(function() {
+        $("main .recentplays div .nothing").show();
+        $("main .recentplays div .nothing-passed").hide();
         $(this).css({
             "filter": `invert(${0}%)`,
             "opacity": 1
@@ -64,6 +66,8 @@ $(function() {
             "filter": "",
             "opacity": ""
         });
+        $("main .recentplays div .nothing").hide();
+        $("main .recentplays div .nothing-passed").show();
         if ($("body").width() > 767) {
             $("main .recentplays").css("max-height", `${338}px`);
             $("main .recentplays .data").hide();

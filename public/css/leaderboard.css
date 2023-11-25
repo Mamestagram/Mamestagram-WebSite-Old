@@ -91,56 +91,46 @@ main {
     justify-content: flex-end;
 }
 
-.acc-title {
+.table-title span {
     color: #fdfdfd;
-    width: 85px;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
+}
+
+.acc-title {
+    width: 85px;
 }
 
 .playcount-title {
-    color: #fdfdfd;
     width: 95px;
-    text-align: center;
-    filter: invert(30%);
-    opacity: 0.95;
 }
 
 .pp-title {
-    color: #fdfdfd;
     width: 123px;
-    text-align: center;
+}
+
+.acc-title:hover, .playcount-title:hover, .pp-title:hover {
+    filter: invert(0%);
+    opacity: 1;
 }
 
 .ss-title {
-    color: #fdfdfd;
     width: 80px;
-    text-align: center;
-    filter: invert(30%);
-    opacity: 0.95;
 }
 
 .s-title {
-    color: #fdfdfd;
     width: 80px;
-    text-align: center;
-    filter: invert(30%);
-    opacity: 0.95;
 }
 
 .a-title {
-    color: #fdfdfd;
     width: 80px;
-    text-align: center;
-    filter: invert(30%);
-    opacity: 0.95;
 }
 
 .grade-title {
-    color: #fdfdfd;
     width: 123px;
-    text-align: center;
+    filter: invert(0%);
+    opacity: 1;
 }
 
 .ranking-table .nothing {
@@ -204,6 +194,8 @@ main {
     color: #fdfdfd;
     width: 120px;
     text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
 }
 
 .ss {
