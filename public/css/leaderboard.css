@@ -12,21 +12,15 @@ main {
 
 .special {
     display: flex;
-    color: #fdfdfd;
-    font-size: 16px;
-    padding: 20px 0 0 12.8%;
-}
-
-.special li {
-    padding: 10px;
-    height: 40px;
-    margin: 0 10px;
-    filter: invert(30%);
-    opacity: 0.95;
-}
-.special li:hover {
-    filter: invert(0%);
-    opacity: 1;
+    background-color: #fdfdfd;
+    color: black;
+    height: 22px;
+    font-size: 18px;
+    margin-left: 12.8%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 5px;
+    appearance: menulist;
 }
 
 .mode {
