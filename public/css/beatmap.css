@@ -5,8 +5,6 @@ body {
 main {
     font-family: "Righteous";
     background-color: #171a1c;
-    min-height: 100vh;
-    height: 100%;
     padding: 100px 0;
 }
 /* ------------------------------------------------- */

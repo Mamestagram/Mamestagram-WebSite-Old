@@ -2,8 +2,6 @@ main {
     font-family: "Righteous", "MochiyPopOne";
     background-color: #17171c;
     color: #fdfdfd;
-    min-height: 100vh;
-    height: 100%;
     padding-top: 90px;
     padding-bottom: 300px;
 }

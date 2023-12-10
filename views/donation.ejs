@@ -17,7 +17,11 @@
             }
 
             header .pc .donation {
-                transform: scale(1.3);
+                font-size: 20px;
+                color: #ea609e;
+                transform: scale(1.2);
+            }
+            header .pc .donation:hover {
                 color: #ea609e;
             }
 
@@ -27,10 +31,6 @@
 
             .animated .pc li:hover {
                 background-color: #ffd966;
-            }
-
-            .animated .pc .donation {
-                border-bottom: 3px solid #ffd966;
             }
 
             @media (max-width: 1232px) {
@@ -74,9 +74,9 @@
     </head>
     <body>
         <%- include("header") %>
+        <img class="banner" src="/image/banner/leaderboard.png" alt="">
+        <h1 class="pagename">Support Mamestagram</h1>
         <main>
-            <img class="banner" src="/image/banner/leaderboard.png" alt="">
-            <h1 class="pagename">Support Mamestagram</h1>
             
         </main>
         <%- include("footer") %>

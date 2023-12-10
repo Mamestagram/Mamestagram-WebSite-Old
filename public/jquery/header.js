@@ -2,7 +2,7 @@ $(window).on("load scroll", function() {
     var $scroll = $(this).scrollTop();
     var $width = $("body").width();
 
-    if ($width > 1232 && $scroll > 50) {
+    if ($width > 1232 && $scroll > $("header").height()) {
         $("header").addClass("animated");
         $(".link-form").css({
             "top": 65 + "px",
@@ -14,7 +14,7 @@ $(window).on("load scroll", function() {
         if ($width > 1232){
             $(".link-form").css({
                 "top": 75 + "px",
-                "right": 162 + "px",
+                "right": 160 + "px",
             });
         }
     }
@@ -27,17 +27,17 @@ $(function() {
 
         //ユーザーボタンクリック時
         if (!$(e.target).closest("header .avatar").length && !$(e.target).closest($form).length) {
-            $form.removeClass("show").slideUp(100);
+            $form.removeClass("show").slideUp(200);
         }
         else if ($(e.target).closest($form).length) {
             $form.show();
         }
         else {
             if ($form.hasClass("show")) {
-                $form.removeClass("show").slideUp(100);
+                $form.removeClass("show").slideUp(200);
             }
             else {
-                $form.addClass("show").slideDown(100);
+                $form.addClass("show").slideDown(200);
             }
         }
 
@@ -50,14 +50,14 @@ $(function() {
                 $form.show();
             }
             else {
-                $form.slideDown(100);
-                $(".mobile").removeClass("show").slideUp(100);
+                $form.slideDown(200);
+                $(".mobile").removeClass("show").slideUp(200);
                 $("header .arrow").removeClass("fa-chevron-up up").addClass("fa-chevron-down down");
             }
 
             //矢印クリック時（スマホ）
             if (!$(e.target).closest("header .arrow").length && !$(e.target).closest(".mobile").length) {
-                $(".mobile").removeClass("show").slideUp(100);
+                $(".mobile").removeClass("show").slideUp(200);
                 $("header .arrow").removeClass("fa-chevron-up up").addClass("fa-chevron-down down");
             }
             else if ($(e.target).closest(".mobile").length) {
@@ -65,11 +65,11 @@ $(function() {
             }
             else {
                 if ($(".mobile").hasClass("show")) {
-                    $(".mobile").removeClass("show").slideUp(100);
+                    $(".mobile").removeClass("show").slideUp(200);
                     $("header .arrow").removeClass("fa-chevron-up up").addClass("fa-chevron-down down");
                 }
                 else {
-                    $(".mobile").addClass("show").slideDown(100);
+                    $(".mobile").addClass("show").slideDown(200);
                     $("header .arrow").removeClass("fa-chevron-down down").addClass("fa-chevron-up up");
                 }
             }
