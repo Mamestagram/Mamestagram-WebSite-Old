@@ -69,7 +69,47 @@
             .link-form a:hover {
                 background-color: #debc54;
             }
+
+            .about .nav {
+                background-color: unset;
+                color: #3366ff;
+                text-shadow: 2px 2px 2px black;
+            }
+            .about .nav:hover {
+                background-color: unset;
+                color: #86a7ff;
+            }
         </style>
+        <%
+        const getColor = (diff) => {
+            const color = [
+                "#4291fd", "#4396fd", "#449bfd", "#46a0fd", // 0.0 ~ 0.5
+                "#47a4fd", "#48a9fd", "#4aaffd", "#4bb3fd", // 0.5 ~ 1.0
+                "#4cb8fd", "#4dbcfd", "#4ec3f9", "#4ecdf2", // 1.0 ~ 1.5
+                "#4ed8eb", "#4ee3e4", "#4eeedc", "#4ef8d6", // 1.5 ~ 2.0
+                "#53fdc0", "#5efda2", "#69fd82", "#74fd5f", // 2.0 ~ 2.5
+                "#82fc4f", "#97f951", "#abf753", "#bef455", // 2.5 ~ 3.0
+                "#d0f257", "#e2f059", "#f4ec5b", "#f5dd5d", // 3.0 ~ 3.5
+                "#f6cf5e", "#f8be60", "#f9af62", "#faa063", // 3.5 ~ 4.0
+                "#fc8f65", "#fd8167", "#fd7868", "#fd6f69", // 4.0 ~ 4.5
+                "#fd676a", "#fd5d6c", "#fd536d", "#fa4d70", // 4.5 ~ 5.0
+                "#f24b7b", "#eb4a85", "#e2498f", "#da4799", // 5.0 ~ 5.5
+                "#d346a3", "#cc45ac", "#c444b6", "#b548bd", // 5.5 ~ 6.0
+                "#a84cc0", "#9b50c6", "#8f54cb", "#8059d0", // 6.0 ~ 6.5
+                "#735dd6", "#6561db", "#5a58d2", "#524fc9", // 6.5 ~ 7.0
+                "#4745be", "#3f3db6", "#3532ab", "#2a28a0", // 7.0 ~ 7.5
+                "#221f97", "#19168e", "#16137f", "#131172", // 7.5 ~ 8.0
+                "#110f64", "#0f0d55", "#0c0b46", "#0a0839", // 8.0 ~ 8.5
+                "#07062b", "#05051f", "#030211", "#010104", // 8.5 ~ 9.0
+                "#000000" // 9.0 ~
+            ]
+            let index = Math.floor(diff / 0.125);
+            if (index > 72) {
+                index = 72;
+            }
+            return color[index];
+        }
+        %>
     </head>
     <body>
     <%- include("header") %>
@@ -88,7 +128,7 @@
                 <li><a href="#about-en">About</a></li>
                 <li><a href="#rules-en">Rules</a></li>
                 <li><a href="#connection-en">How to connect</a></li>
-                <li><a href="#registration-en">How to register</a></li>
+                <li><a href="#dans-en">Dans</a></li>
             </ul>
             <article>
                 <section id="about-en" class="about">
@@ -103,7 +143,7 @@
                             <h2>Introduction of features (mainly Discord) <a href="/discord" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-link link"></i>Discord server</a></h2>
                             <h3>
                                 <a href="https://discord.com/channels/944248031136587796/1081737936401350717" target="_blank" rel="noopener noreferrer">
-                                    # status
+                                    # 🏆 | score
                                 </a>
                             </h3>
                             <p>In this channel, when someone passes a map or takes first place on a map in MamesOsu, their score and status are automatically sent.</p>
@@ -111,39 +151,62 @@
                         </li>
                         <li>
                             <h3>
-                                <a href="https://discord.com/channels/944248031136587796/1104675564763222016" target="_blank" rel="noopener noreferrer">
-                                    # pp-record
-                                </a>
-                            </h3>
-                            <p>This channel shows pp records in 6 different modes: osu!std, osu!taiko, osu!catch, osu!mania, osu!rx (std) and osu!ap, respectively.</p>
-                            <p>We encourage you to try the pp record!</p>
-                            <img src="/image/documents/about/2.png">
-                        </li>
-                        <li>
-                            <h3>
                                 <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
-                                    # map-request
+                                    # 📃 | map-request
                                 </a>
                             </h3>
-                            <p>This channel allows you to apply for maps that are not Ranked or Loved in bancho to be Ranked or Loved.</p>
+                            <p>This channel allows you to apply for maps that are not Ranked to be Ranked or are Ranked to be DeRanked.</p>
                             <p>
                                 The submitted maps will be reviewed by testers and those that pass the review will be notified to
                                 <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
-                                    # ranked-notice
+                                    # 🎶 | beatmaps
                                 </a>
                                 .
                             </p>
-                            <p>Your favorite map could be Ranked or Loved!</p>
-                            <img src="/image/documents/about/3.png">
+                            <p>Your favorite map could be Ranked!</p>
+                            <img src="/image/documents/about/2.png">
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
-                                    # map-request
+                                    # 📃 | map-request
                                 </a>
                             </h4>
-                            <img src="/image/documents/about/4.png">
+                            <img src="/image/documents/about/3.png">
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
-                                    # ranked-notice
+                                    # 🎶 | beatmaps
+                                </a>
+                            </h4>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | general-chat
+                                </a>,
+                                <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | osu-chat
+                                </a>
+                            </h3>
+                            <p>
+                                In this channel you can chat with other players: 
+                                <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | osu-chat
+                                </a> 
+                                for osu-related matters, 
+                                <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | general-chat
+                                </a> 
+                                for everything else.
+                            </p>
+                            <img src="/image/documents/about/4.png">
+                            <h4>
+                                <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | general-chat
+                                </a>
+                            </h4>
+                            <img src="/image/documents/about/5.png">
+                            <h4>
+                                <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | osu-chat
                                 </a>
                             </h4>
                         </li>
@@ -174,24 +237,22 @@
                             <p>・Registering with an inappropriate name</p>
                             <p>・Impersonating another user</p>
                             <p>・Actions that cause the server to perform unnecessary calculations</p>
+                            <p>・Filter function of pen tablets</p>
                         </li>
                         <li>
                             <h2>Others</h2>
                             <h3>Reporting, etc.</h3>
-                            <p>Please contact us at <a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a> if you witness any illegal activity.</p>
+                            <p>Please contact us at <a href="https://discord.com/channels/944248031136587796/1171728223407710208" target="_blank" rel="noopener noreferrer"># 🎫 | ticket</a> if you witness any illegal activity.</p>
                             <p>*<u>False reports may result in appropriate penalties.</u></p>
                         </li>
                         <li>
                             <h3>Complaints</h3>
-                            <p>Please contact <a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a> with evidential images / videos.</p>
+                            <p>Please contact us at <a href="https://discord.com/channels/944248031136587796/1171728223407710208" target="_blank" rel="noopener noreferrer"># 🎫 | ticket</a> with evidential images / videos.</p>
                         </li>
                     </ul>
                 </section>
                 <section id="connection-en" class="connection">
                     <h1>How to connect</h1>
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/CAfovJYSEvw" title="How to connect" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
                     <ol>
                         <li>
                             <p>Go to osu! local file</p>
@@ -225,23 +286,267 @@
                     </ol>
                     <p class="conclusion">Now you are connected to mamesosu.net!</p>
                 </section>
-                <section id="registration-en" class="registration">
-                    <h1>How to register</h1>
-                    <ol>
+                <section id="dans-en" class="dans">
+                    <h1>Dans</h1>
+                    <div class="overview">
+                        <h2>Overview</h2>
+                        <p>Here you will find the requirements for passing the Dan and a link to download the map. You can also find these in </p>
+                        <p>
+                            <a href="https://discord.com/channels/944248031136587796/1175719230650449940" target="_blank" rel="noopener noreferrer">
+                                # 🎹 | dan
+                            </a>
+                            .
+                        </p>
+                    </div>
+                    <ul>
                         <li>
-                            <p>Click on "Register" in the upper right corner</p>
-                            <img src="/image/documents/registration/1.png" class="img1">
-                            <img src="/image/documents/registration/2.png" class="img2">
+                            <h2>Download link for Dan Map</h2>
+                            <p style="padding: 5px 0;">
+                                <a class="allmodes" href="https://mega.nz/file/VSFShRTI#YIcZA4nIUsdiK2vKstDlVEsrEhAS0amtT5JMQs17epg" target="_blank" rel="noopener noreferrer">
+                                    Download maps
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                (All Modes)
+                            </p>
                         </li>
                         <li>
-                            <p>Enter your Username, Email Address, and Password, then click on "Register"</p>
-                            <img src="/image/documents/registration/3.png" class="img3">
+                            <h2>
+                                ・osu! standard
+                                <a href="https://mega.nz/file/QKsHlLhS#xZfttKbJQqt-2mvT0uD9sIKGJH4VQKf41zXIU_JW81U" target="_blank" rel="noopener noreferrer">
+                                    Download std dans
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>Map name</th>
+                                    <th>Level</th>
+                                    <th>Accuracy</th>
+                                    <th>Score</th>
+                                    <th>Mod</th>
+                                    <th>Miss count</th>
+                                    <th>Combo</th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="10">osu!droid Daninintei Course (Dan Course Team)</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                    <td rowspan="13">95.00%<span class=plus>+</span></td>
+                                    <td rowspan="20">0<span class=plus>+</span></td>
+                                    <td rowspan="20">NM</td>
+                                    <td rowspan="13">40<span class=minus>-</span></td>
+                                    <td rowspan="15">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(2) %>;">2</td></tr>
+                                <tr><td style="color: <%= getColor(3) %>;">3</td></tr>
+                                <tr><td style="color: <%= getColor(4) %>;">4</td></tr>
+                                <tr><td style="color: <%= getColor(5) %>;">5</td></tr>
+                                <tr><td style="color: <%= getColor(6) %>;">6</td></tr>
+                                <tr><td style="color: <%= getColor(7) %>;">7</td></tr>
+                                <tr><td style="color: <%= getColor(8) %>;">8</td></tr>
+                                <tr><td style="color: <%= getColor(9) %>;">9</td></tr>
+                                <tr><td style="color: <%= getColor(10) %>;">10</td></tr>
+                                <tr>
+                                    <td rowspan="10">osu! Standard Dan Certification - Overall</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(2) %>;">2</td></tr>
+                                <tr><td style="color: <%= getColor(3) %>;">3</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(4) %>;">4</td>
+                                    <td rowspan="2">97.00%<span class=plus>+</span></td>
+                                    <td rowspan="2">30<span class=minus>-</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(5) %>;">5</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(6) %>;">6</td>
+                                    <td rowspan="2">97.50%<span class=plus>+</span></td>
+                                    <td rowspan="2">25<span class=minus>-</span></td>
+                                    <td rowspan="2">800<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(7) %>;">7</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(8) %>;">8</td>
+                                    <td rowspan="2">98.00%<span class=plus>+</span></td>
+                                    <td rowspan="2">15<span class=minus>-</span></td>
+                                    <td rowspan="2">1000<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(9) %>;">9</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(10) %>;">10</td>
+                                    <td>98.50%<span class=plus>+</span></td>
+                                    <td>10<span class=minus>-</span></td>
+                                    <td>1200<span class=plus>+</span></td>
+                                </tr>
+                            </table>
                         </li>
                         <li>
-                            <p>If you're back on the home page, you've succeeded</p>
+                            <h2>
+                                ・osu! taiko
+                                <a href="https://mega.nz/file/hS1kWbIY#Rw1tBv0zHtDuUzgfWTpke3tFEEwB0D3hSbiOXpjqNzY" target="_blank" rel="noopener noreferrer">
+                                    Download taiko dans
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>Map name</th>
+                                    <th>Level</th>
+                                    <th>Accuracy</th>
+                                    <th>Score</th>
+                                    <th>Mod</th>
+                                    <th>Miss count</th>
+                                    <th>Combo</th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="18">osu!Taiko Dan-I Dojo</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                    <td rowspan="18">0.00%<span class=plus>+</span></td>
+                                    <td rowspan="6">650,000<span class=plus>+</span></td>
+                                    <td rowspan="18">Score V2</td>
+                                    <td rowspan="18">0<span class=minus>-</span></td>
+                                    <td rowspan="18">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(2) %>;">2</td></tr>
+                                <tr><td style="color: <%= getColor(3) %>;">3</td></tr>
+                                <tr><td style="color: <%= getColor(4) %>;">4</td></tr>
+                                <tr><td style="color: <%= getColor(5) %>;">5</td></tr>
+                                <tr><td style="color: <%= getColor(6) %>;">6</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(7) %>;">7</td>
+                                    <td rowspan="3">700,000<span class=plus>+</span></tr>
+                                </tr>
+                                <tr><td style="color: <%= getColor(8) %>;">8</td></tr>
+                                <tr><td style="color: <%= getColor(9) %>;">9</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(10) %>;">10</td>
+                                    <td rowspan="3">750,000<span class=plus>+</span></tr>
+                                </tr>
+                                <tr><td style="color: <%= getColor(11) %>;">11</td></tr>
+                                <tr><td style="color: <%= getColor(12) %>;">12</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(13) %>;">13</td>
+                                    <td rowspan="6">800,000<span class=plus>+</span></tr>
+                                </tr>
+                                <tr><td style="color: <%= getColor(14) %>;">14</td></tr>
+                                <tr><td style="color: <%= getColor(15) %>;">15</td></tr>
+                                <tr><td style="color: <%= getColor(16) %>;">16</td></tr>
+                                <tr><td style="color: <%= getColor(17) %>;">17</td></tr>
+                                <tr><td style="color: <%= getColor(18) %>;">18</td></tr>
+                            </table>
                         </li>
-                    </ol>
-                    <p class="conclusion">Now you have your own account! Have fun!</p>
+                        <li>
+                            <h2>
+                                ・osu! catch
+                                <a href="https://mega.nz/file/BS9CQbzK#pjq5WrFbbpap7G0NA2LYNvNFATyZ1dQDRUseSkTdS-g" target="_blank" rel="noopener noreferrer">
+                                    Download ctb dans
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>Map name</th>
+                                    <th>Level</th>
+                                    <th>Accuracy</th>
+                                    <th>Score</th>
+                                    <th>Mod</th>
+                                    <th>Miss count</th>
+                                    <th>Combo</th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="19">Dan ~CTB~</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                    <td rowspan="10">98.00%<span class=plus>+</span></td>
+                                    <td rowspan="19">0<span class=plus>+</span></td>
+                                    <td rowspan="19">NM</td>
+                                    <td rowspan="19">0<span class=minus>-</span></td>
+                                    <td rowspan="19">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr style="color: <%= getColor(2) %>;"><td>2</td></tr>
+                                <tr style="color: <%= getColor(3) %>;"><td>3</td></tr>
+                                <tr style="color: <%= getColor(4) %>;"><td>4</td></tr>
+                                <tr style="color: <%= getColor(5) %>;"><td>5</td></tr>
+                                <tr style="color: <%= getColor(6) %>;"><td>6</td></tr>
+                                <tr style="color: <%= getColor(7) %>;"><td>7</td></tr>
+                                <tr style="color: <%= getColor(8) %>;"><td>8</td></tr>
+                                <tr style="color: <%= getColor(9) %>;"><td>9</td></tr>
+                                <tr style="color: <%= getColor(10) %>;"><td>10</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(11) %>;">11</td>
+                                    <td rowspan="9">99.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(12) %>;">12</td></tr>
+                                <tr><td style="color: <%= getColor(13) %>;">13</td></tr>
+                                <tr><td style="color: <%= getColor(14) %>;">14</td></tr>
+                                <tr><td style="color: <%= getColor(15) %>;">15</td></tr>
+                                <tr><td style="color: <%= getColor(16) %>;">16</td></tr>
+                                <tr><td style="color: <%= getColor(17) %>;">17</td></tr>
+                                <tr><td style="color: <%= getColor(18) %>;">18</td></tr>
+                                <tr><td style="color: <%= getColor(19) %>;">19</td></tr>
+                            </table>
+                        </li>
+                        <li>
+                            <h2>
+                                ・osu! mania
+                                <a href="https://mega.nz/file/tDUySYRC#oa3pqd5AYFfqcy0FW3gLvgNlXRfUsX0ZnJVDVbKWVSk" target="_blank" rel="noopener noreferrer">
+                                    Download mania dans
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>Map name</th>
+                                    <th>Accuracy</th>
+                                    <th>Score</th>
+                                    <th>Mod</th>
+                                    <th>Miss count</th>
+                                    <th>Combo</th>
+                                </tr>
+                                <tr>
+                                    <td>Dan ~REFORM~ v2</td>
+                                    <td>96.00%<span class=plus>+</span></td>
+                                    <td rowspan="13">0<span class=plus>+</span></td>
+                                    <td>NM</td>
+                                    <td rowspan="13">0<span class=minus>-</span></td>
+                                    <td rowspan="13">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4K LN Dan Courses v2</td>
+                                    <td>97.00%<span class=plus>+</span></td>
+                                    <td>Score V2</td>
+                                </tr>
+                                <tr>
+                                    <td>4K shoegazer dan</td>
+                                    <td rowspan="5">96.00%<span class=plus>+</span></td>
+                                    <td rowspan="11">NM</td>
+                                </tr>
+                                <tr><td>TR1PLE DAN</td></tr>
+                                <tr><td>Chordjack Joker Dan</td></tr>
+                                <tr><td>6K Regular Dan Course</td></tr>
+                                <tr><td>6K Regular Advanced Dan Course</td></tr>
+                                <tr>
+                                    <td>6K LN Dan Course</td>
+                                    <td>95.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Regular Dan Phase</td>
+                                    <td>96.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>LN Dan Phase</td>
+                                    <td>95.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Level (Regular)</td>
+                                    <td>96.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Level (LN)</td>
+                                    <td rowspan="2">95.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td>10K BMS Dans Phase</td></tr>
+                            </table>
+                        </li>
+                    </ul>
                 </section>
             </article>
             <a href="#" class="top">Return to<br>top</a>
@@ -256,7 +561,7 @@
                 <li><a href="#about-jp">本サーバーについて</a></li>
                 <li><a href="#rules-jp">ルール</a></li>
                 <li><a href="#connection-jp">接続方法</a></li>
-                <li><a href="#registration-jp">アカウント作成方法</a></li>
+                <li><a href="#dans-jp">段位</a></li>
             </ul>
             <article>
                 <section id="about-jp" class="about">
@@ -271,7 +576,7 @@
                             <h2>機能紹介 (主にDiscord) <a href="/discord" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-link link"></i>Discordサーバー</a></h2>
                             <h3>
                                 <a href="https://discord.com/channels/944248031136587796/1081737936401350717" target="_blank" rel="noopener noreferrer">
-                                    # status
+                                    # 🏆 | score
                                 </a>
                             </h3>
                             <p>このチャンネルでは、誰かがマップをパスしたときあるいはマップで1位を取ったときのスコアやステータスが自動送信されます。</p>
@@ -279,41 +584,53 @@
                         </li>
                         <li>
                             <h3>
-                                <a href="https://discord.com/channels/944248031136587796/1104675564763222016" target="_blank" rel="noopener noreferrer">
-                                    # pp-record
-                                </a>
-                            </h3>
-                            <p>このチャンネルでは、osu!std, osu!taiko, osu!catch, osu!mania, osu!rx (std), osu!apのそれぞれ6つのモードのppレコードが表示されています。</p>
-                            <p>是非、ppレコードに挑戦してみましょう！</p>
-                            <img src="/image/documents/about/2.png">
-                        </li>
-                        <li>
-                            <h3>
                                 <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
-                                    # map-request
+                                    # 📃 | map-request
                                 </a>
                             </h3>
-                            <p>このチャンネルでは、banchoでRankedやLovedにされていないマップをRankedやLovedに申請することができます。</p>
+                            <p>このチャンネルでは、RankedにされていないマップをRankedに申請したり、RankedのマップをDeRankedにしたりすることができます。</p>
                             <p>
                                 申請されたマップはテスターによって審査され、審査が通り次第、
                                 <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
-                                    # ranked-notice
+                                    # 🎶 | beatmaps
                                 </a>
                                 に通知されます。
                             </p>
-                            <p>あなたの好きなマップがRankedやLovedになるかもしれません！</p>
+                            <p>あなたの好きなマップがRankedになるかもしれません！</p>
                             <img src="/image/documents/about/3.png">
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
-                                    # map-request
+                                    # 📃 | map-request
                                 </a>
                             </h4>
                             <img src="/image/documents/about/4.png">
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
-                                    # ranked-notice
+                                    # 🎶 | beatmaps
                                 </a>
                             </h4>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | general-chat
+                                </a>,
+                                <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | osu-chat
+                                </a>
+                            </h3>
+                            <p>
+                                このチャンネルでは、他のプレイヤーと雑談をすることができます。osu関連のことであれば、
+                                <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | osu-chat
+                                </a>
+                                、それ以外は<br>
+                                <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
+                                    # 💭 | general-chat
+                                </a>
+                                で話してください。
+                            </p>
+                            <img src="/image/documents/about/2.png">
                         </li>
                     </ul>
                     <p class="others">Mamestagramには他にもたくさんの機能があるので是非ご参加いただき、<br>それらを体験していってください！</p>
@@ -342,24 +659,22 @@
                             <p>・不適切な名前で登録する行為</p>
                             <p>・他ユーザーになりすますなどの行為</p>
                             <p>・サーバーに対して、不必要な計算を行わせるような行為</p>
+                            <p>・ペンタブレットのフィルター機能</p>
                         </li>
                         <li>
                             <h2>その他</h2>
                             <h3>申告等について</h3>
-                            <p>不正行為を目撃した場合は、<a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a>までご連絡ください。</p>
+                            <p>不正行為を目撃した場合は、<a href="https://discord.com/channels/944248031136587796/1171728223407710208" target="_blank" rel="noopener noreferrer"># 🎫 | ticket</a>までご連絡ください。</p>
                             <p><u>※虚偽の報告の場合は相応の処罰が課せられる場合があります。</u></p>
                         </li>
                         <li>
                             <h3>異議申し立て</h3>
-                            <p>証拠画像 / 映像と共に<a href="https://discordapp.com/users/629882176695042049" target="_blank" rel="noopener noreferrer">@Mamesshhii</a>のDMまでご連絡ください。</p>
+                            <p>証拠画像 / 映像と共に<a href="https://discord.com/channels/944248031136587796/1171728223407710208" target="_blank" rel="noopener noreferrer"># 🎫 | ticket</a>までご連絡ください。</p>
                         </li>
                     </ul>
                 </section>
                 <section id="connection-jp" class="connection">
                     <h1>接続方法</h1>
-                    <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/CAfovJYSEvw" title="How to connect" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
                     <ol>
                         <li>
                             <p>osu!のローカルファイルを開きます</p>
@@ -393,23 +708,266 @@
                     </ol>
                     <p class="conclusion">これでmamesosu.netに接続完了です！</p>
                 </section>
-                <section id="registration-jp" class="registration">
-                    <h1>アカウント作成方法</h1>
-                    <ol>
+                <section id="dans-jp" class="dans">
+                    <h1>段位</h1>
+                    <div class="overview">
+                        <h2>Overview</h2>
+                        <p>
+                            ここでは、段位の合格条件やマップのダウンロードリンクを載せてあります。また、
+                            <a href="https://discord.com/channels/944248031136587796/1175719230650449940" target="_blank" rel="noopener noreferrer">
+                                # 🎹 | dan
+                            </a>
+                            でもこれらの情報を見ることができます。
+                        </p>
+                    </div>
+                    <ul>
                         <li>
-                            <p>右上にある「Register」をクリックします</p>
-                            <img src="/image/documents/registration/1.png" class="img1">
-                            <img src="/image/documents/registration/2.png" class="img2">
+                            <h2>Download link for Dan Map</h2>
+                            <p style="padding: 5px 0;">
+                                <a href="https://mega.nz/file/VSFShRTI#YIcZA4nIUsdiK2vKstDlVEsrEhAS0amtT5JMQs17epg" target="_blank" rel="noopener noreferrer" style="font-size: 16px;">
+                                    マップをダウンロード
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                                (すべてのモード)
+                            </p>
                         </li>
                         <li>
-                            <p>ユーザーネーム、Eメール、パスワードを入力し、「Register」をクリックします</p>
-                            <img src="/image/documents/registration/3.png" class="img3">
+                            <h2>
+                                ・osu! standard
+                                <a href="https://mega.nz/file/QKsHlLhS#xZfttKbJQqt-2mvT0uD9sIKGJH4VQKf41zXIU_JW81U" target="_blank" rel="noopener noreferrer">
+                                    stdの段位をダウンロード
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>マップ名</th>
+                                    <th>レベル</th>
+                                    <th>Acc</th>
+                                    <th>スコア</th>
+                                    <th>Mod</th>
+                                    <th>ミス数</th>
+                                    <th>コンボ数</th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="10">osu!droid Daninintei Course (Dan Course Team)</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                    <td rowspan="13">95.00%<span class=plus>+</span></td>
+                                    <td rowspan="20">0<span class=plus>+</span></td>
+                                    <td rowspan="20">NM</td>
+                                    <td rowspan="13">40<span class=minus>-</span></td>
+                                    <td rowspan="15">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(3) %>;">3</td></tr>
+                                <tr><td style="color: <%= getColor(4) %>;">4</td></tr>
+                                <tr><td style="color: <%= getColor(5) %>;">5</td></tr>
+                                <tr><td style="color: <%= getColor(6) %>;">6</td></tr>
+                                <tr><td style="color: <%= getColor(7) %>;">7</td></tr>
+                                <tr><td style="color: <%= getColor(8) %>;">8</td></tr>
+                                <tr><td style="color: <%= getColor(9) %>;">9</td></tr>
+                                <tr><td style="color: <%= getColor(10) %>;">10</td></tr>
+                                <tr>
+                                    <td rowspan="10">osu! Standard Dan Certification - Overall</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(2) %>;">2</td></tr>
+                                <tr><td style="color: <%= getColor(3) %>;">3</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(4) %>;">4</td>
+                                    <td rowspan="2">97.00%<span class=plus>+</span></td>
+                                    <td rowspan="2">30<span class=minus>-</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(5) %>;">5</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(6) %>;">6</td>
+                                    <td rowspan="2">97.50%<span class=plus>+</span></td>
+                                    <td rowspan="2">25<span class=minus>-</span></td>
+                                    <td rowspan="2">800<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(7) %>;">7</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(8) %>;">8</td>
+                                    <td rowspan="2">98.00%<span class=plus>+</span></td>
+                                    <td rowspan="2">15<span class=minus>-</span></td>
+                                    <td rowspan="2">1000<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(9) %>;">9</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(10) %>;">10</td>
+                                    <td>98.50%<span class=plus>+</span></td>
+                                    <td>10<span class=minus>-</span></td>
+                                    <td>1200<span class=plus>+</span></td>
+                                </tr>
+                            </table>
                         </li>
                         <li>
-                            <p>ホームページに戻っていたら成功です</p>
+                            <h2>
+                                ・osu! taiko
+                                <a href="https://mega.nz/file/hS1kWbIY#Rw1tBv0zHtDuUzgfWTpke3tFEEwB0D3hSbiOXpjqNzY" target="_blank" rel="noopener noreferrer">
+                                    taikoの段位をダウンロード
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>マップ名</th>
+                                    <th>レベル</th>
+                                    <th>Acc</th>
+                                    <th>スコア</th>
+                                    <th>Mod</th>
+                                    <th>ミス数</th>
+                                    <th>コンボ数</th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="18">osu!Taiko Dan-I Dojo</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                    <td rowspan="18">0.00%<span class=plus>+</span></td>
+                                    <td rowspan="6">650,000<span class=plus>+</span></td>
+                                    <td rowspan="18">Score V2</td>
+                                    <td rowspan="18">0<span class=minus>-</span></td>
+                                    <td rowspan="18">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(2) %>;">2</td></tr>
+                                <tr><td style="color: <%= getColor(3) %>;">3</td></tr>
+                                <tr><td style="color: <%= getColor(4) %>;">4</td></tr>
+                                <tr><td style="color: <%= getColor(5) %>;">5</td></tr>
+                                <tr><td style="color: <%= getColor(6) %>;">6</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(7) %>;">7</td>
+                                    <td rowspan="3">700,000<span class=plus>+</span></tr>
+                                </tr>
+                                <tr><td style="color: <%= getColor(8) %>;">8</td></tr>
+                                <tr><td style="color: <%= getColor(9) %>;">9</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(10) %>;">10</td>
+                                    <td rowspan="3">750,000<span class=plus>+</span></tr>
+                                </tr>
+                                <tr><td style="color: <%= getColor(11) %>;">11</td></tr>
+                                <tr><td style="color: <%= getColor(12) %>;">12</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(13) %>;">13</td>
+                                    <td rowspan="6">800,000<span class=plus>+</span></tr>
+                                </tr>
+                                <tr><td style="color: <%= getColor(14) %>;">14</td></tr>
+                                <tr><td style="color: <%= getColor(15) %>;">15</td></tr>
+                                <tr><td style="color: <%= getColor(16) %>;">16</td></tr>
+                                <tr><td style="color: <%= getColor(17) %>;">17</td></tr>
+                                <tr><td style="color: <%= getColor(18) %>;">18</td></tr>
+                            </table>
                         </li>
-                    </ol>
-                    <p class="conclusion">これでアカウントを作ることができました！楽しんでください！</p>
+                        <li>
+                            <h2>
+                                ・osu! catch
+                                <a href="https://mega.nz/file/BS9CQbzK#pjq5WrFbbpap7G0NA2LYNvNFATyZ1dQDRUseSkTdS-g" target="_blank" rel="noopener noreferrer">
+                                    ctbの段位をダウンロード
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>マップ名</th>
+                                    <th>レベル</th>
+                                    <th>Acc</th>
+                                    <th>スコア</th>
+                                    <th>Mod</th>
+                                    <th>ミス数</th>
+                                    <th>コンボ数</th>
+                                </tr>
+                                <tr>
+                                    <td rowspan="19">Dan ~CTB~</td>
+                                    <td style="color: <%= getColor(1) %>;">1</td>
+                                    <td rowspan="10">98.00%<span class=plus>+</span></td>
+                                    <td rowspan="19">0<span class=plus>+</span></td>
+                                    <td rowspan="19">NM</td>
+                                    <td rowspan="19">0<span class=minus>-</span></td>
+                                    <td rowspan="19">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr style="color: <%= getColor(2) %>;"><td>2</td></tr>
+                                <tr style="color: <%= getColor(3) %>;"><td>3</td></tr>
+                                <tr style="color: <%= getColor(4) %>;"><td>4</td></tr>
+                                <tr style="color: <%= getColor(5) %>;"><td>5</td></tr>
+                                <tr style="color: <%= getColor(6) %>;"><td>6</td></tr>
+                                <tr style="color: <%= getColor(7) %>;"><td>7</td></tr>
+                                <tr style="color: <%= getColor(8) %>;"><td>8</td></tr>
+                                <tr style="color: <%= getColor(9) %>;"><td>9</td></tr>
+                                <tr style="color: <%= getColor(10) %>;"><td>10</td></tr>
+                                <tr>
+                                    <td style="color: <%= getColor(11) %>;">11</td>
+                                    <td rowspan="9">99.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td style="color: <%= getColor(12) %>;">12</td></tr>
+                                <tr><td style="color: <%= getColor(13) %>;">13</td></tr>
+                                <tr><td style="color: <%= getColor(14) %>;">14</td></tr>
+                                <tr><td style="color: <%= getColor(15) %>;">15</td></tr>
+                                <tr><td style="color: <%= getColor(16) %>;">16</td></tr>
+                                <tr><td style="color: <%= getColor(17) %>;">17</td></tr>
+                                <tr><td style="color: <%= getColor(18) %>;">18</td></tr>
+                                <tr><td style="color: <%= getColor(19) %>;">19</td></tr>
+                            </table>
+                        </li>
+                        <li>
+                            <h2>
+                                ・osu! mania
+                                <a href="https://mega.nz/file/tDUySYRC#oa3pqd5AYFfqcy0FW3gLvgNlXRfUsX0ZnJVDVbKWVSk" target="_blank" rel="noopener noreferrer">
+                                    maniaの段位をダウンロード
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </h2>
+                            <table>
+                                <tr>
+                                    <th>マップ名</th>
+                                    <th>Acc</th>
+                                    <th>スコア</th>
+                                    <th>Mod</th>
+                                    <th>ミス数</th>
+                                    <th>コンボ数</th>
+                                </tr>
+                                <tr>
+                                    <td>Dan ~REFORM~ v2</td>
+                                    <td>96.00%<span class=plus>+</span></td>
+                                    <td rowspan="13">0<span class=plus>+</span></td>
+                                    <td>NM</td>
+                                    <td rowspan="13">0<span class=minus>-</span></td>
+                                    <td rowspan="13">0<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4K LN Dan Courses v2</td>
+                                    <td>97.00%<span class=plus>+</span></td>
+                                    <td>Score V2</td>
+                                </tr>
+                                <tr>
+                                    <td>4K shoegazer dan</td>
+                                    <td rowspan="5">96.00%<span class=plus>+</span></td>
+                                    <td rowspan="11">NM</td>
+                                </tr>
+                                <tr><td>TR1PLE DAN</td></tr>
+                                <tr><td>Chordjack Joker Dan</td></tr>
+                                <tr><td>6K Regular Dan Course</td></tr>
+                                <tr><td>6K Regular Advanced Dan Course</td></tr>
+                                <tr>
+                                    <td>6K LN Dan Course</td>
+                                    <td>95.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Regular Dan Phase</td>
+                                    <td>96.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>LN Dan Phase</td>
+                                    <td>95.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Level (Regular)</td>
+                                    <td>96.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Level (LN)</td>
+                                    <td rowspan="2">95.00%<span class=plus>+</span></td>
+                                </tr>
+                                <tr><td>10K BMS Dans Phase</td></tr>
+                            </table>
+                        </li>
+                    </ul>
                 </section>
             </article>
             <a href="#" class="top">トップに戻る</a>

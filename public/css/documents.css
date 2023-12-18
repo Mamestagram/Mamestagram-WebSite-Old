@@ -6,6 +6,7 @@ main {
     background-color: #1c1b17;
     color: #fdfdfd;
     font-family: "MochiyPopOne";
+    padding-bottom: 250px;
     text-align: center;
 }
 
@@ -31,7 +32,7 @@ main .subtitle {
 main .menu {
     display: flex;
     background-color: #2a2822;
-    width: 640px;
+    width: 550px;
     margin: 100px auto;
     justify-content: center;
     border-radius: 10px;
@@ -210,17 +211,6 @@ section {
     text-decoration: underline;
 }
 /* ------------------------------------------------- */
-.connection .youtube {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-}
-
-.connection iframe {
-    width: 800px;
-    height: 450px;
-}
-
 .connection ol {
     list-style-type: decimal;
     padding: 0 30px;
@@ -284,37 +274,89 @@ section {
     text-align: center;
 }
 /* ------------------------------------------------- */
-.registration {
+.dans {
     margin: 10px auto 0 auto;
 }
 
-.registration ol {
-    list-style-type: decimal;
-    padding: 0 30px;
+.dans p {
+    font-size: 14px;
+    padding: 5px;
 }
 
-.registration li {
-    font-size: 18px;
-    padding: 70px 20px;
+.dans .overview {
+    padding: 20px 10px 50px 10px;
 }
 
-.registration .img1 {
-    width: 680px;
-    margin-top: 20px;
+.dans .overview a {
+    background-color: #3c4270;
+    color: #c0cde9;
+    padding: 0 3px;
+    border-radius: 5px;
+}
+.dans .overview a:hover {
+    background-color: #5865f2;
+    color: #f4fffe;
+    text-decoration: underline;
 }
 
-.registration .img2 {
-    width: 150px;
-    margin-left: 15px;
-    margin-bottom: 150px;
+.dans h2 {
+    font-size: 24px;
+    padding-bottom: 10px;
 }
 
-.registration .img3 {
-    width: 850px;
-    margin-top: 20px;
+.dans li {
+    width: 930px;
+    padding-bottom: 50px;
+    margin: 0 auto;
 }
 
-.registration .conclusion {
+.dans li .allmodes {
+    font-size: 16px;
+}
+
+.dans li a {
+    font-size: 14px;
+    margin: 0 5px;
+    opacity: 0.6;
+}
+.dans li a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.dans li table {
+    background-color: #3d3829;
+    width: 930px;
+    border: 3px solid black;
+}
+
+.dans li table th {
+    font-weight: normal;
+    padding: 10px 0;
+    border-right: 1px solid black;
+    border-bottom: 2px double black;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 2px 2px 2px black;
+}
+
+.dans li table td {
+    padding: 5px 0;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dans li table td .minus {
+    color: #dc143c;
+}
+
+.dans li table td .plus {
+    color: #4682b4;
+}
+
+.dans .conclusion {
     font-size: 24px;
     padding: 20px;
     text-align: center;
@@ -407,24 +449,12 @@ section {
         width: 700px;
     }
     /* ------------------------------------------------- */
-    .registration img {
-        position: relative;
+    .dans li {
+        width: 720px;
     }
 
-    .registration .img1 {
-        right: 10px;
-        width: 500px;
-    }
-
-    .registration .img2 {
-        width: 120px;
-        margin-left: 0;
-        margin-bottom: 110px;
-    }
-
-    .registration .img3 {
-        right: 30px;
-        width: 700px;
+    .dans li table {
+        width: 720px;
     }
 }
 
@@ -613,33 +643,24 @@ section {
         padding: 10px 0;
     }
     /* ------------------------------------------------- */
-    .registration li {
-        font-size: 16px;
-        padding: 30px 0;
-    }
-
-    .registration .img1 {
-        right: 15px;
-        width: 330px;
-        margin-top: 10px;
-    }
-
-    .registration .img2 {
-        right: 15px;
-        width: 100px;
-        margin-top: 10px;
-        margin-left: 115px;
-        margin-bottom: 0;
-    }
-
-    .registration .img3 {
-        right: 15px;
-        width: 330px;
-        margin-top: 10px;
-    }
-
-    .registration .conclusion {
+    .dans h2 {
         font-size: 18px;
-        padding: 10px 0;
+    }
+    
+    .dans li {
+        width: 340px;
+        overflow: scroll;
+    }
+
+    .dans li .allmodes {
+        font-size: 14px;
+    }
+
+    .dans li a {
+        font-size: 12px;
+    }
+
+    .dans li table {
+        width: 340px;
     }
 }
