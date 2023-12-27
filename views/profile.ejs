@@ -300,7 +300,7 @@
                                 <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879)) { %>
                                     -
                                 <% } else { %>
-                                    #<%= info.Granking.toLocaleString() %>
+                                    #<%= ranking.global[0].value.toLocaleString() %>
                                 <% } %>
                             </h2>
                         </div>
@@ -310,7 +310,7 @@
                                 <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879)) { %>
                                     -
                                 <% } else { %>
-                                    #<%= info.Cranking.toLocaleString() %>
+                                    #<%= ranking.country[0].value.toLocaleString() %>
                                 <% } %>
                             </h2>
                         </div>
@@ -321,11 +321,17 @@
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Medals</h1>
-                            <h2><%= info.medals.toLocaleString() %></h2>
+                            <h2><%= medals.toLocaleString() %></h2>
                         </div>
                         <div class="pp">
                             <h1>pp</h1>
-                            <h2><%= info.pp.toLocaleString() %></h2>
+                            <h2>
+                                <% if (dans) { %>
+                                    <%= pp.toLocaleString() %>
+                                <% } else { %>
+                                    <%= info.pp.toLocaleString() %>
+                                <% } %>
+                            </h2>
                         </div>
                         <div class="playtime"
                         <% if (dans) { %>
@@ -338,34 +344,47 @@
                     <div class="wrap grade-amounts">
                         <div class="xh">
                             <img src="/image/grade/XH.png" alt=""><br>
-                            <%= info.xh.toLocaleString() %>
+                            <%= grade.xh[0].value.toLocaleString() %>
                         </div>
                         <div class="x">
                             <img src="/image/grade/X.png" alt=""><br>
-                            <%= info.x.toLocaleString() %>
+                            <%= grade.x[0].value.toLocaleString() %>
                         </div>
                         <div class="sh">
                             <img src="/image/grade/SH.png" alt=""><br>
-                            <%= info.sh.toLocaleString() %>
+                            <%= grade.sh[0].value.toLocaleString() %>
                         </div>
                         <div class="s">
                             <img src="/image/grade/S.png" alt=""><br>
-                            <%= info.s.toLocaleString() %>
+                            <%= grade.s[0].value.toLocaleString() %>
                         </div>
                         <div class="a">
                             <img src="/image/grade/A.png" alt=""><br>
-                            <%= info.a.toLocaleString() %>
+                            <%= grade.a[0].value.toLocaleString() %>
                         </div>
                     </div>
                 </div>
                 <div class="stats">
                     <div class="acc">
                         <h1>Hit Accuracy</h1>
-                        <h2><%= info.acc.toFixed(2) %>%</h2>
+                        <h2>
+                            <% if (dans) { %>
+                                <%= acc.toFixed(2) %>
+                            <% } else { %>
+                                <%= info.acc.toFixed(2) %>
+                            <% } %>
+                            %
+                        </h2>
                     </div>
                     <div class="plaucount">
                         <h1>Play Count</h1>
-                        <h2><%= info.plays.toLocaleString() %></h2>
+                        <h2>
+                            <% if (dans) { %>
+                                <%= plays.toLocaleString() %>
+                            <% } else { %>
+                                <%= info.plays.toLocaleString() %>
+                            <% } %>
+                        </h2>
                     </div>
                     <div class="hits"
                     <% if (dans) { %>
@@ -390,7 +409,13 @@
                     </div>
                     <div class="maxcombo">
                         <h1>Maximum Combo</h1>
-                        <h2><%= info.max_combo.toLocaleString() %></h2>
+                        <h2>
+                            <% if (dans) { %>
+                                <%= max_combo.toLocaleString() %>
+                            <% } else { %>
+                                <%= info.max_combo.toLocaleString() %>
+                            <% } %>
+                        </h2>
                     </div>
                     <div class="watched"
                     <% if (dans) { %>
