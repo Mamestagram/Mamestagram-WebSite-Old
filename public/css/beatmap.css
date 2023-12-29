@@ -12,7 +12,7 @@ main {
     background-color: #2e3538;
     width: 1000px;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
 }
 
 .map-info h1 {
@@ -314,4 +314,11 @@ main {
 
 .map-info .contents .map-details .sub .ps .value {
     width: 46px;
+}
+/* ------------------------------------------------- */
+.ranking {
+    background-color: #22282a;
+    width: 1000px;
+    margin: 0 auto;
+    border-radius: 0 0 10px 10px;
 }
