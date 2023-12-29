@@ -11,7 +11,7 @@ main .box {
     padding: 5px;
     margin: 20px 12.8%;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px black;
+    box-shadow: 5px 5px 5px black;
 }
 
 main .box div .data-mobile {

@@ -447,7 +447,7 @@
                                 </a>
                                 <div class="mods">
                                     <% getMods(data.mods).forEach((mod) => { %>
-                                        <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                        <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png" alt="">
                                     <% }); %>
                                 </div>
                                 <p class="acc"><%= data.acc.toFixed(2) %>%</p>
@@ -480,7 +480,7 @@
                                     <% if (data.mods !== 0) { %>
                                         <div class="mods">
                                             <% getMods(data.mods).forEach((mod) => { %>
-                                                <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                                <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png" alt="">
                                             <% }); %>
                                         </div>
                                     <% } %>
@@ -623,7 +623,7 @@
                                 </a>
                                 <div class="mods">
                                     <% getMods(data.mods).forEach((mod) => { %>
-                                        <img class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                        <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
                                     <% }); %>
                                 </div>
                                 <p class="acc">
@@ -668,7 +668,7 @@
                                     <% if (data.mods !== 0) { %>
                                         <div class="mods">
                                             <% getMods(data.mods).forEach((mod) => { %>
-                                                <img class="img" src="/image/mods/<%= mod %>.png" alt="">
+                                                <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png" alt="">
                                             <% }); %>
                                         </div>
                                     <% } %>

@@ -5,7 +5,8 @@ body {
 main {
     font-family: "Righteous";
     background-color: #171a1c;
-    padding: 100px 0;
+    padding-top: 100px;
+    padding-bottom: 300px;
 }
 /* ------------------------------------------------- */
 .map-info {
@@ -13,6 +14,7 @@ main {
     width: 1000px;
     margin: 0 auto;
     border-radius: 10px 10px 0 0;
+    box-shadow: 5px 5px 5px black;
 }
 
 .map-info h1 {
@@ -82,7 +84,7 @@ main {
     }
 }
 
-.mode-icon {
+.map-info .contents .diff i {
     font-size: 30px;
     opacity: 0.4;
 }
@@ -192,7 +194,8 @@ main {
 }
 
 .map-info .contents .box .link #play-audio {
-    padding: 10px 15px;
+    padding: 10px 12px;
+    text-shadow: 2px 2px 3px black;
 }
 
 .map-info .contents .box .link #play-audio i {
@@ -319,6 +322,133 @@ main {
 .ranking {
     background-color: #22282a;
     width: 1000px;
+    padding: 10px 0;
     margin: 0 auto;
     border-radius: 0 0 10px 10px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.ranking .wrap {
+    background-color: #2e3538;
+    color: #fdfdfd;
+    min-height: 338px;
+    width: 980px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.ranking .wrap .flex {
+    display: flex;
+}
+
+.ranking .wrap .flex h1 {
+    font-size: 24px;
+}
+
+.ranking .wrap .flex .selection {
+    display: flex;
+    margin-left: auto;
+}
+
+.ranking .wrap .flex .selection .special {
+    display: flex;
+    background-color: #fdfdfd;
+    color: black;
+    height: 22px;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 5px;
+    appearance: menulist;
+}
+
+.ranking .wrap .flex .selection .convert {
+    display: flex;
+}
+
+.ranking .wrap .flex .selection .convert li {
+    font-size: 36px;
+    margin-left: 5px;
+    filter: invert(30%);
+    opacity: 0.95;
+}
+.ranking .wrap .flex .selection .convert li:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
+.ranking .wrap h2 {
+    font-size: 35px;
+    line-height: 272px;
+    text-align: center;
+}
+
+.ranking .wrap table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+.ranking .wrap table .list {
+    text-align: center;
+    transition: background-color 100ms;
+}
+.ranking .wrap table .list:hover {
+    background-color: #454f54;
+    color: #fdfdfd;
+}
+
+.ranking .wrap table th {
+    color: #667075;
+    font-weight: unset;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ranking .wrap table td {
+    vertical-align: middle;
+}
+
+.ranking .wrap table .grade img {
+    height: 35px;
+}
+
+.ranking .wrap table .country i {
+    border-radius: 2px;
+}
+
+.ranking .wrap table .mods .image {
+    display: flex;
+    justify-content: center;
+}
+
+.ranking .wrap table .mods img {
+    height: 30px;
+}
+
+.ranking .wrap table .list {
+    background-color: #394246;
+    height: 40px;
+}
+
+.ranking .wrap table .list .rank {
+    padding-left: 10px;
+    border-radius: 10px 0 0 10px;
+}
+
+.ranking .wrap table .list .name a {
+    transition: color 100ms;
+}
+.ranking .wrap table .list .name a:hover {
+    color: #b7d2df;
+    text-decoration: underline;
+}
+
+.ranking .wrap table .list .mods {
+    border-radius: 0 10px 10px 0;
 }
