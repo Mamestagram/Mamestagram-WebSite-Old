@@ -331,7 +331,7 @@ main {
 .ranking .wrap {
     background-color: #2e3538;
     color: #fdfdfd;
-    min-height: 338px;
+    min-height: 570px;
     width: 980px;
     padding-top: 5px;
     padding-left: 5px;
@@ -381,74 +381,191 @@ main {
     opacity: 1;
 }
 
+.ranking .wrap .mods-selection {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.ranking .wrap .mods-selection li {
+    margin: 0 2px;
+}
+
+.ranking .wrap .mods-selection .nm button {
+    font-size: 32px;
+}
+
+.ranking .wrap .mods-selection li button {
+    opacity: 0.5;
+    transition: opacity 100ms, transform 50ms;
+}
+.ranking .wrap .mods-selection li button:hover {
+    opacity: 1;
+}
+
+.ranking .wrap .mods-selection .selected {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
+}
+
+.ranking .wrap .mods-selection li img {
+    height: 35px;
+}
+
 .ranking .wrap h2 {
     font-size: 35px;
-    line-height: 272px;
+    line-height: 490px;
     text-align: center;
 }
 
-.ranking .wrap table {
+.ranking .wrap .user {
+    background-color: #454f54;
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px black;
+}
+
+.ranking .wrap .user div {
+    margin: auto 0;
+}
+
+.ranking .wrap .user .rank {
+    font-size: 26px;
+    text-align: center;
+}
+
+.ranking .wrap .user .grade {
+    height: 50px;
+}
+
+.ranking .wrap .user .avatar {
+    height: 90px;
+    margin: auto 10px;
+    border-radius: 10px;
+}
+
+.ranking .wrap .user .name a {
+    font-size: 24px;
+    transition: color 100ms;
+}
+.ranking .wrap .user .name a:hover {
+    color: #b7d2df;
+    text-decoration: underline;
+}
+
+.ranking .wrap .user .time {
+    font-size: 14px;
+    width: 165px;
+}
+
+.ranking .wrap .user i {
+    border-radius: 2px;
+}
+
+.ranking .wrap .user .tables {
     width: 100%;
-    margin-top: 15px;
+}
+
+.ranking .wrap .user .tables table {
+    margin-left: auto;
+    margin-right: 0;
+    table-layout: fixed;
+}
+
+.ranking .wrap .user .tables table th {
+    color: #8f9ca3;
+    font-size: 12px;
+    font-weight: unset;
+    text-shadow: none;
+}
+
+.ranking .wrap .user .tables table td {
+    height: 40px;
+    vertical-align: middle;
+}
+
+.ranking .wrap .user .tables table .mods {
+    display: flex;
+}
+
+.ranking .wrap .user .tables table .mods img {
+    height: 35px;
+}
+
+.ranking .wrap .user .tables .t1 {
+    font-size: 24px;
+    width: 60%;
+}
+
+.ranking .wrap .user .tables .t2 {
+    font-size: 18px;
+    width: 85%;
+}
+
+.ranking .wrap .ranking-table {
+    width: 100%;
+    margin-top: 20px;
     border-collapse: separate;
     border-spacing: 0 5px;
 }
 
-.ranking .wrap table .list {
+.ranking .wrap .ranking-table .list {
     text-align: center;
     transition: background-color 100ms;
 }
-.ranking .wrap table .list:hover {
+.ranking .wrap .ranking-table .list:hover {
     background-color: #454f54;
     color: #fdfdfd;
 }
 
-.ranking .wrap table th {
+.ranking .wrap .ranking-table th {
     color: #667075;
     font-weight: unset;
     text-align: center;
     vertical-align: middle;
 }
 
-.ranking .wrap table td {
+.ranking .wrap .ranking-table td {
     vertical-align: middle;
 }
 
-.ranking .wrap table .grade img {
+.ranking .wrap .ranking-table .grade img {
     height: 35px;
 }
 
-.ranking .wrap table .country i {
+.ranking .wrap .ranking-table .country i {
     border-radius: 2px;
 }
 
-.ranking .wrap table .mods .image {
+.ranking .wrap .ranking-table .list .mods {
+    border-radius: 0 10px 10px 0;
+}
+
+.ranking .wrap .ranking-table .mods .image {
     display: flex;
     justify-content: center;
 }
 
-.ranking .wrap table .mods img {
+.ranking .wrap .ranking-table .mods img {
     height: 30px;
 }
 
-.ranking .wrap table .list {
+.ranking .wrap .ranking-table .list {
     background-color: #394246;
     height: 40px;
 }
 
-.ranking .wrap table .list .rank {
+.ranking .wrap .ranking-table .list .rank {
     padding-left: 10px;
     border-radius: 10px 0 0 10px;
 }
 
-.ranking .wrap table .list .name a {
+.ranking .wrap .ranking-table .list .name a {
     transition: color 100ms;
 }
-.ranking .wrap table .list .name a:hover {
+.ranking .wrap .ranking-table .list .name a:hover {
     color: #b7d2df;
     text-decoration: underline;
-}
-
-.ranking .wrap table .list .mods {
-    border-radius: 0 10px 10px 0;
 }

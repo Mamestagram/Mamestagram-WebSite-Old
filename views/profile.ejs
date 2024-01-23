@@ -158,7 +158,7 @@
         <main>
             <div class="box player-banner">
                 <div class="username">
-                    <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 1000) %>" alt="">
+                    <img class="avatar" src="https://a.mamesosu.net/<%= id %>?" alt="">
                     <!--
                     <% if (info.verified) { %>
                         <img class="badge verified" src="/image/badge/verified.png" alt="" title="verified✓">
@@ -297,7 +297,7 @@
                         <div class="global">
                             <h1>Global Ranking</h1>
                             <h2>
-                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879)) { %>
+                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879 && info.priv !== 4099)) { %>
                                     -
                                 <% } else { %>
                                     #<%= ranking.global[0].value.toLocaleString() %>
@@ -307,7 +307,7 @@
                         <div class="country">
                             <h1>Country Ranking</h1>
                             <h2>
-                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879)) { %>
+                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879 && info.priv !== 4099)) { %>
                                     -
                                 <% } else { %>
                                     #<%= ranking.country[0].value.toLocaleString() %>
@@ -439,9 +439,9 @@
                                 <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                 <a
                                 <% if (!dans) { %>
-                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>"
+                                    href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                 <% } %>
-                                style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
+                                style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
                                     <p class="title"><%= data.title %> by <%= data.artist %></p>
                                     <p class="diff"><%= data.version %></p>
                                 </a>
@@ -472,7 +472,7 @@
                                     <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                     <a 
                                     <% if (!dans) { %>
-                                        href="/beatmap/<%= data.set_id%>/<%= data.id %>"
+                                        href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>>
                                         <p class="title"><%= data.title %> by <%= data.artist %></p>
                                         <p class="diff"><%= data.version %></p>
@@ -537,7 +537,7 @@
                                 <% } %>
                                 <a
                                 <% if (!dans) { %>
-                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>"
+                                    href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                 <% } %>>
                                     <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
                                     <p class="mapper">mapped by <span><%= data.creator %></span></p>
@@ -566,7 +566,7 @@
                                 </div>
                                 <a
                                 <% if (!dans) { %>
-                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>"
+                                    href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                 <% } %>>
                                     <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
                                     <p class="mapper">mapped by <span><%= data.creator %></span></p>
@@ -615,9 +615,9 @@
                                 <% } %>
                                 <a
                                 <% if (!dans) { %>
-                                    href="/beatmap/<%= data.set_id %>/<%= data.id %>"
+                                    href="/beatmaps/<%= data.set_id %>/<%= data.id %>"
                                 <% } %>
-                                style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
+                                style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
                                     <p class="title"><%= data.title %> by <%= data.artist %></p>
                                     <p class="diff"><%= data.version %></p>
                                 </a>
@@ -660,7 +660,7 @@
                                     <% } %>
                                     <a
                                     <% if (!dans) { %>
-                                        href="/beatmap/<%= data.set_id%>/<%= data.id %>"
+                                        href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>>
                                         <p class="title"><%= data.title %> by <%= data.artist %></p>
                                         <p class="diff"><%= data.version %></p>
@@ -713,9 +713,9 @@
                                 <% } %>
                                 <a
                                 <% if (!dans) { %>
-                                    href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                    href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                 <% } %>
-                                style="width: calc(100% - 320px - <%= Math.min(40 * getMods(data.mods).length, 325) %>px);">
+                                style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
                                     <p class="title"><%= data.title %> by <%= data.artist %></p>
                                     <p class="diff"><%= data.version %></p>
                                 </a>
@@ -758,7 +758,7 @@
                                     <% } %>
                                     <a
                                     <% if (!dans) { %>
-                                        href="/beatmap/<%= data.set_id%>/<%= data.id %>/<%= data.version %>"
+                                        href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>>
                                         <p class="title"><%= data.title %> by <%= data.artist %></p>
                                         <p class="diff"><%= data.version %></p>

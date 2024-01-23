@@ -154,15 +154,7 @@
                 "mr"  // 30 : Mirror
             ];
             for (let i = 30; i >= 0; i--) {
-                if (i !== 2 && i !== 11 && i !== 19 && i !== 22 && !(i >= 24 && i <= 28) && modNum >= 1 << i) {
-                    switch (i) {
-                        case 14:
-                            modNum -= 1 << 5;
-                            break;
-                        case 9:
-                            modNum -= 1 << 6;
-                            break;
-                    }
+                if (modNum >= 1 << i) {
                     mod.push(mods[i]);
                     modNum -= 1 << i;
                 }
@@ -171,7 +163,7 @@
             return mod;
         }
         const sortMods = (mods) => {
-            const order = ["rx", "ap", "k4", "k5", "k6", "k7", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "mr", "so", "v2"];
+            const order = ["rx", "ap", "k4", "k5", "k6", "k7", "k8", "k9", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "mr", "so", "v2"];
             let rst = new Array(0);
             for (let i = 0; i < order.length; i++) {
                 for (let mod of mods) {
@@ -206,21 +198,46 @@
             }
             return res;
         }
-        const getPlayTime = (y, m, d, h) => {
-            if (y > 0) {
-                return `${y.toLocaleString()}y`;
+        const getPlayTime = (y, m, w, d, h, f) => {
+            if (f === "brev") {
+                if (y > 0) {
+                    return `${y.toLocaleString()}y`;
+                }
+                else if (m > 0) {
+                    return `${m}m`;
+                }
+                else if (w > 0) {
+                    return `${w}w`;
+                }
+                else if (d > 0) {
+                    return `${d}d`;
+                }
+                else if (h > 0) {
+                    return `${h}h`;
+                }
+                else {
+                    return "now";
+                }
             }
-            else if (m > 0) {
-                return `${m}m`;
-            }
-            else if (d > 0) {
-                return `${d}d`;
-            }
-            else if (h > 0) {
-                return `${h}h`;
-            }
-            else {
-                return "now";
+            else if (f === "form") {
+                if (y > 0) {
+                    return `${y.toLocaleString()} year(s) ago`;
+                }
+                else if (m > 0) {
+                    return `${m} month(s) ago`;
+                }
+                else if (w > 0) {
+                    return `${w} week(s) ago`;
+                }
+                else if (d > 0) {
+                    return `${d} day(s) ago`;
+                }
+                else if (h > 0) {
+                    return `${h} hour(s) ago`;
+                }
+                else {
+                    return "now";
+                }
             }
         }
         const getRate = (value) => {
@@ -235,12 +252,12 @@
         <div class="map-info">
             <h1 class="title"><i class="fa-brands fa-itunes-note"></i>Beatmap info</h1>
             <div class="background">
-                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?">
+                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?" alt="">
                 <div class="contents">
                     <div class="wrap">
                         <div class="diff">
                             <% mapinfo.forEach((map) => { %>
-                                <a href="/beatmap/<%= map.set_id %>/<%= map.id %>" title="★<%= map.diff.toFixed(2) %> <%= map.version %>"
+                                <a href="/beatmaps/<%= map.set_id %>/<%= map.id %>" title="★<%= map.diff.toFixed(2) %> <%= map.version %>"
                                     <% if (map.id === Number(mapid)) { %>
                                         style="
                                         background-color: rgba(31, 41, 46, 0.5);
@@ -380,13 +397,13 @@
                             <!-- Classic -->
                             <option class="classic"
                             <% if (modeNum % 4 === 0) { %>
-                                value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&std"
+                                value="/beatmaps/<%= mapdetails.set_id %>&std/<%= mapdetails.id %>"
                             <% } else if (modeNum % 4 === 1) { %>
-                                value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&taiko"
+                                value="/beatmaps/<%= mapdetails.set_id %>&taiko/<%= mapdetails.id %>"
                             <% } else if (modeNum % 4 === 2) { %>
-                                value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&ctb"
+                                value="/beatmaps/<%= mapdetails.set_id %>&ctb/<%= mapdetails.id %>"
                             <% } else { %>
-                                value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&mania"
+                                value="/beatmaps/<%= mapdetails.set_id %>&mania/<%= mapdetails.id %>"
                             <% } %>
                             <% if (modeNum >= 0 && modeNum < 4) { %>
                                 selected
@@ -395,11 +412,11 @@
                             <% if (modeNum !== 3) { %>
                                 <option class="relax"
                                 <% if (modeNum % 4 === 0) { %>
-                                    value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&stdrx"
+                                    value="/beatmaps/<%= mapdetails.set_id %>&stdrx/<%= mapdetails.id %>"
                                 <% } else if (modeNum % 4 === 1) { %>
-                                    value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&taikorx"
+                                    value="/beatmaps/<%= mapdetails.set_id %>&taikorx/<%= mapdetails.id %>"
                                 <% } else if (modeNum % 4 === 2) { %>
-                                    value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&ctbrx"
+                                    value="/beatmaps/<%= mapdetails.set_id %>&ctbrx/<%= mapdetails.id %>"
                                 <% } %>
                                 <% if (modeNum >= 4 && modeNum < 8) { %>
                                     selected
@@ -407,7 +424,7 @@
                             <% } %>
                             <!-- Auto Pilot -->
                             <% if (modeNum % 4 === 0) { %>
-                                <option class="auto-pilot" value="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&stdap"
+                                <option class="auto-pilot" value="/beatmaps/<%= mapdetails.set_id %>&stdap/<%= mapdetails.id %>"
                                 <% if (modeNum === 8) { %>
                                     selected
                                 <% } %>>Auto Pilot</option>
@@ -421,11 +438,11 @@
                                 <% } %>>
                                     <a
                                     <% if (modeNum >= 0 && modeNum < 4) { %>
-                                        href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&std"
+                                        href="/beatmaps/<%= mapdetails.set_id %>&std/<%= mapdetails.id %>"
                                     <% } else if (modeNum < 7) { %>
-                                        href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&stdrx"
+                                        href="/beatmaps/<%= mapdetails.set_id %>&stdrx/<%= mapdetails.id %>"
                                     <% } else { %>
-                                        href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&stdap"
+                                        href="/beatmaps/<%= mapdetails.set_id %>&stdap/<%= mapdetails.id %>"
                                     <% } %>><i class="mode-icon mode-osu"></i></a>
                                 </li>
                                 <% if (modeNum !== 8) { %>
@@ -435,9 +452,9 @@
                                     <% } %>>
                                         <a
                                         <% if (modeNum >= 0 && modeNum < 4) { %>
-                                            href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&taiko"
+                                            href="/beatmaps/<%= mapdetails.set_id %>&taiko/<%= mapdetails.id %>"
                                         <% } else { %>
-                                            href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&taikorx"
+                                            href="/beatmaps/<%= mapdetails.set_id %>&taikorx/<%= mapdetails.id %>"
                                         <% } %>><i class="mode-icon mode-taiko"></i></a>
                                     </li>
                                     <li class="catch"
@@ -446,9 +463,9 @@
                                     <% } %>>
                                         <a
                                         <% if (modeNum >= 0 && modeNum < 4) { %>
-                                            href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&ctb"
+                                            href="/beatmaps/<%= mapdetails.set_id %>&ctb/<%= mapdetails.id %>"
                                         <% } else { %>
-                                            href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&ctbrx"
+                                            href="/beatmaps/<%= mapdetails.set_id %>&ctbrx/<%= mapdetails.id %>"
                                         <% } %>><i class="mode-icon mode-fruits"></i></a>
                                     </li>
                                 <% } %>
@@ -457,7 +474,7 @@
                                     <% if (modeNum === 3) { %>
                                         style="filter: invert(0%); opacity: 1"
                                     <% } %>>
-                                        <a href="/beatmap/<%= mapdetails.set_id %>/<%= mapdetails.id %>&mania">
+                                        <a href="/beatmaps/<%= mapdetails.set_id %>&mania/<%= mapdetails.id %>">
                                             <i class="mode-icon mode-mania"></i>
                                         </a>
                                     </li>
@@ -466,18 +483,390 @@
                         <% } %>
                     </div>
                 </div>
+                <ul class="mods-selection">
+                    <li class="nm">
+                        <button title="No Mod" onclick="jump()"
+                        <% if (Number(mods) === 0) { %>
+                            class="selected"
+                        <% } %>><i class="fa-solid fa-xmark"></i></button>
+                    </li>
+                    <li class="ez">
+                        <button title="Eazy" onclick="jump()"
+                        <% if (getMods(mods).includes("ez")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/ez.png"></button>
+                    </li>
+                    <li class="nf">
+                        <button title="No Fail" onclick="jump()"
+                        <% if (getMods(mods).includes("nf")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/nf.png"></button>
+                    </li>
+                    <li class="ht">
+                        <button title="Half Time" onclick="jump()"
+                        <% if (getMods(mods).includes("ht")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/ht.png"></button>
+                    </li>
+                    <% if (modeNum !== 3) { %>
+                        <li class="hr">
+                            <button title="Hard Rock" onclick="jump()"
+                            <% if (getMods(mods).includes("hr")) { %>
+                                class="selected"
+                            <% } %>><img src="/image/mods/hr.png"></button>
+                        </li>
+                    <% } %>
+                    <li class="sd">
+                        <button title="Sudden Death" onclick="jump()"
+                        <% if (getMods(mods).includes("sd")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/sd.png"></button>
+                    </li>
+                    <li class="pf">
+                        <button title="Perfect" onclick="jump()"
+                        <% if (getMods(mods).includes("pf")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/pf.png"></button>
+                    </li>
+                    <li class="dt">
+                        <button title="Double Time" onclick="jump()"
+                        <% if (getMods(mods).includes("dt")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/dt.png"></button>
+                    </li>
+                    <li class="nc">
+                        <button title="Nightcore" onclick="jump()"
+                        <% if (getMods(mods).includes("nc")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/nc.png"></button>
+                    </li>
+                    <% if (modeNum === 3) { %>
+                        <li class="fi">
+                            <button title="Fade In" onclick="jump()"
+                            <% if (getMods(mods).includes("fi")) { %>
+                                class="selected"
+                            <% } %>><img src="/image/mods/fi.png"></button>
+                        </li>
+                    <% } %>
+                    <li class="hd">
+                        <button title="Hidden" onclick="jump()"
+                        <% if (getMods(mods).includes("hd")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/hd.png"></button>
+                    </li>
+                    <li class="fl">
+                        <button title="Flashlight" onclick="jump()"
+                        <% if (getMods(mods).includes("fl")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/fl.png"></button>
+                    </li>
+                    <% if (modeNum === 0) { %>
+                        <li class="so">
+                            <button title="Spun Out" onclick="jump()"
+                            <% if (getMods(mods).includes("so")) { %>
+                                class="selected"
+                            <% } %>><img src="/image/mods/so.png"></button>
+                        </li>
+                    <% } else if (modeNum === 3) { %>
+                        <% for (let i = 4; i <= 9; i++) { %>
+                            <li class="k<%= i %>">
+                                <button title="key <%= i %>keys" onclick="jump()"
+                                    <% if (getMods(mods).includes(`k${i}`)) { %>
+                                        class="selected"
+                                    <% } %>><img src="/image/mods/k<%= i %>.png"></button>
+                            </li>
+                        <% } %>
+                        <li class="mr">
+                            <button title="Mirror" onclick="jump()"
+                            <% if (getMods(mods).includes("mr")) { %>
+                                class="selected"
+                            <% } %>><img src="/image/mods/mr.png"></button>
+                        </li>
+                    <% } %>
+                </ul>
                 <% if (rankings.length <= 0) { %>
                     <h2 class="nothing">No players available</h1>
                 <% } else { %>
-                    <div class="first">
-
+                    <div class="user first">
+                        <div style="display: flex;">
+                            <div>
+                                <p class="rank">#<%= rankings[0].ranking %></p>
+                                <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png">
+                            </div>
+                            <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?">
+                            <div>
+                                <p class="name">
+                                    <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
+                                        <%= rankings[0].name %>
+                                    </a>
+                                </p>
+                                <p class="time">achieved <%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "form") %></p>
+                                <i title="<%= rankings[0].country %>" class="flag-icon flag-icon-<%= rankings[0].country %>"></i>
+                            </div>
+                            <div class="tables">
+                                <table class="t1">
+                                    <tr>
+                                        <th>Total Score</th>
+                                        <th>Accuracy</th>
+                                        <th>Max Combo</th>
+                                    </tr>
+                                    <tr>
+                                        <td><%= rankings[0].score.toLocaleString() %></td>
+                                        <td
+                                        <% if (rankings[0].acc === 100) { %>
+                                            style="color: #aef665;"
+                                        <% } %>><%= rankings[0].acc.toFixed(2) %>%</td>
+                                        <td
+                                        <% if (rankings[0].max_combo === mapdetails.max_combo) { %>
+                                            style="color: #aef665;"
+                                        <% } %>><%= rankings[0].max_combo.toLocaleString() %>x</td>
+                                    </tr>
+                                </table>
+                                <table class="t2">
+                                    <tr>
+                                        <% if (mapdetails.mode % 4 === 0 && modeNum % 4 == 0) { %>
+                                            <th>300</th>
+                                            <th>100</th>
+                                            <th>50</th>
+                                        <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 == 1) { %>
+                                            <th>Great</th>
+                                            <th>Good</th>
+                                        <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 == 2) { %>
+                                            <th>Fruits</th>
+                                            <th>Ticks</th>
+                                            <th>Drops</th>
+                                        <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 == 3) { %>
+                                            <th>Merv</th>
+                                            <th>Perf</th>
+                                            <th>Great</th>
+                                            <th>Good</th>
+                                            <th>Bad</th>
+                                        <% } %>
+                                        <th>Miss</th>
+                                        <th>PP</th>
+                                        <th>Time</th>
+                                        <th style="width: <%= Math.max(35, 35 * getMods(rankings[0].mods).length) %>px;">Mods</th>
+                                    </tr>
+                                    <tr>
+                                        <% if (mapdetails.mode % 4 === 0 && modeNum % 4 === 0) { %>
+                                            <td
+                                            <% if (rankings[0].n300 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n300.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n100 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n100.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n50 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n50.toLocaleString() %></td>
+                                        <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
+                                            <td
+                                            <% if (rankings[0].n300 + rankings[0].ngeki === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= (rankings[0].n300 + rankings[0].ngeki).toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n100 + rankings[0].nkatu === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= (rankings[0].n100 + rankings[0].nkatu).toLocaleString() %></td>
+                                        <% } else if (mapdetails.mode% 4 === 2 || modeNum % 4 === 2) { %>
+                                            <td
+                                            <% if (rankings[0].n300 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n300.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n100 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n100.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n50 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n50.toLocaleString() %>/<%= (rankings[0].n50 + rankings[0].nkatu).toLocaleString() %></td>
+                                        <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
+                                            <td
+                                            <% if (rankings[0].ngeki === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].ngeki.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n300 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n300.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].nkatu === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].nkatu.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n100 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n100.toLocaleString() %></td>
+                                            <td
+                                            <% if (rankings[0].n50 === 0) { %>
+                                                style="color: #7e8487;"
+                                            <% } %>><%= rankings[0].n50.toLocaleString() %></td>
+                                        <% } %>
+                                        <td
+                                        <% if (rankings[0].nmiss === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= rankings[0].nmiss.toLocaleString() %></td>
+                                        <td><%= Math.round(rankings[0].pp).toLocaleString() %></td>
+                                        <td><%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "brev") %></td>
+                                        <td class="mods">
+                                            <% getMods(rankings[0].mods).forEach((mod) => { %>
+                                                <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                            <% }); %>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <% if (loginf) { %>
-                        <div class="user">
-
-                        </div>
+                        <% let index = 0; %>
+                        <% for (let i = 0; i < rankings.length; i++) {
+                            if (rankings[i].userid == userid) {
+                                index = i;
+                                break;
+                            }
+                        } %>
+                        <% if (index !== 0) { %>
+                            <div class="user">
+                                <div style="display: flex;">
+                                    <div>
+                                        <p class="rank">#<%= rankings[index].ranking %></p>
+                                        <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png">
+                                    </div>
+                                    <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?">
+                                    <div>
+                                        <p class="name">
+                                            <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
+                                                <%= rankings[index].name %>
+                                            </a>
+                                        </p>
+                                        <p class="time">achieved <%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "form") %></p>
+                                        <i title="<%= rankings[index].country %>" class="flag-icon flag-icon-<%= rankings[index].country %>"></i>
+                                    </div>
+                                    <div class="tables">
+                                        <table class="t1">
+                                            <tr>
+                                                <th>Total Score</th>
+                                                <th>Accuracy</th>
+                                                <th>Max Combo</th>
+                                            </tr>
+                                            <tr>
+                                                <td><%= rankings[index].score.toLocaleString() %></td>
+                                                <td
+                                                <% if (rankings[index].acc === 100) { %>
+                                                    style="color: #aef665;"
+                                                <% } %>><%= rankings[index].acc.toFixed(2) %>%</td>
+                                                <td
+                                                <% if (rankings[index].max_combo === mapdetails.max_combo) { %>
+                                                    style="color: #aef665;"
+                                                <% } %>><%= rankings[index].max_combo.toLocaleString() %>x</td>
+                                            </tr>
+                                        </table>
+                                        <table class="t2">
+                                            <tr>
+                                                <% if (mapdetails.mode % 4 === 0 && modeNum % 4 == 0) { %>
+                                                    <th>300</th>
+                                                    <th>100</th>
+                                                    <th>50</th>
+                                                <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 == 1) { %>
+                                                    <th>Great</th>
+                                                    <th>Good</th>
+                                                <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 == 2) { %>
+                                                    <th>Fruits</th>
+                                                    <th>Ticks</th>
+                                                    <th>Drops</th>
+                                                <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 == 3) { %>
+                                                    <th>Merv</th>
+                                                    <th>Perf</th>
+                                                    <th>Great</th>
+                                                    <th>Good</th>
+                                                    <th>Bad</th>
+                                                <% } %>
+                                                <th>Miss</th>
+                                                <th>PP</th>
+                                                <th>Time</th>
+                                                <th style="width: <%= Math.max(35, 35 * getMods(rankings[index].mods).length) %>px;">Mods</th>
+                                            </tr>
+                                            <tr>
+                                                <% if (mapdetails.mode % 4 === 0 && modeNum % 4 === 0) { %>
+                                                    <td
+                                                    <% if (rankings[index].n300 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n300.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n100 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n100.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n50 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n50.toLocaleString() %></td>
+                                                <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
+                                                    <td
+                                                    <% if (rankings[index].n300 + rankings[index].ngeki === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= (rankings[index].n300 + rankings[index].ngeki).toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n100 + rankings[index].nkatu === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= (rankings[index].n100 + rankings[index].nkatu).toLocaleString() %></td>
+                                                <% } else if (mapdetails.mode% 4 === 2 || modeNum % 4 === 2) { %>
+                                                    <td
+                                                    <% if (rankings[index].n300 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n300.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n100 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n100.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n50 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n50.toLocaleString() %>/<%= (rankings[index].n50 + rankings[index].nkatu).toLocaleString() %></td>
+                                                <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
+                                                    <td
+                                                    <% if (rankings[index].ngeki === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].ngeki.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n300 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n300.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].nkatu === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].nkatu.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n100 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n100.toLocaleString() %></td>
+                                                    <td
+                                                    <% if (rankings[index].n50 === 0) { %>
+                                                        style="color: #7e8487;"
+                                                    <% } %>><%= rankings[index].n50.toLocaleString() %></td>
+                                                <% } %>
+                                                <td
+                                                <% if (rankings[index].nmiss === 0) { %>
+                                                    style="color: #7e8487;"
+                                                <% } %>><%= rankings[index].nmiss.toLocaleString() %></td>
+                                                <td><%= Math.round(rankings[index].pp).toLocaleString() %></td>
+                                                <td><%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "brev") %></td>
+                                                <td class="mods">
+                                                    <% getMods(rankings[index].mods).forEach((mod) => { %>
+                                                        <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                                    <% }); %>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
                     <% } %>
-                    <table>
+                    <table class="ranking-table">
                         <tr>
                             <!-- rank -->
                             <th></th>
@@ -489,18 +878,18 @@
                             <th></th>
                             <th style="text-align: left;">Player</th>
                             <th>Combo</th>
-                            <% if (mapdetails.mode === 0 && modeNum == 0) { %>
+                            <% if (mapdetails.mode % 4 === 0 && modeNum % 4 == 0) { %>
                                 <th>300</th>
                                 <th>100</th>
                                 <th>50</th>
-                            <% } else if (mapdetails.mode === 1 || modeNum == 1) { %>
+                            <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 == 1) { %>
                                 <th>Great</th>
                                 <th>Good</th>
-                            <% } else if (mapdetails.mode === 2 || modeNum == 2) { %>
+                            <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 == 2) { %>
                                 <th>Fruits</th>
                                 <th>Ticks</th>
                                 <th>Drops</th>
-                            <% } else if (mapdetails.mode === 3 || modeNum == 3) { %>
+                            <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 == 3) { %>
                                 <th>Merv</th>
                                 <th>Perf</th>
                                 <th>Great</th>
@@ -508,10 +897,12 @@
                                 <th>Bad</th>
                             <% } %>
                             <th>Miss</th>
+                            <th>PP</th>
                             <th>Time</th>
                             <th>Mods</th>
                         </tr>
-                        <% rankings.forEach((data) => { %>
+                        <% let n = 0 %>
+                        <% for (let data of rankings) { %>
                             <tr class="list">
                                 <td class="rank">#<%= data.ranking %></td>
                                 <td class="grade"><img src="/image/grade/<%= data.grade %>.png"></td>
@@ -530,7 +921,7 @@
                                 <% if (data.max_combo === mapdetails.max_combo) { %>
                                     style="color: #aef665;"
                                 <% } %>><%= data.max_combo.toLocaleString() %>x</td>
-                                <% if (mapdetails.mode === 0) { %>
+                                <% if (mapdetails.mode % 4 === 0 && modeNum % 4 === 0) { %>
                                     <td
                                     <% if (data.n300 === 0) { %>
                                         style="color: #7e8487;"
@@ -543,7 +934,7 @@
                                     <% if (data.n50 === 0) { %>
                                         style="color: #7e8487;"
                                     <% } %>><%= data.n50.toLocaleString() %></td>
-                                <% } else if (mapdetails.mode === 1) { %>
+                                <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
                                     <td
                                     <% if (data.n300 + data.ngeki === 0) { %>
                                         style="color: #7e8487;"
@@ -552,7 +943,7 @@
                                     <% if (data.n100 + data.nkatu === 0) { %>
                                         style="color: #7e8487;"
                                     <% } %>><%= (data.n100 + data.nkatu).toLocaleString() %></td>
-                                <% } else if (mapdetails.mode === 2) { %>
+                                <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 === 2) { %>
                                     <td
                                     <% if (data.n300 === 0) { %>
                                         style="color: #7e8487;"
@@ -565,7 +956,7 @@
                                     <% if (data.n50 === 0) { %>
                                         style="color: #7e8487;"
                                     <% } %>><%= data.n50.toLocaleString() %>/<%= (data.n50 + data.nkatu).toLocaleString() %></td>
-                                <% } else if (mapdetails.mode === 3) { %>
+                                <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
                                     <td
                                     <% if (data.ngeki === 0) { %>
                                         style="color: #7e8487;"
@@ -591,7 +982,8 @@
                                 <% if (data.nmiss === 0) { %>
                                     style="color: #7e8487;"
                                 <% } %>><%= data.nmiss.toLocaleString() %></td>
-                                <td><%= getPlayTime(data.year, data.month, data.day, data.hour) %></td>
+                                <td><%= Math.round(data.pp).toLocaleString() %></td>
+                                <td><%= getPlayTime(data.year, data.month, data.week, data.day, data.hour, "brev") %></td>
                                 <td class="mods">
                                     <div class="image">
                                         <% getMods(data.mods).forEach((mod) => { %>
@@ -600,7 +992,8 @@
                                     </div>
                                 </td>
                             </tr>
-                        <% }); %>
+                            <% if (++n == 50) { break; } %>
+                        <% } %>
                     </table>
                 <% } %>
             </div>
@@ -608,5 +1001,81 @@
     </main>
     <%- include("footer") %>
     <script src="/jquery/beatmap.js"></script>
+    <script>
+        function process() {
+            var $mods = $(".ranking .wrap .mods-selection li");
+            let link = window.location.href, modNum = 0, notSelected = true;
+            const modsList = [
+                "nf", // 0 : NoFail
+                "ez", // 1 : Eazy
+                "ts", // 2 : TouchScreen
+                "hd", // 3 : Hidden
+                "hr", // 4 : HardRock
+                "sd", // 5 : SaddenDeath
+                "dt", // 6 : DoubleTime
+                "rx", // 7 : Relax
+                "ht", // 8 : HalfTime
+                "nc", // 9 : NightCore
+                "fl", // 10 : FlashLight
+                "at", // 11 : AutoPlay
+                "so", // 12 : SpinOut
+                "ap", // 13 : Autopilot
+                "pf", // 14 : Perfect
+                "k4", // 15 : Key4
+                "k5", // 16 : Key5
+                "k6", // 17 : Key6
+                "k7", // 18 : Key7
+                "k8", // 19 : Key8
+                "fi", // 20 : FadeIn
+                "rd", // 21 : Random
+                "cm", // 22 : Cinema
+                "tp", // 23 : TargetPoint
+                "k9", // 24 : Key9
+                "kc", // 25 : KeyCoop
+                "k1", // 26 : Key1
+                "k3", // 27 : Key3
+                "k2", // 28 : Key2
+                "v2", // 29 : ScoreV2
+                "mr", // 30 : Mirror
+            ];
+
+            for (let i = 0; i < $mods.length; i++) {
+                if (($mods.eq(i).children("button").hasClass("selected") || $mods.eq(i).children("button").hasClass("clicked"))) {
+                    if (!($mods.eq(i).children("button").hasClass("selected") && $mods.eq(i).children("button").hasClass("clicked"))) {
+                        notSelected = false;
+                        if ($mods.eq(i).children("button").hasClass("clicked") && $mods.eq(i).attr("class") === "nm") {
+                            $mods.eq(i).children("button").removeClass("clicked");
+                            break;
+                        }
+                        else if ($mods.eq(i).children("button").hasClass("selected") && $mods.eq(i).attr("class") === "nm") {
+                            continue;
+                        }
+                        $mods.eq(i).children("button").removeClass("clicked");
+                    }
+                    modNum += 1 << modsList.indexOf($mods.eq(i).attr("class"));
+                }
+            }
+            for (let i = 0; i < $mods.length; i++) {
+                if ($mods.eq(i).children("button").hasClass("selected") && $mods.eq(i).children("button").hasClass("clicked")) {
+                    $mods.eq(i).children("button").removeClass("clicked");
+                    if ($mods.eq(i).attr("class") === "nm") {
+                        notSelected = true;
+                        break;
+                    }
+                    modNum -= 1 << modsList.indexOf($mods.eq(i).attr("class"));
+                }
+            }
+            if (notSelected) {
+                window.location.href = link.includes("&mods=<%= mods %>") ? link.replace("&mods=<%= mods %>", "") : link;
+            }
+            else {
+                window.location.href = link.includes("&mods=<%= mods %>") ? link.replace("&mods=<%= mods %>", `&mods=${modNum}`) : link + `&mods=${modNum}`;
+            }
+        }
+
+        function jump() {
+            setTimeout(process, 1);
+        }
+    </script>
     </body>
 </html>

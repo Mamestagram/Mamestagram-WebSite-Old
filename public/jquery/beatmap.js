@@ -4,6 +4,7 @@ $(function() {
     var $play = document.getElementById("play-audio");
     var $btn = $(".map-info .contents .box .link button");
     var $icon = $(".map-info .contents .box .link button i");
+    var $mods = $(".ranking .wrap .mods-selection li");
     let time = 0, stop = true;
 
     audioElement.volume = 0.5;
@@ -40,5 +41,9 @@ $(function() {
             $icon.addClass("fa-solid fa-pause");
             $audio.play();
         }
+    });
+
+    $mods.click(function() {
+        $(this).children("button").addClass("clicked");
     });
 });
