@@ -299,38 +299,63 @@ section {
     text-decoration: underline;
 }
 
+.dans .download-dans {
+    padding: 0 10px 30px 10px;
+}
+
+.dans .download-dans a {
+    font-size: 16px;
+    opacity: 0.6;
+}
+.dans .download-dans a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.dans .nav {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+}
+
+.dans .nav li {
+    color: #d9cc8b;
+    padding: 0 20px;
+}
+.dans .nav li:hover {
+    color: #e0d6b8;
+    text-decoration: underline;
+}
+
 .dans h2 {
     font-size: 24px;
     padding-bottom: 10px;
 }
 
-.dans li {
+.dans .mode li {
     width: 930px;
     padding-bottom: 50px;
     margin: 0 auto;
+    scroll-margin-top: 100px;
 }
 
-.dans li .allmodes {
-    font-size: 16px;
-}
-
-.dans li a {
+.dans .mode li a {
     font-size: 14px;
     margin: 0 5px;
     opacity: 0.6;
 }
-.dans li a:hover {
+.dans .mode li a:hover {
     opacity: 1;
     text-decoration: underline;
 }
 
-.dans li table {
+.dans .mode li table {
     background-color: #3d3829;
     width: 930px;
     border: 3px solid black;
 }
 
-.dans li table th {
+.dans .mode li table th {
     font-weight: normal;
     padding: 10px 0;
     border-right: 1px solid black;
@@ -340,7 +365,7 @@ section {
     text-shadow: 2px 2px 2px black;
 }
 
-.dans li table td {
+.dans .mode li table td {
     padding: 5px 0;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -348,18 +373,12 @@ section {
     vertical-align: middle;
 }
 
-.dans li table td .minus {
+.dans .mode li table td .minus {
     color: #dc143c;
 }
 
-.dans li table td .plus {
+.dans .mode li table td .plus {
     color: #4682b4;
-}
-
-.dans .conclusion {
-    font-size: 24px;
-    padding: 20px;
-    text-align: center;
 }
 /* ------------------------------------------------- */
 @media(max-width: 1290px) {
