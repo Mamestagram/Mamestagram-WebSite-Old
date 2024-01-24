@@ -3,7 +3,7 @@ body {
 }
 /* ------------------------------------------------- */
 main {
-    font-family: "Righteous";
+    font-family: "Righteous", "MochiyPopOne";
     background-color: #171a1c;
     padding-top: 100px;
     padding-bottom: 300px;
@@ -471,7 +471,6 @@ main {
 .ranking .wrap .user .tables table {
     margin-left: auto;
     margin-right: 0;
-    table-layout: fixed;
 }
 
 .ranking .wrap .user .tables table th {
@@ -502,6 +501,7 @@ main {
 .ranking .wrap .user .tables .t2 {
     font-size: 18px;
     width: 85%;
+    table-layout: fixed;
 }
 
 .ranking .wrap .ranking-table {
@@ -560,6 +560,13 @@ main {
 .ranking .wrap .ranking-table .list .rank {
     padding-left: 10px;
     border-radius: 10px 0 0 10px;
+}
+
+.ranking .wrap .ranking-table .list .name {
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .ranking .wrap .ranking-table .list .name a {
