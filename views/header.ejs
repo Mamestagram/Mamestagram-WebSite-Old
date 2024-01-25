@@ -1,8 +1,8 @@
 <header>
-    <a href="/"><img src="/image/logo.png" alt=""></a>
+    <a class="top" href="/"><img src="/image/logo.png" alt=""></a>
     <h1><%= pageTitle %></h1>
     <ul class="pc">
-        <li class="beatmaps"><a href="/beatmaps/custom/any/none">Beatmaps</a></li>
+        <li class="maplist"><a href="/maplist/custom/any/none">Beatmaps</a></li>
         <li class="leaderboard"><a href="/leaderboard/std/performance">Leaderboard</a></li>
         <li class="documents"><a href="/documents">Documents</a></li>
         <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a></li>
@@ -10,6 +10,11 @@
             <a title="Support us!" href="/donation">
                 <i class="fa-solid fa-heart"></i>
             </a>
+        </li>
+        <li class="search">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </li>
         <% if (locals.loginf) { %>
             <li class="avatar">
@@ -34,9 +39,9 @@
         <li class="register"><a href="/register">Register</a></li>
         <li class="login"><a href="/login">Sign in</a></li>
     <% } %>
-    <li class="beatmaps">
+    <li class="maplist">
         <span></span>
-        <a href="/beatmaps/custom/any/none">Beatmaps</a>
+        <a href="/maplist/custom/any/none">Beatmaps</a>
     </li>
     <li class="leaderboard">
         <span></span>
@@ -60,3 +65,11 @@
         <a href="/logout">Sign out</a>
     </div>
 <% } %>
+<form class="search-form" action="/search" method="post">
+    <div class="searchbox">
+        <div class="txtbox">
+            <input type="search" placeholder="Search users or maps" name="value">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </div>
+</form>

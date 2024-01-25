@@ -17,7 +17,7 @@
                 background-color: transparent;
             }
 
-            header .pc .beatmaps {
+            header .pc .maplist {
                 color: #fdfdfd;
             }
 
@@ -29,7 +29,7 @@
                 background-color: #66ccff;
             }
 
-            .animated .pc .beatmaps {
+            .animated .pc .maplist {
                 border-bottom: 3px solid #65cafd;
             }
 
@@ -43,7 +43,7 @@
                 background-color: #22282a;
             }
 
-            .mobile .beatmaps {
+            .mobile .maplist {
                 background-color: rgba(102, 204, 255, 0.3);
                 color: #fdfdfd;
             }
@@ -69,6 +69,14 @@
             }
             .link-form a:hover {
                 background-color: #4497c0;
+            }
+
+            .search-form .searchbox {
+                background-color: #394246;
+            }
+
+            .search-form .searchbox .txtbox {
+                border-bottom: 2px solid #5c6970;
             }
         </style>
         <script type="text/javascript">
@@ -250,7 +258,7 @@
         <div class="option">
 
         </div>
-        <div class="maplist">
+        <div class="list">
             <% for (let i = 0; i < infos.length; i++) { %>
                 <div class="background">
                     <a href="/beatmap/<%= infos[i].setid %>/<%= diffs[i].details.id[0] %>/<%= diffs[i].details.version[0] %>" class="box">
@@ -268,8 +276,8 @@
                                         <img src="/image/mode/<%= getMode(diffs[i].details.mode[j]) %>.png">
                                     <% } %>
                                     <% let color = getColor(diffs[i].details.diff[j]) %>
-                                    <a href="/beatmap/<%= infos[i].setid %>/<%= diffs[i].details.id[j] %>/<%= diffs[i].details.version[j] %>" class="color" style="background-color: <%= color %>">
-                                        　
+                                    <a href="/beatmap/<%= infos[i].setid %>/<%= diffs[i].details.id[j] %>" class="color" style="background-color: <%= color %>">
+
                                     </a>
                                 <% } %>
                             </span>

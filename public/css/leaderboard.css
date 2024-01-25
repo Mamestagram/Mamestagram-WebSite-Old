@@ -10,7 +10,6 @@ main {
 .special {
     background-color: #fdfdfd;
     color: black;
-    height: 22px;
     font-size: 18px;
     margin-left: 12.8%;
     margin-top: auto;
@@ -237,14 +236,7 @@ main {
 
     .special {
         font-size: 12px;
-        text-align: center;
-        padding-left: 0;
-    }
-
-    .special li {
-        height: 35px;
-        padding: 10px 5px;
-        margin: 0 5px;
+        margin-left: 5px;
     }
 
     .mode {

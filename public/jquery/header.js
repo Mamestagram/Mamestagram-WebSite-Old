@@ -14,7 +14,7 @@ $(window).on("load scroll", function() {
         if ($width > 1232){
             $(".link-form").css({
                 "top": 75 + "px",
-                "right": 160 + "px",
+                "right": 130 + "px",
             });
         }
     }
@@ -24,6 +24,7 @@ $(function() {
     $(".mobile").hide();
     $("body").click(function(e) {
         var $form = $(".link-form");
+        var $search = $(".search-form");
 
         //ユーザーボタンクリック時
         if (!$(e.target).closest("header .avatar").length && !$(e.target).closest($form).length) {
@@ -72,6 +73,22 @@ $(function() {
                     $(".mobile").addClass("show").slideDown(200);
                     $("header .arrow").removeClass("fa-chevron-down down").addClass("fa-chevron-up up");
                 }
+            }
+        }
+
+        //検索ボタンクリック時
+        if (!$(e.target).closest("header .pc .search").length && !$(e.target).closest(".search-form .searchbox").length) {
+            $search.removeClass("show").fadeOut(200);
+        }
+        else if ($(e.target).closest($search).length) {
+            $search.show();
+        }
+        else {
+            if ($search.hasClass("show")) {
+                $search.removeClass("show").fadeOut(200);
+            }
+            else {
+                $search.addClass("show").fadeIn(200);
             }
         }
     });
