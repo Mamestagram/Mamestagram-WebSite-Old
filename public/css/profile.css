@@ -25,7 +25,9 @@ main .player-banner div, main .player-banner ul {
 main .player-banner .username .avatar {
     border-radius: 20px;
     height: 100px;
+    width: 100px;
     margin: 10px;
+    object-fit: cover;
 }
 
 main .player-banner .username .badge {

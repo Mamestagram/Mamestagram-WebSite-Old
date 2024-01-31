@@ -46,7 +46,7 @@ main {
     top: 0;
     height: 100%;
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.3;
     object-fit: cover;
     filter: blur(1px);
 }
@@ -442,8 +442,10 @@ main {
 
 .ranking .wrap .user .avatar {
     height: 90px;
+    width: 90px;
     margin: auto 10px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .ranking .wrap .user .name a {

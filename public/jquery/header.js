@@ -6,14 +6,14 @@ $(window).on("load scroll", function() {
         $("header").addClass("animated");
         $(".link-form").css({
             "top": 65 + "px",
-            "right": 15 + "px",
+            "right": 10 + "px",
         });
     }
     else {
         $("header").removeClass("animated");
         if ($width > 1232){
             $(".link-form").css({
-                "top": 75 + "px",
+                "top": 84 + "px",
                 "right": 130 + "px",
             });
         }

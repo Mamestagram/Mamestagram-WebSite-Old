@@ -2,37 +2,46 @@ main {
     font-family: "Righteous";
     color: #fdfdfd;
     background-color: #171a1c;
+    padding-top: 100px;
+    padding-bottom: 300px;
 }
 /* ------------------------------------------------- */
 .list {
     display: flex;
     background-color: #22282a;
-    width: 1250px;
+    width: 1245px;
+    padding-top: 5px;
+    padding-bottom: 10px;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     flex-wrap: wrap;
 }
 
 .list .background {
     background-color: #1f292e;
     width: 600px;
-    height: 120px;
-    margin-left: 17px;
+    height: 124px;
+    margin-top: 10px;
+    margin-left: 15px;
     border-radius: 10px;
+    transition: transform 200ms;
+}
+.list .background:hover {
+    transform: scale(1.015);
 }
 
 .list .box {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: 124px;
     border-radius: 10px;
 }
 
 .box .bg {
     position: absolute;
     width: 600px;
-    height: 120px;
-    opacity: 0.3;
+    height: 124px;
+    opacity: 0.2;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -42,19 +51,74 @@ main {
     z-index: 50;
 }
 
-.stats {
+.info .title {
+    font-size: 22px;
+    padding-top: 5px;
+    padding-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info .artist {
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.info .mapper {
+    color: #dbe9f0;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+.info .mapper span {
+    color: #a6c8d9;
+}
+.info .mapper span:hover {
+    color: #a7d3e0;
+}
+
+.box .stats {
+    display: flex;
+    padding-left: 5px;
+}
+
+.stats .status {
     position: relative;
+    height: 24px;
+    line-height: 24px;
+    width: 74px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 50px;
     z-index: 50;
 }
 
-.stats .diff img {
-    width: 20px;
+.stats .diff {
+    display: flex;
+    height: 60px;
+    width: 518px;
+    margin-top: 3px;
+    margin-left: 3px;
+    flex-wrap: wrap;
+    overflow: scroll;
+    -ms-overflow-style: none;
+}
+.stats .diff::-webkit-scrollbar {
+    display: none;
 }
 
-.stats .diff .color {
-
+.stats .diff a {
+    font-size: 24px;
+    height: 28px;
+    line-height: 28px;
+    width: 28px;
+    text-shadow: 0 0 5px rgb(253, 253, 253, 0.3);
+    -webkit-text-stroke: 1px rgb(0, 0, 0, 0.5);
+    text-align: center;
+    transition: width 200ms, font-size 200ms;
 }
-
-.stats .diff .value {
-    color: black;
+.stats .diff a:hover {
+    width: 37px;
+    font-size: 32px;
 }

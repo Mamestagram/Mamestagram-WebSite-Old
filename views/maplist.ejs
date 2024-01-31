@@ -79,210 +79,122 @@
                 border-bottom: 2px solid #5c6970;
             }
         </style>
-        <script type="text/javascript">
-            <%
-            const getMode = (modeNum) => {
-                let mode = ""
-                switch (modeNum) {
-                    case 0:
-                        mode += "osu";
-                        break;
-                    case 1:
-                        mode += "taiko";
-                        break;
-                    case 2:
-                        mode += "fruits";
-                        break;
-                    case 3:
-                        mode += "mania";
-                        break;
-                }
-                return mode;
+        <%
+        const getMode = (modeNum) => {
+            switch (modeNum) {
+                case 0:
+                    return "osu";
+                case 1:
+                    return "taiko";
+                case 2:
+                    return "fruits";
+                case 3:
+                    return "mania";
             }
-            const getColor = (diff) => {
-                const color = [
-                    "#4291fd", "#4396fd", "#449bfd", "#46a0fd", // 0.0 ~ 0.5
-                    "#47a4fd", "#48a9fd", "#4aaffd", "#4bb3fd", // 0.5 ~ 1.0
-                    "#4cb8fd", "#4dbcfd", "#4ec3f9", "#4ecdf2", // 1.0 ~ 1.5
-                    "#4ed8eb", "#4ee3e4", "#4eeedc", "#4ef8d6", // 1.5 ~ 2.0
-                    "#53fdc0", "#5efda2", "#69fd82", "#74fd5f", // 2.0 ~ 2.5
-                    "#82fc4f", "#97f951", "#abf753", "#bef455", // 2.5 ~ 3.0
-                    "#d0f257", "#e2f059", "#f4ec5b", "#f5dd5d", // 3.0 ~ 3.5
-                    "#f6cf5e", "#f8be60", "#f9af62", "#faa063", // 3.5 ~ 4.0
-                    "#fc8f65", "#fd8167", "#fd7868", "#fd6f69", // 4.0 ~ 4.5
-                    "#fd676a", "#fd5d6c", "#fd536d", "#fa4d70", // 4.5 ~ 5.0
-                    "#f24b7b", "#eb4a85", "#e2498f", "#da4799", // 5.0 ~ 5.5
-                    "#d346a3", "#cc45ac", "#c444b6", "#b548bd", // 5.5 ~ 6.0
-                    "#a84cc0", "#9b50c6", "#8f54cb", "#8059d0", // 6.0 ~ 6.5
-                    "#735dd6", "#6561db", "#5a58d2", "#524fc9", // 6.5 ~ 7.0
-                    "#4745be", "#3f3db6", "#3532ab", "#2a28a0", // 7.0 ~ 7.5
-                    "#221f97", "#19168e", "#16137f", "#131172", // 7.5 ~ 8.0
-                    "#110f64", "#0f0d55", "#0c0b46", "#0a0839", // 8.0 ~ 8.5
-                    "#07062b", "#05051f", "#030211", "#010104", // 8.5 ~ 9.0
-                    "#000000" // 9.0 ~
-                ]
-                let index = Math.floor(diff / 0.125);
-                if (index > 72) {
-                    index = 72;
-                }
-                return color[index];
+        }
+        const getColor = (diff) => {
+            const color = [
+                "#4291fd", "#4396fd", "#449bfd", "#46a0fd", // 0.0 ~ 0.5
+                "#47a4fd", "#48a9fd", "#4aaffd", "#4bb3fd", // 0.5 ~ 1.0
+                "#4cb8fd", "#4dbcfd", "#4ec3f9", "#4ecdf2", // 1.0 ~ 1.5
+                "#4ed8eb", "#4ee3e4", "#4eeedc", "#4ef8d6", // 1.5 ~ 2.0
+                "#53fdc0", "#5efda2", "#69fd82", "#74fd5f", // 2.0 ~ 2.5
+                "#82fc4f", "#97f951", "#abf753", "#bef455", // 2.5 ~ 3.0
+                "#d0f257", "#e2f059", "#f4ec5b", "#f5dd5d", // 3.0 ~ 3.5
+                "#f6cf5e", "#f8be60", "#f9af62", "#faa063", // 3.5 ~ 4.0
+                "#fc8f65", "#fd8167", "#fd7868", "#fd6f69", // 4.0 ~ 4.5
+                "#fd676a", "#fd5d6c", "#fd536d", "#fa4d70", // 4.5 ~ 5.0
+                "#f24b7b", "#eb4a85", "#e2498f", "#da4799", // 5.0 ~ 5.5
+                "#d346a3", "#cc45ac", "#c444b6", "#b548bd", // 5.5 ~ 6.0
+                "#a84cc0", "#9b50c6", "#8f54cb", "#8059d0", // 6.0 ~ 6.5
+                "#735dd6", "#6561db", "#5a58d2", "#524fc9", // 6.5 ~ 7.0
+                "#4745be", "#3f3db6", "#3532ab", "#2a28a0", // 7.0 ~ 7.5
+                "#221f97", "#19168e", "#16137f", "#131172", // 7.5 ~ 8.0
+                "#110f64", "#0f0d55", "#0c0b46", "#0a0839", // 8.0 ~ 8.5
+                "#07062b", "#05051f", "#030211", "#010104", // 8.5 ~ 9.0
+                "#000000" // 9.0 ~
+            ]
+            let index = Math.floor(diff / 0.125);
+            if (index > 72) {
+                index = 72;
             }
-            const groupBySort = (id, mode, diffs, versions) => {
-                let idByMode = new Array(0), diffByMode = new Array(0), versionByMode = new Array(0), rst = new Array(0);
-                for (let i = 0; i < 4; i++) {
-                    idByMode.push([]);
-                    diffByMode.push([]);
-                    versionByMode.push([]);
-                }
-                for (let i = 0; i < diffs.length; i++) {
-                    idByMode[mode[i]].push(id[i]);
-                    diffByMode[mode[i]].push(diffs[i]);
-                    versionByMode[mode[i]].push(versions[i]);
-                }
-                for (let i = 0; i < diffs.length; i++) {
-                    if (diffByMode[i] && idByMode[i]) {
-                        idByMode[i] = idSort(idByMode[i], diffByMode[i]);
-                        mode.sort();
-                        versionByMode[i] = versionSort(versionByMode[i], diffByMode[i]);
-                        diffByMode[i].sort();
-                    }
-                }
-                rst.push({
+            return color[index];
+        }
+        const diffByMode = new Array(diffs.length);
+        for (let i = 0; i < diffByMode.length; i++) {
+            diffByMode[i] = new Array(4);
+            for (let j = 0; j < diffByMode[i].length; j++) {
+                diffByMode[i][j] = {
                     id: new Array(0),
-                    mode: new Array(0),
                     diff: new Array(0),
                     version: new Array(0)
-                });
-                for (let i = 0; i < mode.length; i++) {
-                    rst[0].mode.push(mode[i]);
-                }
-                for (let i = 0; i < diffByMode.length; i++) {
-                    if (idByMode[i] && diffByMode[i]) {
-                        for (let j = 0; j < diffByMode[i].length; j++) {
-                            rst[0].id.push(idByMode[i][j]);
-                            rst[0].diff.push(diffByMode[i][j]);
-                            rst[0].version.push(versionByMode[i][j]);
-                        }
-                    }
-                }
-                return rst[0];
-            }
-            const idSort = (id, diff) => {
-                for (let i = diff.length - 2; i >= 0; i--) {
-                    for (let j = 0; j <= i; j++) {
-                        if (diff[j] > diff[j + 1]) {
-                            let hold = [id[j + 1], diff[j + 1]];
-                            id[j + 1] = id[j];
-                            diff[j + 1] = diff[j];
-                            id[j] = hold[0];
-                            diff[j] = hold[1];
-                        }
-                    }
-                }
-                return id;
-            }
-            const versionSort = (version, diff) => {
-                for (let i = diff.length - 2; i >= 0; i--) {
-                    for (let j = 0; j <= i; j++) {
-                        if (diff[j] > diff[j + 1]) {
-                            let hold = [version[j + 1], diff[j + 1]];
-                            version[j + 1] = version[j];
-                            diff[j + 1] = diff[j];
-                            version[j] = hold[0];
-                            diff[j] = hold[1];
-                        }
-                    }
-                }
-                return version;
-            }
-
-            let status;
-            let infos = new Array(0), diffs = new Array(0);
-            for (let i = 0; i < mapsets.length; i++) {
-                if (i === 0 || mapsets[i].set_id !== mapsets[i - 1].set_id) {
-                    switch (mapsets[i].status) {
-                        case 2:
-                            status = "RANKED";
-                            break;
-                        case 5:
-                            status = "LOVED";
-                            break;
-                        case 0:
-                            status = "GRAVEYARD"
-                            break;
-                        case 3:
-                            status = "APPROVED";
-                            break;
-                        case 4:
-                            status = "QUALIFIED";
-                            break;
-                    }
-                    infos.push({setid: mapsets[i].set_id, title: mapsets[i].title, artist: mapsets[i].artist, mapper: mapsets[i].creator, stats: status});
                 }
             }
-            for (let i = 0; i < mapsets.length; i++) {
-                if (i === 0 || mapsets[i].set_id !== mapsets[i - 1].set_id) {
-                    if (i !== 0) {
-                        diffs[diffs.length - 1].details =
-                                groupBySort(diffs[diffs.length - 1].details.id, diffs[diffs.length - 1].details.mode,
-                                        diffs[diffs.length - 1].details.diff, diffs[diffs.length - 1].details.version);
-                    }
-                    diffs.push({
-                        details: {
-                            id: new Array(0),
-                            mode: new Array(0),
-                            diff: new Array(0),
-                            version: new Array(0)
-                        }
-                    });
-                    diffs[diffs.length - 1].details.id.push(mapsets[i].id);
-                    diffs[diffs.length - 1].details.mode.push(mapsets[i].mode);
-                    diffs[diffs.length - 1].details.diff.push(mapsets[i].diff);
-                    diffs[diffs.length - 1].details.version.push(mapsets[i].version);
-                }
-                else {
-                    diffs[diffs.length - 1].details.id.push(mapsets[i].id);
-                    diffs[diffs.length - 1].details.mode.push(mapsets[i].mode);
-                    diffs[diffs.length - 1].details.diff.push(mapsets[i].diff);
-                    diffs[diffs.length - 1].details.version.push(mapsets[i].version);
-                }
+        }
+        for (let i = 0; i < diffByMode.length; i++) {
+            for (let j = 0; j < diffs[i].length; j++) {
+                diffByMode[i][diffs[i][j].mode].id.push(diffs[i][j].id);
+                diffByMode[i][diffs[i][j].mode].diff.push(diffs[i][j].diff);
+                diffByMode[i][diffs[i][j].mode].version.push(diffs[i][j].version);
             }
-            %>
-        </script>
+        }
+        %>
     </head>
     <body>
     <%- include("header") %>
-    <img class="banner" src="/image/banner/beatmaps.png" alt="">
+    <img class="banner" src="/image/banner/maplist.png" alt="">
     <h1 class="pagename">BEATMAPS</h1>
     <main>
         <div class="option">
 
         </div>
         <div class="list">
-            <% for (let i = 0; i < infos.length; i++) { %>
+            <% for (let i = 0; i < mapsets.length; i++) { %>
                 <div class="background">
-                    <a href="/beatmap/<%= infos[i].setid %>/<%= diffs[i].details.id[0] %>/<%= diffs[i].details.version[0] %>" class="box">
-                        <img src="https://assets.ppy.sh/beatmaps/<%= infos[i].setid %>/covers/cover.jpg?" alt="" class="bg">
+                    <div class="box" onclick="jumpToBeatmaps()">
+                        <img src="https://assets.ppy.sh/beatmaps/<%= mapsets[i].set_id %>/covers/cover.jpg?" alt="" class="bg">
                         <div class="info">
-                            <p class="title"><%= infos[i].title %></p>
-                            <p class="artist">by <%= infos[i].artist %></p>
-                            <p class="mapper">mapped by <span><%= infos[i].mapper %></span></p>
+                            <p class="title"><%= mapsets[i].title %></p>
+                            <p class="artist">by <%= mapsets[i].artist %></p>
+                            <p class="mapper">
+                                mapped by 
+                                <span>
+                                    <a href="https://osu.ppy.sh/users/<%= mapsets[i].creator %>" target="_blank" rel="noopener noreferrer">
+                                        <%= mapsets[i].creator %>
+                                    </a>
+                                </span>
+                            </p>
                         </div>
                         <div class="stats">
-                            <span class="status"><%= infos[i].stats %></span>
+                            <span class="status" style="
+                            <% if (mapsets[i].status === 2) { %>
+                                background-color: #b3ff66;
+                                color: #3d4847;
+                            <% } else { %>
+                                background-color: #fd65aa;
+                                color: #394246;
+                            <% } %>">
+                                <% if (mapsets[i].status === 2) { %>
+                                    RANKED
+                                <% } else { %>
+                                    LOVED
+                                <% } %>
+                            </span>
+                            <% let amount = 0; %>
+                            <% for (let j = 0; j < diffByMode[i].length; j++) {
+                                amount += diffByMode[i][j].id.length;
+                            } %>
                             <span class="diff">
-                                <% for (let j = 0; j < diffs[i].details.diff.length; j++) { %>
-                                    <% if (j === 0 || diffs[i].details.mode[j] !== diffs[i].details.mode[j - 1]) { %>
-                                        <img src="/image/mode/<%= getMode(diffs[i].details.mode[j]) %>.png">
+                                <% for (let j = 0; j < diffByMode[i].length; j++) { %>
+                                    <% for (let k = 0; k < diffByMode[i][j].id.length; k++) { %>
+                                        <a title="★<%= diffByMode[i][j].diff[k].toFixed(2) %> <%= diffByMode[i][j].version[k] %>" href="/beatmaps/<%= mapsets[i].set_id %>/<%= diffByMode[i][j].id[k] %>" class="color">
+                                            <i class="mode-icon mode-<%= getMode(j) %>" style="color: <%= getColor(diffByMode[i][j].diff[k]) %>"></i>
+                                        </a>
                                     <% } %>
-                                    <% let color = getColor(diffs[i].details.diff[j]) %>
-                                    <a href="/beatmap/<%= infos[i].setid %>/<%= diffs[i].details.id[j] %>" class="color" style="background-color: <%= color %>">
-
-                                    </a>
                                 <% } %>
                             </span>
                         </div>
-                    </a>
+                    </div>
                 </div>
             <% } %>
         </div>

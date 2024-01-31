@@ -593,7 +593,7 @@
                     <% } %>
                 </ul>
                 <% if (rankings.length <= 0) { %>
-                    <h2 class="nothing">No players available</h1>
+                    <h2 class="nothing">No players available</h2>
                 <% } else { %>
                     <div class="user first">
                         <div style="display: flex;">
@@ -601,7 +601,7 @@
                                 <p class="rank">#<%= rankings[0].ranking %></p>
                                 <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png">
                             </div>
-                            <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?">
+                            <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>">
                             <div>
                                 <p class="name">
                                     <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -744,7 +744,7 @@
                                         <p class="rank">#<%= rankings[index].ranking %></p>
                                         <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png">
                                     </div>
-                                    <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?">
+                                    <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>">
                                     <div>
                                         <p class="name">
                                             <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">

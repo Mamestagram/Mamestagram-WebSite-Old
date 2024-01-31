@@ -114,21 +114,29 @@ header .pc .avatar {
 
 header .pc .avatar button {
     padding: 0;
+    width: 65px;
 }
 
 header .pc .avatar button img {
     height: 65px;
+    width: 65px;
     margin: 6px 0;
     border-radius: 65px;
-    transition: height 300ms, margin 300ms, outline 50ms;
+    transition: height 300ms, width 300ms, margin 300ms, outline 100ms;
+    object-fit: cover;
 }
 header .pc .avatar button img:hover {
     outline: 2px solid #fdfdfd;
     outline-offset: -2px;
 }
 
+.animated .pc .avatar button {
+    width: 50px;
+}
+
 .animated .pc .avatar button img {
     height: 50px;
+    width: 50px;
     margin: 4px 0;
 }
 
@@ -218,7 +226,7 @@ header .arrow {
     border-radius: 5px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
     z-index: 90;
-    transition: top, right 300ms;
+    transition: top 300ms, right 300ms;
 }
 
 .link-form a {
@@ -261,7 +269,7 @@ header .arrow {
     height: 100vh;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 2;
+    z-index: 100;
 }
 
 .search-form .searchbox {
