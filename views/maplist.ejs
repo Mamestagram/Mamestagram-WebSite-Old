@@ -146,7 +146,19 @@
     <h1 class="pagename">BEATMAPS</h1>
     <main>
         <div class="option">
-
+            <div class="page">
+                <% if (page !== 1) { %>
+                    <a href="/maplist/<%= type %>/<%= mode %><%= filter !== "none" ? `/${filter}` : "" %>&page=<%= page - 1 %>" class="pagearrow">
+                        <i class="fa-solid fa-backward"></i>
+                    </a>
+                <% } %>
+                <p>page : <%= page %></p>
+                <% if (nextpage.length !== 0) { %>
+                    <a href="/maplist/<%= type %>/<%= mode %><%= filter !== "none" ? `/${filter}` : "" %>&page=<%= page + 1 %>" class="pagearrow">
+                        <i class="fa-solid fa-forward"></i>
+                    </a>
+                <% } %>
+            </div>
         </div>
         <div class="list">
             <% for (let i = 0; i < mapsets.length; i++) { %>

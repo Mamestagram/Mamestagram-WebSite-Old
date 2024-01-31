@@ -6,6 +6,34 @@ main {
     padding-bottom: 300px;
 }
 /* ------------------------------------------------- */
+.option .page {
+    display: flex;
+    background-color: #2e3538;
+    height: 40px;
+    width: 1245px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.option .page p {
+    color: #fdfdfd;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.option .page .pagearrow i {
+    color: #fdfdfd;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0 20px;
+    filter: invert(50%);
+    opacity: 0.95;
+}
+.option .page .pagearrow i:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+/* ------------------------------------------------- */
 .list {
     display: flex;
     background-color: #22282a;
@@ -99,7 +127,7 @@ main {
     height: 60px;
     width: 518px;
     margin-top: 3px;
-    margin-left: 3px;
+    margin-left: 5px;
     flex-wrap: wrap;
     overflow: scroll;
     -ms-overflow-style: none;
@@ -119,6 +147,6 @@ main {
     transition: width 200ms, font-size 200ms;
 }
 .stats .diff a:hover {
-    width: 37px;
+    width: 32px;
     font-size: 32px;
 }
