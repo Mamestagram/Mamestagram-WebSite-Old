@@ -1,5 +1,5 @@
 $(function() {
-    var $jp = $("main .language .jp");
+    var $ja = $("main .language .ja");
     var $en = $("main .language .en");
 
     $(".eng").css("display", "");
@@ -8,22 +8,10 @@ $(function() {
         "color": "#e0d6b8",
         "text-decoration": "underline"
     });
-    $jp.css({
+    $ja.css({
         "color": "#d9cc8b",
         "text-decoration": ""
     });
-    /*
-    $(".eng").css("display", "none");
-    $(".jpn").css("display", "");
-    $en.css({
-        "color": "#d9cc8b",
-        "text-decoration": ""
-    });
-    $jp.css({
-        "color": "#e0d6b8",
-        "text-decoration": "underline"
-    });
-    */
 
     $en.click(function() {
         $(".eng").css("display", "");
@@ -32,20 +20,20 @@ $(function() {
             "color": "#e0d6b8",
             "text-decoration": "underline"
         });
-        $jp.css({
+        $ja.css({
             "color": "#d9cc8b",
             "text-decoration": ""
         });
     });
 
-    $jp.click(function() {
+    $ja.click(function() {
         $(".eng").css("display", "none");
         $(".jpn").css("display", "");
         $en.css({
             "color": "#d9cc8b",
             "text-decoration": ""
         });
-        $jp.css({
+        $ja.css({
             "color": "#e0d6b8",
             "text-decoration": "underline"
         });

@@ -75,7 +75,7 @@ main .language .en {
     left: 60px;
 }
 
-main .language .jp {
+main .language .ja {
     left: 120px;
 }
 
@@ -390,7 +390,7 @@ section {
         left: 5px;
     }
 
-    main .language .jp {
+    main .language .ja {
         left: 65px;
     }
 }
