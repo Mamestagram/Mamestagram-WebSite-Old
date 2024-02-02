@@ -1,54 +1,9 @@
 @font-face {
-    font-family: "Tilt Warp";
-    src: url("../font/TiltWarp-Regular.ttf");
-}
-
-@font-face {
-    font-family: "けいふぉんと";
-    src: url("../font/keifont.ttf");
-}
-
-@font-face {
-    font-family: "Gloria Hallelujah";
-    src: url("../font/GloriaHallelujah-Regular.ttf");
-}
-
-@font-face {
-    font-family: "SecularOne";
-    src: url("../font/SecularOne-Regular.ttf");
-}
-
-@font-face {
     font-family: "Caveat";
     src: url("../font/Caveat-Regular.ttf");
 }
 
 @font-face {
-    font-family: "Righteous";
-    src: url("../font/Righteous-Regular.ttf");
-}
-
-@font-face {
-    font-family: "Ubuntu";
-    src: url("../font/Ubuntu-Regular.ttf");
-}
-
-@font-face {
-    font-family: "MochiyPopOne";
-    src: url("../font/MochiyPopOne-Regular.ttf");
-}
-
-@font-face {
-    font-family: "RobotoMono";
-    src: url("../font/RobotoMono-Regular.ttf");
-}
-
-@font-face {
-    font-family: "Comfortaa Variable";
-    src: url("../font/Comfortaa-VariableFont_wght.ttf");
-}
-
-@font-face {
-    font-family: "Kanit";
-    src: url("../font/Kanit-ExtraLight.ttf");
+    font-family: "Gloria Hallelujah";
+    src: url("../font/GloriaHallelujah-Regular.ttf");
 }

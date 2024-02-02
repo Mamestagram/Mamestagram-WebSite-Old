@@ -161,53 +161,55 @@
             </div>
         </div>
         <div class="list">
-            <% for (let i = 0; i < mapsets.length; i++) { %>
-                <div class="background">
-                    <div class="box" onclick="jumpToBeatmaps()">
-                        <img src="https://assets.ppy.sh/beatmaps/<%= mapsets[i].set_id %>/covers/cover.jpg?" alt="" class="bg">
-                        <div class="info">
-                            <p class="title"><%= mapsets[i].title %></p>
-                            <p class="artist">by <%= mapsets[i].artist %></p>
-                            <p class="mapper">
-                                mapped by 
-                                <span>
-                                    <a href="https://osu.ppy.sh/users/<%= mapsets[i].creator %>" target="_blank" rel="noopener noreferrer">
-                                        <%= mapsets[i].creator %>
-                                    </a>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="stats">
-                            <span class="status" style="
-                            <% if (mapsets[i].status === 2) { %>
-                                background-color: #b3ff66;
-                                color: #3d4847;
-                            <% } else { %>
-                                background-color: #fd65aa;
-                                color: #394246;
-                            <% } %>">
-                                <% if (mapsets[i].status === 2) { %>
-                                    RANKED
-                                <% } else { %>
-                                    LOVED
-                                <% } %>
-                            </span>
-                            <% let amount = 0; %>
-                            <% for (let j = 0; j < diffByMode[i].length; j++) {
-                                amount += diffByMode[i][j].id.length;
-                            } %>
-                            <span class="diff">
-                                <% for (let j = 0; j < diffByMode[i].length; j++) { %>
-                                    <% for (let k = 0; k < diffByMode[i][j].id.length; k++) { %>
-                                        <a title="★<%= diffByMode[i][j].diff[k].toFixed(2) %> <%= diffByMode[i][j].version[k] %>" href="/beatmaps/<%= mapsets[i].set_id %>/<%= diffByMode[i][j].id[k] %>" class="color">
-                                            <i class="mode-icon mode-<%= getMode(j) %>" style="color: <%= getColor(diffByMode[i][j].diff[k]) %>"></i>
+            <% if (mapsets.length <= 0) { %>
+                <h1 class="nothing">No maps available</h1>
+            <% } else { %>
+                <% for (let i = 0; i < mapsets.length; i++) { %>
+                    <div class="background">
+                        <div class="box" onclick="jumpToBeatmaps()">
+                            <img src="https://assets.ppy.sh/beatmaps/<%= mapsets[i].set_id %>/covers/cover.jpg?" alt="" class="bg">
+                            <div class="info">
+                                <p class="title"><%= mapsets[i].title %></p>
+                                <p class="artist">by <%= mapsets[i].artist %></p>
+                                <p class="mapper">
+                                    mapped by 
+                                    <span>
+                                        <a href="https://osu.ppy.sh/users/<%= mapsets[i].creator %>" target="_blank" rel="noopener noreferrer">
+                                            <%= mapsets[i].creator %>
                                         </a>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="stats">
+                                <span class="status" style="
+                                <% if (mapsets[i].status === 2 || mapsets[i].status === 3) { %>
+                                    background-color: #b3ff66;
+                                    color: #3d4847;
+                                <% } else { %>
+                                    background-color: #fd65aa;
+                                    color: #394246;
+                                <% } %>">
+                                    <% if (mapsets[i].status === 2) { %>
+                                        RANKED
+                                    <% } else if (mapsets[i].status === 3) { %>
+                                        CUSTOM
+                                    <% } else { %>
+                                        LOVED
                                     <% } %>
-                                <% } %>
-                            </span>
+                                </span>
+                                <span class="diff">
+                                    <% for (let j = 0; j < diffByMode[i].length; j++) { %>
+                                        <% for (let k = 0; k < diffByMode[i][j].id.length; k++) { %>
+                                            <a title="★<%= diffByMode[i][j].diff[k].toFixed(2) %> <%= diffByMode[i][j].version[k] %>" href="/beatmaps/<%= mapsets[i].set_id %>/<%= diffByMode[i][j].id[k] %>" class="color">
+                                                <i class="mode-icon mode-<%= getMode(j) %>" style="color: <%= getColor(diffByMode[i][j].diff[k]) %>"></i>
+                                            </a>
+                                        <% } %>
+                                    <% } %>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <% } %>
             <% } %>
         </div>
     </main>

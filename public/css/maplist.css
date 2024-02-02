@@ -45,6 +45,14 @@ main {
     flex-wrap: wrap;
 }
 
+.list h1 {
+    font-size: 35px;
+    height: 200px;
+    line-height: 200px;
+    width: 100%;
+    text-align: center;
+}
+
 .list .background {
     background-color: #1f292e;
     width: 600px;
