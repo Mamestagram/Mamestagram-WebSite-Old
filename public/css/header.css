@@ -2,7 +2,6 @@ header {
     display: flex;
     position: fixed;
     top: 0;
-    font-family: "Tilt Warp", "MochiyPopOne";
     width: 100%;
     z-index: 100;
     transition: 300ms;
@@ -170,7 +169,6 @@ header .arrow {
     display: none;
     position: fixed;
     color: #919495;
-    font-family: "Tilt Warp", "MochiyPopOne";
     font-size: 14px;
     width: 100%;
     z-index: 90;
@@ -220,7 +218,6 @@ header .arrow {
     top: 75px;
     right: 160px;
     background-color: #333333;
-    font-family: "Tilt Warp";
     font-size: 16px;
     width: 200px;
     border-radius: 5px;
@@ -263,7 +260,6 @@ header .arrow {
     display: none;
     position: fixed;
     top: 0;
-    font-family: "Tilt Warp", "MochiyPopOne";
     color: #fdfdfd;
     height: 100vh;
     width: 100%;

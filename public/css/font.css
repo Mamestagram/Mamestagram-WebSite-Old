@@ -3,7 +3,62 @@
     src: url("../font/GloriaHallelujah-Regular.ttf");
 }
 
+/* arabic */
 @font-face {
     font-family: "Noto_Sans";
-    src: url("")
+    src: url("../font/Noto_Sans/ar/NotoSansArabic-Regular.ttf");
+}
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/ar/NotoSansArabic_Condensed-Regular.ttf");
+}
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/ar/NotoSansArabic_ExtraCondensed-Regular.ttf");
+}
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/ar/NotoSansArabic_SemiCondensed-Regular.ttf");
+}
+
+/* chinese */
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/cn/NotoSansTC-Regular.ttf");
+}
+
+/* english */
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/en/NotoSans-Regular.ttf");
+}
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/en/NotoSans_Condensed-Regular.ttf");
+}
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/en/NotoSans_ExtraCondensed-Regular.ttf");
+}
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/en/NotoSans_SemiCondensed-Regular.ttf");
+}
+
+/* japanese */
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/ja/NotoSansJP-Regular.ttf");
+}
+
+/* korean */
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/ko/NotoSansKR-Regular.ttf");
+}
+
+/* thai */
+@font-face {
+    font-family: "Noto_Sans";
+    src: url("../font/Noto_Sans/th/NotoSansThaiLooped-Regular.ttf");
 }

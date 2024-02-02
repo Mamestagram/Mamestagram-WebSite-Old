@@ -1,5 +1,4 @@
 main {
-    font-family: "SecularOne", "MochiyPopOne";
     background-color: #1c1c1c;
 }
 /* ------------------------------------------------- */
@@ -124,7 +123,6 @@ main {
 
 .ranking-table .nothing {
     color: #fdfdfd;
-    font-family: "MochiyPopOne";
     font-size: 35px;
     padding-top: 25%;
     text-align: center;
