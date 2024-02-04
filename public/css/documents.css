@@ -24,13 +24,13 @@ main .welcome-title {
 
 main .subtitle {
     font-size: 22px;
+    font-weight: bold;
     padding-top: 35px;
 }
 
 main .menu {
     display: flex;
     background-color: #2a2822;
-    width: 550px;
     margin: 100px auto;
     justify-content: center;
     border-radius: 10px;
@@ -88,6 +88,7 @@ article {
 
 article h1 {
     font-size: 36px;
+    font-weight: bold;
     padding: 0 10px;
 }
 
@@ -149,7 +150,7 @@ section {
 
 .about p {
     font-size: 14px;
-    padding: 5px;
+    line-height: 26px;
 }
 
 .about img {

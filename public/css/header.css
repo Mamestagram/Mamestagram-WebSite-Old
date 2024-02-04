@@ -46,10 +46,11 @@ header .pc {
 }
 
 header .pc li {
-    font-size: 15px;
+    font-size: 16px;
     color: #919495;
     margin: 10px 5px;
     text-shadow: 2px 2px 2px black;
+    font-weight: bold;
     transition: color 300ms, margin 300ms, text-shadow 300ms, background-color 300ms;
 }
 header .pc li:hover {
@@ -72,6 +73,7 @@ header .pc .donation:hover {
 
 .animated .pc li {
     color: #fdfdfd;
+    font-weight: normal;
     margin: 5px 15px;
     text-shadow: none;
 }
@@ -87,13 +89,13 @@ header .pc li button {
 header .pc li a, header .pc li button {
     display: block;
     height: 55px;
-    line-height: 60px;
+    line-height: 55px;
     padding: 0 15px;
 }
 
 .animated .pc li a, .animated .pc li button {
     height: 40px;
-    line-height: 50px;
+    line-height: 48px;
 }
 
 header .pc .search {
@@ -101,6 +103,7 @@ header .pc .search {
     font-size: 20px;
     margin-left: auto;
     border-radius: 24px;
+    text-align: center;
 }
 
 header .pc .avatar {
@@ -219,6 +222,7 @@ header .arrow {
     right: 160px;
     background-color: #333333;
     font-size: 16px;
+    font-weight: bold;
     width: 200px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
@@ -226,9 +230,10 @@ header .arrow {
     transition: top 300ms, right 300ms;
 }
 
-.link-form a {
+.link-form a, .link-form button {
     display: flex;
     color: #fdfdfd;
+    width: 186px;
     padding: 10px 17px;
     margin: 7px;
     justify-content: center;

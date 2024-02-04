@@ -62,8 +62,16 @@
             My Profile
         </a>
         <a href="/edit">Settings</a>
-        <a href="/logout">Sign out</a>
+        <button onclick="dialog()">Sign out</button>
     </div>
+    <script>
+        function dialog() {
+            let sure = confirm("Are you sure?");
+            if (sure) {
+                window.location.href = "/logout";
+            }
+        }
+    </script>
 <% } %>
 <form class="search-form" action="/search" method="post">
     <div class="searchbox">

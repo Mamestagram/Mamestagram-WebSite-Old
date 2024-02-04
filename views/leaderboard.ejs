@@ -63,10 +63,10 @@
                 background-color: #35364d;
             }
 
-            .link-form a {
+            .link-form a, .link-form button {
                 background-color: #345c84;
             }
-            .link-form a:hover {
+            .link-form a:hover, .link-form button:hover {
                 background-color: #6495ed;
             }
 
@@ -247,17 +247,17 @@
                 <% if (sortby !== "dans") { %>
                     <span class="acc-title"
                     <% if (sortby === "accuracy") { %>
-                        style="filter: invert(0%); opacity: 1;"
+                        style="font-weight: bold; filter: invert(0%); opacity: 1;"
                     <% } %>>
                         <a href="/leaderboard/<%= getModeName(modeNum) %>/accuracy">Accuracy</a>
                     </span>
                     <span class="playcount-title"
                     <% if (sortby === "playcount") { %>
-                        style="filter: invert(0%); opacity: 1;"
+                        style="font-weight: bold; filter: invert(0%); opacity: 1;"
                     <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/playcount">Play Count</a></span>
                     <span class="pp-title"
                     <% if (sortby === "performance") { %>
-                        style="filter: invert(0%); opacity: 1;"
+                        style="font-weight: bold; filter: invert(0%); opacity: 1;"
                     <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/performance">Performance</a></span>
                     <span class="ss-title">SS</span>
                     <span class="s-title">S</span>

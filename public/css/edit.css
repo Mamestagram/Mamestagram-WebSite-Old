@@ -21,6 +21,7 @@ main {
     background-color: #ac6039;
     color: #fdfdfd;
     font-size: 28px;
+    font-weight: bold;
     border-radius: 10px 10px 0 0;
     padding: 30px 200px;
 }
@@ -57,7 +58,6 @@ main {
     background-color: #ac6039;
     color: #fdfdfd;
     width: 90px;
-    padding: 8px 0;
     margin: 20px 210px;
     transition: 100ms;
     text-align: center;
@@ -66,6 +66,11 @@ main {
 }
 .box button:hover {
     background-color: #ff9966;
+}
+
+.box button input {
+    height: 36px;
+    line-height: 36px;
 }
 
 .avatar .title {
