@@ -292,7 +292,7 @@
                         <div class="global">
                             <h1>Global Ranking</h1>
                             <h2>
-                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879 && info.priv !== 4099)) { %>
+                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 7 && info.priv !== 4099 && info.priv !== 6147 && info.priv !== 31879)) { %>
                                     -
                                 <% } else { %>
                                     #<%= ranking.global[0].value.toLocaleString() %>
@@ -302,7 +302,7 @@
                         <div class="country">
                             <h1>Country Ranking</h1>
                             <h2>
-                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 6147 && info.priv !== 31879 && info.priv !== 4099)) { %>
+                                <% if (info.acc === 0 || (info.priv !== 3 && info.priv !== 7 && info.priv !== 4099 && info.priv !== 6147 && info.priv !== 31879)) { %>
                                     -
                                 <% } else { %>
                                     #<%= ranking.country[0].value.toLocaleString() %>
