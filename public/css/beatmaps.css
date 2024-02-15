@@ -19,6 +19,7 @@ main {
 .map-info h1 {
     color: #fdfdfd;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .map-info h1 i {
@@ -92,9 +93,9 @@ main {
     position: relative;
     font-size: 18px;
     font-weight: bold;
-    letter-spacing: 1px;
     padding: 8px 22px;
     margin: auto 30px auto auto;
+    letter-spacing: 1px;
     border-radius: 50px;
     box-shadow: 2px 2px 3px black;
 }
@@ -116,24 +117,45 @@ main {
 }
 
 .map-info .contents .box .diff-details .diffname {
-    max-width: 600px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.map-info .contents .box .diff-details .mapper {
-    font-size: 14px;
-    max-width: 600px;
+    display: block;
+    max-width: 520px;
+    line-height: 25px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     float: left;
+}
+
+.map-info .contents .box .diff-details .diffvalue {
+    color: #fdca2c;
+    line-height: 25px;
+    margin-left: 5px;
+    float: left;
+}
+
+.map-info .contents .box .diff-details .playcount {
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    margin-left: 5px;
+    float: left;
+}
+
+.map-info .contents .box .diff-details .mapper {
+    display: block;
+    font-size: 14px;
+    max-width: 600px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-shadow: 1px 1px 2px black;
+    clear: both;
 }
 
 .map-info .contents .box .diff-details .mapper a {
     color: #95c6d9;
-    font-size: 12px;
+    font-weight: bold;
 }
 .map-info .contents .box .diff-details .mapper a:hover {
     color: #b8d3e0;
@@ -147,7 +169,9 @@ main {
 }
 
 .map-info .contents .box .map-name .title {
+    font-weight: bold;
     max-width: 600px;
+    line-height: 43px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -157,7 +181,7 @@ main {
 .map-info .contents .box .map-name a i {
     font-size: 20px;
     text-shadow: 2px 2px 3px black;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 10px;
     filter: invert(30%);
 }
@@ -167,7 +191,9 @@ main {
 
 .map-info .contents .box .map-name .artist {
     clear: both;
+    font-weight: bold;
     max-width: 600px;
+    line-height: 32px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -345,6 +371,7 @@ main {
 
 .ranking .wrap .flex h1 {
     font-size: 24px;
+    font-weight: bold;
 }
 
 .ranking .wrap .flex .selection {
@@ -356,8 +383,8 @@ main {
     display: flex;
     background-color: #fdfdfd;
     color: black;
-    height: 22px;
     font-size: 18px;
+    font-weight: bold;
     margin-right: 10px;
     margin-top: auto;
     margin-bottom: auto;
@@ -386,14 +413,6 @@ main {
     justify-content: center;
 }
 
-.ranking .wrap .mods-selection li {
-    margin: 0 2px;
-}
-
-.ranking .wrap .mods-selection .nm button {
-    font-size: 32px;
-}
-
 .ranking .wrap .mods-selection li button {
     opacity: 0.5;
     transition: opacity 100ms, transform 50ms;
@@ -402,17 +421,32 @@ main {
     opacity: 1;
 }
 
+.ranking .wrap .mods-selection .nm button {
+    font-size: 32px;
+    height: 40px;
+    width: 30px;
+    text-align: center;
+}
+
+.ranking .wrap .mods-selection .nm button i {
+    display: block;
+    line-height: 40px;
+}
+
+.ranking .wrap .mods-selection li button img {
+    height: 40px;
+    width: 38px;
+    object-fit: cover;
+}
+
 .ranking .wrap .mods-selection .selected {
     transform: scale(1.1) rotate(5deg);
     opacity: 1;
 }
 
-.ranking .wrap .mods-selection li img {
-    height: 35px;
-}
-
 .ranking .wrap h2 {
     font-size: 35px;
+    font-weight: bold;
     line-height: 490px;
     text-align: center;
 }
@@ -432,6 +466,8 @@ main {
 
 .ranking .wrap .user .rank {
     font-size: 26px;
+    margin-bottom: 3px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -449,6 +485,7 @@ main {
 
 .ranking .wrap .user .name a {
     font-size: 24px;
+    line-height: 40px;
     transition: color 100ms;
 }
 .ranking .wrap .user .name a:hover {
@@ -463,6 +500,7 @@ main {
 
 .ranking .wrap .user i {
     border-radius: 2px;
+    margin: 3px 0;
 }
 
 .ranking .wrap .user .tables {
@@ -530,6 +568,10 @@ main {
 
 .ranking .wrap .ranking-table td {
     vertical-align: middle;
+}
+
+.ranking .wrap .ranking-table .rank {
+    font-weight: bold;
 }
 
 .ranking .wrap .ranking-table .grade img {

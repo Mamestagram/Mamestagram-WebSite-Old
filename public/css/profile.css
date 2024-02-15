@@ -341,6 +341,7 @@ main .mostplays div .data a {
 
 main .mostplays div .data a .title {
     font-size: 18px;
+    line-height: 25px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -349,6 +350,7 @@ main .mostplays div .data a .title {
 main .mostplays div .data a .mapper {
     color: #737386;
     font-size: 14px;
+    line-height: 20px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -453,6 +455,7 @@ main .recentplays div .data a, main .recentplays div .data-passed a {
 
 main .recentplays div .data a .title, main .recentplays div .data-passeda .title {
     font-size: 18px;
+    line-height: 25px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -461,6 +464,7 @@ main .recentplays div .data a .title, main .recentplays div .data-passeda .title
 main .recentplays div .data a .diff, main .recentplays div .data-passed a .diff {
     color: #eca900;
     font-size: 14px;
+    line-height: 20px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

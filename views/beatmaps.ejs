@@ -4,7 +4,7 @@
         <title><%= mapdetails.artist %> - <%= mapdetails.title %> | Mamestagram</title>
         <meta name="robots" content="noindex">
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/beatmap.css">
+        <link rel="stylesheet" href="/css/beatmaps.css">
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -81,22 +81,16 @@
         </style>
         <%
         const getMode = (modeNum) => {
-            let mode = ""
             switch (modeNum) {
                 case 0:
-                    mode += "osu";
-                    break;
+                    return "osu";
                 case 1:
-                    mode += "taiko";
-                    break;
+                    return "taiko";
                 case 2:
-                    mode += "fruits";
-                    break;
+                    return "fruits";
                 case 3:
-                    mode += "mania";
-                    break;
+                    return "mania";
             }
-            return mode;
         }
         const getColor = (diff) => {
             const color = [
@@ -171,7 +165,7 @@
             return mod;
         }
         const sortMods = (mods) => {
-            const order = ["rx", "ap", "k4", "k5", "k6", "k7", "k8", "k9", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "mr", "so", "v2"];
+            const order = ["rx", "ap", "k4", "k5", "k6", "k7", "k8", "k9", "nf", "ez", "ht", "hd", "hr", "dt", "nc", "sd", "pf", "fl", "fi", "rd", "mr", "so", "v2"];
             let rst = new Array(0);
             for (let i = 0; i < order.length; i++) {
                 for (let mod of mods) {
@@ -297,12 +291,11 @@
                     <div class="wrap">
                         <div class="box">
                             <div class="diff-details">
-                                <span class="diffname">
-                                    <%= mapdetails.version %> <span style="color: #fdca2c">★<%= mapdetails.diff.toFixed(2) %></span>
-                                </span>
-                                    <span class="playcount" style="font-size: 14px;">
+                                <span class="diffname"><%= mapdetails.version %></span>
+                                <span class="diffvalue">★<%= mapdetails.diff.toFixed(2) %></span>
+                                <span class="playcount">
                                     <i class="fa-solid fa-circle-play" style="padding: 0 5px;"></i><%= mapdetails.plays.toLocaleString() %>
-                                </span><br>
+                                </span>
                                 <span class="mapper">
                                     mapped by
                                     <a href="https://osu.ppy.sh/users/<%= mapdetails.creator %>" target="_blank" rel="noopener noreferrer">
@@ -516,14 +509,12 @@
                             class="selected"
                         <% } %>><img src="/image/mods/ht.png"></button>
                     </li>
-                    <% if (modeNum !== 3) { %>
-                        <li class="hr">
-                            <button title="Hard Rock" onclick="jump()"
-                            <% if (getMods(mods).includes("hr")) { %>
-                                class="selected"
-                            <% } %>><img src="/image/mods/hr.png"></button>
-                        </li>
-                    <% } %>
+                    <li class="hr">
+                        <button title="Hard Rock" onclick="jump()"
+                        <% if (getMods(mods).includes("hr")) { %>
+                            class="selected"
+                        <% } %>><img src="/image/mods/hr.png"></button>
+                    </li>
                     <li class="sd">
                         <button title="Sudden Death" onclick="jump()"
                         <% if (getMods(mods).includes("sd")) { %>
@@ -584,6 +575,12 @@
                                     <% } %>><img src="/image/mods/k<%= i %>.png"></button>
                             </li>
                         <% } %>
+                        <li class="rd">
+                            <button title="Random" onclick="jump()"
+                            <% if (getMods(mods).includes("rd")) { %>
+                                class="selected"
+                            <% } %>><img src="/image/mods/rd.png"></button>
+                        </li>
                         <li class="mr">
                             <button title="Mirror" onclick="jump()"
                             <% if (getMods(mods).includes("mr")) { %>
@@ -1008,7 +1005,7 @@
         </div>
     </main>
     <%- include("footer") %>
-    <script src="/jquery/beatmap.js"></script>
+    <script src="/jquery/beatmaps.js"></script>
     <script>
         function process() {
             var $mods = $(".ranking .wrap .mods-selection li");

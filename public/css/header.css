@@ -12,12 +12,12 @@ header {
 }
 
 header .top {
-    margin: 6px 0 6px 200px;
+    margin: 10px 0 10px 200px;
     transition: margin 300ms;
 }
 
 header .top img {
-    height: 65px;
+    height: 60px;
     transition: height 300ms, transform 300ms;
 }
 header .top img:hover {
@@ -48,7 +48,7 @@ header .pc {
 header .pc li {
     font-size: 16px;
     color: #919495;
-    margin: 10px 5px;
+    margin: 14px 5px;
     text-shadow: 2px 2px 2px black;
     font-weight: bold;
     transition: color 300ms, margin 300ms, text-shadow 300ms, background-color 300ms;
@@ -74,7 +74,7 @@ header .pc .donation:hover {
 .animated .pc li {
     color: #fdfdfd;
     font-weight: normal;
-    margin: 5px 15px;
+    margin: 8px 15px;
     text-shadow: none;
 }
 
@@ -94,16 +94,20 @@ header .pc li a, header .pc li button {
 }
 
 .animated .pc li a, .animated .pc li button {
-    height: 40px;
-    line-height: 48px;
+    height: 37px;
+    line-height: 46px;
 }
 
 header .pc .search {
-    width: 48px;
     font-size: 20px;
+    height: 44px;
     margin-left: auto;
     border-radius: 24px;
     text-align: center;
+}
+
+header .pc .search button {
+    padding: 0 12px;
 }
 
 header .pc .avatar {
@@ -116,13 +120,13 @@ header .pc .avatar {
 
 header .pc .avatar button {
     padding: 0;
-    width: 65px;
+    height: 60px;
 }
 
 header .pc .avatar button img {
-    height: 65px;
-    width: 65px;
-    margin: 6px 0;
+    height: 60px;
+    width: 60px;
+    margin: 10px 0;
     border-radius: 65px;
     transition: height 300ms, width 300ms, margin 300ms, outline 100ms;
     object-fit: cover;
@@ -247,7 +251,7 @@ header .arrow {
     height: 230px;
     width: 100%;
     object-fit: cover;
-    filter: blur(2px);
+    filter: blur(3px);
     z-index: -1;
 }
 

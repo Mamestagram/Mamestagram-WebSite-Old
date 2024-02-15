@@ -1,64 +1,15 @@
 @font-face {
     font-family: "Gloria Hallelujah";
-    src: url("../font/GloriaHallelujah-Regular.ttf");
+    src: url("../font/GloriaHallelujah-Regular.ttf") format("truetype");
 }
 
 /* arabic */
 @font-face {
     font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/ar/NotoSansArabic-Regular.ttf");
-}
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/ar/NotoSansArabic_Condensed-Regular.ttf");
-}
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/ar/NotoSansArabic_ExtraCondensed-Regular.ttf");
-}
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/ar/NotoSansArabic_SemiCondensed-Regular.ttf");
-}
-
-/* chinese */
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/cn/NotoSansTC-Regular.ttf");
-}
-
-/* english */
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/en/NotoSans-Regular.ttf");
-}
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/en/NotoSans_Condensed-Regular.ttf");
-}
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/en/NotoSans_ExtraCondensed-Regular.ttf");
-}
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/en/NotoSans_SemiCondensed-Regular.ttf");
-}
-
-/* japanese */
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/ja/NotoSansJP-Regular.ttf");
-}
-
-/* korean */
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/ko/NotoSansKR-Regular.ttf");
-}
-
-/* thai */
-@font-face {
-    font-family: "Noto_Sans";
-    src: url("../font/Noto_Sans/th/NotoSansThaiLooped-Regular.ttf");
+    src: url("../font/Noto_Sans/NotoSans-Regular.ttf") format("truetype"), /* english */
+    url("../font/Noto_Sans/NotoSansTC-Regular.ttf") format("truetype"), /* chinese */
+    url("../font/Noto_Sans/NotoSansArabic-Regular.ttf") format("truetype"), /* arabic */
+    url("../font/Noto_Sans/NotoSansJP-Regular.ttf") format("truetype"), /* japanese */
+    url("../font/Noto_Sans/NotoSansKR-Regular.ttf") format("truetype"), /* korean */
+    url("../font/Noto_Sans/NotoSansThaiLooped-Regular.ttf") format("truetype"); /* thai */
 }

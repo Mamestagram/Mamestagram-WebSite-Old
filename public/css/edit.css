@@ -23,7 +23,7 @@ main {
     font-size: 28px;
     font-weight: bold;
     border-radius: 10px 10px 0 0;
-    padding: 30px 200px;
+    padding: 30px 0;
 }
 
 .rename .username {
@@ -58,7 +58,7 @@ main {
     background-color: #ac6039;
     color: #fdfdfd;
     width: 90px;
-    margin: 20px 210px;
+    margin: 20px auto;
     transition: 100ms;
     text-align: center;
     border-radius: 5px;
@@ -71,10 +71,6 @@ main {
 .box button input {
     height: 36px;
     line-height: 36px;
-}
-
-.avatar .title {
-    padding: 30px 100px;
 }
 
 .avatar .image {

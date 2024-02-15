@@ -5,13 +5,108 @@ main {
     padding-bottom: 300px;
 }
 /* ------------------------------------------------- */
-.option .page {
-    display: flex;
-    background-color: #2e3538;
-    height: 40px;
+.option {
     width: 1245px;
     margin: 0 auto;
+}
+
+.option .flex {
+    display: flex;
+    position: relative;
+    background-color: #1f292e;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+    z-index: 10;
+}
+
+.option .flex h1 i {
+    font-size: 28px;
+}
+
+.option .flex h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin: auto 0;
+}
+
+.option .background {
+    position: relative;
+    background-color: #1f292e;
+    height: 250px;
+    width: 100%;
+}
+
+.option .background img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+    opacity: 0.2;
+    filter: blur(5px);
+}
+
+.option .selection {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.option .selection h1 {
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+}
+
+.option .selection li {
+    color: #95c6d9;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 200ms, text-decoration 200ms;
+}
+.option .selection li:hover {
+    color: #b8d3e0;
+    text-decoration: underline;
+}
+
+.option .selection .mode {
+    display: flex;
     justify-content: center;
+    margin-bottom: 50px;
+}
+
+.option .selection .mode li {
+    margin: 5px 7px;
+}
+
+.option .selection .mode li a i {
+    font-weight: normal;
+}
+
+.option .selection .refine {
+    display: flex;
+    justify-content: center;
+}
+
+.option .selection .refine ul {
+    display: flex;
+    margin: 0 50px;
+}
+
+.option .selection .refine ul li {
+    margin: 5px 10px;
+}
+
+.option .page {
+    display: flex;
+    position: relative;
+    background-color: #2e3538;
+    height: 40px;
+    width: 100%;
+    justify-content: center;
+    z-index: 10;
 }
 
 .option .page p {
@@ -46,8 +141,9 @@ main {
 
 .list h1 {
     font-size: 35px;
-    height: 200px;
-    line-height: 200px;
+    font-weight: bold;
+    height: 400px;
+    line-height: 400px;
     width: 100%;
     text-align: center;
 }
@@ -55,7 +151,7 @@ main {
 .list .background {
     background-color: #1f292e;
     width: 600px;
-    height: 124px;
+    height: 130px;
     margin-top: 10px;
     margin-left: 15px;
     border-radius: 10px;
@@ -68,14 +164,14 @@ main {
 .list .box {
     position: relative;
     width: 100%;
-    height: 124px;
+    height: 130px;
     border-radius: 10px;
 }
 
 .box .bg {
     position: absolute;
     width: 600px;
-    height: 124px;
+    height: 130px;
     opacity: 0.2;
     border-radius: 10px;
     object-fit: cover;
@@ -88,7 +184,7 @@ main {
 
 .info .title {
     font-size: 22px;
-    padding-top: 5px;
+    line-height: 32px;
     padding-left: 5px;
     white-space: nowrap;
     overflow: hidden;
@@ -103,14 +199,17 @@ main {
 .info .mapper {
     color: #dbe9f0;
     font-size: 12px;
+    padding-top: 3px;
     padding-left: 5px;
 }
 
-.info .mapper span {
-    color: #a6c8d9;
+.info .mapper a {
+    color: #95c6d9;
+    font-weight: bold;
 }
-.info .mapper span:hover {
-    color: #a7d3e0;
+.info .mapper a:hover {
+    color: #b8d3e0;
+    text-decoration: underline;
 }
 
 .box .stats {
@@ -120,9 +219,10 @@ main {
 
 .stats .status {
     position: relative;
+    font-weight: bold;
     height: 24px;
     line-height: 24px;
-    width: 74px;
+    width: 80px;
     margin-top: 5px;
     text-align: center;
     border-radius: 50px;

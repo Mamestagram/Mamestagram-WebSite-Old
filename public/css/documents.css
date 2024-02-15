@@ -14,7 +14,7 @@ main .logoimage {
     height: 310px;
     padding: 10px;
     margin-top: 50px;
-    border-radius: 90px 90px 130px 130px;
+    border-radius: 155px;
 }
 
 main .welcome-title {
@@ -34,6 +34,14 @@ main .menu {
     margin: 100px auto;
     justify-content: center;
     border-radius: 10px;
+}
+
+main .menu.menu-en {
+    width: 491px;
+}
+
+main .menu.menu-ja {
+    width: 537px;
 }
 
 main .menu li {
@@ -465,11 +473,11 @@ section {
         width: 700px;
     }
     /* ------------------------------------------------- */
-    .dans li {
+    .dans .mode li {
         width: 720px;
     }
 
-    .dans li table {
+    .dans .mode li table {
         width: 720px;
     }
 }
@@ -500,9 +508,12 @@ section {
 
     main .menu {
         display: block;
-        width: 180px;
         padding: 1px 5px;
         margin: 80px auto;
+    }
+
+    main .menu.menu-en, main .menu.menu-ja {
+        width: 190px;
     }
 
     main .menu li {
@@ -663,20 +674,16 @@ section {
         font-size: 18px;
     }
     
-    .dans li {
+    .dans .mode li {
         width: 340px;
         overflow: scroll;
     }
 
-    .dans li .allmodes {
-        font-size: 14px;
-    }
-
-    .dans li a {
+    .dans .mode li a {
         font-size: 12px;
     }
 
-    .dans li table {
-        width: 340px;
+    .dans .mode li table {
+        width: 540px;
     }
 }

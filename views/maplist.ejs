@@ -146,15 +146,137 @@
     <h1 class="pagename">BEATMAPS</h1>
     <main>
         <div class="option">
+            <div class="flex">
+                <h1>
+                    <i class="fa-brands fa-itunes-note"></i>
+                    <% if (type === "custom") { %>
+                        Custom ranked listing
+                    <% } else if (type === "default") { %>
+                        Default map listing
+                    <% } else { %>
+                        All map listing
+                    <% } %>
+                </h1>
+            </div>
+            <div class="background">
+                <% if (mapsets.length > 0) { %>
+                    <img src="https://assets.ppy.sh/beatmaps/<%= mapsets[0].set_id %>/covers/cover.jpg?">
+                <% } %>
+                <div class="selection">
+                    <h1>Mode</h1>
+                    <ul class="mode">
+                        <li class="any"
+                        <% if (mode === "any") { %>
+                            style="color: #fdfdfd;"
+                        <% } %>>
+                            <a href="/maplist/<%= type %>/any<%= filter !== 'none' ? `/${filter}` : '' %>">
+                                Any
+                            </a>
+                        </li>
+                        <li class="std"
+                        <% if (mode === "std") { %>
+                            style="color: #fdfdfd;"
+                        <% } %>>
+                            <a href="/maplist/<%= type %>/std<%= filter !== 'none' ? `/${filter}` : '' %>">
+                                <i class="mode-icon mode-osu"></i>std
+                            </a>
+                        </li>
+                        <li class="taiko"
+                        <% if (mode === "taiko") { %>
+                            style="color: #fdfdfd;"
+                        <% } %>>
+                            <a href="/maplist/<%= type %>/taiko<%= filter !== 'none' ? `/${filter}` : '' %>">
+                                <i class="mode-icon mode-taiko"></i>taiko
+                            </a>
+                        </li>
+                        <li class="ctb"
+                        <% if (mode === "ctb") { %>
+                            style="color: #fdfdfd;"
+                        <% } %>>
+                            <a href="/maplist/<%= type %>/ctb<%= filter !== 'none' ? `/${filter}` : '' %>">
+                                <i class="mode-icon mode-fruits"></i>ctb
+                            </a>
+                        </li>
+                        <li class="mania"
+                        <% if (mode === "mania") { %>
+                            style="color: #fdfdfd;"
+                        <% } %>>
+                            <a href="/maplist/<%= type %>/mania<%= filter !== 'none' ? `/${filter}` : '' %>">
+                                <i class="mode-icon mode-mania"></i>mania
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="refine">
+                        <div class="type">
+                            <h1>Map types</h1>
+                            <ul>
+                                <li class="all"
+                                <% if (type === "all") { %>
+                                    style="color: #fdfdfd;"
+                                <% } %>>
+                                    <a href="/maplist/all/<%= mode %><%= filter !== 'none' ? `/${filter}` : '' %>">
+                                        All
+                                    </a>
+                                </li>
+                                <li class="custom"
+                                <% if (type === "custom") { %>
+                                    style="color: #fdfdfd;"
+                                <% } %>>
+                                    <a href="/maplist/custom/<%= mode %><%= filter !== 'none' ? `/${filter}` : '' %>">
+                                        Custom ranked
+                                    </a>
+                                </li>
+                                <li class="default"
+                                <% if (type === "default") { %>
+                                    style="color: #fdfdfd;"
+                                <% } %>>
+                                    <a href="/maplist/default/<%= mode %><%= filter !== 'none' ? `/${filter}` : '' %>">
+                                        Default
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="filter">
+                            <h1>Categories</h1>
+                            <ul>
+                                <li class="any"
+                                <% if (filter === "none") { %>
+                                    style="color: #fdfdfd;"
+                                <% } %>>
+                                    <a href="/maplist/<%= type %>/<%= mode %>">
+                                        Any
+                                    </a>
+                                </li>
+                                <li class="ranked"
+                                <% if (filter === "ranked") { %>
+                                    style="color: #fdfdfd;"
+                                <% } %>>
+                                    <a href="/maplist/<%= type %>/<%= mode %>/ranked">
+                                        Ranked
+                                    </a>
+                                </li>
+                                <li class="loved"
+                                <% if (filter === "loved") { %>
+                                    style="color: #fdfdfd;"
+                                <% } %>>
+                                    <a href="/maplist/<%= type %>/<%= mode %>/loved">
+                                        Loved
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="page">
                 <% if (page !== 1) { %>
-                    <a href="/maplist/<%= type %>/<%= mode %><%= filter !== "none" ? `/${filter}` : "" %>&page=<%= page - 1 %>" class="pagearrow">
+                    <a href="/maplist/<%= type %>/<%= mode %><%= filter !== 'none' ? `/${filter}` : '' %>&page=<%= page - 1 %>" class="pagearrow">
                         <i class="fa-solid fa-backward"></i>
                     </a>
                 <% } %>
                 <p>page : <%= page %></p>
                 <% if (nextpage.length !== 0) { %>
-                    <a href="/maplist/<%= type %>/<%= mode %><%= filter !== "none" ? `/${filter}` : "" %>&page=<%= page + 1 %>" class="pagearrow">
+                    <a href="/maplist/<%= type %>/<%= mode %><%= filter !== 'none' ? `/${filter}` : '' %>&page=<%= page + 1 %>" class="pagearrow">
                         <i class="fa-solid fa-forward"></i>
                     </a>
                 <% } %>
@@ -173,11 +295,9 @@
                                 <p class="artist">by <%= mapsets[i].artist %></p>
                                 <p class="mapper">
                                     mapped by 
-                                    <span>
-                                        <a href="https://osu.ppy.sh/users/<%= mapsets[i].creator %>" target="_blank" rel="noopener noreferrer">
-                                            <%= mapsets[i].creator %>
-                                        </a>
-                                    </span>
+                                    <a href="https://osu.ppy.sh/users/<%= mapsets[i].creator %>" target="_blank" rel="noopener noreferrer">
+                                        <%= mapsets[i].creator %>
+                                    </a>
                                 </p>
                             </div>
                             <div class="stats">
@@ -189,10 +309,8 @@
                                     background-color: #fd65aa;
                                     color: #394246;
                                 <% } %>">
-                                    <% if (mapsets[i].status === 2) { %>
+                                    <% if (mapsets[i].status === 2 || mapsets[i].status === 3) { %>
                                         RANKED
-                                    <% } else if (mapsets[i].status === 3) { %>
-                                        CUSTOM
                                     <% } else { %>
                                         LOVED
                                     <% } %>
