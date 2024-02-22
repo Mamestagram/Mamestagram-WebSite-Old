@@ -164,16 +164,6 @@
                             <a href="/leaderboard/stdap/performance">Auto Pilot</a>
                         </li>
                     <% } %>
-                    <!-- key -->
-                    <% if (modeNum === 3) { %>
-                        <% for (let i = 4; i <= 10; i++) { %>
-                            <% if ((i !== 5 && i !== 8 && i !== 9) || sortby !== "dans") { %>
-                                <li class="<%= i %>k">
-                                    <a href="/leaderboard/mania&<%= i %>k/<%= sortby %>"><%= i %>k</a>
-                                </li>
-                            <% } %>
-                        <% } %>
-                    <% } %>
                     <!-- dans -->
                     <li class="dans">
                         <a
