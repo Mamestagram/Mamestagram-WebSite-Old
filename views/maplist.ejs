@@ -150,7 +150,7 @@
                 <h1>
                     <i class="fa-brands fa-itunes-note"></i>
                     <% if (type === "custom") { %>
-                        Custom ranked listing
+                        Custom map listing
                     <% } else if (type === "default") { %>
                         Default map listing
                     <% } else { %>
@@ -223,7 +223,7 @@
                                     style="color: #fdfdfd;"
                                 <% } %>>
                                     <a href="/maplist/custom/<%= mode %><%= filter !== 'none' ? `/${filter}` : '' %>">
-                                        Custom ranked
+                                        Custom
                                     </a>
                                 </li>
                                 <li class="default"
@@ -288,7 +288,7 @@
             <% } else { %>
                 <% for (let i = 0; i < mapsets.length; i++) { %>
                     <div class="background">
-                        <div class="box" onclick="jumpToBeatmaps()">
+                        <div class="box">
                             <img src="https://assets.ppy.sh/beatmaps/<%= mapsets[i].set_id %>/covers/cover.jpg?" alt="" class="bg">
                             <div class="info">
                                 <p class="title"><%= mapsets[i].title %></p>

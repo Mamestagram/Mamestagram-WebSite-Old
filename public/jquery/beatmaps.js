@@ -1,4 +1,6 @@
 $(function() {
+    var $menu = $(".ranking .wrap .flex .selection .special .menu-title");
+    var $dropdown = $(".ranking .wrap .flex .selection .special .dropdown");
     const audioElement = document.querySelector("audio");
     var $audio = document.getElementById("preview");
     var $play = document.getElementById("play-audio");
@@ -40,6 +42,17 @@ $(function() {
             $icon.removeClass("fa-solid fa-play");
             $icon.addClass("fa-solid fa-pause");
             $audio.play();
+        }
+    });
+
+    $menu.click(function() {
+        if ($dropdown.hasClass("show")) {
+            $dropdown.fadeOut(300);
+            $dropdown.removeClass("show");
+        }
+        else {
+            $dropdown.fadeIn(300);
+            $dropdown.addClass("show");
         }
     });
 

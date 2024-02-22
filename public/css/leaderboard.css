@@ -7,15 +7,54 @@ main {
 }
 
 .special {
-    background-color: #fdfdfd;
-    color: black;
+    color: #fdfdfd;
     font-size: 18px;
     font-weight: bold;
     margin-left: 12.8%;
     margin-top: auto;
     margin-bottom: auto;
-    border-radius: 5px;
     appearance: menulist;
+}
+
+.special .menu-title {
+    position: relative;
+    background-color: #424242;
+    width: 110px;
+    padding: 3px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.special .menu-title i {
+    font-size: 16px;
+    line-height: 20px;
+    float: right;
+}
+
+.special .dropdown {
+    display: none;
+    position: absolute;
+    width: 110px;
+    transition: transform 300ms;
+    transform: translateY(-10px);
+    z-index: 5;
+}
+
+.special .dropdown li {
+    background-color: #262626;
+    padding: 3px;
+    transition: background-color 100ms;
+}
+.special .dropdown li:hover {
+    background-color: #3c3c3c;
+}
+
+.special .dropdown li a {
+    display: block;
+}
+
+.special .dropdown.show {
+    transform: translateY(0);
 }
 
 .mode {

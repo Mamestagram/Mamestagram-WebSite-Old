@@ -114,72 +114,81 @@
     </head>
     <body>
     <%- include("header") %>
-    <img class="banner" src="/image/banner/leaderboard.jp" alt="">
+    <img class="banner" src="/image/banner/leaderboard.jpg" alt="">
     <h1 class="pagename">LEADERBOARD</h1>
     <main>
         <div class="selection">
-            <select class="special" onchange="location.href=value">
-                <!-- Classic -->
-                <option class="classic"
-                <% if (modeNum % 4 === 0 && sortby !== "dans") { %>
-                    value="/leaderboard/std/performance"
-                <% } else if (modeNum % 4 === 1) { %>
-                    value="/leaderboard/taiko/performance"
-                <% } else if (modeNum % 4 === 2) { %>
-                    value="/leaderboard/ctb/performance"
-                <% } else { %>
-                    value="/leaderboard/mania/performance"
-                <% } %>
-                <% if (modeNum >= 0 && modeNum < 4) { %>
-                    selected
-                <% } %>>Classic</option>
-                <!-- Relax -->
-                <% if (modeNum !== 3) { %>
-                    <option class="relax"
-                    <% if (modeNum % 4 === 0) { %>
-                        value="/leaderboard/stdrx/performance"
-                    <% } else if (modeNum % 4 === 1) { %>
-                        value="/leaderboard/taikorx/performance"
-                    <% } else if (modeNum % 4 === 2) { %>
-                        value="/leaderboard/ctbrx/performance"
+            <div class="special">
+                <button class="menu-title">
+                    <% if (sortby === "dans") { %>
+                        Dans
+                    <% } else if (modeNum >= 0 && modeNum < 4) { %>
+                        Classic
+                    <% } else if (modeNum < 8) { %>
+                        Relax
+                    <% } else { %>
+                        Auto Pilot
                     <% } %>
-                    <% if (modeNum >= 4 && modeNum < 8) { %>
-                        selected
-                    <% } %>>Relax</option>
-                <% } %>
-                <!-- Auto Pilot -->
-                <% if (modeNum % 4 === 0) { %>
-                    <option class="auto-pilot" value="/leaderboard/stdap/performance"
-                    <% if (modeNum === 8) { %>
-                        selected
-                    <% } %>>Auto Pilot</option>
-                <% } %>
-                <!-- key -->
-                <% if (modeNum === 3) { %>
-                    <% for (let i = 4; i <= 10; i++) { %>
-                        <% if ((i !== 5 && i !== 8 && i !== 9) || sortby !== "dans") { %>
-                            <option class="<%= i %>k" value="/leaderboard/mania&<%= i %>k/<%= sortby %>"
-                            <% if (key === `${i}k`) { %>
-                                selected
-                            <% } %>><%= i %>k</option>
+                    <i class="fa-solid fa-chevron-down arrow down"></i>
+                </button>
+                <ul class="dropdown">
+                    <!-- classic -->
+                    <li class="classic">
+                        <a
+                        <% if (modeNum % 4 === 0 && sortby !== "dans") { %>
+                            href="/leaderboard/std/performance"
+                        <% } else if (modeNum % 4 === 1) { %>
+                            href="/leaderboard/taiko/performance"
+                        <% } else if (modeNum % 4 === 2) { %>
+                            href="/leaderboard/ctb/performance"
+                        <% } else { %>
+                            href="/leaderboard/mania/performance"
+                        <% } %>>Classic</a>
+                    </li>
+                    <!-- relax -->
+                    <% if (modeNum !== 3) { %>
+                        <li class="relax">
+                            <a
+                            <% if (modeNum % 4 === 0) { %>
+                                href="/leaderboard/stdrx/performance"
+                            <% } else if (modeNum % 4 === 1) { %>
+                                href="/leaderboard/taikorx/performance"
+                            <% } else if (modeNum % 4 === 2) { %>
+                                href="/leaderboard/ctbrx/performance"
+                            <% } %>>Relax</a>
+                        </li>
+                    <% } %>
+                    <!-- auto pilot -->
+                    <% if (modeNum % 4 === 0) { %>
+                        <li class="auto-pilot">
+                            <a href="/leaderboard/stdap/performance">Auto Pilot</a>
+                        </li>
+                    <% } %>
+                    <!-- key -->
+                    <% if (modeNum === 3) { %>
+                        <% for (let i = 4; i <= 10; i++) { %>
+                            <% if ((i !== 5 && i !== 8 && i !== 9) || sortby !== "dans") { %>
+                                <li class="<%= i %>k">
+                                    <a href="/leaderboard/mania&<%= i %>k/<%= sortby %>"><%= i %>k</a>
+                                </li>
+                            <% } %>
                         <% } %>
                     <% } %>
-                <% } %>
-                <!-- Dans -->
-                <option class="dans"
-                <% if (modeNum % 4 === 0) { %>
-                    value="/leaderboard/std/dans"
-                <% } else if (modeNum % 4 === 1) { %>
-                    value="/leaderboard/taiko/dans"
-                <% } else if (modeNum % 4 === 2) { %>
-                    value="/leaderboard/ctb/dans"
-                <% } else if (modeNum === 3) { %>
-                    value="/leaderboard/mania/dans"
-                <% } %>
-                <% if (sortby === "dans") { %>
-                    selected
-                <% } %>>Dans</option>
-            </select>
+                    <!-- dans -->
+                    <li class="dans">
+                        <a
+                        <% if (modeNum % 4 === 0) { %>
+                            href="/leaderboard/std/dans"
+                        <% } else if (modeNum % 4 === 1) { %>
+                            href="/leaderboard/taiko/dans"
+                        <% } else if (modeNum % 4 === 2) { %>
+                            href="/leaderboard/ctb/dans"
+                        <% } else if (modeNum === 3) { %>
+                            href="/leaderboard/mania/dans"
+                        <% } %>>Dans</a>
+                    </li>
+                </ul>
+            </div>
             <ul class="mode">
                 <li class="std"
                 <% if (modeNum % 4 === 0) { %>
@@ -315,5 +324,6 @@
         </div>
     </main>
     <%- include("footer") %>
+    <script src="/jquery/leaderboard.js"></script>
     </body>
 </html>

@@ -274,14 +274,14 @@
                             <% }); %>
                         </div>
                         <div class="map-status" style="
-                            <% if (mapdetails.status === 2) { %>
+                            <% if (mapdetails.status === 2 || mapdetails.status === 3) { %>
                                 background-color: #b3ff66;
                                 color: #3d4847;
                             <% } else { %>
                                 background-color: #fd65aa;
                                 color: #394246;
                             <% } %>">
-                            <% if (mapdetails.status === 2) { %>
+                            <% if (mapdetails.status === 2 || mapdetails.status === 3) { %>
                                 RANKED
                             <% } else { %>
                                 LOVED
@@ -316,7 +316,7 @@
                                     <button id="play-audio" class="pause">
                                         <i class="fa-solid fa-play"></i>
                                     </button>
-                                    <a href="https://api.chimu.moe/v1/download/<%= setid %>" class="download">
+                                    <a href="https://api.nerinyan.moe/d/<%= setid %>" class="download">
                                         Download<i class="fa-solid fa-download"></i>
                                     </a>
                                     <a href="/direct/<%= setid %>">
@@ -394,43 +394,54 @@
                 <div class="flex">
                     <h1>Score Ranking</h1>
                     <div class="selection">
-                        <select class="special" onchange="location.href=value">
-                            <!-- Classic -->
-                            <option class="classic"
-                            <% if (modeNum % 4 === 0) { %>
-                                value="/beatmaps/<%= mapdetails.set_id %>&std/<%= mapdetails.id %>"
-                            <% } else if (modeNum % 4 === 1) { %>
-                                value="/beatmaps/<%= mapdetails.set_id %>&taiko/<%= mapdetails.id %>"
-                            <% } else if (modeNum % 4 === 2) { %>
-                                value="/beatmaps/<%= mapdetails.set_id %>&ctb/<%= mapdetails.id %>"
-                            <% } else { %>
-                                value="/beatmaps/<%= mapdetails.set_id %>&mania/<%= mapdetails.id %>"
-                            <% } %>
-                            <% if (modeNum >= 0 && modeNum < 4) { %>
-                                selected
-                            <% } %>>Classic</option>
-                            <!-- Relax -->
+                        <div class="special">
                             <% if (modeNum !== 3) { %>
-                                <option class="relax"
-                                <% if (modeNum % 4 === 0) { %>
-                                    value="/beatmaps/<%= mapdetails.set_id %>&stdrx/<%= mapdetails.id %>"
-                                <% } else if (modeNum % 4 === 1) { %>
-                                    value="/beatmaps/<%= mapdetails.set_id %>&taikorx/<%= mapdetails.id %>"
-                                <% } else if (modeNum % 4 === 2) { %>
-                                    value="/beatmaps/<%= mapdetails.set_id %>&ctbrx/<%= mapdetails.id %>"
-                                <% } %>
-                                <% if (modeNum >= 4 && modeNum < 8) { %>
-                                    selected
-                                <% } %>>Relax</option>
+                                <button class="menu-title">
+                                    <% if (modeNum >= 0 && modeNum < 4) { %>
+                                        Classic
+                                    <% } else if (modeNum < 8) { %>
+                                        Relax
+                                    <% } else { %>
+                                        Auto Pilot
+                                    <% } %>
+                                    <i class="fa-solid fa-chevron-down arrow down"></i>
+                                </button>
+                                <ul class="dropdown">
+                                    <!-- classic -->
+                                    <li class="classic">
+                                        <a
+                                        <% if (modeNum % 4 === 0) { %>
+                                            href="/beatmaps/<%= mapdetails.set_id %>&std/<%= mapdetails.id %>"
+                                        <% } else if (modeNum % 4 === 1) { %>
+                                            href="/beatmaps/<%= mapdetails.set_id %>&taiko/<%= mapdetails.id %>"
+                                        <% } else if (modeNum % 4 === 2) { %>
+                                            href="/beatmaps/<%= mapdetails.set_id %>&ctb/<%= mapdetails.id %>"
+                                        <% } else { %>
+                                            href="/beatmaps/<%= mapdetails.set_id %>&mania/<%= mapdetails.id %>"
+                                        <% } %>>Classic</a>
+                                    </li>
+                                    <!-- relax -->
+                                    <% if (modeNum !== 3) { %>
+                                        <li class="relax">
+                                            <a
+                                            <% if (modeNum % 4 === 0) { %>
+                                                href="/beatmaps/<%= mapdetails.set_id %>&stdrx/<%= mapdetails.id %>"
+                                            <% } else if (modeNum % 4 === 1) { %>
+                                                href="/beatmaps/<%= mapdetails.set_id %>&taikorx/<%= mapdetails.id %>"
+                                            <% } else if (modeNum % 4 === 2) { %>
+                                                href="/beatmaps/<%= mapdetails.set_id %>&ctbrx/<%= mapdetails.id %>"
+                                            <% } %>>Relax</a>
+                                        </li>
+                                    <% } %>
+                                    <!-- auto pilot -->
+                                    <% if (modeNum % 4 === 0) { %>
+                                        <li class="auto-pilot">
+                                            <a href="/beatmaps/<%= mapdetails.set_id %>&stdap/<%= mapdetails.id %>">Auto Pilot</a>
+                                        </li>
+                                    <% } %>
+                                </ul>
                             <% } %>
-                            <!-- Auto Pilot -->
-                            <% if (modeNum % 4 === 0) { %>
-                                <option class="auto-pilot" value="/beatmaps/<%= mapdetails.set_id %>&stdap/<%= mapdetails.id %>"
-                                <% if (modeNum === 8) { %>
-                                    selected
-                                <% } %>>Auto Pilot</option>
-                            <% } %>
-                        </select>
+                        </div>
                         <% if (mapdetails.mode === 0) { %>
                             <ul class="convert">
                                 <li class="std"
@@ -567,13 +578,15 @@
                             <% } %>><img src="/image/mods/so.png"></button>
                         </li>
                     <% } else if (modeNum === 3) { %>
-                        <% for (let i = 4; i <= 9; i++) { %>
-                            <li class="k<%= i %>">
-                                <button title="key <%= i %>keys" onclick="jump()"
+                        <% if (mapdetails.mode === 0) { %>
+                            <% for (let i = 4; i <= 9; i++) { %>
+                                <li class="k<%= i %>">
+                                    <button title="key <%= i %>keys" onclick="jump()"
                                     <% if (getMods(mods).includes(`k${i}`)) { %>
                                         class="selected"
                                     <% } %>><img src="/image/mods/k<%= i %>.png"></button>
-                            </li>
+                                </li>
+                            <% } %>
                         <% } %>
                         <li class="rd">
                             <button title="Random" onclick="jump()"

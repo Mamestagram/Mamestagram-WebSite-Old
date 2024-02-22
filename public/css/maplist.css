@@ -55,8 +55,11 @@ main {
 }
 
 .option .selection h1 {
+    font-family: "FontAwesome";
     font-size: 24px;
+    margin-bottom: 10px;
     text-align: center;
+    letter-spacing: 1px;
     text-shadow: 2px 2px 2px black;
 }
 
@@ -184,6 +187,7 @@ main {
 
 .info .title {
     font-size: 22px;
+    font-weight: bold;
     line-height: 32px;
     padding-left: 5px;
     white-space: nowrap;
@@ -194,6 +198,7 @@ main {
 .info .artist {
     font-size: 15px;
     padding-left: 5px;
+    margin: 3px 0;
 }
 
 .info .mapper {
@@ -201,6 +206,7 @@ main {
     font-size: 12px;
     padding-top: 3px;
     padding-left: 5px;
+    margin: 3px 0;
 }
 
 .info .mapper a {
@@ -231,7 +237,7 @@ main {
 
 .stats .diff {
     display: flex;
-    height: 60px;
+    height: 50px;
     width: 518px;
     margin-top: 3px;
     margin-left: 5px;
