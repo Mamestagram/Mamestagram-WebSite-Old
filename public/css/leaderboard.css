@@ -8,8 +8,7 @@ main {
 
 .special {
     color: #fdfdfd;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
     margin-left: 12.8%;
     margin-top: auto;
     margin-bottom: auto;
@@ -19,22 +18,22 @@ main {
 .special .menu-title {
     position: relative;
     background-color: #424242;
-    width: 110px;
-    padding: 3px;
+    width: 130px;
+    padding: 5px;
     border-radius: 5px;
     z-index: 10;
 }
 
 .special .menu-title i {
     font-size: 16px;
-    line-height: 20px;
+    line-height: 23px;
     float: right;
 }
 
 .special .dropdown {
     display: none;
     position: absolute;
-    width: 110px;
+    width: 130px;
     transition: transform 300ms;
     transform: translateY(-10px);
     z-index: 5;
@@ -42,7 +41,7 @@ main {
 
 .special .dropdown li {
     background-color: #262626;
-    padding: 3px;
+    padding: 5px;
     transition: background-color 100ms;
 }
 .special .dropdown li:hover {
@@ -106,6 +105,7 @@ main {
 /* ------------------------------------------------- */
 .ranking-table {
     font-size: 16px;
+        font-weight: bold;
     width: 100%;
     padding: 15px 12.8% 300px 12.8%;
     text-overflow: ellipsis;
@@ -275,7 +275,7 @@ main {
     }
 
     .special {
-        font-size: 12px;
+        font-size: 17px;
         margin-left: 5px;
     }
 
