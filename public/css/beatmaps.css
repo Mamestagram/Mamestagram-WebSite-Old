@@ -444,38 +444,41 @@ main {
 }
 
 .ranking .wrap .mods-selection {
-    display: flex;
     margin-top: 20px;
+}
+
+.ranking .wrap .mods-selection ul {
+    display: flex;
     justify-content: center;
 }
 
-.ranking .wrap .mods-selection li button {
+.ranking .wrap .mods-selection ul li button {
     opacity: 0.5;
     transition: opacity 100ms, transform 50ms;
 }
-.ranking .wrap .mods-selection li button:hover {
+.ranking .wrap .mods-selection ul li button:hover {
     opacity: 1;
 }
 
-.ranking .wrap .mods-selection .nm button {
+.ranking .wrap .mods-selection ul .nm button {
     font-size: 32px;
     height: 40px;
     width: 30px;
     text-align: center;
 }
 
-.ranking .wrap .mods-selection .nm button i {
+.ranking .wrap .mods-selection ul .nm button i {
     display: block;
     line-height: 40px;
 }
 
-.ranking .wrap .mods-selection li button img {
+.ranking .wrap .mods-selection ul li button img {
     height: 40px;
     width: 38px;
     object-fit: cover;
 }
 
-.ranking .wrap .mods-selection .selected {
+.ranking .wrap .mods-selection ul .selected {
     transform: scale(1.1) rotate(5deg);
     opacity: 1;
 }
@@ -654,4 +657,144 @@ main {
 .ranking .wrap .ranking-table .list .name a:hover {
     color: #b7d2df;
     text-decoration: underline;
+}
+
+@media (max-width: 1232px) {
+    body {
+        min-width: 768px;
+    }
+
+    main {
+        padding-top: 50px;
+        padding-bottom: 150px;
+    }
+
+    .map-info {
+        width: 700px;
+    }
+
+    .map-info .contents .diff {
+        max-height: 132px;
+        max-width: 396px;
+        margin: 15px;
+        overflow: scroll;
+    }
+
+    .map-info .contents .box {
+        margin-left: 15px;
+    }
+
+    .map-info .contents .box .diff-details {
+        padding: 0;
+    }
+
+    .map-info .contents .box .diff-details .diffname {
+        max-width: 260px;
+    }
+    
+    .map-info .contents .box .diff-details .mapper {
+        max-width: 380px;
+    }
+
+    .map-info .contents .box .map-name {
+        margin-top: 40px;
+    }
+
+    .map-info .contents .box .map-name .title {
+        max-width: 360px;
+    }
+    
+    .map-info .contents .box .map-name .artist {
+        max-width: 360px;
+    }
+
+    .map-info .contents .map-details .main span {
+        font-size: 16px;
+        padding: 10px 12px;
+    }
+
+    .map-info .contents .map-details {
+        width: 260px;
+        margin: 10px 0 0 auto;
+    }
+
+    .map-info .contents .map-details .sub {
+        height: 225px;
+    }
+
+    .map-info .contents .map-details .sub div .bar {
+        width: 90px;
+    }
+
+    .map-info .contents .map-details .sub div .title {
+        width: 110px;
+    }
+
+    .map-info .contents .map-details .sub .ps .title {
+        padding-bottom: 5px;
+    }
+
+    .map-info .contents .map-details .sub .ps .bar {
+        width: 210px;
+    }
+
+    .map-info .contents .map-details .sub .ps .frame {
+        width: 210px;
+    }
+
+    .ranking {
+        width: 700px;
+    }
+
+    .ranking .wrap {
+        width: 680px;
+    }
+
+    .ranking .wrap .mods-selection {
+        margin-top: 10px;
+    }
+
+    .ranking .wrap .mods-selection ul {
+        margin: 0 auto;
+        justify-content: unset;
+        overflow-x: scroll;
+    }
+
+    .ranking .wrap .user {
+        margin-top: 10px;
+    }
+
+    .ranking .wrap .user .tables .t1 {
+        width: 85%;
+    }
+
+    .ranking .wrap .user .tables .t2 {
+        width: 60%;
+    }
+
+    .ranking .wrap .user .tables table th {
+        font-size: 14px;
+    }
+
+    .ranking .wrap .user .tables table td {
+        font-size: 20px;
+    }
+
+    .ranking .wrap .user .tables table .n-amt {
+        display: none;
+    }
+
+    .ranking .wrap .ranking-table {
+        margin-top: 10px;
+    }
+
+    .ranking .wrap .ranking-table .n-amt {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
 }

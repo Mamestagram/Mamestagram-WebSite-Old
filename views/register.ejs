@@ -50,10 +50,6 @@
             color: #fdfdfd;
         }
 
-        .mobile .leaderboard span {
-            border-left: 3px solid #ff9966;
-        }
-
         .mobile li:hover {
             background-color: rgba(253, 152, 101, 0.3);
         }
@@ -101,6 +97,8 @@
                     <span class="errmsg">Keep it within 20 characters</span>
                 <% } else if (err.includes("dupname")) { %>
                     <span class="errmsg">This name is already in use</span>
+                <% } else if (err.includes("invalid")) { %>
+                    <span class="errmsg">Can't use this name</span>
                 <% } %>
                 <input type="text" name="username" value="<%= untxt %>" required>
             </div>

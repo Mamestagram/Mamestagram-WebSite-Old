@@ -9,6 +9,14 @@ $(function() {
     var $mods = $(".ranking .wrap .mods-selection li");
     let time = 0, stop = true;
 
+    setInterval(function() {
+        if ($("body").width() <= 1232) {
+            var amt = $(".ranking .wrap .mods-selection ul li").length - 1;
+            const wid = Math.min(540, 30 + 38 * amt);
+            $(".ranking .wrap .mods-selection ul").css("width", `${wid}px`);
+        }
+    });
+
     audioElement.volume = 0.5;
 
     setInterval(function() {
@@ -23,7 +31,6 @@ $(function() {
             $icon.removeClass("fa-solid fa-pause");
             $icon.addClass("fa-solid fa-play");
         }
-        console.log(time);
     }, 10);
 
     $play.addEventListener("click", function() {

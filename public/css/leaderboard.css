@@ -105,7 +105,7 @@ main {
 /* ------------------------------------------------- */
 .ranking-table {
     font-size: 16px;
-        font-weight: bold;
+    font-weight: bold;
     width: 100%;
     padding: 15px 12.8% 300px 12.8%;
     text-overflow: ellipsis;
@@ -192,6 +192,9 @@ main {
 .name {
     color: #fdfdfd;
     margin-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .text {
@@ -205,7 +208,6 @@ main {
     color: #fdfdfd;
     width: 80px;
     text-align: center;
-    margin-right: 0;
     margin-left: auto;
     filter: invert(30%);
     opacity: 0.95;
@@ -262,6 +264,10 @@ main {
 @media (max-width: 1232px) {
     .ss-title, .s-title, .a-title {
         display: none;
+    }
+
+    .acc {
+        margin: 0;
     }
 
     .ss, .s, .a {
@@ -343,8 +349,7 @@ main {
     }
 
     .ranking {
-        width: 8%;
-        margin-left: 3px;
+        width: 9.5%;
     }
 
     .flag-icon {
