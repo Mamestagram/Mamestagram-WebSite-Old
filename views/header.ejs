@@ -27,6 +27,9 @@
             <li class="login"><a href="/login">Sign in</a></li>
         <% } %>
     </ul>
+    <button class="search-mobile">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
     <i class="fa-solid fa-chevron-down arrow down"></i>
 </header>
 <ul class="mobile">
@@ -73,11 +76,26 @@
         }
     </script>
 <% } %>
-<form class="search-form" action="/search" method="post">
+<form class="search-form" id="search" action="/search" method="post">
     <div class="searchbox">
         <div class="txtbox">
-            <input type="search" placeholder="Search users or maps" name="value">
+            <input type="search" placeholder="Type to search" oninput="inputText()" name="value">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
     </div>
+    <script>
+        let inputEnd;
+        function inputText() {
+            if (inputEnd) {
+                clearTimeout(inputEnd);
+            }
+            inputEnd = setTimeout(search, 1000);
+        }
+
+        function search() {
+            if ($("#search input").val().length > 0) {
+                document.getElementById("search").submit();
+            }
+        }
+    </script>
 </form>

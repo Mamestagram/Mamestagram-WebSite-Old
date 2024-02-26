@@ -1,0 +1,215 @@
+main {
+    background-color: #18171c;
+    color: #fdfdfd;
+    padding-top: 120px;
+    padding-bottom: 300px;
+}
+/* ------------------------------------------------- */
+.header-title {
+    background-color: #221f2e;
+    font-size: 24px;
+    font-weight: bold;
+    width: 1000px;
+    padding: 5px;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.search-header {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.search-header .searchbox {
+    background-color: #302e38;
+    padding: 20px 30px;
+}
+
+.search-header .searchbox .txtbox {
+    background-color: #24222a;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.search-header .searchbox .txtbox input {
+    font-size: 20px;
+    width: 890px;
+    padding-bottom: 5px;
+    outline: none;
+}
+
+.search-header .searchbox .txtbox i {
+    font-size: 20px;
+    line-height: 50px;
+    width: 30px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.page {
+    display: flex;
+    background-color: #24222a;
+    height: 40px;
+    width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.page p {
+    color: #fdfdfd;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.page .pagearrow i {
+    color: #fdfdfd;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0 20px;
+    filter: invert(50%);
+    opacity: 0.95;
+}
+.page .pagearrow i:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
+.list {
+    background-color: #302e38;
+    min-height: 300px;
+    width: 1000px;
+    padding: 10px 0;
+    margin: 0 auto;
+    border-radius: 0 0 10px 10px;
+}
+
+.list h2 {
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 400px;
+    text-align: center;
+}
+
+.list .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5px;
+}
+
+.list .wrap .box {
+    display: flex;
+    background-color: #444453;
+    width: 320px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: outline 100ms, transform 300ms;
+}
+.list .wrap .box:hover {
+    outline: 2px solid #44aadd;
+    outline-offset: -2px;
+    transform: scale(1.025);
+}
+
+.list .wrap .box img {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.list .wrap .box div {
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.list .wrap .box div i {
+    display: block;
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+.list .wrap .box div p {
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+@media (max-width: 1232px) {
+    main {
+        padding-top: 90px;
+        padding-bottom: 200px;
+    }
+
+    .header-title {
+        width: 700px;
+    }
+    
+    .search-header {
+        width: 700px;
+    }
+
+    .search-header .searchbox .txtbox input {
+        width: 590px;
+    }
+
+    .page {
+        width: 700px;
+    }
+
+    .list {
+        min-height: 300px;
+        width: 700px;
+    }
+
+    .list .wrap {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    main {
+        padding-top: 50px;
+        padding-bottom: 150px;
+    }
+
+    .header-title {
+        width: 350px;
+    }
+    
+    .search-header {
+        width: 350px;
+    }
+
+    .search-header .searchbox {
+        padding: 20px 15px;
+    }
+
+    .search-header .searchbox .txtbox input {
+        font-size: 18px;
+        width: 270px;
+    }
+
+    .page {
+        width: 350px;
+    }
+
+    .list {
+        min-height: 300px;
+        width: 350px;
+    }
+
+    .list .wrap {
+        margin-left: 10px;
+    }
+
+    .list .wrap .box div i {
+        font-size: 16px;
+    }
+    
+    .list .wrap .box div p {
+        font-size: 20px;
+    }
+}

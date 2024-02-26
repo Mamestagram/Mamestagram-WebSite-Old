@@ -77,7 +77,7 @@ $(function() {
         }
 
         //検索ボタンクリック時
-        if (!$(e.target).closest("header .pc .search").length && !$(e.target).closest(".search-form .searchbox").length) {
+        if (!$(e.target).closest("header .pc .search, header .search-mobile").length && !$(e.target).closest(".search-form .searchbox").length) {
             $search.removeClass("show").fadeOut(200);
         }
         else if ($(e.target).closest($search).length) {

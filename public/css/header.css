@@ -158,6 +158,20 @@ header .pc .avatar {
     margin-right: 85px;
 }
 
+header .search-mobile {
+    display: none;
+    color: #fdfdfd;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+}
+
 header .arrow {
     display: none;
     color: #fdfdfd;
@@ -326,7 +340,7 @@ header .arrow {
         display: none;
     }
 
-    header .arrow {
+    header .search-mobile, header .arrow {
         display: block;
     }
 
@@ -346,5 +360,20 @@ header .arrow {
 
     .pagename {
         display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
+    /* ------------------------------------------------- */
+    .search-form .searchbox {
+        padding: 10px 20px;
+    }
+
+    .search-form .searchbox .txtbox input {
+        font-size: 20px;
+        width: 300px;
     }
 }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Search | Mamestagram</title>
+        <meta name="robots" content="noindex">
+        <%- include("link") %>
+        <link rel="stylesheet" href="/css/search.css">
+        <style>
+            body::-webkit-scrollbar-track {
+                background-color: #fdfdfd;
+            }
+            body::-webkit-scrollbar-thumb {
+                background-color: #2e293d;
+            }
+
+            header {
+                background-color: transparent;
+            }
+
+            header .pc .search {
+                color: #fdfdfd;
+            }
+
+            .animated {
+                background-color: #5639ac;
+            }
+
+            .animated .pc li:hover {
+                background-color: #8c66ff;
+            }
+
+            .animated .pc .search {
+                background-color: #8c66ff;
+            }
+
+            @media (max-width: 1232px) {
+                header {
+                    background-color: #5639ac;
+                }
+            }
+
+            .mobile {
+                background-color: #24222a;
+            }
+
+            .mobile li:hover {
+                background-color: rgba(140, 102, 255, 0.3);
+            }
+
+            .mobile .register, .mobile .login, .mobile .avatar {
+                background-color: #2e293d;
+                color: #a394be;
+            }
+            .mobile .register:hover, .mobile .login:hover, .mobile .avatar:hover {
+                background-color: #2e293d;
+            }
+
+            .link-form a, .link-form button {
+                background-color: #5639ac;
+            }
+            .link-form a:hover, .link-form button:hover {
+                background-color: #6f55bc;
+            }
+
+            .search-form {
+                display: none;
+            }
+
+            .search-form .searchbox {
+                background-color: #3d3946;
+            }
+
+            .search-form .searchbox .txtbox {
+                border-bottom: 2px solid #615c70;
+            }
+        </style>
+    </head>
+    <body>
+    <%- include("header") %>
+    <main>
+        <h1 class="header-title">Results</h1>
+        <form class="search-header" id="search-user" action="/search" method="post">
+            <div class="searchbox">
+                <div class="txtbox">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" placeholder="Type to search" oninput="inputUsername()" name="value" value="<%= text %>">
+                </div>
+            </div>
+            <script>
+                let endType;
+                function inputUsername() {
+                    console.log("a")
+                    if (endType) {
+                        clearTimeout(endType);
+                    }
+                    endType = setTimeout(searchUser, 1000);
+                }
+        
+                function searchUser() {
+                    if ($("#search-user input").val().length > 0) {
+                        document.getElementById("search-user").submit();
+                    }
+                }
+            </script>
+        </form>
+        <div class="page">
+            <% if (page !== 1) { %>
+                <a href="/search&query=<%= text %>&page=<%= page - 1 %>" class="pagearrow">
+                    <i class="fa-solid fa-backward"></i>
+                </a>
+            <% } %>
+            <p>page : <%= page %></p>
+            <% if (nextpage.length !== 0) { %>
+                <a href="/search&query=<%= text %>&page=<%= page + 1 %>" class="pagearrow">
+                    <i class="fa-solid fa-forward"></i>
+                </a>
+            <% } %>
+        </div>
+        <div class="list">
+            <% if (users.length <= 0) { %>
+                <h2 class="nothing">Nothing found</h2>
+            <% } else { %>
+                <div class="wrap">
+                    <% users.forEach((user) => { %>
+                        <a class="box" href="/profile/<%= user.id %>/std">
+                            <img src="https://a.mamesosu.net/<%= user.id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                            <div>
+                                <i title="<%= user.country %>" class="flag-icon flag-icon-<%= user.country %>"></i>
+                                <p><%= user.name %></p>
+                            </div>
+                        </a>
+                    <% }); %>
+                </div>
+            <% } %>
+        </div>
+    </main>
+    <%- include("footer") %>
+    </body>
+</html>

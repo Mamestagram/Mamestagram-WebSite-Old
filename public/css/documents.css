@@ -5,33 +5,17 @@ html {
 main {
     background-color: #1c1b17;
     color: #fdfdfd;
+    padding-top: 100px;
     padding-bottom: 250px;
     text-align: center;
-}
-
-main .logoimage {
-    background-color: rgba(253, 253, 253, 0.05);
-    height: 310px;
-    padding: 10px;
-    margin-top: 50px;
-    border-radius: 155px;
-}
-
-main .welcome-title {
-    font-family: "Gloria Hallelujah";
-    font-size: 60px;
-}
-
-main .subtitle {
-    font-size: 22px;
-    font-weight: bold;
-    padding-top: 35px;
 }
 
 main .menu {
     display: flex;
     background-color: #2a2822;
-    margin: 100px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
     justify-content: center;
     border-radius: 10px;
 }
@@ -400,7 +384,11 @@ section {
     }
 }
 
-@media(max-width: 1224px) {
+@media(max-width: 1232px) {
+    main {
+        padding-top: 50px;
+    }
+
     main .top {
         position: relative;
         top: 40px;
@@ -487,6 +475,10 @@ section {
         min-width: 348px;
     }
 
+    main {
+        padding-top: 30px;
+    }
+
     main .logoimage {
         height: 180px;
     }
@@ -509,7 +501,7 @@ section {
     main .menu {
         display: block;
         padding: 1px 5px;
-        margin: 80px auto;
+        margin: 30px auto;
     }
 
     main .menu.menu-en, main .menu.menu-ja {
