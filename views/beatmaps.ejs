@@ -299,11 +299,11 @@
                                     </a>
                                 </span>
                                 <div class="map-name">
-                                    <span class="title" style="font-size: 28px;"><%= mapdetails.title %></span>
+                                    <span class="title"><%= mapdetails.title %></span>
                                         <a href="https://osu.ppy.sh/beatmapsets/<%= setid %>#<%= getMode(mapdetails.mode) %>/<%= mapid %>" title="Bancho link" target="_blank" rel="noopener noreferrer">
                                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                         </a><br>
-                                    <span class="artist" style="font-size: 22px;"><%= mapdetails.artist %></span>
+                                    <span class="artist"><%= mapdetails.artist %></span>
                                 </div>
                                 <div class="link">
                                     <audio id="preview">
@@ -388,7 +388,7 @@
         <div class="ranking">
             <div class="wrap">
                 <div class="flex">
-                    <h1>Score Ranking</h1>
+                    <h1><i class="fa-solid fa-trophy"></i>Score Ranking</h1>
                     <div class="selection">
                         <div class="special">
                             <% if (modeNum !== 3) { %>

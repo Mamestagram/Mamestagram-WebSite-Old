@@ -168,6 +168,7 @@ main {
 }
 
 .map-info .contents .box .map-name .title {
+    font-size: 32px;
     font-weight: bold;
     max-width: 600px;
     line-height: 43px;
@@ -190,7 +191,7 @@ main {
 
 .map-info .contents .box .map-name .artist {
     clear: both;
-    font-weight: bold;
+    font-size: 22px;
     max-width: 600px;
     line-height: 32px;
     overflow: hidden;
@@ -371,6 +372,10 @@ main {
 .ranking .wrap .flex h1 {
     font-size: 24px;
     font-weight: bold;
+}
+
+.ranking h1 i {
+    padding-right: 5px;
 }
 
 .ranking .wrap .flex .selection {
@@ -590,6 +595,8 @@ main {
 }
 
 .ranking .wrap .ranking-table .list {
+    background-color: #394246;
+    height: 40px;
     text-align: center;
     transition: background-color 100ms;
 }
@@ -611,10 +618,27 @@ main {
 
 .ranking .wrap .ranking-table .rank {
     font-weight: bold;
+    padding-left: 10px;
+    border-radius: 10px 0 0 10px;
 }
 
 .ranking .wrap .ranking-table .grade img {
     height: 35px;
+}
+
+.ranking .wrap .ranking-table .list .name {
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ranking .wrap .ranking-table .list .name a {
+    transition: color 100ms;
+}
+.ranking .wrap .ranking-table .list .name a:hover {
+    color: #b7d2df;
+    text-decoration: underline;
 }
 
 .ranking .wrap .ranking-table .country i {
@@ -632,31 +656,6 @@ main {
 
 .ranking .wrap .ranking-table .mods img {
     height: 30px;
-}
-
-.ranking .wrap .ranking-table .list {
-    background-color: #394246;
-    height: 40px;
-}
-
-.ranking .wrap .ranking-table .list .rank {
-    padding-left: 10px;
-    border-radius: 10px 0 0 10px;
-}
-
-.ranking .wrap .ranking-table .list .name {
-    max-width: 150px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.ranking .wrap .ranking-table .list .name a {
-    transition: color 100ms;
-}
-.ranking .wrap .ranking-table .list .name a:hover {
-    color: #b7d2df;
-    text-decoration: underline;
 }
 
 @media (max-width: 1232px) {
@@ -806,6 +805,14 @@ main {
         width: 370px;
     }
 
+    .map-info h1 {
+        font-size: 20px;
+    }
+    
+    .map-info h1 i {
+        font-size: 23px;
+    }
+
     .map-info .contents .wrap {
         display: block;
     }
@@ -820,6 +827,7 @@ main {
     }
 
     .map-info .contents .map-status {
+        font-size: 17px;
         margin: auto 10px auto auto;
     }
 
@@ -827,11 +835,17 @@ main {
         margin-left: 10px;
     }
 
+    .map-info .contents .box .diff-details {
+        font-size: 16px;
+        padding: 0;
+    }
+
     .map-info .contents .box .diff-details .diffname {
         max-width: 236px;
     }
     
     .map-info .contents .box .diff-details .mapper {
+        font-size: 13px;
         max-width: 350px;
     }
 
@@ -844,12 +858,17 @@ main {
     }
     
     .map-info .contents .box .map-name .artist {
+        font-size: 17px;
         max-width: 350px;
     }
 
     .map-info .contents .box .link {
         margin-top: 60px;
         margin-bottom: 20px;
+    }
+
+    .map-info .contents .box .link a {
+        font-size: 15px;
     }
 
     .map-info .contents .map-details {
@@ -861,6 +880,7 @@ main {
     }
 
     .map-info .contents .map-details .sub div .bar {
+        font-size: 13px;
         width: 200px;
     }
 
@@ -882,7 +902,7 @@ main {
     }
 
     .ranking .wrap .flex h1 {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -965,12 +985,45 @@ main {
         width: 670px;
     }
 
+    .ranking .wrap .user .rank {
+        font-size: 20px;
+    }
+    
+    .ranking .wrap .user .grade {
+        height: 40px;
+    }
+    
+    .ranking .wrap .user .name a {
+        font-size: 22px;
+    }
+
+    .ranking .wrap .user .time {
+        font-size: 12px;
+    }
+    
+    .ranking .wrap .user .tables table th {
+        font-size: 12px;
+    }
+    
+    .ranking .wrap .user .tables table td {
+        font-size: 18px;
+    }
+
     .ranking .wrap .ranking-list {
         width: 350px;
         overflow: scroll;
     }
 
     .ranking .wrap .ranking-table {
+        font-size: 14px;
         width: 670px;
+    }
+
+    .ranking .wrap .ranking-table .list {
+        height: 35px;
+    }
+    
+    .ranking .wrap .ranking-table .grade img {
+        height: 30px;
     }
 }
