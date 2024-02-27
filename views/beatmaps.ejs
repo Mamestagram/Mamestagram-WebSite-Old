@@ -252,7 +252,7 @@
             <div class="background">
                 <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?" alt="">
                 <div class="contents">
-                    <div class="wrap">
+                    <div class="wrap flex-mobile">
                         <div class="diff">
                             <% mapinfo.forEach((map) => { %>
                                 <a href="/beatmaps/<%= map.set_id %>/<%= map.id %>" title="★<%= map.diff.toFixed(2) %> <%= map.version %>"
@@ -604,7 +604,7 @@
                     <h2 class="nothing">No players available</h2>
                 <% } else { %>
                     <div class="user first">
-                        <div style="display: flex;">
+                        <div class="flex" style="display: flex;">
                             <div>
                                 <p class="rank">#<%= rankings[0].ranking %></p>
                                 <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png">
@@ -747,7 +747,7 @@
                         } %>
                         <% if (index !== 0) { %>
                             <div class="user">
-                                <div style="display: flex;">
+                                <div class="flex" style="display: flex;">
                                     <div>
                                         <p class="rank">#<%= rankings[index].ranking %></p>
                                         <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png">
@@ -882,135 +882,137 @@
                             </div>
                         <% } %>
                     <% } %>
-                    <table class="ranking-table">
-                        <tr>
-                            <!-- rank -->
-                            <th></th>
-                            <!-- grade -->
-                            <th></th>
-                            <th>Score</th>
-                            <th>Accuracy</th>
-                            <!-- country -->
-                            <th></th>
-                            <th style="text-align: left;">Player</th>
-                            <th>Combo</th>
-                            <% if (mapdetails.mode % 4 === 0 && modeNum % 4 == 0) { %>
-                                <th class="n-amt">300</th>
-                                <th class="n-amt">100</th>
-                                <th class="n-amt">50</th>
-                            <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 == 1) { %>
-                                <th class="n-amt">Great</th>
-                                <th class="n-amt">Good</th>
-                            <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 == 2) { %>
-                                <th class="n-amt">Fruits</th>
-                                <th class="n-amt">Ticks</th>
-                                <th class="n-amt">Drops</th>
-                            <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 == 3) { %>
-                                <th class="n-amt">Merv</th>
-                                <th class="n-amt">Perf</th>
-                                <th class="n-amt">Great</th>
-                                <th class="n-amt">Good</th>
-                                <th class="n-amt">Bad</th>
-                            <% } %>
-                            <th class="n-amt">Miss</th>
-                            <th>PP</th>
-                            <th>Time</th>
-                            <th>Mods</th>
-                        </tr>
-                        <% let n = 0 %>
-                        <% for (let data of rankings) { %>
-                            <tr class="list">
-                                <td class="rank">#<%= data.ranking %></td>
-                                <td class="grade"><img src="/image/grade/<%= data.grade %>.png"></td>
-                                <td><%= data.score.toLocaleString() %></td>
-                                <td
-                                <% if (data.acc === 100) { %>
-                                    style="color: #aef665;"
-                                <% } %>><%= data.acc.toFixed(2) %>%</td>
-                                <td class="country"><i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i></td>
-                                <td class="name" style="text-align: left;">
-                                    <a href="/profile/<%= data.userid %>/<%= getModeName(mapdetails.mode) %>">
-                                        <%= data.name %>
-                                    </a>
-                                </td>
-                                <td
-                                <% if (data.max_combo === mapdetails.max_combo) { %>
-                                    style="color: #aef665;"
-                                <% } %>><%= data.max_combo.toLocaleString() %>x</td>
-                                <% if (mapdetails.mode % 4 === 0 && modeNum % 4 === 0) { %>
-                                    <td class="n-amt"
-                                    <% if (data.n300 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n300.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n100 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n100.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n50 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n50.toLocaleString() %></td>
-                                <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
-                                    <td class="n-amt"
-                                    <% if (data.n300 + data.ngeki === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= (data.n300 + data.ngeki).toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n100 + data.nkatu === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= (data.n100 + data.nkatu).toLocaleString() %></td>
-                                <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 === 2) { %>
-                                    <td class="n-amt"
-                                    <% if (data.n300 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n300.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n100 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n100.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n50 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n50.toLocaleString() %>/<%= (data.n50 + data.nkatu).toLocaleString() %></td>
-                                <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
-                                    <td class="n-amt"
-                                    <% if (data.ngeki === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.ngeki.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n300 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n300.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.nkatu === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.nkatu.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n100 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n100.toLocaleString() %></td>
-                                    <td class="n-amt"
-                                    <% if (data.n50 === 0) { %>
-                                        style="color: #7e8487;"
-                                    <% } %>><%= data.n50.toLocaleString() %></td>
+                    <div class="ranking-list">
+                        <table class="ranking-table">
+                            <tr>
+                                <!-- rank -->
+                                <th></th>
+                                <!-- grade -->
+                                <th></th>
+                                <th>Score</th>
+                                <th>Accuracy</th>
+                                <!-- country -->
+                                <th></th>
+                                <th style="text-align: left;">Player</th>
+                                <th>Combo</th>
+                                <% if (mapdetails.mode % 4 === 0 && modeNum % 4 == 0) { %>
+                                    <th class="n-amt">300</th>
+                                    <th class="n-amt">100</th>
+                                    <th class="n-amt">50</th>
+                                <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 == 1) { %>
+                                    <th class="n-amt">Great</th>
+                                    <th class="n-amt">Good</th>
+                                <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 == 2) { %>
+                                    <th class="n-amt">Fruits</th>
+                                    <th class="n-amt">Ticks</th>
+                                    <th class="n-amt">Drops</th>
+                                <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 == 3) { %>
+                                    <th class="n-amt">Merv</th>
+                                    <th class="n-amt">Perf</th>
+                                    <th class="n-amt">Great</th>
+                                    <th class="n-amt">Good</th>
+                                    <th class="n-amt">Bad</th>
                                 <% } %>
-                                <td class="n-amt"
-                                <% if (data.nmiss === 0) { %>
-                                    style="color: #7e8487;"
-                                <% } %>><%= data.nmiss.toLocaleString() %></td>
-                                <td><%= Math.round(data.pp).toLocaleString() %></td>
-                                <td><%= getPlayTime(data.year, data.month, data.week, data.day, data.hour, "brev") %></td>
-                                <td class="mods">
-                                    <div class="image">
-                                        <% getMods(data.mods).forEach((mod) => { %>
-                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
-                                        <% }); %>
-                                    </div>
-                                </td>
+                                <th class="n-amt">Miss</th>
+                                <th>PP</th>
+                                <th>Time</th>
+                                <th>Mods</th>
                             </tr>
-                            <% if (++n == 50) { break; } %>
-                        <% } %>
-                    </table>
+                            <% let n = 0 %>
+                            <% for (let data of rankings) { %>
+                                <tr class="list">
+                                    <td class="rank">#<%= data.ranking %></td>
+                                    <td class="grade"><img src="/image/grade/<%= data.grade %>.png"></td>
+                                    <td><%= data.score.toLocaleString() %></td>
+                                    <td
+                                    <% if (data.acc === 100) { %>
+                                        style="color: #aef665;"
+                                    <% } %>><%= data.acc.toFixed(2) %>%</td>
+                                    <td class="country"><i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i></td>
+                                    <td class="name" style="text-align: left;">
+                                        <a href="/profile/<%= data.userid %>/<%= getModeName(mapdetails.mode) %>">
+                                            <%= data.name %>
+                                        </a>
+                                    </td>
+                                    <td
+                                    <% if (data.max_combo === mapdetails.max_combo) { %>
+                                        style="color: #aef665;"
+                                    <% } %>><%= data.max_combo.toLocaleString() %>x</td>
+                                    <% if (mapdetails.mode % 4 === 0 && modeNum % 4 === 0) { %>
+                                        <td class="n-amt"
+                                        <% if (data.n300 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n300.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n100 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n100.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n50 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n50.toLocaleString() %></td>
+                                    <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
+                                        <td class="n-amt"
+                                        <% if (data.n300 + data.ngeki === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= (data.n300 + data.ngeki).toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n100 + data.nkatu === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= (data.n100 + data.nkatu).toLocaleString() %></td>
+                                    <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 === 2) { %>
+                                        <td class="n-amt"
+                                        <% if (data.n300 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n300.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n100 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n100.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n50 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n50.toLocaleString() %>/<%= (data.n50 + data.nkatu).toLocaleString() %></td>
+                                    <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
+                                        <td class="n-amt"
+                                        <% if (data.ngeki === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.ngeki.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n300 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n300.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.nkatu === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.nkatu.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n100 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n100.toLocaleString() %></td>
+                                        <td class="n-amt"
+                                        <% if (data.n50 === 0) { %>
+                                            style="color: #7e8487;"
+                                        <% } %>><%= data.n50.toLocaleString() %></td>
+                                    <% } %>
+                                    <td class="n-amt"
+                                    <% if (data.nmiss === 0) { %>
+                                        style="color: #7e8487;"
+                                    <% } %>><%= data.nmiss.toLocaleString() %></td>
+                                    <td><%= Math.round(data.pp).toLocaleString() %></td>
+                                    <td><%= getPlayTime(data.year, data.month, data.week, data.day, data.hour, "brev") %></td>
+                                    <td class="mods">
+                                        <div class="image">
+                                            <% getMods(data.mods).forEach((mod) => { %>
+                                                <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                            <% }); %>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% if (++n == 50) { break; } %>
+                            <% } %>
+                        </table>
+                    </div>
                 <% } %>
             </div>
         </div>

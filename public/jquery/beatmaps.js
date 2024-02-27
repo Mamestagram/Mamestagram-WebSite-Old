@@ -10,10 +10,13 @@ $(function() {
     let time = 0, stop = true;
 
     setInterval(function() {
-        if ($("body").width() <= 1232) {
+        if ($("body").width() <= 1232 && $("body").width() > 767) {
             var amt = $(".ranking .wrap .mods-selection ul li").length - 1;
             const wid = Math.min(540, 30 + 38 * amt);
             $(".ranking .wrap .mods-selection ul").css("width", `${wid}px`);
+        }
+        else {
+            $(".ranking .wrap .mods-selection ul").css("width", "");
         }
     });
 

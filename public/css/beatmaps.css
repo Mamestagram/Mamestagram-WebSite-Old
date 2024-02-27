@@ -708,14 +708,14 @@ main {
         max-width: 360px;
     }
 
-    .map-info .contents .map-details .main span {
-        font-size: 16px;
-        padding: 10px 12px;
-    }
-
     .map-info .contents .map-details {
         width: 260px;
         margin: 10px 0 0 auto;
+    }
+
+    .map-info .contents .map-details .main span {
+        font-size: 16px;
+        padding: 10px 12px;
     }
 
     .map-info .contents .map-details .sub {
@@ -796,5 +796,181 @@ main {
 @media (max-width: 767px) {
     body {
         min-width: 348px;
+    }
+
+    main {
+        padding-bottom: 100px;
+    }
+
+    .map-info {
+        width: 370px;
+    }
+
+    .map-info .contents .wrap {
+        display: block;
+    }
+
+    .map-info .contents .flex-mobile {
+        display: flex;
+    }
+
+    .map-info .contents .diff {
+        max-width: 220px;
+        margin: 15px 10px;
+    }
+
+    .map-info .contents .map-status {
+        margin: auto 10px auto auto;
+    }
+
+    .map-info .contents .box {
+        margin-left: 10px;
+    }
+
+    .map-info .contents .box .diff-details .diffname {
+        max-width: 236px;
+    }
+    
+    .map-info .contents .box .diff-details .mapper {
+        max-width: 350px;
+    }
+
+    .map-info .contents .box .map-name {
+        margin-top: 20px;
+    }
+
+    .map-info .contents .box .map-name .title {
+        max-width: 320px;
+    }
+    
+    .map-info .contents .box .map-name .artist {
+        max-width: 350px;
+    }
+
+    .map-info .contents .box .link {
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+
+    .map-info .contents .map-details {
+        width: 370px;
+    }
+
+    .map-info .contents .map-details .main span {
+        padding: 10px 25px;
+    }
+
+    .map-info .contents .map-details .sub div .bar {
+        width: 200px;
+    }
+
+    .map-info .contents .map-details .sub .ps .bar {
+        width: 300px;
+    }
+
+    .map-info .contents .map-details .sub .ps .frame {
+        width: 300px;
+    }
+
+    .ranking {
+        width: 370px;
+        padding-top: 20px;
+    }
+
+    .ranking .wrap {
+        width: 360px;
+    }
+
+    .ranking .wrap .flex h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .ranking .wrap .flex .selection {
+        display: block;
+        margin-left: auto;
+    }
+
+    .ranking .wrap .flex .selection .special {
+        display: flex;
+        font-size: 16px;
+        margin-right: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        justify-content: flex-end;
+    }
+    
+    .ranking .wrap .flex .selection .special .menu-title {
+        position: relative;
+        background-color: #394246;
+        width: 110px;
+        padding: 5px;
+        border-radius: 5px;
+        z-index: 10;
+    }
+    
+    .ranking .wrap .flex .selection .special .menu-title i {
+        font-size: 12px;
+        line-height: 20px;
+        float: right;
+    }
+
+    .ranking .wrap .flex .selection .special .dropdown {
+        display: none;
+        position: absolute;
+        width: 110px;
+        transition: transform 300ms;
+        transform: translateY(0);
+        z-index: 5;
+    }
+
+    .ranking .wrap .flex .selection .special .dropdown.show {
+        transform: translateY(30px);
+    }
+
+    .ranking .wrap .flex .selection .convert {
+        margin-top: 10px;
+        justify-content: flex-end;
+    }
+    
+    .ranking .wrap .flex .selection .convert li {
+        font-size: 32px;
+    }
+
+    .ranking .wrap .mods-selection ul .nm button {
+        font-size: 30px;
+        height: 37px;
+        width: 27px;
+    }
+    
+    .ranking .wrap .mods-selection ul .nm button i {
+        line-height: 37px;
+    }
+    
+    .ranking .wrap .mods-selection ul li button img {
+        height: 37px;
+        width: 35px;
+    }
+
+    .ranking .wrap h2 {
+        font-size: 26px;
+    }
+
+    .ranking .wrap .user {
+        width: 350px;
+        overflow: scroll;
+    }
+
+    .ranking .wrap .user .flex {
+        width: 670px;
+    }
+
+    .ranking .wrap .ranking-list {
+        width: 350px;
+        overflow: scroll;
+    }
+
+    .ranking .wrap .ranking-table {
+        width: 670px;
     }
 }

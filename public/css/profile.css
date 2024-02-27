@@ -22,7 +22,7 @@ main .player-banner div, main .player-banner ul {
 }
 
 main .player-banner .username .avatar {
-    border-radius: 20px;
+    border-radius: 10px;
     height: 100px;
     width: 100px;
     margin: 10px;
@@ -440,6 +440,10 @@ main .recentplays div .data:hover, main .recentplays div .data-passed:hover {
     background-color: #5b5b6f;
 }
 
+main .box div .data-mobile, main .box div .data-mobile-passed {
+    display: none;
+}
+
 main .recentplays div .grade {
     height: 45px;
     margin: 5px;
@@ -567,27 +571,23 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
     main .box {
         margin: 30px 5px;
-        overflow: scroll;
     }
 
-    main .box div .nothing {
+    main .box div .nothing, main .box div .nothing-passed {
         font-size: 26px;
     }
 
-    main .box div .data {
+    main .box div .data, main .box div .data-passed {
         display: none;
     }
 
-    main .box div .data-mobile {
+    main .box div .data-mobile, main .box div .data-mobile-passed {
         display: block;
-    }
-
-    main .show-more {
-        display: none;
     }
     /* ------------------------------------------------- */
     main .player-banner .username .avatar {
         height: 60px;
+        width: 60px;
         margin: 5px;
     }
 
@@ -676,10 +676,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin-right: 5px;
     }
     /* ------------------------------------------------- */
-    main .bestpp {
-        max-height: 450px;
-    }
-
     main .bestpp h1 {
         font-size: 20px;
     }
@@ -766,8 +762,8 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
     /* ------------------------------------------------- */
     main .mostplays {
-        max-height: 450px;
-        overflow: scroll;
+        min-height: 328px;
+        max-height: 328px;
     }
 
     main .mostplays h1 {
@@ -855,10 +851,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin: auto 3px;
     }
     /* ------------------------------------------------- */
-    main .recentplays {
-        max-height: 450px;
-    }
-
     main .recentplays h1 {
         font-size: 20px;
     }
