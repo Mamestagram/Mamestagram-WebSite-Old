@@ -27,14 +27,14 @@ main {
 }
 
 .rename .username {
-    padding: 20px 40px;
+    margin: 20px auto;
 }
 
 .box .username span {
-    display: flex;
+    display: block;
     color: #fdfdfd;
     padding: 20px 0;
-    justify-content: center;
+    text-align: center;
 }
 
 .box .errmsg {
@@ -52,6 +52,19 @@ main {
     border-radius: 5px;
     box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
     outline: none;
+}
+
+.rename .checkbox {
+    margin: 0 auto;
+    color: #8b8b8b;
+    font-size: 16px;
+}
+
+.rename .checkbox input {
+    accent-color: #222222;
+    height: 16px;
+    width: 16px;
+    border-radius: 5px;
 }
 
 .box button {
@@ -112,10 +125,6 @@ main {
     .box .title {
         font-size: 26px;
         padding: 20px 125px;
-    }
-
-    .box .username, .password {
-        padding: 10px 20px;
     }
 
     .box .errmsg {

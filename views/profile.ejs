@@ -160,13 +160,18 @@
                         <img class="badge verified-hover" src="/image/badge/verified-hover.png" alt="" title="verified✓">
                     <% } %>
                     -->
-                    <h1><%= info.name %></h1>
-                    <% if (id === locals.userid) { %>
-                        <a href="/edit" class="edit">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                    <% } %>
-                    <i class="flag-icon flag-icon-<%= info.country %>"></i>
+                    <div>
+                        <h1><%= info.name %></h1>
+                        <% if (id === locals.userid) { %>
+                            <a href="/edit" class="edit">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        <% } %>
+                        <i class="flag-icon flag-icon-<%= info.country %>"></i>
+                        <% if (info.show_pName === 1 && info.past_name !== null) { %>
+                            <p>aka: <%= info.past_name %></p>
+                        <% } %>
+                    </div>
                 </div>
                 <div class="selection">
                     <ul class="special">

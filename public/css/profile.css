@@ -41,26 +41,36 @@ main .player-banner .username .verified-hover {
     transition: 100ms;
 }
 
-main .player-banner .username h1 {
-    font-size: 40px;
-    font-weight: bold;
-    padding: 0 5px;
+main .player-banner .username div {
+    display: block;
     margin: auto 0;
 }
 
-main .player-banner .edit {
+main .player-banner .username h1 {
+    font-size: 40px;
+    font-weight: bold;
+    padding: 5px;
+    margin: auto 0;
+    float: left;
+}
+
+main .player-banner .username .edit {
     font-size: 20px;
     margin: auto 0;
     opacity: 0.7;
 }
-main .player-banner .edit:hover {
+main .player-banner .username .edit:hover {
     opacity: 1;
 }
 
-main .player-banner .flag-icon {
+main .player-banner .username .flag-icon {
     font-size: 22px;
-    margin: 5px;
-    border-radius: 10px;
+    margin: 18px 5px;
+    border-radius: 2px;
+}
+
+main .player-banner .username p {
+    color: #ababab;
 }
 
 main .player-banner .selection ul li {
@@ -598,27 +608,40 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
     main .player-banner .username h1 {
         font-size: 26px;
+        max-width: 230px;
         padding: 0 3px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
-    main .player-banner .edit {
-        font-size: 14px;
-    }
-
-    main .player-banner .flag-icon {
+    main .player-banner .username .edit {
         font-size: 16px;
-        margin: 3px;
+        line-height: 30px;
+    }
+
+    main .player-banner .username .flag-icon {
+        font-size: 16px;
+        margin: 7px 3px;
     }
 
     main .player-banner .selection .special li {
         font-size: 12px;
-        padding: 5px;
+        line-height: 24px;
+        padding: 0;
         margin: 5px;
+    }
+
+    main .player-banner .username p {
+        font-size: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     main .player-banner .selection .mode li a i {
         font-size: 30px;
-        padding: 0 5px;
+        padding: 0 4px;
         margin: 0;
     }
     /* ------------------------------------------------- */

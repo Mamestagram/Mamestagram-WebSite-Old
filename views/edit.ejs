@@ -67,7 +67,7 @@
     <%- include("header") %>
     <main>
         <div class="box rename">
-            <form action="/rename" method="post">
+            <form id="rename" action="/rename" method="post">
                 <h1 class="title">Rename</h1>
                 <div class="username">
                     <span class="username-title">
@@ -79,8 +79,21 @@
                     <% } %>
                     <input type="text" name="username" value="<%= text %>" required>
                 </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="pastName" onChange="toggleSetting()"
+                    <% if (checked) { %>
+                        checked
+                    <% } %>>
+                    Display past names publicly
+                </div>
                 <button><input type="submit" value="Confirm"></button>
             </form>
+            <script>
+                function toggleSetting() {
+                    alert("The setting has been changed.");
+                    document.getElementById("rename").submit();
+                }
+            </script>
         </div>
         <div class="box avatar">
             <form action="/avatar" method="post" enctype="multipart/form-data">
