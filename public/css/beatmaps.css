@@ -392,6 +392,21 @@ main {
     appearance: menulist;
 }
 
+.ranking .wrap .flex .selection .special .ts {
+    margin-right: 10px;
+    filter: invert(30%);
+    opacity: 0.95;
+    transition: transform 100ms;
+}
+.ranking .wrap .flex .selection .special .ts:hover {
+    transform: scale(1.1);
+}
+
+.ranking .wrap .flex .selection .special .ts.selected {
+    filter: invert(0%);
+    opacity: 1;
+}
+
 .ranking .wrap .flex .selection .special .menu-title {
     position: relative;
     background-color: #394246;
@@ -747,6 +762,10 @@ main {
 
     .ranking .wrap {
         width: 680px;
+    }
+
+    .ranking .wrap .flex .selection .special .ts:hover {
+        transform: none;
     }
 
     .ranking .wrap .mods-selection {

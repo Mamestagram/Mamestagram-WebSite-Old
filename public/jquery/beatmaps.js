@@ -6,6 +6,7 @@ $(function() {
     var $play = document.getElementById("play-audio");
     var $btn = $(".map-info .contents .box .link button");
     var $icon = $(".map-info .contents .box .link button i");
+    var $td = $(".ranking .wrap .flex .selection .special .ts");
     var $mods = $(".ranking .wrap .mods-selection li");
     let time = 0, stop = true;
 
@@ -66,7 +67,21 @@ $(function() {
         }
     });
 
+    $td.click(function() {
+        if ($(this).hasClass("selected")) {
+            $(this).removeClass("selected");
+        }
+        else {
+            $(this).addClass("selected");
+        }
+    });
+
     $mods.click(function() {
-        $(this).children("button").addClass("clicked");
+        if ($(this).children("button").hasClass("selected")) {
+            $(this).children("button").removeClass("selected");
+        }
+        else {
+            $(this).children("button").addClass("selected");
+        }
     });
 });
