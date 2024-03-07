@@ -972,11 +972,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     /* ------------------------------------------------- */
     main .bestpp h1 {
         font-size: 20px;
-        line-height: 30px;
-    }
-
-    main .bestpp div .nothing {
-        line-height: 417px;
     }
 
     main .bestpp div .data-mobile {
@@ -1081,11 +1076,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
     main .mostplays h1 {
         font-size: 20px;
-        line-height: 30px;
-    }
-
-    main .mostplays div .nothing {
-        line-height: 295px;
     }
 
     main .mostplays div .data-mobile {
@@ -1173,18 +1163,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     /* ------------------------------------------------- */
     main .recentplays h1 {
         font-size: 20px;
-        line-height: 30px;
-    }
-
-    main .recentplays .flex button {
-        font-size:  16px;
-        padding: 0 8px;
-        filter: invert(30%);
-        opacity: 0.95;
-    }
-
-    main .recentplays div .nothing, main .recentplays div .nothing-passed {
-        line-height: 417px;
     }
 
     main .recentplays div .data-mobile, main .recentplays div .data-mobile-passed {
@@ -1197,6 +1175,11 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     main .recentplays div .data-mobile .flex, main .recentplays div .data-mobile-passed .flex {
         display: flex;
     }
+
+    main .recentplays .flex button {
+	font-size: 16px;
+    }
+
 
     main .recentplays div .data-mobile .info, main .recentplays div .data-mobile-passed .info {
         position: relative;
