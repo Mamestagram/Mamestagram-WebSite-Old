@@ -1,16 +1,16 @@
 $(window).resize(function() {
     if ($("body").width() <= 767) {
-        let hei = 33;
+        let hei = 35;
         for (let i = 0; i < Math.min(5, $("main .bestpp div .data-mobile").length); i++) {
             hei += $("main .bestpp div .data-mobile").eq(i).height() + 5;
         }
-        hei = Math.max(450, hei);
+        hei = Math.max(452, hei);
         $("main .bestpp").css("max-height", `${hei}px`);
-        hei = 33;
+        hei = 35;
         for (let i = 0; i < Math.min(5, $("main .recentplays div .data-mobile-passed").length); i++) {
             hei += $("main .recentplays div .data-mobile-passed").eq(i).height() + 5;
         }
-        hei = Math.max(450, hei);
+        hei = Math.max(452, hei);
         $("main .recentplays").css("max-height", `${hei}px`);
         $("main .recentplays .data-mobile").hide();
         $("main .recentplays .data-mobile-passed").show();
@@ -50,20 +50,20 @@ $(window).resize(function() {
 $(function() {
     let rs = "passed";
     if ($("body").width() <= 767) {
-        let hei = 33;
+        let hei = 35;
         for (let i = 0; i < Math.min(5, $("main .bestpp div .data-mobile").length); i++) {
             hei += $("main .bestpp div .data-mobile").eq(i).height() + 5;
         }
-        hei = Math.max(450, hei);
+        hei = Math.max(452, hei);
         $("main .bestpp").css({
             "min-height": `${hei}px`,
             "max-height": `${hei}px`
         });
-        hei = 33;
+        hei = 35;
         for (let i = 0; i < Math.min(5, $("main .recentplays div .data-mobile-passed").length); i++) {
             hei += $("main .recentplays div .data-mobile-passed").eq(i).height() + 5;
         }
-        hei = Math.max(450, hei);
+        hei = Math.max(452, hei);
         $("main .recentplays").css({
             "min-height": `${hei}px`,
             "max-height": `${hei}px`
@@ -129,7 +129,7 @@ $(function() {
             $subject = $(`main .recentplays div .data-mobile${rs === "passed" ? "-passed" : ""}`);
         }
         if ($("body").width() <= 767) {
-            hei = 33;
+            hei = 35;
             if ($subject !== undefined) {
                 for (let i = 0; i < Math.min(amt, $subject.length); i++) {
                     hei += $subject.eq(i).height() + 5;
@@ -171,11 +171,11 @@ $(function() {
             $("main .recentplays .data-passed").hide();
         }
         else {
-            let hei = 33;
+            let hei = 35;
             for (let i = 0; i < Math.min(5, $("main .recentplays div .data-mobile").length); i++) {
                 hei += $("main .recentplays div .data-mobile").eq(i).height() + 5;
             }
-            hei = Math.max(450, hei);
+            hei = Math.max(452, hei);
             $("main .recentplays").css({
                 "min-height": `${hei}px`,
                 "max-height": `${hei}px`
@@ -206,11 +206,11 @@ $(function() {
             $("main .recentplays .data-passed").show();
         }
         else {
-            let hei = 33;
+            let hei = 35;
             for (let i = 0; i < Math.min(5, $("main .recentplays div .data-mobile-passed").length); i++) {
                 hei += $("main .recentplays div .data-mobile-passed").eq(i).height() + 5;
             }
-            hei = Math.max(450, hei);
+            hei = Math.max(452, hei);
             $("main .recentplays").css({
                 "min-height": `${hei}px`,
                 "max-height": `${hei}px`

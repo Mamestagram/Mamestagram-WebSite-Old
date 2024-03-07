@@ -510,7 +510,7 @@
                     <% } else { %>
                         <% bestpp.forEach((data) => { %>
                             <div class="wrap data">
-                                <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg">
+                                <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                 <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                 <a
                                 <% if (!dans) { %>
@@ -544,7 +544,7 @@
                             </div>
                             <div class="data-mobile">
                                 <div class="flex info">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg">
+                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                     <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                     <a 
                                     <% if (!dans) { %>
@@ -684,7 +684,7 @@
                     <% } else { %>
                         <% recentplays.forEach((data) => { %>
                             <div class="data" style="display: none;">
-                                <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg">
+                                <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                 <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                                     <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                 <% } else { %>
@@ -730,7 +730,7 @@
                             </div>
                             <div class="data-mobile" style="display: none;">
                                 <div class="flex info">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg">
+                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                     <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                                         <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                     <% } else { %>
@@ -784,7 +784,7 @@
                     <% } else { %>
                         <% recentplays_nof.forEach((data) => { %>
                             <div class="data-passed">
-                                <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg">
+                                <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                 <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                                     <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                 <% } else { %>
@@ -830,7 +830,7 @@
                             </div>
                             <div class="data-mobile-passed">
                                 <div class="flex info">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg">
+                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                     <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                                         <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                     <% } else { %>
