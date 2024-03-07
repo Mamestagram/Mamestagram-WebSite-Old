@@ -69,6 +69,43 @@ $(function() {
             "max-height": `${hei}px`
         });
     }
+
+    // relationshipクリック
+    $("body").click(function(e) {
+        var $button = $("main .player-banner .relationship span");
+        var $list = $("main .player-banner .relationship .list");
+        var $wrap = $("main .player-banner .relationship .list .wrap");
+        var $close = $("main .player-banner .relationship .list .wrap h1 .fa-xmark");
+        var $relationshipList;
+
+        //ユーザーボタンクリック時
+        if (!$(e.target).closest($button).length && !$(e.target).closest($wrap).length) {
+            $list.removeClass("show");
+        }
+        else if ($(e.target).closest($wrap).length) {
+            if ($(e.target).closest($close).length) {
+                $list.removeClass("show");
+            }
+        }
+        else {
+            if ($(e.target).closest("main .player-banner .relationship .mutual").length) {
+                $relationshipList = $("main .player-banner .relationship .mutual-list");
+            }
+            else if ($(e.target).closest("main .player-banner .relationship .following").length) {
+                $relationshipList = $("main .player-banner .relationship .following-list");
+            }
+            else if ($(e.target).closest("main .player-banner .relationship .followers").length) {
+                $relationshipList = $("main .player-banner .relationship .followers-list");
+            }
+            if ($relationshipList.hasClass("show")) {
+                $relationshipList.removeClass("show");
+            }
+            else {
+                $relationshipList.addClass("show");
+            }
+        }
+    });
+
     // "show more"をクリックしたとき
     $("main .show-more").click(function() {
         var $selection, $nextbtn, $subject;
@@ -103,7 +140,7 @@ $(function() {
             }
         }
         else {
-            hei = 38 + 60 * amt;
+            hei = 50 + 60 * amt;
         }
         $selection.css("max-height", `${hei}px`);
         $(this).hide();
@@ -129,7 +166,7 @@ $(function() {
             "opacity": ""
         });
         if ($("body").width() > 767) {
-            $("main .recentplays").css("max-height", `${338}px`);
+            $("main .recentplays").css("max-height", `${350}px`);
             $("main .recentplays .data").show();
             $("main .recentplays .data-passed").hide();
         }
@@ -164,7 +201,7 @@ $(function() {
         $("main .recentplays div .nothing").hide();
         $("main .recentplays div .nothing-passed").show();
         if ($("body").width() > 767) {
-            $("main .recentplays").css("max-height", `${338}px`);
+            $("main .recentplays").css("max-height", `${350}px`);
             $("main .recentplays .data").hide();
             $("main .recentplays .data-passed").show();
         }

@@ -73,6 +73,174 @@ main .player-banner .username p {
     color: #ababab;
 }
 
+main .player-banner .relationship span {
+    position: relative;
+    cursor: pointer;
+    background-color: #17171c;
+    width: 100px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 40px;
+    text-align: center;
+    transition: transform 150ms;
+}
+main .player-banner .relationship span:hover {
+    transform: scale(1.03);
+}
+
+main .player-banner .relationship span i {
+    margin-right: 15px;
+}
+
+main .player-banner .relationship span:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .player-banner .relationship .tooltip {
+    width: 110px;
+    position: absolute;
+    left: 50%;
+    bottom: 80%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 0.7em;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
+
+main .player-banner .relationship .list {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    z-index: 50;
+}
+
+main .player-banner .relationship .show {
+    visibility: visible;
+}
+
+main .player-banner .relationship .list .wrap {
+    display: block;
+    background-color: #302e38;
+    min-height: 0;
+    max-height: 100%;
+    width: 530px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    transform: scale(0);
+    transition: transform 300ms;
+}
+main .player-banner .relationship .list .wrap::-webkit-scrollbar {
+    display: none;
+}
+
+main .player-banner .relationship .list .wrap h1 {
+    background-color: #221f2e;
+    font-size: 20px;
+    font-weight: bold;
+    width: 530px;
+    padding: 12px;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+}
+
+main .player-banner .relationship .list .wrap h1 i {
+    margin-right: 5px;
+}
+
+main .player-banner .relationship .list .wrap h1 .fa-xmark {
+    font-size: 24px;
+    cursor: pointer;
+    float: right;
+    transform: scale(1.3);
+    filter: invert(30%);
+    opacity: 0.95;
+}
+main .player-banner .relationship .list .wrap h1 .fa-xmark:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
+main .player-banner .relationship .show .wrap {
+    transform: scale(1);
+}
+
+main .player-banner .relationship .list .data {
+    display: flex;
+    background-color: #444453;
+    width: 500px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    transition: outline 100ms, transform 300ms;
+}
+main .player-banner .relationship .list .data:hover {
+    outline: 2px solid #44aadd;
+    outline-offset: -2px;
+    transform: scale(1.025);
+}
+
+main .player-banner .relationship .list .data img {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+main .player-banner .relationship .list .data .name {
+    margin: auto 0;
+}
+
+main .player-banner .relationship .list .data .name i {
+    font-size: 16px;
+    margin: 0 5px;
+    border-radius: 2px;
+}
+
+main .player-banner .relationship .list .data .name p {
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+main .player-banner .player-status span {
+    cursor: unset;
+    height: 12px;
+    width: 12px;
+    padding: 0;
+    margin: auto 5px;
+}
+main .player-banner .player-status span:hover {
+    transform: unset;
+}
+
+main .player-banner .player-status p {
+    margin: auto 0;
+}
+
 main .player-banner .selection ul li {
     filter: invert(30%);
     opacity: 0.95;
@@ -194,17 +362,21 @@ main .show-more i {
 }
 /* ------------------------------------------------- */
 main .bestpp {
-    min-height: 338px;
-    max-height: 338px;
+    min-height: 350px;
+    max-height: 350px;
     overflow: hidden;
     flex-wrap: nowrap;
     flex-shrink: 0;
 }
 
 main .bestpp h1 {
-    height: 28px;
+    line-height: 40px;
     font-size: 24px;
     font-weight: bold;
+}
+
+main .bestpp h1 i {
+    margin: 0 5px;
 }
 
 main .bestpp div .wrap, main .bestpp div .pp {
@@ -218,13 +390,24 @@ main .bestpp div .nothing {
 }
 
 main .bestpp div .data {
+    position: relative;
     margin-top: 5px;
-    background-color: #444453;
+    background-color: #000000;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 black;
+    transition: transform 100ms;
 }
 main .bestpp div .data:hover {
-    background-color: #5b5b6f;
+    transform: scale(1.005);
+}
+
+main .bestpp div .mapbg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    opacity: 0.3;
 }
 
 main .bestpp div .grade {
@@ -232,12 +415,14 @@ main .bestpp div .grade {
     margin: 5px;
     border-radius: 16px;
     box-shadow: 2px 2px 2px black;
+    z-index: 1;
 }
 
 main .bestpp div .data a {
     padding-left: 3px;
     margin: auto 0;
     overflow: hidden;
+    z-index: 1;
 }
 
 main .bestpp div .data a .title {
@@ -266,6 +451,7 @@ main .bestpp div .data .mods {
     margin-left: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
+    z-index: 1;
 }
 
 main .bestpp div .data .mods img {
@@ -279,6 +465,7 @@ main .bestpp div .data .acc {
     width: 80px;
     margin: auto 0;
     text-align: center;
+    z-index: 1;
 }
 
 main .bestpp div .data .pp {
@@ -286,6 +473,7 @@ main .bestpp div .data .pp {
     min-width: 180px;
     text-align: center;
     border-radius: 10px;
+    z-index: 1;
 }
 
 main .bestpp div .data .pp .recorded {
@@ -308,17 +496,21 @@ main .bestpp div .data .pp .weighted {
 }
 /* ------------------------------------------------- */
 main .mostplays {
-    min-height: 338px;
-    max-height: 338px;
+    min-height: 350px;
+    max-height: 350px;
     overflow: hidden;
     flex-wrap: nowrap;
     flex-shrink: 0;
 }
 
 main .mostplays h1 {
-    height: 28px;
+    line-height: 40px;
     font-size: 24px;
     font-weight: bold;
+}
+
+main .mostplays h1 i {
+    margin: 0 5px;
 }
 
 main .mostplays div .nothing {
@@ -333,9 +525,11 @@ main .mostplays div .data {
     background-color: #444453;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 black;
+    transition: background-color 100ms, transform 100ms;
 }
 main .mostplays div .data:hover {
     background-color: #5b5b6f;
+    transform: scale(1.005);
 }
 
 main .mostplays div .data img {
@@ -400,17 +594,21 @@ main .mostplays div .data div .value {
 }
 /* ------------------------------------------------- */
 main .recentplays {
-    min-height: 338px;
-    max-height: 338px;
+    min-height: 350px;
+    max-height: 350px;
     overflow: hidden;
     flex-wrap: nowrap;
     flex-shrink: 0;
 }
 
 main .recentplays h1 {
-    height: 28px;
+    line-height: 40px;
     font-size: 24px;
     font-weight: bold;
+}
+
+main .recentplays h1 i {
+    margin: 0 5px;
 }
 
 main .recentplays .flex {
@@ -441,17 +639,28 @@ main .recentplays div .nothing, main .recentplays div .nothing-passed {
 
 main .recentplays div .data, main .recentplays div .data-passed {
     display: flex;
+    position: relative;
     margin-top: 5px;
-    background-color: #444453;
+    background-color: #000000;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 black;
+    transition: tranform 100ms;
 }
 main .recentplays div .data:hover, main .recentplays div .data-passed:hover {
-    background-color: #5b5b6f;
+    transform: scale(1.005);
 }
 
 main .box div .data-mobile, main .box div .data-mobile-passed {
     display: none;
+}
+
+main .recentplays div .mapbg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    opacity: 0.3;
 }
 
 main .recentplays div .grade {
@@ -459,15 +668,17 @@ main .recentplays div .grade {
     margin: 5px;
     border-radius: 16px;
     box-shadow: 2px 2px 2px black;
+    z-index: 1;
 }
 
 main .recentplays div .data a, main .recentplays div .data-passed a {
     padding-left: 3px;
     margin: auto 0;
     overflow: hidden;
+    z-index: 1;
 }
 
-main .recentplays div .data a .title, main .recentplays div .data-passeda .title {
+main .recentplays div .data a .title, main .recentplays div .data-passed .title {
     font-size: 18px;
     line-height: 25px;
     overflow: hidden;
@@ -493,6 +704,7 @@ main .recentplays div .data .mods, main .recentplays div .data-passed .mods {
     margin-left: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
+    z-index: 1;
 }
 
 main .recentplays div .data .mods img, main .recentplays div .data-passed .mods img {
@@ -505,6 +717,7 @@ main .recentplays div .data .acc, main .recentplays div .data-passed .acc {
     width: 80px;
     margin: auto 0;
     text-align: center;
+    z-index: 1;
 }
 
 main .recentplays div .data .pp, main .recentplays div .data-passed .pp {
@@ -513,6 +726,7 @@ main .recentplays div .data .pp, main .recentplays div .data-passed .pp {
     width: 180px;
     text-align: center;
     border-radius: 10px;
+    z-index: 1;
 }
 
 main .recentplays div .data .pp .recorded, main .recentplays div .data-passed .pp .recorded {
@@ -625,6 +839,62 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin: 7px 3px;
     }
 
+    main .player-banner .relationship span {
+        font-size: 12px;
+        width: 80px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    main .player-banner .relationship .tooltip {
+        width: 90px;
+    }
+
+    main .player-banner .relationship span i {
+        margin-right: 10px;
+    }
+
+    main .player-banner .relationship .list .wrap {
+        width: 370px;
+    }
+
+    main .player-banner .relationship .list .wrap h1 {
+        font-size: 20px;
+        width: 370px;
+    }
+
+    main .player-banner .relationship .list .wrap h1 .fa-xmark {
+        font-size: 26px;
+    }
+
+    main .player-banner .relationship .list .data {
+        width: 360px;
+        margin-top: 8px;
+    }
+
+    main .player-banner .relationship .list .data img {
+        height: 50px;
+        width: 50px;
+    }
+
+    main .player-banner .relationship .list .data .name i {
+        font-size: 14px;
+    }
+
+    main .player-banner .relationship .list .data .name p {
+        font-size: 18px;
+    }
+
+    main .player-banner .player-status span {
+        height: 10px;
+        width: 10px;
+        margin: auto 5px;
+    }
+
+    main .player-banner .player-status p {
+        font-size: 14px;
+    }
+
     main .player-banner .selection .special li {
         font-size: 12px;
         line-height: 24px;
@@ -715,22 +985,35 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
 
     main .bestpp div .data-mobile .info {
-        background-color: #444453;
+        position: relative;
+        background-color: #000000;
         flex-wrap: wrap;
         flex-shrink: unset;
         border-radius: 10px;
+        transition: transform 100ms;
     }
     main .bestpp div .data-mobile .info:hover {
-        background-color: #5b5b6f;
+        transform: scale(1.005);
+    }
+
+    main .bestpp div .data-mobile .info .mapbg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        opacity: 0.3;
     }
 
     main .bestpp div .data-mobile .info .grade {
         height: 40px;
+        z-index: 1;
     }
 
     main .bestpp div .data-mobile .info a {
         width: calc(100% - 50px);
         margin: auto 0;
+        z-index: 1;
     }
 
     main .bestpp div .data-mobile .info a .title {
@@ -754,6 +1037,7 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         padding-left: 10px;
         padding-bottom: 3px;
         overflow: scroll;
+        z-index: 1;
     }
 
     main .bestpp div .data-mobile .info .mods img {
@@ -799,9 +1083,11 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         background-color: #444453;
         border-radius: 10px;
         box-shadow: 3px 3px 3px 0 black;
+        transition: background-color 100ms, transform 100ms;
     }
     main .mostplays div .data-mobile:hover {
         background-color: #5b5b6f;
+        transform: scale(1.005);
     }
 
     main .mostplays div .data-mobile .mapbg {
@@ -890,22 +1176,35 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
 
     main .recentplays div .data-mobile .info, main .recentplays div .data-mobile-passed .info {
-        background-color: #444453;
+        position: relative;
+        background-color: #000000;
         flex-wrap: wrap;
         flex-shrink: unset;
         border-radius: 10px;
+        transition: transform 100ms;
     }
     main .recentplays div .data-mobile .info:hover, main .recentplays div .data-mobile-passed .info:hover {
-        background-color: #5b5b6f;
+        transform: scale(1.005);
+    }
+
+    main .recentplays div .data-mobile .info .mapbg, main .recentplays div .data-mobile-passed .info .mapbg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        opacity: 0.3;
     }
 
     main .recentplays div .data-mobile .info .grade, main .recentplays div .data-mobile-passed .info .grade {
         height: 40px;
+        z-index: 1;
     }
 
     main .recentplays div .data-mobile .info a, main .recentplays div .data-mobile-passed .info a {
         width: calc(100% - 50px);
         margin: auto 0;
+        z-index: 1;
     }
 
     main .recentplays div .data-mobile .info a .title, main .recentplays div .data-mobile-passed .info a .title {
@@ -929,6 +1228,7 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         padding-left: 10px;
         padding-bottom: 3px;
         overflow: scroll;
+        z-index: 1;
     }
 
     main .recentplays div .data-mobile .info .mods img, main .recentplays div .data-mobile-passed .info .mods img {
