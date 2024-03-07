@@ -970,7 +970,7 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
     /* ------------------------------------------------- */
     main .bestpp h1 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     main .bestpp div .data-mobile {
@@ -1074,7 +1074,7 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
 
     main .mostplays h1 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     main .mostplays div .data-mobile {
@@ -1161,7 +1161,7 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
     /* ------------------------------------------------- */
     main .recentplays h1 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     main .recentplays div .data-mobile, main .recentplays div .data-mobile-passed {
@@ -1174,6 +1174,11 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     main .recentplays div .data-mobile .flex, main .recentplays div .data-mobile-passed .flex {
         display: flex;
     }
+
+    main .recentplays .flex button {
+	font-size: 16px;
+    }
+
 
     main .recentplays div .data-mobile .info, main .recentplays div .data-mobile-passed .info {
         position: relative;
