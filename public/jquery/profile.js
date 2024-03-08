@@ -125,7 +125,7 @@ $(function() {
         }
         else if ($(this).hasClass("rp")) {
             $selection = $("main .recentplays");
-            $nextbtn = $(`main .rp.to${amt + 50}`);
+            $nextbtn = $(`main .rp${$(this).hasClass("nof") ? ".nof" : ""}.to${amt + 50}`);
             $subject = $(`main .recentplays div .data-mobile${rs === "passed" ? "-passed" : ""}`);
         }
         if ($("body").width() <= 767) {

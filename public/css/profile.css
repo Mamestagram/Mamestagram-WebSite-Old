@@ -645,7 +645,7 @@ main .recentplays div .data, main .recentplays div .data-passed {
     background-color: #000000;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 0 black;
-    transition: tranform 100ms;
+    transition: transform 100ms;
 }
 main .recentplays div .data:hover, main .recentplays div .data-passed:hover {
     transform: scale(1.005);
