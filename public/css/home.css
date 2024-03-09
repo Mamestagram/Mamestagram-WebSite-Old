@@ -53,6 +53,8 @@ main {
     background-color: #345c84;
     border-radius: 10px;
     padding: 10px 25px;
+        font-weight: bold;
+          font-size:30px;
 }
 
 .total-players {
@@ -60,6 +62,8 @@ main {
     border-radius: 10px;
     padding: 10px 25px;
     margin-left: 50px;
+    font-weight: bold;
+    font-size:30px;
 }
 
 .box {
@@ -79,14 +83,16 @@ main {
 
 .box .description2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
+        font-weight: bold;
     margin: 20px 0;
 }
 
 .box .doc-button {
     display: block;
     background-color: #ac8f39;
-    font-size: 32px;
+    font-size: 28px;
+        font-weight: bold;
     line-height: 65px;
     width: 250px;
     margin: 20px auto;
@@ -126,11 +132,13 @@ main {
     }
 
     .now-players {
-        padding: 10px 25px;
+        padding: 10px 30px;
+                font-size: 20px;
     }
     
     .total-players {
         margin-left: 5px;
+	font-size: 20px;
     }
 
     .box {
@@ -138,11 +146,11 @@ main {
     }
 
     .box .description {
-        font-size: 36px;
+        font-size: 34px;
     }
     
     .box .description2 {
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .box .doc-button {
