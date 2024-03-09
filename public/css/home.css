@@ -53,8 +53,8 @@ main {
     background-color: #345c84;
     border-radius: 10px;
     padding: 10px 25px;
-        font-weight: bold;
-          font-size:30px;
+    font-weight: bold;
+    font-size:30px;
 }
 
 .total-players {
@@ -84,7 +84,7 @@ main {
 .box .description2 {
     text-align: center;
     font-size: 20px;
-        font-weight: bold;
+    font-weight: bold;
     margin: 20px 0;
 }
 
@@ -92,7 +92,7 @@ main {
     display: block;
     background-color: #ac8f39;
     font-size: 28px;
-        font-weight: bold;
+    font-weight: bold;
     line-height: 65px;
     width: 250px;
     margin: 20px auto;
@@ -133,7 +133,7 @@ main {
 
     .now-players {
         padding: 10px 30px;
-                font-size: 20px;
+        font-size: 20px;
     }
     
     .total-players {
