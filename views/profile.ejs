@@ -150,6 +150,7 @@
     </head>
     <body>
         <%- include("header") %>
+        <img src="https://banner.mamesosu.net/<%= id %>" class="banner">
         <main>
             <div class="box player-banner">
                 <div class="username">
@@ -245,6 +246,18 @@
                                 Offline
                             <% } %>
                         </p>
+                    </div>
+                </div>
+                <div class="me">
+                    <h1>me!</h1>
+                    <div id="ajaxreload" class="contents">
+                        <div class="bbcode-profile">
+                            <%= me %>
+                        </div>
+                        <form action="/me" method="post" style="display: none;">
+                            <textarea placeholder="Type page content here"></textarea>
+                            
+                        </form>
                     </div>
                 </div>
                 <div class="selection">

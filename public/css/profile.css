@@ -1,7 +1,7 @@
 main {
     background-color: #17171c;
     color: #fdfdfd;
-    padding-top: 90px;
+    padding-top: 10px;
     padding-bottom: 300px;
 }
 
@@ -240,6 +240,23 @@ main .player-banner .player-status span:hover {
 
 main .player-banner .player-status p {
     margin: auto 0;
+}
+
+main .player-banner .me {
+    display: block;
+}
+
+main .player-banner .me .contents {
+    display: block;
+}
+
+main .player-banner .me .contents .bbcode-profile {
+    display: block;
+}
+
+main .player-banner .me .contents .spoiler {
+    background-color: #000 !important;
+    color: #000 !important;
 }
 
 main .player-banner .selection ul li {
@@ -536,6 +553,7 @@ main .mostplays div .data:hover {
 main .mostplays div .data img {
     height: 55px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 main .mostplays div .data a {
