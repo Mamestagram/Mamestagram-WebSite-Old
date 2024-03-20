@@ -22,15 +22,15 @@ main {
     color: #fdfdfd;
     font-size: 28px;
     font-weight: bold;
-    border-radius: 10px 10px 0 0;
     padding: 30px 0;
+    border-radius: 10px 10px 0 0;
 }
 
 .rename .username {
     margin: 20px auto;
 }
 
-.box .username span {
+.box .username span, .box .image span {
     display: block;
     color: #fdfdfd;
     padding: 20px 0;
@@ -86,25 +86,25 @@ main {
     line-height: 36px;
 }
 
-.avatar .image {
+.box .image {
     padding: 20px 0;
     margin: 0 auto;
 }
 
-.avatar .image input {
+.box .image input {
     padding: 12px 0;
 }
 
-.avatar .image canvas {
+.box .image canvas {
     max-width: 400px;
     max-height: 400px;
 }
 
-.avatar button {
+.avatar button, .banner-img button, .bgimage button {
     width: 105px;
 }
 
-.avatar button i {
+.avatar button i, .banner-img button i, .bgimage button i {
     padding-left: 5px;
 }
 
@@ -123,8 +123,8 @@ main {
     }
 
     .box .title {
-        font-size: 26px;
-        padding: 20px 125px;
+        font-size: 24px;
+        padding: 20px 0;
     }
 
     .box .errmsg {
@@ -135,6 +135,11 @@ main {
         font-size: 14px;
         width: 295px;
         padding: 10px 20px;
+    }
+
+    .box .image canvas {
+        max-width: 300px;
+        max-height: 300px;
     }
 
     .box button {

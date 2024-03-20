@@ -1,12 +1,18 @@
+.background-img {
+    position: fixed;
+    top: 0;
+    object-fit: cover;
+    z-index: -1;
+}
+
 main {
-    background-color: #17171c;
     color: #fdfdfd;
-    padding-top: 10px;
+    padding-top: 150px;
     padding-bottom: 300px;
 }
 
 main .box {
-    background-color: #2e2e38;
+    background-color: rgba(46, 46, 56, 0.9);
     padding: 5px;
     margin: 20px 12.8%;
     border-radius: 10px;
@@ -16,8 +22,24 @@ main .box {
 main .box div .data-mobile {
     display: none;
 }
+
+main .banner-box {
+    padding: 0;
+    margin: 0 12.8%;
+    border-radius: 10px 10px 0 0;
+}
+
+main .banner-box img {
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
 /* ------------------------------------------------- */
-main .player-banner div, main .player-banner ul {
+main .player-banner {
+    margin-top: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+main .player-banner div, main .player-banner .selection ul {
     display: flex;
 }
 
@@ -242,23 +264,6 @@ main .player-banner .player-status p {
     margin: auto 0;
 }
 
-main .player-banner .me {
-    display: block;
-}
-
-main .player-banner .me .contents {
-    display: block;
-}
-
-main .player-banner .me .contents .bbcode-profile {
-    display: block;
-}
-
-main .player-banner .me .contents .spoiler {
-    background-color: #000 !important;
-    color: #000 !important;
-}
-
 main .player-banner .selection ul li {
     filter: invert(30%);
     opacity: 0.95;
@@ -283,6 +288,272 @@ main .player-banner .selection .mode li a i {
     font-size: 45px;
     padding: 0 5px;
     margin: 0 10px;
+}
+
+main .player-banner .me {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+}
+
+main .player-banner .me h1 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 40px;
+    float: left;
+}
+
+main .player-banner .me h1 i {
+    margin-right: 5px;
+}
+
+main .player-banner .me .edit-button {
+    background-color: #454554;
+    font-size: 18px;
+    line-height: 38px;
+    width: 38px;
+    margin: 1px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    float: right;
+    transition: background-color 150ms;
+}
+main .player-banner .me .edit-button:hover {
+    background-color: #5c5c70;
+}
+
+main .player-banner .me div {
+    display: block;
+}
+
+main .player-banner .me .contents {
+    min-height: 240px;
+    clear: both;
+}
+
+main .player-banner .me .contents .me-empty {
+    text-align: center;
+}
+
+main .player-banner .me .contents .me-empty .edit-me {
+    background-color: #3939ac;
+    width: 180px;
+    padding: 2px 0;
+    margin: 0 auto;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+main .player-banner .me .contents .me-empty .edit-me:hover {
+    background-color: #6666ff;
+}
+
+main .player-banner .me .contents .me-empty i {
+    font-size: 800%;
+    margin: 30px 0;
+}
+
+main .player-banner .me .contents .me-empty .description {
+    font-size: 18px;
+}
+
+main .player-banner .me .contents .bbcode-profile {
+    max-height: 500px;
+    overflow-y: scroll;
+    line-height: 1.5;
+}
+main .player-banner .me .contents .bbcode-profile::-webkit-scrollbar {
+    width: 8px;
+}
+main .player-banner .me .contents .bbcode-profile::-webkit-scrollbar-track {
+    background-color: #33333d;
+}
+main .player-banner .me .contents .bbcode-profile::-webkit-scrollbar-thumb {
+    background-color: #99999e;
+    border-radius: 2px;
+}
+
+main .player-banner .me .contents h2 {
+    color: #b8b8e0;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 10px 0 0;
+}
+
+main .player-banner .me .contents a {
+    color: #9b9bc9;
+    transition: color 150ms, text-decoration 150ms;
+}
+main .player-banner .me .contents a:hover {
+    color: #a4a4c7;
+    text-decoration: underline;
+}
+
+main .player-banner .me .contents .user-link {
+    font-weight: 700;
+}
+
+main .player-banner .me .contents img {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+main .player-banner .me .contents .spoilerbox {
+    display: block;
+}
+
+main .player-banner .me .contents .spoilerbox p {
+    display: inline-block;
+    font-weight: 700;
+    color: #9b9bc9;
+    width: max-content;
+    max-width: 100%;
+    text-align: left;
+    white-space: wrap;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    transition: color 150ms, text-decoration 150ms;
+}
+main .player-banner .me .contents .spoilerbox p:hover {
+    color: #a4a4c7;
+    text-decoration: underline;
+}
+
+main .player-banner .me .contents .spoilerbox p i {
+    width: 20px;
+}
+
+main .player-banner .me .contents .spoilerbox div {
+    display: none;
+    color: #d1d1e5;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+main .player-banner .me .contents .spoiler {
+    background-color: #000 !important;
+    color: #000 !important;
+}
+
+main .player-banner .me .contents ol {
+    padding-left: 20px;
+}
+
+main .player-banner .me .contents blockquote {
+    color: #d1d1e5;
+    font-size: inherit;
+    padding-left: 20px;
+    border-left: 2px solid #eee
+}
+
+main .player-banner .me .contents blockquote h4 {
+    font-size: inherit;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+main .player-banner .me .contents code {
+    background-color: #22222a;
+    font-family: "JetBrainsMono";
+    padding: 1px 4px;
+    border-radius: 4px;
+}
+
+main .player-banner .me .contents pre {
+    background-color: #22222a;
+    font-family: "JetBrainsMono";
+    padding: 10px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+}
+
+main .player-banner .me .contents form textarea {
+    height: 500px;
+    font-family: "JetBrainsMono";
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+main .player-banner .me .contents form textarea::-webkit-scrollbar {
+    width: 8px;
+}
+main .player-banner .me .contents form textarea::-webkit-scrollbar-track {
+    background-color: #33333d;
+}
+main .player-banner .me .contents form textarea::-webkit-scrollbar-thumb {
+    background-color: #99999e;
+    border-radius: 2px;
+}
+
+main .player-banner .me .contents form .editor {
+    display: flex;
+}
+
+main .player-banner .me .contents form .editor div {
+    display: flex;
+}
+
+main .player-banner .me .contents form .editor .bb-button p {
+    font-size: 18px;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+main .player-banner .me .contents form .editor .bb-button p:hover {
+    background-color: #9494d1;
+}
+
+main .player-banner .me .contents form .editor .bb-button .size {
+    background-color: #454554;
+    padding: 0 5px;
+    margin: 0 5px;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+main .player-banner .me .contents form .editor .bb-button a {
+    line-height: 30px;
+}
+
+main .player-banner .me .contents form .editor .edit {
+    margin-top: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+}
+
+main .player-banner .me .contents form .editor .edit p {
+    line-height: 30px;
+    padding: 0 15px;
+    margin: 0 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+
+main .player-banner .me .contents form .editor .edit .cancel, 
+main .player-banner .me .contents form .editor .edit .preview,
+main .player-banner .me .contents form .editor .edit .back-to-edit {
+    background-color: #3399cc;
+}
+main .player-banner .me .contents form .editor .edit .cancel:hover, 
+main .player-banner .me .contents form .editor .edit .preview:hover,
+main .player-banner .me .contents form .editor .edit .back-to-edit:hover {
+    background-color: #47b4eb;
+}
+
+main .player-banner .me .contents form .editor .edit .save {
+    background-color: #80cc33;
+}
+main .player-banner .me .contents form .editor .edit .save:hover {
+    background-color: #99eb47;
 }
 /* ------------------------------------------------- */
 main .player-info {
@@ -769,6 +1040,8 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
 @media (max-width: 1232px) {
     main {
+        /* デスクトップ版にmargin入れたら不自然になったので、margin 0に指定 */
+        margin: 0;
         padding-top: 30px;
         padding-bottom: 200px;
     }
@@ -777,6 +1050,14 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin: 20px 30px;
     }
     /* ------------------------------------------------- */
+    main .banner-box {
+        height: 200px;
+    }
+
+    main .player-banner .me .contents form .editor {
+        overflow: scroll;
+    }
+
     main .player-info {
         overflow: scroll;
     }
@@ -828,6 +1109,10 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         display: block;
     }
     /* ------------------------------------------------- */
+    main .banner-box, main .banner-box img {
+        height: 125px;
+    }
+
     main .player-banner .username .avatar {
         height: 60px;
         width: 60px;
@@ -921,6 +1206,10 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin: 5px;
     }
 
+    main .player-banner .username div {
+        width: 285px;
+    }
+
     main .player-banner .username p {
         font-size: 16px;
         overflow: hidden;
@@ -933,8 +1222,53 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         padding: 0 4px;
         margin: 0;
     }
+
+    main .player-banner .me h1 {
+        font-size: 18px;
+    }
+
+    main .player-banner .me .contents .bbcode-profile {
+        max-height: 400px;
+    }
+
+    main .player-banner .me .contents .me-empty .edit-me {
+        width: 160px;
+    }
+    
+    main .player-banner .me .contents .me-empty i {
+        font-size: 700%;
+    }
+    
+    main .player-banner .me .contents .me-empty .description {
+        font-size: 16px;
+    }
+
+    main .player-banner .me .contents form textarea {
+        height: 400px;
+    }
+
+    main .player-banner .me .contents form .editor .bb-button p {
+        font-size: 16px;
+        border-radius: 15px;
+    }
+
+    main .player-banner .me .contents form .editor .bb-button .size {
+        font-size: 14px;
+    }
+
+    main .player-banner .me .contents form .editor .bb-button a {
+        font-size: 14px;
+    }
+
+    main .player-banner .me .contents form .editor .edit p {
+        line-height: 30px;
+        padding: 0 10px;
+        margin: 0 5px;
+        border-radius: 15px;
+    }
     /* ------------------------------------------------- */
     main .player-info .ranking div {
+        font-size: 14px;
         padding: 5px 30px 5px 5px;
     }
 

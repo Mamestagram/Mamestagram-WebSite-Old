@@ -2,9 +2,9 @@
 <html lang="ja">
     <head>
         <title>Account settings | Mamestagram</title>
-        <meta name="robots" content="noindex">
+        <meta name="robots" content="noindex" />
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/edit.css">
+        <link rel="stylesheet" href="/css/edit.css" />
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -39,18 +39,24 @@
                 background-color: rgba(253, 152, 101, 0.3);
             }
 
-            .mobile .register, .mobile .login, .mobile .avatar {
+            .mobile .register,
+            .mobile .login,
+            .mobile .avatar {
                 background-color: #3d3029;
                 color: #d9b29e;
             }
-            .mobile .register:hover, .mobile .login:hover, .mobile .avatar:hover {
+            .mobile .register:hover,
+            .mobile .login:hover,
+            .mobile .avatar:hover {
                 background-color: #3d3029;
             }
 
-            .link-form a, .link-form button {
+            .link-form a,
+            .link-form button {
                 background-color: #ac6039;
             }
-            .link-form a:hover, .link-form button:hover {
+            .link-form a:hover,
+            .link-form button:hover {
                 background-color: #ff9966;
             }
 
@@ -64,65 +70,133 @@
         </style>
     </head>
     <body>
-    <%- include("header") %>
-    <main>
-        <div class="box rename">
-            <form id="rename" action="/rename" method="post">
-                <h1 class="title">Rename</h1>
-                <div class="username">
-                    <span class="username-title">
-                        Enter a new username below<br>
-                        (within 15 characters)
-                    </span>
-                    <% if (err) { %>
-                        <span class="errmsg" style="color: red;"><%= err %></span>
-                    <% } %>
-                    <input type="text" name="username" value="<%= text %>" required>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" name="pastName" onChange="toggleSetting()"
-                    <% if (checked) { %>
-                        checked
-                    <% } %>>
-                    Display past names publicly
-                </div>
-                <button><input type="submit" value="Confirm"></button>
-            </form>
-            <script>
-                function toggleSetting() {
-                    alert("The setting has been changed.");
-                    document.getElementById("rename").submit();
-                }
-            </script>
-        </div>
-        <div class="box avatar">
-            <form action="/avatar" method="post" enctype="multipart/form-data">
-                <h1 class="title">Change avatar</h1>
-                <div class="image">
-                    <input type="file" name="avatar" accept=".png, .jpg, .gif, .jpeg, .jfif" onchange="preview(this);" required>
-                    <canvas id="preview" width="0" height="0"></canvas>
-                </div>
-                <button><input type="submit" value="Upload"><i class="fa-solid fa-upload"></i></button>
+        <%- include("header") %>
+        <main>
+            <div class="box rename">
+                <form id="rename" action="/rename" method="post">
+                    <h1 class="title">Rename</h1>
+                    <div class="username">
+                        <span class="username-title">
+                            Enter a new username below<br />
+                            (within 15 characters)
+                        </span>
+                        <% if (err) { %>
+                            <span class="errmsg" style="color: red"><%= err %></span>
+                        <% } %>
+                        <input
+                            type="text"
+                            name="username"
+                            value="<%= text %>"
+                            required />
+                    </div>
+                    <div class="checkbox">
+                        <input
+                            type="checkbox"
+                            name="pastName"
+                            onChange="toggleSetting()"
+                            <% if (checked) { %>
+                            checked 
+                            <% } %>>Display past names publicly
+                    </div>
+                    <button><input type="submit" value="Confirm" /></button>
+                </form>
                 <script>
-                    function preview(image) {
-                        const fileReader = new FileReader();
-                        fileReader.onload = (function() {
-                            const canvas = document.getElementById("preview");
-                            const ctx = canvas.getContext("2d");
-                            const image = new Image();
-                            image.src = fileReader.result;
-                            image.onload = (function() {
-                                canvas.width = image.width;
-                                canvas.height = image.height;
-                                ctx.drawImage(image, 0, 0);
-                            });
-                        });
-                        fileReader.readAsDataURL(image.files[0]);
+                    function toggleSetting() {
+                        alert("The setting has been changed.");
+                        document.getElementById("rename").submit();
                     }
                 </script>
-            </form>
-        </div>
-    </main>
-    <%- include("footer") %>
+            </div>
+            <div class="box avatar">
+                <form action="/avatar" method="post" enctype="multipart/form-data">
+                    <h1 class="title">Change avatar</h1>
+                    <div class="image">
+                        <input
+                            type="file"
+                            name="avatar"
+                            accept=".png, .jpg, .gif, .jpeg, .jfif"
+                            required />
+                        <span class="description">Keep it within 5mb.</span>
+                        <span class="errmsg" style="display: none; color: red">File too large</span>
+                        <canvas id="pre_avatar" width="0" height="0"></canvas>
+                    </div>
+                    <button>
+                        <input type="submit" value="Upload" />
+                        <i class="fa-solid fa-upload"></i>
+                    </button>
+                    <script>
+                    </script>
+                </form>
+            </div>
+            <div class="box banner_img">
+                <form action="/banner" method="post" enctype="multipart/form-data">
+                    <h1 class="title">Change banner</h1>
+                    <div class="image">
+                        <input
+                            type="file"
+                            name="banner_img"
+                            accept=".png, .jpg, .gif, .jpeg, .jfif"
+                            required />
+                        <span class="description">Keep it within 5mb.</span>
+                        <span class="errmsg" style="display: none; color: red">File too large</span>
+                        <canvas id="pre_banner_img" width="0" height="0"></canvas>
+                    </div>
+                    <button>
+                        <input type="submit" value="Upload" />
+                        <i class="fa-solid fa-upload"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="box bgimage">
+                <form action="/bgimage" method="post" enctype="multipart/form-data">
+                    <h1 class="title">Change background</h1>
+                    <div class="image">
+                        <input
+                            type="file"
+                            name="bgimage"
+                            accept=".png, .jpg, .gif, .jpeg, .jfif"
+                            required />
+                        <span class="description">Keep it within 5mb.</span>
+                        <span class="errmsg" style="display: none; color: red">File too large</span>
+                        <canvas id="pre_bgimage" width="0" height="0"></canvas>
+                    </div>
+                    <button>
+                        <input type="submit" value="Upload" />
+                        <i class="fa-solid fa-upload"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
+        <%- include("footer") %>
+        <script>
+            $(".box .image input").change(function() {
+                const image = $(this)[0].files[0];
+                preview($(this).attr("name"), image);
+            });
+
+            function preview(name, image) {
+                const fileReader = new FileReader();
+                fileReader.onload = function () {
+                    const canvas = document.getElementById(`pre_${name}`);
+                    const ctx = canvas.getContext("2d");
+                    const image = new Image();
+                    image.src = fileReader.result;
+                    image.onload = function () {
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+                        ctx.drawImage(image, 0, 0);
+                    };
+                };
+                fileReader.readAsDataURL(image);
+                if (image.size / 1024 / 1024 > 5) {
+                    $(`.${name} .errmsg`).show();
+                    $(`.${name} form button`).hide();
+                }
+                else {
+                    $(`.${name} .errmsg`).hide();
+                    $(`.${name} form button`).show();
+                }
+            }
+        </script>
     </body>
 </html>

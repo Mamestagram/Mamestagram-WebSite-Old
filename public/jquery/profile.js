@@ -106,6 +106,147 @@ $(function() {
         }
     });
 
+    // me!のeditボタンクリック
+    $("main .player-banner .me .edit-button").click(function() {
+        const textarea = document.getElementById("me-editor");
+        $(this).hide();
+        $("main .player-banner .me .contents .bbcode-profile").hide();
+        $("main .player-banner .me .contents form").show();
+        textarea.focus();
+    });
+    $("main .player-banner .me .contents .edit-me").click(function() {
+        $("main .player-banner .me .contents .bbcode-profile").hide();
+        $("main .player-banner .me .contents form").show();
+    });
+
+    // spoilerboxのnameクリック
+    var $boxName = $("main .player-banner .me .contents .spoilerbox p");
+    $boxName.click(function() {
+        if ($(this).hasClass("show-content")) {
+            $(this).removeClass("show-content");
+            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).hide();
+        }
+        else {
+            $(this).addClass("show-content");
+            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).show();
+        }
+    });
+
+    // bbコードツールボタンのクリック
+    $("main .player-banner .me .contents form .editor .bb-button p").click(function() {
+        const textarea = document.getElementById("me-editor");
+        textarea.focus();
+        let insertText, cursorOffset;
+        switch ($(this).attr("class")) {
+            case "heading":
+                insertText = "[heading][/heading]";
+                cursorOffset = 9;
+                break;
+            case "bold":
+                insertText = "[b][/b]";
+                cursorOffset = 3;
+                break;
+            case "italic":
+                insertText = "[i][/i]";
+                cursorOffset = 3;
+                break;
+            case "underline":
+                insertText = "[u][/u]";
+                cursorOffset = 3;
+                break;
+            case "strike":
+                insertText = "[s][/s]";
+                cursorOffset = 3;
+                break;
+            case "color":
+                insertText = `[color val=""][/color]`;
+                cursorOffset = 14;
+                break;
+            case "spoiler-text":
+                insertText = "[spoiler][/spoiler]";
+                cursorOffset = 9;
+                break;
+            case "center":
+                insertText = "[center][/center]";
+                cursorOffset = 8;
+                break;
+            case "spoilerbox":
+                insertText = `[box name=""][box]`;
+                cursorOffset = 13;
+                break;
+            case "list":
+                insertText = "[list]\n";
+                insertText += "[*]\n";
+                insertText += "[/list]";
+                cursorOffset = 10;
+            case "num-list":
+                insertText = `[list type="dec"]\n`;
+                insertText += "[*]\n";
+                insertText += "[/list]";
+                cursorOffset = 21;
+                break;
+            case "quote":
+                insertText = `[quote name=""][/quote]`;
+                cursorOffset = 15;
+                break;
+            case "image":
+                insertText = "[img][/img]";
+                cursorOffset = 5;
+                break;
+            case "url":
+                insertText = `[url link=""][/url]`;
+                cursorOffset = 13;
+                break;
+            case "profile":
+                insertText = `[profile id=""][/profile]`;
+                cursorOffset = 15;
+                break;
+            case "code":
+                insertText = "[c][/c]";
+                cursorOffset = 3;
+                break;
+        }
+        const cursorPos = textarea.selectionStart;
+        const nextCursorPos = cursorPos + cursorOffset;
+        const textBefore = textarea.value.substring(0, cursorPos);
+        const textAfter = textarea.value.substring(cursorPos);
+        textarea.value = textBefore + insertText + textAfter;
+        textarea.setSelectionRange(nextCursorPos, nextCursorPos);
+    });
+
+    // "font size"のオプションをクリック
+    var $fontsize = $("main .player-banner .me .contents form .editor .bb-button .size")
+    $fontsize.change(function() {
+        const textarea = document.getElementById("me-editor");
+        textarea.focus();
+        let insertText, cursorOffset;
+        switch ($(this).val()) {
+            case "tiny":
+                insertText = `[size val="50"][/size]`;
+                cursorOffset = 15;
+                break;
+            case "small":
+                insertText = `[size val="85"][/size]`;
+                cursorOffset = 15;
+                break;
+            case "normal":
+                insertText = `[size val="100"][/size]`;
+                cursorOffset = 16;
+                break;
+            case "large":
+                insertText = `[size val="150"][/size]`;
+                cursorOffset = 16;
+                break;
+        }
+        $(this).val("title");
+        const cursorPos = textarea.selectionStart;
+        const nextCursorPos = cursorPos + cursorOffset;
+        const textBefore = textarea.value.substring(0, cursorPos);
+        const textAfter = textarea.value.substring(cursorPos);
+        textarea.value = textBefore + insertText + textAfter;
+        textarea.setSelectionRange(nextCursorPos, nextCursorPos);
+    });
+
     // "show more"をクリックしたとき
     $("main .show-more").click(function() {
         var $selection, $nextbtn, $subject;

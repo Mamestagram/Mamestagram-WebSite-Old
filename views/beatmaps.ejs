@@ -1110,7 +1110,7 @@
         }
 
         function ajaxUpdate (link, element) {
-            const ajax = new XMLHttpRequest;
+            const ajax = new XMLHttpRequest();
             ajax.open("GET", link, true);
             ajax.onload = function () {
                 element.innerHTML = ajax.responseText;
