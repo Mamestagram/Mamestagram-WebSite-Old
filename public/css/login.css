@@ -19,7 +19,8 @@ main {
     font-size: 28px;
     font-weight: bold;
     border-radius:  10px 10px 0 0;
-    padding: 30px 200px;
+    padding: 30px 0;
+    text-align: center;
 }
 
 .username, .password {
@@ -98,7 +99,7 @@ main {
 
     .login-form .title {
         font-size: 26px;
-        padding: 20px 125px;
+        padding: 20px 0;
     }
 
     .username, .password {
