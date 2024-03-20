@@ -1063,7 +1063,17 @@
                 $("#put-bbcode").show();
             });
 
-            function clickFollowButton() {
+            async function clickFollowButton() {
+                await updateFollowButton();
+                await getMutualValue();
+                await getMutualList();
+                await getFollowingValue();
+                await getFollowingList();
+                await getFollowersValue();
+                await getFollowersList();
+            }
+
+            function updateFollowButton() {
                 const ajax = new XMLHttpRequest();
                 ajax.open("POST", "/follow", true);
                 ajax.setRequestHeader("Content-Type", "text/plain");
@@ -1071,12 +1081,6 @@
                     document.getElementById("follow").innerHTML = ajax.responseText;
                 }
                 ajax.send("<%= id %>");
-                getMutualValue();
-                getMutualList();
-                getFollowingValue();
-                getFollowingList();
-                getFollowersValue();
-                getFollowersList();
             }
 
             function getMutualValue() {
