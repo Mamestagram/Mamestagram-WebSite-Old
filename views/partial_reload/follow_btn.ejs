@@ -1,0 +1,16 @@
+<span class="follow-btn" onclick="clickFollowButton()"
+<% if (followStatus === "following") { %>
+    style="background-color: #7ea015;"
+<% } else if (followStatus === "mutual") { %>
+    style="background-color: #c4598c;"
+<% } else { %>
+    style="background-color: #17171c;"
+<% } %>>
+    <% if (followStatus !== "none") { %>
+        <i class="fa-solid fa-user-xmark"></i>
+        <p class="tooltip">Unfollow</p>
+    <% } else { %>
+        <i class="fa-solid fa-user-plus"></i>
+        <p class="tooltip">Follow</p>
+    <% } %>
+</span>

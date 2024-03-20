@@ -91,8 +91,81 @@ main .player-banner .username .flag-icon {
     border-radius: 2px;
 }
 
-main .player-banner .username p {
+main .player-banner .username #follow {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+main .player-banner .username .follow-btn {
+    display: block;
+    position: relative;
+    font-size: 18px;
+    line-height: 38px;
+    width: 38px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 150ms;
+}
+main .player-banner .username .follow-btn:hover {
+    transform: scale(1.03);
+}
+
+main .player-banner .username .follow-btn:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .player-banner .username .follow-btn .tooltip {
+    line-height: 10px;
+    width: 80px;
+    position: absolute;
+    left: 50%;
+    bottom: 80%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 0.7em;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
+main .player-banner .username .follow-btn .tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 12px solid #17171c;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main .player-banner .username .flex-box {
+    display: flex;
+}
+
+main .player-banner .username .flex-box .aka {
     color: #ababab;
+    margin-left: 5px;
+}
+
+main .player-banner .username .flex-box .be-followed {
+    background-color: rgb(32, 35, 39, 0.7);
+    color: #71767b;
+    font-size: 12px;
+    padding: 2px 5px;
+    margin: auto 5px;
+    border-radius: 5px;
 }
 
 main .player-banner .relationship span {
@@ -334,6 +407,12 @@ main .player-banner .me .contents {
 
 main .player-banner .me .contents .me-empty {
     text-align: center;
+}
+
+main .player-banner .me .contents .me-empty .nothing {
+    font-size: 200%;
+    font-weight: bold;
+    line-height: 240px;
 }
 
 main .player-banner .me .contents .me-empty .edit-me {
@@ -1040,8 +1119,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
 @media (max-width: 1232px) {
     main {
-        /* デスクトップ版にmargin入れたら不自然になったので、margin 0に指定 */
-        margin: 0;
         padding-top: 30px;
         padding-bottom: 200px;
     }
@@ -1133,9 +1210,9 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
 
     main .player-banner .username h1 {
-        font-size: 26px;
-        max-width: 230px;
-        padding: 0 3px;
+        font-size: 24px;
+        max-width: 223px;
+        padding: 0 3px 0 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -1149,6 +1226,37 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     main .player-banner .username .flag-icon {
         font-size: 16px;
         margin: 7px 3px;
+    }
+
+    main .player-banner .username .flex-box .aka {
+        font-size: 12px;
+        max-width: 182px;
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .player-banner .username .flex-box .be-followed {
+        font-size: 10px;
+        margin: auto 2px;
+    }
+
+    main .player-banner .username #follow {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    main .player-banner .username .follow-btn {
+        font-size: 16px;
+        line-height: 34px;
+        width: 34px;
+    }
+
+    main .player-banner .username .follow-btn .tooltip {
+        display: none;
     }
 
     main .player-banner .relationship span {
@@ -1207,22 +1315,15 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         font-size: 14px;
     }
 
+    main .player-banner .selection {
+        margin-top: 5px;
+    }
+
     main .player-banner .selection .special li {
         font-size: 12px;
         line-height: 24px;
         padding: 0;
         margin: 5px;
-    }
-
-    main .player-banner .username div {
-        width: 285px;
-    }
-
-    main .player-banner .username p {
-        font-size: 16px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
     }
 
     main .player-banner .selection .mode li a i {
@@ -1237,6 +1338,13 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
     main .player-banner .me .contents .bbcode-profile {
         max-height: 400px;
+    }
+    main .player-banner .me .contents .bbcode-profile::-webkit-scrollbar {
+        display: none;
+    }
+
+    main .player-banner .me .contents .me-empty .nothing {
+        font-size: 150%;
     }
 
     main .player-banner .me .contents .me-empty .edit-me {
@@ -1253,6 +1361,9 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 
     main .player-banner .me .contents form textarea {
         height: 400px;
+    }
+    main .player-banner .me .contents form textarea::-webkit-scrollbar {
+        display: none;
     }
 
     main .player-banner .me .contents form .editor .bb-button p {

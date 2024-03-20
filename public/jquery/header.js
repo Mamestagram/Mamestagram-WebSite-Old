@@ -14,7 +14,7 @@ $(window).on("load scroll", function() {
         if ($width > 1232){
             $(".link-form").css({
                 "top": 84 + "px",
-                "right": 130 + "px",
+                "right": 125 + "px",
             });
         }
     }

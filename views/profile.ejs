@@ -172,68 +172,105 @@
                             </a>
                         <% } %>
                         <i class="flag-icon flag-icon-<%= info.country %>"></i>
-                        <% if (info.show_pName === 1 && info.past_name !== null) { %>
-                            <p>aka: <%= info.past_name %></p>
-                        <% } %>
+                        <div class="flex-box">
+                            <% if (info.show_pName === 1 && info.past_name !== null) { %>
+                                <p class="aka">aka: <%= info.past_name %></p>
+                            <% } %>
+                            <% if (beFollowed) { %>
+                                <p class="be-followed">Follows you</p>
+                            <% } %>
+                        </div>
                     </div>
+                    <% if (loginf && id !== locals.userid) { %>
+                        <span id="follow">
+                            <span class="follow-btn" onclick="clickFollowButton()"
+                            <% if (followStatus === "following") { %>
+                                style="background-color: #7ea015;"
+                            <% } else if (followStatus === "mutual") { %>
+                                style="background-color: #c4598c;"
+                            <% } else { %>
+                                style="background-color: #17171c;"
+                            <% } %>>
+                                <% if (followStatus !== "none") { %>
+                                    <i class="fa-solid fa-user-xmark"></i>
+                                    <p class="tooltip">Unfollow</p>
+                                <% } else { %>
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <p class="tooltip">Follow</p>
+                                <% } %>
+                            </span>
+                        </span>
+                    <% } %>
                 </div>
                 <div class="relationship">
-                    <span class="mutual">
+                    <span id="mutual" class="mutual">
                         <i class="fa-solid fa-handshake-simple"></i>
                         <%= mutual %>
-                        <p class="tooltip">mutual</p>
+                        <p class="tooltip">Mutual</p>
                     </span>
-                    <span class="following">
+                    <span id="following" class="following">
                         <i class="fa-solid fa-user"></i>
                         <%= following %>
-                        <p class="tooltip">following</p>
+                        <p class="tooltip">Following</p>
                     </span>
-                    <span class="followers">
+                    <span id="followers" class="followers">
                         <i class="fa-solid fa-users"></i>
                         <%= followers %>
-                        <p class="tooltip">followers</p>
+                        <p class="tooltip">Followers</p>
                     </span>
-                    <div class="list mutual-list">
-                        <div class="wrap">
-                            <h1><i class="fa-solid fa-handshake-simple"></i>Mutual<i class="fa-solid fa-xmark"></i></h1>
-                            <% mutualList.forEach((data) => { %>
-                                <a class="data" href="/profile/<%= data.user2 %>/std">
-                                    <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
-                                    <div class="name">
-                                        <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
-                                        <p class="username"><%= data.name %></p>
-                                    </div>
-                                </a>
-                            <% }); %>
-                        </div>
+                    <div id="mutual-list">
+                        <% if (mutualList.length > 0) { %>
+                            <div class="list mutual-list">
+                                <div class="wrap">
+                                    <h1><i class="fa-solid fa-handshake-simple"></i>Mutual<i class="fa-solid fa-xmark"></i></h1>
+                                    <% mutualList.forEach((data) => { %>
+                                        <a class="data" href="/profile/<%= data.user2 %>/std">
+                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                                            <div class="name">
+                                                <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
+                                                <p class="username"><%= data.name %></p>
+                                            </div>
+                                        </a>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% } %>
                     </div>
-                    <div class="list following-list">
-                        <div class="wrap">
-                            <h1><i class="fa-solid fa-user"></i>Following<i class="fa-solid fa-xmark"></i></h1>
-                            <% followingList.forEach((data) => { %>
-                                <a class="data" href="/profile/<%= data.user2 %>/std">
-                                    <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
-                                    <div class="name">
-                                        <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
-                                        <p class="username"><%= data.name %></p>
-                                    </div>
-                                </a>
-                            <% }); %>
-                        </div>
+                    <div id="following-list">
+                        <% if (followingList.length > 0) { %>
+                            <div class="list following-list">
+                                <div class="wrap">
+                                    <h1><i class="fa-solid fa-user"></i>Following<i class="fa-solid fa-xmark"></i></h1>
+                                    <% followingList.forEach((data) => { %>
+                                        <a class="data" href="/profile/<%= data.user2 %>/std">
+                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                                            <div class="name">
+                                                <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
+                                                <p class="username"><%= data.name %></p>
+                                            </div>
+                                        </a>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% } %>
                     </div>
-                    <div class="list followers-list">
-                        <div class="wrap">
-                            <h1><i class="fa-solid fa-users"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
-                            <% followersList.forEach((data) => { %>
-                                <a class="data" href="/profile/<%= data.user1 %>/std">
-                                    <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
-                                    <div class="name">
-                                        <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
-                                        <p class="username"><%= data.name %></p>
-                                    </div>
-                                </a>
-                            <% }); %>
-                        </div>
+                    <div id="followers-list">
+                        <% if (followersList.length > 0) { %>
+                            <div class="list followers-list">
+                                <div class="wrap">
+                                    <h1><i class="fa-solid fa-users"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
+                                    <% followersList.forEach((data) => { %>
+                                        <a class="data" href="/profile/<%= data.user1 %>/std">
+                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                                            <div class="name">
+                                                <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
+                                                <p class="username"><%= data.name %></p>
+                                            </div>
+                                        </a>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% } %>
                     </div>
                     <div class="player-status">
                         <span
@@ -305,7 +342,7 @@
                             <% } else if (modeNum === 3) { %>
                                 href="/profile/<%= id %>/mania&dans"
                             <% } %>>Dans</a>
-                            </li>
+                        </li>
                     </ul>
                     <ul class="mode">
                         <li class="std"
@@ -375,11 +412,15 @@
                     </p>
                     <div class="contents">
                         <div id="put-bbcode" class="bbcode-profile" style="display: none;">
-                            <% if (id === locals.userid && bbcode === null) { %>
+                            <% if (bbcode === null) { %>
                                 <div class="me-empty">
-                                    <p class="edit-me">Edit me!</p>
-                                    <i class="fa-solid fa-user-pen"></i>
-                                    <p class="description">Express yourself by editing <strong>me!</strong></p>
+                                    <% if (id === locals.userid) { %>
+                                        <p class="edit-me">Edit me!</p>
+                                        <i class="fa-solid fa-user-pen"></i>
+                                        <p class="description">Express yourself by editing <strong>me!</strong></p>
+                                    <% } else { %>
+                                        <p class="nothing">No contents</p>
+                                    <% } %>
                                 </div>
                             <% } %>
                             <%= me %>
@@ -541,7 +582,7 @@
                             %
                         </h2>
                     </div>
-                    <div class="plaucount">
+                    <div class="playcount">
                         <h1>Play Count</h1>
                         <h2>
                             <% if (dans) { %>
@@ -1022,6 +1063,82 @@
                 $("#put-bbcode").show();
             });
 
+            function clickFollowButton() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/follow", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("follow").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+                getMutualValue();
+                getMutualList();
+                getFollowingValue();
+                getFollowingList();
+                getFollowersValue();
+                getFollowersList();
+            }
+
+            function getMutualValue() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/mutual", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("mutual").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+            }
+
+            function getMutualList() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/mutual_list", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("mutual-list").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+            }
+
+            function getFollowingValue() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/following", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("following").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+            }
+
+            function getFollowingList() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/following_list", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("following-list").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+            }
+
+            function getFollowersValue() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/followers", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("followers").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+            }
+
+            function getFollowersList() {
+                const ajax = new XMLHttpRequest();
+                ajax.open("POST", "/followers_list", true);
+                ajax.setRequestHeader("Content-Type", "text/plain");
+                ajax.onload = function() {
+                    document.getElementById("followers-list").innerHTML = ajax.responseText;
+                }
+                ajax.send("<%= id %>");
+            }
+
             function bbCodeToHtml() {
                 const element = document.getElementById("put-bbcode");
                 const htmlContent = element.innerText;
@@ -1087,8 +1204,6 @@
 
             function ajaxUpdate (link, element) {
                 const ajax = new XMLHttpRequest();
-                const fd = new FormData();
-                fd.append("content", document.getElementById("me-editor").value);
                 ajax.open("POST", link, true);
                 ajax.setRequestHeader("Content-Type", "text/plain");
                 ajax.onload = function () {

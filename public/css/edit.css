@@ -100,11 +100,15 @@ main {
     max-height: 400px;
 }
 
-.avatar button, .banner-img button, .bgimage button {
+.box .image .description {
+    font-size: 14px;
+}
+
+.avatar-img button, .banner-img button, .bgimage button {
     width: 105px;
 }
 
-.avatar button i, .banner-img button i, .bgimage button i {
+.avatar-img button i, .banner-img button i, .bgimage button i {
     padding-left: 5px;
 }
 

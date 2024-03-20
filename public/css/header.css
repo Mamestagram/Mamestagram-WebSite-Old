@@ -206,8 +206,10 @@ header .arrow {
 
 .mobile li img {
     height: 50px;
+    width: 50px;
     padding: 7px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .mobile li span {
@@ -219,7 +221,6 @@ header .arrow {
 .mobile li a, .mobile li button {
     height: 45px;
     line-height: 45px;
-    width: 100%;
 }
 
 .mobile .avatar button {
@@ -237,7 +238,7 @@ header .arrow {
     display: none;
     position: fixed;
     top: 75px;
-    right: 160px;
+    right: 125px;
     background-color: #333333;
     font-size: 16px;
     font-weight: bold;
