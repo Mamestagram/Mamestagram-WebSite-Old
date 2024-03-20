@@ -1089,7 +1089,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     }
 
     main {
-        padding-top: 10px;
         padding-bottom: 100px;
     }
 
@@ -1108,9 +1107,18 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     main .box div .data-mobile, main .box div .data-mobile-passed {
         display: block;
     }
-    /* ------------------------------------------------- */
-    main .banner-box, main .banner-box img {
+
+    main .banner-box {
         height: 125px;
+        margin: 0 5px;
+    }
+
+    main .banner-box img {
+        height: 125px
+    }
+    /* ------------------------------------------------- */
+    main .player-banner {
+        margin-top: 0;
     }
 
     main .player-banner .username .avatar {
