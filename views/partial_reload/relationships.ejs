@@ -18,7 +18,7 @@
         <div class="wrap">
             <h1><i class="fa-solid fa-handshake-simple"></i>Mutual<i class="fa-solid fa-xmark"></i></h1>
             <% mutualList.forEach((data) => { %>
-                <a class="data" href="/profile/<%= data.user2 %>/std">
+                <a class="data" href="/profile/<%= data.user2 %>">
                     <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                     <div class="name">
                         <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
@@ -34,7 +34,7 @@
         <div class="wrap">
             <h1><i class="fa-solid fa-user"></i>Following<i class="fa-solid fa-xmark"></i></h1>
             <% followingList.forEach((data) => { %>
-                <a class="data" href="/profile/<%= data.user2 %>/std">
+                <a class="data" href="/profile/<%= data.user2 %>">
                     <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                     <div class="name">
                         <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
@@ -50,7 +50,7 @@
         <div class="wrap">
             <h1><i class="fa-solid fa-users"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
             <% followersList.forEach((data) => { %>
-                <a class="data" href="/profile/<%= data.user1 %>/std">
+                <a class="data" href="/profile/<%= data.user1 %>">
                     <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                     <div class="name">
                         <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>

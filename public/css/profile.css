@@ -7,7 +7,7 @@
 
 main {
     color: #fdfdfd;
-    padding-top: 150px;
+    padding-top: 130px;
     padding-bottom: 300px;
 }
 
@@ -51,18 +51,6 @@ main .player-banner .username .avatar {
     object-fit: cover;
 }
 
-main .player-banner .username .badge {
-    height: 26px;
-    margin: auto 0;
-    transition: 100ms;
-}
-
-main .player-banner .username .verified-hover {
-    display: none;
-    height: 18px;
-    transition: 100ms;
-}
-
 main .player-banner .username div {
     display: block;
     margin: auto 0;
@@ -76,10 +64,65 @@ main .player-banner .username h1 {
     float: left;
 }
 
+main .player-banner .username .champion {
+    position: relative;
+}
+
+main .player-banner .username .champion h1 {
+    background: linear-gradient(to right, #8b5a00, #caa21f, #feeb69, #fffbea) 0 / 200%;
+    background-position: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: 10s shine linear infinite;
+}
+@keyframes shine {
+    0% { background-position: 200%; }
+    6% { background-position: 0%; }
+    100% { background-position: 0%; }
+}
+
+main .player-banner .username .champion:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .player-banner .username .champion .tooltip {
+    line-height: 10px;
+    width: 150px;
+    position: absolute;
+    left: 50%;
+    bottom: 80%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 0.8em;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
+main .player-banner .username .champion .tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 12px solid #17171c;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 main .player-banner .username .edit {
     font-size: 20px;
     margin: auto 0;
     opacity: 0.7;
+    float: left;
 }
 main .player-banner .username .edit:hover {
     opacity: 1;
@@ -89,6 +132,56 @@ main .player-banner .username .flag-icon {
     font-size: 22px;
     margin: 18px 5px;
     border-radius: 2px;
+    float: left;
+}
+
+main .player-banner .username .tag {
+    display: flex;
+    margin: auto 5px;
+}
+
+main .player-banner .username .tag-mobile {
+    display: none;
+    margin: auto 0;
+}
+
+main .player-banner .username .tag .badge {
+    position: relative;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+main .player-banner .username .tag .badge i {
+    transition: transform 150ms;
+}
+main .player-banner .username .tag .badge i:hover {
+    transform: scale(1.15);
+}
+
+main .player-banner .username .tag .badge:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .player-banner .username .tag .badge .tooltip {
+    line-height: 10px;
+    position: absolute;
+    width: auto;
+    left: 50%;
+    bottom: 60%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 0.7em;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
 }
 
 main .player-banner .username #follow {
@@ -157,6 +250,7 @@ main .player-banner .username .flex-box {
 main .player-banner .username .flex-box .aka {
     color: #ababab;
     margin-left: 5px;
+    clear: both;
 }
 
 main .player-banner .username .flex-box .be-followed {
@@ -438,7 +532,6 @@ main .player-banner .me h1 {
     font-size: 24px;
     font-weight: bold;
     line-height: 40px;
-    float: left;
 }
 
 main .player-banner .me h1 i {
@@ -1194,6 +1287,15 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     /* ------------------------------------------------- */
     main .banner-box {
         height: 200px;
+        margin: 20px 30px 0 30px;
+    }
+
+    main .banner-box img {
+        height: 200px;
+    }
+
+    main .player-banner {
+        margin-top: 0;
     }
 
     main .player-banner .me .contents form .editor {
@@ -1269,11 +1371,6 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin: 5px;
     }
 
-    main .player-banner .username .badge {
-        height: 18px;
-        margin: auto 0;
-    }
-
     main .player-banner .username h1 {
         font-size: 24px;
         max-width: 223px;
@@ -1291,6 +1388,18 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     main .player-banner .username .flag-icon {
         font-size: 16px;
         margin: 7px 3px;
+    }
+
+    main .player-banner .username .tag {
+        display: none;
+    }
+
+    main .player-banner .username .tag-mobile {
+        display: block;
+    }
+
+    main .player-banner .username .tag .badge {
+        font-size: 14px;
     }
 
     main .player-banner .username .flex-box .aka {

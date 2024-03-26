@@ -165,6 +165,24 @@
             }
             return modeName;
         }
+        const getUserPriv = (n) => {
+            const priv = [];
+            const privName = ["", "", "Verified", "", "Supporter", "", "", "Arumni", "", "", "", "Nominator", "Moderator", "Administrator", "Developer"];
+            if (n >= 31879) {
+                priv.push("Developer");
+                return priv;
+            }
+            for (let i = 14; i >= 0; i--) {
+                if (i === 3 || i === 6 || i === 8 || i === 9) continue;
+                if (n >= 1 << i) {
+                    n -= 1 << i;
+                    if (privName[i] !== "") {
+                        priv.push(privName[i]);
+                    }
+                }
+            }
+            return priv;
+        }
         %>
     </head>
     <body>
@@ -178,13 +196,71 @@
                 <div class="username">
                     <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="" />
                     <div>
-                        <h1><%= info.name %></h1>
-                        <% if (id === locals.userid) { %>
-                            <a href="/edit" class="edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
+                        <div class="flex-box">
+                            <span
+                            <% if (ranking.global[0].value === 1) { %>
+                                class="champion"
+                            <% } %>>
+                                <h1><%= info.name %></h1>
+                                <% if (ranking.global[0].value === 1) { %>
+                                    <p class="tooltip"><%= getModeName(modeNum) %> champion</p>
+                                <% } %>
+                            </span>
+                            <% if (id === locals.userid) { %>
+                                <a href="/edit" class="edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            <% } %>
+                            <i class="flag-icon flag-icon-<%= info.country %>"></i>
+                            <% if (info.priv % 2 !== 0) { %>
+                                <div class="tag">
+                                    <% getUserPriv(info.priv).forEach((tag) => { %>
+                                        <span class="badge">
+                                            <% if (tag === "Developer") { %>
+                                                <i class="fa-solid fa-code" style="color: #3e70dd;"></i>
+                                            <% } else if (tag === "Administrator") { %>
+                                                <i class="fa-solid fa-crown" style="color: #f1c40f;"></i>
+                                            <% } else if (tag === "Moderator") { %>
+                                                <i class="fa-solid fa-shield-halved" style="color: #cf5757;"></i>
+                                            <% } else if (tag === "Nominator") { %>
+                                                <i class="fa-solid fa-screwdriver-wrench" style="color: #9000fc;"></i>
+                                            <% } else if (tag === "Arumni") { %>
+                                                <i class="fa-solid fa-graduation-cap" style="color: #99aab5;"></i>
+                                            <% } else if (tag === "Supporter") { %>
+                                                <i class="fa-solid fa-heart" style="color: #dd0000;"></i>
+                                            <% } else if (tag === "Verified") { %>
+                                                <i class="fa-solid fa-check" style="color: #3ce12f;"></i>
+                                            <% } %>
+                                            <p class="tooltip"><%= tag %></p>
+                                        </span>
+                                    <% }); %>
+                                </div>
+                            <% } %>
+                        </div>
+                        <% if (info.priv % 2 !== 0) { %>
+                            <div class="tag tag-mobile">
+                                <% getUserPriv(info.priv).forEach((tag) => { %>
+                                    <span class="badge">
+                                        <% if (tag === "Developer") { %>
+                                            <i class="fa-solid fa-code" style="color: #3e70dd;"></i>
+                                        <% } else if (tag === "Administrator") { %>
+                                            <i class="fa-solid fa-crown" style="color: #f1c40f;"></i>
+                                        <% } else if (tag === "Moderator") { %>
+                                            <i class="fa-solid fa-shield-halved" style="color: #cf5757;"></i>
+                                        <% } else if (tag === "Nominator") { %>
+                                            <i class="fa-solid fa-screwdriver-wrench" style="color: #9000fc;"></i>
+                                        <% } else if (tag === "Arumni") { %>
+                                            <i class="fa-solid fa-graduation-cap" style="color: #99aab5;"></i>
+                                        <% } else if (tag === "Supporter") { %>
+                                            <i class="fa-solid fa-heart" style="color: #dd0000;"></i>
+                                        <% } else if (tag === "Verified") { %>
+                                            <i class="fa-solid fa-check" style="color: #3ce12f;"></i>
+                                        <% } %>
+                                        <p class="tooltip"><%= tag %></p>
+                                    </span>
+                                <% }); %>
+                            </div>
                         <% } %>
-                        <i class="flag-icon flag-icon-<%= info.country %>"></i>
                         <div class="flex-box">
                             <% if (info.show_pName === 1 && info.past_name !== null) { %>
                                 <p class="aka">aka: <%= info.past_name %></p>
@@ -236,7 +312,7 @@
                             <div class="wrap">
                                 <h1><i class="fa-solid fa-handshake-simple"></i>Mutual<i class="fa-solid fa-xmark"></i></h1>
                                 <% mutualList.forEach((data) => { %>
-                                    <a class="data" href="/profile/<%= data.user2 %>/std">
+                                    <a class="data" href="/profile/<%= data.user2 %>">
                                         <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                                         <div class="name">
                                             <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
@@ -252,7 +328,7 @@
                             <div class="wrap">
                                 <h1><i class="fa-solid fa-user"></i>Following<i class="fa-solid fa-xmark"></i></h1>
                                 <% followingList.forEach((data) => { %>
-                                    <a class="data" href="/profile/<%= data.user2 %>/std">
+                                    <a class="data" href="/profile/<%= data.user2 %>">
                                         <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                                         <div class="name">
                                             <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
@@ -268,7 +344,7 @@
                             <div class="wrap">
                                 <h1><i class="fa-solid fa-users"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
                                 <% followersList.forEach((data) => { %>
-                                    <a class="data" href="/profile/<%= data.user1 %>/std">
+                                    <a class="data" href="/profile/<%= data.user1 %>">
                                         <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                                         <div class="name">
                                             <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
