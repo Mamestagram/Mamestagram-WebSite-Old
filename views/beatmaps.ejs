@@ -324,7 +324,7 @@
                                     <button id="play-audio" class="pause">
                                         <i class="fa-solid fa-play"></i>
                                     </button>
-                                    <a href="https://osu.direct/d/<%= setid %>" class="download">
+                                    <a href="https://api.nerinyan.moe/d/<%= setid %>" class="download">
                                         Download<i class="fa-solid fa-download"></i>
                                     </a>
                                     <a href="/direct/<%= setid %>">
@@ -618,9 +618,9 @@
                         <% } %>
                         <li class="v2">
                             <button title="ScoreV2" onclick="jump()"
-                                <% if (getMods(mods).includes("v2")) { %>
-                                    class="selected"
-                                <% } %>><img src="/image/mods/v2.png"></button>
+                            <% if (getMods(mods).includes("v2")) { %>
+                                class="selected"
+                            <% } %>><img src="/image/mods/v2.png"></button>
                         </li>
                     </ul>
                 </div>
@@ -629,7 +629,7 @@
                         <h2 class="nothing">No players available</h2>
                     <% } else { %>
                         <div class="user first">
-                            <div class="flex" style="display: flex;">
+                            <div class="flex" style="display: flex">
                                 <div>
                                     <p class="rank">#<%= rankings[0].ranking %></p>
                                     <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png">

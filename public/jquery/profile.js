@@ -106,6 +106,20 @@ $(function() {
         }
     });
 
+    // specialクリック
+    var $menu = $("main .player-banner .selection .special .menu-title");
+    var $dropdown = $("main .player-banner .selection .special .dropdown");
+    $menu.click(function() {
+        if ($dropdown.hasClass("show")) {
+            $dropdown.fadeOut(300);
+            $dropdown.removeClass("show");
+        }
+        else {
+            $dropdown.fadeIn(300);
+            $dropdown.addClass("show");
+        }
+    });
+
     // me!のeditボタンクリック
     $("main .player-banner .me .edit-button").click(function() {
         const textarea = document.getElementById("me-editor");

@@ -362,6 +362,23 @@ section {
     vertical-align: middle;
 }
 
+.dans .mode li table .rainbow {
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: 2s rainbow linear infinite;
+}
+@keyframes rainbow {
+    0% { background-color: #e60000; }
+    14% { background-color: #f39800; }
+    28% { background-color: #fff100; }
+    42% { background-color: #009944; }
+    56% { background-color: #0068b7; }
+    70% { background-color: #1d2088; }
+    85% { background-color: #920783; }
+    100% { background-color: #e60000; }
+}
+
 .dans .mode li table td .minus {
     color: #dc143c;
 }

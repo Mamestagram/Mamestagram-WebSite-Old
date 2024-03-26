@@ -537,7 +537,7 @@ main {
 .ranking .wrap .user .avatar {
     height: 90px;
     width: 90px;
-    margin: auto 10px;
+    margin: auto 5px;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -554,7 +554,6 @@ main {
 
 .ranking .wrap .user .time {
     font-size: 14px;
-    width: 165px;
 }
 
 .ranking .wrap .user i {
@@ -563,7 +562,7 @@ main {
 }
 
 .ranking .wrap .user .tables {
-    width: 100%;
+    flex: 1;
 }
 
 .ranking .wrap .user .tables table {
@@ -1010,6 +1009,11 @@ main {
     
     .ranking .wrap .user .grade {
         height: 40px;
+    }
+
+    .ranking .wrap .user .avatar {
+        height: 80px;
+        width: 80px;
     }
     
     .ranking .wrap .user .name a {

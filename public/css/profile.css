@@ -39,7 +39,7 @@ main .player-banner {
     border-radius: 0 0 10px 10px;
 }
 
-main .player-banner div, main .player-banner .selection ul {
+main .player-banner div {
     display: flex;
 }
 
@@ -337,30 +337,95 @@ main .player-banner .player-status p {
     margin: auto 0;
 }
 
-main .player-banner .selection ul li {
+main .player-banner .selection .special {
+    color: #fdfdfd;
+    font-size: 20px;
+    margin: auto 10px;
+    appearance: menulist;
+}
+
+main .player-banner .selection .special .menu-title {
+    position: relative;
+    background-color: #424242;
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+main .player-banner .selection .special .menu-title .arrow {
+    font-size: 16px;
+    line-height: 23px;
+    float: right;
+}
+
+main .player-banner .selection .special .dropdown {
+    display: none;
+    position: absolute;
+    width: 150px;
+    transition: transform 300ms;
+    z-index: 5;
+}
+
+main .player-banner .selection .special .dropdown li {
+    background-color: #262626;
+    padding: 5px;
+    transition: background-color 100ms;
+    transform: translateY(0);
+}
+main .player-banner .selection .special .dropdown li:hover {
+    background-color: #3c3c3c;
+}
+
+main .player-banner .selection .special .dropdown li a {
+    display: block;
+}
+
+main .player-banner .selection .special .dropdown.show {
+    transform: translateY(33px);
+}
+
+main .player-banner .selection .set-favorite {
+    background-color: #393946;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    border-radius: 20px;
+    cursor: pointer;
+}
+main .player-banner .selection .set-favorite:hover {
+    background-color: #454554;
+}
+
+main .player-banner .selection .mode {
+    display: flex;
+}
+
+main .player-banner .selection .mode li {
+    display: flex;
+    padding: 0 5px;
+    margin: auto 5px;
     filter: invert(30%);
     opacity: 0.95;
 }
-main .player-banner .selection ul li:hover {
+main .player-banner .selection .mode li:hover {
     filter: invert(0%);
     opacity: 1;
 }
 
-main .player-banner .selection .special li {
-    font-weight: bold;
-    padding: 10px;
-    margin: 10px;
-}
-
-main .player-banner .selection .mode {
-    margin-left: auto;
-    margin-right: 0;
-}
-
-main .player-banner .selection .mode li a i {
+main .player-banner .selection .mode li a {
     font-size: 45px;
-    padding: 0 5px;
-    margin: 0 10px;
+}
+
+main .player-banner .selection .mode li .favorite {
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
 }
 
 main .player-banner .me {
@@ -1319,17 +1384,39 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
         margin-top: 5px;
     }
 
-    main .player-banner .selection .special li {
-        font-size: 12px;
-        line-height: 24px;
-        padding: 0;
-        margin: 5px;
+    main .player-banner .selection .special {
+        font-size: 17px;
+        margin: auto 5px;
     }
 
-    main .player-banner .selection .mode li a i {
-        font-size: 30px;
+    main .player-banner .selection .special .menu-title {
+        width: 135px;
+    }
+    
+    main .player-banner .selection .special .dropdown {
+        width: 135px;
+    }
+
+    main .player-banner .selection .set-favorite {
+        display: none;
+    }
+
+    main .player-banner .selection .mode {
+        margin-left: auto;
+    }
+
+    main .player-banner .selection .mode li {
         padding: 0 4px;
         margin: 0;
+    }
+
+    main .player-banner .selection .mode li a {
+        font-size: 30px;
+    }
+
+    main .player-banner .selection .mode li .favorite {
+        font-size: 16px;
+        margin-left: 5px;
     }
 
     main .player-banner .me h1 {

@@ -1,0 +1,155 @@
+<div class="special">
+    <button class="menu-title">
+        <% if (dans) { %>
+            Dans
+        <% } else if (modeNum >= 0 && modeNum < 4) { %>
+            Classic
+        <% } else if (modeNum < 8) { %>
+            Relax
+        <% } else { %>
+            Auto Pilot
+        <% } %>
+        <% if (modeNum === info.preferred_mode && !dans) { %>
+            <i class="favorite fa-solid fa-star fa-xs"></i>
+        <% } %>
+        <i class="fa-solid fa-chevron-down arrow down"></i>
+    </button>
+    <ul class="dropdown">
+        <!-- classic -->
+        <li class="classic">
+            <a
+            <% if (modeNum % 4 === 0 && !dans) { %>
+                href="/profile/<%= id %>/std"
+            <% } else if (modeNum % 4 === 1) { %>
+                href="/profile/<%= id %>/taiko"
+            <% } else if (modeNum % 4 === 2) { %>
+                href="/profile/<%= id %>/ctb"
+            <% } else { %>
+                href="/profile/<%= id %>/mania"
+            <% } %>>
+                Classic
+                <% if (info.preferred_mode >= 0 && info.preferred_mode < 4 && modeNum % 4 === info.preferred_mode % 4) { %>
+                    <i class="favorite fa-solid fa-star fa-xs"></i>
+                <% } %>
+            </a>
+        </li>
+        <!-- relax -->
+        <% if (modeNum !== 3) { %>
+            <li class="relax">
+                <a
+                <% if (modeNum % 4 === 0) { %>
+                    href="/profile/<%= id %>/stdrx"
+                <% } else if (modeNum % 4 === 1) { %>
+                    href="/profile/<%= id %>/taikorx"
+                <% } else if (modeNum % 4 === 2) { %>
+                    href="/profile/<%= id %>/ctbrx"
+                <% } %>>
+                    Relax
+                    <% if (info.preferred_mode >= 4 && info.preferred_mode < 8 && modeNum % 4 === info.preferred_mode % 4) { %>
+                        <i class="favorite fa-solid fa-star fa-xs"></i>
+                    <% } %>
+                </a>
+            </li>
+        <% } %>
+        <!-- auto pilot -->
+        <% if (modeNum % 4 === 0) { %>
+            <li class="auto-pilot">
+                <a href="/profile/<%= id %>/stdap">
+                    Auto Pilot
+                    <% if (info.preferred_mode === 8) { %>
+                        <i class="favorite fa-solid fa-star fa-xs"></i>
+                    <% } %>
+                </a>
+            </li>
+        <% } %>
+        <!-- dans -->
+        <li class="dans">
+            <a
+            <% if (modeNum % 4 === 0) { %>
+                href="/profile/<%= id %>/std&dans"
+            <% } else if (modeNum % 4 === 1) { %>
+                href="/profile/<%= id %>/taiko&dans"
+            <% } else if (modeNum % 4 === 2) { %>
+                href="/profile/<%= id %>/ctb&dans"
+            <% } else if (modeNum === 3) { %>
+                href="/profile/<%= id %>/mania&dans"
+            <% } %>>Dans</a>
+        </li>
+    </ul>
+</div>
+<% if (id === locals.userid && modeNum !== info.preferred_mode) { %>
+    <p class="set-favorite" onclick="setFavoriteMode()">set as favorite game mode</p>
+<% } %>
+<ul class="mode"
+    <% if (id !== locals.userid || modeNum === info.preferred_mode) { %>
+        style="margin-left: auto;"
+    <% } %>>
+    <li class="std"
+    <% if (modeNum % 4 === 0) { %>
+        style="filter: invert(0%); opacity: 1"
+    <% } %>>
+        <a
+        <% if (dans) { %>
+            href="/profile/<%= id %>/std&dans"
+        <% } else if (modeNum >= 0 && modeNum < 4) { %>
+            href="/profile/<%= id %>/std"
+        <% } else if (modeNum < 7) { %>
+            href="/profile/<%= id %>/stdrx"
+        <% } else { %>
+            href="/profile/<%= id %>/stdap"
+        <% } %>><i class="mode-icon mode-osu"></i></a>
+        <% if (info.preferred_mode % 4 === 0) { %>
+            <i class="favorite fa-solid fa-star"></i>
+        <% } %>
+    </li>
+    <% if (modeNum !== 8) { %>
+        <li class="taiko"
+        <% if (modeNum % 4 === 1) { %>
+            style="filter: invert(0%); opacity: 1"
+        <% } %>>
+            <a
+            <% if (dans) { %>
+                href="/profile/<%= id %>/taiko&dans"
+            <% } else if (modeNum >= 0 && modeNum < 4) { %>
+                href="/profile/<%= id %>/taiko"
+            <% } else { %>
+                href="/profile/<%= id %>/taikorx"
+            <% } %>><i class="mode-icon mode-taiko"></i></a>
+            <% if (info.preferred_mode % 4 === 1) { %>
+                <i class="favorite fa-solid fa-star"></i>
+            <% } %>
+        </li>
+        <li class="catch"
+        <% if (modeNum % 4 === 2) { %>
+            style="filter: invert(0%); opacity: 1"
+        <% } %>>
+            <a
+            <% if (dans) { %>
+                href="/profile/<%= id %>/ctb&dans"
+            <% } else if (modeNum >= 0 && modeNum < 4) { %>
+                href="/profile/<%= id %>/ctb"
+            <% } else { %>
+                href="/profile/<%= id %>/ctbrx"
+            <% } %>><i class="mode-icon mode-fruits"></i></a>
+            <% if (info.preferred_mode % 4 === 2) { %>
+                <i class="favorite fa-solid fa-star"></i>
+            <% } %>
+        </li>
+    <% } %>
+    <% if (modeNum >= 0 && modeNum < 4) { %>
+        <li class="mania"
+        <% if (modeNum === 3) { %>
+            style="filter: invert(0%); opacity: 1"
+        <% } %>>
+            <a
+            <% if (dans) { %>
+                href="/profile/<%= id %>/mania&dans"
+            <% } else { %>
+                href="/profile/<%= id %>/mania"
+            <% } %>><i class="mode-icon mode-mania"></i></a>
+            <% if (info.preferred_mode % 4 === 3) { %>
+                <i class="favorite fa-solid fa-star"></i>
+            <% } %>
+        </li>
+    <% } %>
+</ul>
