@@ -99,6 +99,8 @@
                     <span class="errmsg">This name is already in use</span>
                 <% } else if (err.includes("invalid")) { %>
                     <span class="errmsg">Can't use this name</span>
+                <% } else if (err.includes("banword")) { %>
+                    <span class="errmsg">Banned words are contained</span>
                 <% } %>
                 <input type="text" name="username" value="<%= untxt %>" required>
             </div>
