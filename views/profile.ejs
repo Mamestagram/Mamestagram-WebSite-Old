@@ -1315,6 +1315,17 @@
                         $("main .player-banner .me .contents .bbcode-profile").hide();
                         $("main .player-banner .me .contents form").show();
                     });
+                    var $boxName = $("main .player-banner .me .contents .spoilerbox p");
+                    $boxName.click(function() {
+                        if ($(this).hasClass("show-content")) {
+                            $(this).removeClass("show-content");
+                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+                        }
+                        else {
+                            $(this).addClass("show-content");
+                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+                        }
+                    });
                 }
                 ajax.send(document.getElementById("me-editor").value);
             }
@@ -1336,6 +1347,17 @@
                     $("main .player-banner .me .contents .edit-me").click(function() {
                         $("main .player-banner .me .contents .bbcode-profile").hide();
                         $("main .player-banner .me .contents form").show();
+                    });
+                    var $boxName = $("main .player-banner .me .contents .spoilerbox p");
+                    $boxName.click(function() {
+                        if ($(this).hasClass("show-content")) {
+                            $(this).removeClass("show-content");
+                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+                        }
+                        else {
+                            $(this).addClass("show-content");
+                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+                        }
                     });
                 }
                 ajax.send(null);

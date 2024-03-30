@@ -136,13 +136,13 @@ $(function() {
     // spoilerboxのnameクリック
     var $boxName = $("main .player-banner .me .contents .spoilerbox p");
     $boxName.click(function() {
-        if ($(this).hasClass("show-content")) {
-            $(this).removeClass("show-content");
-            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).hide();
+        if ($(this).hasClass("down")) {
+            $(this).removeClass("down");
+            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
         }
         else {
-            $(this).addClass("show-content");
-            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).show();
+            $(this).addClass("down");
+            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
         }
     });
 
@@ -173,8 +173,8 @@ $(function() {
                 cursorOffset = 3;
                 break;
             case "color":
-                insertText = `[color val=""][/color]`;
-                cursorOffset = 14;
+                insertText = `[color=][/color]`;
+                cursorOffset = 8;
                 break;
             case "spoiler-text":
                 insertText = "[spoiler][/spoiler]";
@@ -185,35 +185,36 @@ $(function() {
                 cursorOffset = 8;
                 break;
             case "spoilerbox":
-                insertText = `[box name=""][box]`;
-                cursorOffset = 13;
+                insertText = `[box=][/box]`;
+                cursorOffset = 6;
                 break;
             case "list":
                 insertText = "[list]\n";
                 insertText += "[*]\n";
                 insertText += "[/list]";
                 cursorOffset = 10;
+                break;
             case "num-list":
-                insertText = `[list type="dec"]\n`;
+                insertText = `[list=dec]\n`;
                 insertText += "[*]\n";
                 insertText += "[/list]";
-                cursorOffset = 21;
+                cursorOffset = 14;
                 break;
             case "quote":
-                insertText = `[quote name=""][/quote]`;
-                cursorOffset = 15;
+                insertText = `[quote=][/quote]`;
+                cursorOffset = 8;
                 break;
             case "image":
                 insertText = "[img][/img]";
                 cursorOffset = 5;
                 break;
             case "url":
-                insertText = `[url link=""][/url]`;
-                cursorOffset = 13;
+                insertText = `[url=][/url]`;
+                cursorOffset = 6;
                 break;
             case "profile":
-                insertText = `[profile id=""][/profile]`;
-                cursorOffset = 15;
+                insertText = `[profile=][/profile]`;
+                cursorOffset = 10;
                 break;
             case "code":
                 insertText = "[c][/c]";

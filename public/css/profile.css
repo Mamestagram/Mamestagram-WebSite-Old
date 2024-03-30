@@ -532,6 +532,7 @@ main .player-banner .me h1 {
     font-size: 24px;
     font-weight: bold;
     line-height: 40px;
+    float: left;
 }
 
 main .player-banner .me h1 i {
@@ -661,6 +662,11 @@ main .player-banner .me .contents .spoilerbox p:hover {
 
 main .player-banner .me .contents .spoilerbox p i {
     width: 20px;
+    transition: transform 150ms;
+}
+
+main .player-banner .me .contents .spoilerbox .down i {
+    transform: translate(-25%, 25%) rotate(90deg);
 }
 
 main .player-banner .me .contents .spoilerbox div {
@@ -668,6 +674,10 @@ main .player-banner .me .contents .spoilerbox div {
     color: #d1d1e5;
     padding-left: 20px;
     margin-top: 10px;
+}
+
+main .player-banner .me .contents .spoilerbox .show-content {
+    display: block;
 }
 
 main .player-banner .me .contents .spoiler {
