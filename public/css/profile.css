@@ -175,12 +175,12 @@ main .player-banner .username .tag .badge .tooltip {
     padding: 8px;
     border-radius: 10px;
     background-color: #17171c;
-    font-size: 0.7em;
+    font-size: 14px;
     color: #fff;
     text-align: center;
     visibility: hidden;
     opacity: 0;
-    z-index: 1;
+    z-index: 1000000;
     transition: bottom 300ms, visibility 300ms, opacity 300ms;
 }
 

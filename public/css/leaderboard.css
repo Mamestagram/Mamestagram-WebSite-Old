@@ -4,6 +4,7 @@ main {
 /* ------------------------------------------------- */
 .selection {
     display: flex;
+    padding-top: 15px;
 }
 
 .special {
@@ -64,9 +65,10 @@ main {
 }
 
 .mode li {
-    padding: 10px;
+    padding: 0 10px;
     filter: invert(30%);
     opacity: 0.95;
+    transition: filter 150ms, opacity 150ms;
 }
 .mode li:hover {
     filter: invert(0%);
@@ -78,27 +80,108 @@ main {
     font-size: 45px;
 }
 
+.country ul {
+    display: flex;
+    color: #fdfdfd;
+    font-size: 24px;
+    height: 40px;
+    width: 850px;
+    margin: 10px auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.country ul::-webkit-scrollbar {
+    height: 8px;
+}
+.country ul::-webkit-scrollbar-track {
+    background-color: #33333d;
+}
+.country ul::-webkit-scrollbar-thumb {
+    background-color: #99999e;
+    border-radius: 2px;
+}
+
+.country ul li {
+    height: 30px;
+    line-height: 30px;
+    max-width: 30px;
+    border-radius: 30px;
+    margin: 0 2px;
+    flex-basis: 30px;
+    flex-shrink: 0;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.35;
+    transform: scale(1.01);
+    transition: transform 150ms, opacity 150ms;
+}
+.country ul li:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.country ul .all {
+    font-size: 18px;
+    opacity: 0.5;
+    transform: scale(1);
+    transition: background-color 150ms, opacity, 150ms, color 150ms;
+}
+.country ul .all:hover {
+    background-color: #fdfdfd;
+    color: #1c1c1c;
+    font-weight: bold;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.country ul .all a {
+    display: block;
+    margin: auto 0;
+}
+
 .page {
     display: flex;
+    color: #fdfdfd;
     height: 40px;
     padding-bottom: 40px;
     justify-content: center;
 }
 
-.page p {
-    color: #fdfdfd;
+.page ul {
+    display: flex;
+    height: 30px;
+}
+
+.page ul li {
     font-size: 18px;
+    height: 30px;
     line-height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    margin: 0 5px;
+    text-align: center;
+    transition: background-color 150ms, color 150ms, font-weight 150ms;
+}
+
+.page ul .item {
+    cursor: pointer;
+}
+.page ul .item:hover {
+    background-color: #fdfdfd;
+    color: #1c1c1c;
+    font-weight: bold;
 }
 
 .page .pagearrow i {
-    color: #fdfdfd;
     font-size: 30px;
-    margin: 0 20px;
+    margin: 0 10px;
+    cursor: pointer;
     filter: invert(50%);
     opacity: 0.95;
+    transition: filter 150ms, opacity 150ms;
 }
-.page .pagearrow i:hover {
+
+.page .pagearrow .available:hover {
     filter: invert(0%);
     opacity: 1;
 }
@@ -180,7 +263,7 @@ main {
 
 .ranking {
     color: #fdfdfd;
-    width: 50px;
+    width: 60px;
     font-weight: bold;
     text-align: center;
 }
@@ -262,6 +345,13 @@ main {
 }
 
 @media (max-width: 1232px) {
+    .country ul {
+        width: 500px;
+    }
+    .country ul::-webkit-scrollbar {
+        display: none;
+    }
+
     .ss-title, .s-title, .a-title {
         display: none;
     }
@@ -283,6 +373,21 @@ main {
     .special {
         font-size: 17px;
         margin-left: 5px;
+    }
+
+    .country ul {
+        width: 340px;
+    }
+
+    .country ul li {
+        transform: scale(1.5);
+    }
+    .country ul li:hover {
+        transform: scale(1.6);
+    }
+
+    .page ul :not(.now-page):not(.zero) {
+        display: none;
     }
 
     .mode {

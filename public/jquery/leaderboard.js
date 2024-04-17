@@ -1,3 +1,9 @@
+$(window).resize(function() {
+    if ($("body").width() <= 767) {
+        $(".country ul li").css("transform", "");
+    }
+});
+
 $(function() {
     var $menu = $(".special .menu-title");
     var $dropdown = $(".special .dropdown");
@@ -9,6 +15,10 @@ $(function() {
             $(".name").css("width", `${wid}px`);
         }
     });
+
+    if ($("body").width() <= 767) {
+        $(".country ul li").css("transform", "");
+    }
 
     $menu.click(function() {
         if ($dropdown.hasClass("show")) {

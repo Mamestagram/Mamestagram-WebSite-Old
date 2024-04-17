@@ -1,0 +1,182 @@
+<%
+const getModeName = (modeNum) => {
+    switch (modeNum) {
+        case 0: return "std";
+        case 1: return "taiko";
+        case 2: return "ctb";
+        case 3: return "mania";
+        case 4: return "stdrx";
+        case 5: return "taikorx";
+        case 6: return "ctbrx";
+        case 8: return "stdap";
+        default: return "std";
+    }
+}
+%>
+<div class="country">
+    <ul>
+        <li title="All countries" class="all"
+            <% if (selectedCountry === "all") { %>
+                style="background-color: #fdfdfd; opacity: 1;"
+            <% } %>>
+            <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"
+            <% if (selectedCountry === "all") { %>
+                style="color: #1c1c1c; font-weight: bold;"
+            <% } %>>All</a>
+        </li>
+        <% if (locals.loginf) { %>
+            <li title="<%= locals.country.toUpperCase() %>"
+                <% if (locals.country === selectedCountry) { %>
+                    style="opacity: 1; transform: scale(1.05);"
+                <% } %>>
+                <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= locals.country %>">
+                    <i class="flag-icon flag-icon-<%= locals.country %>"></i>
+                </a>
+            </li>
+        <% } %>
+        <% countries.forEach((row) => { %>
+            <% if (row.country !== locals.country) { %>
+                <li title="<%= row.country.toUpperCase() %>"
+                    <% if (row.country === selectedCountry) { %>
+                        style="opacity: 1; transform: scale(1.05);"
+                    <% } %>>
+                    <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= row.country %>">
+                        <i class="flag-icon flag-icon-<%= row.country %>"></i>
+                    </a>
+                </li>
+            <% } %>
+        <% }); %>
+    </ul>
+</div>
+<div class="page">
+    <p class="pagearrow">
+        <i title="Foremost" class="fa-solid fa-backward-fast <% if (page > 1) { %>available<% } %>"
+        <% if (page > 1) { %>
+            onclick="jumpPage(1)"
+        <% } else { %>
+            style="
+                opacity: 0.5;
+                cursor: unset;
+            "
+        <% } %>></i>
+        <i title="Prev" class="fa-solid fa-backward-step <% if (page > 1) { %>available<% } %>"
+        <% if (page > 1) { %>
+            onclick="jumpPage('<%= page - 1 %>')"
+        <% } else { %>
+            style="
+                opacity: 0.5;
+                cursor: unset;
+            "
+        <% } %>></i>
+    </p>
+    <ul>
+        <% const ellipsis = [Math.max(0, Math.min(pages - 5, page - 3)), Math.min(pages, Math.max(6, page + 3))]; %>
+        <% for (let i = 1; i <= pages; i++) { %>
+            <% if (i === 1 || (i > ellipsis[0] && i < ellipsis[1]) || i === pages) { %>
+                <li class="item <% if (i === page) { %>now-page<% } %>" onclick="jumpPage('<%= i %>')"
+                <% if (i === page) { %>
+                    style="
+                        background-color: #fdfdfd;
+                        color: #1c1c1c;
+                        font-weight: bold;
+                    "
+                <% } %>><%= i %></li>
+            <% } else if (i === ellipsis[0] || i === ellipsis[1]) { %>
+                <li class="ellipsis">...</li>
+            <% } %>
+        <% } %>
+        <% if (pages === 0) { %>
+            <li class="item zero" style="background-color: #fdfdfd; color: #1c1c1c; font-weight: bold;">0</li>
+        <% } %>
+    </ul>
+    <p class="pagearrow">
+        <i title="Next" class="fa-solid fa-forward-step <% if (page < pages) { %>available<% } %>"
+        <% if (page < pages) { %>
+            onclick="jumpPage('<%= page + 1 %>')"
+        <% } else { %>
+            style="
+                opacity: 0.5;
+                cursor: unset;
+            "
+        <% } %>></i>
+        <i title="Innermost" class="fa-solid fa-forward-fast <% if (page < pages) { %>available<% } %>"
+        <% if (page < pages) { %>
+            onclick="jumpPage('<%= pages %>')"
+        <% } else { %>
+            style="
+                opacity: 0.5;
+                cursor: unset;
+            "
+        <% } %>></i>
+    </p>
+</div>
+<div class="ranking-table">
+    <div class="table-title">
+        <% if (sortby !== "dans") { %>
+            <span class="acc-title"
+            <% if (sortby === "accuracy") { %>
+                style="font-weight: bold; filter: invert(0%); opacity: 1;"
+            <% } %>>
+                <a href="/leaderboard/<%= getModeName(modeNum) %>/accuracy">Accuracy</a>
+            </span>
+            <span class="playcount-title"
+            <% if (sortby === "playcount") { %>
+                style="font-weight: bold; filter: invert(0%); opacity: 1;"
+            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/playcount">Play Count</a></span>
+            <span class="pp-title"
+            <% if (sortby === "performance") { %>
+                style="font-weight: bold; filter: invert(0%); opacity: 1;"
+            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/performance">Performance</a></span>
+            <span class="ss-title">SS</span>
+            <span class="s-title">S</span>
+            <span class="a-title">A</span>
+        <% } else { %>
+            <span class="grade-title" style="filter: invert(0%); opacity: 1;">PP</span>
+            <span class="acc-title">Accuracy</span>
+            <span class="playcount-title">Play Count</span>
+        <% } %>
+    </div>
+    <div class="mode-<%= modeNum %>">
+        <% if (ranking.length === 0) { %>
+            <h1 class="nothing">No players available</h1>
+        <% } else { %>
+            <% ranking.forEach((player) => { %>
+                <div class="ranking-data">
+                    <span class="ranking">#<%= player.ranking.toLocaleString() %></span>
+                    <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
+                    <span class="name">
+                        <a
+                        <% if (sortby !== "dans") { %>
+                            href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>"
+                        <% } else { %>
+                            href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>&dans"
+                        <% } %>>
+                            <span class="text"><%= player.name %></span>
+                        </a>
+                    </span>
+                    <% if (sortby !== "dans") { %>
+                        <span class="acc"
+                        <% if (sortby === "accuracy") { %>
+                            style="filter: invert(0%); opacity: 1;"
+                        <% } %>><%= player.acc.toFixed(2) %>%</span>
+                        <span class="playcount"
+                        <% if (sortby === "playcount") { %>
+                            style="filter: invert(0%); opacity: 1;"
+                        <% } %>><%= player.plays.toLocaleString() %></span>
+                        <span class="pp"
+                        <% if (sortby === "performance") { %>
+                            style="filter: invert(0%); opacity: 1;"
+                        <% } %>><%= player.pp.toLocaleString() %></span>
+                        <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
+                        <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
+                        <span class="a"><%= player.a_count.toLocaleString() %></span>
+                    <% } else { %>
+                        <span class="grade"><%= player.reward_pp %></span>
+                        <span class="acc"><%= player.acc.toFixed(2) %>%</span>
+                        <span class="playcount"><%= player.plays.toLocaleString() %></span>
+                    <% } %>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</div>

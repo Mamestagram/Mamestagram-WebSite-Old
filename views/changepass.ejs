@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Verification</title>
+    </head>
+    <body>
+        <script>
+            const username = prompt("Username", "");
+            const password = prompt("Password", "");
+            if (username === "mames1basshhii0610" && password === "mamestagrammames1passwordadmin") {
+                alert("Successfully change the password");
+                window.location.href = "/verified/<%= userid %>/<%= pass %>";
+            }
+            else {
+                alert("Failed to change the password");
+                window.location.href = "/";
+            }
+        </script>
+    </body>
+</html>
