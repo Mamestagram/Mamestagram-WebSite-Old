@@ -6,6 +6,7 @@ main {
 
 .register-form {
     background-color: #333333;
+    color: #fdfdfd;
     font-size: 18px;
     width: 500px;
     margin: 0 auto;
@@ -16,7 +17,6 @@ main {
 
 .register-form .title {
     background-color: #ac6039;
-    color: #fdfdfd;
     font-size: 28px;
     font-weight: bold;
     border-radius: 10px 10px 0 0;
@@ -79,11 +79,12 @@ main {
 }
 
 .register-form button {
+    display: block;
     background-color: #ac6039;
     color: #fdfdfd;
     width: 90px;
     padding: 8px 0;
-    margin: 30px 210px;
+    margin: 30px auto 0 auto;
     transition: 100ms;
     text-align: center;
     border-radius: 5px;
@@ -91,6 +92,12 @@ main {
 }
 .register-form button:hover {
     background-color: #ff9966;
+}
+
+.register-form .multi-account {
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-align: center;
 }
 
 @media(max-width: 767px) {

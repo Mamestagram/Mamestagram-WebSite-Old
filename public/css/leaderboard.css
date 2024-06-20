@@ -185,6 +185,58 @@ main {
     filter: invert(0%);
     opacity: 1;
 }
+
+.clan {
+    display: flex;
+    justify-content: center;
+}
+
+.clan li {
+    color: #fdfdfd;
+    font-size: 40px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    margin: 0 30px;
+    text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
+    transition: filter 150ms, opacity 150ms;
+}
+.clan li:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
+.clan li a {
+    display: block;
+}
+
+.clan li:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.clan li .tooltip {
+    line-height: 10px;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 80%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
 /* ------------------------------------------------- */
 .ranking-table {
     font-size: 16px;
@@ -211,18 +263,22 @@ main {
 }
 
 .acc-title {
-    width: 85px;
+    width: 80px;
 }
 
 .playcount-title {
-    width: 95px;
+    width: 100px;
 }
 
 .pp-title {
-    width: 123px;
+    width: 120px;
 }
 
-.acc-title:hover, .playcount-title:hover, .pp-title:hover {
+.score-title {
+    width: 130px;
+}
+
+.acc-title:hover, .playcount-title:hover, .pp-title:hover, .score-title:hover {
     filter: invert(0%);
     opacity: 1;
 }
@@ -240,7 +296,7 @@ main {
 }
 
 .grade-title {
-    width: 123px;
+    width: 120px;
     filter: invert(0%);
     opacity: 1;
 }
@@ -264,17 +320,27 @@ main {
 .ranking {
     color: #fdfdfd;
     width: 60px;
+    margin: auto 0;
     font-weight: bold;
     text-align: center;
 }
 
 .flag-icon {
     width: 25px;
+    margin: auto 0;
+}
+
+.ranking-data img {
+    width: 50px;
+    height: 50px;
+    margin: auto 0;
+    border-radius: 2px;
+    object-fit: cover;
 }
 
 .name {
     color: #fdfdfd;
-    margin-left: 5px;
+    margin: auto auto auto 5px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -291,14 +357,18 @@ main {
     color: #fdfdfd;
     width: 80px;
     text-align: center;
-    margin-left: auto;
     filter: invert(30%);
     opacity: 0.95;
+}
+
+.acc.acc-dans {
+    width: 120px;
 }
 
 .playcount {
     color: #fdfdfd;
     width: 100px;
+    margin: auto 0;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
@@ -307,6 +377,16 @@ main {
 .pp {
     color: #fdfdfd;
     width: 120px;
+    margin: auto 0;
+    text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
+}
+
+.score {
+    color: #fdfdfd;
+    width: 130px;
+    margin: auto 0;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
@@ -315,6 +395,7 @@ main {
 .ss {
     color: #fdfdfd;
     width: 80px;
+    margin: auto 0;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
@@ -323,6 +404,7 @@ main {
 .s {
     color: #fdfdfd;
     width: 80px;
+    margin: auto 0;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
@@ -331,6 +413,7 @@ main {
 .a {
     color: #fdfdfd;
     width: 80px;
+    margin: auto 0;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
@@ -339,8 +422,7 @@ main {
 .grade {
     color: #fdfdfd;
     width: 120px;
-    margin-right: 0;
-    margin-left: auto;
+    margin: auto 0 auto auto;
     text-align: center;
 }
 
@@ -352,7 +434,7 @@ main {
         display: none;
     }
 
-    .ss-title, .s-title, .a-title {
+    .score-title, .ss-title, .s-title, .a-title {
         display: none;
     }
 
@@ -360,7 +442,7 @@ main {
         margin: 0;
     }
 
-    .ss, .s, .a {
+    .score, .ss, .s, .a {
         display: none;
     }
 }
@@ -429,7 +511,7 @@ main {
     }
 
     .acc-title, .playcount-title, .pp-title {
-        width: 71px;
+        width: 70px;
     }
 
     .grade-title {

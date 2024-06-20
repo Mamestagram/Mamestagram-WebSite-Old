@@ -13,41 +13,60 @@ const getModeName = (modeNum) => {
     }
 }
 %>
-<div class="country">
-    <ul>
-        <li title="All countries" class="all"
-            <% if (selectedCountry === "all") { %>
-                style="background-color: #fdfdfd; opacity: 1;"
-            <% } %>>
-            <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"
-            <% if (selectedCountry === "all") { %>
-                style="color: #1c1c1c; font-weight: bold;"
-            <% } %>>All</a>
-        </li>
-        <% if (locals.loginf) { %>
-            <li title="<%= locals.country.toUpperCase() %>"
-                <% if (locals.country === selectedCountry) { %>
-                    style="opacity: 1; transform: scale(1.05);"
+<% let n = 0; %>
+<% if (!clan) { %>
+    <div class="country">
+        <ul>
+            <% let searched = false %>
+            <li title="All countries" class="all"
+                <% if (selectedCountry === "all") { %>
+                    style="background-color: #fdfdfd; opacity: 1;"
+                    <% searched = true; %>
                 <% } %>>
-                <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= locals.country %>">
-                    <i class="flag-icon flag-icon-<%= locals.country %>"></i>
-                </a>
+                <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"
+                <% if (selectedCountry === "all") { %>
+                    style="color: #1c1c1c; font-weight: bold;"
+                <% } %>>All</a>
             </li>
-        <% } %>
-        <% countries.forEach((row) => { %>
-            <% if (row.country !== locals.country) { %>
-                <li title="<%= row.country.toUpperCase() %>"
-                    <% if (row.country === selectedCountry) { %>
+            <% if (locals.loginf) { %>
+                <li title="<%= locals.country.toUpperCase() %>"
+                    <% if (locals.country === selectedCountry) { %>
                         style="opacity: 1; transform: scale(1.05);"
                     <% } %>>
-                    <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= row.country %>">
-                        <i class="flag-icon flag-icon-<%= row.country %>"></i>
+                    <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= locals.country %>">
+                        <i class="flag-icon flag-icon-<%= locals.country %>"></i>
                     </a>
                 </li>
+                <% n++; %>
+                <% if (!searched) {
+                    n++;
+                    searched = locals.country === selectedCountry;
+                } %>
             <% } %>
-        <% }); %>
-    </ul>
-</div>
+            <% countries.forEach((row) => { %>
+                <% if (row.country !== locals.country) { %>
+                    <li title="<%= row.country.toUpperCase() %>"
+                        <% if (row.country === selectedCountry) { %>
+                            style="opacity: 1; transform: scale(1.05);"
+                        <% } %>>
+                        <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= row.country %>">
+                            <i class="flag-icon flag-icon-<%= row.country %>"></i>
+                        </a>
+                    </li>
+                    <% if (!searched) {
+                        n++;
+                        searched = row.country === selectedCountry;
+                    } %>
+                <% } %>
+            <% }); %>
+            <% if (n > 25) { %>
+                <script>
+                    $(".country ul").scrollLeft(34 * Math.max(0, (Number("<%= n %>") - 1)));
+                </script>
+            <% } %>
+        </ul>
+    </div>
+<% } %>
 <div class="page">
     <p class="pagearrow">
         <i title="Foremost" class="fa-solid fa-backward-fast <% if (page > 1) { %>available<% } %>"
@@ -110,6 +129,22 @@ const getModeName = (modeNum) => {
         <% } %>></i>
     </p>
 </div>
+<ul class="clan">
+    <li class="personal"]
+    <% if (!clan) { %>
+        style="filter: invert(0%); opacity: 1;"
+    <% } %>>
+        <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"><i class="fa-solid fa-person"></i></a>
+        <p class="tooltip">Personal</p>
+    </li>
+    <li class="clan"
+    <% if (clan) { %>
+        style="filter: invert(0%); opacity: 1;"
+    <% } %>>
+        <a href="/leaderboard/<%= getModeName(modeNum) %>/clan&<%= sortby %>"><i class="fa-kit fa-solid-users-shield"></i></a>
+        <p class="tooltip">Clan</p>
+    </li>
+</ul>
 <div class="ranking-table">
     <div class="table-title">
         <% if (sortby !== "dans") { %>
@@ -117,19 +152,25 @@ const getModeName = (modeNum) => {
             <% if (sortby === "accuracy") { %>
                 style="font-weight: bold; filter: invert(0%); opacity: 1;"
             <% } %>>
-                <a href="/leaderboard/<%= getModeName(modeNum) %>/accuracy">Accuracy</a>
+                <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>accuracy">Accuracy</a>
             </span>
             <span class="playcount-title"
             <% if (sortby === "playcount") { %>
                 style="font-weight: bold; filter: invert(0%); opacity: 1;"
-            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/playcount">Play Count</a></span>
+            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>playcount">Play Count</a></span>
             <span class="pp-title"
             <% if (sortby === "performance") { %>
                 style="font-weight: bold; filter: invert(0%); opacity: 1;"
-            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/performance">Performance</a></span>
-            <span class="ss-title">SS</span>
-            <span class="s-title">S</span>
-            <span class="a-title">A</span>
+            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>performance">Performance</a></span>
+            <span class="score-title"
+            <% if (sortby === "score") { %>
+                style="font-weight: bold; filter: invert(0%); opacity: 1;"
+            <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>score">Score</a></span>
+            <% if (!clan) { %>
+                <span class="ss-title">SS</span>
+                <span class="s-title">S</span>
+                <span class="a-title">A</span>
+            <% } %>
         <% } else { %>
             <span class="grade-title" style="filter: invert(0%); opacity: 1;">PP</span>
             <span class="acc-title">Accuracy</span>
@@ -143,7 +184,11 @@ const getModeName = (modeNum) => {
             <% ranking.forEach((player) => { %>
                 <div class="ranking-data">
                     <span class="ranking">#<%= player.ranking.toLocaleString() %></span>
-                    <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
+                    <% if (!clan) { %>
+                        <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
+                    <% } else { %>
+                        <img src="https://a.mamesosu.net/3" />
+                    <% } %>
                     <span class="name">
                         <a
                         <% if (sortby !== "dans") { %>
@@ -162,17 +207,23 @@ const getModeName = (modeNum) => {
                         <span class="playcount"
                         <% if (sortby === "playcount") { %>
                             style="filter: invert(0%); opacity: 1;"
-                        <% } %>><%= player.plays.toLocaleString() %></span>
+                        <% } %>><%= Math.floor(player.plays).toLocaleString() %></span>
                         <span class="pp"
                         <% if (sortby === "performance") { %>
                             style="filter: invert(0%); opacity: 1;"
-                        <% } %>><%= player.pp.toLocaleString() %></span>
-                        <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
-                        <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
-                        <span class="a"><%= player.a_count.toLocaleString() %></span>
+                        <% } %>><%= Math.round(player.pp).toLocaleString() %></span>
+                        <span class="score"
+                        <% if (sortby === "score") { %>
+                            style="filter: invert(0%); opacity: 1;"
+                        <% } %>><%= Math.round(player.score).toLocaleString() %></span>
+                        <% if (!clan) { %>
+                            <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
+                            <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
+                            <span class="a"><%= player.a_count.toLocaleString() %></span>
+                        <% } %>
                     <% } else { %>
-                        <span class="grade"><%= player.reward_pp %></span>
-                        <span class="acc"><%= player.acc.toFixed(2) %>%</span>
+                        <span class="grade"><%= Math.round(player.reward_pp).toLocaleString() %></span>
+                        <span class="acc acc-dans"><%= player.acc.toFixed(2) %>%</span>
                         <span class="playcount"><%= player.plays.toLocaleString() %></span>
                     <% } %>
                 </div>

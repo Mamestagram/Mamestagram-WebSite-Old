@@ -116,7 +116,6 @@
     <%- include("header") %>
     <img class="banner" src="/image/banner/leaderboard.jpg" alt="">
     <h1 class="pagename">Leaderboard</h1>
-    <% let n = 0; %>
     <main>
         <div class="selection">
             <div class="special">
@@ -136,14 +135,14 @@
                     <!-- classic -->
                     <li class="classic">
                         <a
-                        <% if (modeNum % 4 === 0 && sortby !== "dans") { %>
-                            href="/leaderboard/std/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                        <% if (modeNum % 4 === 0) { %>
+                            href="/leaderboard/std/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else if (modeNum % 4 === 1) { %>
-                            href="/leaderboard/taiko/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/taiko/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else if (modeNum % 4 === 2) { %>
-                            href="/leaderboard/ctb/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/ctb/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else { %>
-                            href="/leaderboard/mania/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/mania/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } %>>Classic</a>
                     </li>
                     <!-- relax -->
@@ -151,31 +150,31 @@
                         <li class="relax">
                             <a
                             <% if (modeNum % 4 === 0) { %>
-                                href="/leaderboard/stdrx/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                                href="/leaderboard/stdrx/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                             <% } else if (modeNum % 4 === 1) { %>
-                                href="/leaderboard/taikorx/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                                href="/leaderboard/taikorx/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                             <% } else if (modeNum % 4 === 2) { %>
-                                href="/leaderboard/ctbrx/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                                href="/leaderboard/ctbrx/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                             <% } %>>Relax</a>
                         </li>
                     <% } %>
                     <!-- auto pilot -->
                     <% if (modeNum % 4 === 0) { %>
                         <li class="auto-pilot">
-                            <a href="/leaderboard/stdap/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>">Auto Pilot</a>
+                            <a href="/leaderboard/stdap/<%= clan ? "clan&" : "" %><%= sortby !== "dans" ? sortby : "performance" %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>">Auto Pilot</a>
                         </li>
                     <% } %>
                     <!-- dans -->
                     <li class="dans">
                         <a
                         <% if (modeNum % 4 === 0) { %>
-                            href="/leaderboard/std/dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/std/<%= clan ? "clan&" : "" %>dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else if (modeNum % 4 === 1) { %>
-                            href="/leaderboard/taiko/dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/taiko/<%= clan ? "clan&" : "" %>dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else if (modeNum % 4 === 2) { %>
-                            href="/leaderboard/ctb/dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/ctb/<%= clan ? "clan&" : "" %>dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else if (modeNum === 3) { %>
-                            href="/leaderboard/mania/dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/mania/<%= clan ? "clan&" : "" %>dans<%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } %>>Dans</a>
                     </li>
                 </ul>
@@ -187,11 +186,11 @@
                 <% } %>>
                     <a
                     <% if (modeNum >= 0 && modeNum < 4) { %>
-                        href="/leaderboard/std/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                        href="/leaderboard/std/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                     <% } else if (modeNum < 7) { %>
-                        href="/leaderboard/stdrx/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                        href="/leaderboard/stdrx/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                     <% } else { %>
-                        href="/leaderboard/stdap/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                        href="/leaderboard/stdap/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                     <% } %>><i class="mode-icon mode-osu"></i></a>
                 </li>
                 <% if (modeNum !== 8) { %>
@@ -201,9 +200,9 @@
                     <% } %>>
                         <a
                         <% if (modeNum >= 0 && modeNum < 4) { %>
-                            href="/leaderboard/taiko/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/taiko/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else { %>
-                            href="/leaderboard/taikorx/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/taikorx/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } %>><i class="mode-icon mode-taiko"></i></a>
                     </li>
                     <li class="catch"
@@ -212,9 +211,9 @@
                     <% } %>>
                         <a
                         <% if (modeNum >= 0 && modeNum < 4) { %>
-                            href="/leaderboard/ctb/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/ctb/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } else { %>
-                            href="/leaderboard/ctbrx/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
+                            href="/leaderboard/ctbrx/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>"
                         <% } %>><i class="mode-icon mode-fruits"></i></a>
                     </li>
                 <% } %>
@@ -223,7 +222,7 @@
                     <% if (modeNum === 3) { %>
                         style="filter: invert(0%); opacity: 1"
                     <% } %>>
-                        <a href="/leaderboard/mania/<%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>">
+                        <a href="/leaderboard/mania/<%= clan ? "clan&" : "" %><%= sortby %><%= selectedCountry !== "all" ? `&cty=${selectedCountry}` : "" %>">
                             <i class="mode-icon mode-mania"></i>
                         </a>
                     </li>
@@ -231,57 +230,60 @@
             </ul>
         </div>
         <div id="ajaxreload">
-            <div class="country">
-                <ul>
-                    <% let searched = false %>
-                    <li title="All countries" class="all"
-                        <% if (selectedCountry === "all") { %>
-                            style="background-color: #fdfdfd; opacity: 1;"
-                            <% searched = true; %>
-                        <% } %>>
-                        <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"
-                        <% if (selectedCountry === "all") { %>
-                            style="color: #1c1c1c; font-weight: bold;"
-                        <% } %>>All</a>
-                    </li>
-                    <% if (locals.loginf) { %>
-                        <li title="<%= locals.country.toUpperCase() %>"
-                            <% if (locals.country === selectedCountry) { %>
-                                style="opacity: 1; transform: scale(1.05);"
+            <% let n = 0; %>
+            <% if (!clan) { %>
+                <div class="country">
+                    <ul>
+                        <% let searched = false %>
+                        <li title="All countries" class="all"
+                            <% if (selectedCountry === "all") { %>
+                                style="background-color: #fdfdfd; opacity: 1;"
+                                <% searched = true; %>
                             <% } %>>
-                            <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= locals.country %>">
-                                <i class="flag-icon flag-icon-<%= locals.country %>"></i>
-                            </a>
+                            <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"
+                            <% if (selectedCountry === "all") { %>
+                                style="color: #1c1c1c; font-weight: bold;"
+                            <% } %>>All</a>
                         </li>
-                        <% n++; %>
-                        <% if (!searched) {
-                            n++;
-                            searched = locals.country === selectedCountry;
-                        } %>
-                    <% } %>
-                    <% countries.forEach((row) => { %>
-                        <% if (row.country !== locals.country) { %>
-                            <li title="<%= row.country.toUpperCase() %>"
-                                <% if (row.country === selectedCountry) { %>
+                        <% if (locals.loginf) { %>
+                            <li title="<%= locals.country.toUpperCase() %>"
+                                <% if (locals.country === selectedCountry) { %>
                                     style="opacity: 1; transform: scale(1.05);"
                                 <% } %>>
-                                <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= row.country %>">
-                                    <i class="flag-icon flag-icon-<%= row.country %>"></i>
+                                <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= locals.country %>">
+                                    <i class="flag-icon flag-icon-<%= locals.country %>"></i>
                                 </a>
                             </li>
+                            <% n++; %>
                             <% if (!searched) {
                                 n++;
-                                searched = row.country === selectedCountry;
+                                searched = locals.country === selectedCountry;
                             } %>
                         <% } %>
-                    <% }); %>
-                    <% if (n > 25) { %>
-                        <script>
-                            $(".country ul").scrollLeft(34 * Math.max(0, (Number("<%= n %>") - 1)));
-                        </script>
-                    <% } %>
-                </ul>
-            </div>
+                        <% countries.forEach((row) => { %>
+                            <% if (row.country !== locals.country) { %>
+                                <li title="<%= row.country.toUpperCase() %>"
+                                    <% if (row.country === selectedCountry) { %>
+                                        style="opacity: 1; transform: scale(1.05);"
+                                    <% } %>>
+                                    <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>&cty=<%= row.country %>">
+                                        <i class="flag-icon flag-icon-<%= row.country %>"></i>
+                                    </a>
+                                </li>
+                                <% if (!searched) {
+                                    n++;
+                                    searched = row.country === selectedCountry;
+                                } %>
+                            <% } %>
+                        <% }); %>
+                        <% if (n > 25) { %>
+                            <script>
+                                $(".country ul").scrollLeft(34 * Math.max(0, (Number("<%= n %>") - 1)));
+                            </script>
+                        <% } %>
+                    </ul>
+                </div>
+            <% } %>
             <div class="page">
                 <p class="pagearrow">
                     <i title="Foremost" class="fa-solid fa-backward-fast <% if (page > 1) { %>available<% } %>"
@@ -344,6 +346,22 @@
                     <% } %>></i>
                 </p>
             </div>
+            <ul class="clan">
+                <li class="personal"]
+                <% if (!clan) { %>
+                    style="filter: invert(0%); opacity: 1;"
+                <% } %>>
+                    <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %>"><i class="fa-solid fa-person"></i></a>
+                    <p class="tooltip">Personal</p>
+                </li>
+                <li class="clan"
+                <% if (clan) { %>
+                    style="filter: invert(0%); opacity: 1;"
+                <% } %>>
+                    <a href="/leaderboard/<%= getModeName(modeNum) %>/clan&<%= sortby %>"><i class="fa-kit fa-solid-users-shield"></i></a>
+                    <p class="tooltip">Clan</p>
+                </li>
+            </ul>
             <div class="ranking-table">
                 <div class="table-title">
                     <% if (sortby !== "dans") { %>
@@ -351,19 +369,25 @@
                         <% if (sortby === "accuracy") { %>
                             style="font-weight: bold; filter: invert(0%); opacity: 1;"
                         <% } %>>
-                            <a href="/leaderboard/<%= getModeName(modeNum) %>/accuracy">Accuracy</a>
+                            <a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>accuracy">Accuracy</a>
                         </span>
                         <span class="playcount-title"
                         <% if (sortby === "playcount") { %>
                             style="font-weight: bold; filter: invert(0%); opacity: 1;"
-                        <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/playcount">Play Count</a></span>
+                        <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>playcount">Play Count</a></span>
                         <span class="pp-title"
                         <% if (sortby === "performance") { %>
                             style="font-weight: bold; filter: invert(0%); opacity: 1;"
-                        <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/performance">Performance</a></span>
-                        <span class="ss-title">SS</span>
-                        <span class="s-title">S</span>
-                        <span class="a-title">A</span>
+                        <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>performance">Performance</a></span>
+                        <span class="score-title"
+                        <% if (sortby === "score") { %>
+                            style="font-weight: bold; filter: invert(0%); opacity: 1;"
+                        <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>score">Score</a></span>
+                        <% if (!clan) { %>
+                            <span class="ss-title">SS</span>
+                            <span class="s-title">S</span>
+                            <span class="a-title">A</span>
+                        <% } %>
                     <% } else { %>
                         <span class="grade-title" style="filter: invert(0%); opacity: 1;">PP</span>
                         <span class="acc-title">Accuracy</span>
@@ -377,14 +401,13 @@
                         <% ranking.forEach((player) => { %>
                             <div class="ranking-data">
                                 <span class="ranking">#<%= player.ranking.toLocaleString() %></span>
-                                <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
+                                <% if (!clan) { %>
+                                    <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
+                                <% } else { %>
+                                    <img src="https://a.mamesosu.net/3" />
+                                <% } %>
                                 <span class="name">
-                                    <a
-                                    <% if (sortby !== "dans") { %>
-                                        href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>"
-                                    <% } else { %>
-                                        href="/profile/<%= player.id %>/<%= getModeName(modeNum) %>&dans"
-                                    <% } %>>
+                                    <a href="/profile/<%= player.id %><%= clan ? "&clan" : "" %>/<%= getModeName(modeNum) %><%= sortby === "dans" ? "&dans" : "" %>">
                                         <span class="text"><%= player.name %></span>
                                     </a>
                                 </span>
@@ -396,17 +419,23 @@
                                     <span class="playcount"
                                     <% if (sortby === "playcount") { %>
                                         style="filter: invert(0%); opacity: 1;"
-                                    <% } %>><%= player.plays.toLocaleString() %></span>
+                                    <% } %>><%= Math.floor(player.plays).toLocaleString() %></span>
                                     <span class="pp"
                                     <% if (sortby === "performance") { %>
                                         style="filter: invert(0%); opacity: 1;"
-                                    <% } %>><%= player.pp.toLocaleString() %></span>
-                                    <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
-                                    <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
-                                    <span class="a"><%= player.a_count.toLocaleString() %></span>
+                                    <% } %>><%= Math.round(player.pp).toLocaleString() %></span>
+                                    <span class="score"
+                                    <% if (sortby === "score") { %>
+                                        style="filter: invert(0%); opacity: 1;"
+                                    <% } %>><%= Math.round(player.score).toLocaleString() %></span>
+                                    <% if (!clan) { %>
+                                        <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
+                                        <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
+                                        <span class="a"><%= player.a_count.toLocaleString() %></span>
+                                    <% } %>
                                 <% } else { %>
-                                    <span class="grade"><%= player.reward_pp %></span>
-                                    <span class="acc"><%= player.acc.toFixed(2) %>%</span>
+                                    <span class="grade"><%= Math.round(player.reward_pp).toLocaleString() %></span>
+                                    <span class="acc acc-dans"><%= player.acc.toFixed(2) %>%</span>
                                     <span class="playcount"><%= player.plays.toLocaleString() %></span>
                                 <% } %>
                             </div>
@@ -420,7 +449,7 @@
     <% n = n <= 25 ? 0 : n; %>
     <script>
         function jumpPage(page) {
-            const link = `/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %><%- selectedCountry !== "all" ? "&cty=" + selectedCountry : "" %>&page=${page}`;
+            const link = `/leaderboard/<%= getModeName(modeNum) %>/<%- clan ? "clan&" : "" %><%= sortby %><%- selectedCountry !== "all" ? "&cty=" + selectedCountry : "" %>&page=${page}`;
             const element = document.getElementById("ajaxreload");
             ajaxUpdate(link, element);
         }
@@ -431,7 +460,7 @@
             ajax.onload = function() {
                 element.innerHTML = ajax.responseText;
                 function jumpPage(page) {
-                    const link = `/leaderboard/<%= getModeName(modeNum) %>/<%= sortby %><%- selectedCountry !== "all" ? "&cty=" + selectedCountry : "" %>&page=${page}`;
+                    const link = `/leaderboard/<%= getModeName(modeNum) %>/<%- clan ? "clan&" : "" %><%= sortby %><%- selectedCountry !== "all" ? "&cty=" + selectedCountry : "" %>&page=${page}`;
                     const element = document.getElementById("ajaxreload");
                     ajaxUpdate(link, element);
                 }

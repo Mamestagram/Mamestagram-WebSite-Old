@@ -63,6 +63,7 @@
                 border-bottom: 2px solid #757575;
             }
         </style>
+
         <%
         const getPlayTime = (time) => {
             let rst = "";
@@ -73,6 +74,48 @@
             rst += Math.floor(time / 60).toLocaleString() + "m";
             return rst;
         }
+
+        const getLastTime = (time) => {
+            let rst = "";
+            if (getLastOnline() >= 31556926) {
+                // 1年を超えていたら
+                rst += Math.floor(time / 31556926).toLocaleString() + " year(s) ";
+                return rst;
+            }else if(getLastOnline() >= 2629743){
+                // 1ヶ月を超えていたら
+                rst += Math.floor(time / 2629743).toLocaleString() + " month(s) ";
+                return rst;
+            } else{
+                if (time < 3600) {
+                    // １時間より小さい
+                        rst += Math.floor(time / 60).toLocaleString() + " m ";
+                        return rst;
+
+                }else if (time < 86400) {
+                    // 24時間より小さい
+                        rst += Math.floor(time / 3600).toLocaleString() + " h ";
+                        time %= 3600;
+                        rst += Math.floor(time / 60).toLocaleString() + " m ";
+                        return rst;
+                }else {
+                    // それより大きい
+                    rst += Math.floor(time / 86400).toLocaleString() + "d ";
+                    time %= 86400;
+                    rst += Math.floor(time / 3600).toLocaleString() + "h ";
+                    time %= 3600;
+                    rst += Math.floor(time / 60).toLocaleString() + "m";
+                    return rst;
+                }
+            }
+        }
+
+        const getLastOnline = () => {
+            let currenttime = Math.floor(Date.now() * 0.001);
+            let latestactivity = info.latest_activity;
+            let lastonline = currenttime - latestactivity;
+            return lastonline;
+        }
+
         const getMods = (modNum) => {
             let mod = new Array(0);
             const mods = [
@@ -303,7 +346,7 @@
                         <p class="tooltip">Following</p>
                     </span>
                     <span id="followers" class="followers">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid fa-user-group"></i>
                         <%= followers %>
                         <p class="tooltip">Followers</p>
                     </span>
@@ -342,7 +385,7 @@
                     <% if (followersList.length > 0) { %>
                         <div class="list followers-list">
                             <div class="wrap">
-                                <h1><i class="fa-solid fa-users"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
+                                <h1><i class="fa-solid fa-user-group"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
                                 <% followersList.forEach((data) => { %>
                                     <a class="data" href="/profile/<%= data.user1 %>">
                                         <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
@@ -360,13 +403,23 @@
                         <% if (online) { %>
                             style="background-color: #b3d944;"
                         <% } else { %>
-                            style="background-color: #000;"
+                            <% if (getLastOnline() >= 120) { %>
+                                style="background-color: #000;"
+                            <% } else {%>
+                                style="background-color: #b3d944;"
+                            <% } %>
                         <% } %>></span>
                         <p>
                             <% if (online) { %>
                                 Online
                             <% } else { %>
-                                Offline
+                                <div class="latest-activity">
+                                    <% if (getLastOnline() >= 120) { %>
+                                        <h3>Last online: <%= getLastTime(getLastOnline()) %> ago</h3>
+                                    <% } else {%>
+                                        Online
+                                    <% } %>
+                                </div>
                             <% } %>
                         </p>
                     </div>
@@ -620,7 +673,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box player-info">
+            <div class="box me">
                 <div class="overview">
                     <div class="wrap ranking">
                         <div class="global">
