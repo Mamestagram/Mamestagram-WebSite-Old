@@ -167,6 +167,7 @@
                 if (modNum >= 1 << i) {
                     mod.push(mods[i]);
                     modNum -= 1 << i;
+                    modNum -= mod[i] ===  "nc" ? 1 << mod.indexOf("dt") : 0;
                 }
             }
             mod = sortMods(mod);
@@ -1098,6 +1099,7 @@
                         }
                     }
                     modNum += 1 << modsList.indexOf($mods.eq(i).attr("class"));
+                    modNum += $mods.eq(i).attr("class") === "nc" ? 1 << modList.indexOf("dt") : 0;
                 }
             }
             if (notSelected) {

@@ -416,15 +416,16 @@ main .player-banner .relationship .list .data .name p {
     text-overflow: ellipsis;
 }
 
-main .player-banner .player-status span {
+main .player-banner .player-status span:hover {
+    transform: unset;
+}
+
+main .player-banner .player-status .status {
     cursor: unset;
     height: 12px;
     width: 12px;
     padding: 0;
     margin: auto 5px;
-}
-main .player-banner .player-status span:hover {
-    transform: unset;
 }
 
 main .player-banner .player-status p {

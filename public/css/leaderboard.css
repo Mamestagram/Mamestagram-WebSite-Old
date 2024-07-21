@@ -356,13 +356,10 @@ main {
 .acc {
     color: #fdfdfd;
     width: 80px;
+    margin: auto 0;
     text-align: center;
     filter: invert(30%);
     opacity: 0.95;
-}
-
-.acc.acc-dans {
-    width: 120px;
 }
 
 .playcount {
@@ -422,7 +419,7 @@ main {
 .grade {
     color: #fdfdfd;
     width: 120px;
-    margin: auto 0 auto auto;
+    margin: auto 0;
     text-align: center;
 }
 

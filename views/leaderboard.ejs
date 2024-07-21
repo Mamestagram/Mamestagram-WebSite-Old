@@ -84,10 +84,6 @@
                 .acc-title, .playcount-title, .acc, .playcount {
                     width: 120px;
                 }
-            
-                .acc {
-                    margin: 0;
-                }
 
                 @media (max-width: 767px) {
                     .acc-title, .playcount-title, .acc, .playcount {
@@ -383,11 +379,9 @@
                         <% if (sortby === "score") { %>
                             style="font-weight: bold; filter: invert(0%); opacity: 1;"
                         <% } %>><a href="/leaderboard/<%= getModeName(modeNum) %>/<%= clan ? "clan&" : "" %>score">Score</a></span>
-                        <% if (!clan) { %>
-                            <span class="ss-title">SS</span>
-                            <span class="s-title">S</span>
-                            <span class="a-title">A</span>
-                        <% } %>
+                        <span class="ss-title">SS</span>
+                        <span class="s-title">S</span>
+                        <span class="a-title">A</span>
                     <% } else { %>
                         <span class="grade-title" style="filter: invert(0%); opacity: 1;">PP</span>
                         <span class="acc-title">Accuracy</span>
@@ -428,14 +422,12 @@
                                     <% if (sortby === "score") { %>
                                         style="filter: invert(0%); opacity: 1;"
                                     <% } %>><%= Math.round(player.score).toLocaleString() %></span>
-                                    <% if (!clan) { %>
-                                        <span class="ss"><%= (player.xh_count + player.x_count).toLocaleString() %></span>
-                                        <span class="s"><%= (player.sh_count + player.s_count).toLocaleString() %></span>
-                                        <span class="a"><%= player.a_count.toLocaleString() %></span>
-                                    <% } %>
+                                    <span class="ss"><%= Math.floor(player.x_count).toLocaleString() %></span>
+                                    <span class="s"><%= Math.floor(player.s_count).toLocaleString() %></span>
+                                    <span class="a"><%= Math.floor(player.a_count).toLocaleString() %></span>
                                 <% } else { %>
                                     <span class="grade"><%= Math.round(player.reward_pp).toLocaleString() %></span>
-                                    <span class="acc acc-dans"><%= player.acc.toFixed(2) %>%</span>
+                                    <span class="acc"><%= Number(player.acc).toFixed(2) %>%</span>
                                     <span class="playcount"><%= player.plays.toLocaleString() %></span>
                                 <% } %>
                             </div>

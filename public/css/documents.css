@@ -20,14 +20,6 @@ main .menu {
     border-radius: 10px;
 }
 
-main .menu.menu-en {
-    width: 491px;
-}
-
-main .menu.menu-ja {
-    width: 537px;
-}
-
 main .menu li {
     background-color: #38362e;
     color: #d9cc8b;
@@ -170,32 +162,46 @@ section {
     padding: 10px;
 }
 
-.rules li {
+.rules .content {
     padding: 20px 0;
 }
 
-.rules li h2 {
+.rules .content h2 {
     font-size: 24px;
     padding-bottom: 10px;
 }
 
-.rules li h3 {
-    font-size: 18px;
-    padding-bottom: 10px;
-}
-
-.rules li p {
+.rules .content p {
     font-size: 14px;
     padding: 5px 0;
 }
 
-.rules li a {
+.rules .content ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.rules .content ol li {
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.rules .content .asterisk {
+    font-size: 11px;
+    vertical-align: text-top;
+}
+
+.rules .content .annotation {
+    font-size: 10px;
+}
+
+.rules .content a {
     background-color: #3c4270;
     color: #c0cde9;
     padding: 0 3px;
     border-radius: 5px;
 }
-.rules li a:hover{
+.rules .content a:hover{
     background-color: #5865f2;
     color: #f4fffe;
     text-decoration: underline;
@@ -263,9 +269,6 @@ section {
     text-align: center;
 }
 /* ------------------------------------------------- */
-.dans {
-    margin: 10px auto 0 auto;
-}
 
 .dans p {
     font-size: 14px;
@@ -385,6 +388,46 @@ section {
 
 .dans .mode li table td .plus {
     color: #4682b4;
+}
+/* ------------------------------------------------- */
+.faq {
+    margin: 10px auto 0 auto;
+}
+
+.faq ul {
+    padding: 10px;
+}
+
+.faq ul li {
+    padding: 20px 0;
+}
+
+.faq ul li h2 {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.faq ul li p {
+    font-size: 15px;
+    padding: 5px 0;
+}
+
+.faq a {
+    color: #169cc8;
+}
+.faq a:hover {
+    text-decoration: underline;
+}
+
+.faq .discord-ch {
+    background-color: #3c4270;
+    color: #c0cde9;
+    padding: 0 3px;
+    border-radius: 5px;
+}
+.faq .discord-ch:hover{
+    background-color: #5865f2;
+    color: #f4fffe;
 }
 /* ------------------------------------------------- */
 @media(max-width: 1290px) {
@@ -694,5 +737,21 @@ section {
 
     .dans .mode li table {
         width: 540px;
+    }
+    /* ------------------------------------------------- */
+    .faq ul {
+        padding: 5px;
+    }
+    
+    .faq ul li {
+        padding: 10px 0;
+    }
+    
+    .faq ul li h2 {
+        font-size: 18px;
+    }
+    
+    .faq ul li p {
+        font-size: 12px;
     }
 }
