@@ -121,33 +121,33 @@ $(function() {
     });
 
     // me!のeditボタンクリック
-    $("main .player-banner .me .edit-button").click(function() {
+    $("main .me .edit-button").click(function() {
         const textarea = document.getElementById("me-editor");
         $(this).hide();
-        $("main .player-banner .me .contents .bbcode-profile").hide();
-        $("main .player-banner .me .contents form").show();
+        $("main .me .contents .bbcode-profile").hide();
+        $("main .me .contents form").show();
         textarea.focus();
     });
-    $("main .player-banner .me .contents .edit-me").click(function() {
-        $("main .player-banner .me .contents .bbcode-profile").hide();
-        $("main .player-banner .me .contents form").show();
+    $("main .me .contents .edit-me").click(function() {
+        $("main .me .contents .bbcode-profile").hide();
+        $("main .me .contents form").show();
     });
 
     // spoilerboxのnameクリック
-    var $boxName = $("main .player-banner .me .contents .spoilerbox p");
+    var $boxName = $("main .me .contents .spoilerbox p");
     $boxName.click(function() {
         if ($(this).hasClass("down")) {
             $(this).removeClass("down");
-            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
         }
         else {
             $(this).addClass("down");
-            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
         }
     });
 
     // bbコードツールボタンのクリック
-    $("main .player-banner .me .contents form .editor .bb-button p").click(function() {
+    $("main .me .contents form .editor .bb-button p").click(function() {
         const textarea = document.getElementById("me-editor");
         textarea.focus();
         let insertText, cursorOffset;
@@ -230,7 +230,7 @@ $(function() {
     });
 
     // "font size"のオプションをクリック
-    var $fontsize = $("main .player-banner .me .contents form .editor .bb-button .size")
+    var $fontsize = $("main .me .contents form .editor .bb-button .size")
     $fontsize.change(function() {
         const textarea = document.getElementById("me-editor");
         textarea.focus();

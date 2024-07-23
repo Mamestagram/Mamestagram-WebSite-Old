@@ -236,8 +236,11 @@
                 <img src="https://banner.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" width="100%" height="250" />
             </div>
             <div class="box player-banner">
-                <div class="username">
-                    <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" />
+                <div class="string username">
+                    <div class="avatar">
+                        <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" />
+                        <img class="gacha" src="/image/gacha/1.png" alt="" />
+                    </div>
                     <div>
                         <div class="flex-box">
                             <span
@@ -279,10 +282,6 @@
                                             <p class="tooltip"><%= tag %></p>
                                         </span>
                                     <% }); %>
-                                    <% for (let i = 1; i <= 5; i++) { %>
-                                        <img src="/image/gacha/<%= i %>.png" alt="" style="width: 50px; height: 50px;">
-                                        <img src="/image/gacha/<%= i %>.gif" alt="" style="width: 50px; height: 50px;">
-                                    <% } %>
                                 </div>
                             <% } %>
                         </div>
@@ -343,7 +342,7 @@
                     <% } %>
                 </div>
                 <% if (!clan) { %>
-                    <div id="relationships" class="relationship">
+                    <div id="relationships" class="string relationship">
                         <span id="mutual" class="mutual">
                             <i class="fa-solid fa-handshake-simple"></i>
                             <%= mutual %>
@@ -432,7 +431,7 @@
                         </div>
                     </div>
                 <% } %>
-                <div id="selection" class="selection">
+                <div id="selection" class="string selection">
                     <div class="special">
                         <button class="menu-title">
                             <% if (dans) { %>
@@ -589,231 +588,231 @@
                         <% } %>
                     </ul>
                 </div>
-                <div class="me">
-                    <h1><i class="fa-solid fa-id-badge"></i>me!</h1>
-                    <p class="edit-button" style="display: none;">
-                        <i class="fa-solid fa-pen"></i>
-                    </p>
-                    <div class="contents">
-                        <div id="put-bbcode" class="bbcode-profile" style="display: none;">
-                            <% if (bbcode === null) { %>
-                                <div class="me-empty">
-                                    <% if (id === locals.userid) { %>
-                                        <p class="edit-me">Edit me!</p>
-                                        <i class="fa-solid fa-user-pen"></i>
-                                        <p class="description">Express yourself by editing <strong>me!</strong></p>
+                <div class="string player-info">
+                    <div class="overview">
+                        <div class="wrap ranking">
+                            <div class="global">
+                                <h1>Global Ranking</h1>
+                                <h2>
+                                    <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                        -
                                     <% } else { %>
-                                        <p class="nothing">No contents</p>
+                                        #<%= ranking.global[0].value.toLocaleString() %>
                                     <% } %>
-                                </div>
-                            <% } %>
-                            <%= me %>
-                        </div>
-                        <form action="/me" method="post" style="display: none;">
-                            <textarea id="me-editor" placeholder="Type page content here" name="content"><%= bbcode %></textarea>
-                            <div class="editor">
-                                <div class="bb-button">
-                                    <p title="Heading" class="heading">
-                                        <i class="fa-solid fa-heading"></i>
-                                    </p>
-                                    <p title="Bold" class="bold">
-                                        <i class="fa-solid fa-bold"></i>
-                                    </p>
-                                    <p title="Italic" class="italic">
-                                        <i class="fa-solid fa-italic"></i>
-                                    </p>
-                                    <p title="Underline" class="underline">
-                                        <i class="fa-solid fa-underline"></i>
-                                    </p>
-                                    <p title="Strikethrough" class="strike">
-                                        <i class="fa-solid fa-strikethrough"></i>
-                                    </p>
-                                    <p title="Color text" class="color">
-                                        <i class="fa-solid fa-droplet"></i>
-                                    </p>
-                                    <p title="Spoiler" class="spoiler-text">
-                                        <i class="fa-solid fa-rectangle-xmark"></i>
-                                    </p>
-                                    <p title="Center" class="center">
-                                        <i class="fa-solid fa-align-center"></i>
-                                    </p>
-                                    <p title="Spoilerbox" class="spoilerbox">
-                                        <i class="fa-solid fa-square-caret-down"></i>
-                                    </p>
-                                    <p title="List" class="list">
-                                        <i class="fa-solid fa-list-ul"></i>
-                                    </p>
-                                    <p title="Numbered list" class="num-list">
-                                        <i class="fa-solid fa-list-ol"></i>
-                                    </p>
-                                    <p title="Quote" class="quote">
-                                        <i class="fa-solid fa-arrows-rotate"></i>
-                                    </p>
-                                    <p title="Image" class="image">
-                                        <i class="fa-solid fa-image"></i>
-                                    </p>
-                                    <p title="Link" class="url">
-                                        <i class="fa-solid fa-link"></i>
-                                    </p>
-                                    <p title="Profile" class="profile">
-                                        <i class="fa-solid fa-address-card"></i>
-                                    </p>
-                                    <p title="Code block" class="code">
-                                        <i class="fa-solid fa-code"></i>
-                                    </p>
-                                    <select title="Font size" class="size">
-                                        <option value="title" hidden selected>Font size</option>
-                                        <option value="tiny">Tiny</option>
-                                        <option value="small">Small</option>
-                                        <option value="normal">Normal</option>
-                                        <option value="large">Large</option>
-                                    </select>
-                                    <a href="https://github.com/Mamestagram/BBCode-Usage" target="_blank" rel="noopener noreferrer">Help</a>
-                                </div>
-                                <div class="edit">
-                                    <p class="cancel" onclick="cancel()">Cancel</p>
-                                    <p class="preview" onclick="showPreview()">Preview</p>
-                                    <p class="back-to-edit" onclick="backToEditor()" style="display: none">Edit</p>
-                                    <p class="save" onclick="save()">Save</p>
-                                </div>
+                                </h2>
                             </div>
-                        </form>
+                            <div class="country">
+                                <h1>Country Ranking</h1>
+                                <h2>
+                                    <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                        -
+                                    <% } else { %>
+                                        #<%= ranking.country[0].value.toLocaleString() %>
+                                    <% } %>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="wrap detail">
+                            <div class="medals"
+                            <% if (dans) { %>
+                                style="filter: invert(50%); opacity: 0.95;"
+                            <% } %>>
+                                <h1>Medals</h1>
+                                <h2><%= medals.toLocaleString() %></h2>
+                            </div>
+                            <div class="pp">
+                                <h1>pp</h1>
+                                <h2>
+                                    <% if (dans) { %>
+                                        <%= pp.toLocaleString() %>
+                                    <% } else { %>
+                                        <%= info.pp.toLocaleString() %>
+                                    <% } %>
+                                </h2>
+                            </div>
+                            <div class="playtime"
+                            <% if (dans) { %>
+                                style="filter: invert(50%); opacity: 0.95;"
+                            <% } %>>
+                                <h1>Total Play Time</h1>
+                                <h2><%= getPlayTime(info.playtime) %></h2>
+                            </div>
+                        </div>
+                        <div class="wrap grade-amounts">
+                            <div class="xh">
+                                <img src="/image/grade/XH.png" alt=""><br>
+                                <%= !dans ? info.xh_count.toLocaleString() : grade.xh[0].value %>
+                            </div>
+                            <div class="x">
+                                <img src="/image/grade/X.png" alt=""><br>
+                                <%= !dans ? info.x_count.toLocaleString() : grade.x[0].value %>
+                            </div>
+                            <div class="sh">
+                                <img src="/image/grade/SH.png" alt=""><br>
+                                <%= !dans ? info.sh_count.toLocaleString() : grade.sh[0].value %>
+                            </div>
+                            <div class="s">
+                                <img src="/image/grade/S.png" alt=""><br>
+                                <%= !dans ? info.s_count.toLocaleString() : grade.s[0].value %>
+                            </div>
+                            <div class="a">
+                                <img src="/image/grade/A.png" alt=""><br>
+                                <%= !dans ? info.a_count.toLocaleString() : grade.a[0].value %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="acc">
+                            <h1>Hit Accuracy</h1>
+                            <h2>
+                                <% if (dans) { %>
+                                    <%= acc.toFixed(2) %>
+                                <% } else { %>
+                                    <%= info.acc.toFixed(2) %>
+                                <% } %>
+                                %
+                            </h2>
+                        </div>
+                        <div class="playcount">
+                            <h1>Play Count</h1>
+                            <h2>
+                                <% if (dans) { %>
+                                    <%= plays.toLocaleString() %>
+                                <% } else { %>
+                                    <%= info.plays.toLocaleString() %>
+                                <% } %>
+                            </h2>
+                        </div>
+                        <div class="hits"
+                        <% if (dans) { %>
+                            style="filter: invert(50%); opacity: 0.95;"
+                        <% } %>>
+                            <h1>Total hits</h1>
+                            <h2><%= info.total_hits.toLocaleString() %></h2>
+                        </div>
+                        <div class="rankedscore"
+                        <% if (dans) { %>
+                            style="filter: invert(50%); opacity: 0.95;"
+                        <% } %>>
+                            <h1>Ranked Score</h1>
+                            <h2><%= info.rscore.toLocaleString() %></h2>
+                        </div>
+                        <div class="totalscore"
+                        <% if (dans) { %>
+                            style="filter: invert(50%); opacity: 0.95;"
+                        <% } %>>
+                            <h1>Total Score</h1>
+                            <h2><%= info.tscore.toLocaleString() %></h2>
+                        </div>
+                        <div class="maxcombo">
+                            <h1>Maximum Combo</h1>
+                            <h2>
+                                <% if (dans) { %>
+                                    <%= max_combo.toLocaleString() %>
+                                <% } else { %>
+                                    <%= info.max_combo.toLocaleString() %>
+                                <% } %>
+                            </h2>
+                        </div>
+                        <div class="watched"
+                        <% if (dans) { %>
+                            style="filter: invert(50%); opacity: 0.95;"
+                        <% } %>>
+                            <h1>Replays Watched</h1>
+                            <h2><%= info.replay_views.toLocaleString() %></h2>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="box player-info">
-                <div class="overview">
-                    <div class="wrap ranking">
-                        <div class="global">
-                            <h1>Global Ranking</h1>
-                            <h2>
-                                <% if (info.acc === 0 || info.priv % 2 === 0) { %>
-                                    -
+            <div class="box me">
+                <h1><i class="fa-solid fa-id-badge"></i>me!</h1>
+                <p class="edit-button" style="display: none;">
+                    <i class="fa-solid fa-pen"></i>
+                </p>
+                <div class="contents">
+                    <div id="put-bbcode" class="bbcode-profile" style="display: none;">
+                        <% if (bbcode === null) { %>
+                            <div class="me-empty">
+                                <% if (id === locals.userid) { %>
+                                    <p class="edit-me">Edit me!</p>
+                                    <i class="fa-solid fa-user-pen"></i>
+                                    <p class="description">Express yourself by editing <strong>me!</strong></p>
                                 <% } else { %>
-                                    #<%= ranking.global[0].value.toLocaleString() %>
+                                    <p class="nothing">No contents</p>
                                 <% } %>
-                            </h2>
-                        </div>
-                        <div class="country">
-                            <h1>Country Ranking</h1>
-                            <h2>
-                                <% if (info.acc === 0 || info.priv % 2 === 0) { %>
-                                    -
-                                <% } else { %>
-                                    #<%= ranking.country[0].value.toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
+                            </div>
+                        <% } %>
+                        <%= me %>
                     </div>
-                    <div class="wrap detail">
-                        <div class="medals"
-                        <% if (dans) { %>
-                            style="filter: invert(50%); opacity: 0.95;"
-                        <% } %>>
-                            <h1>Medals</h1>
-                            <h2><%= medals.toLocaleString() %></h2>
+                    <form action="/me" method="post" style="display: none;">
+                        <textarea id="me-editor" placeholder="Type page content here" name="content"><%= bbcode %></textarea>
+                        <div class="editor">
+                            <div class="bb-button">
+                                <p title="Heading" class="heading">
+                                    <i class="fa-solid fa-heading"></i>
+                                </p>
+                                <p title="Bold" class="bold">
+                                    <i class="fa-solid fa-bold"></i>
+                                </p>
+                                <p title="Italic" class="italic">
+                                    <i class="fa-solid fa-italic"></i>
+                                </p>
+                                <p title="Underline" class="underline">
+                                    <i class="fa-solid fa-underline"></i>
+                                </p>
+                                <p title="Strikethrough" class="strike">
+                                    <i class="fa-solid fa-strikethrough"></i>
+                                </p>
+                                <p title="Color text" class="color">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </p>
+                                <p title="Spoiler" class="spoiler-text">
+                                    <i class="fa-solid fa-rectangle-xmark"></i>
+                                </p>
+                                <p title="Center" class="center">
+                                    <i class="fa-solid fa-align-center"></i>
+                                </p>
+                                <p title="Spoilerbox" class="spoilerbox">
+                                    <i class="fa-solid fa-square-caret-down"></i>
+                                </p>
+                                <p title="List" class="list">
+                                    <i class="fa-solid fa-list-ul"></i>
+                                </p>
+                                <p title="Numbered list" class="num-list">
+                                    <i class="fa-solid fa-list-ol"></i>
+                                </p>
+                                <p title="Quote" class="quote">
+                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                </p>
+                                <p title="Image" class="image">
+                                    <i class="fa-solid fa-image"></i>
+                                </p>
+                                <p title="Link" class="url">
+                                    <i class="fa-solid fa-link"></i>
+                                </p>
+                                <p title="Profile" class="profile">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </p>
+                                <p title="Code block" class="code">
+                                    <i class="fa-solid fa-code"></i>
+                                </p>
+                                <select title="Font size" class="size">
+                                    <option value="title" hidden selected>Font size</option>
+                                    <option value="tiny">Tiny</option>
+                                    <option value="small">Small</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="large">Large</option>
+                                </select>
+                                <a href="https://github.com/Mamestagram/BBCode-Usage" target="_blank" rel="noopener noreferrer">Help</a>
+                            </div>
+                            <div class="edit">
+                                <p class="cancel" onclick="cancel()">Cancel</p>
+                                <p class="preview" onclick="showPreview()">Preview</p>
+                                <p class="back-to-edit" onclick="backToEditor()" style="display: none">Edit</p>
+                                <p class="save" onclick="save()">Save</p>
+                            </div>
                         </div>
-                        <div class="pp">
-                            <h1>pp</h1>
-                            <h2>
-                                <% if (dans) { %>
-                                    <%= pp.toLocaleString() %>
-                                <% } else { %>
-                                    <%= info.pp.toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
-                        <div class="playtime"
-                        <% if (dans) { %>
-                            style="filter: invert(50%); opacity: 0.95;"
-                        <% } %>>
-                            <h1>Total Play Time</h1>
-                            <h2><%= getPlayTime(info.playtime) %></h2>
-                        </div>
-                    </div>
-                    <div class="wrap grade-amounts">
-                        <div class="xh">
-                            <img src="/image/grade/XH.png" alt=""><br>
-                            <%= !dans ? info.xh_count.toLocaleString() : grade.xh[0].value %>
-                        </div>
-                        <div class="x">
-                            <img src="/image/grade/X.png" alt=""><br>
-                            <%= !dans ? info.x_count.toLocaleString() : grade.x[0].value %>
-                        </div>
-                        <div class="sh">
-                            <img src="/image/grade/SH.png" alt=""><br>
-                            <%= !dans ? info.sh_count.toLocaleString() : grade.sh[0].value %>
-                        </div>
-                        <div class="s">
-                            <img src="/image/grade/S.png" alt=""><br>
-                            <%= !dans ? info.s_count.toLocaleString() : grade.s[0].value %>
-                        </div>
-                        <div class="a">
-                            <img src="/image/grade/A.png" alt=""><br>
-                            <%= !dans ? info.a_count.toLocaleString() : grade.a[0].value %>
-                        </div>
-                    </div>
-                </div>
-                <div class="stats">
-                    <div class="acc">
-                        <h1>Hit Accuracy</h1>
-                        <h2>
-                            <% if (dans) { %>
-                                <%= acc.toFixed(2) %>
-                            <% } else { %>
-                                <%= info.acc.toFixed(2) %>
-                            <% } %>
-                            %
-                        </h2>
-                    </div>
-                    <div class="playcount">
-                        <h1>Play Count</h1>
-                        <h2>
-                            <% if (dans) { %>
-                                <%= plays.toLocaleString() %>
-                            <% } else { %>
-                                <%= info.plays.toLocaleString() %>
-                            <% } %>
-                        </h2>
-                    </div>
-                    <div class="hits"
-                    <% if (dans) { %>
-                        style="filter: invert(50%); opacity: 0.95;"
-                    <% } %>>
-                        <h1>Total hits</h1>
-                        <h2><%= info.total_hits.toLocaleString() %></h2>
-                    </div>
-                    <div class="rankedscore"
-                    <% if (dans) { %>
-                        style="filter: invert(50%); opacity: 0.95;"
-                    <% } %>>
-                        <h1>Ranked Score</h1>
-                        <h2><%= info.rscore.toLocaleString() %></h2>
-                    </div>
-                    <div class="totalscore"
-                    <% if (dans) { %>
-                        style="filter: invert(50%); opacity: 0.95;"
-                    <% } %>>
-                        <h1>Total Score</h1>
-                        <h2><%= info.tscore.toLocaleString() %></h2>
-                    </div>
-                    <div class="maxcombo">
-                        <h1>Maximum Combo</h1>
-                        <h2>
-                            <% if (dans) { %>
-                                <%= max_combo.toLocaleString() %>
-                            <% } else { %>
-                                <%= info.max_combo.toLocaleString() %>
-                            <% } %>
-                        </h2>
-                    </div>
-                    <div class="watched"
-                    <% if (dans) { %>
-                        style="filter: invert(50%); opacity: 0.95;"
-                    <% } %>>
-                        <h1>Replays Watched</h1>
-                        <h2><%= info.replay_views.toLocaleString() %></h2>
-                    </div>
+                    </form>
                 </div>
             </div>
             <% if (!clan) { %>
@@ -1243,13 +1242,13 @@
             let before = `<%= bbcode %>`, hold, preview = false;
             window.addEventListener("DOMContentLoaded", function() {
                 if (before.length > 0) {
-                    if ("<%= id %>" === "<%= locals.userid %>"&& !preview) {
-                        $("main .player-banner .me .edit-button").show();
+                    if ("<%= id %>" === "<%= locals.userid %>" && !preview) {
+                        $("main .me .edit-button").show();
                     }
                     bbCodeToHtml();
                 }
                 else {
-                    $("main .player-banner .me .edit-button").hide();
+                    $("main .me .edit-button").hide();
                 }
                 $("#put-bbcode").show();
             });
@@ -1320,13 +1319,13 @@
                     meEditor.value = before;
                     preview = false;
                     prevMe(document.getElementById("put-bbcode"));
-                    $("main .player-banner .me .edit-button").show();
-                    $("main .player-banner .me .contents form .editor .edit .preview").show();
-                    $("main .player-banner .me .contents form .editor .edit .back-to-edit").hide();
-                    $("main .player-banner .me .contents .bbcode-profile").show();
-                    $("main .player-banner .me .contents form textarea").show();
-                    $("main .player-banner .me .contents form .editor .bb-button").show();
-                    $("main .player-banner .me .contents form").hide();
+                    $("main .me .edit-button").show();
+                    $("main .me .contents form .editor .edit .preview").show();
+                    $("main .me .contents form .editor .edit .back-to-edit").hide();
+                    $("main .me .contents .bbcode-profile").show();
+                    $("main .me .contents form textarea").show();
+                    $("main .me .contents form .editor .bb-button").show();
+                    $("main .me .contents form").hide();
                 }
             }
 
@@ -1334,34 +1333,34 @@
                 if (document.getElementById("me-editor").value.length > 0) {
                     preview = true;
                     ajaxUpdate("/preview", document.getElementById("put-bbcode"));
-                    $("main .player-banner .me .contents form .editor .edit .preview").hide();
-                    $("main .player-banner .me .contents form .editor .edit .back-to-edit").show();
-                    $("main .player-banner .me .contents .bbcode-profile").show();
-                    $("main .player-banner .me .contents form textarea").hide();
-                    $("main .player-banner .me .contents form .editor .bb-button").hide();
+                    $("main .me .contents form .editor .edit .preview").hide();
+                    $("main .me .contents form .editor .edit .back-to-edit").show();
+                    $("main .me .contents .bbcode-profile").show();
+                    $("main .me .contents form textarea").hide();
+                    $("main .me .contents form .editor .bb-button").hide();
                 }
             }
 
             function backToEditor() {
                 preview = false;
-                $("main .player-banner .me .contents form .editor .edit .preview").show();
-                $("main .player-banner .me .contents form .editor .edit .back-to-edit").hide();
-                $("main .player-banner .me .contents .bbcode-profile").hide();
-                $("main .player-banner .me .contents form textarea").show();
-                $("main .player-banner .me .contents form .editor .bb-button").show();
+                $("main .me .contents form .editor .edit .preview").show();
+                $("main .me .contents form .editor .edit .back-to-edit").hide();
+                $("main .me .contents .bbcode-profile").hide();
+                $("main .me .contents form textarea").show();
+                $("main .me .contents form .editor .bb-button").show();
             }
 
             function save() {
                 preview = false;
                 before = document.getElementById("me-editor").value;
                 ajaxUpdate("/me", document.getElementById("put-bbcode"));
-                $("main .player-banner .me .edit-button").show();
-                $("main .player-banner .me .contents form .editor .edit .preview").show();
-                $("main .player-banner .me .contents form .editor .edit .back-to-edit").hide();
-                $("main .player-banner .me .contents .bbcode-profile").show();
-                $("main .player-banner .me .contents form textarea").show();
-                $("main .player-banner .me .contents form .editor .bb-button").show();
-                $("main .player-banner .me .contents form").hide();
+                $("main .me .edit-button").show();
+                $("main .me .contents form .editor .edit .preview").show();
+                $("main .me .contents form .editor .edit .back-to-edit").hide();
+                $("main .me .contents .bbcode-profile").show();
+                $("main .me .contents form textarea").show();
+                $("main .me .contents form .editor .bb-button").show();
+                $("main .me .contents form").hide();
             }
 
             function ajaxUpdate (link, element) {
@@ -1372,26 +1371,26 @@
                     element.innerHTML = ajax.responseText;
                     if (before.length > 0 || preview) {
                         if ("<%= id %>" === "<%= locals.userid %>" && !preview) {
-                            $("main .player-banner .me .edit-button").show();
+                            $("main .me .edit-button").show();
                         }
                         bbCodeToHtml();
                     }
                     else {
-                        $("main .player-banner .me .edit-button").hide();
+                        $("main .me .edit-button").hide();
                     }
-                    $("main .player-banner .me .contents .edit-me").click(function() {
-                        $("main .player-banner .me .contents .bbcode-profile").hide();
-                        $("main .player-banner .me .contents form").show();
+                    $("main .me .contents .edit-me").click(function() {
+                        $("main .me .contents .bbcode-profile").hide();
+                        $("main .me .contents form").show();
                     });
-                    var $boxName = $("main .player-banner .me .contents .spoilerbox p");
+                    var $boxName = $("main .me .contents .spoilerbox p");
                     $boxName.click(function() {
                         if ($(this).hasClass("show-content")) {
                             $(this).removeClass("show-content");
-                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
                         }
                         else {
                             $(this).addClass("show-content");
-                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
                         }
                     });
                 }
@@ -1405,26 +1404,26 @@
                     element.innerHTML = ajax.responseText;
                     if (before.length > 0 || preview) {
                         if ("<%= id %>" === "<%= locals.userid %>" && !preview) {
-                            $("main .player-banner .me .edit-button").show();
+                            $("main .me .edit-button").show();
                         }
                         bbCodeToHtml();
                     }
                     else {
-                        $("main .player-banner .me .edit-button").hide();
+                        $("main .me .edit-button").hide();
                     }
-                    $("main .player-banner .me .contents .edit-me").click(function() {
-                        $("main .player-banner .me .contents .bbcode-profile").hide();
-                        $("main .player-banner .me .contents form").show();
+                    $("main .me .contents .edit-me").click(function() {
+                        $("main .me .contents .bbcode-profile").hide();
+                        $("main .me .contents form").show();
                     });
-                    var $boxName = $("main .player-banner .me .contents .spoilerbox p");
+                    var $boxName = $("main .me .contents .spoilerbox p");
                     $boxName.click(function() {
                         if ($(this).hasClass("show-content")) {
                             $(this).removeClass("show-content");
-                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
                         }
                         else {
                             $(this).addClass("show-content");
-                            $("main .player-banner .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
                         }
                     });
                 }
