@@ -8,6 +8,7 @@ main {
     background-color: #333333;
     font-size: 18px;
     width: 500px;
+    padding-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
@@ -67,23 +68,40 @@ main {
     border-radius: 5px;
 }
 
-.box button {
+.box .btn {
     background-color: #ac6039;
     color: #fdfdfd;
-    width: 90px;
+    width: 105px;
     margin: 20px auto;
     transition: 100ms;
     text-align: center;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
-.box button:hover {
+.box .btn:hover {
     background-color: #ff9966;
 }
 
-.box button input {
+.box .btn input {
     height: 36px;
     line-height: 36px;
+}
+
+.box .btn i {
+    padding-left: 5px;
+}
+
+.box .reset {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    width: 75px;
+    margin: 0 10px 0 auto;
+    cursor: pointer;
+}
+
+.box .reset i {
+    padding-left: 0;
 }
 
 .box .image {
@@ -103,13 +121,13 @@ main {
 .box .image .description {
     font-size: 14px;
 }
-
-.avatar-img button, .banner-img button, .bgimage button {
-    width: 105px;
+.reset-form {
+    height: 0;
 }
-
-.avatar-img button i, .banner-img button i, .bgimage button i {
-    padding-left: 5px;
+.reset-button {
+    position: relative;
+    bottom: 76px;
+    left: 170px;
 }
 
 @media(max-width: 767px) {
@@ -146,7 +164,15 @@ main {
         max-height: 300px;
     }
 
-    .box button {
+    .box .btn {
         margin: 30px 125px;
+    }
+
+    form .reset-button {
+        margin: 0;
+        bottom: 66px;
+        left: 121px;
+        font-size: 12px;
+        width: 65px;
     }
 }

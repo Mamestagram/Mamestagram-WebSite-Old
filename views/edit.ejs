@@ -98,7 +98,7 @@
                             checked 
                             <% } %>>Display past names publicly
                     </div>
-                    <button><input type="submit" value="Confirm" /></button>
+                    <button class="btn"><input type="submit" value="Confirm" /></button>
                 </form>
                 <script>
                     function toggleSetting() {
@@ -107,7 +107,7 @@
                     }
                 </script>
             </div>
-            <div class="box avatar-img">
+            <div class="box avatar">
                 <form action="/avatar" method="post" enctype="multipart/form-data">
                     <h1 class="title">Change avatar</h1>
                     <div class="image">
@@ -120,12 +120,14 @@
                         <span class="errmsg" style="display: none; color: red">File too large</span>
                         <canvas id="pre_avatar" width="0" height="0"></canvas>
                     </div>
-                    <button>
+                    <button class="btn">
                         <input type="submit" value="Upload" />
                         <i class="fa-solid fa-upload"></i>
                     </button>
-                    <script>
-                    </script>
+                    <p class="btn reset" onclick="reset('avatar')">
+                        Reset
+                        <i class="fa-sharp fa-solid fa-rotate-right"></i>
+                    </p>
                 </form>
             </div>
             <div class="box banner_img">
@@ -141,10 +143,14 @@
                         <span class="errmsg" style="display: none; color: red">File too large</span>
                         <canvas id="pre_banner_img" width="0" height="0"></canvas>
                     </div>
-                    <button>
+                    <button class="btn">
                         <input type="submit" value="Upload" />
                         <i class="fa-solid fa-upload"></i>
                     </button>
+                    <p class="btn reset" onclick="reset('banner_img')">
+                        Reset
+                        <i class="fa-sharp fa-solid fa-rotate-right"></i>
+                    </p>
                 </form>
             </div>
             <div class="box bgimage">
@@ -160,10 +166,14 @@
                         <span class="errmsg" style="display: none; color: red">File too large</span>
                         <canvas id="pre_bgimage" width="0" height="0"></canvas>
                     </div>
-                    <button>
+                    <button class="btn">
                         <input type="submit" value="Upload" />
                         <i class="fa-solid fa-upload"></i>
                     </button>
+                    <p class="btn reset" onclick="reset('bgimage')">
+                        Reset
+                        <i class="fa-sharp fa-solid fa-rotate-right"></i>
+                    </p>
                 </form>
             </div>
         </main>
@@ -195,6 +205,29 @@
                 else {
                     $(`.${name} .errmsg`).hide();
                     $(`.${name} form button`).show();
+                }
+            }
+
+            function reset(type) {
+                let arg = new Array(2);
+                switch (type) {
+                    case "avatar":
+                        arg[0] = "avatar";
+                        arg[1] = "/rstavatar";
+                        break;
+                    case "banner_img":
+                        arg[0] = "banner";
+                        arg[1] = "/rstbanner";
+                        break;
+                    case "bgimage":
+                        arg[0] = "background image";
+                        arg[1] = "/rstbgimage";
+                        break;
+                }
+                const sure = confirm(`Are you sure you want to reset your ${arg[0]}?`);
+                console.log(sure);
+                if (sure) {
+                    window.location.href = arg[1];
                 }
             }
         </script>
