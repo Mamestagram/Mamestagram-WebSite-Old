@@ -124,7 +124,12 @@
                         <input type="submit" value="Upload" />
                         <i class="fa-solid fa-upload"></i>
                     </button>
-                    <p class="btn reset" onclick="reset('avatar')">
+                    <p class="btn reset"
+                    <% if (exist.avatar) { %>
+                        onclick="reset('avatar')"
+                    <% } else { %>
+                        style="background-color: #ac6039; opacity: 0.5; cursor: not-allowed;"
+                    <% } %>>
                         Reset
                         <i class="fa-sharp fa-solid fa-rotate-right"></i>
                     </p>
@@ -147,7 +152,12 @@
                         <input type="submit" value="Upload" />
                         <i class="fa-solid fa-upload"></i>
                     </button>
-                    <p class="btn reset" onclick="reset('banner_img')">
+                    <p class="btn reset"
+                    <% if (exist.banner) { %>
+                        onclick="reset('banner_img')"
+                    <% } else { %>
+                        style="background-color: #ac6039; opacity: 0.5; cursor: not-allowed;"
+                    <% } %>>
                         Reset
                         <i class="fa-sharp fa-solid fa-rotate-right"></i>
                     </p>
@@ -170,7 +180,12 @@
                         <input type="submit" value="Upload" />
                         <i class="fa-solid fa-upload"></i>
                     </button>
-                    <p class="btn reset" onclick="reset('bgimage')">
+                    <p class="btn reset"
+                    <% if (exist.bgimage) { %>
+                        onclick="reset('bgimage')"
+                    <% } else { %>
+                        style="background-color: #ac6039; opacity: 0.5; cursor: not-allowed;"
+                    <% } %>>
                         Reset
                         <i class="fa-sharp fa-solid fa-rotate-right"></i>
                     </p>
