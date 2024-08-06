@@ -239,7 +239,9 @@
                 <div class="string username">
                     <div class="avatar">
                         <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" />
-                        <img class="gacha" src="/image/gacha/2.png" onerror="this.onerror = null; this.src = '/image/gacha/2.gif'" alt="" />
+                        <% if (setBadge !== 0) { %>
+                            <img class="gacha" src="/image/gacha/<%= setBadge %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= setBadge %>.gif'" alt="" />
+                        <% } %>
                     </div>
                     <div>
                         <div class="flex-box">
@@ -362,15 +364,17 @@
                             <div class="list mutual-list">
                                 <div class="wrap">
                                     <h1><i class="fa-solid fa-handshake-simple"></i>Mutual<i class="fa-solid fa-xmark"></i></h1>
-                                    <% mutualList.forEach((data) => { %>
-                                        <a class="data" href="/profile/<%= data.user2 %>">
-                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="">
-                                            <div class="name">
-                                                <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
-                                                <p class="username"><%= data.name %></p>
-                                            </div>
-                                        </a>
-                                    <% }); %>
+                                    <div class="users">
+                                        <% mutualList.forEach((data) => { %>
+                                            <a class="data" href="/profile/<%= data.user2 %>">
+                                                <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="">
+                                                <div class="name">
+                                                    <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
+                                                    <p class="username"><%= data.name %></p>
+                                                </div>
+                                            </a>
+                                        <% }); %>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
@@ -378,15 +382,17 @@
                             <div class="list following-list">
                                 <div class="wrap">
                                     <h1><i class="fa-solid fa-user"></i>Following<i class="fa-solid fa-xmark"></i></h1>
-                                    <% followingList.forEach((data) => { %>
-                                        <a class="data" href="/profile/<%= data.user2 %>">
-                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
-                                            <div class="name">
-                                                <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
-                                                <p class="username"><%= data.name %></p>
-                                            </div>
-                                        </a>
-                                    <% }); %>
+                                    <div class="users">
+                                        <% followingList.forEach((data) => { %>
+                                            <a class="data" href="/profile/<%= data.user2 %>">
+                                                <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                                                <div class="name">
+                                                    <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
+                                                    <p class="username"><%= data.name %></p>
+                                                </div>
+                                            </a>
+                                        <% }); %>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
@@ -394,7 +400,8 @@
                             <div class="list followers-list">
                                 <div class="wrap">
                                     <h1><i class="fa-solid fa-user-group"></i>Followers<i class="fa-solid fa-xmark"></i></h1>
-                                    <% followersList.forEach((data) => { %>
+                                    <div class="users">
+                                        <% followersList.forEach((data) => { %>
                                         <a class="data" href="/profile/<%= data.user1 %>">
                                             <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
                                             <div class="name">
@@ -403,6 +410,7 @@
                                             </div>
                                         </a>
                                     <% }); %>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
@@ -829,7 +837,7 @@
                                     <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                     <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                     <a
-                                    <% if (!dans) { %>
+                                    <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>
                                     style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
@@ -863,7 +871,7 @@
                                         <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg" alt="">
                                         <img class="grade" src="/image/grade/<%= data.grade %>.png" alt="">
                                         <a 
-                                        <% if (!dans) { %>
+                                        <% if (!dans && data.id > 0) { %>
                                             href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                         <% } %>>
                                             <p class="title"><%= data.title %> by <%= data.artist %></p>
@@ -928,7 +936,7 @@
                                         <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?" alt="">
                                     <% } %>
                                     <a
-                                    <% if (!dans) { %>
+                                    <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>>
                                         <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
@@ -957,7 +965,7 @@
                                         </div>
                                     </div>
                                     <a
-                                    <% if (!dans) { %>
+                                    <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>>
                                         <p class="title"><%= data.title %> [<%= data.version%>] by <%= data.artist %></p>
@@ -1007,7 +1015,7 @@
                                         <img class="grade" src="/image/grade/F.png" alt="">
                                     <% } %>
                                     <a
-                                    <% if (!dans) { %>
+                                    <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id %>/<%= data.id %>"
                                     <% } %>
                                     style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
@@ -1053,7 +1061,7 @@
                                             <img class="grade" src="/image/grade/F.png" alt="">
                                         <% } %>
                                         <a
-                                        <% if (!dans) { %>
+                                        <% if (!dans && data.id > 0) { %>
                                             href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                         <% } %>>
                                             <p class="title"><%= data.title %> by <%= data.artist %></p>
@@ -1107,7 +1115,7 @@
                                         <img class="grade" src="/image/grade/F.png" alt="">
                                     <% } %>
                                     <a
-                                    <% if (!dans) { %>
+                                    <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                     <% } %>
                                     style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
@@ -1153,7 +1161,7 @@
                                             <img class="grade" src="/image/grade/F.png" alt="">
                                         <% } %>
                                         <a
-                                        <% if (!dans) { %>
+                                        <% if (!dans && data.id > 0) { %>
                                             href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                         <% } %>>
                                             <p class="title"><%= data.title %> by <%= data.artist %></p>

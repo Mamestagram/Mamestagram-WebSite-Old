@@ -25,7 +25,7 @@ header .top img:hover {
 }
 
 .animated .top {
-    margin: 4px 0 4px 85px;
+    margin: 5px 0 5px 85px;
 }
 
 .animated .top img {
@@ -74,7 +74,8 @@ header .pc .donation:hover {
 .animated .pc li {
     color: #fdfdfd;
     font-weight: normal;
-    margin: 8px 15px;
+    height: 50px;
+    margin: 5px 15px;
     text-shadow: none;
 }
 
@@ -94,24 +95,26 @@ header .pc li a, header .pc li button {
 }
 
 .animated .pc li a, .animated .pc li button {
-    height: 37px;
-    line-height: 46px;
+    height: 50px;
+    line-height: 50px;
 }
 
 header .pc .search {
     font-size: 20px;
     height: 44px;
-    margin-left: auto;
+    margin: 22px 5px 22px auto;
     border-radius: 24px;
     text-align: center;
 }
 
 header .pc .search button {
+    height: 44px;
+    line-height: 44px;
     padding: 0 12px;
 }
 
-header .pc .avatar {
-    margin: 0 230px 0 0;
+.animated .pc .search {
+    margin: 8px 5px 8px auto;
 }
 
 .animated .pc .avatar:hover {
@@ -119,31 +122,49 @@ header .pc .avatar {
 }
 
 header .pc .avatar button {
+    position: relative;
     padding: 0;
     height: 60px;
 }
 
-header .pc .avatar button img {
+header .pc .avatar button .avatar-img {
     height: 60px;
     width: 60px;
-    margin: 10px 0;
-    border-radius: 65px;
+    border-radius: 60px;
     transition: height 300ms, width 300ms, margin 300ms, outline 100ms;
     object-fit: cover;
 }
-header .pc .avatar button img:hover {
+header .pc .avatar button .avatar-img:hover {
     outline: 2px solid #fdfdfd;
     outline-offset: -2px;
 }
 
+header .pc .avatar button .gacha {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    border-radius: 10px;
+    transition: bottom 300ms, right 300ms, height 300ms, width 300ms;
+}
+
 .animated .pc .avatar button {
+    height: 50px;
     width: 50px;
 }
 
-.animated .pc .avatar button img {
+.animated .pc .avatar button .avatar-img {
     height: 50px;
     width: 50px;
-    margin: 4px 0;
+}
+
+.animated .pc .avatar button .gacha {
+    bottom: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
 }
 
 header .pc .login {

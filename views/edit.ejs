@@ -116,6 +116,26 @@
                             name="avatar"
                             accept=".png, .jpg, .gif, .jpeg, .jfif"
                             required />
+                        <div class="set-badge">
+                            <a class="none" href="/changebadge/0">
+                                <i class="fa-solid fa-ban"
+                                <% if (setBadge === 0) { %>
+                                    style="color: red; opacity: 1;"
+                                <% } %>></i>
+                            </a>
+                            <% for (let i = 1; i <= totalBadges; i++) { %>
+                                <% if (hadBadge.split(",").includes(i.toString())) { %>
+                                    <a class="gacha-badge" href="/changebadge/<%= i %>">
+                                        <img src="/image/gacha/<%= i %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= i %>.gif'" alt=""
+                                        <% if (setBadge === i) { %>
+                                            style="filter: grayscale(0%); opacity: 1;"
+                                        <% } %>>
+                                    </a>
+                                <% } else { %>
+                                    <img class="mystery" src="/image/gacha/mystery.png" alt="">
+                                <% } %>
+                            <% } %>
+                        </div>
                         <span class="description">Keep it within 5mb.</span>
                         <span class="errmsg" style="display: none; color: red">File too large</span>
                         <canvas id="pre_avatar" width="0" height="0"></canvas>

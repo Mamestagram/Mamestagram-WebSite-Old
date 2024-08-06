@@ -121,9 +121,54 @@ main {
 .box .image .description {
     font-size: 14px;
 }
+
+.box.avatar .image .set-badge {
+    display: flex;
+    overflow: auto;
+    justify-content: center;
+}
+
+.box.avatar .image .set-badge a {
+    height: 40px;
+    margin: 10px 5px;
+}
+
+.box.avatar .image .set-badge .gacha-badge img {
+    height: 40px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: filter 150ms, opacity 150ms;
+}
+.avatar .image .set-badge .gacha-badge:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.box.avatar .image .set-badge .none i {
+    color: lightgray;
+    font-size: 30px;
+    line-height: 40px;
+    opacity: 0.5;
+    transition: color 150ms, opacity 150ms;
+}
+.box.avatar .image .set-badge .none:hover i {
+    color: red;
+    opacity: 1;
+}
+
+.box.avatar .image .set-badge .mystery {
+    height: 32px;
+    width: 40px;
+    line-height: 40px;
+    margin: 14px 5px;
+    object-fit: scale-down;
+    filter: invert(70%);
+}
+
 .reset-form {
     height: 0;
 }
+
 .reset-button {
     position: relative;
     bottom: 76px;
