@@ -143,10 +143,11 @@ header .pc .avatar button .gacha {
     position: absolute;
     bottom: -5px;
     right: -5px;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     margin: 0;
     border-radius: 10px;
+    object-fit: scale-down;
     transition: bottom 300ms, right 300ms, height 300ms, width 300ms;
 }
 
@@ -225,14 +226,6 @@ header .arrow {
     color: #fdfdfd;
 }
 
-.mobile li img {
-    height: 50px;
-    width: 50px;
-    padding: 7px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
 .mobile li span {
     padding: 10px 0;
     margin: 10px 15px;
@@ -242,6 +235,27 @@ header .arrow {
 .mobile li a, .mobile li button {
     height: 45px;
     line-height: 45px;
+}
+
+.mobile .avatar div {
+    position: relative;
+}
+
+.mobile .avatar div .avatar-img {
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.mobile .avatar div .gacha {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 25px;
+    width: 25px;
+    object-fit: scale-down;
 }
 
 .mobile .avatar button {

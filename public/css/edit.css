@@ -208,15 +208,23 @@ main {
         max-height: 300px;
     }
 
-    .box .btn {
-        margin: 30px 125px;
+    .box.avatar .image .set-badge a {
+        height: 30px;
+        margin: 2px 5px;
     }
-
-    form .reset-button {
-        margin: 0;
-        bottom: 66px;
-        left: 121px;
-        font-size: 12px;
-        width: 65px;
+    
+    .box.avatar .image .set-badge .gacha-badge img {
+        height: 30px;
+    }
+    
+    .box.avatar .image .set-badge .none i {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    
+    .box.avatar .image .set-badge .mystery {
+        height: 24px;
+        width: 30px;
+        margin: 5px 5px;
     }
 }

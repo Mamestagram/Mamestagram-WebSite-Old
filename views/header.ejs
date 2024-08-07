@@ -38,7 +38,12 @@
 <ul class="mobile">
     <% if (locals.loginf) { %>
         <li class="avatar">
-            <img src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+            <div>
+                <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                <% if (badge !== 0) { %>
+                    <img class="gacha" src="/image/gacha/<%= badge %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif'" alt="" />
+                <% } %>
+            </div>
             <button><%= locals.username %></button>
         </li>
     <% } else { %>

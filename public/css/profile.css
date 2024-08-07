@@ -70,7 +70,7 @@ main .player-banner .username .avatar .gacha {
     width: 40px;
     margin-bottom: 5px;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 main .player-banner .username h1 {
@@ -1389,6 +1389,12 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     /* ------------------------------------------------- */
     main .player-banner {
         margin-top: 0;
+    }
+
+    main .player-banner .username .avatar .gacha {
+        height: 25px;
+        width: 25px;
+        margin-bottom: 0;
     }
 
     main .player-banner .username .avatar .avatar {
