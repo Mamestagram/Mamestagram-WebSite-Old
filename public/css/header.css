@@ -141,10 +141,10 @@ header .pc .avatar button .avatar-img:hover {
 
 header .pc .avatar button .gacha {
     position: absolute;
-    bottom: -5px;
-    right: -5px;
-    height: 20px;
-    width: 20px;
+    bottom: 0;
+    right: 0;
+    height: 25px;
+    width: 25px;
     margin: 0;
     border-radius: 10px;
     object-fit: scale-down;
