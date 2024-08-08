@@ -123,18 +123,24 @@
                                     style="color: red; opacity: 1;"
                                 <% } %>></i>
                             </a>
-                            <% for (let i = 1; i <= totalBadges; i++) { %>
-                                <% if (hadBadge.split(",").includes(i.toString())) { %>
-                                    <a class="gacha-badge" href="/changebadge/<%= i %>">
-                                        <img src="/image/gacha/<%= i %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= i %>.gif'" alt=""
-                                        <% if (setBadge === i) { %>
+                            <% badgeInfo.forEach((info) => { %>
+                                <% if (hadBadge.split(",").includes(info.badge_id.toString())) { %>
+                                    <a title="<%= info.badge_name %>" class="gacha-badge" href="/changebadge/<%= info.badge_id %>">
+                                        <img src="/image/gacha/<%= info.badge_id %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= info.badge_id %>.gif'" alt=""
+                                        <% if (setBadge === info.badge_id) { %>
                                             style="filter: grayscale(0%); opacity: 1;"
                                         <% } %>>
                                     </a>
                                 <% } else { %>
-                                    <img class="mystery" src="/image/gacha/mystery.png" alt="">
+                                    <div class="mystery">
+                                        <% if (info.prob >= 3) { %>
+                                            <i title="<%= info.prob %>%" class="<%= info.prob >= 8 ? "common" : "rare" %> fa-regular fa-block-question"></i>
+                                        <% } else { %>
+                                            <i title="<%= info.prob %>%" class="epic fa-kit fa-regular-block-question-sparkle"></i>
+                                        <% } %>
+                                    </div>
                                 <% } %>
-                            <% } %>
+                            <% }); %>
                         </div>
                         <span class="description">Keep it within 5mb.</span>
                         <span class="errmsg" style="display: none; color: red">File too large</span>

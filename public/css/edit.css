@@ -124,18 +124,31 @@ main {
 
 .box.avatar .image .set-badge {
     display: flex;
-    overflow: auto;
-    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.box.avatar .image .set-badge::-webkit-scrollbar {
+    height: 8px;
+}
+.box.avatar .image .set-badge::-webkit-scrollbar-track {
+    background-color: #fdfdfd;
+}
+.box.avatar .image .set-badge::-webkit-scrollbar-thumb {
+    background-color: #3d3029;
+    border-radius: 2px;
 }
 
 .box.avatar .image .set-badge a {
     height: 40px;
-    margin: 5px;
+    width: 40px;
+    margin: 5px 2px;
 }
 
 .box.avatar .image .set-badge .gacha-badge img {
     height: 40px;
+    width: 40px;
     filter: grayscale(100%);
+    object-fit: scale-down;
     opacity: 0.5;
     transition: filter 150ms, opacity 150ms;
 }
@@ -146,8 +159,10 @@ main {
 
 .box.avatar .image .set-badge .none i {
     color: lightgray;
-    font-size: 30px;
+    font-size: 28px;
+    height: 40px;
     line-height: 40px;
+    width: 40px;
     opacity: 0.5;
     transition: color 150ms, opacity 150ms;
 }
@@ -157,11 +172,117 @@ main {
 }
 
 .box.avatar .image .set-badge .mystery {
-    height: 32px;
-    width: 40px;
-    margin: 9px 5px;
-    object-fit: scale-down;
-    filter: invert(70%);
+    position: relative;
+    height: 40px;
+    width: 46px;
+    margin: 5px 2px;
+}
+
+.box.avatar .image .set-badge .mystery i {
+    height: 40px;
+    width: 46px;
+}
+
+.box.avatar .image .set-badge .mystery .fa-block-question::before {
+    background: #838383;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "\e3dd";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+    height: 40px;
+    line-height: 40px;
+    width: 46px;
+    z-index: 1;
+    transition: background 150ms;
+}
+.box.avatar .image .set-badge .mystery:hover .fa-block-question::before {
+    background: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.box.avatar .image .set-badge .mystery .epic::before {
+    background: #838383;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "\e004";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+    height: 40px;
+    line-height: 40px;
+    width: 46px;
+    z-index: 1;
+    transition: background 150ms;
+}
+.box.avatar .image .set-badge .mystery:hover .epic::before {
+    background: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.box.avatar .image .set-badge .mystery .common::after {
+    background: linear-gradient(to right, #2ded2d, #61f161, #a0f0a0, #d8f8d8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "\e3dd";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+    height: 40px;
+    line-height: 40px;
+    width: 46px;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 150ms;
+}
+.box.avatar .image .set-badge .mystery:hover .common::after {
+    opacity: 1;
+}
+
+.box.avatar .image .set-badge .mystery .rare::after {
+    background: linear-gradient(to right, #691883, #b148d2, #e79aff, #f3ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "\e3dd";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+    height: 40px;
+    line-height: 40px;
+    width: 46px;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 150ms;
+}
+.box.avatar .image .set-badge .mystery:hover .rare::after {
+    opacity: 1;
+}
+
+.box.avatar .image .set-badge .mystery .epic::after {
+    background: linear-gradient(to right, #8b5a00, #caa21f, #feeb69, #fffbea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "\e004";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+    height: 40px;
+    line-height: 40px;
+    width: 46px;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 150ms;
+}
+.box.avatar .image .set-badge .mystery:hover .epic::after {
+    opacity: 1;
 }
 
 .reset-form {
@@ -210,21 +331,65 @@ main {
 
     .box.avatar .image .set-badge a {
         height: 30px;
-        margin: 2px 5px;
+        width: 30px;
+        margin: 2px;
     }
     
     .box.avatar .image .set-badge .gacha-badge img {
         height: 30px;
+        width: 30px;
     }
     
     .box.avatar .image .set-badge .none i {
         font-size: 24px;
+        height: 30px;
         line-height: 30px;
+        width: 30px;
+    }
+
+    .box.avatar .image .set-badge .mystery {
+        height: 30px;
+        width: 36px;
+        margin: 2px;
     }
     
-    .box.avatar .image .set-badge .mystery {
-        height: 24px;
-        width: 30px;
-        margin: 5px 5px;
+    .box.avatar .image .set-badge .mystery i {
+        height: 30px;
+        width: 36px;
+    }
+    
+    .box.avatar .image .set-badge .mystery .fa-block-question::before {
+        font-size: 28px;
+        height: 30px;
+        line-height: 30px;
+        width: 36px;
+    }
+    
+    .box.avatar .image .set-badge .mystery .epic::before {
+        font-size: 28px;
+        height: 30px;
+        line-height: 30px;
+        width: 36px;
+    }
+    
+    .box.avatar .image .set-badge .mystery .common::after {
+        font-size: 28px;
+        height: 30px;
+        line-height: 30px;
+        width: 36px;
+    }
+    
+    .box.avatar .image .set-badge .mystery .rare::after {
+        font-size: 28px;
+        height: 30px;
+        line-height: 30px;
+        width: 36px;
+    }
+    
+    .box.avatar .image .set-badge .mystery .epic::after {
+        font-size: 28px;
+        height: 30px;
+        line-height: 30px;
+        width: 36px;
     }
 }

@@ -66,8 +66,8 @@ main .player-banner .username .avatar .gacha {
     position: absolute;
     bottom: 0;
     right: 0;
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     margin: 5px;
     border-radius: 10px;
     object-fit: scale-down;
