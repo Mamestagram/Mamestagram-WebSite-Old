@@ -162,7 +162,7 @@ main {
     color: lightgray;
     font-size: 28px;
     height: 38px;
-    line-height: 38px;
+    line-height: 42px;
     width: 38px;
     opacity: 0.5;
     transition: color 150ms, opacity 150ms;
@@ -355,7 +355,7 @@ main {
     .box.avatar .image .set-badge .mystery {
         height: 30px;
         width: 36px;
-        margin: 2px 0;
+        margin: 3px 0;
     }
     
     .box.avatar .image .set-badge .mystery i {
