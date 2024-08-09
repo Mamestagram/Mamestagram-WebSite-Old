@@ -134,9 +134,9 @@
                                 <% } else { %>
                                     <div class="mystery">
                                         <% if (info.prob >= 3) { %>
-                                            <i title="<%= info.prob %>%" class="<%= info.prob >= 8 ? "common" : "rare" %> fa-regular fa-block-question"></i>
+                                            <i title="??? (<%= info.prob %>%)" class="<%= info.prob >= 8 ? "common" : "rare" %> fa-regular fa-block-question"></i>
                                         <% } else { %>
-                                            <i title="<%= info.prob %>%" class="epic fa-kit fa-regular-block-question-sparkle"></i>
+                                            <i title="??? (<%= info.prob %>%)" class="epic fa-kit fa-regular-block-question-sparkle"></i>
                                         <% } %>
                                     </div>
                                 <% } %>
