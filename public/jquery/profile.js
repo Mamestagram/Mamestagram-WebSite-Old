@@ -237,19 +237,19 @@ $(function() {
         let insertText, cursorOffset;
         switch ($(this).val()) {
             case "tiny":
-                insertText = `[size val="50"][/size]`;
+                insertText = `[size=50][/size]`;
                 cursorOffset = 15;
                 break;
             case "small":
-                insertText = `[size val="85"][/size]`;
+                insertText = `[size=85][/size]`;
                 cursorOffset = 15;
                 break;
             case "normal":
-                insertText = `[size val="100"][/size]`;
+                insertText = `[size=100][/size]`;
                 cursorOffset = 16;
                 break;
             case "large":
-                insertText = `[size val="150"][/size]`;
+                insertText = `[size=150][/size]`;
                 cursorOffset = 16;
                 break;
         }

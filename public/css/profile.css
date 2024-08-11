@@ -437,21 +437,22 @@ main .player-banner .relationship .list .data .name p {
     text-overflow: ellipsis;
 }
 
+main .player-banner .player-status {
+    display: flex;
+    margin: auto 0;
+}
+
 main .player-banner .player-status span:hover {
     transform: unset;
 }
 
 main .player-banner .player-status .status {
-    cursor: unset;
+    font-size: 12px;
     height: 12px;
     width: 12px;
-    padding: 0;
     margin: auto 5px;
 }
 
-main .player-banner .player-status p {
-    margin: auto 0;
-}
 
 main .player-banner .selection .special {
     color: #fdfdfd;
@@ -652,11 +653,6 @@ main .me div {
     display: block;
 }
 
-main .me .contents {
-    min-height: 240px;
-    clear: both;
-}
-
 main .me .contents .me-empty {
     text-align: center;
 }
@@ -664,7 +660,7 @@ main .me .contents .me-empty {
 main .me .contents .me-empty .nothing {
     font-size: 200%;
     font-weight: bold;
-    line-height: 240px;
+    line-height: 350px;
 }
 
 main .me .contents .me-empty .edit-me {
@@ -691,8 +687,9 @@ main .me .contents .me-empty .description {
 }
 
 main .me .contents .bbcode-profile {
+    min-height: 350px;
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
     line-height: 1.5;
 }
 main .me .contents .bbcode-profile::-webkit-scrollbar {

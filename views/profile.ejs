@@ -415,25 +415,17 @@
                             </div>
                         <% } %>
                         <div class="player-status">
-                            <span class="status"
+                            <i class="status fa-solid fa-circle"
                             <% if (online) { %>
-                                style="background-color: #b3d944;"
+                                style="color: #b3d944;"
                             <% } else { %>
-                                <% if (getLastOnline() >= 120) { %>
-                                    style="background-color: #000;"
-                                <% } else {%>
-                                    style="background-color: #b3d944;"
-                                <% } %>
-                            <% } %>></span>
+                                style="color: #000000;"
+                            <% } %>></i>
                             <p>
                                 <% if (online) { %>
                                     Online
                                 <% } else { %>
-                                    <% if (getLastOnline() >= 120) { %>
-                                        <h3>Last online: <%= getLastTime(getLastOnline()) %> ago</h3>
-                                    <% } else {%>
-                                        Online
-                                    <% } %>
+                                    Offline
                                 <% } %>
                             </p>
                         </div>
