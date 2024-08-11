@@ -125,7 +125,7 @@
                             </a>
                             <% badgeInfo.forEach((info) => { %>
                                 <% if (hadBadge.split(",").includes(info.badge_id.toString())) { %>
-                                    <a title="<%= info.prob >= 8 ? "Common" : info.prob >= 3 ? "Rare" : "Epic" %>: <%= info.badge_name %>" class="gacha-badge" href="/changebadge/<%= info.badge_id %>">
+                                    <a title="<%= info.prob >= 15 ? "Common" : info.prob >= 8 ? "Rare" : "Epic" %>: <%= info.badge_name %>" class="gacha-badge" href="/changebadge/<%= info.badge_id %>">
                                         <img src="/image/gacha/<%= info.badge_id %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= info.badge_id %>.gif'" alt=""
                                         <% if (setBadge === info.badge_id) { %>
                                             style="filter: grayscale(0%); opacity: 1;"
@@ -133,8 +133,8 @@
                                     </a>
                                 <% } else { %>
                                     <div class="mystery">
-                                        <% if (info.prob >= 3) { %>
-                                            <i title="??? (<%= info.prob %>%)" class="<%= info.prob >= 8 ? "common" : "rare" %> fa-regular fa-block-question"></i>
+                                        <% if (info.prob >= 8) { %>
+                                            <i title="??? (<%= info.prob %>%)" class="<%= info.prob >= 15 ? "common" : "rare" %> fa-regular fa-block-question"></i>
                                         <% } else { %>
                                             <i title="??? (<%= info.prob %>%)" class="epic fa-kit fa-regular-block-question-sparkle"></i>
                                         <% } %>
