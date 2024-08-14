@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     object-fit: cover;
-    filter: blur(3px);
+    filter: blur(5px);
     z-index: -1;
 }
 

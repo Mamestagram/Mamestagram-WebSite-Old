@@ -1384,15 +1384,15 @@
                     });
                     var $boxName = $("main .me .contents .spoilerbox p");
                     $boxName.click(function() {
-                        if ($(this).hasClass("show-content")) {
-                            $(this).removeClass("show-content");
-                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
-                        }
-                        else {
-                            $(this).addClass("show-content");
-                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
-                        }
-                    });
+                    if ($(this).hasClass("down")) {
+                        $(this).removeClass("down");
+                        $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+                    }
+                    else {
+                        $(this).addClass("down");
+                        $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+                    }
+                });
                 }
                 ajax.send(document.getElementById("me-editor").value);
             }
