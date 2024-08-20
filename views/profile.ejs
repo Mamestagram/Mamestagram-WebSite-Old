@@ -229,17 +229,21 @@
         %>
     </head>
     <body>
-        <img class="background-img" src="https://bg.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" width="100%" height="100%" />
+        <img class="background-img" src="https://bg.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" width="100%" height="100%" />
         <%- include("header") %> 
         <main>
             <div class="box banner-box">
-                <img src="https://banner.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" width="100%" height="250" />
+                <img src="https://banner.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" width="100%" height="250" />
             </div>
             <div class="box player-banner">
                 <div class="string username">
                     <div class="avatar">
-                        <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" />
-                        <% if (setBadge !== 0) { %>
+                        <% if (!clan) { %>
+                            <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" loading="lazy" alt="" />
+                        <% } else { %>
+                            <img class="avatar" src="https://a.mamesosu.net/3" loading="lazy" alt="" />
+                        <% } %>
+                        <% if (!clan && setBadge !== 0) { %>
                             <img class="gacha" src="/image/gacha/<%= setBadge %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= setBadge %>.gif'" alt="" />
                         <% } %>
                     </div>
@@ -453,13 +457,13 @@
                             <li class="classic">
                                 <a
                                 <% if (modeNum % 4 === 0 && !dans) { %>
-                                    href="/profile/<%= id %>/std"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std"
                                 <% } else if (modeNum % 4 === 1) { %>
-                                    href="/profile/<%= id %>/taiko"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko"
                                 <% } else if (modeNum % 4 === 2) { %>
-                                    href="/profile/<%= id %>/ctb"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb"
                                 <% } else { %>
-                                    href="/profile/<%= id %>/mania"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania"
                                 <% } %>>
                                     Classic
                                     <% if (info.preferred_mode >= 0 && info.preferred_mode < 4 && modeNum % 4 === info.preferred_mode % 4) { %>
@@ -472,11 +476,11 @@
                                 <li class="relax">
                                     <a
                                     <% if (modeNum % 4 === 0) { %>
-                                        href="/profile/<%= id %>/stdrx"
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdrx"
                                     <% } else if (modeNum % 4 === 1) { %>
-                                        href="/profile/<%= id %>/taikorx"
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taikorx"
                                     <% } else if (modeNum % 4 === 2) { %>
-                                        href="/profile/<%= id %>/ctbrx"
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctbrx"
                                     <% } %>>
                                         Relax
                                         <% if (info.preferred_mode >= 4 && info.preferred_mode < 8 && modeNum % 4 === info.preferred_mode % 4) { %>
@@ -488,7 +492,7 @@
                             <!-- auto pilot -->
                             <% if (modeNum % 4 === 0) { %>
                                 <li class="auto-pilot">
-                                    <a href="/profile/<%= id %>/stdap">
+                                    <a href="/profile/<%= id %><%= clan ? "&clan" : "" %></a>/stdap">
                                         Auto Pilot
                                         <% if (info.preferred_mode === 8) { %>
                                             <i class="favorite fa-solid fa-star fa-xs"></i>
@@ -500,13 +504,13 @@
                             <li class="dans">
                                 <a
                                 <% if (modeNum % 4 === 0) { %>
-                                    href="/profile/<%= id %>/std&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std&dans"
                                 <% } else if (modeNum % 4 === 1) { %>
-                                    href="/profile/<%= id %>/taiko&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko&dans"
                                 <% } else if (modeNum % 4 === 2) { %>
-                                    href="/profile/<%= id %>/ctb&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb&dans"
                                 <% } else if (modeNum === 3) { %>
-                                    href="/profile/<%= id %>/mania&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania&dans"
                                 <% } %>>Dans</a>
                             </li>
                         </ul>
@@ -518,58 +522,62 @@
                         <% if (id !== locals.userid || modeNum === info.preferred_mode) { %>
                             style="margin-left: auto;"
                         <% } %>>
+                        <!-- std -->
                         <li class="std"
                         <% if (modeNum % 4 === 0) { %>
                             style="filter: invert(0%); opacity: 1"
                         <% } %>>
                             <a
                             <% if (dans) { %>
-                                href="/profile/<%= id %>/std&dans"
+                                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std&dans"
                             <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                                href="/profile/<%= id %>/std"
+                                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std"
                             <% } else if (modeNum < 7) { %>
-                                href="/profile/<%= id %>/stdrx"
+                                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdrx"
                             <% } else { %>
-                                href="/profile/<%= id %>/stdap"
+                                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdap"
                             <% } %>><i class="mode-icon mode-osu"></i></a>
                             <% if (info.preferred_mode % 4 === 0) { %>
                                 <i class="favorite fa-solid fa-star"></i>
                             <% } %>
-                        </li>
+                            </li>
                         <% if (modeNum !== 8) { %>
+                            <!-- taiko -->
                             <li class="taiko"
                             <% if (modeNum % 4 === 1) { %>
                                 style="filter: invert(0%); opacity: 1"
                             <% } %>>
                                 <a
                                 <% if (dans) { %>
-                                    href="/profile/<%= id %>/taiko&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko&dans"
                                 <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                                    href="/profile/<%= id %>/taiko"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko"
                                 <% } else { %>
-                                    href="/profile/<%= id %>/taikorx"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taikorx"
                                 <% } %>><i class="mode-icon mode-taiko"></i></a>
                                 <% if (info.preferred_mode % 4 === 1) { %>
                                     <i class="favorite fa-solid fa-star"></i>
                                 <% } %>
                             </li>
+                            <!-- ctb -->
                             <li class="catch"
                             <% if (modeNum % 4 === 2) { %>
                                 style="filter: invert(0%); opacity: 1"
                             <% } %>>
                                 <a
                                 <% if (dans) { %>
-                                    href="/profile/<%= id %>/ctb&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb&dans"
                                 <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                                    href="/profile/<%= id %>/ctb"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb"
                                 <% } else { %>
-                                    href="/profile/<%= id %>/ctbrx"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctbrx"
                                 <% } %>><i class="mode-icon mode-fruits"></i></a>
                                 <% if (info.preferred_mode % 4 === 2) { %>
                                     <i class="favorite fa-solid fa-star"></i>
                                 <% } %>
                             </li>
                         <% } %>
+                        <!-- mania -->
                         <% if (modeNum >= 0 && modeNum < 4) { %>
                             <li class="mania"
                             <% if (modeNum === 3) { %>
@@ -577,9 +585,9 @@
                             <% } %>>
                                 <a
                                 <% if (dans) { %>
-                                    href="/profile/<%= id %>/mania&dans"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania&dans"
                                 <% } else { %>
-                                    href="/profile/<%= id %>/mania"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania"
                                 <% } %>><i class="mode-icon mode-mania"></i></a>
                                 <% if (info.preferred_mode % 4 === 3) { %>
                                     <i class="favorite fa-solid fa-star"></i>
@@ -591,26 +599,39 @@
                 <div class="string player-info">
                     <div class="overview">
                         <div class="wrap ranking">
-                            <div class="global">
-                                <h1>Global Ranking</h1>
-                                <h2>
-                                    <% if (info.acc === 0 || info.priv % 2 === 0) { %>
-                                        -
-                                    <% } else { %>
-                                        #<%= ranking.global[0].value.toLocaleString() %>
-                                    <% } %>
-                                </h2>
-                            </div>
-                            <div class="country">
-                                <h1>Country Ranking</h1>
-                                <h2>
-                                    <% if (info.acc === 0 || info.priv % 2 === 0) { %>
-                                        -
-                                    <% } else { %>
-                                        #<%= ranking.country[0].value.toLocaleString() %>
-                                    <% } %>
-                                </h2>
-                            </div>
+                            <% if (!clan) { %>
+                                <div class="global">
+                                    <h1>Global Ranking</h1>
+                                    <h2>
+                                        <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                            -
+                                        <% } else { %>
+                                            #<%= ranking.global[0].value.toLocaleString() %>
+                                        <% } %>
+                                    </h2>
+                                </div>
+                                <div class="country">
+                                    <h1>Country Ranking</h1>
+                                    <h2>
+                                        <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                            -
+                                        <% } else { %>
+                                            #<%= ranking.country[0].value.toLocaleString() %>
+                                        <% } %>
+                                    </h2>
+                                </div>
+                            <% } else { %>
+                                <div class="global">
+                                    <h1>Clan Ranking</h1>
+                                    <h2>
+                                        <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                            -
+                                        <% } else { %>
+                                            #<%= ranking.toLocaleString() %>
+                                        <% } %>
+                                    </h2>
+                                </div>
+                            <% } %>
                         </div>
                         <div class="wrap detail">
                             <div class="medals"
@@ -618,15 +639,15 @@
                                 style="filter: invert(50%); opacity: 0.95;"
                             <% } %>>
                                 <h1>Medals</h1>
-                                <h2><%= medals.toLocaleString() %></h2>
+                                <h2><%= Math.floor(medals).toLocaleString() %></h2>
                             </div>
                             <div class="pp">
                                 <h1>pp</h1>
                                 <h2>
                                     <% if (dans) { %>
-                                        <%= pp.toLocaleString() %>
+                                        <%= Math.round(pp).toLocaleString() %>
                                     <% } else { %>
-                                        <%= info.pp.toLocaleString() %>
+                                        <%= Math.round(info.pp).toLocaleString() %>
                                     <% } %>
                                 </h2>
                             </div>
@@ -641,27 +662,27 @@
                         <div class="wrap grade-amounts">
                             <div class="xh">
                                 <img src="/image/grade/XH.png" alt=""><br>
-                                <%= !dans ? info.xh_count.toLocaleString() : grade.xh[0].value %>
+                                <%= !dans ? Math.floor(info.xh_count).toLocaleString() : Math.floor(grade.xh[0].value).toLocaleString() %>
                             </div>
                             <div class="x">
                                 <img src="/image/grade/X.png" alt=""><br>
-                                <%= !dans ? info.x_count.toLocaleString() : grade.x[0].value %>
+                                <%= !dans ? Math.floor(info.x_count).toLocaleString() : Math.floor(grade.x[0].value).toLocaleString() %>
                             </div>
                             <div class="sh">
                                 <img src="/image/grade/SH.png" alt=""><br>
-                                <%= !dans ? info.sh_count.toLocaleString() : grade.sh[0].value %>
+                                <%= !dans ? Math.floor(info.sh_count).toLocaleString() : Math.floor(grade.sh[0].value).toLocaleString() %>
                             </div>
                             <div class="s">
                                 <img src="/image/grade/S.png" alt=""><br>
-                                <%= !dans ? info.s_count.toLocaleString() : grade.s[0].value %>
+                                <%= !dans ? Math.floor(info.s_count).toLocaleString() : Math.floor(grade.s[0].value).toLocaleString() %>
                             </div>
                             <div class="a">
                                 <img src="/image/grade/A.png" alt=""><br>
-                                <%= !dans ? info.a_count.toLocaleString() : grade.a[0].value %>
+                                <%= !dans ? Math.floor(info.a_count).toLocaleString() : Math.floor(grade.a[0].value).toLocaleString() %>
                             </div>
                         </div>
                     </div>
-                    <div class="stats">
+                    <d class="stats">
                         <div class="acc">
                             <h1>Hit Accuracy</h1>
                             <h2>
@@ -677,9 +698,9 @@
                             <h1>Play Count</h1>
                             <h2>
                                 <% if (dans) { %>
-                                    <%= plays.toLocaleString() %>
+                                    <%= Math.floor(plays).toLocaleString() %>
                                 <% } else { %>
-                                    <%= info.plays.toLocaleString() %>
+                                    <%= Math.floor(info.plays).toLocaleString() %>
                                 <% } %>
                             </h2>
                         </div>
@@ -688,21 +709,21 @@
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Total hits</h1>
-                            <h2><%= info.total_hits.toLocaleString() %></h2>
+                            <h2><%= Math.floor(info.total_hits).toLocaleString() %></h2>
                         </div>
                         <div class="rankedscore"
                         <% if (dans) { %>
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Ranked Score</h1>
-                            <h2><%= info.rscore.toLocaleString() %></h2>
+                            <h2><%= Math.floor(info.rscore).toLocaleString() %></h2>
                         </div>
                         <div class="totalscore"
                         <% if (dans) { %>
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Total Score</h1>
-                            <h2><%= info.tscore.toLocaleString() %></h2>
+                            <h2><%= Math.floor(info.tscore).toLocaleString() %></h2>
                         </div>
                         <div class="maxcombo">
                             <h1>Maximum Combo</h1>

@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <%
+        const date = new Date().toLocaleString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }).replaceAll("/", "")
+        %>
         <title><%= mapdetails.artist %> - <%= mapdetails.title %> | Mamestagram</title>
         <meta name="robots" content="noindex">
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/beatmaps.css">
+        <link rel="stylesheet" href="/css/beatmaps.css?<%= date %>">
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -263,7 +273,7 @@
         <div class="map-info">
             <h1 class="title"><i class="fa-brands fa-itunes-note"></i>Beatmap info</h1>
             <div class="background">
-                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?" alt="">
+                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?<%= date %>" alt="">
                 <div class="contents">
                     <div class="wrap flex-mobile">
                         <div class="diff">
@@ -633,9 +643,9 @@
                             <div class="flex" style="display: flex">
                                 <div>
                                     <p class="rank">#<%= rankings[0].ranking %></p>
-                                    <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png">
+                                    <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>">
                                 </div>
-                                <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>">
+                                <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>">
                                 <div>
                                     <p class="name">
                                         <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -755,7 +765,7 @@
                                             <td><%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "brev") %></td>
                                             <td class="mods">
                                                 <% getMods(rankings[0].mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="">
                                                 <% }); %>
                                             </td>
                                         </tr>
@@ -776,9 +786,9 @@
                                     <div class="flex" style="display: flex;">
                                         <div>
                                             <p class="rank">#<%= rankings[index].ranking %></p>
-                                            <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png">
+                                            <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>">
                                         </div>
-                                        <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>">
+                                        <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>">
                                         <div>
                                             <p class="name">
                                                 <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -898,7 +908,7 @@
                                                     <td><%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "brev") %></td>
                                                     <td class="mods">
                                                         <% getMods(rankings[index].mods).forEach((mod) => { %>
-                                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="">
                                                         <% }); %>
                                                     </td>
                                                 </tr>
@@ -948,7 +958,7 @@
                                 <% for (let data of rankings) { %>
                                     <tr class="list">
                                         <td class="rank">#<%= data.ranking %></td>
-                                        <td class="grade"><img src="/image/grade/<%= data.grade %>.png"></td>
+                                        <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>"></td>
                                         <td><%= data.score.toLocaleString() %></td>
                                         <td
                                         <% if (data.acc === 100) { %>
@@ -1030,7 +1040,7 @@
                                         <td class="mods">
                                             <div class="image">
                                                 <% getMods(data.mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="">
                                                 <% }); %>
                                             </div>
                                         </td>
