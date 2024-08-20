@@ -1,5 +1,15 @@
+<%
+const date = new Date().toLocaleString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+}).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+%>
 <header>
-    <a class="top" href="/"><img src="/image/logo.png" alt=""></a>
+    <a class="top" href="/"><img src="/image/logo.png?<%= date %>" alt="" /></a>
     <h1><%= pageTitle %></h1>
     <ul class="pc">
         <li class="leaderboard"><a href="/leaderboard/std/performance">Leaderboard</a></li>
@@ -18,9 +28,9 @@
         <% if (locals.loginf) { %>
             <li class="avatar">
                 <button title="<%= locals.username %>">
-                    <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="" />
+                    <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= date %>" alt="" />
                     <% if (badge !== 0) { %>
-                        <img class="gacha" src="/image/gacha/<%= badge %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif'" alt="" />
+                        <img class="gacha" src="/image/gacha/<%= badge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif?<%= date %>'" alt="" />
                     <% } %>
                 </button>
             </li>
@@ -38,9 +48,9 @@
     <% if (locals.loginf) { %>
         <li class="avatar">
             <div>
-                <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= date %>" alt="" />
                 <% if (badge !== 0) { %>
-                    <img class="gacha" src="/image/gacha/<%= badge %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif'" alt="" />
+                    <img class="gacha" src="/image/gacha/<%= badge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif?<%= date %>'" alt="" />
                 <% } %>
             </div>
             <button><%= locals.username %></button>

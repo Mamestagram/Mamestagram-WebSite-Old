@@ -9,12 +9,12 @@
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit"
-        }).replaceAll("/", "")
+        }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
         %>
         <title><%= mapdetails.artist %> - <%= mapdetails.title %> | Mamestagram</title>
         <meta name="robots" content="noindex">
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/beatmaps.css?<%= date %>">
+        <link rel="stylesheet" href="/css/beatmaps.css?<%= date %>" />
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -273,7 +273,7 @@
         <div class="map-info">
             <h1 class="title"><i class="fa-brands fa-itunes-note"></i>Beatmap info</h1>
             <div class="background">
-                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?<%= date %>" alt="">
+                <img src="https://assets.ppy.sh/beatmaps/<%= setid %>/covers/cover.jpg?<%= date %>" alt="" />
                 <div class="contents">
                     <div class="wrap flex-mobile">
                         <div class="diff">
@@ -532,76 +532,76 @@
                             <button title="Eazy" onclick="jump()"
                             <% if (getMods(mods).includes("ez")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/ez.png"></button>
+                            <% } %>><img src="/image/mods/ez.png?<%= date %>" /></button>
                         </li>
                         <li class="nf">
                             <button title="No Fail" onclick="jump()"
                             <% if (getMods(mods).includes("nf")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/nf.png"></button>
+                            <% } %>><img src="/image/mods/nf.png?<%= date %>" /></button>
                         </li>
                         <li class="ht">
                             <button title="Half Time" onclick="jump()"
                             <% if (getMods(mods).includes("ht")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/ht.png"></button>
+                            <% } %>><img src="/image/mods/ht.png?<%= date %>" /></button>
                         </li>
                         <li class="hr">
                             <button title="Hard Rock" onclick="jump()"
                             <% if (getMods(mods).includes("hr")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/hr.png"></button>
+                            <% } %>><img src="/image/mods/hr.png?<%= date %>" /></button>
                         </li>
                         <li class="sd">
                             <button title="Sudden Death" onclick="jump()"
                             <% if (getMods(mods).includes("sd")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/sd.png"></button>
+                            <% } %>><img src="/image/mods/sd.png?<%= date %>" /></button>
                         </li>
                         <li class="pf">
                             <button title="Perfect" onclick="jump()"
                             <% if (getMods(mods).includes("pf")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/pf.png"></button>
+                            <% } %>><img src="/image/mods/pf.png?<%= date %>" /></button>
                         </li>
                         <li class="dt">
                             <button title="Double Time" onclick="jump()"
                             <% if (getMods(mods).includes("dt")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/dt.png"></button>
+                            <% } %>><img src="/image/mods/dt.png?<%= date %>" /></button>
                         </li>
                         <li class="nc">
                             <button title="Nightcore" onclick="jump()"
                             <% if (getMods(mods).includes("nc")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/nc.png"></button>
+                            <% } %>><img src="/image/mods/nc.png?<%= date %>" /></button>
                         </li>
                         <% if (modeNum === 3) { %>
                             <li class="fi">
                                 <button title="Fade In" onclick="jump()"
                                 <% if (getMods(mods).includes("fi")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/fi.png"></button>
+                                <% } %>><img src="/image/mods/fi.png?<%= date %>" /></button>
                             </li>
                         <% } %>
                         <li class="hd">
                             <button title="Hidden" onclick="jump()"
                             <% if (getMods(mods).includes("hd")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/hd.png"></button>
+                            <% } %>><img src="/image/mods/hd.png?<%= date %>" /></button>
                         </li>
                         <li class="fl">
                             <button title="Flashlight" onclick="jump()"
                             <% if (getMods(mods).includes("fl")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/fl.png"></button>
+                            <% } %>><img src="/image/mods/fl.png?<%= date %>" /></button>
                         </li>
                         <% if (modeNum === 0) { %>
                             <li class="so">
                                 <button title="Spun Out" onclick="jump()"
                                 <% if (getMods(mods).includes("so")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/so.png"></button>
+                                <% } %>><img src="/image/mods/so.png?<%= date %>" /></button>
                             </li>
                         <% } else if (modeNum === 3) { %>
                             <% if (mapdetails.mode === 0) { %>
@@ -610,7 +610,7 @@
                                         <button title="key <%= i %>keys" onclick="jump()"
                                         <% if (getMods(mods).includes(`k${i}`)) { %>
                                             class="selected"
-                                        <% } %>><img src="/image/mods/k<%= i %>.png"></button>
+                                        <% } %>><img src="/image/mods/k<%= i %>.png?<%= date %>" /></button>
                                     </li>
                                 <% } %>
                             <% } %>
@@ -618,20 +618,20 @@
                                 <button title="Random" onclick="jump()"
                                 <% if (getMods(mods).includes("rd")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/rd.png"></button>
+                                <% } %>><img src="/image/mods/rd.png?<%= date %>" /></button>
                             </li>
                             <li class="mr">
                                 <button title="Mirror" onclick="jump()"
                                 <% if (getMods(mods).includes("mr")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/mr.png"></button>
+                                <% } %>><img src="/image/mods/mr.png?<%= date %>" /></button>
                             </li>
                         <% } %>
                         <li class="v2">
                             <button title="ScoreV2" onclick="jump()"
                             <% if (getMods(mods).includes("v2")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/v2.png"></button>
+                            <% } %>><img src="/image/mods/v2.png?<%= date %>" /></button>
                         </li>
                     </ul>
                 </div>
@@ -643,9 +643,9 @@
                             <div class="flex" style="display: flex">
                                 <div>
                                     <p class="rank">#<%= rankings[0].ranking %></p>
-                                    <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>">
+                                    <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>" />
                                 </div>
-                                <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>">
+                                <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>" />
                                 <div>
                                     <p class="name">
                                         <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -765,7 +765,7 @@
                                             <td><%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "brev") %></td>
                                             <td class="mods">
                                                 <% getMods(rankings[0].mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="">
+                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
                                                 <% }); %>
                                             </td>
                                         </tr>
@@ -786,9 +786,9 @@
                                     <div class="flex" style="display: flex;">
                                         <div>
                                             <p class="rank">#<%= rankings[index].ranking %></p>
-                                            <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>">
+                                            <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>" />
                                         </div>
-                                        <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>">
+                                        <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>" />
                                         <div>
                                             <p class="name">
                                                 <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -908,7 +908,7 @@
                                                     <td><%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "brev") %></td>
                                                     <td class="mods">
                                                         <% getMods(rankings[index].mods).forEach((mod) => { %>
-                                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="">
+                                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
                                                         <% }); %>
                                                     </td>
                                                 </tr>
@@ -958,7 +958,7 @@
                                 <% for (let data of rankings) { %>
                                     <tr class="list">
                                         <td class="rank">#<%= data.ranking %></td>
-                                        <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>"></td>
+                                        <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>" /></td>
                                         <td><%= data.score.toLocaleString() %></td>
                                         <td
                                         <% if (data.acc === 100) { %>
@@ -1040,7 +1040,7 @@
                                         <td class="mods">
                                             <div class="image">
                                                 <% getMods(data.mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="">
+                                                    <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
                                                 <% }); %>
                                             </div>
                                         </td>

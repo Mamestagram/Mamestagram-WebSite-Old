@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <%
+        const date = new Date().toLocaleString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+        %>
         <title>Account settings | Mamestagram</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/edit.css" />
+        <link rel="stylesheet" href="/css/edit.css?<%= date %>" />
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -126,10 +136,10 @@
                             <% badgeInfo.forEach((info) => { %>
                                 <% if (hadBadge.split(",").includes(info.badge_id.toString())) { %>
                                     <a title="<%= info.prob >= 15 ? "Common" : info.prob >= 8 ? "Rare" : "Epic" %>: <%= info.badge_name %>" class="gacha-badge" href="/changebadge/<%= info.badge_id %>">
-                                        <img src="/image/gacha/<%= info.badge_id %>.png" onerror="this.onerror = null; this.src = '/image/gacha/<%= info.badge_id %>.gif'" alt=""
+                                        <img src="/image/gacha/<%= info.badge_id %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= info.badge_id %>.gif?<%= date %>'" alt=""
                                         <% if (setBadge === info.badge_id) { %>
                                             style="filter: grayscale(0%); opacity: 1;"
-                                        <% } %>>
+                                        <% } %> />
                                     </a>
                                 <% } else { %>
                                     <div class="mystery">

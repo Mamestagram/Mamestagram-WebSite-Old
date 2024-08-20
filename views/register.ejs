@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <%
+    const date = new Date().toLocaleString("ja-JP", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+    %>
     <title>Register | Mamestagram</title>
     <%- include("link") %>
-    <link rel="stylesheet" href="/css/register.css">
-    <link rel="stylesheet" href="/css/hf-bg/register.css">
+    <link rel="stylesheet" href="/css/register.css?<%= date %>" />
     <script src="https://www.google.com/recaptcha/api.js?render=6LcsItomAAAAABWqvEVs5hnMIcT3eWSjMfbgrsAo"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>

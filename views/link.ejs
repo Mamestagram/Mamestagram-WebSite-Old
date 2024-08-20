@@ -1,16 +1,26 @@
+<%
+const date = new Date().toLocaleString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+}).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+%>
 <meta charset="utf-8">
 <meta name="description" content="Welcome to Mamestagram! This is an osu! private server operated by Mamestagram.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="no-cache">
-<link rel="stylesheet" href="/css/reset.css">
-<link rel="stylesheet" href="/css/font.css">
-<link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/footer.css">
-<link rel="stylesheet" href="/css/mode-icon.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.3/css/flag-icons.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<link rel="icon" href="/image/logo.png">
-<script src="https://kit.fontawesome.com/bd6bb70cf4.js" crossorigin="anonymous"></script>
-<script src="/jquery/jquery.js"></script>
-<script src="/jquery/header.js"></script>
+<link rel="stylesheet" href="/css/reset.css?<%= date %>" />
+<link rel="stylesheet" href="/css/font.css?<%= date %>" />
+<link rel="stylesheet" href="/css/header.css?<%= date %>" />
+<link rel="stylesheet" href="/css/footer.css?<%= date %>" />
+<link rel="stylesheet" href="/css/mode-icon.css?<%= date %>" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.3/css/flag-icons.min.css?<%= date %>" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css?<%= date %>" />
+<link rel="icon" href="/image/logo.png?<%= date %>" />
+<script src="https://kit.fontawesome.com/bd6bb70cf4.js?<%= date %>" crossorigin="anonymous"></script>
+<script src="/jquery/jquery.js?<%= date %>"></script>
+<script src="/jquery/header.js?<%= date %>"></script>

@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <%
+        const date = new Date().toLocaleString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+        %>
         <title>Dashboard | Mamestagram</title>
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/home.css?<%= date %>" />
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -64,10 +74,10 @@
     </head>
     <body>
         <%- include("header") %>
-        <img src="/image/banner/home.jpg" class="banner">
+        <img src="/image/banner/home.jpg?<%= date %>" class="banner" />
         <h1 class="pagename">Dashboard</h1>
         <main>
-            <img src="/image/logo.png" class="logoimage">
+            <img src="/image/logo.png?<%= date %>" class="logoimage" />
             <h1 class="welcome-title">Welcome to <strong>Mamestagram!</strong></h1>
             <h2 class="subtitle">This is an osu! private server operated by Mamestagram</h2>
             <div class="player-info">

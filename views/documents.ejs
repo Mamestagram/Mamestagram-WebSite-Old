@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <%
+        const date = new Date().toLocaleString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+        %>
         <title>Documents | Mamestagram</title>
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/documents.css">
+        <link rel="stylesheet" href="/css/documents.css?<%= date %>" />
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -121,7 +131,7 @@
     </head>
     <body>
     <%- include("header") %>
-    <img class="banner" src="/image/banner/documents.jpg" alt="">
+    <img class="banner" src="/image/banner/documents.jpg?<%= date %>" alt="" />
     <h1 class="pagename">Documents</h1>
     <main>
         <div class="eng">
@@ -153,7 +163,7 @@
                                 </a>
                             </h3>
                             <p>In this channel, when someone passes a map or takes first place on a map in MamesOsu, their score and status are automatically sent.</p>
-                            <img src="/image/documents/about/1.jpg">
+                            <img src="/image/documents/about/1.jpg?<%= date %>" />
                         </li>
                         <li>
                             <h3>
@@ -170,13 +180,13 @@
                                 .
                             </p>
                             <p>Your favorite map could be Ranked!</p>
-                            <img src="/image/documents/about/2.jpg">
+                            <img src="/image/documents/about/2.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
                                     # 📃 | map-request
                                 </a>
                             </h4>
-                            <img src="/image/documents/about/3.jpg">
+                            <img src="/image/documents/about/3.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
                                     # 🎶 | beatmaps
@@ -203,13 +213,13 @@
                                 </a> 
                                 for everything else.
                             </p>
-                            <img src="/image/documents/about/4.jpg">
+                            <img src="/image/documents/about/4.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
                                     # 💭 | general-chat
                                 </a>
                             </h4>
-                            <img src="/image/documents/about/5.jpg">
+                            <img src="/image/documents/about/5.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
                                     # 💭 | osu-chat
@@ -272,29 +282,29 @@
                     <ol>
                         <li>
                             <p>Go to osu! local file</p>
-                            <img src="/image/documents/connection/1.jpg" class="img1">
+                            <img src="/image/documents/connection/1.jpg?<%= date %>" class="img1" />
                         </li>
                         <li>
                             <p>Right-click on "osu!.exe" then click on "Create shortcut"</p>
-                            <img src="/image/documents/connection/2.jpg" class="img2">
-                            <img src="/image/documents/connection/3.jpg" class="img3">
+                            <img src="/image/documents/connection/2.jpg?<%= date %>" class="img2" />
+                            <img src="/image/documents/connection/3.jpg?<%= date %>" class="img3" />
                         </li>
                         <li>
                             <p>Move it to any location (desktop is recommended)</p>
-                            <img src="/image/documents/connection/4.jpg" class="img4">
+                            <img src="/image/documents/connection/4.jpg?<%= date %>" class="img4" />
                         </li>
                         <li>
                             <p>Change to any name (no need to do it)</p>
-                            <img src="/image/documents/connection/5.jpg" class="img5">
+                            <img src="/image/documents/connection/5.jpg?<%= date %>" class="img5" />
                         </li>
                         <li>
                             <p>Right-click on it and click on "Properties"</p>
-                            <img src="/image/documents/connection/6.jpg" class="img6">
-                            <img src="/image/documents/connection/7.jpg" class="img7">
+                            <img src="/image/documents/connection/6.jpg?<%= date %>" class="img6" />
+                            <img src="/image/documents/connection/7.jpg?<%= date %>" class="img7" />
                         </li>
                         <li>
                             <p>Add one space and <span>-devserver mamesosu.net</span> after "...\osu!.exe" in the "Target" field</p>
-                            <img src="/image/documents/connection/8.jpg" class="img8">
+                            <img src="/image/documents/connection/8.jpg?<%= date %>" class="img8" />
                         </li>
                         <li>
                             <p>Click on "Apply" and then "OK" to finish setting</p>
@@ -686,7 +696,7 @@
                                 </a>
                             </h3>
                             <p>このチャンネルでは、誰かがマップをパスしたときあるいはマップで1位を取ったときのスコアやステータスが自動送信されます。</p>
-                            <img src="/image/documents/about/1.jpg">
+                            <img src="/image/documents/about/1.jpg?<%= date %>" />
                         </li>
                         <li>
                             <h3>
@@ -703,13 +713,13 @@
                                 に通知されます。
                             </p>
                             <p>あなたの好きなマップがRankedになるかもしれません!</p>
-                            <img src="/image/documents/about/2.jpg">
+                            <img src="/image/documents/about/2.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1093845482247307276" target="_blank" rel="noopener noreferrer">
                                     # 📃 | map-request
                                 </a>
                             </h4>
-                            <img src="/image/documents/about/3.jpg">
+                            <img src="/image/documents/about/3.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1095604533591298140" target="_blank" rel="noopener noreferrer">
                                     # 🎶 | beatmaps
@@ -736,13 +746,13 @@
                                 </a>
                                 で話してください。
                             </p>
-                            <img src="/image/documents/about/4.jpg">
+                            <img src="/image/documents/about/4.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1012666685989339156" target="_blank" rel="noopener noreferrer">
                                     # 💭 | general-chat
                                 </a>
                             </h4>
-                            <img src="/image/documents/about/5.jpg">
+                            <img src="/image/documents/about/5.jpg?<%= date %>" />
                             <h4>
                                 <a href="https://discord.com/channels/944248031136587796/1012876250399907850" target="_blank" rel="noopener noreferrer">
                                     # 💭 | osu-chat
@@ -804,29 +814,29 @@
                     <ol>
                         <li>
                             <p>osu!のローカルファイルを開きます</p>
-                            <img src="/image/documents/connection/1.jpg" class="img1">
+                            <img src="/image/documents/connection/1.jpg?<%= date %>" class="img1" />
                         </li>
                         <li>
                             <p>右クリックをして「ショートカットの作成」をクリックします</p>
-                            <img src="/image/documents/connection/2.jpg" class="img2">
-                            <img src="/image/documents/connection/3.jpg" class="img3">
+                            <img src="/image/documents/connection/2.jpg?<%= date %>" class="img2" />
+                            <img src="/image/documents/connection/3.jpg?<%= date %>" class="img3" />
                         </li>
                         <li>
                             <p>好きな場所に移動させます(デスクトップ推奨)</p>
-                            <img src="/image/documents/connection/4.jpg" class="img4">
+                            <img src="/image/documents/connection/4.jpg?<%= date %>" class="img4" />
                         </li>
                         <li>
                             <p>好きな名前に変更します(変更の必要はありません)</p>
-                            <img src="/image/documents/connection/5.jpg" class="img5">
+                            <img src="/image/documents/connection/5.jpg?<%= date %>" class="img5" />
                         </li>
                         <li>
                             <p>右クリックをして「プロパティ」をクリックします</p>
-                            <img src="/image/documents/connection/6.jpg" class="img6">
-                            <img src="/image/documents/connection/7.jpg" class="img7">
+                            <img src="/image/documents/connection/6.jpg?<%= date %>" class="img6" />
+                            <img src="/image/documents/connection/7.jpg?<%= date %>" class="img7" />
                         </li>
                         <li>
                             <p>「リンク先」欄の「...\osu.exe」の後にスペースを入れ、<span>-devserver mamesosu.net</span>を付け加えます</p>
-                            <img src="/image/documents/connection/8.jpg" class="img8">
+                            <img src="/image/documents/connection/8.jpg?<%= date %>" class="img8" />
                         </li>
                         <li>
                             <p>「適用」をクリックし「OK」を押して設定を終えます</p>

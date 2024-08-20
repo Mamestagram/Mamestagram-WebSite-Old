@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <%
+        const date = new Date().toLocaleString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+        %>
         <title>Search | Mamestagram</title>
         <meta name="robots" content="noindex">
         <%- include("link") %>
-        <link rel="stylesheet" href="/css/search.css">
+        <link rel="stylesheet" href="/css/search.css?<%= date %>" />
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -123,7 +133,7 @@
                 <div class="wrap">
                     <% users.forEach((user) => { %>
                         <a class="box" href="/profile/<%= user.id %>">
-                            <img src="https://a.mamesosu.net/<%= user.id %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>" alt="">
+                            <img src="https://a.mamesosu.net/<%= user.id %>?<%= date %>" loading="lazy" alt="" />
                             <div>
                                 <i title="<%= user.country %>" class="flag-icon flag-icon-<%= user.country %>"></i>
                                 <p><%= user.name %></p>
