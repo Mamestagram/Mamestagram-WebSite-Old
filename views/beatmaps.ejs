@@ -532,76 +532,76 @@
                             <button title="Eazy" onclick="jump()"
                             <% if (getMods(mods).includes("ez")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/ez.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/ez.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="nf">
                             <button title="No Fail" onclick="jump()"
                             <% if (getMods(mods).includes("nf")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/nf.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/nf.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="ht">
                             <button title="Half Time" onclick="jump()"
                             <% if (getMods(mods).includes("ht")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/ht.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/ht.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="hr">
                             <button title="Hard Rock" onclick="jump()"
                             <% if (getMods(mods).includes("hr")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/hr.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/hr.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="sd">
                             <button title="Sudden Death" onclick="jump()"
                             <% if (getMods(mods).includes("sd")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/sd.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/sd.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="pf">
                             <button title="Perfect" onclick="jump()"
                             <% if (getMods(mods).includes("pf")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/pf.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/pf.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="dt">
                             <button title="Double Time" onclick="jump()"
                             <% if (getMods(mods).includes("dt")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/dt.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/dt.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="nc">
                             <button title="Nightcore" onclick="jump()"
                             <% if (getMods(mods).includes("nc")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/nc.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/nc.png?<%= date %>" alt="" /></button>
                         </li>
                         <% if (modeNum === 3) { %>
                             <li class="fi">
                                 <button title="Fade In" onclick="jump()"
                                 <% if (getMods(mods).includes("fi")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/fi.png?<%= date %>" /></button>
+                                <% } %>><img src="/image/mods/fi.png?<%= date %>" alt="" /></button>
                             </li>
                         <% } %>
                         <li class="hd">
                             <button title="Hidden" onclick="jump()"
                             <% if (getMods(mods).includes("hd")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/hd.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/hd.png?<%= date %>" alt="" /></button>
                         </li>
                         <li class="fl">
                             <button title="Flashlight" onclick="jump()"
                             <% if (getMods(mods).includes("fl")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/fl.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/fl.png?<%= date %>" alt="" /></button>
                         </li>
                         <% if (modeNum === 0) { %>
                             <li class="so">
                                 <button title="Spun Out" onclick="jump()"
                                 <% if (getMods(mods).includes("so")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/so.png?<%= date %>" /></button>
+                                <% } %>><img src="/image/mods/so.png?<%= date %>" alt="" /></button>
                             </li>
                         <% } else if (modeNum === 3) { %>
                             <% if (mapdetails.mode === 0) { %>
@@ -610,7 +610,7 @@
                                         <button title="key <%= i %>keys" onclick="jump()"
                                         <% if (getMods(mods).includes(`k${i}`)) { %>
                                             class="selected"
-                                        <% } %>><img src="/image/mods/k<%= i %>.png?<%= date %>" /></button>
+                                        <% } %>><img src="/image/mods/k<%= i %>.png?<%= date %>" alt="" /></button>
                                     </li>
                                 <% } %>
                             <% } %>
@@ -618,20 +618,20 @@
                                 <button title="Random" onclick="jump()"
                                 <% if (getMods(mods).includes("rd")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/rd.png?<%= date %>" /></button>
+                                <% } %>><img src="/image/mods/rd.png?<%= date %>" alt="" /></button>
                             </li>
                             <li class="mr">
                                 <button title="Mirror" onclick="jump()"
                                 <% if (getMods(mods).includes("mr")) { %>
                                     class="selected"
-                                <% } %>><img src="/image/mods/mr.png?<%= date %>" /></button>
+                                <% } %>><img src="/image/mods/mr.png?<%= date %>" alt="" /></button>
                             </li>
                         <% } %>
                         <li class="v2">
                             <button title="ScoreV2" onclick="jump()"
                             <% if (getMods(mods).includes("v2")) { %>
                                 class="selected"
-                            <% } %>><img src="/image/mods/v2.png?<%= date %>" /></button>
+                            <% } %>><img src="/image/mods/v2.png?<%= date %>" alt="" /></button>
                         </li>
                     </ul>
                 </div>
@@ -643,9 +643,9 @@
                             <div class="flex" style="display: flex">
                                 <div>
                                     <p class="rank">#<%= rankings[0].ranking %></p>
-                                    <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>" />
+                                    <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>" alt="" />
                                 </div>
-                                <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>" />
+                                <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>" alt="" />
                                 <div>
                                     <p class="name">
                                         <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -786,9 +786,9 @@
                                     <div class="flex" style="display: flex;">
                                         <div>
                                             <p class="rank">#<%= rankings[index].ranking %></p>
-                                            <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>" />
+                                            <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>" alt="" />
                                         </div>
-                                        <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>" />
+                                        <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>" alt="" />
                                         <div>
                                             <p class="name">
                                                 <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -958,7 +958,7 @@
                                 <% for (let data of rankings) { %>
                                     <tr class="list">
                                         <td class="rank">#<%= data.ranking %></td>
-                                        <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>" /></td>
+                                        <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" /></td>
                                         <td><%= data.score.toLocaleString() %></td>
                                         <td
                                         <% if (data.acc === 100) { %>

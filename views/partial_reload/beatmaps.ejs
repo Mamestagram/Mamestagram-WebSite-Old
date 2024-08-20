@@ -164,17 +164,26 @@ const getPlayTime = (y, m, w, d, h, f) => {
 const getRate = (value) => {
     return Math.min(100, value / 10 * 100);
 }
+
+const date = new Date().toLocaleString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+}).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
 %>
 <% if (rankings.length <= 0) { %>
     <h2 class="nothing">No players available</h2>
 <% } else { %>
     <div class="user first">
-        <div class="flex" style="display: flex;">
+        <div class="flex" style="display: flex">
             <div>
                 <p class="rank">#<%= rankings[0].ranking %></p>
-                <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png">
+                <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>" alt="" />
             </div>
-            <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>">
+            <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>" alt="" />
             <div>
                 <p class="name">
                     <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -294,7 +303,7 @@ const getRate = (value) => {
                         <td><%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "brev") %></td>
                         <td class="mods">
                             <% getMods(rankings[0].mods).forEach((mod) => { %>
-                                <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
                             <% }); %>
                         </td>
                     </tr>
@@ -315,9 +324,9 @@ const getRate = (value) => {
                 <div class="flex" style="display: flex;">
                     <div>
                         <p class="rank">#<%= rankings[index].ranking %></p>
-                        <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png">
+                        <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>" alt="" />
                     </div>
-                    <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= Math.floor(Math.random() * 10000000000 + 1) %>">
+                    <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>" alt="" />
                     <div>
                         <p class="name">
                             <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
@@ -437,7 +446,7 @@ const getRate = (value) => {
                                 <td><%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "brev") %></td>
                                 <td class="mods">
                                     <% getMods(rankings[index].mods).forEach((mod) => { %>
-                                        <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                        <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
                                     <% }); %>
                                 </td>
                             </tr>
@@ -487,7 +496,7 @@ const getRate = (value) => {
             <% for (let data of rankings) { %>
                 <tr class="list">
                     <td class="rank">#<%= data.ranking %></td>
-                    <td class="grade"><img src="/image/grade/<%= data.grade %>.png"></td>
+                    <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" /></td>
                     <td><%= data.score.toLocaleString() %></td>
                     <td
                     <% if (data.acc === 100) { %>
@@ -569,7 +578,7 @@ const getRate = (value) => {
                     <td class="mods">
                         <div class="image">
                             <% getMods(data.mods).forEach((mod) => { %>
-                                <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png" alt="">
+                                <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
                             <% }); %>
                         </div>
                     </td>

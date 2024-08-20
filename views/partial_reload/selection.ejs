@@ -19,13 +19,13 @@
         <li class="classic">
             <a
             <% if (modeNum % 4 === 0 && !dans) { %>
-                href="/profile/<%= id %>/std"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std"
             <% } else if (modeNum % 4 === 1) { %>
-                href="/profile/<%= id %>/taiko"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko"
             <% } else if (modeNum % 4 === 2) { %>
-                href="/profile/<%= id %>/ctb"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb"
             <% } else { %>
-                href="/profile/<%= id %>/mania"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania"
             <% } %>>
                 Classic
                 <% if (info.preferred_mode >= 0 && info.preferred_mode < 4 && modeNum % 4 === info.preferred_mode % 4) { %>
@@ -38,11 +38,11 @@
             <li class="relax">
                 <a
                 <% if (modeNum % 4 === 0) { %>
-                    href="/profile/<%= id %>/stdrx"
+                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdrx"
                 <% } else if (modeNum % 4 === 1) { %>
-                    href="/profile/<%= id %>/taikorx"
+                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taikorx"
                 <% } else if (modeNum % 4 === 2) { %>
-                    href="/profile/<%= id %>/ctbrx"
+                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctbrx"
                 <% } %>>
                     Relax
                     <% if (info.preferred_mode >= 4 && info.preferred_mode < 8 && modeNum % 4 === info.preferred_mode % 4) { %>
@@ -54,7 +54,7 @@
         <!-- auto pilot -->
         <% if (modeNum % 4 === 0) { %>
             <li class="auto-pilot">
-                <a href="/profile/<%= id %>/stdap">
+                <a href="/profile/<%= id %><%= clan ? "&clan" : "" %></a>/stdap">
                     Auto Pilot
                     <% if (info.preferred_mode === 8) { %>
                         <i class="favorite fa-solid fa-star fa-xs"></i>
@@ -66,76 +66,80 @@
         <li class="dans">
             <a
             <% if (modeNum % 4 === 0) { %>
-                href="/profile/<%= id %>/std&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std&dans"
             <% } else if (modeNum % 4 === 1) { %>
-                href="/profile/<%= id %>/taiko&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko&dans"
             <% } else if (modeNum % 4 === 2) { %>
-                href="/profile/<%= id %>/ctb&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb&dans"
             <% } else if (modeNum === 3) { %>
-                href="/profile/<%= id %>/mania&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania&dans"
             <% } %>>Dans</a>
         </li>
     </ul>
 </div>
 <% if (id === locals.userid && modeNum !== info.preferred_mode) { %>
-    <p class="set-favorite" onclick="setFavoriteMode()">set as favorite game mode</p>
+    <p class="set-favorite" onclick="setFavoriteMode()">set <%= getModeName(modeNum) %> as profile favorite gamemode</p>
 <% } %>
 <ul class="mode"
     <% if (id !== locals.userid || modeNum === info.preferred_mode) { %>
         style="margin-left: auto;"
     <% } %>>
+    <!-- std -->
     <li class="std"
     <% if (modeNum % 4 === 0) { %>
         style="filter: invert(0%); opacity: 1"
     <% } %>>
         <a
         <% if (dans) { %>
-            href="/profile/<%= id %>/std&dans"
+            href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std&dans"
         <% } else if (modeNum >= 0 && modeNum < 4) { %>
-            href="/profile/<%= id %>/std"
+            href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std"
         <% } else if (modeNum < 7) { %>
-            href="/profile/<%= id %>/stdrx"
+            href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdrx"
         <% } else { %>
-            href="/profile/<%= id %>/stdap"
+            href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdap"
         <% } %>><i class="mode-icon mode-osu"></i></a>
         <% if (info.preferred_mode % 4 === 0) { %>
             <i class="favorite fa-solid fa-star"></i>
         <% } %>
-    </li>
+        </li>
     <% if (modeNum !== 8) { %>
+        <!-- taiko -->
         <li class="taiko"
         <% if (modeNum % 4 === 1) { %>
             style="filter: invert(0%); opacity: 1"
         <% } %>>
             <a
             <% if (dans) { %>
-                href="/profile/<%= id %>/taiko&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko&dans"
             <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                href="/profile/<%= id %>/taiko"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko"
             <% } else { %>
-                href="/profile/<%= id %>/taikorx"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taikorx"
             <% } %>><i class="mode-icon mode-taiko"></i></a>
             <% if (info.preferred_mode % 4 === 1) { %>
                 <i class="favorite fa-solid fa-star"></i>
             <% } %>
         </li>
+        <!-- ctb -->
         <li class="catch"
         <% if (modeNum % 4 === 2) { %>
             style="filter: invert(0%); opacity: 1"
         <% } %>>
             <a
             <% if (dans) { %>
-                href="/profile/<%= id %>/ctb&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb&dans"
             <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                href="/profile/<%= id %>/ctb"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb"
             <% } else { %>
-                href="/profile/<%= id %>/ctbrx"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctbrx"
             <% } %>><i class="mode-icon mode-fruits"></i></a>
             <% if (info.preferred_mode % 4 === 2) { %>
                 <i class="favorite fa-solid fa-star"></i>
             <% } %>
         </li>
     <% } %>
+    <!-- mania -->
     <% if (modeNum >= 0 && modeNum < 4) { %>
         <li class="mania"
         <% if (modeNum === 3) { %>
@@ -143,9 +147,9 @@
         <% } %>>
             <a
             <% if (dans) { %>
-                href="/profile/<%= id %>/mania&dans"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania&dans"
             <% } else { %>
-                href="/profile/<%= id %>/mania"
+                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania"
             <% } %>><i class="mode-icon mode-mania"></i></a>
             <% if (info.preferred_mode % 4 === 3) { %>
                 <i class="favorite fa-solid fa-star"></i>

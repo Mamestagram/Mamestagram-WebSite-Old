@@ -12,6 +12,15 @@ const getModeName = (modeNum) => {
         default: return "std";
     }
 }
+
+const date = new Date().toLocaleString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+}).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
 %>
 <% let n = 0; %>
 <% if (!clan) { %>
@@ -185,7 +194,7 @@ const getModeName = (modeNum) => {
                     <% if (!clan) { %>
                         <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
                     <% } else { %>
-                        <img src="https://a.mamesosu.net/3" />
+                        <img src="https://a.mamesosu.net/3?<%= date %>" loading="lazy" alt="" />
                     <% } %>
                     <span class="name">
                         <a href="/profile/<%= player.id %><%= clan ? "&clan" : "" %>/<%= getModeName(modeNum) %><%= sortby === "dans" ? "&dans" : "" %>">
