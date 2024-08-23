@@ -427,7 +427,7 @@ main {
     position: absolute;
     width: 130px;
     transition: transform 300ms;
-    transform: translateY(-10px);
+    transform: translateY(-33px);
     z-index: 5;
 }
 

@@ -481,15 +481,14 @@ main .player-banner .selection .special .dropdown {
     display: none;
     position: absolute;
     width: 150px;
-    transition: transform 300ms;
     z-index: 5;
 }
 
 main .player-banner .selection .special .dropdown li {
     background-color: #262626;
     padding: 5px;
-    transition: background-color 100ms;
-    transform: translateY(0);
+    transform: translateY(-33px);
+    transition: background-color 100ms, transform 300ms;
 }
 main .player-banner .selection .special .dropdown li:hover {
     background-color: #3c3c3c;
@@ -499,8 +498,8 @@ main .player-banner .selection .special .dropdown li a {
     display: block;
 }
 
-main .player-banner .selection .special .dropdown.show {
-    transform: translateY(33px);
+main .player-banner .selection .special .dropdown.show li {
+    transform: translateY(0);
 }
 
 main .player-banner .selection .set-favorite {
