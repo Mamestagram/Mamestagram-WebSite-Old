@@ -124,7 +124,7 @@
                         <input
                             type="file"
                             name="avatar"
-                            accept=".png, .jpg, .gif, .jpeg, .jfif, .webp"
+                            accept=".png, .jpg, .jpeg, .webp, .gif"
                             required />
                         <div class="set-badge">
                             <a class="none" href="/changebadge/0">
@@ -152,8 +152,12 @@
                                 <% } %>
                             <% }); %>
                         </div>
-                        <span class="description">Keep it within 5mb.</span>
-                        <span class="errmsg" style="display: none; color: red">File too large</span>
+                        <span class="description">
+                            Keep it within 5mb.<br>
+                            <strong>.png</strong>, <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.webp</strong>, <strong>.gif</strong> is available.
+                        </span>
+                        <span class="errmsg err-size" style="display: none; color: red">File too large</span>
+                        <span class="errmsg err-format" style="display: none; color: red">Unsupported file format</span>
                         <canvas id="pre_avatar" width="0" height="0"></canvas>
                     </div>
                     <button class="btn">
@@ -178,10 +182,14 @@
                         <input
                             type="file"
                             name="banner_img"
-                            accept=".png, .jpg, .gif, .jpeg, .jfif, .webp"
+                            accept=".png, .jpg, .jpeg, .webp, .gif"
                             required />
-                        <span class="description">Keep it within 5mb.</span>
-                        <span class="errmsg" style="display: none; color: red">File too large</span>
+                        <span class="description">
+                            Keep it within 5mb.<br>
+                            <strong>.png</strong>, <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.webp</strong>, <strong>.gif</strong> is available.
+                        </span>
+                        <span class="errmsg err-size" style="display: none; color: red">File too large</span>
+                        <span class="errmsg err-format" style="display: none; color: red">Unsupported file format</span>
                         <canvas id="pre_banner_img" width="0" height="0"></canvas>
                     </div>
                     <button class="btn">
@@ -206,10 +214,14 @@
                         <input
                             type="file"
                             name="bgimage"
-                            accept=".png, .jpg, .gif, .jpeg, .jfif, .webp"
+                            accept=".png, .jpg, .jpeg, .webp, .gif"
                             required />
-                        <span class="description">Keep it within 5mb.</span>
-                        <span class="errmsg" style="display: none; color: red">File too large</span>
+                        <span class="description">
+                            Keep it within 5mb.<br>
+                            <strong>.png</strong>, <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.webp</strong>, <strong>.gif</strong> is available.
+                        </span>
+                        <span class="errmsg err-size" style="display: none; color: red">File too large</span>
+                        <span class="errmsg err-format" style="display: none; color: red">Unsupported file format</span>
                         <canvas id="pre_bgimage" width="0" height="0"></canvas>
                     </div>
                     <button class="btn">
@@ -237,6 +249,7 @@
 
             function preview(name, image) {
                 const fileReader = new FileReader();
+                const format = /\.(jpe?g|png|jfif|webp|gif)$/i;
                 fileReader.onload = function () {
                     const canvas = document.getElementById(`pre_${name}`);
                     const ctx = canvas.getContext("2d");
@@ -249,12 +262,18 @@
                     };
                 };
                 fileReader.readAsDataURL(image);
-                if (image.size / 1024 / 1024 > 5) {
-                    $(`.${name} .errmsg`).show();
+                // format check
+                if (!format.test(image.name)) {
+                    $(`.${name} .errmsg.err-format`).show();
+                    $(`.${name} form button`).hide();
+                }
+                // size check
+                else if (image.size / 1024 / 1024 > 5) {
+                    $(`.${name} .errmsg.err-size`).show();
                     $(`.${name} form button`).hide();
                 }
                 else {
-                    $(`.${name} .errmsg`).hide();
+                    $(`.${name} .errmsg.err-size`).hide();
                     $(`.${name} form button`).show();
                 }
             }

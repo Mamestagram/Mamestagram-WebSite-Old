@@ -274,7 +274,7 @@
                                 </a>
                             <% } %>
                             <% if (!clan) { %>
-                                <i class="flag-icon flag-icon-<%= info.country %>"></i>
+                                <i title="<%= info.country.toUpperCase() %>" class="flag-icon flag-icon-<%= info.country %>"></i>
                             <% } %>
                             <% if (!clan && info.priv % 2 !== 0) { %>
                                 <div class="tag">
@@ -502,7 +502,7 @@
                             <!-- auto pilot -->
                             <% if (modeNum % 4 === 0) { %>
                                 <li class="auto-pilot">
-                                    <a href="/profile/<%= id %><%= clan ? "&clan" : "" %></a>/stdap">
+                                    <a href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdap">
                                         Auto Pilot
                                         <% if (info.preferred_mode === 8) { %>
                                             <i class="favorite fa-solid fa-star fa-xs"></i>
@@ -1263,8 +1263,31 @@
                 <% } %>
             <% } else { %>
                 <div class="box member">
-                    <h1>Clan Member</h1>
-
+                    <h1><i class="fa-solid fa-people-group"></i>Clan Member</h1>
+                    <table class="member-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Acc</th>
+                            <th>Plays</th>
+                            <th>PP</th>
+                            <th>Score</th>
+                        </tr>
+                        <% members.forEach((user) => { %>
+                            <tr>
+                                <td>#<%= user.ranking.toLocaleString() %></td>
+                                <td><img src="https://a.mamesosu.net/<%= user.id %>?<%= date %>" loading="lazy" alt="" /></td>
+                                <td><i title="<%= user.country.toUpperCase() %>" class="flag-icon flag-icon-<%= user.country %>"></i></td>
+                                <td><%= user.name %></td>
+                                <td><%= user.acc.toFixed(2) %>%</td>
+                                <td><%= user.plays.toLocaleString() %></td>
+                                <td><%= user.pp.toLocaleString() %></td>
+                                <td><%= user.rscore.toLocaleString() %></td>
+                            </tr>
+                        <% }); %>
+                    </table>
                 </div>
             <% } %>
         </main>

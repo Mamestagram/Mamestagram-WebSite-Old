@@ -893,6 +893,24 @@ main .me .contents form .editor .edit .save:hover {
     background-color: #99eb47;
 }
 /* ------------------------------------------------- */
+main .member {
+    min-height: 350px;
+    max-height: 350px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+main .member h1 {
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+main .member h1 i {
+    margin: 0 5px;
+}
+/* ------------------------------------------------- */
 main .show-more {
     display: flex;
     background-color: #444453;
