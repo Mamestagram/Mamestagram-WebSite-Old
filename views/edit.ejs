@@ -249,7 +249,7 @@
 
             function preview(name, image) {
                 const fileReader = new FileReader();
-                const format = /\.(jpe?g|png|jfif|webp|gif)$/i;
+                const format = /\.(jpe?g|png|webp|gif)$/i;
                 fileReader.onload = function () {
                     const canvas = document.getElementById(`pre_${name}`);
                     const ctx = canvas.getContext("2d");
