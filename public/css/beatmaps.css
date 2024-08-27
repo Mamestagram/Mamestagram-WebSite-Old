@@ -605,7 +605,7 @@ main {
     width: 100%;
     margin-top: 20px;
     border-collapse: separate;
-    border-spacing: 0 5px;
+    border-spacing: 0 3px;
 }
 
 .ranking .wrap .ranking-table .list {

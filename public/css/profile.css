@@ -198,7 +198,7 @@ main .player-banner .username .tag .badge .tooltip {
     text-align: center;
     visibility: hidden;
     opacity: 0;
-    z-index: 1000000;
+    z-index: 1;
     transition: bottom 300ms, visibility 300ms, opacity 300ms;
 }
 
@@ -654,6 +654,7 @@ main .me div {
 }
 
 main .me .contents .me-empty {
+    margin: 40px 0;
     text-align: center;
 }
 
@@ -1314,6 +1315,192 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
+}
+/* ------------------------------------------------- */
+main .member {
+    min-height: 350px;
+    max-height: 350px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+main .member .member-table {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main .member .member-table .head {
+    display: flex;
+    justify-content: flex-end;
+}
+
+main .member .member-table .data {
+    display: flex;
+    background-color: #444453;
+    height: 56px;
+    padding: 3px 0;
+    margin: 3px 0;
+    border-radius: 10px;
+    transition: background-color 100ms;
+}
+main .member .member-table .data:hover {
+    background-color: #5b5b6f;
+}
+
+main .member .member-table .data .item {
+    margin: auto 0;
+}
+
+main .member .member-table .data .status {
+    width: 50px;
+    margin: auto 3px;
+    font-size: 18px;
+    text-align: center;
+}
+
+main .member .member-table .data .status .blowing {
+    display: block;
+    position: relative;
+    line-height: 50px;
+    width: 50px;
+    transition: transform 150ms;
+}
+main .member .member-table .data .status .blowing:hover {
+    transform: scale(1.15);
+}
+
+main .member .member-table .data .status .blowing:hover .tooltip {
+    bottom: 80%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .member .member-table .data .status .blowing .tooltip {
+    line-height: 10px;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 60%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 0.65em;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
+main .member .member-table .data .status .blowing .tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 12px solid #17171c;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main .member .member-table .data .avatar {
+    height: 50px;
+    width: 50px;
+}
+
+main .member .member-table .data .avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+main .member .member-table .data .country {
+    margin: auto 5px;
+}
+
+main .member .member-table .data .country i {
+    border-radius: 2px;
+}
+
+main .member .member-table .data .username {
+    font-size: 18px;
+}
+
+main .member .member-table .data .username a {
+    transition: color 100ms;
+}
+main .member .member-table .data .username a:hover {
+    color: #a4a4c7;
+    text-decoration: underline;
+}
+
+main .member .member-table .data .tag {
+    display: flex;
+    margin: auto auto auto 5px;
+}
+
+main .member .member-table .data .tag .badge {
+    position: relative;
+    margin-right: 5px;
+}
+
+main .member .member-table .data .tag .badge i {
+    transition: transform 150ms;
+}
+main .member .member-table .data .tag .badge i:hover {
+    transform: scale(1.15);
+}
+
+main .member .member-table .data .tag .badge:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .member .member-table .data .tag .badge .tooltip {
+    line-height: 10px;
+    position: absolute;
+    width: auto;
+    left: 50%;
+    bottom: 60%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
+
+main .member .member-table .acc {
+    width: 80px;
+    text-align: center;
+}
+
+main .member .member-table .plays {
+    width: 100px;
+    text-align: center;
+}
+
+main .member .member-table .pp {
+    width: 120px;
+    text-align: center;
+}
+
+main .member .member-table .score {
+    width: 130px;
+    text-align: center;
 }
 
 @media (max-width: 1232px) {

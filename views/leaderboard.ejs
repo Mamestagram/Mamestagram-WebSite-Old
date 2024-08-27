@@ -408,7 +408,7 @@
                                 <% if (!clan) { %>
                                     <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
                                 <% } else { %>
-                                    <img src="https://a.mamesosu.net/3?<%= date %>" loading="lazy" alt="" />
+                                    <img src="https://clan-a.mamesosu.net/<%= player.id %>?<%= date %>" loading="lazy" alt="" />
                                 <% } %>
                                 <span class="name">
                                     <a href="/profile/<%= player.id %><%= clan ? "&clan" : "" %>/<%= getModeName(modeNum) %><%= sortby === "dans" ? "&dans" : "" %>">

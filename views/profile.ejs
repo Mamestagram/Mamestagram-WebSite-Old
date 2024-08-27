@@ -239,20 +239,16 @@
         %>
     </head>
     <body>
-        <img class="background-img" src="https://bg.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="100%" />
+        <img class="background-img" src="https://<%= clan ? "clan-" : "" %>bg.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="100%" />
         <%- include("header") %> 
         <main>
             <div class="box banner-box">
-                <img src="https://banner.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="250" />
+                <img src="https://<%= clan ? "clan-" : "" %>banner.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="250" />
             </div>
             <div class="box player-banner">
                 <div class="string username">
                     <div class="avatar">
-                        <% if (!clan) { %>
-                            <img class="avatar" src="https://a.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" />
-                        <% } else { %>
-                            <img class="avatar" src="https://a.mamesosu.net/3?<%= date %>" loading="lazy" alt="" />
-                        <% } %>
+                        <img class="avatar" src="https://<%= clan ? "clan-" : "" %>a.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" />
                         <% if (!clan && setBadge !== 0) { %>
                             <img class="gacha" src="/image/gacha/<%= setBadge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= setBadge %>.gif?<%= date %>'" alt="" />
                         <% } %>
@@ -525,11 +521,11 @@
                             </li>
                         </ul>
                     </div>
-                    <% if (id === locals.userid && modeNum !== info.preferred_mode) { %>
+                    <% if (((!clan && id === locals.userid) || (clan && info.owner === locals.userid)) && modeNum !== info.preferred_mode) { %>
                         <p class="set-favorite" onclick="setFavoriteMode()">set <%= getModeName(modeNum) %> as profile favorite gamemode</p>
                     <% } %>
                     <ul class="mode"
-                        <% if (id !== locals.userid || modeNum === info.preferred_mode) { %>
+                        <% if ((!clan && id !== locals.userid) || (clan && info.owner !== locals.userid) || modeNum === info.preferred_mode) { %>
                             style="margin-left: auto;"
                         <% } %>>
                         <!-- std -->
@@ -764,7 +760,7 @@
                     <div id="put-bbcode" class="bbcode-profile" style="display: none;">
                         <% if (bbcode === null) { %>
                             <div class="me-empty">
-                                <% if (id === locals.userid) { %>
+                                <% if ((!clan && id === locals.userid) || (clan && info.owner === locals.userid)) { %>
                                     <p class="edit-me">Edit me!</p>
                                     <i class="fa-solid fa-user-pen"></i>
                                     <p class="description">Express yourself by editing <strong>me!</strong></p>
@@ -1264,29 +1260,91 @@
             <% } else { %>
                 <div class="box member">
                     <h1><i class="fa-solid fa-people-group"></i>Clan Member</h1>
-                    <table class="member-table">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>Acc</th>
-                            <th>Plays</th>
-                            <th>PP</th>
-                            <th>Score</th>
-                        </tr>
-                        <% members.forEach((user) => { %>
-                            <tr>
-                                <td>#<%= user.ranking.toLocaleString() %></td>
-                                <td><img src="https://a.mamesosu.net/<%= user.id %>?<%= date %>" loading="lazy" alt="" /></td>
-                                <td><i title="<%= user.country.toUpperCase() %>" class="flag-icon flag-icon-<%= user.country %>"></i></td>
-                                <td><%= user.name %></td>
-                                <td><%= user.acc.toFixed(2) %>%</td>
-                                <td><%= user.plays.toLocaleString() %></td>
-                                <td><%= user.pp.toLocaleString() %></td>
-                                <td><%= user.rscore.toLocaleString() %></td>
-                            </tr>
-                        <% }); %>
+                    <div class="member-table">
+                        <div class="head">
+                            <span class="acc">Acc</span>
+                            <span class="plays">Plays</span>
+                            <span class="pp">PP</span>
+                            <span class="score">Score</span>
+                        </div>
+                        <div class="mode-<%= modeNum %>">
+                            <div class="data owner">
+                                <span class="item status">
+                                    <span class="blowing">
+                                        <i class="fa-solid fa-crown"></i>
+                                        <p class="tooltip">Owner</p>
+                                    </span>
+                                </span>
+                                <span class="item avatar"><img src="https://a.mamesosu.net/<%= owner.id %>?<%= date %>" loading="lazy" alt="" /></span>
+                                <span class="item country"><i title="<%= owner.country.toUpperCase() %>" class="flag-icon flag-icon-<%= owner.country %>"></i></span>
+                                <span class="item username"><a href="/profile/<%= owner.id %>"><%= owner.name %></a></span>
+                                <span class="item tag">
+                                    <% getUserPriv(owner.priv).forEach((tag) => { %>
+                                        <span class="badge">
+                                            <% if (tag === "Developer") { %>
+                                                <i class="fa-solid fa-code" style="color: #3e70dd;"></i>
+                                            <% } else if (tag === "Administrator") { %>
+                                                <i class="fa-solid fa-crown" style="color: #f1c40f;"></i>
+                                            <% } else if (tag === "Moderator") { %>
+                                                <i class="fa-solid fa-shield-halved" style="color: #cf5757;"></i>
+                                            <% } else if (tag === "Nominator") { %>
+                                                <i class="fa-solid fa-screwdriver-wrench" style="color: #9000fc;"></i>
+                                            <% } else if (tag === "Arumni") { %>
+                                                <i class="fa-solid fa-graduation-cap" style="color: #99aab5;"></i>
+                                            <% } else if (tag === "Supporter") { %>
+                                                <i class="fa-solid fa-heart" style="color: #dd0000;"></i>
+                                            <% } else if (tag === "Verified") { %>
+                                                <i class="fa-solid fa-check" style="color: #3ce12f;"></i>
+                                            <% } %>
+                                            <p class="tooltip"><%= tag %></p>
+                                        </span>
+                                    <% }); %>
+                                    </span>
+                                <span class="item acc"><%= owner.acc.toFixed(2) %>%</span>
+                                <span class="item plays"><%= owner.plays.toLocaleString() %></span>
+                                <span class="item pp"><%= owner.pp.toLocaleString() %></span>
+                                <span class="item score"><%= owner.rscore.toLocaleString() %></span>
+                            </div>
+                            <% members.forEach((user) => { %>
+                                <div class="data membership">
+                                    <span class="item status">
+                                        <span class="blowing">
+                                            <i class="fa-solid fa-user"></i>
+                                            <p class="tooltip">Member</p>
+                                        </span>
+                                    </span>
+                                    <span class="item avatar"><img src="https://a.mamesosu.net/<%= user.id %>?<%= date %>" loading="lazy" alt="" /></span>
+                                    <span class="item country"><i title="<%= user.country.toUpperCase() %>" class="flag-icon flag-icon-<%= user.country %>"></i></span>
+                                    <span class="item username"><a href="/profile/<%= user.id %>"><%= user.name %></a></span>
+                                    <span class="item tag">
+                                        <% getUserPriv(user.priv).forEach((tag) => { %>
+                                            <span class="badge">
+                                                <% if (tag === "Developer") { %>
+                                                    <i class="fa-solid fa-code" style="color: #3e70dd;"></i>
+                                                <% } else if (tag === "Administrator") { %>
+                                                    <i class="fa-solid fa-crown" style="color: #f1c40f;"></i>
+                                                <% } else if (tag === "Moderator") { %>
+                                                    <i class="fa-solid fa-shield-halved" style="color: #cf5757;"></i>
+                                                <% } else if (tag === "Nominator") { %>
+                                                    <i class="fa-solid fa-screwdriver-wrench" style="color: #9000fc;"></i>
+                                                <% } else if (tag === "Arumni") { %>
+                                                    <i class="fa-solid fa-graduation-cap" style="color: #99aab5;"></i>
+                                                <% } else if (tag === "Supporter") { %>
+                                                    <i class="fa-solid fa-heart" style="color: #dd0000;"></i>
+                                                <% } else if (tag === "Verified") { %>
+                                                    <i class="fa-solid fa-check" style="color: #3ce12f;"></i>
+                                                <% } %>
+                                                <p class="tooltip"><%= tag %></p>
+                                            </span>
+                                        <% }); %>
+                                    </span>
+                                    <span class="item acc"><%= user.acc.toFixed(2) %>%</span>
+                                    <span class="item plays"><%= user.plays.toLocaleString() %></span>
+                                    <span class="item pp"><%= user.pp.toLocaleString() %></span>
+                                    <span class="item score"><%= user.rscore.toLocaleString() %></span>
+                                </div>
+                            <% }); %>
+                        </div>
                     </table>
                 </div>
             <% } %>
@@ -1296,7 +1354,7 @@
             let before = `<%= bbcode %>`, hold, preview = false;
             window.addEventListener("DOMContentLoaded", function() {
                 if (before.length > 0) {
-                    if ("<%= id %>" === "<%= locals.userid %>" && !preview) {
+                    if ((("<%= clan %>" === "false" && "<%= id %>" === "<%= locals.userid %>") || ("<%= clan %>" === "true" && "<%= info.owner %>" === "<%= locals.userid %>")) && !preview) {
                         $("main .me .edit-button").show();
                     }
                     bbCodeToHtml();
@@ -1334,7 +1392,7 @@
 
             function setFavoriteMode() {
                 const ajax = new XMLHttpRequest();
-                ajax.open("POST", "/preferred/<%= id %>/<%= modeNum %>", true);
+                ajax.open("GET", "/preferred/<%= id %>&<%= clan %>/<%= modeNum %>&<%= dans %>", true);
                 ajax.setRequestHeader("Content-Type", "text/plain");
                 ajax.onload = function() {
                     document.getElementById("selection").innerHTML = ajax.responseText;
@@ -1351,7 +1409,7 @@
                         }
                     });
                 }
-                ajax.send("<%= dans %>,<%= clan %>");
+                ajax.send(null);
             }
 
             function bbCodeToHtml() {
@@ -1407,7 +1465,7 @@
             function save() {
                 preview = false;
                 before = document.getElementById("me-editor").value;
-                ajaxUpdate("/me", document.getElementById("put-bbcode"));
+                ajaxUpdate("/me/<%= id %>&clan=<%= !clan ? 0 : 1 %>", document.getElementById("put-bbcode"));
                 $("main .me .edit-button").show();
                 $("main .me .contents form .editor .edit .preview").show();
                 $("main .me .contents form .editor .edit .back-to-edit").hide();
@@ -1423,8 +1481,8 @@
                 ajax.setRequestHeader("Content-Type", "text/plain");
                 ajax.onload = function () {
                     element.innerHTML = ajax.responseText;
-                    if (before.length > 0 || preview) {
-                        if ("<%= id %>" === "<%= locals.userid %>" && !preview) {
+                    if (before.length > 0) {
+                        if ((("<%= clan %>" === "false" && "<%= id %>" === "<%= locals.userid %>") || ("<%= clan %>" === "true" && "<%= info.owner %>" === "<%= locals.userid %>")) && !preview) {
                             $("main .me .edit-button").show();
                         }
                         bbCodeToHtml();
@@ -1438,26 +1496,26 @@
                     });
                     var $boxName = $("main .me .contents .spoilerbox p");
                     $boxName.click(function() {
-                    if ($(this).hasClass("down")) {
-                        $(this).removeClass("down");
-                        $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
-                    }
-                    else {
-                        $(this).addClass("down");
-                        $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
-                    }
-                });
+                        if ($(this).hasClass("down")) {
+                            $(this).removeClass("down");
+                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).removeClass("show-content");
+                        }
+                        else {
+                            $(this).addClass("down");
+                            $("main .me .contents .spoilerbox div").eq($boxName.index(this)).addClass("show-content");
+                        }
+                    });
                 }
                 ajax.send(document.getElementById("me-editor").value);
             }
 
             function prevMe(element) {
                 const ajax = new XMLHttpRequest();
-                ajax.open("GET", "/me", true);
+                ajax.open("GET", "/me/<%= id %>&clan=<%= !clan ? 0 : 1 %>", true);
                 ajax.onload = function () {
                     element.innerHTML = ajax.responseText;
-                    if (before.length > 0 || preview) {
-                        if ("<%= id %>" === "<%= locals.userid %>" && !preview) {
+                    if (before.length > 0) {
+                        if ((("<%= clan %>" === "false" && "<%= id %>" === "<%= locals.userid %>") || ("<%= clan %>" === "true" && "<%= info.owner %>" === "<%= locals.userid %>")) && !preview) {
                             $("main .me .edit-button").show();
                         }
                         bbCodeToHtml();
