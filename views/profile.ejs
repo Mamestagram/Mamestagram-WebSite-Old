@@ -256,11 +256,11 @@
                     <div>
                         <div class="flex-box">
                             <span
-                            <% if ((!clan && ranking.global[0].value === 1) || (clan && ranking === 1)) { %>
+                            <% if ((!clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (clan && info.public === 1 && ranking === 1)) { %>
                                 class="champion"
                             <% } %>>
                                 <h1><%= info.name %></h1>
-                                <% if ((!clan && ranking.global[0].value === 1) || (clan && ranking === 1)) { %>
+                                <% if ((!clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (clan && info.public === 1 && ranking === 1)) { %>
                                     <p class="tooltip"><%= getModeName(modeNum) %> champion</p>
                                 <% } %>
                             </span>
@@ -321,16 +321,20 @@
                                 <% }); %>
                             </div>
                         <% } %>
-                        <% if (!clan) { %>
-                            <div class="flex-box">
+                        <div class="flex-box">
+                            <% if (!clan) { %>
                                 <% if (info.show_pName === 1 && info.past_name !== null) { %>
                                     <p class="aka">aka: <%= info.past_name %></p>
                                 <% } %>
                                 <% if (beFollowed) { %>
                                     <p class="be-followed">Follows you</p>
                                 <% } %>
-                            </div>
-                        <% } %>
+                            <% } else { %>
+                                <% if (info.show_pTag === 1 && info.past_tag !== null) { %>
+                                    <p class="aka">aka: <%= info.past_tag %></p>
+                                <% } %>
+                            <% } %>
+                        </div>
                     </div>
                     <% if (!clan && loginf && id !== locals.userid) { %>
                         <span id="follow">
@@ -609,7 +613,7 @@
                                 <div class="global">
                                     <h1>Global Ranking</h1>
                                     <h2>
-                                        <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
                                             -
                                         <% } else { %>
                                             #<%= ranking.global[0].value.toLocaleString() %>
@@ -619,7 +623,7 @@
                                 <div class="country">
                                     <h1>Country Ranking</h1>
                                     <h2>
-                                        <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
                                             -
                                         <% } else { %>
                                             #<%= ranking.country[0].value.toLocaleString() %>
@@ -630,7 +634,7 @@
                                 <div class="global">
                                     <h1>Clan Ranking</h1>
                                     <h2>
-                                        <% if (info.acc === 0 || info.priv % 2 === 0) { %>
+                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.public === 0) { %>
                                             -
                                         <% } else { %>
                                             #<%= ranking.toLocaleString() %>
@@ -1265,7 +1269,10 @@
                             <span class="acc">Acc</span>
                             <span class="plays">Plays</span>
                             <span class="pp">PP</span>
-                            <span class="score">Score</span>
+                            <span class="score"
+                            <% if (dans) { %>
+                                style="filter: invert(50%); opacity: 0.95;"
+                            <% } %>>Score</span>
                         </div>
                         <div class="mode-<%= modeNum %>">
                             <div class="data owner">
@@ -1303,7 +1310,10 @@
                                 <span class="item acc"><%= owner.acc.toFixed(2) %>%</span>
                                 <span class="item plays"><%= owner.plays.toLocaleString() %></span>
                                 <span class="item pp"><%= owner.pp.toLocaleString() %></span>
-                                <span class="item score"><%= owner.rscore.toLocaleString() %></span>
+                                <span class="item score"
+                                <% if (dans) { %>
+                                    style="filter: invert(50%); opacity: 0.95;"
+                                <% } %>><%= owner.rscore.toLocaleString() %></span>
                             </div>
                             <% members.forEach((user) => { %>
                                 <div class="data membership">
@@ -1340,8 +1350,11 @@
                                     </span>
                                     <span class="item acc"><%= user.acc.toFixed(2) %>%</span>
                                     <span class="item plays"><%= user.plays.toLocaleString() %></span>
-                                    <span class="item pp"><%= user.pp.toLocaleString() %></span>
-                                    <span class="item score"><%= user.rscore.toLocaleString() %></span>
+                                    <span class="item pp"><%= Math.round(user.pp).toLocaleString() %></span>
+                                    <span class="item score"
+                                    <% if (dans) { %>
+                                        style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>><%= user.rscore.toLocaleString() %></span>
                                 </div>
                             <% }); %>
                         </div>

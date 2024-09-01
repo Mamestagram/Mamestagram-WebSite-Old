@@ -435,10 +435,6 @@ main {
         display: none;
     }
 
-    .acc {
-        margin: 0;
-    }
-
     .score, .ss, .s, .a {
         display: none;
     }
@@ -494,6 +490,10 @@ main {
         width: 28px;
     }
 
+    .clan li {
+        font-size: 30px;
+    }
+
     .ranking-table {
         font-size: 12px;
         padding: 30px 1% 150px 1%;
@@ -530,6 +530,11 @@ main {
     .ranking-data span {
         height: 35px;
         line-height: 35px;
+    }
+
+    .ranking-data img {
+        height: 35px;
+        width: 35px;
     }
 
     .ranking {

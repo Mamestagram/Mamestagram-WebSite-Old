@@ -1430,6 +1430,9 @@ main .member .member-table .data .country i {
 
 main .member .member-table .data .username {
     font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main .member .member-table .data .username a {
@@ -2194,5 +2197,54 @@ main .member .member-table .score {
     main .recentplays div .data-mobile .results .weighted, main .recentplays div .data-mobile-passed .results .weighted {
         font-size: 12px;
         margin: auto 0;
+    }
+    /* ------------------------------------------------- */
+    main .member h1 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    main .member .member-table {
+        font-size: 12px;
+    }
+
+    main .member .member-table .head {
+        font-size: 10px;
+    }
+
+    main .member .member-table .data {
+        height: 35px;
+        padding: 2px 0;
+    }
+
+    main .member .member-table .data .status {
+        width: 30px;
+        margin: auto 0 auto 3px;
+        font-size: 14px;
+    }
+    
+    main .member .member-table .data .status .blowing {
+        line-height: 30px;
+        width: 30px;
+    }
+
+    main .member .member-table .data .avatar {
+        display: none;
+    }
+
+    main .member .member-table .data .username {
+        font-size: 12px;
+    }
+
+    main .member .member-table .data .tag {
+        display: none;
+    }
+
+    main .member .member-table .acc, main .member .member-table .plays, main .member .member-table .pp {
+        width: 70px;
+    }
+
+    main .member .member-table .score {
+        display: none;
     }
 }

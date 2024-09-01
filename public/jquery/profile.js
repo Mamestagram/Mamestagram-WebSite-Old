@@ -1,4 +1,11 @@
 $(window).resize(function() {
+    if ($("body").width() <= 1232) {
+        var $table = $("main .member .member-table");
+        let wid = $table.width();
+        wid -= 3 + 30 + 10 + $("main .member .member-table .data .country").eq(0).width() + $("main .member .member-table .data .acc").eq(0).width() + $("main .member .member-table .data .plays").eq(0).width() + $("main .member .member-table .data .pp").eq(0).width();
+        $("main .member .member-table .data .username").css("width", `${wid}px`);
+    }
+
     if ($("body").width() <= 767) {
         let hei = 35;
         for (let i = 0; i < Math.min(5, $("main .bestpp div .data-mobile").length); i++) {
@@ -49,6 +56,14 @@ $(window).resize(function() {
 
 $(function() {
     let rs = "passed";
+    if ($("body").width() <= 1232) {
+        var $table = $("main .member .member-table");
+        var $data = $("main .member .member-table .data").eq(0);
+        let wid = $table.width();
+        wid -= 3 + 30 + 10 + $data.children(".country").width() + $data.children(".acc").width() + $data.children(".plays").width() + $data.children(".pp").width();
+        $("main .member .member-table .data .username").css("width", `${wid}px`);
+    }
+
     if ($("body").width() <= 767) {
         let hei = 35;
         for (let i = 0; i < Math.min(5, $("main .bestpp div .data-mobile").length); i++) {
