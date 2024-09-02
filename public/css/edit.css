@@ -1,7 +1,60 @@
 main {
     background-color: #1c1917;
-    padding-top: 140px;
+    padding-top: 100px;
     padding-bottom: 140px;
+}
+
+.clan {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.clan li {
+    color: #fdfdfd;
+    font-size: 40px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    margin: 0 30px;
+    text-align: center;
+    filter: invert(30%);
+    opacity: 0.95;
+    transition: filter 150ms, opacity 150ms;
+}
+.clan li:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
+.clan li a {
+    display: block;
+}
+
+.clan li:hover .tooltip {
+    bottom: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.clan li .tooltip {
+    line-height: 10px;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 80%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
 }
 
 .box {
@@ -303,6 +356,10 @@ main {
 
     main {
         padding-top: 40px;
+    }
+
+    .clan li {
+        font-size: 30px;
     }
 
     .box {

@@ -82,9 +82,27 @@
     <body>
         <%- include("header") %>
         <main>
+            <% if (owners.includes(userid)) { %>
+                <ul class="clan">
+                    <li class="personal"
+                    <% if (!clan) { %>
+                        style="filter: invert(0%); opacity: 1;"
+                    <% } %>>
+                        <a href="/edit/personal"><i class="fa-solid fa-person"></i></a>
+                        <p class="tooltip">Personal</p>
+                    </li>
+                    <li class="clan"
+                    <% if (clan) { %>
+                        style="filter: invert(0%); opacity: 1;"
+                    <% } %>>
+                        <a href="/edit/clan"><i class="fa-solid fa-people-group"></i></a>
+                        <p class="tooltip">Clan</p>
+                    </li>
+                </ul>
+            <% } %>
             <div class="box rename">
-                <form id="rename" action="/rename" method="post">
-                    <h1 class="title">Rename</h1>
+                <form id="rename" action="/rename/<%= id %>&<%= !clan ? "personal" : "clan" %>" method="post">
+                    <h1 class="title">Rename<%= clan ? " clan" : "" %></h1>
                     <div class="username">
                         <span class="username-title">
                             Enter a new username below<br />
@@ -118,8 +136,8 @@
                 </script>
             </div>
             <div class="box avatar">
-                <form action="/avatar" method="post" enctype="multipart/form-data">
-                    <h1 class="title">Change avatar</h1>
+                <form action="/avatar/<%= id %>&<%= !clan ? "personal" : "clan" %>" method="post" enctype="multipart/form-data">
+                    <h1 class="title">Change<%= clan ? " clan " : " " %>avatar</h1>
                     <div class="image">
                         <input
                             type="file"
@@ -127,30 +145,32 @@
                             accept=".png, .jpg, .jpeg, .webp, .gif"
                             required />
                         <div class="set-badge">
-                            <a class="none" href="/changebadge/0">
-                                <i class="fa-solid fa-ban"
-                                <% if (setBadge === 0) { %>
-                                    style="color: red; opacity: 1;"
-                                <% } %>></i>
-                            </a>
-                            <% badgeInfo.forEach((info) => { %>
-                                <% if (hadBadge.split(",").includes(info.badge_id.toString())) { %>
-                                    <a title="<%= info.prob >= 15 ? "Common" : info.prob >= 8 ? "Rare" : "Epic" %>: <%= info.badge_name %>" class="gacha-badge" href="/changebadge/<%= info.badge_id %>">
-                                        <img src="/image/gacha/<%= info.badge_id %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= info.badge_id %>.gif?<%= date %>'" alt=""
-                                        <% if (setBadge === info.badge_id) { %>
-                                            style="filter: grayscale(0%); opacity: 1;"
-                                        <% } %> />
-                                    </a>
-                                <% } else { %>
-                                    <div class="mystery">
-                                        <% if (info.prob >= 8) { %>
-                                            <i title="??? (<%= info.prob %>%)" class="<%= info.prob >= 15 ? "common" : "rare" %> fa-regular fa-block-question"></i>
-                                        <% } else { %>
-                                            <i title="??? (<%= info.prob %>%)" class="epic fa-kit fa-regular-block-question-sparkle"></i>
-                                        <% } %>
-                                    </div>
-                                <% } %>
-                            <% }); %>
+                            <% if (!clan) { %>
+                                <a class="none" href="/changebadge/0">
+                                    <i class="fa-solid fa-ban"
+                                    <% if (setBadge === 0) { %>
+                                        style="color: red; opacity: 1;"
+                                    <% } %>></i>
+                                </a>
+                                <% badgeInfo.forEach((info) => { %>
+                                    <% if (hadBadge.split(",").includes(info.badge_id.toString())) { %>
+                                        <a title="<%= info.prob >= 15 ? "Common" : info.prob >= 8 ? "Rare" : "Epic" %>: <%= info.badge_name %>" class="gacha-badge" href="/changebadge/<%= info.badge_id %>">
+                                            <img src="/image/gacha/<%= info.badge_id %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= info.badge_id %>.gif?<%= date %>'" alt=""
+                                            <% if (setBadge === info.badge_id) { %>
+                                                style="filter: grayscale(0%); opacity: 1;"
+                                            <% } %> />
+                                        </a>
+                                    <% } else { %>
+                                        <div class="mystery">
+                                            <% if (info.prob >= 8) { %>
+                                                <i title="??? (<%= info.prob %>%)" class="<%= info.prob >= 15 ? "common" : "rare" %> fa-regular fa-block-question"></i>
+                                            <% } else { %>
+                                                <i title="??? (<%= info.prob %>%)" class="epic fa-kit fa-regular-block-question-sparkle"></i>
+                                            <% } %>
+                                        </div>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
                         </div>
                         <span class="description">
                             Keep it within 5mb.<br>
@@ -176,8 +196,8 @@
                 </form>
             </div>
             <div class="box banner_img">
-                <form action="/banner" method="post" enctype="multipart/form-data">
-                    <h1 class="title">Change banner</h1>
+                <form action="/banner/<%= id %>&<%= !clan ? "personal" : "clan" %>" method="post" enctype="multipart/form-data">
+                    <h1 class="title">Change<%= clan ? " clan " : " " %>banner</h1>
                     <div class="image">
                         <input
                             type="file"
@@ -208,8 +228,8 @@
                 </form>
             </div>
             <div class="box bgimage">
-                <form action="/bgimage" method="post" enctype="multipart/form-data">
-                    <h1 class="title">Change background</h1>
+                <form action="/bgimage/<%= id %>&<%= !clan ? "personal" : "clan" %>" method="post" enctype="multipart/form-data">
+                    <h1 class="title">Change<%= clan ? " clan " : " " %>background</h1>
                     <div class="image">
                         <input
                             type="file"
@@ -283,15 +303,15 @@
                 switch (type) {
                     case "avatar":
                         arg[0] = "avatar";
-                        arg[1] = "/rstavatar";
+                        arg[1] = `/rstavatar/<%= id %>&<%= !clan ? "personal" : "clan" %>`;
                         break;
                     case "banner_img":
                         arg[0] = "banner";
-                        arg[1] = "/rstbanner";
+                        arg[1] = `/rstbanner/<%= id %>&<%= !clan ? "personal" : "clan" %>`;
                         break;
                     case "bgimage":
                         arg[0] = "background image";
-                        arg[1] = "/rstbgimage";
+                        arg[1] = `/rstbgimage/<%= id %>&<%= !clan ? "personal" : "clan" %>`;
                         break;
                 }
                 const sure = confirm(`Are you sure you want to reset your ${arg[0]}?`);
