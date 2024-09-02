@@ -1318,11 +1318,21 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 }
 /* ------------------------------------------------- */
 main .member {
-    min-height: 350px;
-    max-height: 350px;
-    overflow: hidden;
+    min-height: 365px;
+    max-height: 365px;
+    overflow: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
+}
+main .member::-webkit-scrollbar {
+    width: 8px;
+}
+main .member::-webkit-scrollbar-track {
+    background-color: #fdfdfd;
+}
+main .member::-webkit-scrollbar-thumb {
+    background-color: #2e293d;
+    border-radius: 4px;
 }
 
 main .member .member-table {
