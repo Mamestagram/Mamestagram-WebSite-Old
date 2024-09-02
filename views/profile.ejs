@@ -265,7 +265,7 @@
                                 <% } %>
                             </span>
                             <% if (!clan && id === locals.userid) { %>
-                                <a href="/edit" class="edit">
+                                <a href="/edit/<%= !clan ? "personal" : "clan" %>" class="edit">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                             <% } %>
@@ -654,7 +654,7 @@
                             <div class="pp">
                                 <h1>pp</h1>
                                 <h2>
-                                    <% if (dans) { %>
+                                    <% if (dans || clan) { %>
                                         <%= Math.round(pp).toLocaleString() %>
                                     <% } else { %>
                                         <%= Math.round(info.pp).toLocaleString() %>
@@ -696,7 +696,7 @@
                         <div class="acc">
                             <h1>Hit Accuracy</h1>
                             <h2>
-                                <% if (dans) { %>
+                                <% if (dans || clan) { %>
                                     <%= acc.toFixed(2) %>
                                 <% } else { %>
                                     <%= info.acc.toFixed(2) %>
@@ -707,7 +707,7 @@
                         <div class="playcount">
                             <h1>Play Count</h1>
                             <h2>
-                                <% if (dans) { %>
+                                <% if (dans || clan) { %>
                                     <%= Math.floor(plays).toLocaleString() %>
                                 <% } else { %>
                                     <%= Math.floor(info.plays).toLocaleString() %>
@@ -719,21 +719,39 @@
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Total hits</h1>
-                            <h2><%= Math.floor(info.total_hits).toLocaleString() %></h2>
+                            <h2>
+                                <% if (clan) { %>
+                                    <%= Math.floor(hits).toLocaleString() %>
+                                <% } else { %>
+                                    <%= Math.floor(info.total_hits).toLocaleString() %>
+                                <% } %>
+                            </h2>
                         </div>
                         <div class="rankedscore"
                         <% if (dans) { %>
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Ranked Score</h1>
-                            <h2><%= Math.floor(info.rscore).toLocaleString() %></h2>
+                            <h2>
+                                <% if (clan) { %>
+                                    <%= Math.floor(score.ranked[0].value).toLocaleString() %>
+                                <% } else { %>
+                                    <%= Math.floor(info.rscore).toLocaleString() %>
+                                <% } %>
+                            </h2>
                         </div>
                         <div class="totalscore"
                         <% if (dans) { %>
                             style="filter: invert(50%); opacity: 0.95;"
                         <% } %>>
                             <h1>Total Score</h1>
-                            <h2><%= Math.floor(info.tscore).toLocaleString() %></h2>
+                            <h2>
+                                <% if (clan) { %>
+                                    <%= Math.floor(score.total[0].value).toLocaleString() %>
+                                <% } else { %>
+                                    <%= Math.floor(info.tscore).toLocaleString() %>
+                                <% } %>
+                            </h2>
                         </div>
                         <div class="maxcombo">
                             <h1>Maximum Combo</h1>
@@ -1307,11 +1325,20 @@
                                         </span>
                                     <% }); %>
                                     </span>
-                                <span class="item acc"><%= owner.acc.toFixed(2) %>%</span>
-                                <span class="item plays"><%= owner.plays.toLocaleString() %></span>
-                                <span class="item pp"><%= owner.pp.toLocaleString() %></span>
+                                <span class="item acc"
+                                <% if (owner.acc === 0) { %>
+                                    style="filter: invert(50%); opacity: 0.95;"
+                                <% } %>><%= owner.acc.toFixed(2) %>%</span>
+                                <span class="item plays"
+                                <% if (owner.plays === 0) { %>
+                                    style="filter: invert(50%); opacity: 0.95;"
+                                <% } %>><%= owner.plays.toLocaleString() %></span>
+                                <span class="item pp"
+                                <% if (owner.pp === 0) { %>
+                                    style="filter: invert(50%); opacity: 0.95;"
+                                <% } %>><%= owner.pp.toLocaleString() %></span>
                                 <span class="item score"
-                                <% if (dans) { %>
+                                <% if (dans || owner.rscore === 0) { %>
                                     style="filter: invert(50%); opacity: 0.95;"
                                 <% } %>><%= owner.rscore.toLocaleString() %></span>
                             </div>
@@ -1348,11 +1375,20 @@
                                             </span>
                                         <% }); %>
                                     </span>
-                                    <span class="item acc"><%= user.acc.toFixed(2) %>%</span>
-                                    <span class="item plays"><%= user.plays.toLocaleString() %></span>
-                                    <span class="item pp"><%= Math.round(user.pp).toLocaleString() %></span>
+                                    <span class="item acc"
+                                    <% if (user.acc === 0) { %>
+                                        style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>><%= user.acc.toFixed(2) %>%</span>
+                                    <span class="item plays"
+                                    <% if (user.plays === 0) { %>
+                                        style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>><%= user.plays.toLocaleString() %></span>
+                                    <span class="item pp"
+                                    <% if (user.pp === 0) { %>
+                                        style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>><%= Math.round(user.pp).toLocaleString() %></span>
                                     <span class="item score"
-                                    <% if (dans) { %>
+                                    <% if (dans || user.rscore === 0) { %>
                                         style="filter: invert(50%); opacity: 0.95;"
                                     <% } %>><%= user.rscore.toLocaleString() %></span>
                                 </div>
