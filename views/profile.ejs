@@ -634,7 +634,7 @@
                                 <div class="global">
                                     <h1>Clan Ranking</h1>
                                     <h2>
-                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.public === 0) { %>
+                                        <% if (acc === 0 || info.public === 0) { %>
                                             -
                                         <% } else { %>
                                             #<%= ranking.toLocaleString() %>
@@ -720,11 +720,7 @@
                         <% } %>>
                             <h1>Total hits</h1>
                             <h2>
-<<<<<<< HEAD
                                 <% if (!dans && clan) { %>
-=======
-                                <% if (clan) { %>
->>>>>>> 81ecef3ca2039573f6d8fb5485dfcbaa3c2636ac
                                     <%= Math.floor(hits).toLocaleString() %>
                                 <% } else { %>
                                     <%= Math.floor(info.total_hits).toLocaleString() %>

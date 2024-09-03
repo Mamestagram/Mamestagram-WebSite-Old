@@ -1319,7 +1319,7 @@ main .recentplays div .data .pp .loved, main .recentplays div .data-passed .pp .
 /* ------------------------------------------------- */
 main .member {
     min-height: 365px;
-    max-height: 365px;
+    max-height: 660px;
     overflow: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
