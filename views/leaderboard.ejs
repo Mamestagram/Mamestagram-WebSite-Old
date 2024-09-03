@@ -411,7 +411,7 @@
                                     <img src="https://clan-a.mamesosu.net/<%= player.id %>?<%= date %>" loading="lazy" alt="" />
                                 <% } %>
                                 <span class="name">
-                                    <a href="/profile/<%= player.id %><%= clan ? "&clan" : "" %>">
+                                    <a href="/profile/<%= player.id %><%= clan ? "&clan" : "" %>/<%= getModeName(modeNum) %><%= sortby === "dans" ? "&dans" : "" %>">
                                         <span class="text"><%= player.name %></span>
                                     </a>
                                 </span>
