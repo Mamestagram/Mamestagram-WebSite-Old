@@ -139,7 +139,7 @@ const date = new Date().toLocaleString("ja-JP", {
     </p>
 </div>
 <ul class="clan">
-    <li class="personal"]
+    <li class="personal"
     <% if (!clan) { %>
         style="filter: invert(0%); opacity: 1;"
     <% } %>>
@@ -150,7 +150,7 @@ const date = new Date().toLocaleString("ja-JP", {
     <% if (clan) { %>
         style="filter: invert(0%); opacity: 1;"
     <% } %>>
-        <a href="/leaderboard/<%= getModeName(modeNum) %>/clan&<%= sortby %>"><i class="fa-kit fa-solid-users-shield"></i></a>
+        <a href="/leaderboard/<%= getModeName(modeNum) %>/clan&<%= sortby %>"><i class="fa-solid fa-people-group"></i></a>
         <p class="tooltip">Clan</p>
     </li>
 </ul>
@@ -194,7 +194,7 @@ const date = new Date().toLocaleString("ja-JP", {
                     <% if (!clan) { %>
                         <i title="<%= player.country.toUpperCase() %>" class="flag-icon flag-icon-<%= player.country %>"></i>
                     <% } else { %>
-                        <img src="https://a.mamesosu.net/3?<%= date %>" loading="lazy" alt="" />
+                        <img src="https://clan-a.mamesosu.net/<%= player.id %>?<%= date %>" loading="lazy" alt="" />
                     <% } %>
                     <span class="name">
                         <a href="/profile/<%= player.id %><%= clan ? "&clan" : "" %>/<%= getModeName(modeNum) %><%= sortby === "dans" ? "&dans" : "" %>">
