@@ -366,7 +366,7 @@
 
         const getLocationTime = (unix, country) => {
             const time = clan ? unix : new Date(unix * 1000);
-            const locationTime = time.toLocaleString(country, {
+            const locationTime = time.toLocaleString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
