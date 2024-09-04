@@ -169,6 +169,15 @@ main .player-banner .username .tag .badge {
     margin-right: 5px;
 }
 
+main .player-banner .username .tag .badge.rival {
+    filter: invert(30%);
+    opacity: 0.95;
+}
+main .player-banner .username .tag .badge.rival:hover {
+    filter: invert(0%);
+    opacity: 1;
+}
+
 main .player-banner .username .tag .badge i {
     transition: transform 150ms;
 }

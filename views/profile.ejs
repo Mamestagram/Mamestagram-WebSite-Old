@@ -89,9 +89,6 @@
         }
 
         const getLastOnline = (unix, t) => {
-            if (unix === null) {
-                return unix;
-            }
             const cur = Math.floor(Date.now() / 1000);
             const time = cur - unix;
             if (time < 60) {
@@ -115,6 +112,272 @@
             else {
                 return `${Math.floor(time / (365 * 24 * 60 * 60))} ${t === "l" ? "year(s)" : "y"} ago`;
             }
+        }
+
+        const codeToTimezone = (country) => {
+            const zone = {
+                "ad": "Europe/Andorra",
+                "ae": "Asia/Dubai",
+                "af": "Asia/Kabul",
+                "ag": "America/Antigua",
+                "ai": "America/Anguilla",
+                "al": "Europe/Tirane",
+                "am": "Asia/Yerevan",
+                "ao": "Africa/Luanda",
+                "ar": "America/Argentina/Buenos_Aires",
+                "as": "Pacific/Pago_Pago",
+                "at": "Europe/Vienna",
+                "au": "Australia/Sydney",
+                "aw": "America/Aruba",
+                "ax": "Europe/Mariehamn",
+                "az": "Asia/Baku",
+                "ba": "Europe/Sarajevo",
+                "bb": "America/Barbados",
+                "bd": "Asia/Dhaka",
+                "be": "Europe/Brussels",
+                "bf": "Africa/Ouagadougou",
+                "bg": "Europe/Sofia",
+                "bh": "Asia/Bahrain",
+                "bi": "Africa/Bujumbura",
+                "bj": "Africa/Porto-Novo",
+                "bl": "America/St_Barthelemy",
+                "bm": "Atlantic/Bermuda",
+                "bn": "Asia/Brunei",
+                "bo": "America/La_Paz",
+                "bq": "America/Kralendijk",
+                "br": "America/Sao_Paulo",
+                "bs": "America/Nassau",
+                "bt": "Asia/Thimphu",
+                "bv": "Atlantic/Bouvet",
+                "bw": "Africa/Gaborone",
+                "by": "Europe/Minsk",
+                "bz": "America/Belize",
+                "ca": "America/Toronto",
+                "cc": "Australia/Cocos",
+                "cd": "Africa/Kinshasa",
+                "cf": "Africa/Bangui",
+                "cg": "Africa/Brazzaville",
+                "ch": "Europe/Zurich",
+                "ci": "Africa/Abidjan",
+                "ck": "Pacific/Rarotonga",
+                "cl": "America/Santiago",
+                "cm": "Africa/Douala",
+                "cn": "Asia/Shanghai",
+                "co": "America/Bogota",
+                "cr": "America/Costa_Rica",
+                "cu": "America/Havana",
+                "cv": "Atlantic/Cape_Verde",
+                "cw": "America/Curacao",
+                "cx": "Australia/Christmas",
+                "cy": "Asia/Nicosia",
+                "cz": "Europe/Prague",
+                "de": "Europe/Berlin",
+                "dj": "Africa/Djibouti",
+                "dk": "Europe/Copenhagen",
+                "dm": "America/Dominica",
+                "do": "America/Santo_Domingo",
+                "dz": "Africa/Algiers",
+                "ec": "America/Guayaquil",
+                "ee": "Europe/Tallinn",
+                "eg": "Africa/Cairo",
+                "eh": "Africa/El_Aaiun",
+                "er": "Africa/Asmara",
+                "es": "Europe/Madrid",
+                "et": "Africa/Addis_Ababa",
+                "fi": "Europe/Helsinki",
+                "fj": "Pacific/Fiji",
+                "fm": "Pacific/Chuuk",
+                "fo": "Atlantic/Faroe",
+                "fr": "Europe/Paris",
+                "ga": "Africa Libreville",
+                "gb": "Europe/London",
+                "gd": "America/Grenada",
+                "ge": "Asia/Tbilisi",
+                "gf": "America/Cayenne",
+                "gg": "Europe/Guernsey",
+                "gh": "Africa/Accra",
+                "gi": "Europe/Gibraltar",
+                "gl": "America/Godthab",
+                "gm": "Africa/Banjul",
+                "gn": "Africa/Conakry",
+                "gp": "America/Guadeloupe",
+                "gq": "Africa/Malabo",
+                "gr": "Europe/Athens",
+                "gt": "America/Guatemala",
+                "gu": "Pacific/Guam",
+                "gw": "Africa/Bissau",
+                "gy": "America/Guyana",
+                "hk": "Asia/Hong_Kong",
+                "hm": "Australia/Hugh_Henry",
+                "hn": "America/Tegucigalpa",
+                "hr": "Europe/Zagreb",
+                "ht": "America/Port-au-Prince",
+                "hu": "Europe/Budapest",
+                "id": "Asia/Jakarta",
+                "ie": "Europe/Dublin",
+                "il": "Asia/Tel_Aviv",
+                "im": "Europe/Isle_of_Man",
+                "in": "Asia/Kolkata",
+                "io": "Indian/Chagos",
+                "iq": "Asia/Baghdad",
+                "ir": "Asia/Tehran",
+                "is": "Atlantic/Reykjavik",
+                "it": "Europe/Rome",
+                "je": "Europe/Jersey",
+                "jm": "America/Jamaica",
+                "jo": "Asia/Amman",
+                "jp": "Asia/Tokyo",
+                "ke": "Africa/Nairobi",
+                "kg": "Asia/Bishkek",
+                "kh": "Asia/Phnom_Penh",
+                "ki": "Pacific/Tarawa",
+                "km": "Indian/Comoro",
+                "kn": "America/St_Kitts",
+                "kp": "Asia/Pyongyang",
+                "kr": "Asia/Seoul",
+                "kw": "Asia/Kuwait",
+                "ky": "America/Cayman",
+                "kz": "Asia/Almaty",
+                "la": "Asia/Vientiane",
+                "lb": "Asia/Beirut",
+                "lc": "America/St_Lucia",
+                "li": "Europe/Liechtenstein",
+                "lk": "Asia/Colombo",
+                "lr": "Africa/Monrovia",
+                "ls": "Africa/Maseru",
+                "lt": "Europe/Vilnius",
+                "lu": "Europe/Luxembourg",
+                "lv": "Europe/Riga",
+                "ly": "Africa/Tripoli",
+                "ma": "Africa/Casablanca",
+                "mc": "Europe/Monaco",
+                "md": "Europe/Chisinau",
+                "me": "Europe/Podgorica",
+                "mf": "America/Marigot",
+                "mg": "Indian/Antananarivo",
+                "mh": "Pacific/Majuro",
+                "mk": "Europe/Skopje",
+                "ml": "Africa/Bamako",
+                "mm": "Asia/Yangon",
+                "mn": "Asia/Ulaanbaatar",
+                "mo": "Asia/Macau",
+                "mp": "Pacific/Northern_Mariana",
+                "mq": "America/Martinique",
+                "mr": "Africa/Nouakchott",
+                "ms": "America/Montserrat",
+                "mt": "Europe/Malta",
+                "mu": "Indian/Mauritius",
+                "mv": "Indian/Maldives",
+                "mw": "Africa/Blantyre",
+                "mx": "America/Mexico_City",
+                "my": "Asia/Kuala_Lumpur",
+                "mz": "Africa/Maputo",
+                "na": "Africa/Windhoek",
+                "nc": "Pacific/Noumea",
+                "ne": "Africa/Niamey",
+                "nf": "Pacific/Norfolk",
+                "ng": "Africa/Lagos",
+                "ni": "America/Managua",
+                "nl": "Europe/Amsterdam",
+                "no": "Europe/Oslo",
+                "np": "Asia/Kathmandu",
+                "nr": "Pacific/Nauru",
+                "nu": "Pacific/Niue",
+                "nz": "Pacific/Auckland",
+                "om": "Asia/Muscat",
+                "pa": "America/Panama",
+                "pe": "America/Lima",
+                "pf": "Pacific/Tahiti",
+                "pg": "Pacific/Port_Moresby",
+                "ph": "Asia/Manila",
+                "pk": "Asia/Karachi",
+                "pl": "Europe/Warsaw",
+                "pm": "America/St_Pierre",
+                "pn": "Pacific/Pitcairn",
+                "pr": "America/Puerto_Rico",
+                "pt": "Europe/Lisbon",
+                "pw": "Pacific/Palau",
+                "py": "America/Asuncion",
+                "qa": "Asia/Qatar",
+                "re": "Indian/Reunion",
+                "ro": "Europe/Bucharest",
+                "rs": "Europe/Belgrade",
+                "ru": "Europe/Moscow",
+                "rw": "Africa/Kigali",
+                "sa": "Asia/Riyadh",
+                "sb": "Pacific/Guadalcanal",
+                "sc": "Indian/Seychelles",
+                "sd": "Africa/Khartoum",
+                "se": "Europe/Stockholm",
+                "sg": "Asia/Singapore",
+                "sh": "Atlantic/St_Helena",
+                "si": "Europe/Ljubljana",
+                "sj": "Arctic/Longyearbyen",
+                "sk": "Europe/Bratislava",
+                "sl": "Africa/Freetown",
+                "sm": "Europe/San_Marino",
+                "sn": "Africa/Dakar",
+                "so": "Africa/Mogadishu",
+                "sr": "America/Paramaribo",
+                "ss": "Africa/Juba",
+                "st": "Africa/Sao_Tome",
+                "sv": "America/El_Salvador",
+                "sx": "America/Curacao",
+                "sy": "Asia/Damascus",
+                "sz": "Africa/Mbabane",
+                "tc": "America/Grand_Turk",
+                "td": "Africa/Ndjamena",
+                "tf": "Indian/Kerguelen",
+                "tg": "Africa/Lome",
+                "th": "Asia/Bangkok",
+                "tj": "Asia/Dushanbe",
+                "tk": "Pacific/Tokelau",
+                "tl": "Asia/Dili",
+                "tm": "Asia/Ashgabat",
+                "tn": "Africa/Tunis",
+                "to": "Pacific/Tongatapu",
+                "tr": "Europe/Istanbul",
+                "tt": "America/Port_of_Spain",
+                "tv": "Pacific/Tarawa",
+                "tz": "Africa/Dar_es_Salaam",
+                "ua": "Europe/Kiev",
+                "ug": "Africa/Kampala",
+                "um": "Pacific/Wake",
+                "us": "America/New_York",
+                "uy": "America/Montevideo",
+                "uz": "Asia/Tashkent",
+                "va": "Europe/Vatican",
+                "vc": "America/St_Vincent",
+                "ve": "America/Caracas",
+                "vg": "America/Tortola",
+                "vi": "America/St_Thomas",
+                "vn": "Asia/Ho_Chi_Minh",
+                "vu": "Pacific/Efate",
+                "wf": "Pacific/Wallis",
+                "ws": "Pacific/Apia",
+                "ye": "Asia/Aden",
+                "yt": "Indian/Mayotte",
+                "za": "Africa/Johannesburg",
+                "zm": "Africa/Lusaka",
+                "zw": "Africa/Harare"
+            };
+            return zone[country];
+        }
+
+        const getLocationTime = (unix, country) => {
+            const time = clan ? unix : new Date(unix * 1000);
+            const locationTime = time.toLocaleString(country, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                timeZone: codeToTimezone(country),
+                timeZoneName: "short",
+                language: "en"
+            });
+            return locationTime;
         }
 
         const getMods = (modNum) => {
@@ -233,6 +496,7 @@
         <img class="background-img" src="https://<%= clan ? "clan-" : "" %>bg.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="100%" />
         <%- include("header") %> 
         <main>
+            <% const cty = loginf ? country : "UTC"; %>
             <div class="box banner-box">
                 <img src="https://<%= clan ? "clan-" : "" %>banner.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="250" />
             </div>
@@ -250,7 +514,7 @@
                             <% if ((!clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (clan && info.public === 1 && ranking === 1)) { %>
                                 class="champion"
                             <% } %>>
-                                <h1><%= info.name %></h1>
+                                <h1 title="Created at <%= !clan ? getLocationTime(info.creation_time, cty) : getLocationTime(info.created_at, cty) %>"><%= info.name %></h1>
                                 <% if ((!clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (clan && info.public === 1 && ranking === 1)) { %>
                                     <p class="tooltip"><%= getModeName(modeNum) %> champion</p>
                                 <% } %>
@@ -285,6 +549,12 @@
                                             <p class="tooltip"><%= tag %></p>
                                         </span>
                                     <% }); %>
+                                    <% if (rival) { %>
+                                        <span class="badge rival">
+                                            <i class="fa-solid fa-swords"></i>
+                                            <p class="tooltip">Rival</p>
+                                        </span>
+                                    <% } %>
                                 </div>
                             <% } %>
                         </div>
@@ -430,8 +700,8 @@
                                 <% if (online) { %>
                                     Online
                                 <% } else { %>
-                                    <span class="normal">Last seen: <strong><%= getLastOnline(info.latest_activity, "l") %></strong></span>
-                                    <span class="short"><strong><%= getLastOnline(info.latest_activity, "s") %></strong></span>
+                                    <span class="normal">Last seen: <strong title="<%= getLocationTime(info.latest_activity, cty) %>"><%= getLastOnline(info.latest_activity, "l") %></strong></span>
+                                    <span class="short"><strong title="<%= getLocationTime(info.latest_activity, cty) %>"><%= getLastOnline(info.latest_activity, "s") %></strong></span>
                                 <% } %>
                             </p>
                         </div>
