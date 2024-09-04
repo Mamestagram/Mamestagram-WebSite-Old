@@ -1223,6 +1223,102 @@
                         </button>
                     <% } %>
                 <% } %>
+                <!-- first place -->
+                <div class="box first_place">
+                    <h1><i class="fa-solid fa-medal"></i>First Place Ranks</h1>
+                    <div class="mode-<%= modeNum %>">
+                        <% amt = 0; %>
+                        <% if (firstPlace.length === 0) { %>
+                            <h1 class="nothing">No scores available</h1>
+                        <% } else { %>
+                            <% firstPlace.forEach((data) => { %>
+                                <div class="wrap data">
+                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
+                                    <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                    <a
+                                    <% if (!dans && data.id > 0) { %>
+                                        href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
+                                    <% } %>
+                                    style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
+                                        <p class="title"><%= data.title %> by <%= data.artist %></p>
+                                        <p class="diff"><%= data.version %></p>
+                                    </a>
+                                    <div class="mods">
+                                        <% getMods(data.mods).forEach((mod) => { %>
+                                            <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                        <% }); %>
+                                    </div>
+                                    <p class="acc"><%= data.acc.toFixed(2) %>%</p>
+                                    <div class="pp">
+                                        <p class="recorded"
+                                            <% if (dans) { %>
+                                                style="margin: auto";
+                                            <% } %>>
+                                            <% if (!dans) { %>
+                                                <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                            <% } else { %>
+                                                <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
+                                            <% } %>
+                                        </p>
+                                        <% if (!dans) { %>
+                                            <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt)).toLocaleString() %>pp)</p>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="data-mobile">
+                                    <div class="flex info">
+                                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
+                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                        <a 
+                                        <% if (!dans && data.id > 0) { %>
+                                            href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
+                                        <% } %>>
+                                            <p class="title"><%= data.title %> by <%= data.artist %></p>
+                                            <p class="diff"><%= data.version %></p>
+                                        </a>
+                                        <% if (data.mods !== 0) { %>
+                                            <div class="mods">
+                                                <% getMods(data.mods).forEach((mod) => { %>
+                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                                <% }); %>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <div class="flex results">
+                                        <p class="acc"><%= data.acc.toFixed(2) %>%</p>
+                                        <p class="recorded">
+                                            <% if (!dans) { %>
+                                                <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
+                                            <% } else { %>
+                                                <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
+                                            <% } %>
+                                        </p>
+                                        <% if (!dans) { %>
+                                            <p class="weighted">(<%= Math.round(data.pp * Math.pow(0.95, amt++)).toLocaleString() %>pp)</p>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        <% } %>
+                    </div>
+                </div>
+                <% for (let i = 0; i * 50 < firstPlace.length; i++) { %>
+                    <% if (i === 0) { %>
+                        <% if (bestpp.length > 5) { %>
+                            <button class="show-more fp to50">
+                                <i class="fa-solid fa-chevron-down arrow down"></i>
+                                show more
+                                <i class="fa-solid fa-chevron-down arrow down"></i>
+                            </button>
+                        <% } %>
+                    <% } else { %>
+                        <button class="show-more fp to<%= (i + 1) * 50 %>" style="display: none">
+                            <i class="fa-solid fa-chevron-down arrow down"></i>
+                            show more
+                            <i class="fa-solid fa-chevron-down arrow down"></i>
+                        </button>
+                    <% } %>
+                <% } %>
                 <!-- most plays -->
                 <div class="box mostplays">
                     <h1><i class="fa-regular fa-circle-play"></i>Most Plays</h1>

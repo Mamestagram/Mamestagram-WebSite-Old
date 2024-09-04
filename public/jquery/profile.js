@@ -21,9 +21,18 @@ $(window).resize(function() {
         $("main .recentplays").css("max-height", `${hei}px`);
         $("main .recentplays .data-mobile").hide();
         $("main .recentplays .data-mobile-passed").show();
+        hei = 35;
+        for (let i = 0; i < Math.min(5, $("main .first_place div .data-mobile").length); i++) {
+            hei += $("main .first_place div .data-mobile").eq(i).height() + 5;
+        }
+        hei = Math.max(452, hei);
+        $("main .first_place").css({
+            "min-height": `${hei}px`,
+            "max-height": `${hei}px`
+        });
     }
     else {
-        $("main .bestpp, main .mostplays, main .recentplays").css({
+        $("main .bestpp, main .mostplays, main .recentplays, main .first_place").css({
             "min-height": "",
             "max-height": ""
         });
@@ -45,6 +54,14 @@ $(window).resize(function() {
         }
     });
     $("main .show-more.rp").each(function(i) {
+        if (i === 0) {
+            $(this).show();
+        }
+        else {
+            $(this).hide();
+        }
+    });
+    $("main .show-more.fp").each(function(i) {
         if (i === 0) {
             $(this).show();
         }
@@ -80,6 +97,15 @@ $(function() {
         }
         hei = Math.max(452, hei);
         $("main .recentplays").css({
+            "min-height": `${hei}px`,
+            "max-height": `${hei}px`
+        });
+        hei = 35;
+        for (let i = 0; i < Math.min(5, $("main .first_place div .data-mobile").length); i++) {
+            hei += $("main .first_place div .data-mobile").eq(i).height() + 5;
+        }
+        hei = Math.max(452, hei);
+        $("main .first_place").css({
             "min-height": `${hei}px`,
             "max-height": `${hei}px`
         });
@@ -298,6 +324,11 @@ $(function() {
             $selection = $("main .recentplays");
             $nextbtn = $(`main .rp${$(this).hasClass("nof") ? ".nof" : ""}.to${amt + 50}`);
             $subject = $(`main .recentplays div .data-mobile${rs === "passed" ? "-passed" : ""}`);
+        }
+        else if ($(this).hasClass("fp")) {
+            $selection = $("main .first_place");
+            $nextbtn = $(`main .mp.to${amt + 50}`);
+            $subject = $("main .first_place div .data-mobile");
         }
         if ($("body").width() <= 767) {
             hei = 35;

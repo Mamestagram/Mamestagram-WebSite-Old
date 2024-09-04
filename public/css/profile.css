@@ -1086,6 +1086,140 @@ main .bestpp div .data .pp .weighted {
     margin-right: auto;
 }
 /* ------------------------------------------------- */
+main .first_place {
+    min-height: 350px;
+    max-height: 350px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+main .first_place h1 {
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+main .first_place h1 i {
+    margin: 0 5px;
+}
+
+main .first_place div .wrap, main .first_place div .pp {
+    display: flex;
+}
+
+main .first_place div .nothing {
+    font-size: 35px;
+    line-height: 300px;
+    text-align: center;
+}
+
+main .first_place div .data {
+    position: relative;
+    margin-top: 5px;
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 black;
+    transition: transform 100ms;
+}
+main .first_place div .data:hover {
+    transform: scale(1.005);
+}
+
+main .first_place div .mapbg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+main .first_place div .grade {
+    height: 45px;
+    margin: 5px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px black;
+    z-index: 1;
+}
+
+main .first_place div .data a {
+    padding-left: 3px;
+    margin: auto 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+main .first_place div .data a .title {
+    font-size: 18px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+main .first_place div .data a .diff {
+    color: #eca900;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+main .first_place div .data .mods {
+    display: flex;
+    max-width: 320px;
+    padding-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+main .first_place div .data .mods img {
+    height: 35px;
+    float: left;
+}
+
+main .first_place div .data .acc {
+    color: #ffcc22;
+    font-weight: bold;
+    width: 80px;
+    margin: auto 0;
+    text-align: center;
+    z-index: 1;
+}
+
+main .first_place div .data .pp {
+    background-color: #393945;
+    min-width: 180px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+main .first_place div .data .pp .recorded {
+    color: #5656c1;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+main .first_place div .data .pp .recorded span {
+    color: #8681a5;
+}
+
+main .first_place div .data .pp .weighted {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+/* ------------------------------------------------- */
 main .mostplays {
     min-height: 350px;
     max-height: 350px;
@@ -2017,6 +2151,110 @@ main .member .member-table .score {
     }
 
     main .bestpp div .data-mobile .results .weighted {
+        font-size: 12px;
+        margin: auto 0;
+    }
+    /* ------------------------------------------------- */
+    main .first_place h1 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    main .first_place div .nothing {
+        line-height: 417px;
+    }
+
+    main .first_place div .data-mobile {
+        margin-bottom: 5px;
+        background-color: #393945;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px black;
+    }
+
+    main .first_place div .data-mobile .flex {
+        display: flex;
+    }
+
+    main .first_place div .data-mobile .info {
+        position: relative;
+        background-color: #000000;
+        flex-wrap: wrap;
+        flex-shrink: unset;
+        border-radius: 10px;
+        transition: transform 100ms;
+    }
+    main .first_place div .data-mobile .info:hover {
+        transform: scale(1.005);
+    }
+
+    main .first_place div .data-mobile .info .mapbg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        opacity: 0.3;
+    }
+
+    main .first_place div .data-mobile .info .grade {
+        height: 40px;
+        z-index: 1;
+    }
+
+    main .first_place div .data-mobile .info a {
+        width: calc(100% - 50px);
+        margin: auto 0;
+        z-index: 1;
+    }
+
+    main .first_place div .data-mobile .info a .title {
+        font-size: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .first_place div .data-mobile .info a .diff {
+        color: #eca900;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    main .first_place div .data-mobile .info .mods {
+        width: calc(100% - 10px);
+        display: flex;
+        padding-left: 10px;
+        padding-bottom: 3px;
+        overflow: scroll;
+        z-index: 1;
+    }
+
+    main .first_place div .data-mobile .info .mods img {
+        height: 30px;
+    }
+
+    main .first_place div .data-mobile .results {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    main .first_place div .data-mobile .results .acc {
+        color: #ffcc22;
+    }
+
+    main .first_place div .data-mobile .results .recorded {
+        color: #5656c1;
+        font-size: 16px;
+        margin-left: auto;
+    }
+
+    main .first_place div .data-mobile .results .recorded span {
+        color: #8681a5;
+    }
+
+    main .first_place div .data-mobile .results .weighted {
         font-size: 12px;
         margin: auto 0;
     }
