@@ -76,54 +76,45 @@
 
         <%
         const getPlayTime = (time) => {
-            let rst = "";
-            rst += Math.floor(time / 86400).toLocaleString() + "d ";
+            let rst = { 
+                time: "",
+                hour: (time / (60 * 60)).toFixed(2).toLocaleString()
+            };
+            rst.time += Math.floor(time / (24 * 60 * 60)).toLocaleString() + "d ";
             time %= 86400;
-            rst += Math.floor(time / 3600).toLocaleString() + "h ";
+            rst.time += Math.floor(time / (60 * 60)).toLocaleString() + "h ";
             time %= 3600;
-            rst += Math.floor(time / 60).toLocaleString() + "m";
+            rst.time += Math.floor(time / 60).toLocaleString() + "m";
             return rst;
         }
 
-        const getLastTime = (time) => {
-            let rst = "";
-            if (getLastOnline() >= 31556926) {
-                // 1年を超えていたら
-                rst += Math.floor(time / 31556926).toLocaleString() + " year(s) ";
-                return rst;
-            }else if(getLastOnline() >= 2629743){
-                // 1ヶ月を超えていたら
-                rst += Math.floor(time / 2629743).toLocaleString() + " month(s) ";
-                return rst;
-            } else{
-                if (time < 3600) {
-                    // １時間より小さい
-                        rst += Math.floor(time / 60).toLocaleString() + " m ";
-                        return rst;
-
-                }else if (time < 86400) {
-                    // 24時間より小さい
-                        rst += Math.floor(time / 3600).toLocaleString() + " h ";
-                        time %= 3600;
-                        rst += Math.floor(time / 60).toLocaleString() + " m ";
-                        return rst;
-                }else {
-                    // それより大きい
-                    rst += Math.floor(time / 86400).toLocaleString() + "d ";
-                    time %= 86400;
-                    rst += Math.floor(time / 3600).toLocaleString() + "h ";
-                    time %= 3600;
-                    rst += Math.floor(time / 60).toLocaleString() + "m";
-                    return rst;
-                }
+        const getLastOnline = (unix, t) => {
+            if (unix === null) {
+                return unix;
             }
-        }
-
-        const getLastOnline = () => {
-            let currenttime = Math.floor(Date.now() * 0.001);
-            let latestactivity = info.latest_activity;
-            let lastonline = currenttime - latestactivity;
-            return lastonline;
+            const cur = Math.floor(Date.now() / 1000);
+            const time = cur - unix;
+            if (time < 60) {
+                return "Just now";
+            }
+            else if (time < (60 * 60)) {
+                return `${Math.floor(time / 60)} ${t === "l" ? "minute(s)" : "m"} ago`;
+            }
+            else if (time < (24 * 60 * 60)) {
+                return `${Math.floor(time / (60 * 60))} ${t === "l" ? "hour(s)" : "h"} ago`;
+            }
+            else if (time < (7 * 24 * 60 * 60)) {
+                return `${Math.floor(time / (24 * 60 * 60))} ${t === "l" ? "day(s)" : "d"} ago`;
+            }
+            else if (time < (30 * 24 * 60 * 60)) {
+                return `${Math.floor(time / (7 * 24 * 60 * 60))} ${t === "l" ? "week(s)" : "w"} ago`;
+            }
+            else if (time < (365 * 24 * 60 * 60)) {
+                return `${Math.floor(time / (30 * 24 * 60 * 60))} ${t === "l" ? "month(s)" : "M"} ago`;
+            }
+            else {
+                return `${Math.floor(time / (365 * 24 * 60 * 60))} ${t === "l" ? "year(s)" : "y"} ago`;
+            }
         }
 
         const getMods = (modNum) => {
@@ -439,7 +430,8 @@
                                 <% if (online) { %>
                                     Online
                                 <% } else { %>
-                                    Offline
+                                    <span class="normal">Last seen: <strong><%= getLastOnline(info.latest_activity, "l") %></strong></span>
+                                    <span class="short"><strong><%= getLastOnline(info.latest_activity, "s") %></strong></span>
                                 <% } %>
                             </p>
                         </div>
@@ -661,12 +653,12 @@
                                     <% } %>
                                 </h2>
                             </div>
-                            <div class="playtime"
+                            <div title="<%= getPlayTime(info.playtime).hour %> hours" class="playtime"
                             <% if (dans) { %>
                                 style="filter: invert(50%); opacity: 0.95;"
                             <% } %>>
                                 <h1>Total Play Time</h1>
-                                <h2><%= getPlayTime(info.playtime) %></h2>
+                                <h2><%= getPlayTime(info.playtime).time %></h2>
                             </div>
                         </div>
                         <div class="wrap grade-amounts">

@@ -88,7 +88,8 @@ const date = new Date().toLocaleString("ja-JP", {
         <% if (online) { %>
             Online
         <% } else { %>
-            Offline
+            <span class="normal">Last seen: <strong><%= getLastOnline(info.latest_activity, "l") %></strong></span>
+            <span class="short"><strong><%= getLastOnline(info.latest_activity, "s") %></strong></span>
         <% } %>
     </p>
 </div>
