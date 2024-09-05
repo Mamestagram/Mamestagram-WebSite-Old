@@ -172,6 +172,7 @@ main .player-banner .username .tag .badge {
 main .player-banner .username .tag .badge.rival {
     filter: invert(30%);
     opacity: 0.95;
+    transition: filter 150ms, opacity 150ms;
 }
 main .player-banner .username .tag .badge.rival:hover {
     filter: invert(0%);
