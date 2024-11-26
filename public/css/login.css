@@ -23,6 +23,25 @@ main {
     text-align: center;
 }
 
+.input-box {
+    position: relative;
+}
+
+.input-box i {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    color: #919495;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px black;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: color 300ms;
+}
+.input-box i:hover {
+    color: #fdfdfd;
+}
+
 .username, .password {
     padding: 20px 40px;
 }

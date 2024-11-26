@@ -15,6 +15,10 @@ const date = new Date().toLocaleString("ja-JP", {
         <li class="leaderboard"><a href="/leaderboard/std/performance">Leaderboard</a></li>
         <li class="documents"><a href="/documents">Documents</a></li>
         <li class="discord"><a href="/discord" target="_blank" rel="noopener noreferrer">Discord</a></li>
+        <li class="old-web<%= findLink ? oldWeb ? " web-link" : " lock" : "" %>">
+            <i class="icon-lock"></i>
+            <a href="http://old.mamesosu.net/<%= loginf ? `?id=${userid}` : "" %>">Old Web</a>
+        </li>
         <li class="donation" style="border-radius: 30px;">
             <a title="Support us!" href="/donation" target="_blank" rel="noopener noreferrer">
                 <i class="fa-solid fa-heart"></i>
@@ -110,5 +114,42 @@ const date = new Date().toLocaleString("ja-JP", {
                 document.getElementById("search").submit();
             }
         }
+
+        $(function () {
+            var $lock = $(".old-web");
+            $(".donation a").on("click", function(e) {
+                if ("<%= findLink %>" === "false") {
+                    e.preventDefault();
+                    $lock.addClass("lock");
+                    let link = window.location.href;
+                    setTimeout(function () {
+                        window.location.href = `/findLink?link=${link}`;
+                    }, 300);
+                }
+            });
+
+            $("header").on("click", ".old-web", function() {
+                if ("<%= webKey %>" === "true") {
+                    $(this).addClass("unlock");
+                }
+                else {
+                    $(this).addClass("wiggle");
+                }
+            });
+
+            $(".old-web.lock").on("animationend", function() {
+                if ("<%= webKey %>" === "true") {
+                    $(this).removeClass("lock").removeClass("unlock");
+                    $(this).addClass("web-link");
+                    let link = window.location.href;
+                    setTimeout(function () {
+                        window.location.href = `/oldWeb?link=${link}`;
+                    }, 700);
+                }
+                else {
+                    $(this).removeClass("wiggle");
+                }
+            });
+        });
     </script>
 </form>

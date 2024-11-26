@@ -57,6 +57,154 @@ header .pc li:hover {
     color: #fdfdfd;
 }
 
+header .pc .old-web {
+    cursor: pointer;
+    position: relative;
+    height: 60px;
+    width: 0;
+    filter: drop-shadow(2px 2px 2px black);
+    transform: scaleX(0);
+    transition: height 300ms, width 300ms, filter 300ms;
+}
+
+header .pc .old-web.lock {
+    width: 60px;
+    transform: scaleX(1);
+}
+
+.animated .pc .old-web.lock {
+    filter: none;
+}
+.animated .pc .old-web.lock:hover {
+    background-color: unset;
+    filter: drop-shadow(2px 2px 2px black);
+}
+
+header .pc .old-web.lock::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    background-color: #919495;
+    height: 32%;
+    width: 37%;
+    border-radius: 5px;
+    transform: translate(-50%, -90%);
+    transition: background-color 300ms, height 300ms;
+}
+header .pc .old-web.lock:hover::before {
+    background-color: #fdfdfd;
+}
+
+.animated .pc .old-web.lock::before {
+    background-color: #fdfdfd;
+}
+
+header .pc .old-web.lock::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 30%;
+    width: 28%;
+    border: 3px solid #919495;
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+    transform: translate(-50%, 70%);
+    transform-origin: 90% 50%;
+    transition: height 300ms, border 300ms;
+}
+header .pc .old-web.lock:hover::after {
+    border: 3px solid #fdfdfd;
+    border-bottom: none;
+}
+
+.animated .pc .old-web.lock::after {
+    border: 3px solid #fdfdfd;
+    border-bottom: none;
+}
+
+header .pc .old-web.lock.wiggle {
+    animation: wiggle 400ms;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    20% {
+        transform: scale(1.1) rotate(15deg);
+    }
+    40% {
+        transform: scale(1.1) rotate(-15deg);
+    }
+    60% {
+        transform: scale(1.1) rotate(15deg);
+    }
+    80% {
+        transform: scale(1.1) rotate(-15deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+header .pc .old-web.lock.unlock {
+    animation: fadeOut 2s ease;
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+header .pc .old-web.lock.unlock::after {
+    animation: unlock 2s ease;
+}
+
+@keyframes unlock {
+    0% {
+        transform: translate(-50%, 70%);
+    }
+    15% {
+        transform: translate(-50%, 40%);
+    }
+    60% {
+        transform: translate(-50%, 40%) rotateY(180deg);
+    }
+    100% {
+        transform: translate(-50%, 40%) rotateY(180deg)
+    }
+}
+
+header .pc .old-web.web-link {
+    width: auto;
+    filter: none;
+    transform: scaleX(1);
+    transition: color 300ms, margin 300ms, text-shadow 300ms, background-color 300ms;
+}
+
+header .pc .old-web a {
+    transform: scaleX(0);
+    transition: transform 700ms;
+}
+
+header .pc .old-web.web-link a {
+    transform: scaleX(1);
+}
+
 header .pc .donation {
     font-size: 20px;
     transition: color 300ms, margin 300ms, text-shadow 300ms, transform 200ms;
@@ -68,7 +216,7 @@ header .pc .donation:hover {
 
 .animated .pc .donation:hover {
     background-color: unset;
-    text-shadow: 0px 0px 10px #fdfdfd;
+    text-shadow: 0 0 10px #fdfdfd;
 }
 
 .animated .pc li {
