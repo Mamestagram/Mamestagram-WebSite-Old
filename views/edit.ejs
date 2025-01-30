@@ -88,20 +88,20 @@
                     <% if (!clan) { %>
                         style="filter: invert(0%); opacity: 1;"
                     <% } %>>
-                        <a href="/edit/personal"><i class="fa-solid fa-person"></i></a>
+                        <a href="/edit&personal"><i class="fa-solid fa-person"></i></a>
                         <p class="tooltip">Personal</p>
                     </li>
                     <li class="clan"
                     <% if (clan) { %>
                         style="filter: invert(0%); opacity: 1;"
                     <% } %>>
-                        <a href="/edit/clan"><i class="fa-solid fa-people-group"></i></a>
+                        <a href="/edit&clan"><i class="fa-solid fa-people-group"></i></a>
                         <p class="tooltip">Clan</p>
                     </li>
                 </ul>
             <% } %>
             <div class="box rename">
-                <form id="rename" action="/rename/<%= id %>&<%= !clan ? "personal" : "clan" %>" method="post">
+                <form id="rename" action="/rename&<%= !clan ? "personal" : "clan" %>" method="post">
                     <h1 class="title">Rename<%= clan ? " clan" : "" %></h1>
                     <div class="username">
                         <span class="username-title">
