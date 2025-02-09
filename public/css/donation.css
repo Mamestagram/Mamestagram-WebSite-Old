@@ -1,0 +1,318 @@
+main {
+    background-color: #1c1b17;
+    color: #fdfdfd;
+    padding-top: 200px;
+    padding-bottom: 250px;
+    text-align: center;
+}
+
+main .language {
+    position: fixed;
+    bottom: 75px;
+    left: 60px;
+}
+
+main .language ul {
+    display: flex;
+}
+
+main .language ul li {
+    cursor: pointer;
+    display: block;
+    color: #d9b7a6;
+    padding: 0 10px;
+    margin-right: 20px;
+}
+main .language ul li.selected,
+main .language ul li:hover {
+    color: #e0c5b8;
+    text-decoration: underline;
+}
+
+article {
+    background-color: #38312e;
+    width: 970px;
+    padding: 12px 0;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+section {
+    background-color: #3d3029;
+    width: 950px;
+    padding: 10px 0;
+    margin: 80px auto;
+    border-radius: 5px;
+    text-shadow: 2px 2px 2px #000;
+}
+
+section h1 {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+section code {
+    background-color: #22222a;
+    font-size: 16px;
+    font-family: "JetBrainsMono";
+    padding: 1px 4px;
+    border-radius: 4px;
+}
+
+section .hide-lang {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+}
+
+section ul li {
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, rgba(248, 189, 19, 0.1), rgb(248, 189, 19), rgba(248, 189, 19, 0.1)) 1;
+}
+/* ------------------------------------------------- */
+.overview {
+    margin-top: 0;
+}
+
+.overview h1 {
+    padding-bottom: 0;
+}
+
+.overview ul li {
+    margin-bottom: 50px;
+}
+
+.overview ul .perks {
+    margin-bottom: 10px;
+}
+
+.overview .wrap:not(.hide-lang) {
+    padding: 10px 10px 30px 10px;
+}
+.overview p {
+    font-size: 18px;
+    margin-top: 30px;
+}
+/* ------------------------------------------------- */
+.contents ul li {
+    margin-bottom: 100px;
+}
+
+.contents .functions-list li .toggle-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.contents .functions-list li .toggle-btn ul {
+    display: flex;
+    position: relative;
+    background-color: rgba(163, 161, 168, 0.5);
+    height: 50px;
+    width: 150px;
+    border: 3px solid #fefeff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #000;
+}
+.contents .functions-list li .toggle-btn ul.free {
+    --trans: rgba(163, 161, 168, 0.2);
+}
+.contents .functions-list li .toggle-btn ul.paid {
+    --trans: rgba(244, 160, 199, 0.2);
+}
+
+.contents .functions-list li .toggle-btn ul::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background-color: black;
+    height: 100%;
+    width: 50%;
+    transition: background-color 500ms cubic-bezier(0.4, 0.4, 0, 1), border-radius 500ms cubic-bezier(0.4, 0.4, 0, 1), transform 500ms cubic-bezier(0.4, 0.4, 0, 1), box-shadow 500ms cubic-bezier(0.4, 0.4, 0, 1);
+}
+.contents .functions-list li .toggle-btn ul.move::before {
+    background-color: var(--trans) !important;
+    border-radius: 20px !important;
+    transform: translateX(-50%) scaleX(0.2) !important;
+    box-shadow: 0 0 5px var(--trans) !important;
+}
+.contents .functions-list li.free .toggle-btn ul::before {
+    background-color: #a3a1a8;
+    border-radius: 10px 0 0 10px;
+    transform: translateX(-100%) scaleX(1);
+}
+.contents .functions-list li.paid .toggle-btn ul::before {
+    background-color: #f4a0c7;
+    border-radius: 0 10px 10px 0;
+    transform: translateX(0) scaleX(1);
+    box-shadow: 0 0 5px #f4a0c7;
+}
+
+.contents .functions-list li .toggle-btn ul::after {
+    content: "\f004";
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    font-family: "Font Awesome 6 Pro";
+    font-size: 20px;
+    font-weight: 600;
+    height: 50%;
+    width: 50%;
+    transition: color 500ms cubic-bezier(0.4, 0.4, 0, 1), transform 500ms cubic-bezier(0.4, 0.4, 0, 1), box-shadow 500ms cubic-bezier(0.4, 0.4, 0, 1), text-shadow 500ms cubic-bezier(0.4, 0.4, 0, 1);
+}
+.contents .functions-list li .toggle-btn ul.move::after {
+    transform: translateX(-50%) scale(2) !important;
+}
+.contents .functions-list li.free .toggle-btn ul::after {
+    color: #919495;
+    transform: translateX(-100%) scale(1);
+    text-shadow: 0 0 10px #000;
+}
+.contents .functions-list li.paid .toggle-btn ul::after {
+    color: #ea609e;
+    transform: translateX(0) scale(1.4);
+    text-shadow: 0 0 20px #fefeff;
+}
+
+.contents .functions-list .hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.contents .functions-list video,
+.contents .functions-list img,
+.contents .description p {
+    transition: visibility 500ms cubic-bezier(0.4, 0.4, 0, 1), transform 500ms cubic-bezier(0.4, 0.4, 0, 1), opacity 500ms cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+.contents .media {
+    position: relative;
+    height: 490px;
+    width: 850px;
+    margin: 0 auto;
+    transition: height 400ms cubic-bezier(0.4, 0.4, 0, 1);
+}
+.contents .wipe.free .media {
+    height: 50px;
+    transition: height 600ms cubic-bezier(0.4, 0.4, 0, 1);
+    transition-delay: 500ms;
+}
+.contents .score-based-ranking .media {
+    height: 220px;
+}
+.contents .role .media {
+    height: 190px;
+}
+
+.contents .media video,
+.contents .media img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.contents .media video.free.hide,
+.contents .media img.free.hide {
+    transform: translateX(-30%);
+}
+.contents .media video.paid.hide,
+.contents .media img.paid.hide {
+    transform: translateX(30%);
+}
+
+.contents .web {
+    margin-bottom: 30px;   
+}
+
+.contents .web img {
+    filter: grayscale(80%) blur(1px);
+    mask-image: radial-gradient(ellipse 50% 50% at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 85%);
+}
+
+.contents .description {
+    position: relative;
+    font-size: 18px;
+    height: 75px;
+}
+
+.contents .description p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.contents .description p.free.hide {
+    transform: translateX(-30%);
+}
+.contents .description p.paid.hide {
+    transform: translateX(30%);
+}
+/* ------------------------------------------------- */
+.ko-fi {
+    margin-bottom: 0
+}
+
+.ko-fi h1 {
+    padding-bottom: 0;
+}
+
+.ko-fi ul li {
+    margin-bottom: 30px;
+}
+
+.ko-fi .wrap:not(.hide-lang) {
+    padding: 10px 10px 30px 10px;
+}
+
+.ko-fi p {
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.ko-fi ul .purchase {
+    margin-bottom: 30px;
+}
+
+.ko-fi .purchase a {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    --glow-color: #ff5a16;
+}
+.ko-fi .purchase a:hover {
+    --glow-color: #72a4f2;
+}
+.ko-fi .purchase a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/image/donation/ko-fi_hover.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 0;
+    transition: width 500ms;
+}
+.ko-fi .purchase a:hover::after {
+    width: 100%;
+}
+
+.ko-fi .purchase a img {
+    height: inherit;
+    transition: filter 3000ms;
+}
+.ko-fi .purchase a img.glow {
+    filter: drop-shadow(0px 0px 10px var(--glow-color));
+}
+.ko-fi .purchase a img.fade {
+    filter: drop-shadow(0px 0px 5px var(--glow-color));
+}
