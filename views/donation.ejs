@@ -82,14 +82,54 @@
     <body>
         <%- include("header") %>
         <main>
+            <nav class="menu">
+                <div class="wrap en">
+                    <ul>
+                        <li>
+                            <a href="#introduction">
+                                <p>Introduction</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#features">
+                                <p>Features</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#subscription">
+                                <p>Subscription</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrap ja">
+                    <ul>
+                        <li>
+                            <a href="#introduction">
+                                <p>はじめに</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#features">
+                                <p>追加機能</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#subscription">
+                                <p>サポーター申込</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <nav class="language">
                 <ul>
-                    <li class="en">EN</li>
-                    <li class="ja">JA</li>
+                    <li class="btn-en">EN</li>
+                    <li class="btn-ja">JA</li>
                 </ul>
             </nav>
             <article>
-                <section class="overview">
+                <section id="introduction" class="overview">
                     <ul>
                         <li class="introduction">
                             <div class="wrap en">
@@ -134,7 +174,7 @@
                         </li>
                     </ul>
                 </section>
-                <section class="contents">
+                <section id="features" class="contents">
                     <ul class="functions-list">
                         <li class="bancho-lb free">
                             <div class="wrap en">
@@ -396,7 +436,7 @@
                         </li>
                     </ul>
                 </section>
-                <section class="ko-fi">
+                <section id="subscription" class="ko-fi">
                     <ul>
                         <li class="perpose">
                             <div class="wrap en"></div>

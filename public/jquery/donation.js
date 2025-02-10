@@ -1,20 +1,33 @@
+$(window).on("scroll", function() {
+    let pos = new Array(3);
+    for (let i = 0; i < $("main article section").length; i++) {
+        pos[i] = $("main article section").eq(i).offset().top - 200;
+    }
+    for (let i = 0; i < $("main .menu ul li").length; i++) {
+        if ($(window).scrollTop() >= pos[i]) {
+            $("main .menu ul li").removeClass("act");
+            $("main .menu ul li").eq(i).addClass("act");
+        }
+    }
+});
+
 $(function() {
     $("main .contents .functions-list :not(.toggle-btn) .paid").addClass("hide");
     $("main .language ul .en").addClass("selected");
-    $("main section .ja").addClass("hide-lang");
+    $("main .ja").addClass("hide-lang");
     $(".ko-fi .purchase a img").addClass("glow");
 
     $("main").on("click", ".language ul li", function() {
         $("main .language ul li").removeClass("selected");
-        if ($(this).attr("class") === "en") {
-            $("main section .en").removeClass("hide-lang");
+        if ($(this).attr("class") === "btn-en") {
+            $("main .en").removeClass("hide-lang");
             $("main .language ul .en").addClass("selected");
-            $("main section .ja").addClass("hide-lang");
+            $("main .ja").addClass("hide-lang");
         }
         else {
-            $("main section .ja").removeClass("hide-lang");
+            $("main .ja").removeClass("hide-lang");
             $("main .language ul .ja").addClass("selected");
-            $("main section .en").addClass("hide-lang");
+            $("main .en").addClass("hide-lang");
         }
     });
 

@@ -1,9 +1,69 @@
+html {
+    scroll-behavior: smooth;
+}
+
 main {
     background-color: #1c1b17;
     color: #fdfdfd;
     padding-top: 200px;
     padding-bottom: 250px;
+}
+
+main .menu {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main .menu ul {
+    display: inherit;
+    background-color: #38312e;
+    padding: 2px 0;
+    border-radius: 10px;
+}
+
+main .menu ul li {
+    background-color: #3d3029;
+    color: #d9b7a6;
+    margin: 10px 5px;
+    border-radius: 5px;
     text-align: center;
+    transition: color 300ms;
+}
+main .menu ul li.act,
+main .menu ul li:hover {
+    color: #e0c5b8;
+}
+
+main .menu ul li a {
+    display: block;
+    padding: 10px 25px;
+}
+
+main .menu ul li a p {
+    position: relative;
+    display: inline;
+}
+
+main .menu ul li a p::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #d9b7a6;
+    height: 1px;
+    width: 100%;
+    border-radius: 1px;
+    transform: scaleX(0);
+    transition: color 300ms, transform 300ms;
+}
+main .menu ul li.act a p::before,
+main .menu ul li:hover a p::before {
+    background-color: #e0c5b8;
+    transform: scaleX(1);
 }
 
 main .language {
@@ -29,12 +89,19 @@ main .language ul li:hover {
     text-decoration: underline;
 }
 
+main .hide-lang {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+}
+
 article {
     background-color: #38312e;
     width: 970px;
     padding: 12px 0;
     margin: 0 auto;
     border-radius: 10px;
+    text-align: center;
 }
 
 section {
@@ -44,6 +111,7 @@ section {
     margin: 80px auto;
     border-radius: 5px;
     text-shadow: 2px 2px 2px #000;
+    scroll-margin-top: 150px;
 }
 
 section h1 {
@@ -58,12 +126,6 @@ section code {
     font-family: "JetBrainsMono";
     padding: 1px 4px;
     border-radius: 4px;
-}
-
-section .hide-lang {
-    visibility: hidden;
-    height: 0;
-    opacity: 0;
 }
 
 section ul li {
@@ -294,13 +356,15 @@ section ul li {
     display: block;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
     background-image: url("/image/donation/ko-fi_hover.png");
     background-size: auto 100%;
+    background-position: center;
     background-repeat: no-repeat;
     height: 100%;
     width: 0;
-    transition: width 500ms;
+    transform: translateX(-50%);
+    transition: width 300ms, transfrom 300ms;
 }
 .ko-fi .purchase a:hover::after {
     width: 100%;
