@@ -35,6 +35,19 @@
                 background-color: #ff9966;
             }
 
+            header .pc .donation {
+                color: #ea609e;
+            }
+
+            .animated .pc .donation {
+                text-shadow: 0 0 10px #fdfdfd;
+            }
+
+            header .donation-mobile {
+                color: #ea609e;
+                text-shadow: 0 0 10px #fdfdfd;
+            }
+
             @media (max-width: 1232px) {
                 header {
                     background-color: #ac6039;
@@ -82,6 +95,12 @@
     <body>
         <%- include("header") %>
         <main>
+            <nav class="language">
+                <ul>
+                    <li class="btn-en">EN</li>
+                    <li class="btn-ja">JA</li>
+                </ul>
+            </nav>
             <nav class="menu">
                 <div class="wrap en">
                     <ul>
@@ -121,12 +140,6 @@
                         </li>
                     </ul>
                 </div>
-            </nav>
-            <nav class="language">
-                <ul>
-                    <li class="btn-en">EN</li>
-                    <li class="btn-ja">JA</li>
-                </ul>
             </nav>
             <article>
                 <section id="introduction" class="overview">
@@ -340,7 +353,7 @@
                         </li>
                         <li class="score-based-ranking free">
                             <div class="wrap en">
-                                <h1>5. Score-based Ranking Display</h1>
+                                <h1>5. Score-based Ranking</h1>
                                 <div class="media">
                                     <img class="free" src="/image/donation/score-based-3.png?<%= date %>" loading="lazy" alt="" />
                                     <img class="paid" src="/image/donation/score-based-51.png?<%= date %>" loading="lazy" alt="" />
@@ -356,7 +369,7 @@
                                 </div>
                             </div>
                             <div class="wrap ja">
-                                <h1>5. スコア別の順位表示</h1>
+                                <h1>5. スコアの順位表示</h1>
                                 <div class="media">
                                     <img class="free" src="/image/donation/score-based-3.png?<%= date %>" loading="lazy" alt="" />
                                     <img class="paid" src="/image/donation/score-based-51.png?<%= date %>" loading="lazy" alt="" />
@@ -438,10 +451,6 @@
                 </section>
                 <section id="subscription" class="ko-fi">
                     <ul>
-                        <li class="perpose">
-                            <div class="wrap en"></div>
-                            <div class="wrap ja"></div>
-                        </li>
                         <li class="price">
                             <div class="wrap en">
                                 <h1>How do I get a supporter?</h1>
@@ -463,6 +472,25 @@
                                 <p>
                                     メンバーシップをすぐにキャンセルしても、加入日の翌月の同じ日までサポーターの状態が続きます。
                                 </p>
+                            </div>
+                        </li>
+                        <li class="price">
+                            <div class="wrap en">
+                                <h1>Prices</h1>
+                                <p>
+                                    You can purchase 1 month of Mamestagram Supporter for $5.<br>
+                                    A discount will be applied when purchasing multiple months as shown below.
+                                </p>
+                            </div>
+                            <div class="wrap ja">
+                                <h1>お値段</h1>
+                                <p>
+                                    Mamestagramサポーターは1ヶ月$5で購入できます。<br>
+                                    複数ヶ月まとめて購入すると、以下のように割引が適用されます。
+                                </p>
+                            </div>
+                            <div class="price-bar">
+                                
                             </div>
                         </li>
                         <li class="purchase">

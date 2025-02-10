@@ -328,6 +328,25 @@ header .pc .avatar {
     margin-right: 85px;
 }
 
+header .donation-mobile {
+    position: absolute;
+    color: #fdfdfd;
+    font-size: 20px;
+    top: 0;
+    right: 100px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+    transition: color 300ms, margin 300ms, text-shadow 300ms, transform 200ms;
+}
+header .donation-mobile:hover {
+    color: #ea609e;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px #fdfdfd;
+}
+
 header .search-mobile {
     display: none;
     color: #fdfdfd;
@@ -361,7 +380,7 @@ header .arrow {
     position: fixed;
     color: #919495;
     font-size: 14px;
-    width: 100%;
+    width: 100vw;
     z-index: 90;
     box-shadow: 0 5px 5px black;
 }
@@ -381,8 +400,10 @@ header .arrow {
 }
 
 .mobile li a, .mobile li button {
+    display: block;
     height: 45px;
     line-height: 45px;
+    width: 100%;
 }
 
 .mobile .avatar div {
@@ -524,7 +545,8 @@ header .arrow {
         display: none;
     }
 
-    header .search-mobile, header .arrow {
+    header .search-mobile,
+    header .arrow {
         display: block;
     }
 

@@ -107,6 +107,7 @@ article {
 section {
     background-color: #3d3029;
     width: 950px;
+    font-size: 18px;
     padding: 10px 0;
     margin: 80px auto;
     border-radius: 5px;
@@ -153,7 +154,6 @@ section ul li {
     padding: 10px 10px 30px 10px;
 }
 .overview p {
-    font-size: 18px;
     margin-top: 30px;
 }
 /* ------------------------------------------------- */
@@ -256,6 +256,7 @@ section ul li {
     height: 490px;
     width: 850px;
     margin: 0 auto;
+    overflow: hidden;
     transition: height 400ms cubic-bezier(0.4, 0.4, 0, 1);
 }
 .contents .wipe.free .media {
@@ -298,8 +299,8 @@ section ul li {
 
 .contents .description {
     position: relative;
-    font-size: 18px;
     height: 75px;
+    overflow: hidden;
 }
 
 .contents .description p {
@@ -334,7 +335,6 @@ section ul li {
 }
 
 .ko-fi p {
-    font-size: 18px;
     margin-top: 30px;
 }
 
@@ -379,4 +379,171 @@ section ul li {
 }
 .ko-fi .purchase a img.fade {
     filter: drop-shadow(0px 0px 5px var(--glow-color));
+}
+
+@media(max-width: 1232px) {
+    main {
+        padding-top: 50px;
+    }
+
+    main .menu {
+        position: unset;
+        margin-bottom: 60px;
+    }
+
+    main .menu ul {
+        display: flex;
+        padding: 0;
+        justify-content: center;
+    }
+
+    main .menu ul li.act a p::before {
+        visibility: hidden;
+    }
+
+    main .language {
+        position: unset;
+        margin-bottom: 60px;
+    }
+
+    main .language ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    main .language ul li {
+        padding: 15px;
+        margin: 0 20px;
+    }
+
+    article {
+        width: 760px;
+    }
+
+    section {
+        width: 740px;
+        font-size: 16px;
+    }
+    
+    section h1 {
+        font-size: 30px;
+    }
+
+    section code {
+        font-size: 14px;
+    }
+    /* ------------------------------------------------- */
+    .contents .media {
+        height: 410px;
+        width: 720px;
+    }
+    .contents .score-based-ranking .media {
+        height: 190px;
+    }
+    .contents .role .media {
+        height: 160px;
+    }
+
+    .contents .description {
+        height: 65px;
+    }
+}
+
+@media(max-width: 767px) {
+    body {
+        min-width: 348px;
+    }
+
+    main {
+        padding-top: 30px;
+    }
+
+    main .menu {
+        display: block;
+        margin-top: 80px;
+        margin-bottom: 0;
+    }
+
+    main .menu ul {
+        width: 50%;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    main .menu ul li {
+        font-size: 14px;
+        margin: 5px;
+    }
+
+    main .language {
+        margin: 0;
+    }
+
+    main .language ul {
+        font-size: 14px;
+    }
+
+    main .language ul li {
+        padding: 15px;
+        margin: 0 20px;
+    }
+
+    article {
+        width: 370px;
+        padding: 10px 0;
+    }
+
+    section {
+        font-size: 14px;
+        width: 360px;
+        margin: 20px auto;
+        scroll-margin-top: 100px;
+    }
+
+    section h1 {
+        font-size: 26px;
+        padding: 0 5px;
+    }
+
+    section code {
+        font-size: 12px;
+    }
+    /* ------------------------------------------------- */
+    .contents h1 {
+        font-size: 24px;
+        padding: 10px 5px;
+    }
+
+    .contents ul li {
+        margin-bottom: 80px;
+    }
+
+    .contents .media {
+        height: 200px;
+        width: 350px;
+    }
+    .contents .score-based-ranking .media {
+        height: 95px;
+    }
+    .contents .role .media {
+        height: 80px;
+    }
+
+    .contents .description {
+        height: 60px;
+    }
+
+    .contents .functions-list li .toggle-btn ul {
+        height: 40px;
+        width: 120px;
+    }
+
+    .contents .functions-list li .toggle-btn ul::after {
+        top: 25%;
+        font-size: 15px;
+    }
+    /* ------------------------------------------------- */
+    .ko-fi .purchase a {
+        height: 40px;
+    }
 }
