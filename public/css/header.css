@@ -329,6 +329,7 @@ header .pc .avatar {
 }
 
 header .donation-mobile {
+    visibility: hidden;
     position: absolute;
     color: #fdfdfd;
     font-size: 20px;
@@ -543,6 +544,10 @@ header .arrow {
 
     header .pc {
         display: none;
+    }
+
+    header .donation-mobile {
+        visibility: visible;
     }
 
     header .search-mobile,

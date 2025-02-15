@@ -318,46 +318,221 @@ section ul li {
     transform: translateX(30%);
 }
 /* ------------------------------------------------- */
-.ko-fi {
+.subscription {
     margin-bottom: 0
 }
 
-.ko-fi h1 {
+.subscription h1 {
     padding-bottom: 0;
 }
 
-.ko-fi ul li {
+.subscription ul li {
     margin-bottom: 30px;
 }
 
-.ko-fi .wrap:not(.hide-lang) {
+.subscription .wrap:not(.hide-lang) {
     padding: 10px 10px 30px 10px;
 }
 
-.ko-fi p {
+.subscription p {
     margin-top: 30px;
 }
 
-.ko-fi ul .purchase {
+.subscription ul .prices .price-bar {
+    --scaleWidth: 0;
+    --leftPos: 0;
+    --pickPos: 0;
+    display: block;
+    position: relative;
+    background-color: #463e39;
+    height: 8px;
+    width: 80%;
+    border-radius: 8px;
+    margin: 100px auto;
+}
+
+.subscription ul .prices .price-bar .weeks-scale {
+    display: flex;
+    position: relative;
+    top: -10px;
+}
+
+.subscription ul .prices .price-bar .weeks-scale li {
+    cursor: pointer;
+    position: inherit;
+    height: 28px;
+    width: var(--scaleWidth);
+    border-top: none;
+    margin-bottom: 0;
+    z-index: 10;
+}
+.subscription ul .prices .price-bar .weeks-scale li:first-child {
+    margin-left: -5px;
+}
+.subscription ul .prices .price-bar .weeks-scale li:last-child {
+    margin-right: -5px;
+}
+
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element,
+.subscription ul .prices .price-bar .color .tooltip-element {
+    display: block;
+    position: inherit;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.subscription ul .prices .price-bar .color .tooltip-element {
+    top: -10px !important;
+    height: 28px !important;
+}
+.subscription ul .prices .price-bar .weeks-scale li:not(.selected):hover .tooltip-element .tooltip {
+    visibility: visible;
+    bottom: 140%;
+    opacity: 1;
+}
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip,
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip {
+    visibility: hidden;
+    display: flex;
+    line-height: 10px;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    bottom: 70%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 8px 5px;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: #463e39;
+    color: #fdfdfd;
+    text-align: center;
+    box-shadow: 2px 2px 2px #000;
+    opacity: 0;
+    z-index: 2;
+    transition: visibility 300ms, background-color 300ms, margin 500ms, bottom 300ms, opacity 300ms;
+}
+.subscription ul .prices .price-bar .weeks-scale li.selected .tooltip-element .tooltip {
+    z-index: 0;
+}
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip {
+    left: 0 !important;
+    bottom: 140% !important;
+    background-color: #ff66ab !important;
+    margin-left: var(--leftPos) !important;
+    transition-delay: 50ms !important;
+    z-index: 1 !important;
+}
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip::before,
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 12px solid #463e39;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    filter: drop-shadow(2px 2px #000);
+    transform: translateX(-50%);
+    transition: border 300ms;
+}
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip::before {
+    border-top: 12px solid #ff66ab !important;
+}
+
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip span,
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip span {
+    display: block;
+}
+
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip .price,
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip .weeks:not(.hide-lang),
+.subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip .discount:not(.hide-lang),
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip .weeks:not(.hide-lang),
+.subscription ul .prices .price-bar .color .tooltip-element .tooltip .discount:not(.hide-lang) {
+    font-size: 0.7em;
+    padding-top: 5px;
+}
+
+.subscription ul .prices .price-bar .color {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff66ab;
+    height: 8px;
+    width: var(--leftPos);
+    border-radius: 8px;
+    transition: width 500ms;
+}
+.subscription ul .prices .price-bar .color::before {
+    content: "";
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    background-color: #ff66ab;
+    height: 28px;
+    width: 8px;
+    border-radius: inherit;
+    margin-left: var(--pickPos);
+    transition: margin 500ms;
+}
+
+.subscription ul .prices .price-bar div.weeks {
+    display: flex;
+    font-size: 14px;
+    margin-top: 20px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.subscription ul .prices .price-bar div.weeks input {
+    background-color: #222222;
+    caret-color: #fdfdfd;
+    color: #8b8b8b;
+    width: 60px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.subscription ul .purchase {
     margin-bottom: 30px;
 }
 
-.ko-fi .purchase a {
+.subscription .purchase a {
     display: inline-block;
     position: relative;
     height: 50px;
     --glow-color: #ff5a16;
 }
-.ko-fi .purchase a:hover {
+.subscription .purchase a:hover {
     --glow-color: #72a4f2;
 }
-.ko-fi .purchase a::after {
+.subscription .purchase a::after {
     content: "";
     display: block;
     position: absolute;
     top: 0;
     left: 50%;
-    background-image: url("/image/donation/ko-fi_hover.png");
+    background-image: url("/image/donation/subscription_hover.png");
     background-size: auto 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -366,18 +541,18 @@ section ul li {
     transform: translateX(-50%);
     transition: width 300ms, transfrom 300ms;
 }
-.ko-fi .purchase a:hover::after {
+.subscription .purchase a:hover::after {
     width: 100%;
 }
 
-.ko-fi .purchase a img {
+.subscription .purchase a img {
     height: inherit;
     transition: filter 3000ms;
 }
-.ko-fi .purchase a img.glow {
+.subscription .purchase a img.glow {
     filter: drop-shadow(0px 0px 10px var(--glow-color));
 }
-.ko-fi .purchase a img.fade {
+.subscription .purchase a img.fade {
     filter: drop-shadow(0px 0px 5px var(--glow-color));
 }
 
@@ -543,7 +718,31 @@ section ul li {
         font-size: 15px;
     }
     /* ------------------------------------------------- */
-    .ko-fi .purchase a {
+    .subscription ul .prices .price-bar {
+        width: 85%;
+    }
+
+    .subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip,
+    .subscription ul .prices .price-bar .color .tooltip-element .tooltip {
+        width: 70px;
+    }
+
+    .subscription ul .prices .price-bar .weeks-scale li .tooltip-element .tooltip .price,
+    .subscription ul .prices .price-bar .color .tooltip-element .tooltip .price {
+        padding-bottom: 5px;
+    }
+
+    .subscription ul .prices .price-bar div.weeks {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    .subscription ul .prices .price-bar div.weeks input {
+        width: 40px;
+        padding: 7px 5px;
+    }
+
+    .subscription .purchase a {
         height: 40px;
     }
 }

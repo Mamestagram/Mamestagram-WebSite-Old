@@ -449,9 +449,9 @@
                         </li>
                     </ul>
                 </section>
-                <section id="subscription" class="ko-fi">
+                <section id="subscription" class="subscription">
                     <ul>
-                        <li class="price">
+                        <li class="how">
                             <div class="wrap en">
                                 <h1>How do I get a supporter?</h1>
                                 <p>
@@ -474,23 +474,53 @@
                                 </p>
                             </div>
                         </li>
-                        <li class="price">
+                        <li class="prices">
                             <div class="wrap en">
                                 <h1>Prices</h1>
                                 <p>
-                                    You can purchase 1 month of Mamestagram Supporter for $5.<br>
-                                    A discount will be applied when purchasing multiple months as shown below.
+                                    You can purchase 1 week of Mamestagram Supporter for $5.<br>
+                                    A discount will be applied when purchasing multiple weeks as shown below.
                                 </p>
                             </div>
                             <div class="wrap ja">
                                 <h1>お値段</h1>
                                 <p>
-                                    Mamestagramサポーターは1ヶ月$5で購入できます。<br>
+                                    Mamestagramサポーターは1週間$5で購入できます。<br>
                                     複数ヶ月まとめて購入すると、以下のように割引が適用されます。
                                 </p>
                             </div>
                             <div class="price-bar">
-                                
+                                <% let price = 1.25, weeks; %>
+                                <ul class="weeks-scale">
+                                    <% for(let i = 1; i <= 48; i++) { %>
+                                        <% weeks = price * i >= 10 ? Math.floor(i * 1.2) : i %>
+                                        <li class="for-<%= weeks %>-weekss<%= i === 1 ? " selected" : "" %>">
+                                            <span class="tooltip-element">
+                                                <p class="tooltip">
+                                                    <span class="price">$<%= price * i %></span>
+                                                    <span class="weeks en"><%= weeks %> week<%= i !== 1 ? "s" : "" %></span>
+                                                    <span class="weeks ja"><%= weeks %>週間</span>
+                                                    <span class="discount en">save <%= price * i >= 10 ? "20" : "0" %>% off</span>
+                                                    <span class="discount ja"><%= price * i >= 10 ? "20" : "0" %>%割引</span>
+                                                </p>
+                                            </span>
+                                        </li>
+                                    <% } %>
+                                </ul>
+                                <span class="color">
+                                    <span class="tooltip-element">
+                                        <p class="tooltip">
+                                            <span class="price">$<%= price %></span>
+                                            <span class="weeks en">1 week</span>
+                                            <span class="weeks ja">1週間</span>
+                                            <span class="discount en">save 0% off</span>
+                                            <span class="discount ja">0%割引</span>
+                                        </p>
+                                    </span>
+                                </span>
+                                <div class="weeks">
+                                    <input type="text" placeholder="1 - 48" value="1" />week(s)
+                                </div>
                             </div>
                         </li>
                         <li class="purchase">
