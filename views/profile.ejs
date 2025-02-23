@@ -475,14 +475,13 @@
         const getUserPriv = (n) => {
             const priv = [];
             const privName = ["", "", "Verified", "", "Supporter", "", "", "Arumni", "", "", "", "Nominator", "Moderator", "Administrator", "Developer"];
-            if (n >= 31879) {
+            if (n >= 1 << 14) {
                 priv.push("Developer");
                 return priv;
             }
-            for (let i = 14; i >= 0; i--) {
+            for (let i = 0; Math.pow(2, i) <= n; i++) {
                 if (i === 3 || i === 6 || i === 8 || i === 9) continue;
-                if (n >= 1 << i) {
-                    n -= 1 << i;
+                if ((n & 1 << i) > 0) {
                     if (privName[i] !== "") {
                         priv.push(privName[i]);
                     }
@@ -511,11 +510,11 @@
                     <div>
                         <div class="flex-box">
                             <span
-                            <% if ((!clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (clan && info.public === 1 && ranking === 1)) { %>
+                            <% if ((!bRanking && !clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (bRanking && !info.priv % 2 === 0 && ranking.bancho === 1) || (clan && info.public === 1 && ranking === 1)) { %>
                                 class="champion"
                             <% } %>>
                                 <h1 title="Created at <%= !clan ? getLocationTime(info.creation_time, cty) : getLocationTime(info.created_at, cty) %>"><%= info.name %></h1>
-                                <% if ((!clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (clan && info.public === 1 && ranking === 1)) { %>
+                                <% if ((!bRanking && !clan && !info.priv % 2 === 0 && ranking.global[0].value === 1) || (bRanking && !info.priv % 2 === 0 && ranking.bancho === 1) || (clan && info.public === 1 && ranking === 1)) { %>
                                     <p class="tooltip"><%= getModeName(modeNum) %> champion</p>
                                 <% } %>
                             </span>
@@ -712,6 +711,8 @@
                         <button class="menu-title">
                             <% if (dans) { %>
                                 Dans
+                            <% } else if (bRanking) { %>
+                                Bancho
                             <% } else if (modeNum >= 0 && modeNum < 4) { %>
                                 Classic
                             <% } else if (modeNum < 8) { %>
@@ -719,7 +720,7 @@
                             <% } else { %>
                                 Auto Pilot
                             <% } %>
-                            <% if (modeNum === info.preferred_mode && !dans) { %>
+                            <% if (modeNum === info.preferred_mode && !dans && !bRanking) { %>
                                 <i class="favorite fa-solid fa-star fa-xs"></i>
                             <% } %>
                             <i class="fa-solid fa-chevron-down arrow down"></i>
@@ -785,6 +786,21 @@
                                     href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania&dans"
                                 <% } %>>Dans</a>
                             </li>
+                            <!-- bancho lb -->
+                            <% if (!clan && (priv & 1 << 4) > 0) { %>
+                                <li>
+                                    <a
+                                    <% if (modeNum % 4 === 0) { %>
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std?bRanking"
+                                    <% } else if (modeNum % 4 === 1) { %>
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko?bRanking"
+                                    <% } else if (modeNum % 4 === 2) { %>
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb?bRanking"
+                                    <% } else if (modeNum === 3) { %>
+                                        href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania?bRanking"
+                                    <% } %>>Bancho</a>
+                                </li>
+                            <% } %>
                         </ul>
                     </div>
                     <% if (((!clan && id === locals.userid) || (clan && info.owner === locals.userid)) && modeNum !== info.preferred_mode) { %>
@@ -803,7 +819,7 @@
                             <% if (dans) { %>
                                 href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std&dans"
                             <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std"
+                                href="/profile/<%= id %><%= clan ? "&clan" : "" %>/std<%= bRanking ? "?bRanking" : "" %>"
                             <% } else if (modeNum < 7) { %>
                                 href="/profile/<%= id %><%= clan ? "&clan" : "" %>/stdrx"
                             <% } else { %>
@@ -823,7 +839,7 @@
                                 <% if (dans) { %>
                                     href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko&dans"
                                 <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taiko<%= bRanking ? "?bRanking" : "" %>"
                                 <% } else { %>
                                     href="/profile/<%= id %><%= clan ? "&clan" : "" %>/taikorx"
                                 <% } %>><i class="mode-icon mode-taiko"></i></a>
@@ -840,7 +856,7 @@
                                 <% if (dans) { %>
                                     href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb&dans"
                                 <% } else if (modeNum >= 0 && modeNum < 4) { %>
-                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctb<%= bRanking ? "?bRanking" : "" %>"
                                 <% } else { %>
                                     href="/profile/<%= id %><%= clan ? "&clan" : "" %>/ctbrx"
                                 <% } %>><i class="mode-icon mode-fruits"></i></a>
@@ -859,7 +875,7 @@
                                 <% if (dans) { %>
                                     href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania&dans"
                                 <% } else { %>
-                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania"
+                                    href="/profile/<%= id %><%= clan ? "&clan" : "" %>/mania<%= bRanking ? "?bRanking" : "" %>"
                                 <% } %>><i class="mode-icon mode-mania"></i></a>
                                 <% if (info.preferred_mode % 4 === 3) { %>
                                     <i class="favorite fa-solid fa-star"></i>
@@ -871,7 +887,18 @@
                 <div class="string player-info">
                     <div class="overview">
                         <div class="wrap ranking">
-                            <% if (!clan) { %>
+                            <% if (bRanking) { %>
+                                <div class="global">
+                                    <h1>Bancho Ranking</h1>
+                                    <h2>
+                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                            -
+                                        <% } else { %>
+                                            #<%= ranking.bancho.toLocaleString() %>
+                                        <% } %>
+                                    </h2>
+                                </div>
+                            <% } else if (!clan) { %>
                                 <div class="global">
                                     <h1>Global Ranking</h1>
                                     <h2>

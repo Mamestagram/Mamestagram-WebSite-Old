@@ -251,6 +251,13 @@ section ul li {
     transition: visibility 500ms cubic-bezier(0.4, 0.4, 0, 1), transform 500ms cubic-bezier(0.4, 0.4, 0, 1), opacity 500ms cubic-bezier(0.4, 0.4, 0, 1);
 }
 
+.contents .functions-list .bancho-lb.free .media {
+    height: 710px;
+}
+.contents .functions-list .bancho-lb.free .media img {
+    margin-top: 490px;
+}
+
 .contents .media {
     position: relative;
     height: 490px;
