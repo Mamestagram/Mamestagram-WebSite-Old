@@ -98,13 +98,13 @@ $(function() {
         $(".subscription ul .prices .price-bar .color .tooltip-element .tooltip .discount.en").text($(this).find(".discount.en").text());
         $(".subscription ul .prices .price-bar .color .tooltip-element .tooltip .weeks.ja").text($(this).find(".weeks.ja").text());
         $(".subscription ul .prices .price-bar .color .tooltip-element .tooltip .discount.ja").text($(this).find(".discount.ja").text());
-        $(".subscription ul .prices .price-bar div.weeks input").val(idx + 1);
+        $(".subscription ul .prices .price-bar div.weeks input").val(idx + 4);
     });
 
     $("main").on("input", ".subscription ul .prices .price-bar div.weeks input", function() {
         const reg = /[^0-9]+/
         if (!reg.test($(this).val())) {
-            idx = Math.max(1, Math.min(48, $(this).val())) - 1;
+            idx = Math.max(4, Math.min(48, $(this).val())) - 1;
             leftPos = scaleWidth * idx;
             if (idx > 0 && idx < $(".subscription ul .prices .price-bar .weeks-scale li").length - 1) {
                 leftPos += scaleWidth / 2 - 5

@@ -494,7 +494,7 @@
                             <div class="price-bar">
                                 <% let price = 1.25, weeks; %>
                                 <ul class="weeks-scale">
-                                    <% for(let i = 1; i <= 48; i++) { %>
+                                    <% for(let i = 4; i <= 48; i++) { %>
                                         <% weeks = price * i >= 10 ? Math.floor(i * 1.2) : i %>
                                         <li class="for-<%= weeks %>-weekss<%= i === 1 ? " selected" : "" %>">
                                             <span class="tooltip-element">
@@ -512,16 +512,16 @@
                                 <span class="color">
                                     <span class="tooltip-element">
                                         <p class="tooltip">
-                                            <span class="price">$<%= price %></span>
-                                            <span class="weeks en">1 week</span>
-                                            <span class="weeks ja">1週間</span>
+                                            <span class="price">$<%= price * 4 %></span>
+                                            <span class="weeks en">4 week</span>
+                                            <span class="weeks ja">4週間</span>
                                             <span class="discount en">save 0% off</span>
                                             <span class="discount ja">0%割引</span>
                                         </p>
                                     </span>
                                 </span>
                                 <div class="weeks">
-                                    <input type="text" placeholder="1 - 48" value="1" />week(s)
+                                    <input type="text" placeholder="4 - 48" value="4" />week(s)
                                 </div>
                             </div>
                         </li>
