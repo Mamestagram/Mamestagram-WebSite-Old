@@ -158,7 +158,7 @@
             data-action="submit">Register</button>
             <p class="caution multi-account">*Do not create multiple account</p>
         </form>
-        <script>
+        <script nonce="<%= cspNonce %>">
             function onSubmit(token) {
                 document.getElementById("post").value = token;
                 document.getElementById("register").submit();

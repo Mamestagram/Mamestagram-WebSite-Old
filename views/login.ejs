@@ -116,7 +116,7 @@
         </div>
     </main>
     <%- include("footer") %>
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="<%= cspNonce %>">
         function getKey() {
             alert("Could be useful somewhere");
             window.location.href = "/key";

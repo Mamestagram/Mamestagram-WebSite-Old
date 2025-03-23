@@ -14,7 +14,7 @@
         <title>Support | Mamestagram</title>
         <%- include("link") %>
         <link rel="stylesheet" href="/css/donation.css?<%= date %>" />
-        <script src="/jquery/donation.js?<%= date %>" defer></script>
+        <script src="/jquery/donation.js?<%= date %>" nonce="<%= cspNonce %>" defer></script>
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;

@@ -14,7 +14,7 @@
         <title>Leaderboard | Mamestagram</title>
         <%- include("link") %>
         <link rel="stylesheet" href="/css/leaderboard.css?<%= date %>" />
-        <script src="/jquery/leaderboard.js?<%= date %>"></script>
+        <script src="/jquery/leaderboard.js?<%= date %>" nonce="<%= cspNonce %>" defer></script>
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -449,7 +449,7 @@
     </main>
     <%- include("footer") %>
     <% n = n <= 25 ? 0 : n; %>
-    <script>
+    <script nonce="<%= cspNonce %>">
         function jumpPage(page) {
             const link = `/leaderboard/<%= getModeName(modeNum) %>/<%- clan ? "clan&" : "" %><%= sortby %><%- selectedCountry !== "all" ? "&cty=" + selectedCountry : "" %>&page=${page}`;
             const element = document.getElementById("ajaxreload");

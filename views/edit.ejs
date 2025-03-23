@@ -261,7 +261,7 @@
             </div>
         </main>
         <%- include("footer") %>
-        <script>
+        <script nonce="<%= cspNonce %>">
             $(".box .image input").change(function() {
                 const image = $(this)[0].files[0];
                 preview($(this).attr("name"), image);

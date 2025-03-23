@@ -15,7 +15,7 @@
         <meta name="robots" content="noindex">
         <%- include("link") %>
         <link rel="stylesheet" href="/css/profile.css?<%= date %>" />
-        <script src="/jquery/profile.js?<%= date %>"></script>
+        <script src="/jquery/profile.js?<%= date %>" nonce="<%= cspNonce %>" defer></script>
         <style>
             body::-webkit-scrollbar-track {
                 background-color: #fdfdfd;
@@ -153,7 +153,7 @@
                 "by": "Europe/Minsk",
                 "bz": "America/Belize",
                 "ca": "America/Toronto",
-                "cc": "Australia/Cocos",
+                "cc": "Australia/Cocos", // 非対応
                 "cd": "Africa/Kinshasa",
                 "cf": "Africa/Bangui",
                 "cg": "Africa/Brazzaville",
@@ -168,7 +168,7 @@
                 "cu": "America/Havana",
                 "cv": "Atlantic/Cape_Verde",
                 "cw": "America/Curacao",
-                "cx": "Australia/Christmas",
+                "cx": "Australia/Christmas", // 非対応
                 "cy": "Asia/Nicosia",
                 "cz": "Europe/Prague",
                 "de": "Europe/Berlin",
@@ -208,7 +208,7 @@
                 "gw": "Africa/Bissau",
                 "gy": "America/Guyana",
                 "hk": "Asia/Hong_Kong",
-                "hm": "Australia/Hugh_Henry",
+                "hm": "Australia/Hugh_Henry", // 非対応
                 "hn": "America/Tegucigalpa",
                 "hr": "Europe/Zagreb",
                 "ht": "America/Port-au-Prince",
@@ -1791,7 +1791,7 @@
             <% } %>
         </main>
         <%- include("footer") %>
-        <script>
+        <script nonce="<%= cspNonce %>">
             let before = `<%= bbcode %>`, hold, preview = false;
             window.addEventListener("DOMContentLoaded", function() {
                 if (before.length > 0) {

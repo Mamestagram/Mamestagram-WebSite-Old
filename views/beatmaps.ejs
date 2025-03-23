@@ -1056,7 +1056,7 @@
     </main>
     <%- include("footer") %>
     <script src="/jquery/beatmaps.js"></script>
-    <script>
+    <script nonce="<%= cspNonce %>">
         function process() {
             var $td = $(".ranking .wrap .flex .selection .special .ts");
             var $mods = $(".ranking .wrap .mods-selection li");
