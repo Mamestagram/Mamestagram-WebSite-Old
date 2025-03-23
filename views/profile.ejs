@@ -361,6 +361,13 @@
                 "zm": "Africa/Lusaka",
                 "zw": "Africa/Harare"
             };
+            switch (country) {
+                case "cc":
+                case "cx":
+                case "hm":
+                    country = "au";
+                    break;
+            }
             return zone[country];
         }
 
@@ -787,7 +794,7 @@
                                 <% } %>>Dans</a>
                             </li>
                             <!-- bancho lb -->
-                            <% if (!clan && (priv & 1 << 4) > 0) { %>
+                            <% if (loginf && !clan && (priv & 1 << 4) > 0) { %>
                                 <li>
                                     <a
                                     <% if (modeNum % 4 === 0) { %>
