@@ -149,6 +149,7 @@
             <input type="hidden" id="post" name="recaptcha" value="default">
             <% if (err === "nothuman") { %>
                 <span class="errmsg verify">A problem has occurred</span>
+                <p class="errmsg verify" style="padding-top: 5px; font-size: 12px;">If you are using IPv6, try again with IPv4</p>
             <% } else if (err === "wait") { %>
                 <span class="errmsg verify">Give it a little time</span>
             <% } %>
