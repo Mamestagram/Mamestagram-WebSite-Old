@@ -499,19 +499,19 @@
         %>
     </head>
     <body>
-        <img class="background-img" src="https://<%= clan ? "clan-" : "" %>bg.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="100%" />
-        <%- include("header") %> 
+        <img class="background-img" src="https://<%= clan ? "clan-" : "" %>bg.mamesosu.net/<%= id %>?<%= date %>" decoding="async" loading="lazy" alt="" width="100%" height="100%" />
+        <%- include("header") %>
         <main>
             <% const cty = loginf ? country : "UTC"; %>
             <div class="box banner-box">
-                <img src="https://<%= clan ? "clan-" : "" %>banner.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" width="100%" height="250" />
+                <img src="https://<%= clan ? "clan-" : "" %>banner.mamesosu.net/<%= id %>?<%= date %>" decoding="async" loading="lazy" alt="" width="100%" height="250" />
             </div>
             <div class="box player-banner">
                 <div class="string username">
                     <div class="avatar">
-                        <img class="avatar" src="https://<%= clan ? "clan-" : "" %>a.mamesosu.net/<%= id %>?<%= date %>" loading="lazy" alt="" />
+                        <img class="avatar" src="https://<%= clan ? "clan-" : "" %>a.mamesosu.net/<%= id %>?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% if (!clan && setBadge !== 0) { %>
-                            <img class="gacha" src="/image/gacha/<%= setBadge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= setBadge %>.gif?<%= date %>'" alt="" />
+                            <img class="gacha" src="/image/gacha/<%= setBadge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= setBadge %>.gif?<%= date %>'" decoding="async" loading="lazy" alt="" />
                         <% } %>
                     </div>
                     <div>
@@ -648,7 +648,7 @@
                                     <div class="users">
                                         <% mutualList.forEach((data) => { %>
                                             <a class="data" href="/profile/<%= data.user2 %>">
-                                                <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= date %>" loading="lazy" alt="" />
+                                                <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= date %>" decoding="async" loading="lazy" alt="" />
                                                 <div class="name">
                                                     <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
                                                     <p class="username"><%= data.name %></p>
@@ -666,7 +666,7 @@
                                     <div class="users">
                                         <% followingList.forEach((data) => { %>
                                             <a class="data" href="/profile/<%= data.user2 %>">
-                                                <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= date %>" loading="lazy" alt="" />
+                                                <img class="avatar" src="https://a.mamesosu.net/<%= data.user2 %>?<%= date %>" decoding="async" loading="lazy" alt="" />
                                                 <div class="name">
                                                     <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
                                                     <p class="username"><%= data.name %></p>
@@ -684,7 +684,7 @@
                                     <div class="users">
                                         <% followersList.forEach((data) => { %>
                                         <a class="data" href="/profile/<%= data.user1 %>">
-                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= date %>" loading="lazy" alt="" />
+                                            <img class="avatar" src="https://a.mamesosu.net/<%= data.user1 %>?<%= date %>" decoding="async" loading="lazy" alt="" />
                                             <div class="name">
                                                 <i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i>
                                                 <p class="username"><%= data.name %></p>
@@ -967,23 +967,23 @@
                         </div>
                         <div class="wrap grade-amounts">
                             <div class="xh">
-                                <img src="/image/grade/XH.png?<%= date %>" alt="" /><br>
+                                <img src="/image/grade/XH.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
                                 <%= !dans ? Math.floor(info.xh_count).toLocaleString() : Math.floor(grade.xh[0].value).toLocaleString() %>
                             </div>
                             <div class="x">
-                                <img src="/image/grade/X.png?<%= date %>" alt="" /><br>
+                                <img src="/image/grade/X.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
                                 <%= !dans ? Math.floor(info.x_count).toLocaleString() : Math.floor(grade.x[0].value).toLocaleString() %>
                             </div>
                             <div class="sh">
-                                <img src="/image/grade/SH.png?<%= date %>" alt="" /><br>
+                                <img src="/image/grade/SH.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
                                 <%= !dans ? Math.floor(info.sh_count).toLocaleString() : Math.floor(grade.sh[0].value).toLocaleString() %>
                             </div>
                             <div class="s">
-                                <img src="/image/grade/S.png?<%= date %>" alt="" /><br>
+                                <img src="/image/grade/S.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
                                 <%= !dans ? Math.floor(info.s_count).toLocaleString() : Math.floor(grade.s[0].value).toLocaleString() %>
                             </div>
                             <div class="a">
-                                <img src="/image/grade/A.png?<%= date %>" alt="" /><br>
+                                <img src="/image/grade/A.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
                                 <%= !dans ? Math.floor(info.a_count).toLocaleString() : Math.floor(grade.a[0].value).toLocaleString() %>
                             </div>
                         </div>
@@ -1171,8 +1171,8 @@
                         <% } else { %>
                             <% bestpp.forEach((data) => { %>
                                 <div class="wrap data">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
-                                    <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                    <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>&" decoding="async" loading="lazy" alt="" />
+                                    <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <a
                                     <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
@@ -1183,7 +1183,7 @@
                                     </a>
                                     <div class="mods">
                                         <% getMods(data.mods).forEach((mod) => { %>
-                                            <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                            <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% }); %>
                                     </div>
                                     <p class="acc"><%= data.acc.toFixed(2) %>%</p>
@@ -1205,9 +1205,9 @@
                                 </div>
                                 <div class="data-mobile">
                                     <div class="flex info">
-                                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
-                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
-                                        <a 
+                                        <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
+                                        <a
                                         <% if (!dans && data.id > 0) { %>
                                             href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                         <% } %>>
@@ -1217,7 +1217,7 @@
                                         <% if (data.mods !== 0) { %>
                                             <div class="mods">
                                                 <% getMods(data.mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                                 <% }); %>
                                             </div>
                                         <% } %>
@@ -1267,8 +1267,8 @@
                         <% } else { %>
                             <% firstPlace.forEach((data) => { %>
                                 <div class="wrap data">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
-                                    <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                    <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                                    <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <a
                                     <% if (!dans && data.id > 0) { %>
                                         href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
@@ -1279,7 +1279,7 @@
                                     </a>
                                     <div class="mods">
                                         <% getMods(data.mods).forEach((mod) => { %>
-                                            <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                            <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% }); %>
                                     </div>
                                     <p class="acc"><%= data.acc.toFixed(2) %>%</p>
@@ -1301,9 +1301,9 @@
                                 </div>
                                 <div class="data-mobile">
                                     <div class="flex info">
-                                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
-                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
-                                        <a 
+                                        <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
+                                        <a
                                         <% if (!dans && data.id > 0) { %>
                                             href="/beatmaps/<%= data.set_id%>/<%= data.id %>"
                                         <% } %>>
@@ -1313,7 +1313,7 @@
                                         <% if (data.mods !== 0) { %>
                                             <div class="mods">
                                                 <% getMods(data.mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                                 <% }); %>
                                             </div>
                                         <% } %>
@@ -1361,12 +1361,12 @@
                             <h1 class="nothing">No scores available</h1>
                         <% } else { %>
                             <% mostplays.forEach((data) => { %>
-                                <div class="data" 
+                                <div class="data"
                                 <% if (dans) { %>
                                     style="height: 55px;"
                                 <% } %>>
                                     <% if (!dans) { %>
-                                        <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" loading="lazy" alt="" />
+                                        <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% } %>
                                     <a
                                     <% if (!dans && data.id > 0) { %>
@@ -1390,7 +1390,7 @@
                                         style="background-color: unset; height: 54px;"
                                     <% } %>>
                                         <% if (!dans) { %>
-                                            <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" loading="lazy" alt="" />
+                                            <img src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% } %>
                                         <div>
                                             <i class="fa-solid fa-play play-icon"></i>
@@ -1441,11 +1441,11 @@
                         <% } else { %>
                             <% recentplays.forEach((data) => { %>
                                 <div class="data" style="display: none;">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
+                                    <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
-                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% } else { %>
-                                        <img class="grade" src="/image/grade/F.png?<%= date %>" alt="" />
+                                        <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% } %>
                                     <a
                                     <% if (!dans && data.id > 0) { %>
@@ -1457,7 +1457,7 @@
                                     </a>
                                     <div class="mods">
                                         <% getMods(data.mods).forEach((mod) => { %>
-                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                            <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% }); %>
                                     </div>
                                     <p class="acc">
@@ -1487,11 +1487,11 @@
                                 </div>
                                 <div class="data-mobile" style="display: none;">
                                     <div class="flex info">
-                                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
+                                        <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
-                                            <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                            <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% } else { %>
-                                            <img class="grade" src="/image/grade/F.png?<%= date %>" alt="" />
+                                            <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% } %>
                                         <a
                                         <% if (!dans && data.id > 0) { %>
@@ -1503,7 +1503,7 @@
                                         <% if (data.mods !== 0) { %>
                                             <div class="mods">
                                                 <% getMods(data.mods).forEach((mod) => { %>
-                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                                    <img title="<%= mod %>" class="img" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                                 <% }); %>
                                             </div>
                                         <% } %>
@@ -1541,11 +1541,11 @@
                         <% } else { %>
                             <% recentplays_nof.forEach((data) => { %>
                                 <div class="data-passed">
-                                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
+                                    <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
-                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                        <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% } else { %>
-                                        <img class="grade" src="/image/grade/F.png?<%= date %>" alt="" />
+                                        <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                     <% } %>
                                     <a
                                     <% if (!dans && data.id > 0) { %>
@@ -1557,7 +1557,7 @@
                                     </a>
                                     <div class="mods">
                                         <% getMods(data.mods).forEach((mod) => { %>
-                                            <img class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                            <img class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% }); %>
                                     </div>
                                     <p class="acc">
@@ -1587,11 +1587,11 @@
                                 </div>
                                 <div class="data-mobile-passed">
                                     <div class="flex info">
-                                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= data.set_id %>/covers/cover.jpg?<%= date %>" loading="lazy" alt="" />
+                                        <img class="mapbg" src="https://b.ppy.sh/thumb/<%= data.set_id %>l.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
-                                            <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" />
+                                            <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% } else { %>
-                                            <img class="grade" src="/image/grade/F.png?<%= date %>" alt="" />
+                                            <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                         <% } %>
                                         <a
                                         <% if (!dans && data.id > 0) { %>
@@ -1603,7 +1603,7 @@
                                         <% if (data.mods !== 0) { %>
                                             <div class="mods">
                                                 <% getMods(data.mods).forEach((mod) => { %>
-                                                    <img class="img" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
+                                                    <img class="img" src="/image/mods/<%= mod %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                                                 <% }); %>
                                             </div>
                                         <% } %>
@@ -1692,7 +1692,7 @@
                                         <p class="tooltip">Owner</p>
                                     </span>
                                 </span>
-                                <span class="item avatar"><img src="https://a.mamesosu.net/<%= owner.id %>?<%= date %>" loading="lazy" alt="" /></span>
+                                <span class="item avatar"><img src="https://a.mamesosu.net/<%= owner.id %>?<%= date %>" decoding="async" loading="lazy" alt="" /></span>
                                 <span class="item country"><i title="<%= owner.country.toUpperCase() %>" class="flag-icon flag-icon-<%= owner.country %>"></i></span>
                                 <span class="item username"><a href="/profile/<%= owner.id %>"><%= owner.name %></a></span>
                                 <span class="item tag">
@@ -1742,7 +1742,7 @@
                                             <p class="tooltip">Member</p>
                                         </span>
                                     </span>
-                                    <span class="item avatar"><img src="https://a.mamesosu.net/<%= user.id %>?<%= date %>" loading="lazy" alt="" /></span>
+                                    <span class="item avatar"><img src="https://a.mamesosu.net/<%= user.id %>?<%= date %>" decoding="async" loading="lazy" alt="" /></span>
                                     <span class="item country"><i title="<%= user.country.toUpperCase() %>" class="flag-icon flag-icon-<%= user.country %>"></i></span>
                                     <span class="item username"><a href="/profile/<%= user.id %>"><%= user.name %></a></span>
                                     <span class="item tag">
