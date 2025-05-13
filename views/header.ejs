@@ -120,6 +120,13 @@ const date = new Date().toLocaleString("ja-JP", {
             }
         }
 
+        function dialog() {
+            const isConfirm = confirm("Are you sure?");
+            if (isConfirm) {
+                window.location.href = "/logout";
+            }
+        }
+
         $(function () {
             var $lock = $(".old-web");
             $(".donation a").on("click", function(e) {
