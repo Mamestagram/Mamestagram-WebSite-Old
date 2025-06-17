@@ -32,9 +32,9 @@ const date = new Date().toLocaleString("ja-JP", {
         <% if (locals.loginf) { %>
             <li class="avatar">
                 <button title="<%= locals.username %>">
-                    <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= date %>" alt="" />
+                    <img class="avatar-img" src="https://a.mamesosu.net/<%= locals.userid %>?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% if (badge !== 0) { %>
-                        <img class="gacha" src="/image/gacha/<%= badge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif?<%= date %>'" alt="" />
+                        <img class="gacha" src="/image/gacha/<%= badge %>.png?<%= date %>" onerror="this.onerror = null; this.src = '/image/gacha/<%= badge %>.gif?<%= date %>'" decoding="async" loading="lazy" alt="" />
                     <% } %>
                 </button>
             </li>
