@@ -1000,7 +1000,6 @@ main .bestpp div .mapbg {
     border-radius: 10px;
     object-fit: cover;
     opacity: 0.3;
-    filter: blur(3px);
 }
 
 main .bestpp div .grade {
@@ -1135,7 +1134,6 @@ main .first_place div .mapbg {
     border-radius: 10px;
     object-fit: cover;
     opacity: 0.3;
-    filter: blur(3px);
 }
 
 main .first_place div .grade {
@@ -2093,7 +2091,6 @@ main .member .member-table .score {
         border-radius: 10px;
         object-fit: cover;
         opacity: 0.3;
-        filter: blur(3px);
     }
 
     main .bestpp div .data-mobile .info .grade {
@@ -2198,7 +2195,6 @@ main .member .member-table .score {
         border-radius: 10px;
         object-fit: cover;
         opacity: 0.3;
-        filter: blur(3px);
     }
 
     main .first_place div .data-mobile .info .grade {
@@ -2412,7 +2408,6 @@ main .member .member-table .score {
         border-radius: 10px;
         object-fit: cover;
         opacity: 0.3;
-        filter: blur(3px);
     }
 
     main .recentplays div .data-mobile .info .grade, main .recentplays div .data-mobile-passed .info .grade {
