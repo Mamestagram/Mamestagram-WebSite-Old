@@ -1098,13 +1098,18 @@
                 <div id="map-sorts"></div>
                 <!-- achievements -->
                 <div class="box achievements">
-                    <h1><i class="fa-solid fa-medal"></i>Achievements</h1>
+                    <h1><i class="fa-solid fa-award"></i>Achievements</h1>
                     <div class="wrapper skill">
                         <h2>Skill</h2>
                         <div class="ach-img">
                             <% achievements.skill.forEach((ach) => { %>
-                                <span>
-                                    <img src="/achv/<%= ach.file %>.png" decoding="async" loading="lazy" alt="">
+                                <span class="medal">
+                                    <img class="<%= ach.userid === null ? "unachieved" : "" %>" src="/achv/<%= ach.file %>.png?<%= date %>" decoding="async" loading="lazy" alt="">
+                                    <span class="tooltip">
+                                        <p class="name"><%= ach.name %></p>
+                                        <p class="desc"><%= ach.desc %></p>
+                                        <p class="cond-desc"><%= ach.cond_desc %></p>
+                                    </span>
                                 </span>
                             <% }); %>
                         </div>
@@ -1112,14 +1117,30 @@
                     <div class="wrapper mod">
                         <h2>Mod</h2>
                         <div class="ach-img">
-                            <% achievements.skill.forEach((ach) => { %>
+                            <% achievements.mod.forEach((ach) => { %>
+                                <span class="medal">
+                                    <img class="<%= ach.userid === null ? "unachieved" : "" %>" src="/achv/<%= ach.file %>.png?<%= date %>" decoding="async" loading="lazy" alt="">
+                                    <span class="tooltip">
+                                        <p class="name"><%= ach.name %></p>
+                                        <p class="desc"><%= ach.desc %></p>
+                                        <p class="cond-desc"><%= ach.cond_desc %></p>
+                                    </span>
+                                </span>
                             <% }); %>
                         </div>
                     </div>
                     <div class="wrapper others">
-                        <h2>Others</h2>
+                        <h2>Mamestagram</h2>
                         <div class="ach-img">
                             <% achievements.others.forEach((ach) => { %>
+                                <span class="medal">
+                                    <img class="<%= ach.userid === null ? "unachieved" : "" %>" src="/achv/<%= ach.file %>.png?<%= date %>" decoding="async" loading="lazy" alt="">
+                                    <span class="tooltip">
+                                        <p class="name"><%= ach.name %></p>
+                                        <p class="desc"><%= ach.desc %></p>
+                                        <p class="cond-desc"><%= ach.cond_desc %></p>
+                                    </span>
+                                </span>
                             <% }); %>
                         </div>
                     </div>
@@ -1581,7 +1602,7 @@
             function save() {
                 preview = false;
                 before = document.getElementById("me-editor").value;
-                ajaxUpdate("/me/<%= id %>&clan=<%= !clan ? 0 : 1 %>", document.getElementById("put-bbcode"));
+                ajaxUpdate("/me&<%= !clan ? "personal" : "clan" %>", document.getElementById("put-bbcode"));
                 $("main .me .edit-button").show();
                 $("main .me .contents form .editor .edit .preview").show();
                 $("main .me .contents form .editor .edit .back-to-edit").hide();
@@ -1627,7 +1648,7 @@
 
             function prevMe(element) {
                 const ajax = new XMLHttpRequest();
-                ajax.open("GET", "/me/<%= id %>&clan=<%= !clan ? 0 : 1 %>", true);
+                ajax.open("GET", "/me&<%= !clan ? "personal" : "clan" %>", true);
                 ajax.onload = function () {
                     element.innerHTML = ajax.responseText;
                     if (before.length > 0) {

@@ -279,6 +279,13 @@ const codeToTimezone = (country) => {
                 "zm": "Africa/Lusaka",
                 "zw": "Africa/Harare"
             };
+            switch (country) {
+                case "cc":
+                case "cx":
+                case "hm":
+                    country = "au";
+                    break;
+            }
             return zone[country];
         }
 

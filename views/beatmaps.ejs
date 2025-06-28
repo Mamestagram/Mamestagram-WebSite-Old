@@ -219,7 +219,13 @@
             }
             return res;
         }
-        const getPlayTime = (y, m, w, d, h, f) => {
+        const getPlayTime = (datetime, f) => {
+            const playtime = new Date() - new Date(datetime);
+            const h = Math.floor(playtime / (60 * 60 * 1000)),
+                    d = Math.floor(h / 24),
+                    w = Math.floor(d / 7),
+                    m = Math.floor(d / 30),
+                    y = Math.floor(m / 12)
             if (f === "brev") {
                 if (y > 0) {
                     return `${y.toLocaleString()}y`;
@@ -394,10 +400,10 @@
                                     <div class="frame">
                                         <span class="space" style="padding-left: <%= mapdetails.rate %>%"></span>
                                         <p class="value">
-                                            <% if (mapdetails.rate === null) { %>
+                                            <% if (mapdetails.plays === 0) { %>
                                                 0.0%
                                             <% } else { %>
-                                                <%= mapdetails.rate.toFixed(1) %>%
+                                                <%= (mapdetails.passes / mapdetails.plays * 100).toFixed(1) %>%
                                             <% } %>
                                         </p>
                                     </div>
@@ -642,17 +648,17 @@
                         <div class="user first">
                             <div class="flex" style="display: flex">
                                 <div>
-                                    <p class="rank">#<%= rankings[0].ranking %></p>
+                                    <p class="rank">#1</p>
                                     <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>" alt="" />
                                 </div>
                                 <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>" alt="" />
                                 <div>
                                     <p class="name">
                                         <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
-                                            <%= rankings[0].name %>
+                                            <%= rankings[0].player_name %>
                                         </a>
                                     </p>
-                                    <p class="time">achieved <%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "form") %></p>
+                                    <p class="time">achieved <%= getPlayTime(rankings[0].play_time, "form") %></p>
                                     <i title="<%= rankings[0].country %>" class="flag-icon flag-icon-<%= rankings[0].country %>"></i>
                                 </div>
                                 <div class="tables">
@@ -762,7 +768,7 @@
                                                 style="color: #7e8487;"
                                             <% } %>><%= rankings[0].nmiss.toLocaleString() %></td>
                                             <td><%= Math.round(rankings[0].pp).toLocaleString() %></td>
-                                            <td><%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "brev") %></td>
+                                            <td><%= getPlayTime(rankings[0].play_time, "brev") %></td>
                                             <td class="mods">
                                                 <% getMods(rankings[0].mods).forEach((mod) => { %>
                                                     <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
@@ -774,28 +780,28 @@
                             </div>
                         </div>
                         <% if (loginf) { %>
-                            <% let index = 0; %>
+                            <% let index = -1; %>
                             <% for (let i = 0; i < rankings.length; i++) {
                                 if (rankings[i].userid == userid) {
                                     index = i;
                                     break;
                                 }
                             } %>
-                            <% if (index !== 0) { %>
+                            <% if (index > 0) { %>
                                 <div class="user">
                                     <div class="flex" style="display: flex;">
                                         <div>
-                                            <p class="rank">#<%= rankings[index].ranking %></p>
+                                            <p class="rank">#<%= index + 1 %></p>
                                             <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>" alt="" />
                                         </div>
                                         <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>" alt="" />
                                         <div>
                                             <p class="name">
                                                 <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
-                                                    <%= rankings[index].name %>
+                                                    <%= rankings[index].player_name %>
                                                 </a>
                                             </p>
-                                            <p class="time">achieved <%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "form") %></p>
+                                            <p class="time">achieved <%= getPlayTime(rankings[index].play_time, "form") %></p>
                                             <i title="<%= rankings[index].country %>" class="flag-icon flag-icon-<%= rankings[index].country %>"></i>
                                         </div>
                                         <div class="tables">
@@ -905,7 +911,7 @@
                                                         style="color: #7e8487;"
                                                     <% } %>><%= rankings[index].nmiss.toLocaleString() %></td>
                                                     <td><%= Math.round(rankings[index].pp).toLocaleString() %></td>
-                                                    <td><%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "brev") %></td>
+                                                    <td><%= getPlayTime(rankings[index].play_time, "brev") %></td>
                                                     <td class="mods">
                                                         <% getMods(rankings[index].mods).forEach((mod) => { %>
                                                             <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
@@ -957,7 +963,7 @@
                                 <% let n = 0 %>
                                 <% for (let data of rankings) { %>
                                     <tr class="list">
-                                        <td class="rank">#<%= data.ranking %></td>
+                                        <td class="rank">#<%= ++n %></td>
                                         <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" /></td>
                                         <td><%= data.score.toLocaleString() %></td>
                                         <td
@@ -967,7 +973,7 @@
                                         <td class="country"><i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i></td>
                                         <td class="name" style="text-align: left;">
                                             <a href="/profile/<%= data.userid %>/<%= getModeName(mapdetails.mode) %>">
-                                                <%= data.name %>
+                                                <%= data.player_name %>
                                             </a>
                                         </td>
                                         <td
@@ -1036,7 +1042,7 @@
                                             style="color: #7e8487;"
                                         <% } %>><%= data.nmiss.toLocaleString() %></td>
                                         <td><%= Math.round(data.pp).toLocaleString() %></td>
-                                        <td><%= getPlayTime(data.year, data.month, data.week, data.day, data.hour, "brev") %></td>
+                                        <td><%= getPlayTime(data.play_time, "brev") %></td>
                                         <td class="mods">
                                             <div class="image">
                                                 <% getMods(data.mods).forEach((mod) => { %>
@@ -1045,7 +1051,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <% if (++n == 50) { break; } %>
                                 <% } %>
                             </table>
                         </div>
@@ -1055,8 +1060,8 @@
         </div>
     </main>
     <%- include("footer") %>
-    <script src="/jquery/beatmaps.js"></script>
-    <script nonce="<%= cspNonce %>">
+    <script src="/jquery/beatmaps.js" nonce="<%= cspNonce %>" defer></script>
+    <script nonce="<%= cspNonce %>" defer>
         function process() {
             var $td = $(".ranking .wrap .flex .selection .special .ts");
             var $mods = $(".ranking .wrap .mods-selection li");

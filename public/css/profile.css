@@ -1673,6 +1673,122 @@ main .member .member-table .score {
     width: 130px;
     text-align: center;
 }
+/* ------------------------------------------------- */
+main .recentplays {
+    min-height: 350px;
+    max-height: 350px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+main .achievements h1 {
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+main .achievements h1 i {
+    margin: 0 5px;
+}
+
+main .achievements .wrapper h2 {
+    display: inline-block;
+    font-size: 20px;
+    padding: 0 5px;
+    border-bottom: 2px solid #5656c1;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+main .achievements .wrapper .ach-img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main .achievements .wrapper .ach-img .medal {
+    position: relative;
+    height: 90px;
+    width: 90px;
+    margin: 25px;
+}
+
+main .achievements .wrapper .ach-img .medal:hover .tooltip {
+    bottom: 110%;
+    visibility: visible;
+    opacity: 1;
+}
+
+main .achievements .wrapper .ach-img .medal .tooltip {
+    line-height: 10px;
+    position: absolute;
+    width: 250px;
+    left: 50%;
+    bottom: 80%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #17171c;
+    font-size: 0.8em;
+    color: #fff;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: bottom 300ms, visibility 300ms, opacity 300ms;
+}
+main .achievements .wrapper .ach-img .medal .tooltip::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 12px solid #17171c;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main .achievements .wrapper .ach-img .medal .tooltip .name {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+main .achievements .wrapper .ach-img .medal .tooltip .desc {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+main .achievements .wrapper .ach-img .medal .tooltip .cond-desc {
+    color: #878488;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 10px;
+}
+
+main .achievements .wrapper .ach-img .medal img {
+    height: inherit;
+    width: inherit;
+    object-fit: scale-down;
+    transition: transform 300ms, filter 300ms;
+}
+main .achievements .wrapper .ach-img .medal img.unachieved {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+main .achievements .wrapper .ach-img .medal:hover img {
+    transform: translateY(-5px);
+}
+main .achievements .wrapper .ach-img .medal:hover img:not(.unachieved) {
+    filter: drop-shadow(0 10px 3px #000000);
+}
+main .achievements .wrapper .ach-img .medal:hover img.unachieved {
+    filter: grayscale(100%) drop-shadow(0 10px 3px #000000);
+}
 
 @media (max-width: 1232px) {
     main {

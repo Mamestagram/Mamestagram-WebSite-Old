@@ -363,19 +363,19 @@ const getMode = (modeNum) => {
         <% } else { %>
             <% rsplays.forEach((data) => { %>
                 <div class="data" style="display: none;">
-                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans && data.beatmap !== null ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                         <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% } else { %>
                         <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% } %>
                     <a
-                    <% if (!dans && data.beatmap.id > 0) { %>
+                    <% if (!dans && data.beatmap !== null && data.beatmap.id > 0) { %>
                         href="/beatmaps/<%= data.beatmap.set_id %>/<%= data.beatmap.id %>"
-                            <% } %>
+                    <% } %>
                         style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
-                        <p class="title"><%= !dans ? data.beatmap.title : data.title %> by <%= !dans ? data.beatmap.artist : data.artist %></p>
-                        <p class="diff"><%= !dans ? data.beatmap.version : data.version %></p>
+                        <p class="title"><%= !dans && data.beatmap !== null ? data.beatmap.title : data.title %> by <%= !dans && data.beatmap !== null ? data.beatmap.artist : data.artist %></p>
+                        <p class="diff"><%= !dans && data.beatmap !== null ? data.beatmap.version : data.version %></p>
                     </a>
                     <div class="mods">
                         <% getMods(data.mods).forEach((mod) => { %>
@@ -401,7 +401,7 @@ const getMode = (modeNum) => {
                             <% } %>
                         </p>
                         <p class="loved">
-                            <% if (!dans && data.beatmap.status !== 2 && data.beatmap.status !== 3) { %>
+                            <% if (!dans && data.beatmap !== null && data.beatmap.status !== 2 && data.beatmap.status !== 3) { %>
                                 (Loved)
                             <% } %>
                         </p>
@@ -409,18 +409,18 @@ const getMode = (modeNum) => {
                 </div>
                 <div class="data-mobile" style="display: none;">
                     <div class="flex info">
-                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans && data.beatmap ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                             <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% } else { %>
                             <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% } %>
                         <a
-                        <% if (!dans && data.beatmap.id > 0) { %>
+                        <% if (!dans && data.beatmap && data.beatmap.id > 0) { %>
                             href="/beatmaps/<%= data.beatmap.set_id %>/<%= data.beatmap.id %>"
                                 <% } %>>
-                            <p class="title"><%= !dans ? data.beatmap.title : data.title %> by <%= !dans ? data.beatmap.artist : data.artist %></p>
-                            <p class="diff"><%= !dans ? data.beatmap.version : data.version %></p>
+                            <p class="title"><%= !dans && data.beatmap ? data.beatmap.title : data.title %> by <%= !dans && data.beatmap ? data.beatmap.artist : data.artist %></p>
+                            <p class="diff"><%= !dans && data.beatmap ? data.beatmap.version : data.version %></p>
                         </a>
                         <% if (data.mods !== 0) { %>
                             <div class="mods">
@@ -463,19 +463,19 @@ const getMode = (modeNum) => {
         <% } else { %>
             <% rsplays.filter(data => data.grade !== "F").forEach((data) => { %>
                 <div class="data-passed">
-                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                    <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans && data.beatmap ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                         <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% } else { %>
                         <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                     <% } %>
                     <a
-                    <% if (!dans && data.beatmap.id > 0) { %>
+                    <% if (!dans && data.beatmap && data.beatmap.id > 0) { %>
                         href="/beatmaps/<%= data.beatmap.set_id %>/<%= data.beatmap.id %>"
                             <% } %>
                         style="width: calc(100% - 320px - <%= Math.min(35 * getMods(data.mods).length, 325) %>px);">
-                        <p class="title"><%= !dans ? data.beatmap.title : data.title %> by <%= !dans ? data.beatmap.artist : data.artist %></p>
-                        <p class="diff"><%= !dans ? data.beatmap.version : data.version %></p>
+                        <p class="title"><%= !dans && data.beatmap ? data.beatmap.title : data.title %> by <%= !dans && data.beatmap ? data.beatmap.artist : data.artist %></p>
+                        <p class="diff"><%= !dans && data.beatmap ? data.beatmap.version : data.version %></p>
                     </a>
                     <div class="mods">
                         <% getMods(data.mods).forEach((mod) => { %>
@@ -492,7 +492,7 @@ const getMode = (modeNum) => {
                     </p>
                     <div class="pp">
                         <p class="recorded">
-                            <% if (!dans) { %>
+                            <% if (!dans && data.beatmap) { %>
                                 <%= Math.round(data.pp).toLocaleString() %><span>pp</span>
                             <% } else if (data.grade !== "F") { %>
                                 <%= Math.round(data.reward).toLocaleString() %><span>pp</span>
@@ -509,18 +509,18 @@ const getMode = (modeNum) => {
                 </div>
                 <div class="data-mobile-passed">
                     <div class="flex info">
-                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
+                        <img class="mapbg" src="https://assets.ppy.sh/beatmaps/<%= !dans && data.beatmap ? data.beatmap.set_id : data.set_id %>/covers/cover.jpg?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% if (!dans || (data.sacc >= data.dacc && data.sscore >= data.dscore)) { %>
                             <img class="grade" src="/image/grade/<%= data.grade %>.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% } else { %>
                             <img class="grade" src="/image/grade/F.png?<%= date %>" decoding="async" loading="lazy" alt="" />
                         <% } %>
                         <a
-                        <% if (!dans && data.beatmap.id > 0) { %>
+                        <% if (!dans && data.beatmap && data.beatmap.id > 0) { %>
                             href="/beatmaps/<%= data.beatmap.set_id %>/<%= data.beatmap.id %>"
                                 <% } %>>
-                            <p class="title"><%= !dans ? data.beatmap.title : data.title %> by <%= !dans ? data.beatmap.artist : data.artist %></p>
-                            <p class="diff"><%= !dans ? data.beatmap.version : data.version %></p>
+                            <p class="title"><%= !dans && data.beatmap ? data.beatmap.title : data.title %> by <%= !dans && data.beatmap ? data.beatmap.artist : data.artist %></p>
+                            <p class="diff"><%= !dans && data.beatmap ? data.beatmap.version : data.version %></p>
                         </a>
                         <% if (data.mods !== 0) { %>
                             <div class="mods">
@@ -549,7 +549,7 @@ const getMode = (modeNum) => {
                             <% } %>
                         </p>
                         <p class="loved">
-                            <% if (!dans && data.beatmap.status !== 2 && data.beatmap.status !== 3) { %>
+                            <% if (!dans && data.beatmap && data.beatmap.status !== 2 && data.beatmap.status !== 3) { %>
                                 (Loved)
                             <% } %>
                         </p>

@@ -78,6 +78,7 @@ const getMods = (modNum) => {
         if (modNum >= 1 << i) {
             mod.push(mods[i]);
             modNum -= 1 << i;
+            if (i === 9) modNum -= 1 << 6;
         }
     }
     mod = sortMods(mod);
@@ -119,7 +120,13 @@ const getTime = (time) => {
     }
     return res;
 }
-const getPlayTime = (y, m, w, d, h, f) => {
+const getPlayTime = (datetime, f) => {
+    const playtime = new Date() - new Date(datetime);
+    const h = Math.floor(playtime / (60 * 60 * 1000)),
+            d = Math.floor(h / 24),
+            w = Math.floor(d / 7),
+            m = Math.floor(d / 30),
+            y = Math.floor(m / 12)
     if (f === "brev") {
         if (y > 0) {
             return `${y.toLocaleString()}y`;
@@ -180,17 +187,17 @@ const date = new Date().toLocaleString("ja-JP", {
     <div class="user first">
         <div class="flex" style="display: flex">
             <div>
-                <p class="rank">#<%= rankings[0].ranking %></p>
+                <p class="rank">#1</p>
                 <img class="grade" src="/image/grade/<%= rankings[0].grade %>.png?<%= date %>" alt="" />
             </div>
             <img class="avatar" src="https://a.mamesosu.net/<%= rankings[0].userid %>?<%= date %>" alt="" />
             <div>
                 <p class="name">
                     <a href="/profile/<%= rankings[0].userid %>/<%= getModeName(mapdetails.mode) %>">
-                        <%= rankings[0].name %>
+                        <%= rankings[0].player_name %>
                     </a>
                 </p>
-                <p class="time">achieved <%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "form") %></p>
+                <p class="time">achieved <%= getPlayTime(rankings[0].play_time, "form") %></p>
                 <i title="<%= rankings[0].country %>" class="flag-icon flag-icon-<%= rankings[0].country %>"></i>
             </div>
             <div class="tables">
@@ -205,11 +212,11 @@ const date = new Date().toLocaleString("ja-JP", {
                         <td
                         <% if (rankings[0].acc === 100) { %>
                             style="color: #aef665;"
-                        <% } %>><%= rankings[0].acc.toFixed(2) %>%</td>
+                                <% } %>><%= rankings[0].acc.toFixed(2) %>%</td>
                         <td
                         <% if (rankings[0].max_combo === mapdetails.max_combo) { %>
                             style="color: #aef665;"
-                        <% } %>><%= rankings[0].max_combo.toLocaleString() %>x</td>
+                                <% } %>><%= rankings[0].max_combo.toLocaleString() %>x</td>
                     </tr>
                 </table>
                 <table class="t2">
@@ -242,65 +249,65 @@ const date = new Date().toLocaleString("ja-JP", {
                             <td class="n-amt"
                             <% if (rankings[0].n300 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n300.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n300.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n100 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n100.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n100.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n50 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n50.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n50.toLocaleString() %></td>
                         <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
                             <td class="n-amt"
                             <% if (rankings[0].n300 + rankings[0].ngeki === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= (rankings[0].n300 + rankings[0].ngeki).toLocaleString() %></td>
+                                    <% } %>><%= (rankings[0].n300 + rankings[0].ngeki).toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n100 + rankings[0].nkatu === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= (rankings[0].n100 + rankings[0].nkatu).toLocaleString() %></td>
+                                    <% } %>><%= (rankings[0].n100 + rankings[0].nkatu).toLocaleString() %></td>
                         <% } else if (mapdetails.mode% 4 === 2 || modeNum % 4 === 2) { %>
                             <td class="n-amt"
                             <% if (rankings[0].n300 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n300.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n300.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n100 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n100.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n100.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n50 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n50.toLocaleString() %>/<%= (rankings[0].n50 + rankings[0].nkatu).toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n50.toLocaleString() %>/<%= (rankings[0].n50 + rankings[0].nkatu).toLocaleString() %></td>
                         <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
                             <td class="n-amt"
                             <% if (rankings[0].ngeki === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].ngeki.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].ngeki.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n300 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n300.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n300.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].nkatu === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].nkatu.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].nkatu.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n100 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n100.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n100.toLocaleString() %></td>
                             <td class="n-amt"
                             <% if (rankings[0].n50 === 0) { %>
                                 style="color: #7e8487;"
-                            <% } %>><%= rankings[0].n50.toLocaleString() %></td>
+                                    <% } %>><%= rankings[0].n50.toLocaleString() %></td>
                         <% } %>
                         <td class="n-amt"
                         <% if (rankings[0].nmiss === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= rankings[0].nmiss.toLocaleString() %></td>
+                                <% } %>><%= rankings[0].nmiss.toLocaleString() %></td>
                         <td><%= Math.round(rankings[0].pp).toLocaleString() %></td>
-                        <td><%= getPlayTime(rankings[0].year, rankings[0].month, rankings[0].week, rankings[0].day, rankings[0].hour, "brev") %></td>
+                        <td><%= getPlayTime(rankings[0].play_time, "brev") %></td>
                         <td class="mods">
                             <% getMods(rankings[0].mods).forEach((mod) => { %>
                                 <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
@@ -312,28 +319,28 @@ const date = new Date().toLocaleString("ja-JP", {
         </div>
     </div>
     <% if (loginf) { %>
-        <% let index = 0; %>
+        <% let index = -1; %>
         <% for (let i = 0; i < rankings.length; i++) {
             if (rankings[i].userid == userid) {
                 index = i;
                 break;
             }
         } %>
-        <% if (index !== 0) { %>
+        <% if (index > 0) { %>
             <div class="user">
                 <div class="flex" style="display: flex;">
                     <div>
-                        <p class="rank">#<%= rankings[index].ranking %></p>
+                        <p class="rank">#<%= index + 1 %></p>
                         <img class="grade" src="/image/grade/<%= rankings[index].grade %>.png?<%= date %>" alt="" />
                     </div>
                     <img class="avatar" src="https://a.mamesosu.net/<%= rankings[index].userid %>?<%= date %>" alt="" />
                     <div>
                         <p class="name">
                             <a href="/profile/<%= rankings[index].userid %>/<%= getModeName(mapdetails.mode) %>">
-                                <%= rankings[index].name %>
+                                <%= rankings[index].player_name %>
                             </a>
                         </p>
-                        <p class="time">achieved <%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "form") %></p>
+                        <p class="time">achieved <%= getPlayTime(rankings[index].play_time, "form") %></p>
                         <i title="<%= rankings[index].country %>" class="flag-icon flag-icon-<%= rankings[index].country %>"></i>
                     </div>
                     <div class="tables">
@@ -348,11 +355,11 @@ const date = new Date().toLocaleString("ja-JP", {
                                 <td
                                 <% if (rankings[index].acc === 100) { %>
                                     style="color: #aef665;"
-                                <% } %>><%= rankings[index].acc.toFixed(2) %>%</td>
+                                        <% } %>><%= rankings[index].acc.toFixed(2) %>%</td>
                                 <td
                                 <% if (rankings[index].max_combo === mapdetails.max_combo) { %>
                                     style="color: #aef665;"
-                                <% } %>><%= rankings[index].max_combo.toLocaleString() %>x</td>
+                                        <% } %>><%= rankings[index].max_combo.toLocaleString() %>x</td>
                             </tr>
                         </table>
                         <table class="t2">
@@ -385,65 +392,65 @@ const date = new Date().toLocaleString("ja-JP", {
                                     <td class="n-amt"
                                     <% if (rankings[index].n300 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n300.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n300.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n100 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n100.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n100.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n50 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n50.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n50.toLocaleString() %></td>
                                 <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
                                     <td class="n-amt"
                                     <% if (rankings[index].n300 + rankings[index].ngeki === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= (rankings[index].n300 + rankings[index].ngeki).toLocaleString() %></td>
+                                            <% } %>><%= (rankings[index].n300 + rankings[index].ngeki).toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n100 + rankings[index].nkatu === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= (rankings[index].n100 + rankings[index].nkatu).toLocaleString() %></td>
+                                            <% } %>><%= (rankings[index].n100 + rankings[index].nkatu).toLocaleString() %></td>
                                 <% } else if (mapdetails.mode% 4 === 2 || modeNum % 4 === 2) { %>
                                     <td class="n-amt"
                                     <% if (rankings[index].n300 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n300.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n300.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n100 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n100.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n100.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n50 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n50.toLocaleString() %>/<%= (rankings[index].n50 + rankings[index].nkatu).toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n50.toLocaleString() %>/<%= (rankings[index].n50 + rankings[index].nkatu).toLocaleString() %></td>
                                 <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
                                     <td class="n-amt"
                                     <% if (rankings[index].ngeki === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].ngeki.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].ngeki.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n300 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n300.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n300.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].nkatu === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].nkatu.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].nkatu.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n100 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n100.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n100.toLocaleString() %></td>
                                     <td class="n-amt"
                                     <% if (rankings[index].n50 === 0) { %>
                                         style="color: #7e8487;"
-                                    <% } %>><%= rankings[index].n50.toLocaleString() %></td>
+                                            <% } %>><%= rankings[index].n50.toLocaleString() %></td>
                                 <% } %>
                                 <td class="n-amt"
                                 <% if (rankings[index].nmiss === 0) { %>
                                     style="color: #7e8487;"
-                                <% } %>><%= rankings[index].nmiss.toLocaleString() %></td>
+                                        <% } %>><%= rankings[index].nmiss.toLocaleString() %></td>
                                 <td><%= Math.round(rankings[index].pp).toLocaleString() %></td>
-                                <td><%= getPlayTime(rankings[index].year, rankings[index].month, rankings[index].week, rankings[index].day, rankings[index].hour, "brev") %></td>
+                                <td><%= getPlayTime(rankings[index].play_time, "brev") %></td>
                                 <td class="mods">
                                     <% getMods(rankings[index].mods).forEach((mod) => { %>
                                         <img title="<%= mod %>" class="mod" src="/image/mods/<%= mod %>.png?<%= date %>" alt="" />
@@ -495,86 +502,86 @@ const date = new Date().toLocaleString("ja-JP", {
             <% let n = 0 %>
             <% for (let data of rankings) { %>
                 <tr class="list">
-                    <td class="rank">#<%= data.ranking %></td>
+                    <td class="rank">#<%= ++n %></td>
                     <td class="grade"><img src="/image/grade/<%= data.grade %>.png?<%= date %>" alt="" /></td>
                     <td><%= data.score.toLocaleString() %></td>
                     <td
                     <% if (data.acc === 100) { %>
                         style="color: #aef665;"
-                    <% } %>><%= data.acc.toFixed(2) %>%</td>
+                            <% } %>><%= data.acc.toFixed(2) %>%</td>
                     <td class="country"><i title="<%= data.country %>" class="flag-icon flag-icon-<%= data.country %>"></i></td>
                     <td class="name" style="text-align: left;">
                         <a href="/profile/<%= data.userid %>/<%= getModeName(mapdetails.mode) %>">
-                            <%= data.name %>
+                            <%= data.player_name %>
                         </a>
                     </td>
                     <td
                     <% if (data.max_combo === mapdetails.max_combo) { %>
                         style="color: #aef665;"
-                    <% } %>><%= data.max_combo.toLocaleString() %>x</td>
+                            <% } %>><%= data.max_combo.toLocaleString() %>x</td>
                     <% if (mapdetails.mode % 4 === 0 && modeNum % 4 === 0) { %>
                         <td class="n-amt"
                         <% if (data.n300 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n300.toLocaleString() %></td>
+                                <% } %>><%= data.n300.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n100 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n100.toLocaleString() %></td>
+                                <% } %>><%= data.n100.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n50 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n50.toLocaleString() %></td>
+                                <% } %>><%= data.n50.toLocaleString() %></td>
                     <% } else if (mapdetails.mode % 4 === 1 || modeNum % 4 === 1) { %>
                         <td class="n-amt"
                         <% if (data.n300 + data.ngeki === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= (data.n300 + data.ngeki).toLocaleString() %></td>
+                                <% } %>><%= (data.n300 + data.ngeki).toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n100 + data.nkatu === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= (data.n100 + data.nkatu).toLocaleString() %></td>
+                                <% } %>><%= (data.n100 + data.nkatu).toLocaleString() %></td>
                     <% } else if (mapdetails.mode % 4 === 2 || modeNum % 4 === 2) { %>
                         <td class="n-amt"
                         <% if (data.n300 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n300.toLocaleString() %></td>
+                                <% } %>><%= data.n300.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n100 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n100.toLocaleString() %></td>
+                                <% } %>><%= data.n100.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n50 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n50.toLocaleString() %>/<%= (data.n50 + data.nkatu).toLocaleString() %></td>
+                                <% } %>><%= data.n50.toLocaleString() %>/<%= (data.n50 + data.nkatu).toLocaleString() %></td>
                     <% } else if (mapdetails.mode % 4 === 3 || modeNum % 4 === 3) { %>
                         <td class="n-amt"
                         <% if (data.ngeki === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.ngeki.toLocaleString() %></td>
+                                <% } %>><%= data.ngeki.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n300 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n300.toLocaleString() %></td>
+                                <% } %>><%= data.n300.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.nkatu === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.nkatu.toLocaleString() %></td>
+                                <% } %>><%= data.nkatu.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n100 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n100.toLocaleString() %></td>
+                                <% } %>><%= data.n100.toLocaleString() %></td>
                         <td class="n-amt"
                         <% if (data.n50 === 0) { %>
                             style="color: #7e8487;"
-                        <% } %>><%= data.n50.toLocaleString() %></td>
+                                <% } %>><%= data.n50.toLocaleString() %></td>
                     <% } %>
                     <td class="n-amt"
                     <% if (data.nmiss === 0) { %>
                         style="color: #7e8487;"
-                    <% } %>><%= data.nmiss.toLocaleString() %></td>
+                            <% } %>><%= data.nmiss.toLocaleString() %></td>
                     <td><%= Math.round(data.pp).toLocaleString() %></td>
-                    <td><%= getPlayTime(data.year, data.month, data.week, data.day, data.hour, "brev") %></td>
+                    <td><%= getPlayTime(data.play_time, "brev") %></td>
                     <td class="mods">
                         <div class="image">
                             <% getMods(data.mods).forEach((mod) => { %>
@@ -583,7 +590,6 @@ const date = new Date().toLocaleString("ja-JP", {
                         </div>
                     </td>
                 </tr>
-                <% if (++n == 50) { break; } %>
             <% } %>
         </table>
     </div>
