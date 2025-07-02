@@ -1754,13 +1754,13 @@ main .achievements .wrapper .ach-img .medal .tooltip .name {
     font-size: 24px;
     font-weight: bold;
     line-height: 24px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin: 5px 0;
 }
 
 main .achievements .wrapper .ach-img .medal .tooltip .desc {
     font-size: 14px;
     line-height: 14px;
+    margin-top: 15px;
 }
 
 main .achievements .wrapper .ach-img .medal .tooltip .cond-desc {
