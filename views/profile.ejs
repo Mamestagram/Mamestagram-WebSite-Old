@@ -922,7 +922,7 @@
                             </div>
                         </div>
                     </div>
-                    <d class="stats">
+                    <div class="stats">
                         <div class="acc">
                             <h1>Hit Accuracy</h1>
                             <h2>
@@ -1099,6 +1099,81 @@
                 <!-- achievements -->
                 <div class="box achievements">
                     <h1><i class="fa-solid fa-award"></i>Achievements</h1>
+                    <div class="wrapper status">
+                        <h2>Collection Status</h2>
+                        <div class="ach-img">
+                            <span class="medal all">
+                                <%
+                                const medalTotal = achievements.skill.length + achievements.mod.length + achievements.others.length;
+                                const collectTotal = achievements.skill.filter(ach => ach.userid !== null).length +
+                                        achievements.mod.filter(ach => ach.userid !== null).length +
+                                        achievements.others.filter(ach => ach.userid !== null).length;
+                                %>
+                                <span class="image-contents">
+                                    <img class="glay" src="/image/medals/collection-master-of-all-things-fun.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt=""
+                                        style="mask-image: conic-gradient(transparent 0 <%= collectTotal / medalTotal * 100 %>%, #000 <%= collectTotal / medalTotal * 100 %>% 100%);">
+                                    <img class="color" src="/image/medals/collection-master-of-all-things-fun.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt="">
+                                </span>
+                                <span class="tooltip">
+                                    <p class="name">Master of All Things Fun</p>
+                                    <p class="desc">you know every corner of Mamestagram. Certified legend.</p>
+                                    <p class="cond-desc">Collect all achievements.</p>
+                                </span>
+                                <span class="rate<%= collectTotal === medalTotal ? " achieved" : "" %>">
+                                    <p class="fraction"><%= collectTotal %> / <%= medalTotal %></p>
+                                    <p class="percentage"><%= (collectTotal / medalTotal * 100).toFixed(2) %>%</p>
+                                </span>
+                            </span>
+                            <span class="medal skill">
+                                <span class="image-contents">
+                                    <img class="glay" src="/image/medals/collection-welcome-to-the-inhuman-realm.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt=""
+                                         style="mask-image: conic-gradient(transparent 0 <%= achievements.skill.filter(ach => ach.userid !== null).length / achievements.skill.length * 100 %>%, #000 <%= achievements.skill.filter(ach => ach.userid !== null).length / achievements.skill.length * 100 %>% 100%);">
+                                    <img class="color" src="/image/medals/collection-welcome-to-the-inhuman-realm.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt="">
+                                </span>
+                                <span class="tooltip">
+                                    <p class="name">Welcome to the Inhuman Realm</p>
+                                    <p class="desc">You have crossed the threshold — only the inhuman remain.</p>
+                                    <p class="cond-desc">Collect all "Skill" achievements.</p>
+                                </span>
+                                <span class="rate<%= achievements.skill.filter(ach => ach.userid !== null).length === achievements.skill.length ? " achieved" : "" %>">
+                                    <p class="fraction"><%= achievements.skill.filter(ach => ach.userid !== null).length %> / <%= achievements.skill.length %></p>
+                                    <p class="percentage"><%= (achievements.skill.filter(ach => ach.userid !== null).length / achievements.skill.length * 100).toFixed(2) %>%</p>
+                                </span>
+                            </span>
+                            <span class="medal mod">
+                                <span class="image-contents">
+                                    <img class="glay" src="/image/medals/collection-no-going-back.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt=""
+                                         style="mask-image: conic-gradient(transparent 0 <%= achievements.mod.filter(ach => ach.userid !== null).length / achievements.mod.length * 100 %>%, #000 <%= achievements.mod.filter(ach => ach.userid !== null).length / achievements.mod.length * 100 %>% 100%);">
+                                    <img class="color" src="/image/medals/collection-no-going-back.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt="">
+                                </span>
+                                <span class="tooltip">
+                                    <p class="name">No Going Back</p>
+                                    <p class="desc">You can no longer enjoy the game without a twist. Normal is boring.</p>
+                                    <p class="cond-desc">Collect all "Mod" achievements.</p>
+                                </span>
+                                <span class="rate<%= achievements.mod.filter(ach => ach.userid !== null).length === achievements.mod.length ? " achieved" : "" %>">
+                                    <p class="fraction"><%= achievements.mod.filter(ach => ach.userid !== null).length %> / <%= achievements.mod.length %></p>
+                                    <p class="percentage"><%= (achievements.mod.filter(ach => ach.userid !== null).length / achievements.mod.length * 100).toFixed(2) %>%</p>
+                                </span>
+                            </span>
+                            <span class="medal mamesosu">
+                                <span class="image-contents">
+                                    <img class="glay" src="/image/medals/collection-true-mamestagramer.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt=""
+                                         style="mask-image: conic-gradient(transparent 0 <%= achievements.others.filter(ach => ach.userid !== null).length / achievements.others.length * 100 %>%, #000 <%= achievements.others.filter(ach => ach.userid !== null).length / achievements.others.length * 100 %>% 100%);">
+                                    <img class="color" src="/image/medals/collection-true-mamestagramer.png?<%= date %>" decoding="async" loading="lazy" fetchpriority="low" alt="">
+                                </span>
+                                <span class="tooltip">
+                                    <p class="name">True Mamestagramer</p>
+                                    <p class="desc">Proof that you live and breathe Mamestagram. All originals, all yours.</p>
+                                    <p class="cond-desc">Collect all "Mamestagram" achievements.</p>
+                                </span>
+                                <span class="rate<%= achievements.others.filter(ach => ach.userid !== null).length === achievements.others.length ? " achieved" : "" %>">
+                                    <p class="fraction"><%= achievements.others.filter(ach => ach.userid !== null).length %> / <%= achievements.others.length %></p>
+                                    <p class="percentage"><%= (achievements.others.filter(ach => ach.userid !== null).length / achievements.others.length * 100).toFixed(2) %>%</p>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
                     <div class="wrapper skill">
                         <h2>Skill</h2>
                         <div class="ach-img">
