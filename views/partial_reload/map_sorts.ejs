@@ -458,7 +458,7 @@ const getMode = (modeNum) => {
             <% }); %>
         <% } %>
         <!-- Only passed -->
-        <% if (rsplays.filter(data => data.grade !== "F") === undefined) { %>
+        <% if (rsplays.filter(data => data.grade !== "F").length <= 0) { %>
             <h1 class="nothing-passed">No scores available</h1>
         <% } else { %>
             <% rsplays.filter(data => data.grade !== "F").forEach((data) => { %>
