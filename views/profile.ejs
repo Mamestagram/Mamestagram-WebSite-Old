@@ -826,7 +826,7 @@
                     </ul>
                 </div>
                 <div class="string player-info">
-                    <% if (!clan && info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined) { %>
+                    <% if (!clan && info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && (locals.priv & (1 << 12)) === 0) { %>
                         <div class="private">This account is private</div>
                     <% } else { %>
                         <div class="overview">
@@ -1007,7 +1007,7 @@
                     <% } %>
                 </div>
             </div>
-            <% if (!(info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined)) { %>
+            <% if (!(info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && (locals.priv & (1 << 12)) === 0)) { %>
                 <div class="box me">
                     <h1><i class="fa-solid fa-id-badge"></i>me!</h1>
                     <p class="edit-button" style="display: none;">
@@ -1100,7 +1100,7 @@
                     </div>
                 </div>
             <% } %>
-            <% if (!clan && !(info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined)) { %>
+            <% if (!clan && !(info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && (locals.priv & (1 << 12)) === 0)) { %>
                 <div id="map-sorts"></div>
                 <!-- achievements -->
                 <div class="box achievements">
