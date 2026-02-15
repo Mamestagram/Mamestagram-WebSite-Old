@@ -1,8 +1,8 @@
 'use strict';
 
-const LRU = require('lru-cache').default;
+const { createLRU } = require('lru.min');
 
-let parserCache = new LRU({
+const parserCache = createLRU({
   max: 15000,
 });
 
@@ -14,7 +14,9 @@ function keyFromFields(type, fields, options, config) {
     Boolean(options.rowsAsArray),
     Boolean(options.supportBigNumbers || config.supportBigNumbers),
     Boolean(options.bigNumberStrings || config.bigNumberStrings),
-    typeof options.typeCast,
+    typeof options.typeCast === 'boolean'
+      ? options.typeCast
+      : typeof options.typeCast,
     options.timezone || config.timezone,
     Boolean(options.decimalNumbers),
     options.dateStrings,
@@ -51,7 +53,7 @@ function getParser(type, fields, options, config, compiler) {
 }
 
 function setMaxCache(max) {
-  parserCache = new LRU({ max });
+  parserCache.resize(max);
 }
 
 function clearCache() {

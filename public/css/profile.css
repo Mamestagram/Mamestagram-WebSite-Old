@@ -573,6 +573,14 @@ main .player-banner .player-info {
     overflow: hidden;
 }
 
+main .player-banner .player-info .private {
+    font-size: 28px;
+    font-weight: bold;
+    width: 100%;
+    line-height: 350px;
+    text-align: center;
+}
+
 main .player-banner .player-info .wrap {
     display: flex;
 }

@@ -826,275 +826,281 @@
                     </ul>
                 </div>
                 <div class="string player-info">
-                    <div class="overview">
-                        <div class="wrap ranking">
-                            <% if (bRanking) { %>
-                                <div class="global">
-                                    <h1>Bancho Ranking</h1>
-                                    <h2>
-                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
-                                            -
-                                        <% } else { %>
-                                            #<%= ranking.bancho.toLocaleString() %>
-                                        <% } %>
-                                    </h2>
-                                </div>
-                            <% } else if (!clan) { %>
-                                <div class="global">
-                                    <h1>Global Ranking</h1>
-                                    <h2>
-                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
-                                            -
-                                        <% } else { %>
-                                            #<%= ranking.global.toLocaleString() %>
-                                        <% } %>
-                                    </h2>
-                                </div>
-                                <div class="country">
-                                    <h1>Country Ranking</h1>
-                                    <h2>
-                                        <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
-                                            -
-                                        <% } else { %>
-                                            #<%= ranking.country.toLocaleString() %>
-                                        <% } %>
-                                    </h2>
-                                </div>
-                            <% } else { %>
-                                <div class="global">
-                                    <h1>Clan Ranking</h1>
-                                    <h2>
-                                        <% if (acc === 0 || info.public === 0) { %>
-                                            -
-                                        <% } else { %>
-                                            #<%= ranking.toLocaleString() %>
-                                        <% } %>
-                                    </h2>
-                                </div>
-                            <% } %>
-                        </div>
-                        <div class="wrap detail">
-                            <div class="medals"
-                            <% if (dans) { %>
-                                style="filter: invert(50%); opacity: 0.95;"
-                            <% } %>>
-                                <h1>Medals</h1>
-                                <h2><%= Math.floor(medals).toLocaleString() %></h2>
+                    <% if (!clan && info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined) { %>
+                        <div class="private">This account is private</div>
+                    <% } else { %>
+                        <div class="overview">
+                            <div class="wrap ranking">
+                                <% if (bRanking) { %>
+                                    <div class="global">
+                                        <h1>Bancho Ranking</h1>
+                                        <h2>
+                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                                -
+                                            <% } else { %>
+                                                #<%= ranking.bancho.toLocaleString() %>
+                                            <% } %>
+                                        </h2>
+                                    </div>
+                                <% } else if (!clan) { %>
+                                    <div class="global">
+                                        <h1>Global Ranking</h1>
+                                        <h2>
+                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                                -
+                                            <% } else { %>
+                                                #<%= ranking.global.toLocaleString() %>
+                                            <% } %>
+                                        </h2>
+                                    </div>
+                                    <div class="country">
+                                        <h1>Country Ranking</h1>
+                                        <h2>
+                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                                -
+                                            <% } else { %>
+                                                #<%= ranking.country.toLocaleString() %>
+                                            <% } %>
+                                        </h2>
+                                    </div>
+                                <% } else { %>
+                                    <div class="global">
+                                        <h1>Clan Ranking</h1>
+                                        <h2>
+                                            <% if (acc === 0 || info.public === 0) { %>
+                                                -
+                                            <% } else { %>
+                                                #<%= ranking.toLocaleString() %>
+                                            <% } %>
+                                        </h2>
+                                    </div>
+                                <% } %>
                             </div>
-                            <div class="pp">
-                                <h1>pp</h1>
+                            <div class="wrap detail">
+                                <div class="medals"
+                                <% if (dans) { %>
+                                     style="filter: invert(50%); opacity: 0.95;"
+                                        <% } %>>
+                                    <h1>Medals</h1>
+                                    <h2><%= Math.floor(medals).toLocaleString() %></h2>
+                                </div>
+                                <div class="pp">
+                                    <h1>pp</h1>
+                                    <h2>
+                                        <% if (dans || clan) { %>
+                                            <%= Math.round(pp).toLocaleString() %>
+                                        <% } else { %>
+                                            <%= Math.round(info.pp).toLocaleString() %>
+                                        <% } %>
+                                    </h2>
+                                </div>
+                                <div title="<%= getPlayTime(info.playtime).hour %> hours" class="playtime"
+                                <% if (dans) { %>
+                                     style="filter: invert(50%); opacity: 0.95;"
+                                        <% } %>>
+                                    <h1>Total Play Time</h1>
+                                    <h2><%= getPlayTime(info.playtime).time %></h2>
+                                </div>
+                            </div>
+                            <div class="wrap grade-amounts">
+                                <div class="xh">
+                                    <img src="/image/grade/XH.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
+                                    <%= !dans ? Math.floor(info.xh_count).toLocaleString() : Math.floor(grade.xh[0].value).toLocaleString() %>
+                                </div>
+                                <div class="x">
+                                    <img src="/image/grade/X.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
+                                    <%= !dans ? Math.floor(info.x_count).toLocaleString() : Math.floor(grade.x[0].value).toLocaleString() %>
+                                </div>
+                                <div class="sh">
+                                    <img src="/image/grade/SH.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
+                                    <%= !dans ? Math.floor(info.sh_count).toLocaleString() : Math.floor(grade.sh[0].value).toLocaleString() %>
+                                </div>
+                                <div class="s">
+                                    <img src="/image/grade/S.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
+                                    <%= !dans ? Math.floor(info.s_count).toLocaleString() : Math.floor(grade.s[0].value).toLocaleString() %>
+                                </div>
+                                <div class="a">
+                                    <img src="/image/grade/A.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
+                                    <%= !dans ? Math.floor(info.a_count).toLocaleString() : Math.floor(grade.a[0].value).toLocaleString() %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats">
+                            <div class="acc">
+                                <h1>Hit Accuracy</h1>
                                 <h2>
                                     <% if (dans || clan) { %>
-                                        <%= Math.round(pp).toLocaleString() %>
+                                        <%= acc.toFixed(2) %>
                                     <% } else { %>
-                                        <%= Math.round(info.pp).toLocaleString() %>
+                                        <%= info.acc.toFixed(2) %>
+                                    <% } %>
+                                    %
+                                </h2>
+                            </div>
+                            <div class="playcount">
+                                <h1>Play Count</h1>
+                                <h2>
+                                    <% if (dans || clan) { %>
+                                        <%= Math.floor(plays).toLocaleString() %>
+                                    <% } else { %>
+                                        <%= Math.floor(info.plays).toLocaleString() %>
                                     <% } %>
                                 </h2>
                             </div>
-                            <div title="<%= getPlayTime(info.playtime).hour %> hours" class="playtime"
+                            <div class="hits"
                             <% if (dans) { %>
-                                style="filter: invert(50%); opacity: 0.95;"
-                            <% } %>>
-                                <h1>Total Play Time</h1>
-                                <h2><%= getPlayTime(info.playtime).time %></h2>
+                                 style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>>
+                                <h1>Total hits</h1>
+                                <h2>
+                                    <% if (!dans && clan) { %>
+                                        <%= Math.floor(hits).toLocaleString() %>
+                                    <% } else { %>
+                                        <%= Math.floor(info.total_hits).toLocaleString() %>
+                                    <% } %>
+                                </h2>
+                            </div>
+                            <div class="rankedscore"
+                            <% if (dans) { %>
+                                 style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>>
+                                <h1>Ranked Score</h1>
+                                <h2>
+                                    <% if (!dans && clan) { %>
+                                        <%= Math.floor(score.ranked[0].value).toLocaleString() %>
+                                    <% } else { %>
+                                        <%= Math.floor(info.rscore).toLocaleString() %>
+                                    <% } %>
+                                </h2>
+                            </div>
+                            <div class="totalscore"
+                            <% if (dans) { %>
+                                 style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>>
+                                <h1>Total Score</h1>
+                                <h2>
+                                    <% if (!dans && clan) { %>
+                                        <%= Math.floor(score.total[0].value).toLocaleString() %>
+                                    <% } else { %>
+                                        <%= Math.floor(info.tscore).toLocaleString() %>
+                                    <% } %>
+                                </h2>
+                            </div>
+                            <div class="maxcombo">
+                                <h1>Maximum Combo</h1>
+                                <h2>
+                                    <% if (dans) { %>
+                                        <%= max_combo.toLocaleString() %>
+                                    <% } else { %>
+                                        <%= info.max_combo.toLocaleString() %>
+                                    <% } %>
+                                </h2>
+                            </div>
+                            <div class="watched"
+                            <% if (dans) { %>
+                                 style="filter: invert(50%); opacity: 0.95;"
+                                    <% } %>>
+                                <h1>Replays Watched</h1>
+                                <h2><%= info.replay_views.toLocaleString() %></h2>
                             </div>
                         </div>
-                        <div class="wrap grade-amounts">
-                            <div class="xh">
-                                <img src="/image/grade/XH.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
-                                <%= !dans ? Math.floor(info.xh_count).toLocaleString() : Math.floor(grade.xh[0].value).toLocaleString() %>
-                            </div>
-                            <div class="x">
-                                <img src="/image/grade/X.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
-                                <%= !dans ? Math.floor(info.x_count).toLocaleString() : Math.floor(grade.x[0].value).toLocaleString() %>
-                            </div>
-                            <div class="sh">
-                                <img src="/image/grade/SH.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
-                                <%= !dans ? Math.floor(info.sh_count).toLocaleString() : Math.floor(grade.sh[0].value).toLocaleString() %>
-                            </div>
-                            <div class="s">
-                                <img src="/image/grade/S.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
-                                <%= !dans ? Math.floor(info.s_count).toLocaleString() : Math.floor(grade.s[0].value).toLocaleString() %>
-                            </div>
-                            <div class="a">
-                                <img src="/image/grade/A.png?<%= date %>" decoding="async" loading="lazy" alt="" /><br>
-                                <%= !dans ? Math.floor(info.a_count).toLocaleString() : Math.floor(grade.a[0].value).toLocaleString() %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stats">
-                        <div class="acc">
-                            <h1>Hit Accuracy</h1>
-                            <h2>
-                                <% if (dans || clan) { %>
-                                    <%= acc.toFixed(2) %>
-                                <% } else { %>
-                                    <%= info.acc.toFixed(2) %>
-                                <% } %>
-                                %
-                            </h2>
-                        </div>
-                        <div class="playcount">
-                            <h1>Play Count</h1>
-                            <h2>
-                                <% if (dans || clan) { %>
-                                    <%= Math.floor(plays).toLocaleString() %>
-                                <% } else { %>
-                                    <%= Math.floor(info.plays).toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
-                        <div class="hits"
-                        <% if (dans) { %>
-                            style="filter: invert(50%); opacity: 0.95;"
-                        <% } %>>
-                            <h1>Total hits</h1>
-                            <h2>
-                                <% if (!dans && clan) { %>
-                                    <%= Math.floor(hits).toLocaleString() %>
-                                <% } else { %>
-                                    <%= Math.floor(info.total_hits).toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
-                        <div class="rankedscore"
-                        <% if (dans) { %>
-                            style="filter: invert(50%); opacity: 0.95;"
-                        <% } %>>
-                            <h1>Ranked Score</h1>
-                            <h2>
-                                <% if (!dans && clan) { %>
-                                    <%= Math.floor(score.ranked[0].value).toLocaleString() %>
-                                <% } else { %>
-                                    <%= Math.floor(info.rscore).toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
-                        <div class="totalscore"
-                        <% if (dans) { %>
-                            style="filter: invert(50%); opacity: 0.95;"
-                        <% } %>>
-                            <h1>Total Score</h1>
-                            <h2>
-                                <% if (!dans && clan) { %>
-                                    <%= Math.floor(score.total[0].value).toLocaleString() %>
-                                <% } else { %>
-                                    <%= Math.floor(info.tscore).toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
-                        <div class="maxcombo">
-                            <h1>Maximum Combo</h1>
-                            <h2>
-                                <% if (dans) { %>
-                                    <%= max_combo.toLocaleString() %>
-                                <% } else { %>
-                                    <%= info.max_combo.toLocaleString() %>
-                                <% } %>
-                            </h2>
-                        </div>
-                        <div class="watched"
-                        <% if (dans) { %>
-                            style="filter: invert(50%); opacity: 0.95;"
-                        <% } %>>
-                            <h1>Replays Watched</h1>
-                            <h2><%= info.replay_views.toLocaleString() %></h2>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
-            <div class="box me">
-                <h1><i class="fa-solid fa-id-badge"></i>me!</h1>
-                <p class="edit-button" style="display: none;">
-                    <i class="fa-solid fa-pen"></i>
-                </p>
-                <div class="contents">
-                    <div id="put-bbcode" class="bbcode-profile" style="display: none;">
-                        <% if (bbcode === null) { %>
-                            <div class="me-empty">
-                                <% if ((!clan && id === locals.userid) || (clan && info.owner === locals.userid)) { %>
-                                    <p class="edit-me">Edit me!</p>
-                                    <i class="fa-solid fa-user-pen"></i>
-                                    <p class="description">Express yourself by editing <strong>me!</strong></p>
-                                <% } else { %>
-                                    <p class="nothing">No contents</p>
-                                <% } %>
-                            </div>
-                        <% } %>
-                        <%= me %>
-                    </div>
-                    <form action="/me" method="post" style="display: none;">
-                        <textarea id="me-editor" placeholder="Type page content here" name="content"><%= bbcode %></textarea>
-                        <div class="editor">
-                            <div class="bb-button">
-                                <p title="Heading" class="heading">
-                                    <i class="fa-solid fa-heading"></i>
-                                </p>
-                                <p title="Bold" class="bold">
-                                    <i class="fa-solid fa-bold"></i>
-                                </p>
-                                <p title="Italic" class="italic">
-                                    <i class="fa-solid fa-italic"></i>
-                                </p>
-                                <p title="Underline" class="underline">
-                                    <i class="fa-solid fa-underline"></i>
-                                </p>
-                                <p title="Strikethrough" class="strike">
-                                    <i class="fa-solid fa-strikethrough"></i>
-                                </p>
-                                <p title="Color text" class="color">
-                                    <i class="fa-solid fa-droplet"></i>
-                                </p>
-                                <p title="Spoiler" class="spoiler-text">
-                                    <i class="fa-solid fa-rectangle-xmark"></i>
-                                </p>
-                                <p title="Center" class="center">
-                                    <i class="fa-solid fa-align-center"></i>
-                                </p>
-                                <p title="Spoilerbox" class="spoilerbox">
-                                    <i class="fa-solid fa-square-caret-down"></i>
-                                </p>
-                                <p title="List" class="list">
-                                    <i class="fa-solid fa-list-ul"></i>
-                                </p>
-                                <p title="Numbered list" class="num-list">
-                                    <i class="fa-solid fa-list-ol"></i>
-                                </p>
-                                <p title="Quote" class="quote">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                </p>
-                                <p title="Image" class="image">
-                                    <i class="fa-solid fa-image"></i>
-                                </p>
-                                <p title="Link" class="url">
-                                    <i class="fa-solid fa-link"></i>
-                                </p>
-                                <p title="Profile" class="profile">
-                                    <i class="fa-solid fa-address-card"></i>
-                                </p>
-                                <p title="Code block" class="code">
-                                    <i class="fa-solid fa-code"></i>
-                                </p>
-                                <select title="Font size" class="size">
-                                    <option value="title" hidden selected>Font size</option>
-                                    <option value="tiny">Tiny</option>
-                                    <option value="small">Small</option>
-                                    <option value="normal">Normal</option>
-                                    <option value="large">Large</option>
-                                </select>
-                                <a href="https://github.com/Mamestagram/BBCode-Usage" target="_blank" rel="noopener noreferrer">Help</a>
-                            </div>
-                            <div class="edit">
-                                <p class="cancel" onclick="cancel()">Cancel</p>
-                                <p class="preview" onclick="showPreview()">Preview</p>
-                                <p class="back-to-edit" onclick="backToEditor()" style="display: none">Edit</p>
-                                <p class="save" onclick="save()">Save</p>
-                            </div>
+            <% if (!(info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined)) { %>
+                <div class="box me">
+                    <h1><i class="fa-solid fa-id-badge"></i>me!</h1>
+                    <p class="edit-button" style="display: none;">
+                        <i class="fa-solid fa-pen"></i>
+                    </p>
+                    <div class="contents">
+                        <div id="put-bbcode" class="bbcode-profile" style="display: none;">
+                            <% if (bbcode === null) { %>
+                                <div class="me-empty">
+                                    <% if ((!clan && id === locals.userid) || (clan && info.owner === locals.userid)) { %>
+                                        <p class="edit-me">Edit me!</p>
+                                        <i class="fa-solid fa-user-pen"></i>
+                                        <p class="description">Express yourself by editing <strong>me!</strong></p>
+                                    <% } else { %>
+                                        <p class="nothing">No contents</p>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                            <%= me %>
                         </div>
-                    </form>
+                        <form action="/me" method="post" style="display: none;">
+                            <textarea id="me-editor" placeholder="Type page content here" name="content"><%= bbcode %></textarea>
+                            <div class="editor">
+                                <div class="bb-button">
+                                    <p title="Heading" class="heading">
+                                        <i class="fa-solid fa-heading"></i>
+                                    </p>
+                                    <p title="Bold" class="bold">
+                                        <i class="fa-solid fa-bold"></i>
+                                    </p>
+                                    <p title="Italic" class="italic">
+                                        <i class="fa-solid fa-italic"></i>
+                                    </p>
+                                    <p title="Underline" class="underline">
+                                        <i class="fa-solid fa-underline"></i>
+                                    </p>
+                                    <p title="Strikethrough" class="strike">
+                                        <i class="fa-solid fa-strikethrough"></i>
+                                    </p>
+                                    <p title="Color text" class="color">
+                                        <i class="fa-solid fa-droplet"></i>
+                                    </p>
+                                    <p title="Spoiler" class="spoiler-text">
+                                        <i class="fa-solid fa-rectangle-xmark"></i>
+                                    </p>
+                                    <p title="Center" class="center">
+                                        <i class="fa-solid fa-align-center"></i>
+                                    </p>
+                                    <p title="Spoilerbox" class="spoilerbox">
+                                        <i class="fa-solid fa-square-caret-down"></i>
+                                    </p>
+                                    <p title="List" class="list">
+                                        <i class="fa-solid fa-list-ul"></i>
+                                    </p>
+                                    <p title="Numbered list" class="num-list">
+                                        <i class="fa-solid fa-list-ol"></i>
+                                    </p>
+                                    <p title="Quote" class="quote">
+                                        <i class="fa-solid fa-arrows-rotate"></i>
+                                    </p>
+                                    <p title="Image" class="image">
+                                        <i class="fa-solid fa-image"></i>
+                                    </p>
+                                    <p title="Link" class="url">
+                                        <i class="fa-solid fa-link"></i>
+                                    </p>
+                                    <p title="Profile" class="profile">
+                                        <i class="fa-solid fa-address-card"></i>
+                                    </p>
+                                    <p title="Code block" class="code">
+                                        <i class="fa-solid fa-code"></i>
+                                    </p>
+                                    <select title="Font size" class="size">
+                                        <option value="title" hidden selected>Font size</option>
+                                        <option value="tiny">Tiny</option>
+                                        <option value="small">Small</option>
+                                        <option value="normal">Normal</option>
+                                        <option value="large">Large</option>
+                                    </select>
+                                    <a href="https://github.com/Mamestagram/BBCode-Usage" target="_blank" rel="noopener noreferrer">Help</a>
+                                </div>
+                                <div class="edit">
+                                    <p class="cancel" onclick="cancel()">Cancel</p>
+                                    <p class="preview" onclick="showPreview()">Preview</p>
+                                    <p class="back-to-edit" onclick="backToEditor()" style="display: none">Edit</p>
+                                    <p class="save" onclick="save()">Save</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <% if (!clan) { %>
+            <% } %>
+            <% if (!clan && !(info.isPrivate && id !== locals.userid && mutualList.find(({ user2 }) => Number(locals.userid) === user2) === undefined && followingList.find(({ user2 }) => Number(locals.userid) === user2) === undefined)) { %>
                 <div id="map-sorts"></div>
                 <!-- achievements -->
                 <div class="box achievements">
@@ -1232,7 +1238,7 @@
                         </div>
                     </div>
                 </div>
-            <% } else { %>
+            <% } else if (clan) { %>
                 <div class="box member">
                     <h1><i class="fa-solid fa-people-group"></i>Clan Member</h1>
                     <div class="member-table">
