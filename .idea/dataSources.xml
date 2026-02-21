@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Mamestagram" uuid="10cb222b-61b9-4696-a350-4369c5c73594">
+    <data-source source="LOCAL" name="Mamestagram Test DB" uuid="f45c6bfe-3b9d-4ecc-b483-0eb87a6d0a1a">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/MamestaServer</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Mamestagram Test" uuid="75b40e26-1203-462c-97fa-9fe00b403f97">
+    <data-source source="LOCAL" name="Mamestagram Main DB" uuid="44854796-f906-4eb7-bee0-27a2e9ce1d53">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
