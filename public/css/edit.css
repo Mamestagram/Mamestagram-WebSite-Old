@@ -91,6 +91,20 @@ main {
     text-align: center;
 }
 
+.box.wipe .mode-select label {
+	display: inline-block;
+	background-color: #fdfdfd;
+	padding: 5px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.box.wipe .btn {
+	height: 36px;
+	line-height: 36px;
+}
+
 .box .errmsg {
     font-size: 14px;
 }

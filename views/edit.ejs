@@ -108,7 +108,7 @@
                             Enter a new username below<br />
                             (within 15 characters)
                         </span>
-                        <% if (err) { %>
+                        <% if (err && !err.startsWith("Need")) { %>
                             <span class="errmsg" style="color: red"><%= err %></span>
                         <% } %>
                         <input
@@ -259,9 +259,36 @@
                     </p>
                 </form>
             </div>
+            <% if (!clan && (locals.priv & 1 << 4) > 0) { %>
+                <div class="box wipe">
+                    <form action="/wipe&<%= !clan ? "personal" : "clan" %>" method="post">
+                        <h1 class="title">Start Over</h1>
+                        <div class="mode-select">
+                            <label>
+                                <select id="mode-select" name="mode">
+                                    <option value="" selected>select mode</option>
+                                    <option value="0">vn!std</option>
+                                    <option value="1">vn!taiko</option>
+                                    <option value="2">vn!ctb</option>
+                                    <option value="3">vn!mania</option>
+                                    <option value="4">rx!std</option>
+                                    <option value="5">rx!taiko</option>
+                                    <option value="6">rx!ctb</option>
+                                    <option value="8">ap!std</option>
+                                </select>
+                            </label>
+                            <% if (err) { %>
+                                <br>
+                                <span class="errmsg" style="color: red"><%= err %></span>
+                            <% } %>
+                        </div>
+                        <button class="btn" type="submit" onclick="wipe(event)">Clear scores</button>
+                    </form>
+                </div>
+            <% } %>
         </main>
         <%- include("footer") %>
-        <script nonce="<%= cspNonce %>">
+        <script nonce="<%= cspNonce %>" defer>
             $(".box .image input").change(function() {
                 const image = $(this)[0].files[0];
                 preview($(this).attr("name"), image);
@@ -318,6 +345,17 @@
                 console.log(sure);
                 if (sure) {
                     window.location.href = arg[1];
+                }
+            }
+
+			function wipe(e) {
+				e.preventDefault();
+				const mode = document.getElementById("mode-select").value;
+				if (mode === "") {
+					alert("Need to select mode");
+                }
+				else if (confirm("Are you sure you want to reset your score?")) {
+					e.currentTarget.form.submit();
                 }
             }
         </script>
