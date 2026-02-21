@@ -277,6 +277,10 @@ section ul li {
 .contents .role .media {
     height: 190px;
 }
+.contents .colored .media {
+	width: 500px;
+	height: 150px;
+}
 
 .contents .media video,
 .contents .media img {
@@ -625,6 +629,9 @@ section ul li {
     .contents .role .media {
         height: 160px;
     }
+	.contents .colored .media {
+		height: 120px;
+	}
 
     .contents .description {
         height: 65px;
@@ -710,6 +717,9 @@ section ul li {
     .contents .role .media {
         height: 80px;
     }
+	.contents .colored .media {
+		height: 40px;
+	}
 
     .contents .description {
         height: 60px;
