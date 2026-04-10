@@ -835,7 +835,7 @@
                                     <div class="global">
                                         <h1>Bancho Ranking</h1>
                                         <h2>
-                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0 || ranking.bancho === 0) { %>
                                                 -
                                             <% } else { %>
                                                 #<%= ranking.bancho.toLocaleString() %>
@@ -846,7 +846,7 @@
                                     <div class="global">
                                         <h1>Global Ranking</h1>
                                         <h2>
-                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0 || ranking.global === 0) { %>
                                                 -
                                             <% } else { %>
                                                 #<%= ranking.global.toLocaleString() %>
@@ -856,7 +856,7 @@
                                     <div class="country">
                                         <h1>Country Ranking</h1>
                                         <h2>
-                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0) { %>
+                                            <% if (((!dans && info.acc === 0) || (dans && acc === 0)) || info.priv % 2 === 0 || ranking.country === 0) { %>
                                                 -
                                             <% } else { %>
                                                 #<%= ranking.country.toLocaleString() %>
