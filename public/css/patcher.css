@@ -233,6 +233,12 @@ section {
         padding: 10px 15px;
         margin: 6px 5px;
     }
+	
+	main .top {
+		display: block;
+		position: unset;
+		margin-top: 50px;
+	}
 
     article {
         width: 760px;
