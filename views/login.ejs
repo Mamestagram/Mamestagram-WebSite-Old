@@ -105,9 +105,6 @@
                     <% } %>
                     <div class="input-box">
                         <input type="password" name="password" value="<%= pstxt %>" required>
-                        <% if (!webKey) { %>
-                            <i class="fa-solid fa-key-skeleton" onclick="getKey()"></i>
-                        <% } %>
                     </div>
                 </div>
                 <p>Don't you have an account? <a href="/register">Register</a></p>
@@ -116,11 +113,5 @@
         </div>
     </main>
     <%- include("footer") %>
-    <script type="text/javascript" nonce="<%= cspNonce %>">
-        function getKey() {
-            alert("Could be useful somewhere");
-            window.location.href = "/key";
-        }
-    </script>
     </body>
 </html>
