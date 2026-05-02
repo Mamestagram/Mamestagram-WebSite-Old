@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <%
+        const date = new Date().toLocaleString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }).replaceAll("/", "").replaceAll(" ", "").replaceAll(":", "");
+        %>
+        <title>Patcher | Mamestagram</title>
+        <%- include("link") %>
+        <link rel="stylesheet" href="/css/patcher.css?<%= date %>" />
+        <style>
+            body::-webkit-scrollbar-track {
+                background-color: #fdfdfd;
+            }
+            body::-webkit-scrollbar-thumb {
+                background-color: #3d3829;
+            }
+
+            header {
+                background-color: transparent;
+            }
+
+            header .pc .patcher {
+                color: #fdfdfd;
+            }
+
+            .animated {
+                background-color: #ac8f39;
+            }
+
+            .animated .pc li:hover {
+                background-color: #ffd966;
+            }
+
+            .animated .pc .patcher {
+                border-bottom: 3px solid #ffd966;
+            }
+
+            @media (max-width: 1232px) {
+                header {
+                    background-color: #ac8f39;
+                }
+            }
+
+            .mobile {
+                background-color: #2a2822;
+            }
+
+            .mobile .patcher {
+                background-color: rgba(255, 217, 102, 0.3);
+                color: #fdfdfd;
+            }
+
+            .mobile .patcher span {
+                border-left: 3px solid #ffd966;
+            }
+
+            .mobile li:hover {
+                background-color: rgba(255, 217, 102, 0.3);
+            }
+
+            .mobile .register, .mobile .login, .mobile .avatar {
+                background-color: #3d3829;
+                color: #d1c27c;
+            }
+            .mobile .register:hover, .mobile .login:hover, .mobile .avatar:hover {
+                background-color: #3d3829;
+            }
+
+            .link-form a, .link-form button {
+                background-color: #ac8f39;
+            }
+            .link-form a:hover, .link-form button:hover {
+                background-color: #debc54;
+            }
+
+            .search-form .searchbox {
+                background-color: #464339;
+            }
+
+            .search-form .searchbox .txtbox {
+                border-bottom: 2px solid #706b5c;
+            }
+        </style>
+    </head>
+    <body>
+        <%- include("header") %>
+        <img class="banner" src="/image/banner/documents.jpg?<%= date %>" alt="" />
+        <h1 class="pagename">Patcher</h1>
+        <main>
+            <div class="eng">
+                <ul class="menu menu-en">
+                    <li><a href="#overview-en">Overview</a></li>
+                    <li><a href="#features-en">Features</a></li>
+                    <li><a href="#download-en">Download</a></li>
+                    <li><a href="#setup-en">How to use</a></li>
+                    <li><a href="#faq-en">FAQ</a></li>
+                </ul>
+                <article>
+                    <section id="overview-en" class="hero-section">
+                        <h1>Mamestagram Patcher</h1>
+                        <p class="lead">A lightweight launcher for relax play that brings back core gameplay feedback without touching your osu! client manually.</p>
+                        <div class="summary-grid">
+                            <div class="summary-card">
+                                <h2>Single executable</h2>
+                                <p>Run the patcher, let it launch osu!, and start playing without separate client edits.</p>
+                            </div>
+                            <div class="summary-card">
+                                <h2>Gameplay feedback</h2>
+                                <p>Restore relax misses and ranking panels so the play result feels closer to normal gameplay.</p>
+                            </div>
+                            <div class="summary-card">
+                                <h2>Fast setup</h2>
+                                <p>No installer flow, no file replacement, and no manual patching steps before each session.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="features-en" class="feature-section">
+                        <h1>Features</h1>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <h2>Enable Relax Misses</h2>
+                                <p>Miss feedback appears again during relax play, which makes reading and failure states easier to understand.</p>
+                                <img src="https://private-user-images.githubusercontent.com/88868436/585073004-a4160a34-10cb-458c-a9a0-fe751b5a751f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc3MjI5NzYsIm5iZiI6MTc3NzcyMjY3NiwicGF0aCI6Ii84ODg2ODQzNi81ODUwNzMwMDQtYTQxNjBhMzQtMTBjYi00NThjLWE5YTAtZmU3NTFiNWE3NTFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTAyVDExNTExNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTViYTQ5Y2MyODJjZTE3NjVkYjRmYTRmODUwMDJlMGVlZGIwZDJkOGU0M2RiNzc0OTkxMDhiYTkzNjQwZGZhOGMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.itYl-Ql-lxItZzBqom1itQSV8HWIBpQpTrl1_ezZVQU" alt="Relax misses preview" />
+                            </div>
+                            <div class="feature-card">
+                                <h2>Show Relax Ranking Panels</h2>
+                                <p>Ranking panels return after a map so the result screen keeps the familiar post-play flow.</p>
+                                <img src="https://private-user-images.githubusercontent.com/88868436/585221940-406864b1-565c-4869-a702-50b48d281f3b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc3MjI5NzYsIm5iZiI6MTc3NzcyMjY3NiwicGF0aCI6Ii84ODg2ODQzNi81ODUyMjE5NDAtNDA2ODY0YjEtNTY1Yy00ODY5LWE3MDItNTBiNDhkMjgxZjNiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTAyVDExNTExNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIxZGI3ZjAxZGY4YzM3YzVlOGQ4YzhmMTcwOTc1ZTkzY2IzMzcwOGYyMGNmNDZiOTk5N2MxNDg4Mzk3YWM2MjYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.RVQoYEkIy2Cy3MdOhFlnGopUsGwrWV_A2et9HLU4CHU" alt="Ranking panel preview" />
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="download-en" class="download-section">
+                        <h1>Download</h1>
+                        <p>The patcher is distributed as a single executable and does not require manual client modification.</p>
+                        <a class="download-button" href="https://air_conditioning.akatsuki.gg/loader" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-download"></i>
+                            Download Patcher
+                        </a>
+                        <p class="note">If your browser or security software asks for confirmation, review the file source first and continue only if it matches your expected download target.</p>
+                    </section>
+
+                    <section id="setup-en" class="steps-section">
+                        <h1>How to use</h1>
+                        <ol>
+                            <li>Download the executable from the button above.</li>
+                            <li>Close osu! if it is already running.</li>
+                            <li>Run the patcher and wait for osu! to open.</li>
+                            <li>Log in and play normally with relax enabled.</li>
+                        </ol>
+                    </section>
+
+                    <section id="faq-en" class="faq-section">
+                        <h1>FAQ</h1>
+                        <ul>
+                            <li>
+                                <h2>Does this replace osu! files?</h2>
+                                <p>No manual file replacement is required for the intended flow.</p>
+                            </li>
+                            <li>
+                                <h2>Do I need to run it every time?</h2>
+                                <p>Yes. Start your session through the patcher when you want the patched relax experience.</p>
+                            </li>
+                            <li>
+                                <h2>Can I keep using the normal client too?</h2>
+                                <p>Yes. You can still launch your standard client separately whenever you do not need the patcher behavior.</p>
+                            </li>
+                        </ul>
+                    </section>
+                </article>
+                <a href="#" class="top">Back to top</a>
+            </div>
+        </main>
+        <%- include("footer") %>
+        <script src="/jquery/documents.js" nonce="<%= cspNonce %>" defer></script>
+    </body>
+</html>

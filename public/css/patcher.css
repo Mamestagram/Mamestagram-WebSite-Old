@@ -1,0 +1,329 @@
+html {
+    scroll-behavior: smooth;
+}
+
+main {
+    background-color: #1c1b17;
+    color: #fdfdfd;
+    padding-top: 100px;
+    padding-bottom: 250px;
+    text-align: center;
+}
+
+main .menu {
+    display: flex;
+    background-color: #2a2822;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    justify-content: center;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+main .menu li {
+    background-color: #38362e;
+    color: #d9cc8b;
+    padding: 10px 25px;
+    margin: 10px 5px;
+    border-radius: 5px;
+}
+
+main .menu li:hover {
+    color: #e0d6b8;
+    text-decoration: underline;
+}
+
+main .top {
+    position: fixed;
+    color: #d9cc8b;
+    bottom: 75px;
+    right: 70px;
+}
+
+main .top:hover {
+    color: #e0d6b8;
+    text-decoration: underline;
+}
+
+main .language button {
+    position: fixed;
+    color: #d9cc8b;
+    bottom: 75px;
+}
+
+main .language button:hover {
+    color: #e0d6b8;
+    text-decoration: underline;
+}
+
+main .language .en {
+    left: 60px;
+}
+
+main .language .ja {
+    left: 120px;
+}
+
+article {
+    background-color: #2a2822;
+    width: 1080px;
+    padding: 12px 0;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: left;
+}
+
+article h1 {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+section {
+    background-color: #38362e;
+    width: 1060px;
+    padding: 28px 0;
+    margin: 30px auto;
+    border-radius: 5px;
+    scroll-margin-top: 150px;
+}
+
+.hero-section,
+.feature-section,
+.download-section,
+.steps-section,
+.faq-section {
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.lead {
+    font-size: 18px;
+    line-height: 34px;
+    color: #f3ebc7;
+    padding: 16px 10px 0;
+}
+
+.summary-grid,
+.feature-grid {
+    display: grid;
+    gap: 20px;
+    padding: 28px 10px 0;
+}
+
+.summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.summary-card,
+.feature-card {
+    background-color: #2d2a24;
+    border: 1px solid #4b4638;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.summary-card h2,
+.feature-card h2,
+.faq-section h2 {
+    font-size: 24px;
+    color: #f4e3a0;
+    padding-bottom: 12px;
+}
+
+.summary-card p,
+.feature-card p,
+.download-section p,
+.steps-section li,
+.faq-section p {
+    font-size: 15px;
+    line-height: 28px;
+    color: #f2efe5;
+}
+
+.feature-card img {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    border-radius: 6px;
+    border: 1px solid #555042;
+}
+
+.download-section {
+    text-align: center;
+}
+
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ac8f39;
+    color: #fdfdfd;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 16px 28px;
+    margin-top: 24px;
+    border-radius: 8px;
+    transition: background-color 300ms, transform 200ms;
+}
+
+.download-button:hover {
+    background-color: #debc54;
+    transform: translateY(-2px);
+}
+
+.download-section .note {
+    font-size: 13px;
+    line-height: 24px;
+    color: #d9cc8b;
+    max-width: 720px;
+    margin: 18px auto 0;
+}
+
+.steps-section ol {
+    list-style-type: decimal;
+    padding: 20px 30px 0 50px;
+}
+
+.steps-section li {
+    padding: 10px 0;
+}
+
+.faq-section ul {
+    padding: 20px 10px 0;
+}
+
+.faq-section li {
+    padding: 18px 0;
+    border-top: 1px solid #4b4638;
+}
+
+.faq-section li:first-child {
+    border-top: none;
+}
+
+@media (max-width: 1232px) {
+    main {
+        padding-top: 30px;
+    }
+
+    main .language a,
+    main .language button {
+        position: unset;
+        padding: 10px;
+    }
+
+    main .menu {
+        margin: 30px auto;
+        padding: 6px 8px;
+    }
+
+    main .menu.menu-en,
+    main .menu.menu-ja {
+        width: 380px;
+    }
+
+    main .menu li {
+        font-size: 14px;
+        padding: 10px 15px;
+        margin: 6px 5px;
+    }
+
+    article {
+        width: 760px;
+        padding: 10px 0;
+    }
+
+    article h1 {
+        font-size: 30px;
+        padding: 0 5px;
+    }
+
+    section {
+        width: 740px;
+        scroll-margin-top: 100px;
+    }
+
+    .summary-grid,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    main .menu.menu-en,
+    main .menu.menu-ja {
+        width: 340px;
+    }
+
+    article {
+        width: 370px;
+    }
+
+    article h1 {
+        font-size: 26px;
+    }
+
+    section {
+        width: 360px;
+        margin: 20px auto;
+    }
+
+    .hero-section,
+    .feature-section,
+    .download-section,
+    .steps-section,
+    .faq-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .lead {
+        font-size: 15px;
+        line-height: 28px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .summary-grid,
+    .feature-grid,
+    .faq-section ul {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .summary-card,
+    .feature-card {
+        padding: 18px;
+    }
+
+    .summary-card h2,
+    .feature-card h2,
+    .faq-section h2 {
+        font-size: 18px;
+    }
+
+    .summary-card p,
+    .feature-card p,
+    .download-section p,
+    .steps-section li,
+    .faq-section p {
+        font-size: 13px;
+        line-height: 24px;
+    }
+
+    .download-button {
+        font-size: 16px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .steps-section ol {
+        padding: 16px 0 0 24px;
+    }
+}
